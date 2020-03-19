@@ -28,6 +28,13 @@ class CasesController extends Controller
     public function unassignedCases()
     {
         $cases          = (new Cases)->unassignedCases();
+        // $cases          = (new Cases)->assignedCases();
+        // $names = [];
+        // foreach ($cases as $case)
+        // {
+        //     $names[] = $case->active_handlers->first()->getFullName();
+        // }
+        // return $names;
         $caseHandlers   = (new User)->caseHandlers();
 
         $title          = 'Unassigned Cases | '.APP_NAME;
