@@ -56,22 +56,11 @@ class ApplicationController extends Controller
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        $case_category  = $case->getCategory();
-        $case_parties   = $case->getCaseParties(false);
+        $case_category              = $case->getCategory();
+        $case_parties               = $case->getCaseParties(false);
+        $checklistIds               = $case->getChecklistIds();
+        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
 
-        $checklistIds               = [];
-        $checklistGroupDocuments    = [];
-        $case->documents->map(function($document) use (&$checklistIds, &$checklistGroupDocuments)
-        {
-            $checklistIds[] = $document->checklists->pluck('id');
-
-            $document->checklists->map(function($checklist) use ($document, &$checklistGroupDocuments)
-            {
-                $checklistGroupDocuments[$checklist->group->id] = $document;
-            });
-        });
-
-        $checklistIds   = collect($checklistIds)->flatten()->toArray();
         $title          = "{$case_category} Application | ".APP_NAME;
         $description    = "{$case_category} Application | ".APP_NAME;
         $details        = details($title, $description);
