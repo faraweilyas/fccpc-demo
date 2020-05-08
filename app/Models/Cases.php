@@ -124,6 +124,29 @@ class Cases extends Model
         return datetimeToText($this->submitted_at, 'customd');
     }
 
+    public function getChecklistIds() : array
+    {
+        $checklistIds = [];
+        $this->documents->map(function($document) use (&$checklistIds)
+        {
+            $checklistIds[] = $document->checklists->pluck('id');
+        });
+        return collect($checklistIds)->flatten()->toArray();
+    }
+
+    public function getChecklistGroupDocuments() : array
+    {
+        $checklistGroupDocuments = [];
+        $this->documents->map(function($document) use (&$checklistGroupDocuments)
+        {
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupDocuments)
+            {
+                $checklistGroupDocuments[$checklist->group->id] = $document;
+            });
+        });
+        return $checklistGroupDocuments;
+    }
+
     // ...
     public function getCaseStatus($textStyle='strtolower')
     {
@@ -133,5 +156,21 @@ class Cases extends Model
     public function getCaseStatusHTML($textStyle='strtolower')
     {
         return \AppHelper::value('case_status_html', $this->status ?? 1, $textStyle);
+    }
+
+    public function getCaseHandlerName() : string
+    {
+        return "";
+        return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";
+    }
+
+    /**
+     * Get users full name
+     *
+     * @return string
+     */
+    public function getFullName() : string
+    {
+        return trim($this->first_name.' '.$this->last_name);
     }
 }
