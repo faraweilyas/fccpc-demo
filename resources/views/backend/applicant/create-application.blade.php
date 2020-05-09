@@ -271,6 +271,7 @@
                                                                        <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
+                                    <img class="max-h-30px mr-3" src="{{ !empty($document) ? $document->getIconText() : '' }}" />
                                                                 </div>
                                                             </div>
                                                         </div>
