@@ -39,6 +39,10 @@
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+         "files": [
+            "app/Enhancers/Constants.php",
+            "app/Enhancers/Functions.php"
         ]
     },
     "autoload-dev": {
