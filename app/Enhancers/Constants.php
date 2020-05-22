@@ -1,31 +1,31 @@
 <?php
 
 // PROFILING
-defined('AUTHORS') 				? NULL : define('AUTHORS', 				["Kamsi Kodi"]);
-defined('APP_NAME') 			? NULL : define('APP_NAME',				"grubeats");
-defined('COMPANY') 				? NULL : define('COMPANY',				"grubeat");
-defined('COMPANY_LINK') 		? NULL : define('COMPANY_LINK',			"https://grubeats.com");
-defined('APP_URL') 				? NULL : define('APP_URL',				"http://localhost:8000");
-defined('APP_EMAIL') 			? NULL : define('APP_EMAIL',		    "kamsikodi@gmail.com");
-defined('GOOGLE_KEY') 			? NULL : define('GOOGLE_KEY',			"AIzaSyBwF3kU5pZ9X8Z_NacpyJDzZn3Q0pnO8OY");
+defined('AUTHORS') 				? NULL : define('AUTHORS', 				["iLyas Farawe", "Kamsi Kodi"]);
+defined('APP_NAME') 			? NULL : define('APP_NAME',				"M&A - Federal Competition and Consumer Protection Commission");
+defined('SHORT_APP_NAME') 		? NULL : define('SHORT_APP_NAME',		"M&A - FCCPC");
+defined('COMPANY') 				? NULL : define('COMPANY',				"techbarn");
+defined('COMPANY_LINK') 		? NULL : define('COMPANY_LINK',			"https://techbarn.ng");
+defined('AGENCY') 				? NULL : define('AGENCY',				"FCCPC");
+defined('AGENCY_LINK') 			? NULL : define('AGENCY_LINK',			"http://fccpc.gov.ng");
 
-//DIRECTORIES
-defined('DS') 					? NULL : define('DS',					"/");
-defined('PUBLIC_DIR') 			? NULL : define('PUBLIC_DIR',			APP_URL.DS);
+// DIRECTORIES
 
-defined('ASSET') 				? NULL : define('ASSET', 				PUBLIC_DIR."assets".DS);
+defined('ASSETS') 				? NULL : define('ASSETS', 				PUBLIC_DIR."assets".DS);
 
-defined('BACKEND_ASSET') 		? NULL : define('BACKEND_ASSET', 		ASSET."backend".DS);
-defined('FRONTEND_ASSET') 		? NULL : define('FRONTEND_ASSET', 		ASSET."frontend".DS);
+defined('CSS') 					? NULL : define('CSS', 					ASSETS."css".DS);
+defined('IMAGE') 				? NULL : define('IMAGE', 				ASSETS."images".DS);
+defined('JS') 					? NULL : define('JS', 					ASSETS."javascript".DS);
 
-defined('BE_CSS') 				? NULL : define('BE_CSS', 				BACKEND_ASSET."css".DS);
-defined('BE_IMAGE') 			? NULL : define('BE_IMAGE', 			BACKEND_ASSET."images".DS);
-defined('BE_JS') 				? NULL : define('BE_JS', 				BACKEND_ASSET."js".DS);
-defined('BE_MEDIA') 			? NULL : define('BE_MEDIA', 			BACKEND_ASSET."media".DS);
-defined('BE_PLUGIN') 			? NULL : define('BE_PLUGIN', 			BACKEND_ASSET."plugins".DS);
+defined('FE_ASSETS') 			? NULL : define('FE_ASSETS', 			ASSETS."frontend".DS);
+defined('BE_ASSETS') 			? NULL : define('BE_ASSETS', 			ASSETS."backend".DS);
 
-defined('FE_CSS') 				? NULL : define('FE_CSS', 				FRONTEND_ASSET."css".DS);
-defined('FE_IMAGE') 			? NULL : define('FE_IMAGE', 			FRONTEND_ASSET."images".DS);
-defined('FE_JS') 				? NULL : define('FE_JS', 				FRONTEND_ASSET."js".DS);
+defined('FE_CSS') 				? NULL : define('FE_CSS', 				FE_ASSETS."css".DS);
+defined('FE_IMAGE') 			? NULL : define('FE_IMAGE', 			FE_ASSETS."images".DS);
+defined('FE_JS') 				? NULL : define('FE_JS', 				FE_ASSETS."javascript".DS);
 
-defined('APP_LOGO') 			? NULL : define('APP_LOGO', 			FE_IMAGE."logo/app_logo.png");
+defined('BE_CSS') 				? NULL : define('BE_CSS', 				BE_ASSETS."css".DS);
+defined('BE_IMAGE') 			? NULL : define('BE_IMAGE', 			BE_ASSETS."images".DS);
+defined('BE_JS') 				? NULL : define('BE_JS', 				BE_ASSETS."javascript".DS);
+defined('BE_PLUGIN') 			? NULL : define('BE_PLUGIN', 			BE_ASSETS."plugins".DS);
+defined('BE_MEDIA') 			? NULL : define('BE_MEDIA', 			BE_ASSETS."media".DS);
