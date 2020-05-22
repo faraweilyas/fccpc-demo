@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 //Base Controller
 Route::get('/', 				'Frontend\HomeController@index')->name('home.index'); 
 Route::get('/fee-calculator', 	'Frontend\HomeController@feeCalcutor')->name('home.calculator'); 
+Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq'); 

@@ -30,4 +30,16 @@ class HomeController extends Controller
     	$details          = details($title, $description);
     	return view('frontend.fee-calculator', compact('details'));
     } 
+
+    /**
+	 * Handles the faq page route.
+	 * @return void
+	 */
+    public function faq()
+    { 
+    	$title            = "Frequently Asked Questions (FAQs) - Federal Competition and Consumer Protection Commission - ".APP_NAME;
+	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+    	$details          = details($title, $description);
+    	return view('frontend.faq', compact('details'));
+    } 
 }

@@ -31,7 +31,7 @@
 	    <div class="maxwidth-sl wrapper-x mx-auto">
 	        <ul class="none d-flx pos-rel main-nav">
                 <li class="py-1 mg-1 main-list">
-                    <a href="#">M&amp;A - FCCPC</a>
+                    <a href="/">M&amp;A - FCCPC</a>
                 </li>
                 <li class="py-1 mg-1 main-list">
                     <a href="#">Application</a>
@@ -52,7 +52,7 @@
                     <a href="{{ route('home.calculator') }}">Fee Calculator</a>
                 </li>
                 <li class="py-1 mg-1 main-list">
-                    <a href="#">FAQ</a>
+                    <a href="{{ route('home.faq') }}">FAQ</a>
                 </li>
 	        </ul>
 	    </div>
@@ -62,7 +62,7 @@
 	    <div class="overlay-content smalltext">
 	        <ul class="none">
 	            <li class="smalltext">
-                    <a class="smalltext" href="#">M&amp;A - FCCPC</a>
+                    <a class="smalltext" href="/">M&amp;A - FCCPC</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="#">Submit Application</a>
@@ -71,10 +71,10 @@
 	                <a class="smalltext" href="#">Add Supporting Documents</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="#">Fee Calculator</a>
+	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="#">FAQ</a>
+	                <a class="smalltext" href="{{ route('home.faq') }}">FAQ</a>
 	            </li>
 	        </ul>
 	    </div>
