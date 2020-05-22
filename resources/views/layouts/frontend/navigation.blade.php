@@ -49,7 +49,7 @@
                     </ul>
                 </li>
                 <li class="py-1 mg-1 main-list">
-                    <a href="#">Fee Calculator</a>
+                    <a href="{{ route('home.calculator') }}">Fee Calculator</a>
                 </li>
                 <li class="py-1 mg-1 main-list">
                     <a href="#">FAQ</a>

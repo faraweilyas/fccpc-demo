@@ -27,7 +27,7 @@ function getHostUrl ()
 function details($title, $description)
 {
 	$details = (object)[
-		'title' 	  => APP_NAME.' - '.$title,
+		'title' 	  => $title,
 		'description' => $description
 	];
 
