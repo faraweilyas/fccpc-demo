@@ -1,0 +1,153 @@
+.hide
+{
+    display: none;
+}
+
+select.form-control:not([size]):not([multiple])
+{
+    height: calc(2.25rem + 14px);
+}
+
+.hero
+{
+    height: 100px;
+    padding: 9rem 0;
+}
+
+section#orderWizard
+{
+    padding: 1rem 0;
+}
+
+.form__spacing
+{
+    margin-top: 10px;
+    margin-bottom: 35px;
+}
+
+.form__bottom
+{
+    margin-bottom: -35px;
+}
+
+.table .thead-fccpc th
+{
+    color: #fff;
+    background-color: #2eca6a;
+    border-color: #14a94d;
+}
+
+.modal_guideline__header
+{
+    font-weight: bolder!important;
+    text-align: center!important;
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+.modal_guideline__sub__header
+{
+    font-weight: bolder!important;
+    text-align: center!important;
+    font-size: 15px;
+    text-decoration: underline;
+}
+
+.mg-bt
+{
+    margin-bottom: 10px;
+}
+
+.uploadButton {
+    position: relative;
+    cursor: pointer;
+}
+
+.uploadButton input {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    margin: 0;
+    z-index: 10;
+    opacity: 0;
+    cursor: pointer;
+    margin-top: 0;
+    color: #0BB783;
+    background-color: #0BB783;
+    border-color: transparent;
+}
+
+.btn--brand {
+    background: #0BB783;
+    color: #fff;
+}
+
+.btn--brand:hover
+{
+    background: #04AA77;
+    color: #fff;
+}
+
+.footer-brand-logo img
+{
+    vertical-align: baseline;
+}
+
+.mb_15
+{
+	margin-bottom: 15px !important;
+}
+
+.mb_30
+{
+	margin-bottom: 30px !important;
+}
+
+.maxh_130
+{
+	max-height: 130px !important;
+}
+
+.sub-header-desktop
+{
+    margin-right: 0.25rem !important;
+    -webkit-box-align: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    display: flex;
+}
+
+.sub-header-mobile
+{
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .subheader
+    {
+        margin-top: 80px;
+        margin-bottom: -50px;
+    }
+
+    .sub-header-mobile
+    {
+        margin-right: 0.25rem !important;
+        -webkit-box-align: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        display: flex !important;
+    }
+
+    .sub-header-desktop
+    {
+        display: none;
+    }
+
+    .mt-sm-10
+    {
+        margin-top: 10px;
+    }
+}
+

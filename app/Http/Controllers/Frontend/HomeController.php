@@ -9,7 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     { 
-    	$details          = details('Discover Great Dishes Around You');
+    	$title            = APP_NAME;
+	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+    	$details          = details($title, $description);
     	return view('frontend.index', compact('details'));
     } 
 }

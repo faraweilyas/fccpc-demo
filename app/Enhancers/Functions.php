@@ -21,12 +21,14 @@ function getHostUrl ()
 /**
 * Configure Page Headers
 * @param string title
+* @param string description
 * @return array
 */
-function details($title)
+function details($title, $description)
 {
-	$details = [
-		'title' => APP_NAME.' - '.$title
+	$details = (object)[
+		'title' 	  => APP_NAME.' - '.$title,
+		'description' => $description
 	];
 
 	return $details;
@@ -211,4 +213,26 @@ function GenerateSerial($no=5, $id) {
 	}
 
     return 'GRU'.$id.'-'.$serial;
+}
+
+/**
+ * Getter for application author.
+ * @return string
+ */
+function author() : string
+{
+	if (defined('AUTHORS')):
+		return is_array(AUTHORS) ? implode(", ", AUTHORS) : AUTHORS;
+	else:
+		return "Author is not defined";
+	endif;
+}
+
+/**
+* Getter for agency link.
+* @return string
+*/
+function agencyLink() : string
+{
+	return defined('AGENCY_LINK') ? AGENCY_LINK : "Agency link is not defined";
 }
