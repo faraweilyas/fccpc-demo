@@ -20,12 +20,12 @@ jQuery(document).ready(function ($) {
 			success: function(data) {
 				res = JSON.parse(data);
 				console.log(res);
-			    if (res.statusCode == 200) {
+			    if (res.responseType == "success") {
 			    	console.log('working')
 			    	$("#case_id").val(res.response.id);
 			        toastr.success("Your details have been saved successfully.");
 			    } else {
-			        toastr.warning("Your details have not been saved successfully.");
+			        toastr.error("Your details have not been saved successfully.");
 			    }
 			},
 			error: function (err) {
@@ -36,17 +36,21 @@ jQuery(document).ready(function ($) {
 
 	$("#upload-info").on('click', function(e) {
 		e.preventDefault();
-		
+
 	    var tracking_id	  = $("#tracking_id").val();
+	    var token 		  = $("#token").val();
 		$.ajax({
 			url: '/api/application/upload/'+tracking_id,
-			data: {},
+			data: {
+				'_token': token 
+			},
 			type: 'POST',
 			success: function(data) {
+				console.log(data)
 			    if (data) {
 			        toastr.success("Your details have been uploaded successfully.");
 			        setTimeout(function () {
-			        	window.location.replace('/application/dashboard/'+tracking_id);
+			        	window.location.replace('/applicant/dashboard/'+tracking_id);
 			        }, 2000);
 			    } else {
 			        toastr.warning("Your details have been not been uploaded successfully.");

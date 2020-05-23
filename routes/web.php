@@ -34,4 +34,5 @@ Route::prefix('application')->group(function () {
 //API Controller
 Route::prefix('api')->group(function () {
 	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase'); 
+	Route::post('application/upload/{id}',	'Backend\ApplicationAuthController@uploadNewCase'); 
 });

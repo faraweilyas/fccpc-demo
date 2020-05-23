@@ -57,6 +57,7 @@ class ApplicationAuthController extends Controller
 
         $case_arr               = \App\Enhancers\AppHelper::getArray('case_categories');
         $case                   = Cases::where('tracking_id', '=', $id)->first();
+        $new_case               = new Cases;
         if (!$case):
             $result = Cases::create([
                 'ref_no'                => '',
@@ -102,14 +103,13 @@ class ApplicationAuthController extends Controller
      */
     public static function uploadNewCase($id)
     {
-        $upload_case = new Cases; 
-        $result      = $upload_case::where('tracking_id', '=', $id)->update([
+        $result      = Cases::where('tracking_id', '=', $id)->update([
             'ref_no' => generateRefNo($id),
             'status' => 1
         ]);
         
         if ($result):
-            static::sendResponse(200, "OK!", "success", $upload_case);
+            static::sendResponse(200, "OK!", "success", $result);
         else:
             static::sendResponse(400, "Bad request", "error", '');
         endif;
