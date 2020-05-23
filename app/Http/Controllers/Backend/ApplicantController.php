@@ -33,16 +33,16 @@ class ApplicantController extends Controller
         ]);
 
         $guest = Guest::where('email', '=', $request->email)->first();
-        if ($guest) {
+        if ($guest) :
             return redirect()->route('applicant.index', ['id' => $guest->tracking_id]);
-        } else {
+        else :
             $result = Guest::create([
                 'email'           => trim(ucwords($request->email)),
                 'tracking_id'     => generateApplicantID(),
             ]);
 
             return redirect()->route('applicant.index', ['id' => $result->tracking_id]);
-        }
+        endif;
     }
 
     /**
