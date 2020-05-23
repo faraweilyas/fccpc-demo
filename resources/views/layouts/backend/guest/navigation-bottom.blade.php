@@ -8,7 +8,7 @@
 				<!--begin::Header Nav-->
 				<ul class="menu-nav">
 					<li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here">
-						<a href="#" class="menu-link">
+						<a href="{{ route('applicant.index', ['id' => $id]) }}" class="menu-link">
 							<span class="menu-text">Dashboard</span>
 							<span class="menu-desc">...</span>
 							<i class="menu-arrow"></i>

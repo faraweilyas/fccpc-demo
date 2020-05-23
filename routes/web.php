@@ -33,7 +33,12 @@ Route::prefix('application')->group(function () {
 
 //Supervisor Controller
 Route::prefix('/')->group(function () {
-	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('supervisor.index');
+	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('admin.index');
+});
+
+//Cases Controller
+Route::prefix('cases')->group(function () {
+	Route::get('/{type}', 	 'Backend\CasesController@index')->name('admin.cases');
 });
 
 //API Controller
