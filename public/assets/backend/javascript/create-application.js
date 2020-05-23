@@ -1,4 +1,5 @@
-$(document).ready(function (e) {
+jQuery(document).ready(function ($) {
+	console.log(true);
 	$("#save-info").on('click', function(e) {
 		e.preventDefault();
 		toastr.options = {
