@@ -7,6 +7,19 @@ use App\Http\Controllers\Controller;
 
 class CaseHandlersController extends Controller
 {
+    /**
+     * Handles the Case handlers display page route.
+     * @param int $id
+     * @return void
+     */
+    public function index()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Case Handlers Dashboard";
+        $details          = details($title, $description);
+        return view('backend.'.getAccountType().'.case-handlers', compact('details'));
+    }
+
 	/**
 	 * Handles the create case handlers page route.
 	 * @return void
