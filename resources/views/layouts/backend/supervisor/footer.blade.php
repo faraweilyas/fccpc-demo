@@ -26,9 +26,6 @@
 <!--end::Global Theme Bundle-->
 <script src="{{ BE_JS.'pages/custom/wizard/wizard-2.js' }}"></script>
 <script src="{{ BE_JS.'toaster.js'}}"></script>
-<script src="{{ BE_PLUGIN.'custom/datatables/datatables.bundle.js' }}"></script>
-<script src="{{ BE_JS.'pages/crud/datatables/advanced/column-rendering.js' }}"></script>
-<script src="{{ BE_JS.'pages/crud/forms/widgets/select2.js' }}"></script>
 <script type="text/javascript">
 	toastr.options = {
 		"progressBar": true,

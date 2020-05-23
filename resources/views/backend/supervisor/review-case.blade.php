@@ -11,7 +11,7 @@
 				<h5 class="text-dark font-weight-bold my-2 mr-5">Case Review</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
-						<a href="{{ route('admin.index')}}" class="text-muted">Home</a>
+						<a href="{{ route('admin.index') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
 						<a href="" class="text-muted">Assigned Cases</a>
@@ -227,3 +227,4 @@
     </div>
 </div>
 @endSection
+<script src="{{ BE_JS.'pages/crud/forms/widgets/select2.js' }}"></script>

@@ -42,6 +42,13 @@ Route::prefix('cases')->group(function () {
 	Route::get('/review/{id}',  'Backend\CasesController@show')->name('admin.review-case');
 });
 
+//Case Handler Controller
+Route::prefix('cases')->group(function () {
+	Route::get('/{type}',		'Backend\CasesController@index')->name('admin.cases');
+	Route::get('/review/{id}',  'Backend\CasesController@reviewCase')->name('admin.review-case');
+	Route::get('/filter', 	    'Backend\CasesController@filterCases')->name('admin.filter-cases');
+});
+
 //API Controller
 Route::prefix('api')->group(function () {
 	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase'); 

@@ -93,7 +93,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.cases', ['type' => 'filter']) }}" class="menu-link">
+									<a href="{{ route('admin.filter-cases') }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Design\ZoomPlus.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

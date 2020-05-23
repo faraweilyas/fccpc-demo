@@ -24,11 +24,23 @@ class CasesController extends Controller
      * Handles the case review page route.
      * @return void
      */
-    public function show($id)
+    public function reviewCase($id)
     { 
         $title            = APP_NAME;
         $description      = "FCCPC Case Review Dashboard";
         $details          = details($title, $description);
         return view('backend.'.getAccountType().'.review-case', compact('details', 'id'));
+    }
+
+    /**
+     * Handles the case filter page route.
+     * @return void
+     */
+    public function filterCases()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Case Filter Dashboard";
+        $details          = details($title, $description);
+        return view('backend.'.getAccountType().'.filter-cases', compact('details'));
     }
 }

@@ -66,7 +66,7 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yes</span>
 								</td>
-								<td><span>T&A Legal</span></td>
+								<td><small>T&A Legal</small></td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Regular</span>
 								</td>
@@ -105,9 +105,9 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
-								<td>M&A Case Management System</td>
+								<td><small>M&A Case Management System</small></td>
 								@if($type == 'hold')
-								<td>Lack of evidence</td>
+								<td><small>Lack of evidence</small></td>
 								@endif
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
@@ -144,8 +144,8 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
 								</td>
-								<td>Lack of evidence</td>
-								<td>M&A Case Management System</td>
+								<td><small>Lack of evidence</small></td>
+								<td><small>M&A Case Management System</small></td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
 								</td>
@@ -184,8 +184,8 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
-								<td>M&A Case Management System</td>
-								<td>Techbarn, FCCPC</td>
+								<td><small>M&A Case Management System</small></td>
+								<td><small>Techbarn, FCCPC</small></td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span>
 								</td>
@@ -247,3 +247,6 @@
     </div>
 </div>
 @endSection('content')
+<script src="{{ BE_PLUGIN.'custom/datatables/datatables.bundle.js' }}"></script>
+<script src="{{ BE_JS.'pages/crud/datatables/advanced/column-rendering.js' }}"></script>
+<script src="{{ BE_JS.'pages/crud/forms/widgets/select2.js' }}"></script>
