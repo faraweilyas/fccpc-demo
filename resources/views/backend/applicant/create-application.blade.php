@@ -8,7 +8,7 @@
 			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
 				<!--begin::Page Title-->
-				<h5 class="text-dark font-weight-bold my-2 mr-5"><?= $case; ?> Application Case</h5>
+				<h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }} Application Case</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
 						<a href="{{ route('applicant.index', ['id' => $id]) }}" class="text-muted">Home</a>
@@ -17,7 +17,7 @@
 						<a href="" class="text-muted">Application</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="" class="text-muted"><?= $case; ?> Transaction</a>
+						<a href="" class="text-muted">{{ $case }} Transaction</a>
 					</li>
 				</ul>
 				<!--end::Page Title-->
@@ -28,7 +28,7 @@
 			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
 				<!--begin::Page Title-->
-				<h5 class="text-dark font-weight-bold my-2 mr-5"><?= $case; ?> Application Case</h5>
+				<h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }} Application Case</h5>
 				
 				<!--end::Page Title-->
 			</div>
@@ -41,7 +41,7 @@
 						<a href="" class="text-muted">Application</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="" class="text-muted"><?= $case; ?> Transaction</a>
+						<a href="" class="text-muted">{{ $case }} Transaction</a>
 					</li>
 				</ul>
 			</div>
@@ -192,9 +192,9 @@
 						<div class="row">
 							<div class="offset-xxl-2 col-xxl-8">
 								<form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
-									<input type="hidden" id="case_id" name="case_id" value="<?= $case_info->id ?? 0; ?>">
-									<input type="hidden" id="tracking_id" name="tracking_id" value="<?= $case_info->tracking_id ?? $id; ?>">
-									<input type="hidden" id="transaction_category" name="transaction_category" value="<?= $type ?? ''; ?>">
+									<input type="hidden" id="case_id" name="case_id" value="{{ $case_info->id ?? 0 }}">
+									<input type="hidden" id="tracking_id" name="tracking_id" value="{{ $case_info->tracking_id ?? $id }}">
+									<input type="hidden" id="transaction_category" name="transaction_category" value="{{ $type ?? '' }}">
 									<input type="hidden" id="token" value="{{ csrf_token() }}" />
 									<!--begin: Wizard Step 1-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
@@ -202,25 +202,25 @@
 										<h4 class="mb-10 font-weight-bold text-dark">Enter your Case Details</h4>
 										<div class="form-group fv-plugins-icon-container">
 											<label>Subject</label> <span class="text-danger">*</span>
-											<input type="text" id="subject" class="form-control" placeholder="Enter subject name" name="subject" value="<?= $case_info->subject ?? ''; ?>">
+											<input type="text" id="subject" class="form-control" placeholder="Enter subject name" name="subject" value="{{ $case_info->subject ?? '' }}">
 											<span class="form-text text-muted">Please enter subject.</span>
 											<div class="fv-plugins-message-container"></div>
 										</div>
 										<div class="form-group">
 											<label>Parties</label> <span class="text-danger">*</span>
 											<div class="fields">
-												<?php if (isset($case_party_arr) && is_array($case_party_arr) && $case_info->parties != ''): ?>
+												@if(isset($case_party_arr) && is_array($case_party_arr) && $case_info->parties != '')
 												<div class="field-item">
 													<div class="row">
-														<?php foreach ($case_party_arr as $key => $value): ?>
+														@foreach ($case_party_arr as $key => $value): ?>
 														<div class="col-lg-5 mb-4">
-															<input type="text" class="form-control" placeholder="Enter party name" name="party[]" value="<?= $value; ?>">
+															<input type="text" class="form-control" placeholder="Enter party name" name="party[]" value="{{ $value }}">
 															<div class="d-md-none mb-2"></div>
 														</div>
-														<?php endforeach; ?>
+														@endforeach
 													</div>
 												</div>
-												<?php else: ?>
+												@else
 												<div class="field-item">
 													<div class="row">
 														<div class="col-lg-5">
@@ -233,7 +233,7 @@
 														</div>
 													</div>
 												</div>
-												<?php endif; ?>
+												@endif
 											</div>
 											<div class="row mt-4">
 												<div class="col-lg-12">
@@ -256,18 +256,18 @@
 										</div>
 										<div class="form-group">
 											<label>Transaction Type</label>
-											<?php if ($case_info): ?>
+											@if ($case_info)
 											<div class="radio-inline">
 												<label class="radio">
-													<input type="radio" name="transaction_type" <?= ($case_info->transaction_type == "small" && $case_info) ? 'checked="checked"' : ''; ?> value="small">Small<span></span>
+													<input type="radio" name="transaction_type" {{ ($case_info->transaction_type == "small" && $case_info) ? 'checked="checked"' : '' }} value="small">Small<span></span>
 													&nbsp;&nbsp;<i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction below 1 Million Naira"></i>
 												</label>
 												<label class="radio">
-													<input type="radio" name="transaction_type" <?= ($case_info->transaction_type == "large") ? 'checked="checked"' : ''; ?> value="large">Large<span></span>
+													<input type="radio" name="transaction_type" {{ ($case_info->transaction_type == "large") ? 'checked="checked"' : '' }} value="large">Large<span></span>
 													&nbsp;&nbsp;<i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction above 1 Million Naira"></i>
 												</label>
 											</div>
-											<?php else: ?>
+											@else
 											<div class="radio-inline">
 												<label class="radio">
 													<input type="radio" name="transaction_type" checked="checked" value="small">Small<span></span>
@@ -278,7 +278,7 @@
 													&nbsp;&nbsp;<i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction above 1 Million Naira"></i>
 												</label>
 											</div>
-											<?php endif;?>
+											@endif
 										</div>
 										<!--end::Input-->
 									</div>
@@ -291,7 +291,7 @@
 												<!--begin::Input-->
 												<div class="form-group fv-plugins-icon-container">
 													<label>Applicant/Representing Firm</label> <span class="text-danger">*</span>
-													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="representingFirm" value="<?= $case_info->applicant_firm ?? ''; ?>">
+													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="representingFirm" value="{{ $case_info->applicant_firm ?? '' }}">
 													<span class="form-text text-muted">Please enter your representing firm.</span>
 													<div class="fv-plugins-message-container"></div>
 												</div>
@@ -299,10 +299,10 @@
 													<label>Contact Person</label> <span class="text-danger">*</span>
 													<div class="row">
 														<div class="col-lg-6">
-															<input type="text" class="form-control" placeholder="Enter first name" name="fName" value="<?= $case_info->applicant_first_name ?? ''; ?>">
+															<input type="text" class="form-control" placeholder="Enter first name" name="fName" value="{{ $case_info->applicant_first_name ?? '' }}">
 														</div>
 														<div class="col-lg-6">
-															<input type="text" class="form-control" placeholder="Enter last name" name="lName" value="<?= $case_info->applicant_last_name ?? ''; ?>">
+															<input type="text" class="form-control" placeholder="Enter last name" name="lName" value="{{ $case_info->applicant_last_name ?? '' }}">
 														</div>
 													</div>
 												</div>
@@ -310,7 +310,7 @@
 													<div class="col-lg-6">
 														<div class="form-group fv-plugins-icon-container">
 															<label>Email Address</label> <span class="text-danger">*</span>
-															<input type="email" class="form-control" placeholder="Enter email address" name="email" value="<?= $case_info->applicant_email ?? ''; ?>">
+															<input type="email" class="form-control" placeholder="Enter email address" name="email" value="{{ $case_info->applicant_email ?? '' }}">
 															<span class="form-text text-muted">Please enter your email address.</span>
 															<div class="fv-plugins-message-container"></div>
 														</div>
@@ -318,7 +318,7 @@
 													<div class="col-lg-6">
 														<div class="form-group fv-plugins-icon-container">
 															<label>Telephone No</label> <span class="text-danger">*</span>
-															<input type="text" class="form-control" placeholder="Enter telephone no" name="phone" value="<?= $case_info->applicant_phone_no ?? ''; ?>">
+															<input type="text" class="form-control" placeholder="Enter telephone no" name="phone" value="{{ $case_info->applicant_phone_no ?? '' }}">
 															<span class="form-text text-muted">Please enter your phone no.</span>
 															<div class="fv-plugins-message-container"></div>
 														</div>
@@ -326,7 +326,7 @@
 												</div>
 												<div class="form-group fv-plugins-icon-container">
 													<label>Address</label> <span class="text-danger">*</span>
-													<input type="text" class="form-control" placeholder="Enter address" name="address" value="<?= $case_info->applicant_address ?? ''; ?>">
+													<input type="text" class="form-control" placeholder="Enter address" name="address" value="{{ $case_info->applicant_address ?? '' }}">
 													<span class="form-text text-muted">Please enter your address.</span>
 													<div class="fv-plugins-message-container"></div>
 												</div>
