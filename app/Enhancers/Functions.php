@@ -348,5 +348,5 @@ function generateRefNo($id) : string
  */
 function getAccountType() : string
 {
-	return "supervisor";
+	return "guest";
 }

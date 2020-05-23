@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeApplicant;
 use App\Models\Guest;
 
 class ApplicantController extends Controller
@@ -41,7 +43,14 @@ class ApplicantController extends Controller
                 'tracking_id'     => generateApplicantID(),
             ]);
 
-            return redirect()->route('applicant.index', ['id' => $result->tracking_id]);
+            $data = array(
+                'email'       => $result->email ,
+                'tracking_id' => $result->tracking_id
+            );
+            if ($result):
+                Mail::to($request->email)->send(new WelcomeApplicant($data));
+                return redirect()->route('applicant.index', ['id' => $result->tracking_id]);
+            endif;
         endif;
     }
 
