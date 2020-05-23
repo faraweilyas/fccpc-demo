@@ -16,7 +16,7 @@ class ApplicantController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);
-    	return view('backend.applicant.auth', compact('details'));
+    	return view('backend.applicant.dashboard', compact('details'));
     }
 
     /**
