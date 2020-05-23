@@ -1,11 +1,11 @@
 <html lang="en">
 <!-- Header -->
-@include("layouts.backend.guest.header")
+@include("layouts.backend.".getAccountType().".header")
 <!--begin::Body-->
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
 	<!--begin::Main-->
 	<!--begin::Header Mobile-->
-	@include("layouts.backend.guest.header-mobile")
+	@include("layouts.backend.".getAccountType().".header-mobile")
 	<!--end::Header Mobile-->
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Page-->
@@ -15,16 +15,16 @@
 				<!--begin::Header-->
 				<div id="kt_header" class="header flex-column header-fixed">
 					<!--begin::Top-->
-					@include("layouts.backend.guest.navigation-top")
+					@include("layouts.backend.".getAccountType().".navigation-top")
 					<!--end::Top-->
 					<!--begin::Bottom-->
-					@include("layouts.backend.guest.navigation-bottom")
+					@include("layouts.backend.".getAccountType().".navigation-bottom")
 					<!--end::Bottom-->
 				</div>
 				<!--end::Header-->
 				@yield('content')
 				<!--begin::Footer-->
-				@include("layouts.backend.guest.footer-content")
+				@include("layouts.backend.".getAccountType().".footer-content")
 				<!--end::Footer-->
 			</div>
 			<!--end::Wrapper-->
@@ -33,7 +33,7 @@
 	</div>
 	<!--end::Main-->
 	<!-- Footer -->
-	@include("layouts.backend.guest.footer")
+	@include("layouts.backend.".getAccountType().".footer")
 </body>
 <!--end::Body-->
 </html>

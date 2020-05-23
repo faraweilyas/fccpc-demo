@@ -341,3 +341,12 @@ function generateRefNo($id) : string
 
 	return "FCCPC/".substr(strtoupper(str_shuffle($name)), -2)."/M&A/".substr($random_number_array1[0].$random_number_array1[1], -4)."/".substr($random_number_array1[2].$random_number_array1[3], -4)."/VOL".substr($id, -3);
 }
+
+/**
+ * Get User Account Type
+ * @return string
+ */
+function getAccountType() : string
+{
+	return "guest";
+}

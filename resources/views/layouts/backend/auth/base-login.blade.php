@@ -5,8 +5,6 @@
 	@yield('content')
 	<!-- Footer -->
 	@include('layouts.backend.auth.footer')
-	<!--begin::Page Scripts(used by this page)-->
-	<!--end::Page Scripts-->
 </body>
 <!--end::Body-->
 </html>
