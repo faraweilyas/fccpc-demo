@@ -24,7 +24,7 @@
 							<h3>Submit Application</h3>
 							<div class="text-muted font-weight-bold">Enter your email to submit your application:</div>
 						</div>
-						<form class="form" method="GET" action="#">
+						<form class="form" method="GET" action="{{ route('applicant.index', ['id' => 'APP051673D209']) }}">
 							<div class="form-group mb-5">
 								<input type="email" placeholder="Email address:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
 							</div>

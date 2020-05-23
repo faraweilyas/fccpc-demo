@@ -250,6 +250,55 @@ function generate(callable $callable, string $preText=NULL, string $postText=NUL
 }
 
 /**
+ * Format application type
+ * @param string $type
+ * @return string
+ */
+function formatApplicationType(string $type) : string
+{
+	$case = "";
+	switch($type)
+	{
+		case 'regular':
+			$case = ucfirst($type);
+			break;
+		case 'ffm':
+			$case = strtoupper($type);
+			break;
+		case 'ffm-expediated':
+			$case = 'FFM Expediated';
+			break;
+		default:
+			$case = '';
+			break;
+	}
+	return $case;
+}
+
+/**
+ * Format case type
+ * @param string $type
+ * @return string
+ */
+function formatCaseType(string $type) : string
+{
+	$case = "";
+	switch($type)
+	{
+		case 'hold':
+			$case = 'Cases On Hold';
+			break;
+		case 'requests':
+			$case = 'Requests Log';
+			break;
+		default:
+			$case = ucfirst($type).' '.'cases';
+			break;
+	}
+	return $case;
+}
+
+/**
  * Generate serial number
  * @return string
  */

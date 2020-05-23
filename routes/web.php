@@ -20,6 +20,6 @@ Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq');
 
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
-	Route::get('/{id}', 			 'Backend\ApplicantController@index')->name('applicant.index');
+	Route::get('/dashboard/{id}', 			 'Backend\ApplicantController@index')->name('applicant.index');
 	Route::get('/submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 });
