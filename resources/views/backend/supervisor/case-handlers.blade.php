@@ -68,7 +68,7 @@
 									</td>
 									<td>&#8358;50,000</td>
 									<td>
-										<a href="javascript:;" class="btn btn-sm btn-icon text-hover-primary" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
+										<a href="{{ route('handlers.view', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Handler" >
 											<i class="la la-arrow-alt-circle-down"></i>&nbsp;View
 										</a>
 										<a href="javascript:;" class="btn btn-sm btn-icon text-hover-primary ml-15" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
@@ -88,39 +88,4 @@
 		<!--end::Entry-->
 	</div>
 	<!--end::Content-->
-	<!-- Modal-->
-	<div class="modal fade" id="assignCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	    <div class="modal-dialog modal-dialog-centered" role="document">
-	        <div class="modal-content">
-	            <div class="modal-header">
-	                <h5 class="modal-title" id="exampleModalLabel">Assign case handler to case</h5>
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	                    <i aria-hidden="true" class="ki ki-close"></i>
-	                </button>
-	            </div>
-	            <div class="modal-body">
-	                <!--begin::Input-->
-					<div class="row">
-						<div class="col-md-12">
-							<label>Subject</label>
-							<input type="text" class="form-control" value="M&A Case Management System" disabled>
-						</div>
-					</div>
-					<div class="row mt-5">
-						<div class="col-md-12">
-							<label>Select case handler</label><br>
-							<select class="form-control select2" id="kt_select2_1" name="case_handlers" style="width: 100%;">
-								<option value="JD">Florence</option>
-								<option value="JJ">Yemisi</option>
-							</select>
-						</div>
-					</div>
-	            </div>
-	            <div class="modal-footer">
-	                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-	                <button type="button" class="btn btn-primary font-weight-bold">Assign</button>
-	            </div>
-	        </div>
-	    </div>
-	</div>
 @endSection

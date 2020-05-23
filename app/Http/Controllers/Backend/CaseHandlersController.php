@@ -31,4 +31,16 @@ class CaseHandlersController extends Controller
     	$details          = details($title, $description);
     	return view('backend.'.getAccountType().'.create-handler', compact('details'));
     }
+
+    /**
+     * Handles the view case handlers page route.
+     * @return void
+     */
+    public function show()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Case Handler Dashboard";
+        $details          = details($title, $description);
+        return view('backend.'.getAccountType().'.view-case-handler', compact('details'));
+    }
  }
