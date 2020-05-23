@@ -119,7 +119,7 @@
 									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
 								</td>
 								<td>
-									<a href="{{ route('admin.review-case', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+									<a href="{{ route('cases.review', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
 										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>

@@ -8,7 +8,7 @@
 				<!--begin::Header Nav-->
 				<ul class="menu-nav">
 					<li class="menu-item menu-item-open menu-item-here menu-item-submenu menu-item-rel menu-item-open menu-item-here">
-						<a href="{{ route('admin.index') }}" class="menu-link">
+						<a href="{{ route('dashboard') }}" class="menu-link">
 							<span class="menu-text">Dashboard</span>
 							<span class="menu-desc">...</span>
 							<i class="menu-arrow"></i>
@@ -23,7 +23,7 @@
 						<div class="menu-submenu menu-submenu-classic menu-submenu-left">
 							<ul class="menu-subnav">
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.cases', ['type' => 'new']) }}" class="menu-link">
+									<a href="{{ route('cases.index', ['type' => 'new']) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\General\Clipboard.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -42,7 +42,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.cases', ['type' => 'assigned']) }}" class="menu-link">
+									<a href="{{ route('cases.index', ['type' => 'assigned']) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Communication\Clipboard-check.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -60,7 +60,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.cases', ['type' => 'hold']) }}" class="menu-link">
+									<a href="{{ route('cases.index', ['type' => 'hold']) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Files\File-minus.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -77,7 +77,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.cases', ['type' => 'approved']) }}" class="menu-link">
+									<a href="{{ route('cases.index', ['type' => 'approved']) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Navigation\Check.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -93,7 +93,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('admin.filter-cases') }}" class="menu-link">
+									<a href="{{ route('cases.index', ['type' => 'filter']) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Design\ZoomPlus.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -138,7 +138,7 @@
 									<div class="menu-submenu menu-submenu-classic menu-submenu-right">
 										<ul class="menu-subnav">
 											<li class="menu-item" aria-haspopup="true">
-												<a href="#" class="menu-link">
+												<a href="{{ route('handlers.create') }}" class="menu-link">
 													<i class="menu-bullet menu-bullet-dot">
 														<span></span>
 													</i>

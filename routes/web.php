@@ -33,19 +33,19 @@ Route::prefix('application')->group(function () {
 
 //Supervisor Controller
 Route::prefix('/')->group(function () {
-	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('admin.index');
+	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('dashboard');
 });
 
 //Cases Controller
 Route::prefix('cases')->group(function () {
-	Route::get('/{type}',		'Backend\CasesController@index')->name('admin.cases');
-	Route::get('/review/{id}',  'Backend\CasesController@show')->name('admin.review-case');
+	Route::get('/{type}',		'Backend\CasesController@index')->name('cases.index');
+	Route::get('/review/{id}',  'Backend\CasesController@show')->name('cases.review');
 });
 
 //Case Handler Controller
-Route::prefix('cases')->group(function () {
-	Route::get('/{type}',		'Backend\CasesController@index')->name('admin.cases');
-	Route::get('/review/{id}',  'Backend\CasesController@reviewCase')->name('admin.review-case');
+Route::prefix('handlers')->group(function () {
+	Route::get('/',				'Backend\CaseHandlersController@index')->name('handlers.index');
+	Route::get('/create',  		'Backend\CaseHandlersController@create')->name('handlers.create');
 });
 
 //API Controller
