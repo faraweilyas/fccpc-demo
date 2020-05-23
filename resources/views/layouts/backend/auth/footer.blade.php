@@ -22,7 +22,7 @@
 <!--begin::Global Theme Bundle(used by all pages)-->
 <script src="{{ BE_PLUGIN.'global/plugins.bundle.js' 		 	}}"></script>
 <script src="{{ BE_PLUGIN.'custom/prismjs/prismjs.bundle.js' 	}}"></script>
-<script src="{{ BE_JS.'scripts.bundle.js'); ?>"></script>
+<script src="{{ BE_JS.'scripts.bundle.js' }}"></script>
 <!--end::Global Theme Bundle-->
 <script src="{{ BE_JS.'pages/features/miscellaneous/toastr.js' }}"></script>
 <script type="text/javascript">

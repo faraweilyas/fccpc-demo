@@ -30,7 +30,7 @@
 				 <div class="row">
         			<div class="col-md-4">
                 		<!--begin::Tiles Widget 11-->
-                		<a href="{{ route('applicantion.select', ['id' => $id]) }}">
+                		<a href="{{ route('application.index', ['id' => $id]) }}">
 							<div class="card card-custom bg-success gutter-b" style="height: 150px">
 							    <div class="card-body">
 							        <span class="svg-icon svg-icon-2x svg-icon-white ml-n2">
