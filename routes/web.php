@@ -20,13 +20,13 @@ Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq');
 
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
-	Route::post('/authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('/dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index');
+	Route::post('/authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('/submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 });
 
-//Applicant Controller
+//Application Controller
 Route::prefix('application')->group(function () {
-	Route::get('/select/{id}', 		 'Backend\ApplicationController@index')->name('applicantion.select');
-	Route::get('/{type}/{id}', 		 'Backend\ApplicationController@createApplication')->name('applicantion.create');
+	Route::get('/select/{id}', 		 'Backend\ApplicationController@index')->name('application.index');
+	Route::get('/{type}/{id}', 		 'Backend\ApplicationController@create')->name('application.create');
 });

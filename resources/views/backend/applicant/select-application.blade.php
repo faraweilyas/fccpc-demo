@@ -33,7 +33,7 @@
 				 <div class="row">
         			<div class="col-md-4">
                 		<!--begin::Tiles Widget 11-->
-                		<a href="#">
+                		<a href="{{ route('application.create', ['type' => 'regular', 'id' => $id]) }}">
 							<div class="card card-custom bg-success gutter-b" style="height: 150px">
 							    <div class="card-body">
 							        <span class="svg-icon svg-icon-white svg-icon-2x">
