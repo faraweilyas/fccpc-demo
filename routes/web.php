@@ -23,5 +23,10 @@ Route::prefix('applicant')->group(function () {
 	Route::post('/authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('/dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index');
 	Route::get('/submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
-	Route::get('/select/{id}', 		 'Backend\ApplicantController@selectApplication')->name('applicant.select');
+});
+
+//Applicant Controller
+Route::prefix('application')->group(function () {
+	Route::get('/select/{id}', 		 'Backend\ApplicationController@index')->name('applicantion.select');
+	Route::get('/{type}/{id}', 		 'Backend\ApplicationController@createApplication')->name('applicantion.create');
 });
