@@ -25,3 +25,15 @@
 <script src="{{ BE_JS.'scripts.bundle.js'); ?>"></script>
 <!--end::Global Theme Bundle-->
 <script src="{{ BE_JS.'pages/features/miscellaneous/toastr.js'  }}"></script>
+<script type="text/javascript">
+	toastr.options = {
+		"progressBar": true,
+		"positionClass": "toast-top-right",
+	};
+	@if (Session::has('success'))
+		toastr.success("{{ Session::get('success') }}");
+	@endif 
+    @if (Session::has('error'))
+	    toastr.warning("{{ Session::get('error') }}");
+    @endif 
+</script>

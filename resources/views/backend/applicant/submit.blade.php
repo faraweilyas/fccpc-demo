@@ -24,9 +24,13 @@
 							<h3>Submit Application</h3>
 							<div class="text-muted font-weight-bold">Enter your email to submit your application:</div>
 						</div>
-						<form class="form" method="GET" action="{{ route('applicant.index', ['id' => 'APP051673D209']) }}">
+						<form class="form" method="POST" action="{{ route('applicant.authenticate') }}">
+							@csrf
 							<div class="form-group mb-5">
 								<input type="email" placeholder="Email address:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
+								@error('email')
+									<span class="text-danger mt-4 float-left">*{{ $message }}</span>
+								@enderror
 							</div>
 							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
 						</form>
