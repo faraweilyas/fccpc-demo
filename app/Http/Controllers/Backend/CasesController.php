@@ -31,16 +31,4 @@ class CasesController extends Controller
         $details          = details($title, $description);
         return view('backend.'.getAccountType().'.review-case', compact('details', 'id'));
     }
-
-    /**
-     * Handles the case filter page route.
-     * @return void
-     */
-    public function filterCases()
-    { 
-        $title            = APP_NAME;
-        $description      = "FCCPC Case Filter Dashboard";
-        $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.filter-cases', compact('details'));
-    }
 }

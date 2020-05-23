@@ -62,11 +62,11 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
-								<td><small>M&A Case Management System</small></td>
+								<td>M&A Case Management System</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yes</span>
 								</td>
-								<td><small>T&A Legal</small></td>
+								<td>T&A Legal</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Regular</span>
 								</td>
@@ -105,9 +105,9 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
-								<td><small>M&A Case Management System</small></td>
+								<td>M&A Case Management System</td>
 								@if($type == 'hold')
-								<td><small>Lack of evidence</small></td>
+								<td>Lack of evidence</td>
 								@endif
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
@@ -144,8 +144,8 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
 								</td>
-								<td><small>Lack of evidence</small></td>
-								<td><small>M&A Case Management System</small></td>
+								<td>Lack of evidence</td>
+								<td>M&A Case Management System</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
 								</td>
@@ -184,8 +184,8 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
-								<td><small>M&A Case Management System</small></td>
-								<td><small>Techbarn, FCCPC</small></td>
+								<td>M&A Case Management System</td>
+								<td>Techbarn, FCCPC</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span>
 								</td>
@@ -197,6 +197,35 @@
 										<i class="la la-check"></i>&nbsp;&nbsp;Publish
 									</a>
 								</td>
+							</tr>
+						</tbody>
+					</table>
+					@elseif($type == 'filter')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th title="Field #1">Ref No</th>
+								<th title="Field #2">Case Type</th>
+								<th title="Field #3">Subject</th>
+								<th title="Field #4">Parties</th>
+								<th title="Field #5">Case Rep</th>
+								<th title="Field #6">Category</th>
+								<th title="Field #7">Case Handler</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+								</td>
+								<td>M&A Case Management System</td>
+								<td>Techbarn, FCCPC</td>
+								<td>T&A Legal</td>
+								<td><span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span></td>
+								<td><span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span></td>
 							</tr>
 						</tbody>
 					</table>
@@ -247,6 +276,3 @@
     </div>
 </div>
 @endSection('content')
-<script src="{{ BE_PLUGIN.'custom/datatables/datatables.bundle.js' }}"></script>
-<script src="{{ BE_JS.'pages/crud/datatables/advanced/column-rendering.js' }}"></script>
-<script src="{{ BE_JS.'pages/crud/forms/widgets/select2.js' }}"></script>

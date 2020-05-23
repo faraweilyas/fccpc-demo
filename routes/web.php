@@ -46,7 +46,6 @@ Route::prefix('cases')->group(function () {
 Route::prefix('cases')->group(function () {
 	Route::get('/{type}',		'Backend\CasesController@index')->name('admin.cases');
 	Route::get('/review/{id}',  'Backend\CasesController@reviewCase')->name('admin.review-case');
-	Route::get('/filter', 	    'Backend\CasesController@filterCases')->name('admin.filter-cases');
 });
 
 //API Controller
