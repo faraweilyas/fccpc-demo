@@ -1,10 +1,10 @@
 <!-- Header -->
-@include("layouts.backend.{{ getAccountType() }}.header")
+@include("layouts.backend.guest.header")
 <!--begin::Body-->
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
 	<!--begin::Main-->
 	<!--begin::Header Mobile-->
-	@include("layouts.backend.{{ getAccountType() }}.header-mobile")
+	@include("layouts.backend.guest.header-mobile")
 	<!--end::Header Mobile-->
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Page-->
@@ -14,10 +14,10 @@
 				<!--begin::Header-->
 				<div id="kt_header" class="header flex-column header-fixed">
 					<!--begin::Top-->
-					@include("layouts.backend.{{ getAccountType() }}.navigation-top")
+					@include("layouts.backend.guest.navigation-top")
 					<!--end::Top-->
 					<!--begin::Bottom-->
-					@include("layouts.backend.{{ getAccountType() }}.navigation")
+					@include("layouts.backend.guest.navigation-bottom")
 					<!--end::Bottom-->
 				</div>
 				<!--end::Header-->
@@ -32,7 +32,7 @@
 								<h5 class="text-dark font-weight-bold my-2 mr-5">Select Transaction Type</h5>
 								<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 									<li class="breadcrumb-item">
-										<a href="<?= __url('/application/dashboard/'.$id); ?>" class="text-muted">Home</a>
+										<a href="#" class="text-muted">Home</a>
 									</li>
 								</ul>
 								<!--end::Page Title-->
@@ -51,7 +51,7 @@
 							 <div class="row">
                     			<div class="col-md-4">
 	                        		<!--begin::Tiles Widget 11-->
-	                        		<a href="<?= __url('/application/create/'.$id); ?>">
+	                        		<a href="#">
 										<div class="card card-custom bg-success gutter-b" style="height: 150px">
 										    <div class="card-body">
 										        <span class="svg-icon svg-icon-2x svg-icon-white ml-n2">
@@ -160,7 +160,7 @@
 				</div>
 				<!--end::Content-->
 				<!--begin::Footer-->
-				@include("layouts.backend.{{ getAccountType() }}.footer-content")
+				@include("layouts.backend.guest.footer-content")
 				<!--end::Footer-->
 			</div>
 			<!--end::Wrapper-->
@@ -169,7 +169,7 @@
 	</div>
 	<!--end::Main-->
 	<!-- Footer -->
-	@include("layouts.backend.{{ getAccountType() }}.footer")
+	@include("layouts.backend.guest.footer")
 </body>
 <!--end::Body-->
 </html>

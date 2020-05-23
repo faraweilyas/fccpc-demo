@@ -275,15 +275,6 @@ function generateApplicantID() : string
 }
 
 /**
- * Get User Account Type
- * @return string
- */
-function getAccountType() : string
-{
-	return "guest";
-}
-
-/**
  * Generate Reference Number
  * @param string $id
  * @return string

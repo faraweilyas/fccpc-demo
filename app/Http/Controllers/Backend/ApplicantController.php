@@ -11,12 +11,12 @@ class ApplicantController extends Controller
 	 * Handles the home page route.
 	 * @return void
 	 */
-    public function index()
+    public function index($id)
     { 
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);
-    	return view('backend.applicant.dashboard', compact('details'));
+    	return view('backend.applicant.index', compact('details'));
     }
 
     /**

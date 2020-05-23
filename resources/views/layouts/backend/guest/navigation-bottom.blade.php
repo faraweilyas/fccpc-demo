@@ -125,7 +125,7 @@
 									</a>
 								</li>
 								<li class="menu-item menu-item-submenu">
-									<a href="<?= __url('#'); ?>" class="menu-link">
+									<a href="#" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:/home/keenthemes/www/metronic/themes/metronic/theme/html/demo5/dist/../src/media/svg/icons/Navigation/Plus.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
