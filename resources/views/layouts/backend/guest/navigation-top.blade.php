@@ -16,11 +16,11 @@
 			<div class="topbar-item">
 				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
 					<div class="d-flex flex-column text-right pr-3">
-						<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">Applicant</span>
+						<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ \App\Models\Guest::where('tracking_id', $id)->first()->email }}</span>
 						<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">#<?= generateApplicantID(); ?></span>
 					</div>
 					<span class="symbol symbol-35">
-						<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">A</span>
+						<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ ucfirst(substr(\App\Models\Guest::where('tracking_id', $id)->first()->email, 0, 1)) }}</span>
 					</span>
 				</div>
 			</div>
