@@ -32,14 +32,13 @@ class ApplicationController extends Controller
         $case             = formatApplicationType($type);
         $case_info        = Cases::where('tracking_id', '=', $id)->first();
 
-        if (is_array($case_info)):
+        if ($case_info):
             if ($case_info->status == 1):
-                return redirect()->route('applicant.index', ['id' => $guest->tracking_id]);
+                return redirect()->route('applicant.index', ['id' => $id]);
             endif;
 
-            $case_party_arr = explode(',', $case_info->parties);
-        else:
-            $case_party_arr = '';
+            $case_party_arr = explode(',', $case_info->parties) ?? '';
+       
         endif;
 
         $title            = APP_NAME;

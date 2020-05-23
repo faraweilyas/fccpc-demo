@@ -212,7 +212,7 @@
 												@if(isset($case_party_arr) && is_array($case_party_arr) && $case_info->parties != '')
 												<div class="field-item">
 													<div class="row">
-														@foreach ($case_party_arr as $key => $value): ?>
+														@foreach ($case_party_arr as $key => $value)
 														<div class="col-lg-5 mb-4">
 															<input type="text" class="form-control" placeholder="Enter party name" name="party[]" value="{{ $value }}">
 															<div class="d-md-none mb-2"></div>
