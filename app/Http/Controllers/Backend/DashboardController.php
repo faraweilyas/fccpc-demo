@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class SupervisorController extends Controller
+class DashboardController extends Controller
 {
 	/**
 	 * Handles the supervisor home page route.
@@ -16,6 +16,6 @@ class SupervisorController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);
-    	return view('backend.supervisor.index', compact('details'));
+    	return view('backend.'.getAccountType().'.index', compact('details'));
     }
 }

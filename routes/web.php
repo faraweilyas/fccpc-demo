@@ -32,8 +32,8 @@ Route::prefix('application')->group(function () {
 });
 
 //Supervisor Controller
-Route::prefix('sp')->group(function () {
-	Route::get('dashboard', 	 'Backend\SupervisorController@index')->name('supervisor.index');
+Route::prefix('/')->group(function () {
+	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('supervisor.index');
 });
 
 //API Controller
