@@ -24,6 +24,7 @@
 <script src="{{ BE_PLUGIN.'custom/prismjs/prismjs.bundle.js' }}"></script>
 <script src="{{ BE_JS.'scripts.bundle.js' }}"></script>
 <!--end::Global Theme Bundle-->
+<script src="{{ BE_JS.'pages/custom/wizard/wizard-2.js' }}"></script>
 <script src="{{ BE_JS.'pages/features/miscellaneous/toastr.js' }}"></script>
 <script type="text/javascript">
 	toastr.options = {
