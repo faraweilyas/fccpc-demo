@@ -1,11 +1,11 @@
 jQuery(document).ready(function ($) {
-	console.log(true);
-	$("#save-info").on('click', function(e) {
-		e.preventDefault();
-		toastr.options = {
+	toastr.options = {
 			"progressBar": true,
 			"positionClass": "toast-bottom-right",
 		};
+
+	$("#save-info").on('click', function(e) {
+		e.preventDefault();
 		
 	    var tracking_id	  = $("#tracking_id").val();
    		var form_data     = $(".new-case-form").serialize();
@@ -21,6 +21,7 @@ jQuery(document).ready(function ($) {
 				res = JSON.parse(data);
 				console.log(res);
 			    if (res.statusCode == 200) {
+			    	console.log('working')
 			    	$("#case_id").val(res.response.id);
 			        toastr.success("Your details have been saved successfully.");
 			    } else {
@@ -35,10 +36,6 @@ jQuery(document).ready(function ($) {
 
 	$("#upload-info").on('click', function(e) {
 		e.preventDefault();
-		toastr.options = {
-			"progressBar": true,
-			"positionClass": "toast-bottom-right",
-		};
 		
 	    var tracking_id	  = $("#tracking_id").val();
 		$.ajax({

@@ -25,13 +25,12 @@
 <script src="{{ BE_JS.'scripts.bundle.js' }}"></script>
 <!--end::Global Theme Bundle-->
 <script src="{{ BE_JS.'pages/custom/wizard/wizard-2.js' }}"></script>
-<script src="{{ BE_JS.'pages/features/miscellaneous/toastr.js' }}"></script>
+<script src="{{ BE_JS.'toaster.js'}}"></script>
 <script type="text/javascript">
 	toastr.options = {
 		"progressBar": true,
 		"positionClass": "toast-top-right",
 	};
-	toastr.success("s");
 	@if (Session::has('success'))
 		toastr.success("{{ Session::get('success') }}");
 	@endif 

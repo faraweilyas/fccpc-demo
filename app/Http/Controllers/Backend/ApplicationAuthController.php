@@ -56,7 +56,7 @@ class ApplicationAuthController extends Controller
         $newFileName            = substr(uniqid(), 5, 13).".$id";
 
         $case_arr               = \App\Enhancers\AppHelper::getArray('case_categories');
-        $case                   = Cases::where('tracking_id', '=', $id )->first();
+        $case                   = Cases::where('tracking_id', '=', $id)->first();
         if (!$case):
             $result = Cases::create([
                 'ref_no'                => '',
@@ -73,7 +73,7 @@ class ApplicationAuthController extends Controller
                 'applicant_address'     => $address
             ]);
         else :
-            $result = Cases::whereId($case_id->update([
+            $result = Cases::where('tracking_id', '=', $id)->update([
                 'tracking_id'           => $id,
                 'subject'               => $subject,
                 'parties'               => $parties,
@@ -85,7 +85,7 @@ class ApplicationAuthController extends Controller
                 'applicant_email'       => $email,
                 'applicant_phone_no'    => $phone,
                 'applicant_address'     => $address
-            ]));
+            ]);
         endif;
 
         if ($result):
@@ -102,14 +102,14 @@ class ApplicationAuthController extends Controller
      */
     public static function uploadNewCase($id)
     {
-        $case   = Cases::where('tracking_id', '=', $id);
-        $result = Cases::where($case_id->update([
+        $upload_case = new Cases; 
+        $result      = $upload_case::where('tracking_id', '=', $id)->update([
             'ref_no' => generateRefNo($id),
             'status' => 1
-        ]));
+        ]);
         
         if ($result):
-            static::sendResponse(200, "OK!", "success", $result);
+            static::sendResponse(200, "OK!", "success", $upload_case);
         else:
             static::sendResponse(400, "Bad request", "error", '');
         endif;
