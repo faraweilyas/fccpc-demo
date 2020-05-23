@@ -35,6 +35,6 @@
 		toastr.success("{{ Session::get('success') }}");
 	@endif 
     @if (Session::has('error'))
-	    toastr.warning("{{ Session::get('error') }}");
+	    toastr.error("{{ Session::get('error') }}");
     @endif 
 </script>

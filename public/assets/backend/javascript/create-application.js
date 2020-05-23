@@ -53,7 +53,7 @@ jQuery(document).ready(function ($) {
 			        	window.location.replace('/applicant/dashboard/'+tracking_id);
 			        }, 2000);
 			    } else {
-			        toastr.warning("Your details have been not been uploaded successfully.");
+			        toastr.error("Your details have been not been uploaded successfully.");
 			    }
 			},
 			error: function (err) {

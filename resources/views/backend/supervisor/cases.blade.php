@@ -8,13 +8,13 @@
 			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
 				<!--begin::Page Title-->
-				<h5 class="text-dark font-weight-bold my-2 mr-5"><?= $case; ?></h5>
+				<h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }}</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
-						<a href="{{ route('admin.index')}}" class="text-muted">Home</a>
+						<a href="{{ route('admin.index') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="" class="text-muted"><?= $case; ?></a>
+						<a href="" class="text-muted">{{ $case }}</a>
 					</li>
 				</ul>
 				<!--end::Page Title-->
@@ -34,173 +34,173 @@
 			<div class="card card-custom">
 				<div class="card-header flex-wrap py-5">
 					<div class="card-title">
-						<h3 class="card-label"><?= $case; ?></h3>
+						<h3 class="card-label">{{ $case }}</h3>
 					</div>
 					
 				</div>
 				<div class="card-body">
 					<!--begin: Datatable-->
-					<?php if ($type == 'new'): ?>
-						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-							<thead>
-								<tr>
-									<th>Ref No</th>
-									<th>Case Type</th>
-									<th>Subject</th>
-									<th>Fees Paid</th>
-									<th>Parties</th>
-									<th>Case Rep</th>
-									<th>Category</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
-									</td>
-									<td>M&A Case Management System</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yes</span>
-									</td>
-									<td>T&A Legal</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Regular</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
-									</td>
-									<td>
-										<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
-											<i class="la la-edit"></i>Assign
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					<?php elseif ($type == 'assigned' || $type == 'hold'): ?>
-						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-							<thead>
-								<tr>
-									<th>Ref No</th>
-									<th>Case Type</th>
-									<?php  if ($type == 'hold'): ?>
-									<th>Reason</th>
-									<?php endif; ?>
-									<th>Subject</th>
-									<th>Case Handler</th>
-									<th>Status</th>
-									<th>Category</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
-									</td>
-									<td>M&A Case Management System</td>
-									<?php  if ($type == 'hold'): ?>
-									<td>Lack of evidence</td>
-									<?php endif; ?>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
-									</td>
-									<td>
-										<a href="<?= __url('/case/review/'.$id); ?>" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-											<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;View
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					<?php elseif ($type == 'requests'): ?>
-						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-							<thead>
-								<tr>
-									<th>Ref No</th>
-									<th>Reason</th>
-									<th>Subject</th>
-									<th>Case Handler</th>
-									<th>Request Type</th>
-									<th>Category</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-									</td>
-									<td>Lack of evidence</td>
-									<td>M&A Case Management System</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Extension</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
-									</td>
-									<td>
-										<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-											<i class="la la-check"></i>&nbsp;&nbsp;Approve
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					<?php elseif ($type == 'approved'): ?>
-						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-							<thead>
-								<tr>
-									<th>Ref No</th>
-									<th>Case Type</th>
-									<th>Subject</th>
-									<th>Parties</th>
-									<th>Case Handler</th>
-									<th>Category</th>
-									<th>Actions</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
-									</td>
-									<td>M&A Case Management System</td>
-									<td>Techbarn, FCCPC</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span>
-									</td>
-									<td>
-										<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
-									</td>
-									<td>
-										<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="Edit details">
-											<i class="la la-check"></i>&nbsp;&nbsp;Publish
-										</a>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					<?php endif; ?>
+					@if($type == 'new')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Case Type</th>
+								<th>Subject</th>
+								<th>Fees Paid</th>
+								<th>Parties</th>
+								<th>Case Rep</th>
+								<th>Category</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+								</td>
+								<td><small>M&A Case Management System</small></td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yes</span>
+								</td>
+								<td><span>T&A Legal</span></td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Regular</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+								</td>
+								<td>
+									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
+										<i class="la la-edit"></i>Assign
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@elseif ($type == 'assigned' || $type == 'hold')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Case Type</th>
+								@if($type == 'hold')
+								<th>Reason</th>
+								@endif
+								<th>Subject</th>
+								<th>Case Handler</th>
+								<th>Status</th>
+								<th>Category</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+								</td>
+								<td>M&A Case Management System</td>
+								@if($type == 'hold')
+								<td>Lack of evidence</td>
+								@endif
+								<td>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+								</td>
+								<td>
+									<a href="{{ route('admin.review-case', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@elseif($type == 'requests')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Reason</th>
+								<th>Subject</th>
+								<th>Case Handler</th>
+								<th>Request Type</th>
+								<th>Category</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>Lack of evidence</td>
+								<td>M&A Case Management System</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Extension</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+								</td>
+								<td>
+									<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+										<i class="la la-check"></i>&nbsp;&nbsp;Approve
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@elseif($type == 'approved')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Case Type</th>
+								<th>Subject</th>
+								<th>Parties</th>
+								<th>Case Handler</th>
+								<th>Category</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+								</td>
+								<td>M&A Case Management System</td>
+								<td>Techbarn, FCCPC</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+								</td>
+								<td>
+									<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="Edit details">
+										<i class="la la-check"></i>&nbsp;&nbsp;Publish
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@endif
 					<!--end: Datatable-->
 				</div>
 			</div>

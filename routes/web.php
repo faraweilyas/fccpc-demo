@@ -38,7 +38,8 @@ Route::prefix('/')->group(function () {
 
 //Cases Controller
 Route::prefix('cases')->group(function () {
-	Route::get('/{type}', 	 'Backend\CasesController@index')->name('admin.cases');
+	Route::get('/{type}',		'Backend\CasesController@index')->name('admin.cases');
+	Route::get('/review/{id}',  'Backend\CasesController@show')->name('admin.review-case');
 });
 
 //API Controller
