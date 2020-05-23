@@ -23,7 +23,7 @@
 						<div class="menu-submenu menu-submenu-classic menu-submenu-left">
 							<ul class="menu-subnav">
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="#" class="menu-link">
+									<a href="{{ route('applicant.select', ['id' => $id]) }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<!--begin::Svg Icon | path:/home/keenthemes/www/metronic/themes/metronic/theme/html/demo5/dist/../src/media/svg/icons/Navigation/Plus.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

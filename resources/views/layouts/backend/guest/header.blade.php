@@ -1,5 +1,3 @@
-<html lang="en">
-<!--begin::Head-->
 <head><base href="">
 	<meta charset="utf-8" />
 	<title>{{ $details->title }}</title>

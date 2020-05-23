@@ -16,7 +16,7 @@ class ApplicantController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);
-    	return view('backend.applicant.index', compact('details'));
+    	return view('backend.applicant.index', compact('details','id'));
     }
 
     /**
@@ -29,5 +29,17 @@ class ApplicantController extends Controller
         $description      = "FCCPC Application";
         $details          = details($title, $description);
         return view('backend.applicant.submit', compact('details'));
+    }
+
+    /**
+     * Handles the select application page route.
+     * @return void
+     */
+    public function selectApplication($id)
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Select Application Dashboard";
+        $details          = details($title, $description);
+        return view('backend.applicant.select-application', compact('details', 'id'));
     }
 }
