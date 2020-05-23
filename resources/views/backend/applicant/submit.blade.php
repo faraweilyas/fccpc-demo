@@ -1,7 +1,5 @@
-<!-- Header -->
-@include('layouts.backend.header')
-<!--begin::Body-->
-<body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
+@extends('layouts.backend.base-login')
+@section('content')
 	<!--begin::Main-->
 	<div class="d-flex flex-column flex-root">
 		<!--begin::Login-->
@@ -40,10 +38,4 @@
 		<!--end::Login-->
 	</div>
 	<!--end::Main-->
-	<!-- Footer -->
-	@include('layouts.backend.footer')
-	<!--begin::Page Scripts(used by this page)-->
-	<!--end::Page Scripts-->
-</body>
-<!--end::Body-->
-</html>
+@endSection
