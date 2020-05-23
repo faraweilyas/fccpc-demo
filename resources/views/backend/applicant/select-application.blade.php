@@ -66,7 +66,7 @@
                     </div>
                     <div class="col-md-4">
                         <!--begin::Tiles Widget 12-->
-                        <a href="#">
+                        <a href="{{ route('application.create', ['type' => 'ffm', 'id' => $id]) }}">
 							<div class="card card-custom gutter-b" style="height: 150px">
 							    <div class="card-body">
 							       <span class="svg-icon svg-icon-primary svg-icon-2x">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="col-md-4">
                         <!--begin::Tiles Widget 12-->
-                        <a href="#">
+                        <a href="{{ route('application.create', ['type' => 'ffm-expediated', 'id' => $id]) }}">
 							<div class="card card-custom gutter-b" style="height: 150px">
 							    <div class="card-body">
 							        <span class="svg-icon svg-icon-primary svg-icon-2x">
