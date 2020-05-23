@@ -46,8 +46,9 @@ jQuery(document).ready(function ($) {
 			},
 			type: 'POST',
 			success: function(data) {
-				console.log(data)
-			    if (data) {
+				res = JSON.parse(data);
+				console.log(res);
+			    if (res.responseType == "success") {
 			        toastr.success("Your details have been uploaded successfully.");
 			        setTimeout(function () {
 			        	window.location.replace('/applicant/dashboard/'+tracking_id);

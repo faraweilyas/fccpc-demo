@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApplicationRequest;
 use \App\Models\Cases;
 
 class ApplicationAuthController extends Controller
@@ -107,9 +109,16 @@ class ApplicationAuthController extends Controller
             'ref_no' => generateRefNo($id),
             'status' => 1
         ]);
+        $res = Cases::where('tracking_id', '=', $id)->first();
         
+        $data = array(
+                'firstName'       => $res->applicant_first_name,
+                'lastName'        => $res->applicant_last_name,
+                'ref_no'          => $res->ref_no
+            );
         if ($result):
-            static::sendResponse(200, "OK!", "success", $result);
+            Mail::to($res->applicant_email)->send(new ApplicationRequest($data));
+            static::sendResponse(200, "OK!", "success", $res);
         else:
             static::sendResponse(400, "Bad request", "error", '');
         endif;

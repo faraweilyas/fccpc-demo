@@ -7,12 +7,12 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeApplicant extends Mailable
+class ApplicationRequest extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $data;
-
+    
     /**
      * Create a new message instance.
      *
@@ -30,6 +30,6 @@ class WelcomeApplicant extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome-applicant')->subject(ucfirst(SHORT_APP_NAME).' Welcome On Board');
+        return $this->view('emails.application-request')->subject(ucfirst(SHORT_APP_NAME).' New Application');
     }
 }
