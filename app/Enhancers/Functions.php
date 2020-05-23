@@ -236,3 +236,40 @@ function agencyLink() : string
 {
 	return defined('AGENCY_LINK') ? AGENCY_LINK : "Agency link is not defined";
 }
+
+/**
+ * Generate serial number with length 13
+ * @param callable $callable
+ * @param string $preText
+ * @param string $postText
+ * @return string
+ */
+function generate(callable $callable, string $preText=NULL, string $postText=NULL) : string
+{
+	return strtoupper($preText.$callable(uniqid()).$postText);
+}
+
+/**
+ * Generate serial number
+ * @return string
+ */
+function generateSerialNumber() : string
+{
+	return generate(function($serialNumber)
+	{
+		return substr($serialNumber, 7, 13);
+	}, "CHCO", "SN");
+}
+
+/**
+ * Generate applicant ID
+ * @return string
+ */
+function generateApplicantID() : string
+{
+	$monthDay = date('md');
+	return generate(function($serialNumber)
+	{
+		return substr($serialNumber, 7, 13);
+	}, "APP{$monthDay}");
+}
