@@ -31,6 +31,11 @@ Route::prefix('application')->group(function () {
 	Route::get('{type}/{id}', 		 'Backend\ApplicationController@create')->name('application.create');
 });
 
+//Supervisor Controller
+Route::prefix('sp')->group(function () {
+	Route::get('dashboard', 	 'Backend\SupervisorController@index')->name('supervisor.index');
+});
+
 //API Controller
 Route::prefix('api')->group(function () {
 	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase'); 
