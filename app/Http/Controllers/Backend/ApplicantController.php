@@ -20,14 +20,14 @@ class ApplicantController extends Controller
     }
 
     /**
-     * Handles the authentication page route.
+     * Handles the submit application page route.
      * @return void
      */
-    public function auth()
+    public function submitApplication()
     { 
         $title            = APP_NAME;
         $description      = "FCCPC Application";
         $details          = details($title, $description);
-        return view('backend.applicant.auth', compact('details'));
+        return view('backend.applicant.submit', compact('details'));
     }
 }

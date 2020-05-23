@@ -21,5 +21,5 @@ Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq');
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
 	Route::get('/', 			 'Backend\ApplicantController@index')->name('applicant.index');
-	Route::get('/auth', 		 'Backend\ApplicantController@auth')->name('applicant.auth');
+	Route::get('/submit', 		 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 });

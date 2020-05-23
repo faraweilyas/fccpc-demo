@@ -37,7 +37,7 @@
                     <a href="#">Application</a>
                     <ul class="none pos-abs sublist">
                         <li class="sub-list-item">
-                            <a href="#">
+                            <a href="{{ route('applicant.submit') }}">
                                 <p>Submit Application</p>
                             </a>
                         </li>
@@ -65,7 +65,7 @@
                     <a class="smalltext" href="/">M&amp;A - FCCPC</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="#">Submit Application</a>
+	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="#">Add Supporting Documents</a>
