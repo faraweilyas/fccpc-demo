@@ -9,12 +9,13 @@ jQuery(document).ready(function ($) {
 		
 	    var tracking_id	  = $("#tracking_id").val();
    		var form_data     = $(".new-case-form").serialize();
+   		var token 		  = $("#token").val();
    		var company_doc   = $('#company_doc')[0].files[0];
    		var account_doc   = $('#account_doc')[0].files[0];
    		var payment_doc   = $('#payment_doc')[0].files[0];
 		$.ajax({
 			url: '/api/application/create/'+tracking_id,
-			data: form_data+ "&company_doc=" + company_doc+ "&account_doc=" + account_doc+ "&payment_doc=" + payment_doc,
+			data: form_data+ "&_token="+ token + "&company_doc=" + company_doc+ "&account_doc=" + account_doc+ "&payment_doc=" + payment_doc,
 			type: 'POST',
 			success: function(data) {
 				res = JSON.parse(data);
