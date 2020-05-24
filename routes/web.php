@@ -1,5 +1,6 @@
 <?php
 
+use App\Enhancers\Asset;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 //Base Controller
-Route::get('/', 				'Frontend\HomeController@index')->name('home.index'); 
-Route::get('/fee-calculator', 	'Frontend\HomeController@feeCalcutor')->name('home.calculator'); 
-Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq'); 
+Route::get('/test', function()
+{
+    dump(asset('/img/photo.jpg'));
+    dump((new Asset)->BE_IMAGE);
+});
+
+Route::get('/', 				'Frontend\HomeController@index')->name('home.index');
+Route::get('/fee-calculator', 	'Frontend\HomeController@feeCalcutor')->name('home.calculator');
+Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq');
 
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
@@ -51,6 +58,6 @@ Route::prefix('handlers')->group(function () {
 
 //API Controller
 Route::prefix('api')->group(function () {
-	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase'); 
-	Route::post('application/upload/{id}',	'Backend\ApplicationAuthController@uploadNewCase'); 
+	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase');
+	Route::post('application/upload/{id}',	'Backend\ApplicationAuthController@uploadNewCase');
 });
