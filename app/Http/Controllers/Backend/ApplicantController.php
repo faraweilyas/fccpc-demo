@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\WelcomeApplicant;
+use Illuminate\Support\Facades\Session;
 use App\Models\Guest;
+use App\Models\Cases;
 
 class ApplicantController extends Controller
 {
@@ -17,6 +19,10 @@ class ApplicantController extends Controller
 	 */
     public function index($id)
     { 
+        if (!Guest::where('tracking_id', '=', $id)->first()) {
+            Session::flash('error', "Invalid Credential");
+            return redirect()->route('applicant.submit');
+        }
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);

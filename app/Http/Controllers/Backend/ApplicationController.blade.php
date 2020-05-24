@@ -31,14 +31,16 @@ class ApplicationController extends Controller
     { 
         $case             = formatApplicationType($type);
         $case_info        = Cases::where('tracking_id', '=', $id)->first();
-
+        
         if ($case_info):
             if ($case_info->status == 1):
+                Session::flash('error', "Application already submitted");
                 return redirect()->route('applicant.index', ['id' => $id]);
             endif;
 
-            $case_party_arr = explode(',', $case_info->parties) ?? '';
-       
+            $case_party_arr = explode(',', $case_info->parties);
+        else:
+            $case_party_arr = '';
         endif;
 
         $title            = APP_NAME;

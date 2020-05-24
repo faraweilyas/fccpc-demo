@@ -103,7 +103,7 @@ class ApplicationAuthController extends Controller
      * @param string $id
      * @return void
      */
-    public static function uploadNewCase($id)
+    public static function uploadNewCase(Request $request, $id)
     {
         $result      = Cases::where('tracking_id', '=', $id)->update([
             'ref_no' => generateRefNo($id),

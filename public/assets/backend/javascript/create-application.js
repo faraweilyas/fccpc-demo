@@ -19,9 +19,7 @@ jQuery(document).ready(function ($) {
 			type: 'POST',
 			success: function(data) {
 				res = JSON.parse(data);
-				console.log(res);
 			    if (res.responseType == "success") {
-			    	console.log('working')
 			    	$("#case_id").val(res.response.id);
 			        toastr.success("Your details have been saved successfully.");
 			    } else {
@@ -47,7 +45,6 @@ jQuery(document).ready(function ($) {
 			type: 'POST',
 			success: function(data) {
 				res = JSON.parse(data);
-				console.log(res);
 			    if (res.responseType == "success") {
 			        toastr.success("Your details have been uploaded successfully.");
 			        setTimeout(function () {

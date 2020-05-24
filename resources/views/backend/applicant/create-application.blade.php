@@ -195,7 +195,7 @@
 									<input type="hidden" id="case_id" name="case_id" value="{{ $case_info->id ?? 0 }}">
 									<input type="hidden" id="tracking_id" name="tracking_id" value="{{ $case_info->tracking_id ?? $id }}">
 									<input type="hidden" id="transaction_category" name="transaction_category" value="{{ $type ?? '' }}">
-									<input type="hidden" id="token" value="{{ csrf_token() }}" />
+									<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
 									<!--begin: Wizard Step 1-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 										<!--begin::Input-->
