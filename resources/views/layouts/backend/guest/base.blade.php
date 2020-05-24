@@ -3,6 +3,7 @@
 @include("layouts.backend.".getAccountType().".header")
 <!--begin::Body-->
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
+	
 	<!--begin::Main-->
 	<!--begin::Header Mobile-->
 	@include("layouts.backend.".getAccountType().".header-mobile")

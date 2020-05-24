@@ -3,7 +3,7 @@ jQuery(document).ready(function ($) {
 			"progressBar": true,
 			"positionClass": "toast-bottom-right",
 		};
-
+		
 	$("#save-info").on('click', function(e) {
 		e.preventDefault();
 		
@@ -37,27 +37,45 @@ jQuery(document).ready(function ($) {
 
 	    var tracking_id	  = $("#tracking_id").val();
 	    var token 		  = $("#token").val();
-		$.ajax({
-			url: '/api/application/upload/'+tracking_id,
-			data: {
-				'_token': token 
-			},
-			type: 'POST',
-			success: function(data) {
-				res = JSON.parse(data);
-			    if (res.responseType == "success") {
-			        toastr.success("Your details have been uploaded successfully.");
-			        setTimeout(function () {
-			        	window.location.replace('/applicant/dashboard/'+tracking_id);
-			        }, 2000);
-			    } else {
-			        toastr.error("Your details have been not been uploaded successfully.");
-			    }
-			},
-			error: function (err) {
-				console.log(err.responseText);
-			}
-	    });
+	    swal.fire({
+	            title: "Are you sure?",
+	            text: "You won\"t be able to revert this!",
+	            type: "warning",
+	            showCancelButton: true,
+	            confirmButtonText: "Yes, submit it!"
+	        }).then(function(result) {
+	        	
+	            if (result.value) {
+	            	$("#previous-btn").addClass('hide');
+		        	$("#save-btns").addClass('hide');
+		        	$("#upload-img").toggle();
+	            	$.ajax({
+						url: '/api/application/upload/'+tracking_id,
+						data: {
+							'_token': token 
+						},
+						type: 'POST',
+						success: function(data) {
+							res = JSON.parse(data);
+						    if (res.responseType == "success") {
+						    	swal.fire(
+				                    "Submitted!",
+				                    "Your details have been uploaded successfully.",
+				                    "success"
+				                ).then(function() {
+				                	window.location.replace('/applicant/dashboard/'+tracking_id);
+				                });
+						    } else {
+						        toastr.error("Your details have been not been uploaded successfully.");
+						    }
+						},
+						error: function (err) {
+							console.log(err.responseText);
+						}
+				    });
+	                
+	            }
+	        });
 	});
 
 	var InputsWrapper   = $(".fields");

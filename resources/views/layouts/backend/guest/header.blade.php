@@ -14,6 +14,7 @@
 	<link href="{{ BE_CSS.'pages/wizard/wizard-2.css' }}" rel="stylesheet" type="text/css" />
 	<link href="{{ BE_PLUGIN.'custom/datatables/datatables.bundle.css' }}" rel="stylesheet" type="text/css" />
 	<link rel="stylesheet" type="text/css" href="{{ BE_CSS.'toaster.css' }}" media="all">
+	<link rel="stylesheet" type="text/css" href="{{ BE_CSS.'sweet-alert.css' }}">
 	<link href="{{ BE_CSS.'custom.css' }}" rel="stylesheet" type="text/css" />
 	<script src="{{ BE_JS.'jquery.js' }}"></script>
 	<link rel="shortcut icon" href="{{ BE_IMAGE.'favicon/fccpc_favicon.ico' }}" />

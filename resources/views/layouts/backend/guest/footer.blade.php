@@ -26,6 +26,7 @@
 <!--end::Global Theme Bundle-->
 <script src="{{ BE_JS.'pages/custom/wizard/wizard-2.js' }}"></script>
 <script src="{{ BE_JS.'toaster.js'}}"></script>
+<script src="{{ BE_JS.'sweet-alert.js' }}"></script>
 <script type="text/javascript">
 	toastr.options = {
 		"progressBar": true,

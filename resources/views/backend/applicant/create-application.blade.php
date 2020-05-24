@@ -514,10 +514,13 @@
 									<!--end: Wizard Step 5-->
 									<!--begin: Wizard Actions-->
 									<div class="d-flex justify-content-between border-top mt-5 pt-10">
-										<div class="mr-2">
+										<div id="upload-img" class="hide">
+											<button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...</button>
+										</div>
+										<div id="previous-btn" class="mr-2">
 											<button class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
 										</div>
-										<div>
+										<div id="save-btns">
 											<button id="upload-info" class="btn btn-success font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">Save & Upload Case Documents</button>
 											<button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
 										</div>
