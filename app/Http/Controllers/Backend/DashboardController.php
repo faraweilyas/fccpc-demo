@@ -73,4 +73,16 @@ class DashboardController extends Controller
             return redirect()->back();
         }
     }
+
+    /**
+     * Handles the view users page route.
+     * @return void
+     */
+    public function viewUsers()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Dashboard View Users";
+        $details          = details($title, $description);
+        return view('backend.'.getAccountType().'.view-users', compact('details'));
+    }
 }

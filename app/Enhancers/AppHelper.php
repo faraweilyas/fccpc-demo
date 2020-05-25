@@ -21,11 +21,30 @@ class AppHelper
 		"3"  => "On-Hold",
 	];
 	
+	// Valid Status
+	static $status = [
+		'0' 	=> 'Inactive',
+		'1' 	=> 'Active',
+	];
+
+	// Valid Status HTML
+	static $statusHTML = [
+		'0' 	=> 'danger',
+		'1' 	=> 'success',
+	];
+
 	// Valid Case Categories
 	static $account_types = [
 		"AD"  => "Admin",
 		"SP"  => "Supervisor",
 		"IT"  => "It",
+	];
+
+	// Valid Case Categories
+	static $account_typesHTML = [
+		"AD"  => "danger",
+		"SP"  => "primary",
+		"IT"  => "warning",
 	];
 
 	/**
