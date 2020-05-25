@@ -314,6 +314,6 @@
     </div> 
 </footer>
 
-<script src="{{ FE_JS.'vue.min.js' }}"></script>
-<script src="{{ FE_JS.'main.js'    }}"></script>
-<script src="{{ FE_JS.'custom.js'  }}"></script>
+<script src="{{ asset(FE_JS.'vue.min.js') }}"></script>
+<script src="{{ asset(FE_JS.'main.js')    }}"></script>
+<script src="{{ asset(FE_JS.'custom.js')  }}"></script>

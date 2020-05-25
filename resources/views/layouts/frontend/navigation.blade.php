@@ -6,13 +6,13 @@
 	            <div class="d-flx al-i-c">
 	                <div class="logo prefix">
 	                    <a href="/">
-	                        <img src="{{ FE_IMAGE.'icons/fccpc_logo.jpg' }}" alt="">
+	                        <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" alt="">
 	                    </a>
 	                </div>
 	                <p class="smalllh"><a class="site-title" href="/">Federal Competition and Consumer Protection Commission</a></p>
 	            </div>
 	            <div class="small-logo suffix is-wider">
-	                <img src="{{ FE_IMAGE.'icons/coat_of_arm.png' }}" alt="">
+	                <img src="{{ asset(FE_IMAGE.'icons/coat_of_arm.png') }}" alt="">
 	            </div>
 	        </div>
 	        <div class="d-flx j-c-sb sp-t">
