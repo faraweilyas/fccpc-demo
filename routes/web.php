@@ -35,6 +35,7 @@ Route::prefix('application')->group(function () {
 //Supervisor Controller
 Route::prefix('/')->group(function () {
 	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('dashboard');
+	Route::get('user/create', 	 'Backend\DashboardController@createUser')->name('dashboard.create_user');
 });
 
 //Cases Controller
