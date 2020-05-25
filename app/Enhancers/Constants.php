@@ -8,13 +8,10 @@ defined('COMPANY') 				? NULL : define('COMPANY',				"techbarn");
 defined('COMPANY_LINK') 		? NULL : define('COMPANY_LINK',			"https://techbarn.ng");
 defined('AGENCY') 				? NULL : define('AGENCY',				"FCCPC");
 defined('AGENCY_LINK') 			? NULL : define('AGENCY_LINK',			"http://fccpc.gov.ng");
-defined('APP_URL') 				? NULL : define('APP_URL',				"http://fccpc.local/");
 
 // DIRECTORIES
 defined('DS') 					? NULL : define('DS',					"/");
-defined('PUBLIC_DIR') 			? NULL : define('PUBLIC_DIR',			APP_URL.DS);
-
-defined('ASSETS') 				? NULL : define('ASSETS', 				PUBLIC_DIR."assets".DS);
+defined('ASSETS') 				? NULL : define('ASSETS', 				DS."assets".DS);
 
 defined('CSS') 					? NULL : define('CSS', 					ASSETS."css".DS);
 defined('IMAGE') 				? NULL : define('IMAGE', 				ASSETS."images".DS);

@@ -7,9 +7,9 @@
 */
 function getHostUrl ()
 {
-	if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') 
+	if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
 		$link = "https";
-	else 
+	else
 		$link = "http";
 
 	$link .= "://";
@@ -85,7 +85,7 @@ function shortenContent(string $content, int $fixedLength) : string
 {
     $content = trim($content);
     if (strlen($content) < $fixedLength) return $content;
-    return trim(substr($content, 0, $fixedLength - 3))."...";        
+    return trim(substr($content, 0, $fixedLength - 3))."...";
 }
 
 /**
@@ -197,7 +197,7 @@ function datetimeToText (string $datetime, string $format="fulldate") : string
 	}
 	return strftime($dateFormat, $unixdatetime);
 }
- 
+
 /**
 * Serial Number Generator
 * @param int $no
