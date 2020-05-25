@@ -37,4 +37,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+     /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Login";
+        $details = details($title, $description);
+        return view('auth.login', compact('details'));
+    }
 }

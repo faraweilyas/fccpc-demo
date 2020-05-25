@@ -39,15 +39,15 @@ Route::prefix('/')->group(function () {
 
 //Cases Controller
 Route::prefix('cases')->group(function () {
-	Route::get('/{type}',		'Backend\CasesController@index')->name('cases.index');
-	Route::get('/review/{id}',  'Backend\CasesController@show')->name('cases.review');
+	Route::get('{type}',		'Backend\CasesController@index')->name('cases.index');
+	Route::get('review/{id}',  'Backend\CasesController@show')->name('cases.review');
 });
 
 //Case Handler Controller
 Route::prefix('handlers')->group(function () {
 	Route::get('/',				'Backend\CaseHandlersController@index')->name('handlers.index');
-	Route::get('/create',  		'Backend\CaseHandlersController@create')->name('handlers.create');
-	Route::get('/view/{id}',  	'Backend\CaseHandlersController@show')->name('handlers.view');
+	Route::get('create',  		'Backend\CaseHandlersController@create')->name('handlers.create');
+	Route::get('view/{id}',  	'Backend\CaseHandlersController@show')->name('handlers.view');
 });
 
 //API Controller
