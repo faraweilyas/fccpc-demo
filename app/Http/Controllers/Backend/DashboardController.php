@@ -61,7 +61,7 @@ class DashboardController extends Controller
             'firstName'     => trim(ucfirst($request->firstName)),
             'lastName'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
-            'password'      => Hash::make($request->firstName.'123'),
+            'password'      => Hash::make(trim(ucfirst($request->firstName)).'123'),
             'accountType'   => $request->accountType,
         ]);
 

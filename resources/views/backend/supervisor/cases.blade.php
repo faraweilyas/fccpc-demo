@@ -45,33 +45,28 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Case Type</th>
+								<th>Transaction Type</th>
 								<th>Subject</th>
-								<th>Fees Paid</th>
 								<th>Parties</th>
-								<th>Case Rep</th>
 								<th>Category</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
 							<tr>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>M&A Case Management System</td>
+								<td><span class="label label-lg font-weight-bold label-light-info label-inline">{{ ucwords($case->subject) }}</span></td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yes</span>
-								</td>
-								<td>T&A Legal</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Regular</span>
+									{{ $case->parties }}
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
@@ -79,17 +74,15 @@
 									</a>
 								</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
-					@elseif ($type == 'assigned' || $type == 'hold')
+					@elseif ($type == 'assigned')
 					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 						<thead>
 							<tr>
 								<th>Ref No</th>
 								<th>Case Type</th>
-								@if($type == 'hold')
-								<th>Reason</th>
-								@endif
 								<th>Subject</th>
 								<th>Case Handler</th>
 								<th>Status</th>
@@ -106,9 +99,46 @@
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
 								</td>
 								<td>M&A Case Management System</td>
-								@if($type == 'hold')
-								<td>Lack of evidence</td>
-								@endif
+								<td>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+								</td>
+								<td>
+									<a href="{{ route('cases.review', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					@elseif ($type == 'hold')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Case Type</th>
+								<th>Reason</th>
+								<th>Subject</th>
+								<th>Case Handler</th>
+								<th>Status</th>
+								<th>Category</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+								</td>
+								<td>M&A Case Management System</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
 								</td>

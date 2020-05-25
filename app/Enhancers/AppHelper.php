@@ -16,9 +16,10 @@ class AppHelper
 
 	// Valid Case Status
 	static $case_status = [
-		"1"  => "Pending",
+		"1"  => "New",
 		"2"  => "Assigned",
-		"3"  => "On-Hold",
+		"3"  => "On Hold",
+		"4"  => "Approved",
 	];
 	
 	// Valid Status
@@ -38,6 +39,7 @@ class AppHelper
 		"AD"  => "Admin",
 		"SP"  => "Supervisor",
 		"IT"  => "It",
+		"CH"  => "Case Handler",
 	];
 
 	// Valid Case Categories

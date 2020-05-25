@@ -53,6 +53,7 @@ Route::prefix('cases')->group(function () {
 Route::prefix('handlers')->group(function () {
 	Route::get('/',				'Backend\CaseHandlersController@index')->name('handlers.index');
 	Route::get('create',  		'Backend\CaseHandlersController@create')->name('handlers.create');
+	Route::post('create',  		'Backend\CaseHandlersController@storeHandler')->name('handlers.store');
 	Route::get('view/{id}',  	'Backend\CaseHandlersController@show')->name('handlers.view');
 });
 

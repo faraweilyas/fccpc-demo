@@ -7,6 +7,16 @@ use App\Http\Controllers\Controller;
 
 class CasesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
 	/**
 	 * Handles the cases display page route.
 	 * @return void
