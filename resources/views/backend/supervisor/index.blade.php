@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-lg-3">
 					<!--begin::Tiles Widget 12-->
-					<div class="card card-custom bg-dark gutter-b" style="height: 150px;background-image: url({{ BE_MEDIA.'svg/patterns/taieri.svg' }}">
+					<div class="card card-custom bg-dark gutter-b" style="height: 150px;background-image: url({{ asset(BE_MEDIA.'svg/patterns/taieri.svg') }}">
 						<div class="card-body">
 							<span class="svg-icon svg-icon-white svg-icon-3x">
 								<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Files\File-cloud.svg-->

@@ -9,12 +9,12 @@
 				<a href="{{ route('home.faq') }}" class="font-weight-bold ml-2" id="kt_login_signup">FAQ</a> |
 				<a href="{{ route('home.calculator') }}" class="font-weight-bold ml-2" id="kt_login_signup">Fee Calculator</a>
 			</div>
-			<div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ BE_MEDIA.'bg/bg-3.jpg' }}">
+			<div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}">
 				<div class="login-form text-center p-7 position-relative overflow-hidden">
 					<!--begin::Login Header-->
 					<div class="d-flex flex-center mb_15">
 						<a href="{{ route('home.index') }}">
-							<img src="{{ FE_IMAGE.'icons/fccpc_logo.jpg' }}" class="maxh_130" />
+							<img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" class="maxh_130" />
 						</a>
 					</div>
 					<!--end::Login Header-->

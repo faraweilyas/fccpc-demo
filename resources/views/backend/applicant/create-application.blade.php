@@ -541,5 +541,4 @@
 </div>
 <!--end::Content-->
 @endSection
-<script src="{{ BE_JS.'jquery.js' }}"></script>
-<script src="{{ BE_JS.'create-application.js' }}"></script>
+<script src="{{ asset(BE_JS.'create-application.js') }}"></script>

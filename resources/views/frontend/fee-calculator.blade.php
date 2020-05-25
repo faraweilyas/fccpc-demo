@@ -173,6 +173,6 @@
 	    </div>
     </main>
 @endSection
-<script src="{{ FE_JS.'jquery.min.js' }}"></script>
-<script src="{{ BE_JS.'functions.js'  }}"></script>
-<script src="{{ BE_JS.'app.js' 	      }}"></script>
+<script src="{{ asset(FE_JS.'jquery.min.js') }}"></script>
+<script src="{{ asset(BE_JS.'functions.js')  }}"></script>
+<script src="{{ asset(BE_JS.'app.js') 	      }}"></script>

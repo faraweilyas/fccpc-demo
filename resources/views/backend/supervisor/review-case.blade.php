@@ -227,4 +227,4 @@
     </div>
 </div>
 @endSection
-<script src="{{ BE_JS.'pages/crud/forms/widgets/select2.js' }}"></script>
+<script src="{{ asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
