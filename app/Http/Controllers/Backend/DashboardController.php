@@ -85,4 +85,21 @@ class DashboardController extends Controller
         $details          = details($title, $description);
         return view('backend.'.getAccountType().'.view-users', compact('details'));
     }
+
+    public function updateUserStatus($id)
+    {
+        $check_status = \App\User::findOrFail($id);
+
+        $result = \App\User::whereId($id)->update([
+                'status' => !$check_status->status
+         ]);
+
+        if ($result) {
+            Session::flash('success', "User's status updated");
+            return redirect()->back();
+        } else {
+            Session::flash('error', "User's status not updated.");
+            return redirect()->back();
+        }
+    }
 }

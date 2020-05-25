@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * This function return the fullname of logged in user
+     *
+     * @return string
+     */
+    public function getFullName() {
+        return \Auth::user()->firstName.' '.\Auth::user()->lastName;
+    }
 }

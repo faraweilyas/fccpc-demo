@@ -52,7 +52,7 @@
 						<tbody>
 							@foreach(\App\User::all() as $item)
 							<tr>
-								<td><span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $item->firstName.' '.$item->lastName }}</span></td>
+								<td><span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $item->getFullName() }}</span></td>
 								<td><span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $item->email }}</span></td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$item->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$item->status] }}</span>
@@ -62,11 +62,11 @@
 								</td>
 								<td>
 									@if($item->status == 1)
-										<a href="#" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
+										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
 											<i class="la la-times-circle text-hover-dan"></i>&nbsp;&nbsp;Deactivate
 										</a>
 									@else
-										<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
 											<i class="la la-check"></i>&nbsp;&nbsp;Activate
 										</a>
 									@endif

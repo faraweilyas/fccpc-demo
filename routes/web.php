@@ -34,10 +34,11 @@ Route::prefix('application')->group(function () {
 
 //Supervisor Controller
 Route::prefix('/')->group(function () {
-	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('dashboard');
-	Route::get('user/create', 	 'Backend\DashboardController@createUser')->name('dashboard.create_user');
-	Route::post('user/create', 	 'Backend\DashboardController@storeUser')->name('dashboard.user_store');
-	Route::get('users', 	     'Backend\DashboardController@viewUsers')->name('dashboard.users');
+	Route::get('dashboard', 	 				 'Backend\DashboardController@index')->name('dashboard');
+	Route::get('user/create', 	 				 'Backend\DashboardController@createUser')->name('dashboard.create_user');
+	Route::post('user/create', 	 				 'Backend\DashboardController@storeUser')->name('dashboard.user_store');
+	Route::get('users', 	     				 'Backend\DashboardController@viewUsers')->name('dashboard.users');
+	Route::get('users/status/update/{id}', 	     'Backend\DashboardController@updateUserStatus')->name('dashboard.update_users_status');
 });
 
 //Cases Controller
