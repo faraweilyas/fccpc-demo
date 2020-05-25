@@ -1,4 +1,4 @@
-@extends('layouts.backend.'.getAccountType().'.base')
+@extends('layouts.backend.base')
 @section('content')
 <!--begin::Content-->
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
