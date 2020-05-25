@@ -18,12 +18,10 @@
 					@include("layouts.backend.navigation-top")
 					<!--end::Top-->
 					<!--begin::Bottom-->
-					@if(getAccountType() == 'guest')
+					@guest
 						@include("layouts.backend.guest-navigation-bottom")
-					@elseif(getAccountType() == 'admin')
-						@include("layouts.backend.admin-navigation-bottom")
 					@else
-						@include("layouts.backend.navigation-bottom")
+						@include("layouts.backend.admin-navigation-bottom")
 					@endif
 					
 					<!--end::Bottom-->

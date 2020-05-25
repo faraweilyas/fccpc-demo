@@ -70,6 +70,5 @@ class LoginController extends Controller
             return redirect()->intended('/dashboard');
         }
         Session::flash('error', "Invalid credentials.");
-        return redirect()->route('login');
     }
 }
