@@ -85,4 +85,21 @@ class CaseHandlersController extends Controller
         $details          = details($title, $description);
         return view('backend.'.getAccountType().'.view-case-handler', compact('details'));
     }
+
+    public function updateHandlerStatus($id)
+    {
+        $check_status = \App\User::findOrFail($id);
+
+        $result = \App\User::whereId($id)->update([
+                'status' => !$check_status->status
+         ]);
+
+        if ($result) {
+            Session::flash('success', "Case handler's status updated");
+            return redirect()->back();
+        } else {
+            Session::flash('error', "Case handler's status not updated.");
+            return redirect()->back();
+        }
+    }
  }

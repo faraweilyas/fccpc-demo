@@ -63,7 +63,7 @@
 								<td>
 									@if($item->status == 1)
 										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
-											<i class="la la-times-circle text-hover-dan"></i>&nbsp;&nbsp;Deactivate
+											<i class="la la-times-circle"></i>&nbsp;&nbsp;Deactivate
 										</a>
 									@else
 										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">

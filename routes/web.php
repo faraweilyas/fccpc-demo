@@ -51,10 +51,11 @@ Route::prefix('cases')->group(function () {
 
 //Case Handler Controller
 Route::prefix('handlers')->group(function () {
-	Route::get('/',				'Backend\CaseHandlersController@index')->name('handlers.index');
-	Route::get('create',  		'Backend\CaseHandlersController@create')->name('handlers.create');
-	Route::post('create',  		'Backend\CaseHandlersController@storeHandler')->name('handlers.store');
-	Route::get('view/{id}',  	'Backend\CaseHandlersController@show')->name('handlers.view');
+	Route::get('/',							 'Backend\CaseHandlersController@index')->name('handlers.index');
+	Route::get('create',  					 'Backend\CaseHandlersController@create')->name('handlers.create');
+	Route::post('create',  					 'Backend\CaseHandlersController@storeHandler')->name('handlers.store');
+	Route::get('status/update/{id}', 	     'Backend\CaseHandlersController@updateHandlerStatus')->name('handler.update_status');
+	Route::get('view/{id}',  				 'Backend\CaseHandlersController@show')->name('handlers.view');
 });
 
 //API Controller

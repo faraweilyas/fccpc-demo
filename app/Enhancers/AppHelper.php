@@ -39,7 +39,7 @@ class AppHelper
 		"AD"  => "Admin",
 		"SP"  => "Supervisor",
 		"IT"  => "It",
-		"CH"  => "Case Handler",
+		"CH"  => "Case_Handler",
 	];
 
 	// Valid Case Categories

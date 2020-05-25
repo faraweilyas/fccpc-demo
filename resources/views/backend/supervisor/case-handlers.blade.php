@@ -47,14 +47,14 @@
 									<th>Approved Cases</th>
 									<th>Working on</th>
 									<th>Status</th>
-									<th>Income</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
 							<tbody>
+								@foreach(\App\User::where('accountType', 'CH')->get() as $handler)
 								<tr>
 									<td>
-										<span class="label label-lg font-weight-bold label-light-dark label-inline">Yemisi</span>
+										<span class="label label-lg font-weight-bold label-light-dark label-inline">{{ $handler->getFullName() }}</span>
 									</td>
 									<td>
 										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">3</span>
@@ -64,18 +64,40 @@
 										<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">3</span>
 									</td>
 									<td>
-										<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Active</span>
+										<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>
 									</td>
-									<td>&#8358;50,000</td>
-									<td>
-										<a href="{{ route('handlers.view', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Handler" >
-											<i class="la la-arrow-alt-circle-down"></i>&nbsp;View
-										</a>
-										<a href="javascript:;" class="btn btn-sm btn-icon text-hover-primary ml-15" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
-											<i class="la la-times-circle-o"></i>&nbsp;Deactivate
-										</a>
-									</td>
+									<td nowrap="nowrap">                            
+	                                    <div class="dropdown dropdown-inline">                              
+	                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">                      
+	                                            <span class="text-center"><i class="la la-ellipsis-h"></i></span>                               
+	                                        </a>                                
+	                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">                                    
+	                                            <ul class="nav nav-hoverable flex-column">                            
+	                                                <li class="nav-item">
+	                                                    <a class="nav-link text-hover-primary" href="{{ route('handlers.view', ['id' => $handler->id]) }}">
+	                                                        <i class="nav-icon la la-arrow-alt-circle-down"></i>
+	                                                        <span class="nav-text text-hover-primary">View</span>
+	                                                    </a>
+	                                                </li>   
+	                                                <li class="nav-item">
+	                                                	@if($handler->status == 1)
+	                                                    <a class="nav-link text-hover-danger" href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+	                                                        <i class="nav-icon la la-times-circle"></i>
+	                                                        <span class="nav-text text-hover-danger">Deactivate</span>
+	                                                    </a>
+	                                                    @else
+	                                                    <a class="nav-link text-hover-primary" href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+	                                                        <i class="nav-icon la la-times-circle"></i>
+	                                                        <span class="nav-text text-hover-primary">Activate</span>
+	                                                    </a>
+	                                                    @endif
+	                                                </li>                                       
+	                                            </ul>                               
+	                                        </div>                          
+	                                    </div>                               
+	                                </td>
 								</tr>
+								@endforeach
 							</tbody>
 						</table>
 						<!--end: Datatable-->
