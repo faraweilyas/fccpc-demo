@@ -25,6 +25,15 @@
 				</div>
 			</div>
 			<!--end::User-->
+			<!--begin::User-->
+			<div class="topbar-item">
+				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+					<div class="d-flex flex-column text-right pr-3">
+						<span class="text-white font-weight-bold font-size-sm d-none d-md-inline">Sign Out</span>
+					</div>
+				</div>
+			</div>
+			<!--end::User-->
 		</div>
 		<!--end::Topbar-->
 	</div>

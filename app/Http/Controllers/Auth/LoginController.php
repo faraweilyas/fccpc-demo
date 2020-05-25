@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
@@ -49,5 +51,25 @@ class LoginController extends Controller
         $description      = "FCCPC Login";
         $details = details($title, $description);
         return view('auth.login', compact('details'));
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email'     => 'required|email',
+            'password'  =>  'required|min:8'
+        ]);
+
+        if ($this->guard()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
+            return redirect()->intended('/dashboard');
+        }
+        Session::flash('error', "Invalid credentials.");
+        return redirect()->route('login');
     }
 }

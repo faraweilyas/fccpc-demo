@@ -21,6 +21,12 @@ class AppHelper
 		"3"  => "On-Hold",
 	];
 	
+	// Valid Case Categories
+	static $account_types = [
+		"AD"  => "Admin",
+		"SP"  => "Supervisor",
+	];
+
 	/**
 	* Validates array key
 	* @param string $array

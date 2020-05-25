@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 class DashboardController extends Controller
 {
 	/**
-	 * Handles the supervisor home page route.
+	 * Handles the admin home page route.
 	 * @return void
 	 */
     public function index()

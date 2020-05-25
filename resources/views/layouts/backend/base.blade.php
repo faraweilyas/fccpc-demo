@@ -20,6 +20,8 @@
 					<!--begin::Bottom-->
 					@if(getAccountType() == 'guest')
 						@include("layouts.backend.guest-navigation-bottom")
+					@elseif(getAccountType() == 'admin')
+						@include("layouts.backend.admin-navigation-bottom")
 					@else
 						@include("layouts.backend.navigation-bottom")
 					@endif

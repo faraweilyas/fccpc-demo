@@ -1,5 +1,4 @@
 <?php
-
 /**
 * Get Host Url.
 * @param {}
@@ -348,5 +347,9 @@ function generateRefNo($id) : string
  */
 function getAccountType() : string
 {
-	return "guest";
+	if(\Auth::user()):
+		return strtolower(\App\Enhancers\AppHelper::$account_types[Auth::user()->accountType]);
+	else:
+		return 'guest';
+	endif;
 }
