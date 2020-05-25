@@ -55,3 +55,7 @@ Route::prefix('api')->group(function () {
 	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase');
 	Route::post('application/upload/{id}',	'Backend\ApplicationAuthController@uploadNewCase');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
