@@ -36,6 +36,7 @@ Route::prefix('application')->group(function () {
 Route::prefix('/')->group(function () {
 	Route::get('dashboard', 	 'Backend\DashboardController@index')->name('dashboard');
 	Route::get('user/create', 	 'Backend\DashboardController@createUser')->name('dashboard.create_user');
+	Route::post('user/create', 	 'Backend\DashboardController@storeUser')->name('dashboard.user_store');
 });
 
 //Cases Controller

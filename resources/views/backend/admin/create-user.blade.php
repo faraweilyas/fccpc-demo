@@ -32,37 +32,49 @@
 				<div class="col-md-12">
 					<div class="card card-custom gutter-b example example-compact">
 						<div class="card-header">
-							<h3 class="card-title">Case Handler Information</h3>
+							<h3 class="card-title">Create New User</h3>
 						</div>
-						<form>
+						<form method="POST" action="{{ route('dashboard.user_store') }}">
+							@csrf
 							<div class="card-body">
 								<div class="row">
 									<div class="col-md-7">
 										<div class="form-group">
-											<label>Full Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter full name" name="fullName">
-											<span class="form-text text-muted">Please enter full name.</span>
+											<label>First Name</label> <span class="text-danger">*</span>
+											<input type="text" class="form-control" placeholder="Enter first name" name="firstName">
+											<span class="form-text text-muted">Please enter first name.</span>
+											@error('firstName')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
+										</div>
+										<div class="form-group">
+											<label>Last Name</label> <span class="text-danger">*</span>
+											<input type="text" class="form-control" placeholder="Enter last name" name="lastName">
+											<span class="form-text text-muted">Please enter last name.</span>
+											@error('lastName')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
 										</div>
 										<div class="form-group">
 											<label>Email</label> <span class="text-danger">*</span>
 											<input type="eamil" class="form-control" placeholder="Enter email" name="email">
 											<span class="form-text text-muted">Please enter email.</span>
+											@error('email')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
 										</div>
 										<div class="form-group">
-											<label>Phone No</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter phone no" name="phone">
-											<span class="form-text text-muted">Please enter phone no.</span>
-										</div>
-										<div class="form-group">
-											<label>Sex</label>
-											<div class="radio-inline">
-												<label class="radio">
-													<input type="radio" name="gender" checked="checked">Male<span></span>
-												</label>
-												<label class="radio">
-													<input type="radio" name="gender">Female<span></span>
-												</label>
-											</div>
+											<label>Account Type</label> <span class="text-danger">*</span>
+											<select class="form-control selectpicker" name="accountType">
+												<option value="">Select account type</option>
+												 @foreach(\App\Enhancers\AppHelper::$account_types as $key => $value)
+												 <option value="{{ $key }}">{{ strtoupper($value) }}</option>
+												 @endforeach
+											</select>
+											<span class="form-text text-muted">Please select account type.</span>
+											@error('accountType')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
 										</div>
 									</div>
 								</div>

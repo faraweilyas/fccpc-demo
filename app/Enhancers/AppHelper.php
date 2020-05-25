@@ -25,6 +25,7 @@ class AppHelper
 	static $account_types = [
 		"AD"  => "Admin",
 		"SP"  => "Supervisor",
+		"IT"  => "It",
 	];
 
 	/**
