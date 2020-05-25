@@ -150,6 +150,7 @@
 							</ul>
 						</div>
 					</li>
+					@if(\Auth::user()->accountType == 'AD')
 					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
 							<span class="menu-text">Users</span>
@@ -195,6 +196,7 @@
 							</ul>
 						</div>
 					</li>
+					@endif
 					<li class="menu-item menu-item-submenu menu-item-rel">
 						<a href="#" class="menu-link">
 							<span class="menu-text">Requests</span>
