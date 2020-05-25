@@ -54,7 +54,7 @@ class ApplicantController extends Controller
                 'tracking_id' => $result->tracking_id
             );
             if ($result):
-                Mail::to($request->email)->send(new WelcomeApplicant($data));
+                // Mail::to($request->email)->send(new WelcomeApplicant($data));
                 return redirect()->route('applicant.index', ['id' => $result->tracking_id]);
             endif;
         endif;

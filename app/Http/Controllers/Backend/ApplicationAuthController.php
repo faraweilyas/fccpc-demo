@@ -117,7 +117,7 @@ class ApplicationAuthController extends Controller
                 'ref_no'          => $res->ref_no
             );
         if ($result):
-            Mail::to($res->applicant_email)->send(new ApplicationRequest($data));
+            // Mail::to($res->applicant_email)->send(new ApplicationRequest($data));
             static::sendResponse(200, "OK!", "success", $res);
         else:
             static::sendResponse(400, "Bad request", "error", '');
