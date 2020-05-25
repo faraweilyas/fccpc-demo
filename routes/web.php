@@ -39,6 +39,8 @@ Route::prefix('/')->group(function () {
 	Route::post('user/create', 	 				 'Backend\DashboardController@storeUser')->name('dashboard.user_store');
 	Route::get('users', 	     				 'Backend\DashboardController@viewUsers')->name('dashboard.users');
 	Route::get('users/status/update/{id}', 	     'Backend\DashboardController@updateUserStatus')->name('dashboard.update_users_status');
+	Route::get('profile', 	     				 'Backend\DashboardController@viewProfile')->name('dashboard.profile');
+	Route::post('profile', 	     				 'Backend\DashboardController@updateProfile')->name('dashboard.update_user');
 });
 
 //Cases Controller

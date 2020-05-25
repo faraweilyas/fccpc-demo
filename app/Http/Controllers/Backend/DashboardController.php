@@ -86,6 +86,19 @@ class DashboardController extends Controller
         return view('backend.'.getAccountType().'.view-users', compact('details'));
     }
 
+    /**
+     * Handles the view profile page route.
+     * @return void
+     */
+    public function viewProfile()
+    { 
+        $user             = Auth::user();
+        $title            = APP_NAME;
+        $description      = "FCCPC Dashboard View Profile";
+        $details          = details($title, $description);
+        return view('backend.'.getAccountType().'.view-profile', compact('details', 'user'));
+    }
+
     public function updateUserStatus($id)
     {
         $check_status = \App\User::findOrFail($id);
@@ -99,6 +112,49 @@ class DashboardController extends Controller
             return redirect()->back();
         } else {
             Session::flash('error', "User's status not updated.");
+            return redirect()->back();
+        }
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $this->validate($request, [
+            'firstName'    => 'required',
+            'lastName'     => 'required'
+        ]);
+        
+        if (isset($request->password) && $request->change_pass == 'yes') {
+            if (Hash::check($request->password, Auth::user()->password)) {
+                if ($request->new_password === $request->password_confirmation) {
+                    $result = \App\User::whereId(Auth::user()->id)->update([
+                            'firstName' => $request->firstName,
+                            'lastName'  => $request->lastName,
+                            'password'  => Hash::make($request->password)
+                     ]);
+
+                    if ($result) {
+                        Session::flash('success', "Profile updated");
+                        return redirect()->back();
+                    } else {
+                        Session::flash('error', "Profile not updated.");
+                        return redirect()->back();
+                    }
+                }
+            } else {
+                Session::flash('error', "Password Mismatch");
+                return redirect()->back();
+            }
+        }
+        $result = \App\User::whereId(Auth::user()->id)->update([
+                'firstName' => $request->firstName,
+                'lastName'  => $request->lastName
+         ]);
+
+        if ($result) {
+            Session::flash('success', "Profile updated");
+            return redirect()->back();
+        } else {
+            Session::flash('error', "Profile not updated.");
             return redirect()->back();
         }
     }
