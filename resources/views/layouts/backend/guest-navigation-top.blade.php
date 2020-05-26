@@ -18,7 +18,7 @@
 					<a href="{{ route('dashboard.profile') }}">
 						<div class="d-flex flex-column text-right pr-3">
 							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ \App\Models\Guest::where('tracking_id', $id)->first()->email }}</span>
-							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ \App\Models\Guest::where('tracking_id', $id)->first()->tracking_id }}</span>
+							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">#{{ \App\Models\Guest::where('tracking_id', $id)->first()->tracking_id }}</span>
 						</div>
 					</a>
 					<span class="symbol symbol-35">
