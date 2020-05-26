@@ -41,25 +41,22 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $case->ref_no ?? '' }}</span>
 									</p>
 									<p>
-										<strong>Subject :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">M&A Case Management System</span>
+										<strong>Subject :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->subject ?? '' }}</span>
 									</p>
 									<p>
-										<strong>Case Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">Application</span>
+										<strong>Transaction Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->transaction_type ?? '' }}</span>
 									</p>
 									<p>
-										<strong>Parties : </strong>&nbsp;Techbarn, FCCPC
+										<strong>Parties : </strong>&nbsp;{{ $case->parties ?? '' }}
 									</p>
 									<p>
-										<strong>Case Rep :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">T&A Legal</span>
+										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 									</p>
 									<p>
-										<strong>Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">FFM</span>
-									</p>
-									<p>
-										<strong>Case Handler : </strong>&nbsp;Yemisi
+										<strong>Case Handler : </strong>&nbsp;{{ \App\User::find($case->case_handler_id)->getFullName() }}
 									</p>
 									<p>
 										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
@@ -155,7 +152,7 @@
 						<div class="row mt-5">
 							<div class="col-md-12">
 								<label>Select case handler</label><br>
-								<select class="form-control select2" id="kt_select2_1" name="case_handlers" style="width: 100%;">
+								<select class="form-control select2" id="case_handler" name="case_handlers" style="width: 100%;">
 									<option value="JD">Florence</option>
 									<option value="JJ">Yemisi</option>
 								</select>
@@ -227,4 +224,5 @@
     </div>
 </div>
 @endSection
+<script src="{{ asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>

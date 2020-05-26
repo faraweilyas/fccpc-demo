@@ -110,7 +110,7 @@
 									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
-									<a href="{{ route('cases.review', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
 										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>

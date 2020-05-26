@@ -37,10 +37,11 @@ class CasesController extends Controller
      */
     public function reviewCase($id)
     { 
+        $case             = \App\Models\Cases::find($id);
         $title            = APP_NAME;
         $description      = "FCCPC Case Review Dashboard";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.review-case', compact('details', 'id'));
+        return view('backend.'.getAccountType().'.review-case', compact('details', 'id', 'case'));
     }
 
     /**
