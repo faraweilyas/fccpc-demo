@@ -57,7 +57,7 @@
 										</div>
 										<div class="form-group">
 											<label>Email</label> <span class="text-danger">*</span>
-											<input type="eamil" class="form-control" placeholder="Enter email" name="email" value="{{ $user->email ?? '' }}">
+											<input type="email" class="form-control" placeholder="Enter email" name="email" value="{{ $user->email ?? '' }}">
 											<span class="form-text text-muted">Please enter email.</span>
 											@error('email')
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
@@ -65,16 +65,7 @@
 										</div>
 										<div class="form-group">
 											<label>Account Type</label> <span class="text-danger">*</span>
-											<select class="form-control selectpicker" name="accountType">
-												<option value="">Select account type</option>
-												 @foreach(\App\Enhancers\AppHelper::$account_types as $key => $value)
-												 <option value="{{ $key }}" {{ ($key == $user->accountType) ? 'selected' : '' }}>{{ strtoupper($value) }}</option>
-												 @endforeach
-											</select>
-											<span class="form-text text-muted">Please select account type.</span>
-											@error('accountType')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
-				                            @enderror
+											<input type="text" class="form-control" value="{{ \App\Enhancers\AppHelper::$account_types[$user->accountType] ?? '' }}" disabled />
 										</div>
 										<div class="col-md-8">
 											<div class="form-group">
