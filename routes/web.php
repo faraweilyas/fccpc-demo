@@ -45,9 +45,10 @@ Route::prefix('/')->group(function () {
 
 //Cases Controller
 Route::prefix('cases')->group(function () {
-	Route::get('{type}',		'Backend\CasesController@index')->name('cases.index');
-	Route::get('review/{id}',   'Backend\CasesController@reviewCase')->name('cases.review'); 
-	Route::post('assign/{id}',  'Backend\CasesController@assignCase')->name('cases.assign'); 
+	Route::get('{type}',				 'Backend\CasesController@index')->name('cases.index');
+	Route::get('review/{id}',   		 'Backend\CasesController@reviewCase')->name('cases.review'); 
+	Route::post('assign/{id}',  		 'Backend\CasesController@assignCase')->name('cases.assign'); 
+	Route::post('update/{status}/{id}',   'Backend\CasesController@updateCaseStatus')->name('cases.update_status'); 
 });
 
 //Case Handler Controller

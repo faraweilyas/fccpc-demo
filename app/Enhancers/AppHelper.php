@@ -20,6 +20,7 @@ class AppHelper
 		"2"  => "Assigned",
 		"3"  => "On Hold",
 		"4"  => "Approved",
+		"5"  => "Rejected",
 	];
 	
 	// Valid Case Status
@@ -28,6 +29,7 @@ class AppHelper
 		"2"  => "info",
 		"3"  => "warning",
 		"4"  => "success",
+		"5"  => "danger",
 	];
 
 	// Valid Status

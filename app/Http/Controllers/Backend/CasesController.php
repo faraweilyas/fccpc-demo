@@ -63,4 +63,23 @@ class CasesController extends Controller
             return redirect()->back();
         }
     }
+
+    /**
+     * Handles the case update status page route.
+     * @return void
+     */
+    public function updateCaseStatus($status, $id)
+    { 
+        $result = \App\Models\Cases::whereId($id)->update([
+                'status'          => $status
+         ]);
+
+        if ($result) {
+            Session::flash('success', "Transaction updated");
+            return redirect()->back();
+        } else {
+            Session::flash('error', "Transaction not updated.");
+            return redirect()->back();
+        }
+    }
 }

@@ -59,7 +59,7 @@
 										<strong>Case Handler : </strong>&nbsp;{{ \App\User::find($case->case_handler_id)->getFullName() }}
 									</p>
 									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
+										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status] }} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status] }}</span>
 									</p>
 								</div>
 							</div>
@@ -90,14 +90,20 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col-md-6 text-center">
-											<p>
-												<button type="button" class="btn btn-primary mr-2">Approve recommendation</button>
-											</p>
+											<form method="POST" action="{{ route('cases.update_status', ['status' => 4, 'id' => $case->id]) }}">
+							            	@csrf
+												<p>
+													<button type="submit" class="btn btn-primary mr-2">Approve recommendation</button>
+												</p>
+											</form>
 										</div>
 										<div class="col-md-6 text-center">
-											<p>
-												<button type="button" class="btn btn-danger mr-2">Reject recommendation</button>
-											</p>
+											<form method="POST" action="{{ route('cases.update_status', ['status' => 5, 'id' => $case->id]) }}">
+							            	@csrf
+												<p>
+													<button type="submit" class="btn btn-danger mr-2">Reject recommendation</button>
+												</p>
+											</form>
 										</div>
 									</div>
 									<div class="row">
@@ -191,42 +197,40 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <!--begin::Input-->
-                <div class="row">
-                	<div class="col-md-6">
-                		<div class="row">
-							<div class="col-md-12">
-								<label>Subject</label>
-								<input type="text" class="form-control" value="{{ ucwords($case->subject) ?? '' }}" disabled>
+            <form method="POST" action="{{ route('cases.update_status', ['status' => 3, 'id' => $case->id]) }}">
+            	@csrf
+	            <div class="modal-body">
+	                <!--begin::Input-->
+	                <div class="row">
+	                	<div class="col-md-6">
+	                		<div class="row">
+								<div class="col-md-12">
+									<label>Subject</label>
+									<input type="text" class="form-control" value="{{ ucwords($case->subject) ?? '' }}" disabled>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-12">
+									<label>Remove case handler</label>
+									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+								</div>
+							</div>
+	                	</div>
+	                	<div class="col-md-6">
+	                		<div class="row">
+								<div class="col-md-12">
+									<label>Query</label>
+									<textarea class="form-control" id="exampleTextarea" rows="6">Query...</textarea>
+								</div>
 							</div>
 						</div>
-						<div class="row mt-5">
-							<div class="col-md-12">
-								<label>Select case handler</label><br>
-								<select class="form-control select2" id="kt_select2_1" name="case_handler" style="width: 100%;">
-									<option value="">Select Case Handler</option>
-									@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
-										<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-									@endforeach
-								</select>
-							</div>
-						</div>
-                	</div>
-                	<div class="col-md-6">
-                		<div class="row">
-							<div class="col-md-12">
-								<label>Query</label>
-								<textarea class="form-control" id="exampleTextarea" rows="6">Query...</textarea>
-							</div>
-						</div>
-					</div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Issue Query</button>
-            </div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+	                <button type="submit" class="btn btn-primary font-weight-bold">Issue Query</button>
+	            </div>
+	        </form>
         </div>
     </div>
 </div>
