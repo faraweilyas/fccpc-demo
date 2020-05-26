@@ -22,6 +22,14 @@ class AppHelper
 		"4"  => "Approved",
 	];
 	
+	// Valid Case Status
+	static $case_statusHTML = [
+		"1"  => "secondary",
+		"2"  => "info",
+		"3"  => "warning",
+		"4"  => "success",
+	];
+
 	// Valid Status
 	static $status = [
 		'0' 	=> 'Inactive',

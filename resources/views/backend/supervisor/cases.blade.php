@@ -104,7 +104,7 @@
 									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\User::find($case->case_handler_id)->getFullName() }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
+									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
