@@ -14,7 +14,7 @@
 							<i class="menu-arrow"></i>
 						</a>
 					</li>
-					@if(\Auth::user()->accountType != 'AD')
+					@if(!in_array(\Auth::user()->accountType, ['AD']))
 					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
 							<span class="menu-text">Case</span>
@@ -93,6 +93,7 @@
 										<i class="menu-arrow"></i>
 									</a>
 								</li>
+								@if(in_array(\Auth::user()->accountType, ['SP']))
 								<li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
 									<a href="javascript:;" class="menu-link menu-toggle">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
@@ -130,11 +131,12 @@
 										</ul>
 									</div>
 								</li>
+								@endif
 							</ul>
 						</div>
 					</li>
 					@endif
-					@if(\Auth::user()->accountType == 'AD')
+					@if(in_array(\Auth::user()->accountType, ['AD']))
 					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
 							<span class="menu-text">Users</span>

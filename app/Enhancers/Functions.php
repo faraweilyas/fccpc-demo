@@ -347,8 +347,8 @@ function generateRefNo($id) : string
  */
 function getAccountType() : string
 {
-	if(\Auth::user()):
-		return strtolower(\App\Enhancers\AppHelper::$account_types[Auth::user()->accountType]);
+	if(Auth::check()):
+		return strtolower(Auth::user()->accountType);
 	else:
 		return 'guest';
 	endif;
