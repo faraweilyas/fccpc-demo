@@ -49,7 +49,7 @@ class AppHelper
 		"AD"  => "Admin",
 		"SP"  => "Supervisor",
 		"IT"  => "It",
-		"CH"  => "Case_Handler",
+		"CH"  => "Case Handler",
 	];
 
 	// Valid Case Categories
@@ -57,6 +57,7 @@ class AppHelper
 		"AD"  => "danger",
 		"SP"  => "primary",
 		"IT"  => "warning",
+		"CH"  => "info",
 	];
 
 	/**
