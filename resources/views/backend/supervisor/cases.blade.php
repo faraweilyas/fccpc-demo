@@ -232,7 +232,7 @@
 						<div class="col-md-12">
 							<label>Select case handler</label><br>
 							<select class="form-control select2" id="kt_select2_1" name="case_handler" style="width: 100%;">
-								<option value="JD">Select Case Handler</option>
+								<option value="">Select Case Handler</option>
 								@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
 									<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
 								@endforeach

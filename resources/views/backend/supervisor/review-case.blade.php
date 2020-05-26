@@ -133,46 +133,51 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <!--begin::Input-->
-                <div class="row">
-                	<div class="col-md-6">
-                		<div class="row">
-							<div class="col-md-12">
-								<label>Subject</label>
-								<input type="text" class="form-control" value="M&A Case Management System" disabled>
+            <form method="POST" action="{{ route('cases.assign', ['id' => $case->id]) }}">
+            	@csrf
+	            <div class="modal-body">
+	                <!--begin::Input-->
+	                <div class="row">
+	                	<div class="col-md-6">
+	                		<div class="row">
+								<div class="col-md-12">
+									<label>Subject</label>
+									<input type="text" class="form-control" value="{{ ucwords($case->subject) ?? '' }}" disabled>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-12">
+									<label>Remove case handler</label>
+									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+								</div>
+							</div>
+							<div class="row mt-5">
+								<div class="col-md-12">
+									<label>Select case handler</label><br>
+									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+										<option value="">Select Case Handler</option>
+										@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+											<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+										@endforeach
+									</select>
+								</div>
+							</div>
+	                	</div>
+	                	<div class="col-md-6 mt-sm-10">
+	                		<div class="row">
+								<div class="col-md-12">
+									<label>Reason</label>
+									<textarea class="form-control" id="exampleTextarea" rows="6">Reason...</textarea>
+								</div>
 							</div>
 						</div>
-						<div class="row mt-5">
-							<div class="col-md-12">
-								<label>Remove case handler</label>
-								<input type="text" class="form-control" value="Morayo" disabled>
-							</div>
-						</div>
-						<div class="row mt-5">
-							<div class="col-md-12">
-								<label>Select case handler</label><br>
-								<select class="form-control select2" id="case_handler" name="case_handlers" style="width: 100%;">
-									<option value="JD">Florence</option>
-									<option value="JJ">Yemisi</option>
-								</select>
-							</div>
-						</div>
-                	</div>
-                	<div class="col-md-6 mt-sm-10">
-                		<div class="row">
-							<div class="col-md-12">
-								<label>Reason</label>
-								<textarea class="form-control" id="exampleTextarea" rows="6">Reason...</textarea>
-							</div>
-						</div>
-					</div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Reassign</button>
-            </div>
+	                </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+	                <button type="submit" class="btn btn-primary font-weight-bold">Reassign</button>
+	            </div>
+	        </form>
         </div>
     </div>
 </div>
@@ -193,15 +198,17 @@
                 		<div class="row">
 							<div class="col-md-12">
 								<label>Subject</label>
-								<input type="text" class="form-control" value="M&A Case Management System" disabled>
+								<input type="text" class="form-control" value="{{ ucwords($case->subject) ?? '' }}" disabled>
 							</div>
 						</div>
 						<div class="row mt-5">
 							<div class="col-md-12">
 								<label>Select case handler</label><br>
-								<select class="form-control select2" id="kt_select2_1" name="case_handlers" style="width: 100%;">
-									<option value="JD">Florence</option>
-									<option value="JJ">Yemisi</option>
+								<select class="form-control select2" id="kt_select2_1" name="case_handler" style="width: 100%;">
+									<option value="">Select Case Handler</option>
+									@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+										<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+									@endforeach
 								</select>
 							</div>
 						</div>
