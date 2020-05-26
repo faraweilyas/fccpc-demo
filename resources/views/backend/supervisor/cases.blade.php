@@ -82,7 +82,7 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Case Type</th>
+								<th>Transaction Type</th>
 								<th>Subject</th>
 								<th>Case Handler</th>
 								<th>Status</th>
@@ -91,22 +91,23 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
 							<tr>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>M&A Case Management System</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\User::find($case->case_handler_id)->getFullName() }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
@@ -114,6 +115,7 @@
 									</a>
 								</td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
 					@elseif ($type == 'hold')
