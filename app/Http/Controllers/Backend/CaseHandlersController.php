@@ -78,12 +78,13 @@ class CaseHandlersController extends Controller
      * Handles the view case handlers page route.
      * @return void
      */
-    public function show()
+    public function show($id)
     { 
+        $handler          = \App\User::whereId($id)->first();
         $title            = APP_NAME;
-        $description      = "FCCPC Case Handler Dashboard";
+        $description      = "FCCPC View Case Handler Dashboard";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.view-case-handler', compact('details'));
+        return view('backend.'.getAccountType().'.view-case-handler', compact('details', 'handler'));
     }
 
     public function updateHandlerStatus($id)

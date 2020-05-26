@@ -41,10 +41,10 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<strong>Name :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">John Doe</span>
+										<strong>Name :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $handler->getFullName() }}</span>
 									</p>
 									<p>
-										<strong>Email :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">johndoe@fccpc.gov.ng</span>
+										<strong>Email :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $handler->email }}</span>
 									</p>
 									<p>
 										<strong>Approved Cases :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">10</span>
@@ -53,10 +53,7 @@
 										<strong>Cases working on : </strong>&nbsp;10
 									</p>
 									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-white label-inline">Active</span>
-									</p>
-									<p>
-										<strong>Income :</strong>&nbsp;&#8358;50,000
+										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} text-white label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>
 									</p>
 									<p>
 										<strong>Cases on hold : </strong>&nbsp;3
@@ -93,9 +90,19 @@
 											</p>
 										</div>
 										<div class="col-md-6 text-center">
+											@if($handler->status == 1)
 											<p>
-												<button type="button" class="btn btn-danger mr-2">Deactivate</button>
+												<a href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+													<button type="button" class="btn btn-danger mr-2">Deactivate</button>
+												</a>
 											</p>
+											@else
+											<p>
+												<a href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+													<button type="button" class="btn btn-primary mr-2">Activate</button>
+												</a>
+											</p>
+											@endif
 										</div>
 									</div>
 									<div class="row">
