@@ -22,7 +22,7 @@
 						</div>
 					</a>
 					<span class="symbol symbol-35">
-						<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ substr(\App\Models\Guest::where('tracking_id', $id)->first()->email, 0, 1); }}</span>
+						<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ substr(\App\Models\Guest::where('tracking_id', $id)->first()->email, 0, 1) }}</span>
 					</span>
 				</div>
 			</div>
