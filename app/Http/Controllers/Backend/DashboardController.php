@@ -129,7 +129,7 @@ class DashboardController extends Controller
                     $result = \App\User::whereId(Auth::user()->id)->update([
                             'firstName' => $request->firstName,
                             'lastName'  => $request->lastName,
-                            'password'  => Hash::make($request->password)
+                            'password'  => Hash::make($request->new_password)
                      ]);
 
                     if ($result) {
