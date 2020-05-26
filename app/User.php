@@ -42,7 +42,16 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getFullName() {
+    public function getLoggedUserFullName() {
         return \Auth::user()->firstName.' '.\Auth::user()->lastName;
+    }
+
+    /**
+     * This function return the fullname of user
+     *
+     * @return string
+     */
+    public function getFullName() {
+        return $this->firstName.' '.$this->lastName;
     }
 }

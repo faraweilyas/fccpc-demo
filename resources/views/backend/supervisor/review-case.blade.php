@@ -153,13 +153,13 @@
 							</div>
 							<div class="row mt-5">
 								<div class="col-md-12">
-									<label>Remove case handler</label>
+									<label>Previous case handler</label>
 									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
 								</div>
 							</div>
 							<div class="row mt-5">
 								<div class="col-md-12">
-									<label>Select case handler</label><br>
+									<label>New case handler</label><br>
 									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
 										<option value="">Select Case Handler</option>
 										@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
@@ -211,7 +211,7 @@
 							</div>
 							<div class="row mt-5">
 								<div class="col-md-12">
-									<label>Remove case handler</label>
+									<label>Previous case handler</label>
 									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
 								</div>
 							</div>

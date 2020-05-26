@@ -18,7 +18,7 @@
 					<a href="{{ route('dashboard.profile') }}">
 						<div class="d-flex flex-column text-right pr-3">
 							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ \App\Enhancers\AppHelper::$account_types[Auth::user()->accountType] }}</span>
-							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ Auth::user()->getFullName() }}</span>
+							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ Auth::user()->getLoggedUserFullName() }}</span>
 						</div>
 					</a>
 					<span class="symbol symbol-35">
