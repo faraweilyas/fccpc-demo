@@ -75,7 +75,7 @@
 	                                            <ul class="nav nav-hoverable flex-column">                            
 	                                                <li class="nav-item">
 	                                                    <a class="nav-link text-hover-primary" href="{{ route('handlers.view', ['id' => $handler->id]) }}">
-	                                                        <i class="nav-icon la la-arrow-alt-circle-down"></i>
+	                                                        <i class="nav-icon la la-info-circle"></i>
 	                                                        <span class="nav-text text-hover-primary">View</span>
 	                                                    </a>
 	                                                </li>   

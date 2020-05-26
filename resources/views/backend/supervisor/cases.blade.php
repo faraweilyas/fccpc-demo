@@ -111,7 +111,7 @@
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
+										<i class="la la-info-circle"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>
 							</tr>
@@ -152,7 +152,7 @@
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
+										<i class="la la-info-circle"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>
 							</tr>
@@ -189,7 +189,7 @@
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
+										<i class="la la-info-circle"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>
 							</tr>
@@ -225,7 +225,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<label>Subject</label>
-							<input type="text" class="form-control" value="{{ $case->subject }}" disabled>
+							<input type="text" class="form-control" value="{{ ucfirst($case->subject) }}" disabled>
 						</div>
 					</div>
 					<div class="row mt-5">
