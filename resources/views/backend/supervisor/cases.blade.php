@@ -91,7 +91,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+							@foreach(\App\Models\Cases::where('status', 2)->get() as $case)
 							<tr>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
@@ -123,8 +123,7 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Case Type</th>
-								<th>Reason</th>
+								<th>Transaction Type</th>
 								<th>Subject</th>
 								<th>Case Handler</th>
 								<th>Status</th>
@@ -133,66 +132,31 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach(\App\Models\Cases::where('status', 3)->get() as $case)
 							<tr>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>M&A Case Management System</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">On Hold</span>
+									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\User::find($case->case_handler_id)->getFullName() }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
-									<a href="{{ route('cases.review', ['id' => 23]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
+									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+								</td>
+								<td>
+									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
 										<i class="la la-arrow-alt-circle-down"></i>&nbsp;&nbsp;Review
 									</a>
 								</td>
 							</tr>
-						</tbody>
-					</table>
-					@elseif($type == 'requests')
-					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-						<thead>
-							<tr>
-								<th>Ref No</th>
-								<th>Reason</th>
-								<th>Subject</th>
-								<th>Case Handler</th>
-								<th>Request Type</th>
-								<th>Category</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-								</td>
-								<td>Lack of evidence</td>
-								<td>M&A Case Management System</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">Yemisi</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Extension</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
-								</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-										<i class="la la-check"></i>&nbsp;&nbsp;Approve
-									</a>
-								</td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
 					@elseif($type == 'approved')
@@ -200,65 +164,36 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Case Type</th>
+								<th>Transaction Type</th>
 								<th>Subject</th>
 								<th>Parties</th>
-								<th>Case Handler</th>
 								<th>Category</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach(\App\Models\Cases::where('status', 4)->get() as $case)
 							<tr>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>M&A Case Management System</td>
-								<td>Techbarn, FCCPC</td>
+								<td><span class="label label-lg font-weight-bold label-light-info label-inline">{{ ucwords($case->subject) }}</span></td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span>
+									{{ $case->parties }}
 								</td>
 								<td>
-									<a href="#" class="btn btn-sm btn-icon text-hover-primary" title="Edit details">
-										<i class="la la-check"></i>&nbsp;&nbsp;Publish
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+								</td>
+								<td>
+									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
+										<i class="la la-edit"></i>Assign
 									</a>
 								</td>
 							</tr>
-						</tbody>
-					</table>
-					@elseif($type == 'filter')
-					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-						<thead>
-							<tr>
-								<th title="Field #1">Ref No</th>
-								<th title="Field #2">Case Type</th>
-								<th title="Field #3">Subject</th>
-								<th title="Field #4">Parties</th>
-								<th title="Field #5">Case Rep</th>
-								<th title="Field #6">Category</th>
-								<th title="Field #7">Case Handler</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-primary label-inline">FCCPC/BC/M&A/00/20/VOLNo</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">Application</span>
-								</td>
-								<td>M&A Case Management System</td>
-								<td>Techbarn, FCCPC</td>
-								<td>T&A Legal</td>
-								<td><span class="label label-lg font-weight-bold label-light-info label-inline">FFM</span></td>
-								<td><span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">Morayo</span></td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
 					@endif
@@ -273,7 +208,7 @@
 </div>
 <!--end::Content-->
 <!-- Modal-->
-@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+@foreach(\App\Models\Cases::whereIn('status', array(1,2,3,4))->get() as $case)
 <div class="modal fade" id="assignCaseModal{{$case->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">

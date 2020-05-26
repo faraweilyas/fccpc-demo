@@ -51,7 +51,8 @@ class CasesController extends Controller
     public function assignCase(Request $request, $id)
     { 
         $result = \App\Models\Cases::whereId($id)->update([
-                'case_handler_id' => $request->case_handler
+                'case_handler_id' => $request->case_handler,
+                'status'          => 2
          ]);
 
         if ($result) {
