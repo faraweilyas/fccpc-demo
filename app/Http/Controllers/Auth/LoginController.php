@@ -63,7 +63,7 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'     => 'required|email',
-            'password'  =>  'required|min:8'
+            'password'  =>  'required'
         ]);
 
         if ($this->guard()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {

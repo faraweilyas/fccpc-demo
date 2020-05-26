@@ -41,6 +41,19 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+     /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Register";
+        $details = details($title, $description);
+        return view('auth.register', compact('details'));
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -52,7 +65,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'confirmed'],
         ]);
     }
 

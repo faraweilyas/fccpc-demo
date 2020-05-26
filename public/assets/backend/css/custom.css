@@ -3,6 +3,14 @@
     display: none;
 }
 
+.login.login-3.login-signin-on .login-signup {
+    display: block;
+}
+
+.login.login-3 .login-signin, .login.login-3 .login-signup, .login.login-3 .login-forgot {
+    display: block;
+}
+
 select.form-control:not([size]):not([multiple])
 {
     height: calc(2.25rem + 14px);
