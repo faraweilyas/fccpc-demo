@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 
 class CasesController extends Controller
@@ -40,5 +41,24 @@ class CasesController extends Controller
         $description      = "FCCPC Case Review Dashboard";
         $details          = details($title, $description);
         return view('backend.'.getAccountType().'.review-case', compact('details', 'id'));
+    }
+
+    /**
+     * Handles the case assign page route.
+     * @return void
+     */
+    public function assignCase(Request $request, $id)
+    { 
+        $result = \App\Models\Cases::whereId($id)->update([
+                'case_handler_id' => $request->case_handler
+         ]);
+
+        if ($result) {
+            Session::flash('success', "Transaction updated");
+            return redirect()->back();
+        } else {
+            Session::flash('error', "Transaction not updated.");
+            return redirect()->back();
+        }
     }
 }

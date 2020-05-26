@@ -69,7 +69,7 @@
 									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
-									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal">
+									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
 										<i class="la la-edit"></i>Assign
 									</a>
 								</td>
@@ -271,7 +271,8 @@
 </div>
 <!--end::Content-->
 <!-- Modal-->
-<div class="modal fade" id="assignCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+<div class="modal fade" id="assignCaseModal{{$case->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -280,29 +281,35 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <div class="modal-body">
-                <!--begin::Input-->
-				<div class="row">
-					<div class="col-md-12">
-						<label>Subject</label>
-						<input type="text" class="form-control" value="M&A Case Management System" disabled>
+            <form method="POST" action="{{ route('cases.assign', ['id' => $case->id]) }}">
+            	@csrf
+	            <div class="modal-body">
+	                <!--begin::Input-->
+					<div class="row">
+						<div class="col-md-12">
+							<label>Subject</label>
+							<input type="text" class="form-control" value="{{ $case->subject }}" disabled>
+						</div>
 					</div>
-				</div>
-				<div class="row mt-5">
-					<div class="col-md-12">
-						<label>Select case handler</label><br>
-						<select class="form-control select2" id="kt_select2_1" name="case_handlers" style="width: 100%;">
-							<option value="JD">Florence</option>
-							<option value="JJ">Yemisi</option>
-						</select>
+					<div class="row mt-5">
+						<div class="col-md-12">
+							<label>Select case handler</label><br>
+							<select class="form-control select2" id="kt_select2_1" name="case_handler" style="width: 100%;">
+								<option value="JD">Select Case Handler</option>
+								@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+									<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+								@endforeach
+							</select>
+						</div>
 					</div>
-				</div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Assign</button>
-            </div>
+	            </div>
+	            <div class="modal-footer">
+	                <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
+	                <button type="submit" class="btn btn-primary font-weight-bold">Assign</button>
+	            </div>
+	        </form>
         </div>
     </div>
 </div>
+@endforeach
 @endSection('content')
