@@ -15,7 +15,11 @@
 				<!--begin::Header-->
 				<div id="kt_header" class="header flex-column header-fixed">
 					<!--begin::Top-->
-					@include("layouts.backend.navigation-top")
+					@guest
+						@include("layouts.backend.guest-navigation-top")
+					@else
+						@include("layouts.backend.admin-navigation-top")
+					@endif
 					<!--end::Top-->
 					<!--begin::Bottom-->
 					@guest
