@@ -54,6 +54,21 @@
                 <li class="py-1 mg-1 main-list">
                     <a href="{{ route('home.faq') }}">FAQ</a>
                 </li>
+                <li class="py-1 mg-1 main-list">
+                    <a href="#">Account</a>
+                    <ul class="none pos-abs sublist">
+                        <li class="sub-list-item">
+                            <a href="{{ route('login') }}">
+                                <p>Login</p>
+                            </a>
+                        </li>
+                        <li class="sub-list-item">
+                            <a href="{{ route('register') }}">
+                                <p>Register</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 	        </ul>
 	    </div>
 	</nav>
