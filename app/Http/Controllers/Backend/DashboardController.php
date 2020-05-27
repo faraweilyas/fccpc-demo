@@ -25,7 +25,7 @@ class DashboardController extends Controller
 	 * @return void
 	 */
     public function index()
-    { 
+    {
     	$title            = APP_NAME;
         $description      = "FCCPC Dashboard";
     	$details          = details($title, $description);
@@ -37,7 +37,7 @@ class DashboardController extends Controller
      * @return void
      */
     public function createUser()
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard Create User";
         $details          = details($title, $description);
@@ -49,7 +49,7 @@ class DashboardController extends Controller
      * @return void
      */
     public function storeUser(Request $request)
-    { 
+    {
         $this->validate($request, [
             'firstName'       => ['required', 'string', 'max:255'],
             'lastName'        => ['required', 'string', 'max:255'],
@@ -61,7 +61,7 @@ class DashboardController extends Controller
             'firstName'     => trim(ucfirst($request->firstName)),
             'lastName'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
-            'password'      => Hash::make(trim(ucfirst($request->firstName)).'123'),
+            'password'      => Hash::make('fccpc'),
             'accountType'   => $request->accountType,
         ]);
 
@@ -79,7 +79,7 @@ class DashboardController extends Controller
      * @return void
      */
     public function viewUsers()
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard View Users";
         $details          = details($title, $description);
@@ -91,7 +91,7 @@ class DashboardController extends Controller
      * @return void
      */
     public function viewProfile()
-    { 
+    {
         $user             = Auth::user();
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard View Profile";
@@ -122,7 +122,7 @@ class DashboardController extends Controller
             'firstName'    => 'required',
             'lastName'     => 'required'
         ]);
-        
+
         if (isset($request->password) && $request->change_pass == 'yes') {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
