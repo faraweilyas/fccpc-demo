@@ -66,7 +66,7 @@
 									{{ $case->parties }}
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
@@ -107,7 +107,7 @@
 									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
@@ -148,7 +148,7 @@
 									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
@@ -185,7 +185,7 @@
 									{{ $case->parties }}
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \app\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
