@@ -44,21 +44,21 @@
 							<tr>
 								<th>Name</th>
 								<th>Email</th>
-								<th>Status</th>
 								<th>Account Type</th>
+								<th>Status</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
 						<tbody>
 							@foreach(\App\User::all() as $item)
 							<tr>
-								<td><span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $item->getFullName() }}</span></td>
-								<td><span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $item->email }}</span></td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$item->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$item->status] }}</span>
-								</td>
+								<td>{{ $item->getFullName() }}</td>
+								<td>{{ $item->email }}</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$account_typesHTML[$item->accountType] }} label-inline">{{ \App\Enhancers\AppHelper::$account_types[$item->accountType] }}</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$item->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$item->status] }}</span>
 								</td>
 								<td>
 									@if($item->status == 1)
