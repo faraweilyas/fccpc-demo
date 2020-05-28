@@ -132,6 +132,17 @@ section#orderWizard
     display: none;
 }
 
+.bg-disabled
+{
+    background: #ccc;
+}
+
+.text-disabled,
+.text-link-disabled a
+{
+    color: #ccc;
+}
+
 @media only screen and (max-width: 768px) {
     .subheader
     {

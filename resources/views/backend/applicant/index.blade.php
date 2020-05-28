@@ -65,9 +65,9 @@
                     <div class="col-md-4">
                         <!--begin::Tiles Widget 12-->
                         <a href="#">
-							<div class="card card-custom gutter-b" style="height: 150px">
+							<div class="card card-custom gutter-b bg-disabled" style="height: 150px">
 							    <div class="card-body">
-							       <span class="svg-icon svg-icon-primary svg-icon-2x">
+							       <span class="svg-icon svg-icon-white svg-icon-2x">
 								       	<!--begin::Svg Icon | path:/home/keenthemes/www/metronic/themes/metronic/theme/html/demo5/dist/../src/media/svg/icons/Code/Warning-1-circle.svg-->
 								       	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -79,7 +79,7 @@
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="svg-icon svg-icon-primary svg-icon-2x float-right">
+									<span class="svg-icon svg-icon-white svg-icon-2x float-right">
 										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Navigation\Angle-double-right.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -90,8 +90,8 @@
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-							        <div class="text-dark font-weight-bolder font-size-h2 mt-3">Enquiry</div>
-							        <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit Enquiry</small></span>
+							        <div class="text-white font-weight-bolder font-size-h2 mt-3">Enquiry</div>
+							        <span class="text-white text-hover-white font-weight-bold font-size-lg mt-1"><small>Submit Enquiry</small></span>
 							    </div>
 							</div>
 						</a>
@@ -100,9 +100,9 @@
                     <div class="col-md-4">
                         <!--begin::Tiles Widget 12-->
                         <a href="#">
-							<div class="card card-custom gutter-b" style="height: 150px">
+							<div class="card card-custom gutter-b bg-disabled" style="height: 150px">
 							    <div class="card-body">
-							        <span class="svg-icon svg-icon-primary svg-icon-2x">
+							        <span class="svg-icon svg-icon-white svg-icon-2x">
 							        	<!--begin::Svg Icon | path:/home/keenthemes/www/metronic/themes/metronic/theme/html/demo5/dist/../src/media/svg/icons/General/Duplicate.svg-->
 							        	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -113,7 +113,7 @@
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-									<span class="svg-icon svg-icon-primary svg-icon-2x float-right">
+									<span class="svg-icon svg-icon-white svg-icon-2x float-right">
 										<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Navigation\Angle-double-right.svg-->
 										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -124,8 +124,8 @@
 										</svg>
 										<!--end::Svg Icon-->
 									</span>
-							        <div class="text-dark font-weight-bolder font-size-h2 mt-3">Others</div>
-							        <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit Other</small></span>
+							        <div class="text-white font-weight-bolder font-size-h2 mt-3">Others</div>
+							        <span class="text-white text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit Other</small></span>
 							    </div>
 							</div>
 						</a>
