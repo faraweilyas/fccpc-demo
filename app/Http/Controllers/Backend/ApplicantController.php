@@ -24,9 +24,11 @@ class ApplicantController extends Controller
             return redirect()->route('applicant.submit');
         }
 
-        $case             = Cases::where('tracking_id', '=', $id)->first();
-        if ($case->status > 0):
-            return redirect()->route('application.success', ['id' => $id]);
+         $case             = Cases::where('tracking_id', '=', $id)->first();
+        if ($case):
+            if ($case->status > 0):
+                return redirect()->route('application.success', ['id' => $id]);
+            endif;
         endif;
 
     	$title            = APP_NAME;
