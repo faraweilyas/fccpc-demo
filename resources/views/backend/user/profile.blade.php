@@ -140,6 +140,6 @@
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
-@endSection
 <script src="{{ asset(BE_JS.'jquery.js') }}"></script> 
 <script type="text/javascript" src="{{ asset(BE_JS.'update-profile.js') }}"></script>
+@endSection

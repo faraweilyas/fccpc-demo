@@ -1,3 +1,4 @@
+<html lang="en">
 <!-- Header -->
 @include('layouts.backend.header')
 <!--begin::Body-->

@@ -234,6 +234,6 @@
         </div>
     </div>
 </div>
-@endSection
 <script src="{{ asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
+@endSection

@@ -540,6 +540,6 @@
 	<!--end::Container-->
 </div>
 <!--end::Content-->
-@endSection
 <script src="{{ asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ asset(BE_JS.'create-application.js') }}"></script>
+@endSection

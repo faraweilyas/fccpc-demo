@@ -167,7 +167,7 @@
 	        </div>
 	    </div>
     </main>
-@endSection
 <script src="{{ asset(FE_JS.'jquery.min.js') }}"></script>
 <script src="{{ asset(BE_JS.'functions.js')  }}"></script>
 <script src="{{ asset(BE_JS.'app.js') 	      }}"></script>
+@endSection
