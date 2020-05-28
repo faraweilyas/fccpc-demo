@@ -63,7 +63,7 @@ jQuery(document).ready(function ($) {
 				                    "Your details have been uploaded successfully.",
 				                    "success"
 				                ).then(function() {
-				                	window.location.replace('/applicant/dashboard/'+tracking_id);
+				                	window.location.replace('/success/'+tracking_id);
 				                });
 						    } else {
 						        toastr.error("Your details have been not been uploaded successfully.");

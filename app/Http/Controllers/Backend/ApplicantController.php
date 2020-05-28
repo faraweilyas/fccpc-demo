@@ -23,6 +23,13 @@ class ApplicantController extends Controller
             Session::flash('error', "Invalid Credential");
             return redirect()->route('applicant.submit');
         }
+
+        $case             = Cases::where('tracking_id', '=', $id)->first();
+
+        if ($case->status > 0):
+            return redirect()->route('application.success', ['id' => $id]);
+        endif;
+
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);

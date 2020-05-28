@@ -23,6 +23,19 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Handles the application success page route.
+     * @param int $id
+     * @return void
+     */
+    public function applicationSuccess($id)
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Select Application Dashboard";
+        $details          = details($title, $description);
+        return view('backend.applicant.application-success', compact('details', 'id'));
+    }
+
+    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id
