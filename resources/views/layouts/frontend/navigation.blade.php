@@ -41,6 +41,11 @@
                                 <p>Submit Application</p>
                             </a>
                         </li>
+                         <li class="sub-list-item">
+                            <a href="#">
+                                <p>Upload Supporting Documents</p>
+                            </a>
+                        </li>
                         <li class="sub-list-item">
                             <a href="#">
                                 <p>Make Enquiry &amp; Others</p>
