@@ -25,7 +25,6 @@ class ApplicantController extends Controller
         }
 
         $case             = Cases::where('tracking_id', '=', $id)->first();
-
         if ($case->status > 0):
             return redirect()->route('application.success', ['id' => $id]);
         endif;
