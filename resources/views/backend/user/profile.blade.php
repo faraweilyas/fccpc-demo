@@ -29,7 +29,7 @@
 	<div class="d-flex flex-column-fluid">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-md-8 mx-auto">
 					<div class="card card-custom gutter-b example example-compact">
 						<div class="card-header">
 							<h3 class="card-title">Update User Profile</h3>
@@ -38,23 +38,13 @@
 							@csrf
 							<div class="card-body">
 								<div class="row">
-									<div class="col-md-7">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label>First Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->firstName ?? '' }}">
-											<span class="form-text text-muted">Please enter first name.</span>
-											@error('firstName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
-				                            @enderror
+											<label>Account Type</label> <span class="text-danger">*</span>
+											<input type="text" class="form-control" value="{{ \App\Enhancers\AppHelper::$account_types[$user->accountType] ?? '' }}" disabled />
 										</div>
-										<div class="form-group">
-											<label>Last Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->lastName ?? '' }}">
-											<span class="form-text text-muted">Please enter last name.</span>
-											@error('lastName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
-				                            @enderror
-										</div>
+									</div>
+									<div class="col-md-6">
 										<div class="form-group">
 											<label>Email</label> <span class="text-danger">*</span>
 											<input type="email" class="form-control" placeholder="Enter email" name="email" value="{{ $user->email ?? '' }}">
@@ -63,52 +53,75 @@
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
 				                            @enderror
 										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
 										<div class="form-group">
-											<label>Account Type</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" value="{{ \App\Enhancers\AppHelper::$account_types[$user->accountType] ?? '' }}" disabled />
+											<label>First Name</label> <span class="text-danger">*</span>
+											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->firstName ?? '' }}">
+											<span class="form-text text-muted">Please enter first name.</span>
+											@error('firstName')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
 										</div>
-										<div class="col-md-8">
-											<div class="form-group">
-												<label>Change Password?</label>
-												<div class="radio-inline">
-													<label class="radio">
-													<input type="radio" name="change_pass" value="yes">Yes
-													<span></span></label>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Last Name</label> <span class="text-danger">*</span>
+											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->lastName ?? '' }}">
+											<span class="form-text text-muted">Please enter last name.</span>
+											@error('lastName')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label>Change Password?</label>
+											<div class="radio-inline">
+												<label class="radio">
+												<input type="radio" name="change_pass" value="yes">Yes
+												<span></span></label>
 
-													<label class="radio">
-													<input type="radio" name="change_pass" value="no" checked="checked">No
-													<span></span></label>
-												</div>
+												<label class="radio">
+												<input type="radio" name="change_pass" value="no" checked="checked">No
+												<span></span></label>
 											</div>
 										</div>
-										<div id="change-password" class="hide">
-											<div class="col-md-12">
-												<div class="form-group">
-													<label>Old Password <span class="text-danger">*</span></label>
-													<input type="password" class="hide" />
-													<input type="password" class="form-control" placeholder="password" name="password" />
-													<span class="form-text text-muted">Provide password.</span>
-													
-												</div>
+									</div>
+								</div>
+								<div id="change-password" class="hide">
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Old Password <span class="text-danger">*</span></label>
+												<input type="password" class="hide" />
+												<input type="password" class="form-control" placeholder="password" name="password" />
+												<span class="form-text text-muted">Provide password.</span>
 											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label>New Password <span class="text-danger">*</span></label>
-													<input type="password" class="form-control" placeholder="password" name="new_password"/>
-													<span class="form-text text-muted">Provide password.</span>
-													
-												</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>New Password <span class="text-danger">*</span></label>
+												<input type="password" class="form-control" placeholder="password" name="new_password"/>
+												<span class="form-text text-muted">Provide password.</span>
+												
 											</div>
-											<div class="col-md-12">
-												<div class="form-group">
-													<label>Retype New Password <span class="text-danger">*</span></label>
-													<input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation"/>
-													<span class="form-text text-muted">Provide password.</span>
-												</div>
-												@error('password')
-					                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
-					                            @enderror
+										</div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<label>Retype New Password <span class="text-danger">*</span></label>
+												<input type="password" class="form-control" placeholder="Confirm password" name="password_confirmation"/>
+												<span class="form-text text-muted">Provide password.</span>
 											</div>
+											@error('password')
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                            @enderror
 										</div>
 									</div>
 								</div>
