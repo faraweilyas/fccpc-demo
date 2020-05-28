@@ -259,7 +259,7 @@
 											@if ($case_info)
 											<div class="radio-inline">
 												<label class="radio">
-													<input type="radio" name="transaction_type" {{ ($case_info->transaction_type == "small" && $case_info) ? 'checked="checked"' : '' }} value="small">Small<span></span>
+													<input type="radio" name="transaction_type" {{ ($case_info->transaction_type == "small" && $case_info) ? 'checked="checked"' : '' }} {{ is_null($case_info->transaction_type) ? 'checked' : 'checked' }} value="small">Small<span></span>
 													&nbsp;&nbsp;<i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction below 1 Million Naira"></i>
 												</label>
 												<label class="radio">
@@ -270,7 +270,7 @@
 											@else
 											<div class="radio-inline">
 												<label class="radio">
-													<input type="radio" name="transaction_type" checked="checked" value="small">Small<span></span>
+													<input type="radio" name="transaction_type" value="small">Small<span></span>
 													&nbsp;&nbsp;<i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction below 1 Million Naira"></i>
 												</label>
 												<label class="radio">
