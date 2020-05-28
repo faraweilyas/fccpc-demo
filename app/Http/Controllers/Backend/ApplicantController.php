@@ -55,7 +55,6 @@ class ApplicantController extends Controller
         if ($result):
             Cases::create([
                 'tracking_id'           => $result->tracking_id,
-                'transaction_category'  => 'RG',
                 'status'                => 0,
             ]);
             // $data = array(
@@ -105,7 +104,11 @@ class ApplicantController extends Controller
         $case  = Cases::where('tracking_id', '=', $request->tracking_id)->first();
         if ($guest):
             if ($case->status <= 0):
-                return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $request->tracking_id]);
+                if (is_null($case->transaction_category)):
+                    return redirect()->route('application.index', ['id' => $request->tracking_id]);
+                else:
+                    return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $request->tracking_id]);
+                endif;
             else:
                 return redirect()->route('application.upload', ['id' => $request->tracking_id]);
             endif;
