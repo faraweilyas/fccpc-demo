@@ -57,6 +57,13 @@ class ApplicationController extends Controller
      */
     public function supportingDocuments($id)
     { 
+        $case             = Cases::where('tracking_id', '=', $id)->first();
+
+        if ($case->status <= 0):
+            Session::flash('error', "Please complete your application!");
+            return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $id]);
+        endif;
+
         $title            = APP_NAME;
         $description      = "FCCPC Upload Support Documents";
         $details          = details($title, $description);
