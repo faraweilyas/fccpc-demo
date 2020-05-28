@@ -23,7 +23,9 @@
 					<!--end::Top-->
 					<!--begin::Bottom-->
 					@guest
-						@include("layouts.backend.guest-navigation-bottom")
+						@if (!in_array(\Request::route()->getName(), ['application.upload']))
+							@include("layouts.backend.guest-navigation-bottom")
+						@endif
 					@else
 						@include("layouts.backend.admin-navigation-bottom")
 					@endif
