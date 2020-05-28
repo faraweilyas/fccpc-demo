@@ -20,6 +20,5 @@ class ApplicantMiddleWare
         else:
             return $next($request);
         endif;
-        
     }
 }

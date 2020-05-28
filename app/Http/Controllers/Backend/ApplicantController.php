@@ -44,7 +44,7 @@ class ApplicantController extends Controller
     public function authenticate(Request $request)
     {
         $this->validate($request, [
-            'email'       => 'required',
+            'email'       => ['required', 'email'],
         ]);
 
         $result = Guest::create([
@@ -53,6 +53,11 @@ class ApplicantController extends Controller
         ]);
 
         if ($result):
+            Cases::create([
+                'tracking_id'           => $result->tracking_id,
+                'transaction_category'  => 'RG',
+                'status'                => 0,
+            ]);
             // $data = array(
             //     'email'       => $result->email ,
             //     'tracking_id' => $result->tracking_id
