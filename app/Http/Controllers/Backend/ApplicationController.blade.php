@@ -23,19 +23,6 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Handles the upload supporting documents application page route.
-     * @param int $id
-     * @return void
-     */
-    public function supportingDocuments()
-    { 
-        $title            = APP_NAME;
-        $description      = "FCCPC Upload Support Documents";
-        $details          = details($title, $description);
-        return view('backend.applicant.uploading-documents', compact('details'));
-    }
-
-    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id
@@ -47,9 +34,9 @@ class ApplicationController extends Controller
         $case_info        = Cases::where('tracking_id', '=', $id)->first();
         
         if ($case_info):
-            if ($case_info->status == 1):
+            if ($case_info->status > 0):
                 Session::flash('error', "Application already submitted");
-                return redirect()->route('applicant.index', ['id' => $id]);
+                return redirect()->route('application.upload', ['id' => $request->tracking_id]);
             endif;
 
             $case_party_arr = explode(',', $case_info->parties);
@@ -61,5 +48,18 @@ class ApplicationController extends Controller
         $description      = "FCCPC ".$case." Application Dashboard";
         $details          = details($title, $description);
         return view('backend.applicant.create-application', compact('details', 'id', 'type', 'case', 'case_info', 'case_party_arr'));
+    }
+
+    /**
+     * Handles the upload supporting documents application page route.
+     * @param int $id
+     * @return void
+     */
+    public function supportingDocuments($id)
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Upload Support Documents";
+        $details          = details($title, $description);
+        return view('backend.applicant.uploading-documents', compact('details', 'id'));
     }
 }

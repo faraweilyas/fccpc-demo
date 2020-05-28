@@ -40,7 +40,6 @@ class ApplicantController extends Controller
             'email'       => 'required',
         ]);
 
-        $guest = Guest::where('email', '=', $request->email)->first();
         $result = Guest::create([
             'email'           => trim(ucwords($request->email)),
             'tracking_id'     => generateApplicantID(),
@@ -84,8 +83,24 @@ class ApplicantController extends Controller
      * Handles the authenticate track application page route.
      * @return void
      */
-    public function authenticateTrack()
+    public function authenticateTrack(Request $request)
     { 
-        var_dump(true); exit;
+        $this->validate($request, [
+            'tracking_id'       => 'required',
+        ]);
+
+        $guest = Guest::where('tracking_id', '=', $request->tracking_id)->first();
+        $case  = Cases::where('tracking_id', '=', $request->tracking_id)->first();
+        if ($guest):
+            if ($guest->status > 0):
+                return redirect()->route('application.create', ['type' => \App\Enhancers\AppHelper::$case_categories[$case->transaction_category], 'id' => $request->tracking_id]);
+            else:
+                return redirect()->route('application.upload', ['id' => $request->tracking_id]);
+            endif;
+            
+        else:
+            Session::flash('error', "Invalid Credentials!");
+            return redirect()->back();
+        endif;
     }
 }
