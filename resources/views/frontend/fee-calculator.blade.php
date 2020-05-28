@@ -36,6 +36,7 @@
 		        									<select class="form-control" id="typeOfTransaction" name="typeOfTransaction"> 
 		        										<option value="local" selected="">Regular</option> 
 		        										<option value="ffm">Foreign to Foreign</option> 
+		        										<option value="ffx">Foreign to Foreign Expedited</option> 
 		        									</select>
 		        								</div>
 		        							</div>
@@ -48,12 +49,6 @@
 		        						</div>
 		        						<div class="row form__spacing"> 
 						        			<div class="col-md-6"> 
-						        				<div class="form-group expeditedOption"> 
-						        					<div class="pure-checkbox"> 
-						        						<input id="expedited" name="expedited" type="checkbox" value="yes" required="" data-parsley-multiple="expedited"> 
-						        						<label for="expedited">Do you want to fast track?</label> 
-						        					</div> 
-						        				</div> 
 						        			</div> 
 						        			<div class="col-md-6"> 
 						        				<p> 

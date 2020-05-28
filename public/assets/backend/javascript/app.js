@@ -21,22 +21,23 @@ jQuery(document).ready(function($)
     });
     function validateEpeditedOption()
     {
-        let expeditedOption         = $('.expeditedOption'),
-            expedited               = $("#expedited"),
-            localGuideline          = $(".localGuideline"),
+        let localGuideline          = $(".localGuideline"),
             ffmGuideline            = $(".ffmGuideline"),
             typeOfTransaction       = document.querySelector('#typeOfTransaction'),
             typeOfTransactionValue  = typeOfTransaction.options[typeOfTransaction.selectedIndex].value;
         if (typeOfTransactionValue == "local")
         {
-            expedited.prop("checked", false);
-            expeditedOption.fadeOut('slow');
             localGuideline.fadeIn('fast');
             ffmGuideline.fadeOut('fast');
         }
         if (typeOfTransactionValue == "ffm")
         {
-            expeditedOption.fadeIn('slow');
+            localGuideline.fadeOut('fast');
+            ffmGuideline.fadeIn('fast');
+        }
+
+        if (typeOfTransactionValue == "ffx")
+        {
             localGuideline.fadeOut('fast');
             ffmGuideline.fadeIn('fast');
         }
@@ -96,13 +97,25 @@ jQuery(document).ready(function($)
             }
             fillingFee.html("&#8358;50,000.00");
             processingFee.html("&#8358;"+formatter.format(result - 50000));
-            if (expedited.prop("checked"))
+            expeditedFee.html("-");
+            totalAmount.html("&#8358;"+formatter.format(result));
+        }
+
+        if (typeOfTransactionValue == "ffx")
+        {
+            if (amount >= 500000000 && amount < 1000000000)
             {
+                result += 2000000;
+            }
+            if (amount >= 1000000000)
+            {
+                otherAmount = (0.1 / 100) * amount;
+                result += (otherAmount > 3000000) ? otherAmount : 3000000;
+            }
+            fillingFee.html("&#8358;50,000.00");
+            processingFee.html("&#8358;"+formatter.format(result - 50000));
                 expeditedFee.html("&#8358;"+formatter.format(5000000));
                 result += 5000000;
-            } else {
-                expeditedFee.html("-");
-            }
             totalAmount.html("&#8358;"+formatter.format(result));
         }
     }
