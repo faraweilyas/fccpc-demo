@@ -1,3 +1,4 @@
+<?php $guest = App\Models\Guest::where('tracking_id', $id)->first(); ?>
 <div class="header-top">
 	<!--begin::Container-->
 	<div class="container">
@@ -17,12 +18,12 @@
 				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
 					<a href="#">
 						<div class="d-flex flex-column text-right pr-3">
-							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ \App\Models\Guest::where('tracking_id', $id)->first()->email }}</span>
-							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">#{{ \App\Models\Guest::where('tracking_id', $id)->first()->tracking_id }}</span>
+							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ $guest->email }}</span>
+							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">{{ $guest->getTrackingID() }}</span>
 						</div>
 					</a>
 					<span class="symbol symbol-35">
-						<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ substr(\App\Models\Guest::where('tracking_id', $id)->first()->email, 0, 1) }}</span>
+                        <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">{{ $guest->getInitials() }}</span>
 					</span>
 				</div>
 			</div>

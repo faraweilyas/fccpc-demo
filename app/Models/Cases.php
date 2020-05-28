@@ -15,7 +15,6 @@ class Cases extends Model
 
     public function getCaseCategory($textStyle='strtolower') : string
     {
-        $caseCategory = AppHelper::$case_categories[$this->transaction_category];
-        return (is_callable($textStyle)) ? $textStyle($caseCategory) : $caseCategory;
+        return textTransformer(AppHelper::$case_categories[$this->transaction_category], $textStyle);
     }
 }

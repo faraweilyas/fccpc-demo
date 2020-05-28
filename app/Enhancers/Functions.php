@@ -336,3 +336,15 @@ function getAccountType() : string
 		return 'guest';
 	endif;
 }
+
+/**
+ * Text transformer
+ *
+ * @param string $value
+ * @param string $textStyle
+ * @return string
+ */
+function textTransformer(string $value=NULL, string $textStyle='strtoupper') : string
+{
+    return (is_callable($textStyle)) ? $textStyle($value) : $value;
+}

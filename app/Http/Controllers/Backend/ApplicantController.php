@@ -18,14 +18,13 @@ class ApplicantController extends Controller
 	 * @return void
 	 */
     public function index($id)
-    { 
+    {
         if (!Guest::where('tracking_id', '=', $id)->first()) {
             Session::flash('error', "Invalid Credential");
             return redirect()->route('applicant.submit');
         }
 
-         $case             = Cases::where('tracking_id', '=', $id)->first();
-        if ($case):
+        if ($case = Cases::where('tracking_id', '=', $id)->first()):
             if ($case->status > 0):
                 return redirect()->route('application.success', ['id' => $id]);
             endif;
@@ -34,7 +33,7 @@ class ApplicantController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC dashboard";
     	$details          = details($title, $description);
-    	return view('backend.applicant.index', compact('details','id'));
+    	return view('backend.applicant.index', compact('details', 'id'));
     }
 
     /**
@@ -43,21 +42,21 @@ class ApplicantController extends Controller
      * @return void
      */
     public function authenticate(Request $request)
-    { 
+    {
         $this->validate($request, [
             'email'       => 'required',
         ]);
 
         $result = Guest::create([
-            'email'           => trim(ucwords($request->email)),
+            'email'           => trim($request->email),
             'tracking_id'     => generateApplicantID(),
         ]);
 
-        $data = array(
-            'email'       => $result->email ,
-            'tracking_id' => $result->tracking_id
-        );
         if ($result):
+            // $data = array(
+            //     'email'       => $result->email ,
+            //     'tracking_id' => $result->tracking_id
+            // );
             // Mail::to($request->email)->send(new WelcomeApplicant($data));
             return redirect()->route('applicant.index', ['id' => $result->tracking_id]);
         endif;
@@ -68,7 +67,7 @@ class ApplicantController extends Controller
      * @return void
      */
     public function submitApplication()
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Submit Application";
         $details          = details($title, $description);
@@ -80,7 +79,7 @@ class ApplicantController extends Controller
      * @return void
      */
     public function trackApplication()
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Track Application";
         $details          = details($title, $description);
@@ -92,7 +91,7 @@ class ApplicantController extends Controller
      * @return void
      */
     public function authenticateTrack(Request $request)
-    { 
+    {
         $this->validate($request, [
             'tracking_id'       => 'required',
         ]);
@@ -105,7 +104,7 @@ class ApplicantController extends Controller
             else:
                 return redirect()->route('application.upload', ['id' => $request->tracking_id]);
             endif;
-            
+
         else:
             Session::flash('error', "Invalid Credentials!");
             return redirect()->back();
