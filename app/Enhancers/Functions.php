@@ -321,7 +321,7 @@ function generateRefNo($id) : string
 	$random_number_array1 = array_slice($random_number_array1 ,0,10);
 	$random_number_array2 = array_slice($random_number_array2 ,0,10);
 
-	return "FCCPC/".substr(strtoupper(str_shuffle($name)), -2)."/M&A/".substr($random_number_array1[0].$random_number_array1[1], -4)."/".substr($random_number_array1[2].$random_number_array1[3], -4)."/VOL".substr($id, -3);
+	return "FCCPC/".substr(strtoupper(str_shuffle($name)), -2)."/M&A/".substr($random_number_array1[0].$random_number_array1[1], -4)."/".substr($random_number_array1[2].$random_number_array1[3], -2).substr($id, -3);
 }
 
 /**
