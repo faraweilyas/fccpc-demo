@@ -54,14 +54,14 @@
 								@foreach(\App\User::where('accountType', 'CH')->get() as $handler)
 								<tr>
 									<td>
-										<span class="label label-lg font-weight-bold label-light-dark label-inline">{{ $handler->getFullName() }}</span>
+										{{ $handler->getFullName() }}
 									</td>
 									<td>
-										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">3</span>
+										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">0</span>
 									</td>
 									<td>
 										
-										<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">3</span>
+										<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">0</span>
 									</td>
 									<td>
 										<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>

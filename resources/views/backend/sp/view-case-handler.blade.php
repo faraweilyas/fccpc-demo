@@ -14,10 +14,7 @@
 						<a href="{{ route('dashboard') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
-						<a href="" class="text-muted">Assigned Cases</a>
-					</li>
-					<li class="breadcrumb-item">
-						<a href="" class="text-muted">John</a>
+						<a href="" class="text-muted">Case Handler</a>
 					</li>
 				</ul>
 				<!--end::Page Title-->
@@ -41,34 +38,34 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<strong>Name :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $handler->getFullName() }}</span>
+										<strong>Name :</strong>&nbsp;{{ $handler->getFullName() }}
 									</p>
 									<p>
-										<strong>Email :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $handler->email }}</span>
+										<strong>Email :</strong>&nbsp;{{ $handler->email }}
 									</p>
 									<p>
-										<strong>Approved Cases :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">10</span>
+										<strong>Approved Cases :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">0</span>
 									</p>
 									<p>
-										<strong>Cases working on : </strong>&nbsp;10
+										<strong>Cases working on : </strong>&nbsp;0
 									</p>
 									<p>
 										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} text-white label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>
 									</p>
 									<p>
-										<strong>Cases on hold : </strong>&nbsp;3
+										<strong>Cases on hold : </strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Expedited Cases : </strong>&nbsp;4
+										<strong>Expedited Cases : </strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Pending Approval: </strong>&nbsp;2
+										<strong>Pending Approval: </strong>&nbsp;0
 									</p>
 									<p>
 										<strong>Exceeded timeline: </strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Extensions: </strong>&nbsp;1
+										<strong>Extensions: </strong>&nbsp;0
 									</p>
 								</div>
 							</div>
