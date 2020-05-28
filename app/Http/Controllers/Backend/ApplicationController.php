@@ -15,7 +15,7 @@ class ApplicationController extends Controller
      * @return void
      */
     public function index($id)
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Select Application Dashboard";
         $details          = details($title, $description);
@@ -28,7 +28,7 @@ class ApplicationController extends Controller
      * @return void
      */
     public function applicationSuccess($id)
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Select Application Dashboard";
         $details          = details($title, $description);
@@ -42,10 +42,10 @@ class ApplicationController extends Controller
      * @return void
      */
     public function create($type, $id)
-    { 
+    {
         $case             = formatApplicationType($type);
         $case_info        = Cases::where('tracking_id', '=', $id)->first();
-        
+
         if ($case_info):
             if ($case_info->status > 0):
                 return redirect()->route('application.success', ['id' => $id]);
@@ -68,12 +68,11 @@ class ApplicationController extends Controller
      * @return void
      */
     public function supportingDocuments($id)
-    { 
-        $case             = Cases::where('tracking_id', '=', $id)->first();
-
+    {
+        $case = Cases::where('tracking_id', '=', $id)->first();
         if ($case->status <= 0):
             Session::flash('error', "Please complete your application!");
-            return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $id]);
+            return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $id]);
         endif;
 
         $title            = APP_NAME;
