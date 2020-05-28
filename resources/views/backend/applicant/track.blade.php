@@ -21,8 +21,9 @@
 					<!--begin::Login Sign in form-->
 					<div class="login-signin">
 						<div class="mb_30">
-							<h3>Track Application</h3>
-							<div class="text-muted font-weight-bold">Enter your id to track your application:</div>
+							<h3>Add Supporting Documents</h3>
+							<div class="text-muted font-weight-bold">Add supporting document or continue where you left off</div>
+							<div class="text-muted font-weight-bold">Please enter your tracking id to add supporting document:</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.authenticate_track') }}">
 							@csrf
