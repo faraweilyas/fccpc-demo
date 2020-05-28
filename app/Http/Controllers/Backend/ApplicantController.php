@@ -92,8 +92,8 @@ class ApplicantController extends Controller
         $guest = Guest::where('tracking_id', '=', $request->tracking_id)->first();
         $case  = Cases::where('tracking_id', '=', $request->tracking_id)->first();
         if ($guest):
-            if ($guest->status > 0):
-                return redirect()->route('application.create', ['type' => \App\Enhancers\AppHelper::$case_categories[$case->transaction_category], 'id' => $request->tracking_id]);
+            if ($case->status <= 0):
+                return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $request->tracking_id]);
             else:
                 return redirect()->route('application.upload', ['id' => $request->tracking_id]);
             endif;
