@@ -15,7 +15,7 @@
 			<!--begin::User-->
 			<div class="topbar-item">
 				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-					<a href="{{ route('dashboard.profile') }}">
+					<a href="#">
 						<div class="d-flex flex-column text-right pr-3">
 							<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">{{ \App\Models\Guest::where('tracking_id', $id)->first()->email }}</span>
 							<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">#{{ \App\Models\Guest::where('tracking_id', $id)->first()->tracking_id }}</span>
@@ -31,8 +31,7 @@
 			<div class="topbar-item">
 				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
 					<div class="d-flex flex-column text-right pr-3">
-						@if(Auth::check())
-						<a href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+						<a href="/" title="Logout" >
 							<span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
 								<span class="svg-icon svg-icon-xl svg-icon-white">
 									<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Navigation\Sign-out.svg-->
@@ -46,13 +45,9 @@
 									</svg>
 									<!--end::Svg Icon-->
 								</span>
-								<form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-								    {{ csrf_field() }}
-								</form>
 								Sign Out
 							</a>
 						</span>
-						@endif
 					</div>
 				</div>
 			</div>
