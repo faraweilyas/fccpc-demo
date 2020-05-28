@@ -44,7 +44,7 @@
 										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $case->ref_no ?? '' }}</span>
 									</p>
 									<p>
-										<strong>Subject :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->subject ?? '' }}</span>
+										<strong>Subject :</strong>&nbsp;{{ $case->subject ?? '' }}
 									</p>
 									<p>
 										<strong>Transaction Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->transaction_type ?? '' }}</span>
@@ -93,7 +93,7 @@
 											<form method="POST" action="{{ route('cases.update_status', ['status' => 4, 'id' => $case->id]) }}">
 							            	@csrf
 												<p>
-													<button type="submit" class="btn btn-primary mr-2">Approve recommendation</button>
+													<button type="button" class="btn btn-primary mr-2">Approve recommendation</button>
 												</p>
 											</form>
 										</div>
@@ -101,7 +101,7 @@
 											<form method="POST" action="{{ route('cases.update_status', ['status' => 5, 'id' => $case->id]) }}">
 							            	@csrf
 												<p>
-													<button type="submit" class="btn btn-danger mr-2">Reject recommendation</button>
+													<button type="button" class="btn btn-danger mr-2">Reject recommendation</button>
 												</p>
 											</form>
 										</div>
@@ -109,12 +109,12 @@
 									<div class="row">
 										<div class="col-md-6 text-center">
 											<p>
-												<button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#reassignCaseModal">Reassign recommendation</button>
+												<button type="button" class="btn btn-info mr-2" data-toggle="modal" data-target="#reassignCaseModal">Reassign Case</button>
 											</p>
 										</div>
 										<div class="col-md-6 text-center">
 											<p>
-												<button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#issueQueryModal">Query recommendation</button>
+												<button type="button" class="btn btn-warning mr-2" data-toggle="modal" data-target="#issueQueryModal-none">Query recommendation</button>
 											</p>
 										</div>
 									</div>
