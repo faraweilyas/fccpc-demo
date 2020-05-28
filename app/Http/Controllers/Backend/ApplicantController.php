@@ -67,8 +67,20 @@ class ApplicantController extends Controller
     public function submitApplication()
     { 
         $title            = APP_NAME;
-        $description      = "FCCPC Application";
+        $description      = "FCCPC Submit Application";
         $details          = details($title, $description);
         return view('backend.applicant.submit', compact('details'));
+    }
+
+    /**
+     * Handles the track application page route.
+     * @return void
+     */
+    public function trackApplication()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Track Application";
+        $details          = details($title, $description);
+        return view('backend.applicant.track', compact('details'));
     }
 }
