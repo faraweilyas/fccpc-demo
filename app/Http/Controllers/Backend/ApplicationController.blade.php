@@ -23,6 +23,19 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Handles the upload supporting documents application page route.
+     * @param int $id
+     * @return void
+     */
+    public function supportingDocuments()
+    { 
+        $title            = APP_NAME;
+        $description      = "FCCPC Upload Support Documents";
+        $details          = details($title, $description);
+        return view('backend.applicant.uploading-documents', compact('details'));
+    }
+
+    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id

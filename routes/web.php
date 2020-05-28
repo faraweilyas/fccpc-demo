@@ -32,6 +32,7 @@ Route::prefix('applicant')->group(function () {
 Route::prefix('application')->group(function () {
 	Route::get('select/{id}', 		 'Backend\ApplicationController@index')->name('application.index');
 	Route::get('{type}/{id}', 		 'Backend\ApplicationController@create')->name('application.create');
+	Route::get('upload/documents', 	 'Backend\ApplicationController@supportingDocuments')->name('application.upload');
 });
 
 //Supervisor Controller
