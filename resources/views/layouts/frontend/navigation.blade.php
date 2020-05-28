@@ -42,7 +42,7 @@
                             </a>
                         </li>
                          <li class="sub-list-item">
-                            <a href="#">
+                            <a href="{{ route('applicant.track') }}">
                                 <p>Upload Supporting Documents</p>
                             </a>
                         </li>

@@ -25,7 +25,7 @@ Route::prefix('applicant')->group(function () {
 	Route::post('authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 	Route::get('track', 			 'Backend\ApplicantController@trackApplication')->name('applicant.track');
-	Route::post('authenticate', 	 'Backend\ApplicantController@authenticateTrack')->name('applicant.authenticate_track');
+	Route::post('track', 	 		 'Backend\ApplicantController@authenticateTrack')->name('applicant.authenticate_track');
 });
 
 //Application Controller

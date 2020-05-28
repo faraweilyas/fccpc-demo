@@ -83,4 +83,13 @@ class ApplicantController extends Controller
         $details          = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }
+
+    /**
+     * Handles the authenticate track application page route.
+     * @return void
+     */
+    public function authenticateTrack()
+    { 
+        var_dump(true); exit;
+    }
 }
