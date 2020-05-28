@@ -45,8 +45,8 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Transaction Type</th>
 								<th>Subject</th>
+								<th>Transaction Type</th>
 								<th>Parties</th>
 								<th>Category</th>
 								<th>Actions</th>
@@ -58,10 +58,10 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td><span class="label label-lg font-weight-bold label-light-info label-inline">{{ ucwords($case->subject) }}</span></td>
 								<td>
 									{{ $case->parties }}
 								</td>
@@ -82,11 +82,11 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Transaction Type</th>
 								<th>Subject</th>
+								<th>Transaction Type</th>
 								<th>Case Handler</th>
-								<th>Status</th>
 								<th>Category</th>
+								<th>Status</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -96,18 +96,18 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>{{ ucwords($case->subject) }}</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\User::find($case->case_handler_id)->getFullName() }}</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
+									{{ \App\User::find($case->case_handler_id)->getFullName() }}
 								</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
@@ -123,11 +123,11 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Transaction Type</th>
 								<th>Subject</th>
+								<th>Transaction Type</th>
 								<th>Case Handler</th>
-								<th>Status</th>
 								<th>Category</th>
+								<th>Status</th>
 								<th>Actions</th>
 							</tr>
 						</thead>
@@ -137,18 +137,18 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td>{{ ucwords($case->subject) }}</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\User::find($case->case_handler_id)->getFullName() }}</span>
-								</td>
-								<td>
-									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
+									{{ \App\User::find($case->case_handler_id)->getFullName() }}
 								</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status]}} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status]}}</span>
 								</td>
 								<td>
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
@@ -164,8 +164,8 @@
 						<thead>
 							<tr>
 								<th>Ref No</th>
-								<th>Transaction Type</th>
 								<th>Subject</th>
+								<th>Transaction Type</th>
 								<th>Parties</th>
 								<th>Category</th>
 								<th>Actions</th>
@@ -177,10 +177,10 @@
 								<td>
 									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
 								</td>
+								<td>{{ ucwords($case->subject) }}</td>
 								<td>
 									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
 								</td>
-								<td><span class="label label-lg font-weight-bold label-light-info label-inline">{{ ucwords($case->subject) }}</span></td>
 								<td>
 									{{ $case->parties }}
 								</td>
@@ -191,6 +191,37 @@
 									<a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
 										<i class="la la-info-circle"></i>&nbsp;&nbsp;Review
 									</a>
+								</td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					@elseif($type == 'archived')
+					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+						<thead>
+							<tr>
+								<th>Ref No</th>
+								<th>Subject</th>
+								<th>Transaction Type</th>
+								<th>Parties</th>
+								<th>Category</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach(\App\Models\Cases::where('status', 5)->get() as $case)
+							<tr>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
+								</td>
+								<td>{{ ucwords($case->subject) }}</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
+								</td>
+								<td>
+									{{ $case->parties }}
+								</td>
+								<td>
+									<span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 								</td>
 							</tr>
 							@endforeach

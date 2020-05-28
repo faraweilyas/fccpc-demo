@@ -47,8 +47,8 @@ class AppHelper
 	// Valid Case Categories
 	static $account_types = [
 		"AD"  => "Admin",
-		"SP"  => "Supervisor",
 		"IT"  => "It",
+		"SP"  => "Supervisor",
 		"CH"  => "Case Handler",
 	];
 
