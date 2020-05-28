@@ -36,7 +36,7 @@ class ApplicationController extends Controller
         if ($case_info):
             if ($case_info->status > 0):
                 Session::flash('error', "Application already submitted");
-                return redirect()->route('application.upload', ['id' => $request->tracking_id]);
+                return redirect()->route('application.upload', ['id' => $id]);
             endif;
 
             $case_party_arr = explode(',', $case_info->parties);
