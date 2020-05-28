@@ -22,7 +22,7 @@ Route::get('success/{id}', 	 	'Backend\ApplicationController@applicationSuccess'
 
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
-	Route::get('dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index');
+	Route::get('dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index')->middleware('Applicant');
 	Route::post('authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 	Route::get('track', 			 'Backend\ApplicantController@trackApplication')->name('applicant.track');
@@ -33,7 +33,7 @@ Route::prefix('applicant')->group(function () {
 Route::prefix('application')->group(function () {
 	Route::get('select/{id}', 		         'Backend\ApplicationController@index')->name('application.index');
 	Route::get('{type}/{id}', 		 		 'Backend\ApplicationController@create')->name('application.create');
-	Route::get('upload/documents/{id}', 	 'Backend\ApplicationController@supportingDocuments')->name('application.upload');
+	Route::get('upload/documents/{id}', 	 'Backend\ApplicationController@supportingDocuments')->name('application.upload')->middleware('Applicant');
 });
 
 //Supervisor Controller
