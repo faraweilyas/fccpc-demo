@@ -45,7 +45,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">All Cases</a>
@@ -70,7 +70,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Unassigned Cases</a>
@@ -95,7 +95,7 @@
 								</svg><!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Assigned Cases</a>
@@ -120,7 +120,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Expediated Cases</a>
@@ -147,7 +147,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-dark font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-dark font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-dark font-weight-bold font-size-lg mt-1">Pending Approval</a>
@@ -172,7 +172,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Exceeded Timeline</a>
@@ -196,7 +196,7 @@
 								</svg>
 								<!--end::Svg Icon-->
 							</span>
-							<span class="float-right"><div class="text-dark font-weight-bolder font-size-h2 mt-3">607</div></span>
+							<span class="float-right"><div class="text-dark font-weight-bolder font-size-h2 mt-3">0</div></span>
 							<div class="mt-14">
 								<a href="#" class="text-muted font-weight-bold font-size-lg mt-1">Extension Requests</a>
 							</div>
@@ -223,7 +223,7 @@
 								<!--end::Svg Icon-->
 							</span>
 							<span class="float-right">
-								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">607</div>
+								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">0</div>
 							</span>
 							<div class="mt-14">
 								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Deficiencies</a>
