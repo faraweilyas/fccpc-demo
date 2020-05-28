@@ -21,14 +21,13 @@
 					<!--begin::Login Sign in form-->
 					<div class="login-signin">
 						<div class="mb_30">
-							<h3>Add Supporting Documents</h3>
+							<h3>Add Supporting Document</h3>
 							<div class="text-muted font-weight-bold">Add supporting document or continue where you left off</div>
-							<div class="text-muted font-weight-bold">Please enter your tracking id to add supporting document:</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.authenticate_track') }}">
 							@csrf
 							<div class="form-group mb-5">
-								<input type="text" placeholder="Tracking Id:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
+								<input type="text" placeholder="Please provide tracking id:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
 								@error('tracking_id')
 									<span class="text-danger mt-4 float-left">*{{ $message }}</span>
 								@enderror
