@@ -18,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 				'Frontend\HomeController@index')->name('home.index');
 Route::get('/fee-calculator', 	'Frontend\HomeController@feeCalcutor')->name('home.calculator');
 Route::get('/faq', 				'Frontend\HomeController@faq')->name('home.faq');
-Route::get('success/{id}', 	 	'Backend\ApplicationController@applicationSuccess')->name('application.success')->middleware('Applicant');
+Route::get('success/{id}', 	 	'Backend\ApplicationController@applicationSuccess')->name('application.success')->middleware('ValidateTrackingId');
 
 //Applicant Controller
 Route::prefix('applicant')->group(function () {
-	Route::get('dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index')->middleware('Applicant');
+	Route::get('dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index')->middleware('ValidateTrackingId');
 	Route::post('authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 	Route::get('track', 			 'Backend\ApplicantController@trackApplication')->name('applicant.track');
@@ -31,9 +31,9 @@ Route::prefix('applicant')->group(function () {
 
 //Application Controller
 Route::prefix('application')->group(function () {
-	Route::get('select/{id}', 		         'Backend\ApplicationController@index')->name('application.index')->middleware('Applicant');
-	Route::get('{type}/{id}', 		 		 'Backend\ApplicationController@create')->name('application.create')->middleware('Applicant');
-	Route::get('upload/documents/{id}', 	 'Backend\ApplicationController@supportingDocuments')->name('application.upload')->middleware('Applicant');
+	Route::get('select/{id}', 		         'Backend\ApplicationController@index')->name('application.index')->middleware('ValidateTrackingId');
+	Route::get('{type}/{id}', 		 		 'Backend\ApplicationController@create')->name('application.create')->middleware('ValidateTrackingId');
+	Route::get('upload/documents/{id}', 	 'Backend\ApplicationController@supportingDocuments')->name('application.upload')->middleware('ValidateTrackingId');
 });
 
 //Supervisor Controller

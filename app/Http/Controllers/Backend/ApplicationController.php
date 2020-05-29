@@ -70,7 +70,7 @@ class ApplicationController extends Controller
     public function supportingDocuments($id)
     {
         $case = Cases::where('tracking_id', '=', $id)->first();
-        if ($case->status <= 0):
+        if ($case->status <= 0 && !is_null($case->transaction_category)):
             Session::flash('error', "Please complete your application!");
             return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $id]);
         endif;
