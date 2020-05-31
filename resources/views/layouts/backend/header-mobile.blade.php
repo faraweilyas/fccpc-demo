@@ -9,7 +9,7 @@
 		<button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
 			<span></span>
 		</button>
-		<a href="{{ route('dashboard.profile') }}">
+		<a href="@Auth {{ route('dashboard.profile') }} @else # @endAuth">
 			<button class="btn p-0 ml-2">
 				<span class="svg-icon svg-icon-xl svg-icon-white">
 					<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->

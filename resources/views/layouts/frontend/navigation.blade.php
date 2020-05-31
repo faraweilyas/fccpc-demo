@@ -88,10 +88,16 @@
 	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="#">Add Supporting Documents</a>
+	                <a class="smalltext" href="{{ route('applicant.track') }}">Add Supporting Documents</a>
+	            </li>
+	            <li>
+	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry &amp; Others</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>
+	            </li>
+	            <li>
+	                <a class="smalltext" href="{{ route('login') }}">Login</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.faq') }}">FAQ</a>
