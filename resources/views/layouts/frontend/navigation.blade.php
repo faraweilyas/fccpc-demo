@@ -41,11 +41,6 @@
                                 <p>Submit Application</p>
                             </a>
                         </li>
-                         <li class="sub-list-item">
-                            <a href="{{ route('applicant.track') }}">
-                                <p>Add Supporting Document</p>
-                            </a>
-                        </li>
                         <li class="sub-list-item">
                             <a href="#">
                                 <p>Make Enquiry &amp; Others</p>
@@ -86,9 +81,6 @@
 	            </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
-	            </li>
-	            <li>
-	                <a class="smalltext" href="{{ route('applicant.track') }}">Add Supporting Documents</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry &amp; Others</a>
