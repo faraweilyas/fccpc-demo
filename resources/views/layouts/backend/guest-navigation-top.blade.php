@@ -5,7 +5,7 @@
 		<!--begin::Left-->
 		<div class="d-none d-lg-flex align-items-center mr-3">
 			<!--begin::Logo-->
-			<a href="/" class="mr-20">
+			<a href="{{ route('application.index', ['id' => $id]) }}" class="mr-20">
 				<h3 class="text-white text-bold font-weight-bolder text-dark">M&amp;A - FCCPC</h3>
 			</a>
 			<!--end::Logo-->
