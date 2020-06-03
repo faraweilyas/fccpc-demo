@@ -34,6 +34,10 @@
 							</div>
 							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
 						</form>
+						<div class="mt-10">
+	                        <span class="opacity-70 mr-4">Don't already have an existing application?</span>
+	                        <a href="{{ route('applicant.submit') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Submit Application!</a>
+	                    </div>
 					</div>
 					<!--end::Login Sign in form-->
 				</div>
