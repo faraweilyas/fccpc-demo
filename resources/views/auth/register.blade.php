@@ -17,43 +17,46 @@
                 <div class="login-signup">
                     <div class="mb-20">
                         <h3>Sign Up</h3>
-                        <div class="text-dark font-weight-bold">Enter your details to create your account</div>
+                        <div class="text-dark font-weight-bold">Create a new admin account</div>
                     </div>
                     <form class="form" method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="First Name" name="firstName" />
                                     @error('firstName')
-                                        <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                     @enderror
+                                    <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="First Name" name="firstName" />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group mb-5">
-                                    <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Last Name" name="lastName" />
                                     @error('lastName')
-                                        <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                     @enderror
+                                    <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Last Name" name="lastName" />
                                 </div>
                             </div>
                         </div>
                         <div class="form-group mb-5">
-                            <input class="form-control h-auto form-control-solid py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" />
                             @error('email')
-                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+                                <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                             @enderror
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="email" placeholder="Email" name="email" autocomplete="off" />
                         </div>
                         <div class="form-group mb-5">
+                            @error('password')
+                                <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                            @enderror
                             <input class="hide" type="password" />
                             <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
                         </div>
                         <div class="form-group mb-5">
-                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Confirm Password" name="password_confirmation" />
-                            @error('password')
-                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+                            @error('password_confirmation')
+                                <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                             @enderror
+                            <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Confirm Password" name="password_confirmation" />
                         </div>
                         <div class="form-group d-flex flex-wrap flex-center mt-10">
                             <input type="hidden" name="accountType" value="AD" />
@@ -61,8 +64,10 @@
                         </div>
                     </form>
                     <div class="mt-10">
-                        <span class="opacity-70 mr-4">Already have an account yet?</span>
-                        <a href="{{ route('login') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Sign In!</a>
+                        <p>
+                            <span class="opacity-70">Already have an account yet?</span>
+                            <a href="{{ route('login') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold"> Sign In!</a>
+                        </p>
                     </div>
                 </div>
                 <!--end::Login Sign up form-->
