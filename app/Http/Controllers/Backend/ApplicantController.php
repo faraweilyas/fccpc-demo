@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Cases;
+use App\Models\Guest;
 use Illuminate\Http\Request;
+use App\Mail\WelcomeApplicant;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\WelcomeApplicant;
 use Illuminate\Support\Facades\Session;
-use App\Models\Guest;
-use App\Models\Cases;
 
 class ApplicantController extends Controller
 {
@@ -38,30 +38,30 @@ class ApplicantController extends Controller
 
     /**
      * Handles the authentication page route.
+     *
      * @param Request $request
      * @return void
      */
     public function authenticate(Request $request)
     {
         $this->validate($request, [
-            'email'       => ['required', 'email'],
+            'email' => ['required', 'email'],
         ]);
 
-        $result = Guest::create([
-            'email'           => trim($request->email),
-            'tracking_id'     => generateApplicantID(),
+        $result             = Guest::create([
+            'email'         => trim($request->email),
+            'tracking_id'   => generateApplicantID(),
         ]);
 
         if ($result):
             Cases::create([
-                'tracking_id'           => $result->tracking_id,
-                'status'                => 0,
+                'tracking_id'   => $result->tracking_id,
+                'status'        => 0,
             ]);
-            // $data = array(
-            //     'email'       => $result->email ,
-            //     'tracking_id' => $result->tracking_id
-            // );
-            // Mail::to($request->email)->send(new WelcomeApplicant($data));
+            Mail::to($request->email)->send(new WelcomeApplicant([
+                'email'         => $result->email ,
+                'tracking_id'   => $result->tracking_id,
+            ]));
             return redirect()->route('application.index', ['id' => $result->tracking_id]);
         endif;
     }
@@ -112,7 +112,6 @@ class ApplicantController extends Controller
             else:
                 return redirect()->route('application.upload', ['id' => $request->tracking_id]);
             endif;
-
         else:
             Session::flash('error', "Invalid Credentials!");
             return redirect()->back();
