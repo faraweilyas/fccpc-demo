@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>{{ APP_NAME }}</title>
-  <style type="text/css">
-    .email-text a
-    {
-      color: #ffffff;
-      text-decoration: none;
-    }
-  </style>
+    <title>{!! config("app.name") !!}</title>
+    <style type="text/css">
+        .email-text a
+        {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
   <table class="m_-2377898351467431040table-wrapper" style="width:700px;margin:auto;margin-top:50px;border-radius:7px" cellspacing="0" cellpadding="0">
@@ -21,16 +21,15 @@
               <p style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;color:#ffffff;opacity:0.8;padding-left:40px;padding-right:40px;margin-bottom:0;padding-bottom:0">Glad to have you on board.</p>
             </div>
 
-            <p style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;padding-left:40px;padding-right:40px">Your tracking id is #{{ $data['tracking_id'] }}</p>
+            <p style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;padding-left:40px;padding-right:40px">Your tracking id is <b>#{{ $data['tracking_id'] }}</b></p>
             </p>
-
             <p style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;padding-left:40px;padding-right:40px;margin-bottom:0;padding-bottom:0">Best wishes,<br>
-            {{ SHORT_APP_NAME }}</p>
+            {!! config("app.name") !!}</p>
         </td>
       </tr>
       <tr>
         <td class="m_-2377898351467431040header" style="border-top-left-radius:6px;border-top-right-radius:6px;height:80px;background:#fff;background-size:300px;background-position:100%;background-repeat:no-repeat;line-height:55px;padding-top:0;text-align:center;color:#ffffff;display:block!important;margin:-130px auto!important;clear:both!important">
-            <a href="{{ env('APP_URL') }}"><img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" style="max-width:100%;border-radius:50%;padding:5px;width: 350px;height: auto;" class="CToWUd"></a>
+            <a href="{{ config("app.url") }}"><img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" style="max-width:100%;border-radius:50%;padding:5px;width: 350px;height: auto;" class="CToWUd"></a>
         </td>
       </tr>
     </tbody>
