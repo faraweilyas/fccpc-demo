@@ -1,36 +1,50 @@
 <?php
+
 /**
-* Get Host Url.
-* @param {}
-* @return string
-*/
-function getHostUrl ()
+ * Prevents file caching for javascript or css files by adding last modified timestamp.
+ *
+ * @param string $file
+ * @return string
+ */
+function preventFileCaching(string $file='') : string
 {
-	if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
-		$link = "https";
-	else
-		$link = "http";
+    $file       = "/".ltrim($file, "/");
+    $filePath   = public_path().$file;
+    if (!file_exists($filePath))
+        return $file;
 
-	$link .= "://";
-	$link .= $_SERVER['HTTP_HOST'];
-
-	return $link;
+    $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
+    if (in_array($fileExtension, ['css', 'js'])):
+        $lastTimeModified   = filemtime($filePath);
+        $file               .= "?mod={$lastTimeModified}";
+    endif;
+    return $file;
 }
 
 /**
-* Configure Page Headers
-* @param string title
-* @param string description
-* @return array
-*/
-function details($title, $description)
+ * Overrides default asset function to prevent file caching.
+ *
+ * @param string $asset
+ * @return string
+ */
+function pc_asset(string $asset=NULL) : string
 {
-	$details = (object)[
-		'title' 	  => $title,
-		'description' => $description
-	];
+    return asset(preventFileCaching($asset));
+}
 
-	return $details;
+/**
+ * Configure Page Headers
+ *
+ * @param string title
+ * @param string description
+ * @return \stdClass
+ */
+function details($title, $description) : \stdClass
+{
+    return (object) [
+        'title'         => $title,
+        'description'   => $description,
+    ];
 }
 
 /**
@@ -49,6 +63,7 @@ function formatNumber($number, bool $round=FALSE) : string
 
 /**
  * Formats a given digit
+ *
  * @param mixed $digit
  * @param bool $round
  * @param mixed $prefix
@@ -64,6 +79,7 @@ function formatDigit($digit, bool $round=FALSE, $prefix="&#8358;") : string
 
 /**
  * Removes some part of a given string starting from the end
+ *
  * @param string $value
  * @param int $length
  * @return string
@@ -76,6 +92,7 @@ function stripper(string $value, int $length=1) : string
 
 /**
  * Shortens parsed content and appends "..." at the end of the content indicating it was shortened.
+ *
  * @param string $content
  * @param int $fixedLength
  * @return string
@@ -89,6 +106,7 @@ function shortenContent(string $content, int $fixedLength) : string
 
 /**
  * Remove invalid Characters from given value
+ *
  * @param array $invalidChars
  * @param mixed $value
  * @return mixed
@@ -102,12 +120,13 @@ function removeInvalidChar(array $invalidChars, $value)
 }
 
 /**
-* Reformat date
-* @param string $dateTime
-* @param string $format
-* @return string
-*/
-function reFormatDate (string $date=NULL, string $format="d-m-Y") : string
+ * Reformat date
+ *
+ * @param string $dateTime
+ * @param string $format
+ * @return string
+ */
+function reFormatDate(string $date=NULL, string $format="d-m-Y") : string
 {
 	$date = trim($date);
 	if (empty($date)) return "";
@@ -118,9 +137,10 @@ function reFormatDate (string $date=NULL, string $format="d-m-Y") : string
 }
 
 /**
-* Get random color
-* @return string
-*/
+ * Get random color
+ *
+ * @return string
+ */
 function getRandomColor() : string
 {
 	$colors = ['#0071c5', '#40E0D0', '#008000', '#FFD700', '#FF8C00', '#FF0000'];
@@ -128,12 +148,13 @@ function getRandomColor() : string
 }
 
 /**
-* Datetiime converter
-* @param string $dateTime
-* @param string $format
-* @return string
-*/
-function datetimeToText (string $datetime, string $format="fulldate") : string
+ * Datetiime converter
+ *
+ * @param string $dateTime
+ * @param string $format
+ * @return string
+ */
+function datetimeToText(string $datetime, string $format="fulldate") : string
 {
 	$unixdatetime   = strtotime($datetime);
 	$dateFormat     = "";
@@ -211,9 +232,10 @@ function author() : string
 }
 
 /**
-* Getter for agency link.
-* @return string
-*/
+ * Getter for agency link.
+ *
+ * @return string
+ */
 function agencyLink() : string
 {
 	return defined('AGENCY_LINK') ? AGENCY_LINK : "Agency link is not defined";
@@ -221,6 +243,7 @@ function agencyLink() : string
 
 /**
  * Generate serial number with length 13
+ *
  * @param callable $callable
  * @param string $preText
  * @param string $postText
@@ -233,6 +256,7 @@ function generate(callable $callable, string $preText=NULL, string $postText=NUL
 
 /**
  * Format application type
+ *
  * @param string $type
  * @return string
  */
@@ -259,6 +283,7 @@ function formatApplicationType(string $type) : string
 
 /**
  * Format case type
+ *
  * @param string $type
  * @return string
  */
@@ -282,6 +307,7 @@ function formatCaseType(string $type) : string
 
 /**
  * Generate serial number
+ *
  * @return string
  */
 function generateSerialNumber() : string
@@ -294,6 +320,7 @@ function generateSerialNumber() : string
 
 /**
  * Generate applicant ID
+ *
  * @return string
  */
 function generateApplicantID() : string
@@ -307,6 +334,7 @@ function generateApplicantID() : string
 
 /**
  * Generate Reference Number
+ *
  * @param string $id
  * @return string
  */
@@ -326,6 +354,7 @@ function generateRefNo($id) : string
 
 /**
  * Get User Account Type
+ *
  * @return string
  */
 function getAccountType() : string
