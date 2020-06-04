@@ -50,7 +50,7 @@
 											<input type="email" class="form-control" placeholder="Enter email" name="email" value="{{ $user->email ?? '' }}">
 											<span class="form-text text-muted">Please enter email.</span>
 											@error('email')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -62,7 +62,7 @@
 											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->firstName ?? '' }}">
 											<span class="form-text text-muted">Please enter first name.</span>
 											@error('firstName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -72,7 +72,7 @@
 											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->lastName ?? '' }}">
 											<span class="form-text text-muted">Please enter last name.</span>
 											@error('lastName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -110,7 +110,7 @@
 												<label>New Password <span class="text-danger">*</span></label>
 												<input type="password" class="form-control" placeholder="password" name="new_password"/>
 												<span class="form-text text-muted">Provide password.</span>
-												
+
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -120,7 +120,7 @@
 												<span class="form-text text-muted">Provide password.</span>
 											</div>
 											@error('password')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -140,6 +140,6 @@
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
-<script src="{{ asset(BE_JS.'jquery.js') }}"></script> 
-<script type="text/javascript" src="{{ asset(BE_JS.'update-profile.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_JS.'update-profile.js') }}"></script>
 @endSection
