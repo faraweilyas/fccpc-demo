@@ -2,9 +2,11 @@
 
 namespace App;
 
+use App\Enhancers\AppHelper;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -38,20 +40,63 @@ class User extends Authenticatable
     ];
 
     /**
-     * This function return the fullname of logged in user
+     * Get users full name
      *
      * @return string
      */
-    public function getLoggedUserFullName() {
-        return \Auth::user()->firstName.' '.\Auth::user()->lastName;
+    public function getFullName() : string
+    {
+        return trim("{$this->firstName} {$this->lastName}");
     }
 
     /**
-     * This function return the fullname of user
+     * Get method for initials.
+     * @return string
+     */
+    public function getInitials() : string
+    {
+        $names      = explode(" ", $this->getFullName());
+        $initials   = (count($names) > 1) ? $names[0][0]."".$names[1][0] : $names[0][0]."".$names[0][1];
+        return strtoupper($initials);
+    }
+
+    /**
+     * Get account type
      *
      * @return string
      */
-    public function getFullName() {
-        return $this->firstName.' '.$this->lastName;
+    public function getAccountType() : string
+    {
+        return AppHelper::$account_types[$this->accountType];
+    }
+
+    /**
+     * Get account type html
+     *
+     * @return string
+     */
+    public function getAccountTypeHtml() : string
+    {
+        return AppHelper::$account_typesHTML[$this->accountType];
+    }
+
+    /**
+     * Get status
+     *
+     * @return string
+     */
+    public function getStatus() : string
+    {
+        return AppHelper::$status[$this->status];
+    }
+
+    /**
+     * Get status html
+     *
+     * @return string
+     */
+    public function getStatusHtml() : string
+    {
+        return AppHelper::$statusHTML[$this->status];
     }
 }

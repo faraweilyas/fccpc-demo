@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Cases;
 use Illuminate\Http\Request;
+use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\ApplicationRequest;
-use \App\Models\Cases;
 
 class ApplicationAuthController extends Controller
 {
@@ -26,7 +26,7 @@ class ApplicationAuthController extends Controller
             'responseType'  => $responseType,
             'response'      => (count($response) > 1) ? $response : $response[0],
         ]);
-        
+
         http_response_code($statusCode);
         exit;
     }
@@ -109,16 +109,15 @@ class ApplicationAuthController extends Controller
             'ref_no' => generateRefNo($id),
             'status' => 1
         ]);
-        $res = Cases::where('tracking_id', '=', $id)->first();
-        
-        $data = array(
-                'firstName'       => $res->applicant_first_name,
-                'lastName'        => $res->applicant_last_name,
-                'ref_no'          => $res->ref_no
-            );
+
         if ($result):
-            // Mail::to($res->applicant_email)->send(new ApplicationRequest($data));
-            static::sendResponse(200, "OK!", "success", $res);
+            $case = Cases::where('tracking_id', '=', $id)->first();
+            Mail::to($case->applicant_email)->send(new ApplicationRequest([
+                'firstName'       => $case->applicant_first_name,
+                'lastName'        => $case->applicant_last_name,
+                'ref_no'          => $case->ref_no
+            ]));
+            static::sendResponse(200, "OK!", "success", $case);
         else:
             static::sendResponse(400, "Bad request", "error", '');
         endif;

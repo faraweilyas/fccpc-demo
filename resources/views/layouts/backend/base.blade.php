@@ -22,11 +22,7 @@
 					@endif
 					<!--end::Top-->
 					<!--begin::Bottom-->
-					@guest
-						@if (!in_array(\Request::route()->getName(), ['application.upload', 'application.success']))
-							@include("layouts.backend.guest-navigation-bottom")
-						@endif
-					@else
+					@auth
 						@include("layouts.backend.admin-navigation-bottom")
 					@endif
 					

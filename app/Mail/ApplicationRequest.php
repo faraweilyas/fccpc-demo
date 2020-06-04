@@ -12,7 +12,7 @@ class ApplicationRequest extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
-    
+
     /**
      * Create a new message instance.
      *
@@ -30,6 +30,8 @@ class ApplicationRequest extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.application-request')->subject(ucfirst(SHORT_APP_NAME).' New Application');
+        return $this
+            ->view('emails.application-request')
+            ->subject(config('app.name').' Application Received');
     }
 }

@@ -58,7 +58,7 @@ Route::prefix('handlers')->group(function()
 	Route::get('view/{id}',  				 'Backend\CaseHandlersController@show')->name('handlers.view');
 });
 
-//API Controller
+// API Controller
 Route::prefix('api')->group(function()
 {
 	Route::post('application/create/{id}',	'Backend\ApplicationAuthController@createNewCase');

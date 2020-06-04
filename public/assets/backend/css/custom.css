@@ -143,7 +143,13 @@ section#orderWizard
     color: #ccc;
 }
 
-@media only screen and (max-width: 768px) {
+.display__block
+{
+    display: block;
+}
+
+@media only screen and (max-width: 768px)
+{
     .subheader
     {
         margin-top: 80px;
