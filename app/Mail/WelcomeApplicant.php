@@ -30,6 +30,8 @@ class WelcomeApplicant extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.welcome-applicant')->subject(ucfirst(SHORT_APP_NAME).' Welcome On Board');
+        return $this
+            ->view('emails.welcome-applicant')
+            ->subject(config('app.name').' Welcome On Board');
     }
 }
