@@ -1,13 +1,9 @@
 @extends('layouts.backend.base')
 @section('content')
-<!--begin::Content-->
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-		<!--begin::Info-->
 		<div class="d-flex align-items-center flex-wrap mr-1">
-			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
-				<!--begin::Page Title-->
 				<h5 class="text-dark font-weight-bold my-2 mr-5">Users</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
@@ -17,20 +13,13 @@
 						<a href="" class="text-muted">Users</a>
 					</li>
 				</ul>
-				<!--end::Page Title-->
 			</div>
-			<!--end::Page Heading-->
 		</div>
-		<!--end::Info-->
 	</div>
 </div>
-<!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Entry-->
 	<div class="d-flex flex-column-fluid">
-		<!--begin::Container-->
 		<div class="container">
-			<!--begin::Card-->
 			<div class="card card-custom">
 				<div class="card-header flex-wrap py-5">
 					<div class="card-title">
@@ -38,7 +27,6 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<!--begin: Datatable-->
 					<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
 						<thead>
 							<tr>
@@ -55,10 +43,14 @@
 								<td>{{ $item->getFullName() }}</td>
 								<td>{{ $item->email }}</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$account_typesHTML[$item->accountType] }} label-inline">{{ \App\Enhancers\AppHelper::$account_types[$item->accountType] }}</span>
+									<span class="label label-lg font-weight-bold label-light-{{ $item->getAccountTypeHtml() }} label-inline">
+                                        {{ $item->getAccountType() }}
+                                    </span>
 								</td>
 								<td>
-									<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$item->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$item->status] }}</span>
+									<span class="label label-lg font-weight-bold label-light-{{ $item->getStatusHtml() }} label-inline">
+                                        {{ $item->getStatus() }}
+                                    </span>
 								</td>
 								<td>
 									@if($item->status == 1)
@@ -75,14 +67,9 @@
 							@endforeach
 						</tbody>
 					</table>
-					<!--end: Datatable-->
 				</div>
 			</div>
-			<!--end::Card-->
 		</div>
-		<!--end::Container-->
 	</div>
-	<!--end::Entry-->
 </div>
-<!--end::Content-->
 @endsection
