@@ -12,7 +12,6 @@ Route::get('success/{id}', 	 	'Backend\ApplicationController@applicationSuccess'
 // Applicant Controller
 Route::prefix('applicant')->group(function()
 {
-	Route::get('dashboard/{id}', 	 'Backend\ApplicantController@index')->name('applicant.index')->middleware('ValidateTrackingId');
 	Route::post('authenticate', 	 'Backend\ApplicantController@authenticate')->name('applicant.authenticate');
 	Route::get('submit', 			 'Backend\ApplicantController@submitApplication')->name('applicant.submit');
 	Route::get('track', 			 'Backend\ApplicantController@trackApplication')->name('applicant.track');
