@@ -1,13 +1,9 @@
 @extends('layouts.backend.base')
 @section('content')
-<!--begin::Content-->
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-		<!--begin::Info-->
 		<div class="sub-header-desktop">
-			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
-				<!--begin::Page Title-->
 				<h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }} Application Case</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
@@ -20,17 +16,11 @@
 						<a href="" class="text-muted">{{ $case }} Transaction</a>
 					</li>
 				</ul>
-				<!--end::Page Title-->
 			</div>
-			<!--end::Page Heading-->
 		</div>
 		<div class="sub-header-mobile">
-			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
-				<!--begin::Page Title-->
 				<h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }} Application Case</h5>
-				
-				<!--end::Page Title-->
 			</div>
 			<div class="d-flex align-items-baseline mr-5">
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -45,34 +35,26 @@
 					</li>
 				</ul>
 			</div>
-			<!--end::Page Heading-->
 		</div>
-		<!--end::Info-->
 	</div>
 </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Container-->
 	<div class="container">
 		<div class="card card-custom">
 			<div class="card-body p-0">
-				<!--begin: Wizard-->
 				<div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="false">
-					<!--begin: Wizard Nav-->
 					<div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
-						<!--begin::Wizard Step 1 Nav-->
 						<div class="wizard-steps">
 							<div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
 								<div class="wizard-wrapper">
 									<div class="wizard-icon">
 										<span class="svg-icon svg-icon-2x">
-											<!--begin::Svg Icon | path:assets/media/svg/icons/Map/Compass.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<rect x="0" y="0" width="24" height="24" />
 													<path d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M14.1654881,7.35483745 L9.61055177,10.3622525 C9.47921741,10.4489666 9.39637436,10.592455 9.38694497,10.7495509 L9.05991526,16.197949 C9.04337012,16.4735952 9.25341309,16.7104632 9.52905936,16.7270083 C9.63705011,16.7334903 9.74423017,16.7047714 9.83451193,16.6451626 L14.3894482,13.6377475 C14.5207826,13.5510334 14.6036256,13.407545 14.613055,13.2504491 L14.9400847,7.80205104 C14.9566299,7.52640477 14.7465869,7.28953682 14.4709406,7.27299168 C14.3629499,7.26650974 14.2557698,7.29522855 14.1654881,7.35483745 Z" fill="#000000" />
 												</g>
 											</svg>
-											<!--end::Svg Icon-->
 										</span>
 									</div>
 									<div class="wizard-label">
@@ -81,13 +63,10 @@
 									</div>
 								</div>
 							</div>
-							<!--end::Wizard Step 1 Nav-->
-							<!--begin::Wizard Step 2 Nav-->
 							<div class="wizard-step" data-wizard-type="step">
 								<div class="wizard-wrapper">
 									<div class="wizard-icon">
 										<span class="svg-icon svg-icon-2x">
-											<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 												<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 													<polygon points="0 0 24 0 24 24 0 24" />
@@ -95,7 +74,6 @@
 													<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
 												</g>
 											</svg>
-											<!--end::Svg Icon-->
 										</span>
 									</div>
 									<div class="wizard-label">
@@ -104,13 +82,10 @@
 									</div>
 								</div>
 							</div>
-							<!--end::Wizard Step 2 Nav-->
-							<!--begin::Wizard Step 3 Nav-->
 							<div class="wizard-step" data-wizard-type="step">
 								<div class="wizard-wrapper">
 									<div class="wizard-icon">
 										<span class="svg-icon svg-icon-2x">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Home\Building.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											        <rect x="0" y="0" width="24" height="24"/>
@@ -119,7 +94,6 @@
 											        <path d="M4,21 L20,21 C20.5522847,21 21,21.4477153 21,22 L21,22.4 C21,22.7313708 20.7313708,23 20.4,23 L3.6,23 C3.26862915,23 3,22.7313708 3,22.4 L3,22 C3,21.4477153 3.44771525,21 4,21 Z" fill="#000000" opacity="0.3"/>
 											    </g>
 											</svg>
-											<!--end::Svg Icon-->
 										</span>
 									</div>
 									<div class="wizard-label">
@@ -128,13 +102,10 @@
 									</div>
 								</div>
 							</div>
-							<!--end::Wizard Step 3 Nav-->
-							<!--begin::Wizard Step 4 Nav-->
 							<div class="wizard-step" data-wizard-type="step">
 								<div class="wizard-wrapper">
 									<div class="wizard-icon">
 										<span class="svg-icon svg-icon-2x">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Communication\Clipboard-list.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											        <rect x="0" y="0" width="24" height="24"/>
@@ -148,7 +119,6 @@
 											        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
 											    </g>
 											</svg>
-										<!--end::Svg Icon-->
 										</span>
 									</div>
 									<div class="wizard-label">
@@ -157,13 +127,10 @@
 									</div>
 								</div>
 							</div>
-							<!--end::Wizard Step 4 Nav-->
-							<!--begin::Wizard Step 5 Nav-->
 							<div class="wizard-step" data-wizard-type="step">
 								<div class="wizard-wrapper">
 									<div class="wizard-icon">
 										<span class="svg-icon svg-icon-2x">
-											<!--begin::Svg Icon | path:C:\wamp64\www\keenthemes\themes\metronic\theme\html\demo9\dist/../src/media/svg/icons\Communication\Clipboard-check.svg-->
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
 											        <rect x="0" y="0" width="24" height="24"/>
@@ -172,7 +139,6 @@
 											        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
 											    </g>
 											</svg>
-											<!--end::Svg Icon-->
 										</span>
 									</div>
 									<div class="wizard-label">
@@ -181,14 +147,9 @@
 									</div>
 								</div>
 							</div>
-							<!--end::Wizard Step 5 Nav-->
-							
 						</div>
 					</div>
-					<!--end: Wizard Nav-->
-					<!--begin: Wizard Body-->
 					<div class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
-						<!--begin: Wizard Form-->
 						<div class="row">
 							<div class="offset-xxl-2 col-xxl-8">
 								<form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
@@ -196,9 +157,7 @@
 									<input type="hidden" id="tracking_id" name="tracking_id" value="{{ $case_info->tracking_id ?? $id }}">
 									<input type="hidden" id="transaction_category" name="transaction_category" value="{{ $type ?? '' }}">
 									<input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
-									<!--begin: Wizard Step 1-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-										<!--begin::Input-->
 										<h4 class="mb-10 font-weight-bold text-dark">Enter your Case Details</h4>
 										<div class="form-group fv-plugins-icon-container">
 											<label>Subject</label> <span class="text-danger">*</span>
@@ -540,6 +499,6 @@
 	<!--end::Container-->
 </div>
 <!--end::Content-->
-<script src="{{ asset(BE_JS.'jquery.js') }}"></script>
-<script src="{{ asset(BE_JS.'create-application.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'create-application.js') }}"></script>
 @endSection
