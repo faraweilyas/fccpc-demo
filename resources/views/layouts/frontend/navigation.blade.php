@@ -38,7 +38,7 @@
                             </a>
                         </li>
                         <li class="sub-list-item">
-                            <a href="#">
+                            <a href="{{ route('enquiries.track') }}">
                                 <p>Make Enquiry &amp; Others</p>
                             </a>
                         </li>

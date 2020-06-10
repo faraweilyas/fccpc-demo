@@ -29,6 +29,11 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
     Route::get('success/{id}',          'ApplicationController@applicationSuccess')->name('success');
 });
 
+// Enquiries Controller
+Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
+{
+    Route::get('track',              'EnquiriesController@trackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+});
 // Supervisor Controller
 Route::group(['prefix' => '/', 'as' => 'dashboard.', 'namespace' => 'Backend'], function()
 {
@@ -59,11 +64,5 @@ Route::group(['prefix' => 'handlers', 'as' => 'handlers.', 'namespace' => 'Backe
     Route::get('status/update/{id}',         'Backend\CaseHandlersController@updateHandlerStatus')->name('update_status');
     Route::get('view/{id}',                  'Backend\CaseHandlersController@show')->name('view');
 });
-
-// API Controller
-// Route::prefix('api')->group(function()
-// {
-
-// });
 
 Auth::routes();
