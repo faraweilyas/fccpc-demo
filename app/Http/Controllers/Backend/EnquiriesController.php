@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Mail\EnquiryMail;
 use App\Models\Guest;
 use App\Models\Enquiry;
 
@@ -67,6 +69,15 @@ class EnquiriesController extends Controller
         ]);
 
         if ($result):
+            Mail::to("kamsikodi@gmail.com")->send(new EnquiryMail([
+                'firm'          => $result->firm ,
+                'firstName'     => $result->firstName,
+                'lastName'      => $result->lastName,
+                'email'         => $result->email,
+                'phone'         => $result->phone,
+                'type'          => $result->type,
+                'message'       => $result->message,
+            ]));
             Session::flash('success', "Enquiry submitted!");
             return redirect()->back();
         else:
@@ -74,6 +85,7 @@ class EnquiriesController extends Controller
             return redirect()->back();
         endif;
     }
+
     /**
      * Handles the track enquiry page route.
      * @return void

@@ -63,7 +63,7 @@ class AppHelper
     // Valid enquiry type
     static $enquiry_types = [
         "GEN"  => "General",
-        "PRE"  => "Pre-Notification Enquiry",
+        "PRE"  => "Pre-Notification",
     ];
 
 	/**
