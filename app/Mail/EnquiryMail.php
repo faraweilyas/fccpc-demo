@@ -29,8 +29,19 @@ class EnquiryMail extends Mailable
      */
     public function build()
     {
-        return $this
-            ->view('emails.applicant-enquiry')
-            ->subject(config('app.name').' Applicant Enquiry');
+        if ($this->data['document']) {
+            return $this
+                ->view('emails.applicant-enquiry')
+                ->subject(config('app.name').' Applicant Enquiry')->attach($this->data['document']->getRealPath(),
+                    [
+                        'as'   => $this->data['document']->getClientOriginalName(),
+                        'mime' => $this->data['document']->getClientMimeType(),
+                    ]);
+        } else {
+            return $this
+                ->view('emails.applicant-enquiry')
+                ->subject(config('app.name').' Applicant Enquiry');
+        }
+
     }
 }

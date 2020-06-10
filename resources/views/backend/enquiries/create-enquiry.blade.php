@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ $enquiry }} Enquiry</h3>
                         </div>
-                        <form method="POST" action="{{ route('enquiries.create',['type' => $type, 'id' => $id]) }}">
+                        <form method="POST" action="{{ route('enquiries.create',['type' => $type, 'id' => $id]) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -100,7 +100,7 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
                                         <div class="uploadButton tw-mb-4">
-                                           <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                           <input id="file" class="js-file-upload-input ember-view" type="file" name="file">
                                             <span class="btn btn--small btn--brand">Attach Document</span>
                                         </div>
                                     </div>

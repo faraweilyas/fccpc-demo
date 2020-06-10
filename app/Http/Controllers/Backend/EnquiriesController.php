@@ -57,6 +57,35 @@ class EnquiriesController extends Controller
             'message'     => 'required',
         ]);
 
+        // Get the uploades file with name document
+        $document = $request->file('file');
+
+        // Check if uploaded file size was greater than
+        // maximum allowed file size
+        if ($document) {
+            if ($document->getError() == 1) {
+                $max_size = $document->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
+                Session::flash('error', "The document size must be less than {$max_size} Mb!");
+                return redirect()->back();
+            }
+        }
+
+        // Handle File Upload
+        if($request->hasFile('file')) {
+            // Get filename with extension
+            $filenameWithExt = $document->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $document->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $result = Enquiry::create([
             'tracking_id' => $id,
             'firm'        => trim($request->firm),
@@ -66,6 +95,7 @@ class EnquiriesController extends Controller
             'phone'       => trim($request->phone),
             'type'        => strtoupper($type),
             'message'     => $request->message,
+            'file'        => $fileNameToStore ?? '',
         ]);
 
         if ($result):
@@ -77,6 +107,7 @@ class EnquiriesController extends Controller
                 'phone'         => $result->phone,
                 'type'          => $result->type,
                 'message'       => $result->message,
+                'document'      => $document ?? null,
             ]));
             Session::flash('success', "Enquiry submitted!");
             return redirect()->back();
