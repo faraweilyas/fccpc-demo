@@ -17,4 +17,14 @@ class Cases extends Model
     {
         return textTransformer(AppHelper::$case_categories[$this->transaction_category], $textStyle);
     }
+
+    public function getCaseStatus($textStyle='strtolower') : string
+    {
+        return textTransformer(AppHelper::$case_status[$this->status], $textStyle);
+    }
+
+    public function getCaseStatusHTML($textStyle='strtolower') : string
+    {
+        return textTransformer(AppHelper::$case_statusHTML[$this->status], $textStyle);
+    }
 }

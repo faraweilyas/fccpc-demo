@@ -53,13 +53,13 @@
 										<strong>Parties : </strong>&nbsp;{{ $case->parties ?? '' }}
 									</p>
 									<p>
-										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ $case->getCategory('ucfirst') }}</span>
 									</p>
 									<p>
 										<strong>Case Handler : </strong>&nbsp;{{ \App\User::find($case->case_handler_id)->getFullName() }}
 									</p>
 									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status] }} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status] }}</span>
+										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
 									</p>
 								</div>
 							</div>
