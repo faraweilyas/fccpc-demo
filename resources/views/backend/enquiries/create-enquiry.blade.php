@@ -86,6 +86,18 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Message</label> <span class="text-danger">*</span>
+                                            <textarea type="text" class="form-control" cols="4" rows="4" name="message"></textarea>
+                                            <span class="form-text text-muted">Please enter message.</span>
+                                            @error('message')
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-12 mb-4">
                                         <div class="uploadButton tw-mb-4">
                                            <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">

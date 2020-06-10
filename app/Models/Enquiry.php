@@ -9,6 +9,6 @@ class Enquiry extends Model
     protected $table = 'enquiry';
 
     protected $fillable = [
-        'tracking_id', 'firm', 'firstName', 'lastName', 'email', 'phone', 'type', 'file'
+        'tracking_id', 'firm', 'firstName', 'lastName', 'email', 'phone', 'type', 'message', 'file'
     ];
 }

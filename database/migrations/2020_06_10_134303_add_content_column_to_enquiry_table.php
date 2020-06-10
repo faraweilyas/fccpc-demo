@@ -14,7 +14,7 @@ class AddContentColumnToEnquiryTable extends Migration
     public function up()
     {
         Schema::table('enquiry', function (Blueprint $table) {
-            //
+            $table->mediumText('message')->after('type')->nullable();
         });
     }
 

@@ -293,10 +293,10 @@ function formatEnquiryType(string $type) : string
     switch($type)
     {
         case 'gen':
-            $enquiry = ucfirst("General");
+            $enquiry = \App\Enhancers\AppHelper::$enquiry_types[strtoupper($type)];
             break;
         case 'pre':
-            $enquiry = ucwords("Pre-Notification Enquiry");
+            $enquiry = \App\Enhancers\AppHelper::$enquiry_types[strtoupper($type)];
             break;
         default:
             $enquiry = '';

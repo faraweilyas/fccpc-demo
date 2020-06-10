@@ -52,6 +52,7 @@ class EnquiriesController extends Controller
             'lastName'    => 'required',
             'email'       => 'required',
             'phone'       => 'required',
+            'message'     => 'required',
         ]);
 
         $result = Enquiry::create([
@@ -62,6 +63,7 @@ class EnquiriesController extends Controller
             'email'       => trim($request->email),
             'phone'       => trim($request->phone),
             'type'        => strtoupper($type),
+            'message'     => $request->message,
         ]);
 
         if ($result):
