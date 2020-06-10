@@ -11,7 +11,7 @@
 				<h5 class="text-dark font-weight-bold my-2 mr-5">Case Handler</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
-						<a href="{{ route('dashboard') }}" class="text-muted">Home</a>
+						<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
 						<a href="" class="text-muted">Case Handler</a>
@@ -89,13 +89,13 @@
 										<div class="col-md-6 text-center">
 											@if($handler->status == 1)
 											<p>
-												<a href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+												<a href="{{ route('handlers.update_status', ['id' => $handler->id]) }}">
 													<button type="button" class="btn btn-danger mr-2">Deactivate</button>
 												</a>
 											</p>
 											@else
 											<p>
-												<a href="{{ route('handler.update_status', ['id' => $handler->id]) }}">
+												<a href="{{ route('handlers.update_status', ['id' => $handler->id]) }}">
 													<button type="button" class="btn btn-primary mr-2">Activate</button>
 												</a>
 											</p>

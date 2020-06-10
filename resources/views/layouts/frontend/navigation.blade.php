@@ -9,7 +9,7 @@
 	                        <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" alt="">
 	                    </a>
 	                </div>
-	                <p class="smalllh"><a class="site-title" href="/">Federal Competition and Consumer Protection Commission</a></p>
+	                <p class="smalllh"><a class="site-title" href="<?= route('home.index'); ?>">Federal Competition and Consumer Protection Commission</a></p>
 	            </div>
 	            <div class="small-logo suffix is-wider">
 	                <img src="{{ asset(FE_IMAGE.'icons/coat_of_arm.png') }}" alt="">
@@ -19,10 +19,6 @@
 	            <div class="menu-icon suffix openbtn"style="font-size: 24px">&#9776;
 	                <span class="suffix smalltext">Menu</span>
 	            </div>
-	            <!-- <div>
-	                <a href="http://user.cpc.softcom.ng/signin" target="_blank"><button class="btn p-1 btn-white">Sign In</button></a>
-	                <a href="http://user.cpc.softcom.ng/complain" target="_blank"><button class="btn p-1 btn-red">File Complaint</button></a>
-	            </div> -->
 	        </div>
 	    </div>
 	</div>

@@ -6,7 +6,6 @@
     <meta name="description" content="{{ $details->description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- Assets --}}
     <link rel="shortcut icon" href="{{ asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/fullcalendar/fullcalendar.bundle.css') }}" />

@@ -1,4 +1,4 @@
-<?php $guest = App\Models\Guest::where('tracking_id', $id)->first(); ?>
+@php $guest = App\Models\Guest::where('tracking_id', $id)->first(); @endphp
 <div class="header-top">
 	<div class="container">
 		<div class="d-none d-lg-flex align-items-center mr-3">

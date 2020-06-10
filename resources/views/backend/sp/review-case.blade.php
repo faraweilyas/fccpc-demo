@@ -11,7 +11,7 @@
 				<h5 class="text-dark font-weight-bold my-2 mr-5">Case Review</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
-						<a href="{{ route('dashboard') }}" class="text-muted">Home</a>
+						<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
 						<a href="" class="text-muted">Assigned Cases</a>

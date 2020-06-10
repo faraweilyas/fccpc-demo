@@ -11,7 +11,7 @@
 				<h5 class="text-dark font-weight-bold my-2 mr-5">New User</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
-						<a href="{{ route('dashboard') }}" class="text-muted">Home</a>
+						<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
 					</li>
 					<li class="breadcrumb-item">
 						<a href="" class="text-muted">New User</a>
@@ -49,7 +49,7 @@
 											</select>
 											<span class="form-text text-muted">Please select account type.</span>
 											@error('accountType')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -59,7 +59,7 @@
 											<input type="email" class="form-control" placeholder="Enter email" name="email">
 											<span class="form-text text-muted">Please enter email.</span>
 											@error('email')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -71,7 +71,7 @@
 											<input type="text" class="form-control" placeholder="Enter first name" name="firstName">
 											<span class="form-text text-muted">Please enter first name.</span>
 											@error('firstName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
@@ -81,7 +81,7 @@
 											<input type="text" class="form-control" placeholder="Enter last name" name="lastName">
 											<span class="form-text text-muted">Please enter last name.</span>
 											@error('lastName')
-				                                <p class="text-danger text-left mt-2">* {{ $message }}</p> 
+				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
 									</div>
