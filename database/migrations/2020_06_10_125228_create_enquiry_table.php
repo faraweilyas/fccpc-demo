@@ -15,6 +15,13 @@ class CreateEnquiryTable extends Migration
     {
         Schema::create('enquiry', function (Blueprint $table) {
             $table->id();
+            $table->string('tracking_id');
+            $table->string('firm');
+            $table->string('firstName');
+            $table->string('lastName');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }

@@ -22,7 +22,7 @@
             <div class="container">
                  <div class="row">
                     <div class="col-md-6">
-                        <a href="{{ route('enquiries.create', ['type' => 'general', 'id' => $id]) }}">
+                        <a href="{{ route('enquiries.create', ['type' => 'gen', 'id' => $id]) }}">
                             <div class="card card-custom bg-success gutter-b" style="height: 150px">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-white svg-icon-2x">

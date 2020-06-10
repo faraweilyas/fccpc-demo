@@ -34,8 +34,9 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
 {
     Route::get('select/{id}',   'EnquiriesController@index')->name('index');
     Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
-    Route::get('track',    'EnquiriesController@trackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('track',   'EnquiriesController@authenticateTrackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
+    Route::get('track',         'EnquiriesController@trackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('track',        'EnquiriesController@authenticateTrackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
 });
 // Supervisor Controller
 Route::group(['prefix' => '/', 'as' => 'dashboard.', 'namespace' => 'Backend'], function()

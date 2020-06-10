@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ $enquiry }} Enquiry</h3>
                         </div>
-                        <form method="POST" action="#">
+                        <form method="POST" action="{{ route('enquiries.create',['type' => $type, 'id' => $id]) }}">
                             @csrf
                             <div class="card-body">
                                 <div class="row">

@@ -292,8 +292,8 @@ function formatEnquiryType(string $type) : string
     $enquiry = "";
     switch($type)
     {
-        case 'general':
-            $enquiry = ucfirst($type);
+        case 'gen':
+            $enquiry = ucfirst("General");
             break;
         case 'pre':
             $enquiry = ucwords("Pre-Notification Enquiry");

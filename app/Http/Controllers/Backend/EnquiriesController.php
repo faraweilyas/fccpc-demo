@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
 use App\Models\Guest;
+use App\Models\Enquiry;
 
 class EnquiriesController extends Controller
 {
@@ -38,6 +39,40 @@ class EnquiriesController extends Controller
     }
 
     /**
+     * Handles the create application page route.
+     * @param string $type
+     * @param int $id
+     * @return void
+     */
+    public function store(Request $request, $type, $id)
+    {
+        $this->validate($request, [
+            'firm'        => 'required',
+            'firstName'   => 'required',
+            'lastName'    => 'required',
+            'email'       => 'required',
+            'phone'       => 'required',
+        ]);
+
+        $result = Enquiry::create([
+            'tracking_id' => $id,
+            'firm'        => trim($request->firm),
+            'firstName'   => trim($request->firstName),
+            'lastName'    => trim($request->lastName),
+            'email'       => trim($request->email),
+            'phone'       => trim($request->phone),
+            'type'        => strtoupper($type),
+        ]);
+
+        if ($result):
+            Session::flash('success', "Enquiry submitted!");
+            return redirect()->back();
+        else:
+            Session::flash('error', "Enquiry not submitted!");
+            return redirect()->back();
+        endif;
+    }
+    /**
      * Handles the track enquiry page route.
      * @return void
      */
@@ -56,7 +91,7 @@ class EnquiriesController extends Controller
     public function authenticateTrackEnquiry(Request $request)
     {
         $this->validate($request, [
-            'tracking_id' => ['required'],
+            'tracking_id' => 'required',
         ]);
 
         $result = Guest::where('tracking_id', $request->tracking_id)->first();
