@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Complaints extends Model
 {
-    protected $table = 'enquiry';
+    protected $table = 'complaints';
 
     protected $fillable = [
         'tracking_id', 'firstName', 'lastName', 'email', 'phone', 'message', 'file'

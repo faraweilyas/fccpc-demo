@@ -39,13 +39,13 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
     Route::post('track',        'EnquiriesController@authenticateTrackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
 });
 
-// Enquiries Controller
+// Complaints Controller
 Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
-    Route::get('track',       'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('track',      'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::get('{id}',        'ComplaintsController@index')->name('index');
-    Route::post('{id}',       'ComplaintsController@store')->name('create');
+    Route::get('create/{id}',        'ComplaintsController@index')->name('index');
+    Route::post('create/{id}',       'ComplaintsController@store')->name('create');
+     Route::get('track',             'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('track',            'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
 });
 
 // Supervisor Controller

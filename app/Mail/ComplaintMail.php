@@ -32,7 +32,7 @@ class ComplaintMail extends Mailable
         if ($this->data['document']) {
             return $this
                 ->view('emails.applicant-complaint')
-                ->subject(config('app.name').' Applicant Enquiry')->attach($this->data['document']->getRealPath(),
+                ->subject(config('app.name').' Applicant Complaint')->attach($this->data['document']->getRealPath(),
                     [
                         'as'   => $this->data['document']->getClientOriginalName(),
                         'mime' => $this->data['document']->getClientMimeType(),
@@ -40,7 +40,7 @@ class ComplaintMail extends Mailable
         } else {
             return $this
                 ->view('emails.applicant-complaint')
-                ->subject(config('app.name').' Applicant Enquiry');
+                ->subject(config('app.name').' Applicant Complaint');
         }
 
     }
