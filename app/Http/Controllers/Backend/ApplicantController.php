@@ -83,7 +83,7 @@ class ApplicantController extends Controller
                 if (is_null($case->transaction_category)):
                     return redirect()->route('application.index', ['id' => $request->tracking_id]);
                 else:
-                    return redirect()->route('application.create', ['type' => strtolower(\App\Enhancers\AppHelper::$case_categories[$case->transaction_category]), 'id' => $request->tracking_id]);
+                    return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $request->tracking_id]);
                 endif;
             else:
                 return redirect()->route('application.upload', ['id' => $request->tracking_id]);

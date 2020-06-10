@@ -1,8 +1,6 @@
 @extends('layouts.backend.base')
 @section('content')
-<!--begin::Content-->
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Entry-->
 	<div class="d-flex flex-column-fluid">
 		<div class="container">
 			<div class="row mt-40">
@@ -26,7 +24,5 @@
 			</div>
 		</div>
 	</div>
-	<!--end::Entry-->
 </div>
-<!--end::Content-->
 @endSection
