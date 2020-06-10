@@ -100,7 +100,7 @@ class EnquiriesController extends Controller
 
         if ($result):
             Mail::to("kamsikodi@gmail.com")->send(new EnquiryMail([
-                'firm'          => $result->firm ,
+                'firm'          => $result->firm,
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,
                 'email'         => $result->email,

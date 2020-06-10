@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use App\Mail\ComplaintMail;
 use App\Models\Guest;
+use App\Models\Complaints;
 
 class ComplaintsController extends Controller
 {
@@ -31,7 +33,6 @@ class ComplaintsController extends Controller
     public function store(Request $request, $id)
     {
         $this->validate($request, [
-            'firm'        => 'required',
             'firstName'   => 'required',
             'lastName'    => 'required',
             'email'       => 'required',
@@ -63,38 +64,34 @@ class ComplaintsController extends Controller
             //Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             // Upload Image
-            $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
+            $path = $document->storeAs('public/complaint_documents', $fileNameToStore);
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
 
-        $result = Enquiry::create([
+        $result = Complaints::create([
             'tracking_id' => $id,
-            'firm'        => trim($request->firm),
             'firstName'   => trim($request->firstName),
             'lastName'    => trim($request->lastName),
             'email'       => trim($request->email),
             'phone'       => trim($request->phone),
-            'type'        => strtoupper($type),
             'message'     => $request->message,
             'file'        => $fileNameToStore ?? '',
         ]);
 
         if ($result):
-            Mail::to("kamsikodi@gmail.com")->send(new EnquiryMail([
-                'firm'          => $result->firm ,
+            Mail::to("kamsikodi@gmail.com")->send(new ComplaintMail([
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,
                 'email'         => $result->email,
                 'phone'         => $result->phone,
-                'type'          => $result->type,
                 'message'       => $result->message,
                 'document'      => $document ?? null,
             ]));
-            Session::flash('success', "Enquiry submitted!");
+            Session::flash('success', "Complaint submitted!");
             return redirect()->back();
         else:
-            Session::flash('error', "Enquiry not submitted!");
+            Session::flash('error', "Complaint not submitted!");
             return redirect()->back();
         endif;
     }

@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Create Complaint</h3>
                         </div>
-                        <form method="POST" action="{{ route('complaints.create',['id' => $id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('complaints.create', ['id' => $id]) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
