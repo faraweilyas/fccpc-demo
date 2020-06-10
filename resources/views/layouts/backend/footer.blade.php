@@ -17,6 +17,7 @@
 <script src="{{ asset(BE_JS.'pages/crud/datatables/advanced/column-rendering.js') }}"></script>
 <script src="{{ asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
 <script src="{{ asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}"></script>
+<script src="{{ asset(BE_JS.'custom.js') }}"></script>
 <script src="{{ asset(BE_JS.'toaster.js') }}"></script>
 <script type="text/javascript">
 	toastr.options = {

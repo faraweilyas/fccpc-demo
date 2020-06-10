@@ -86,10 +86,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <div class="uploadButton tw-mb-4">
                                            <input id="file" class="js-file-upload-input ember-view" type="file" name="file">
-                                            <span class="btn btn--small btn--brand">Attach Document</span>
+                                            <span class="btn btn--small btn--brand img-info">Attach Document</span>
                                         </div>
                                     </div>
                                 </div>
