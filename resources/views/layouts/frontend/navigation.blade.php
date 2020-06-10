@@ -43,7 +43,7 @@
                             </a>
                         </li>
                         <li class="sub-list-item">
-                            <a href="#">
+                            <a href="{{ route('complaints.track') }}">
                                 <p>Make Complaint</p>
                             </a>
                         </li>
@@ -86,6 +86,9 @@
 	            <li>
 	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry</a>
 	            </li>
+                <li>
+                    <a class="smalltext" href="{{ route('complaints.track') }}">Make Complaint</a>
+                </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>
 	            </li>
