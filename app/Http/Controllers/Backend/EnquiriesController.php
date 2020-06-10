@@ -14,6 +14,18 @@ class EnquiriesController extends Controller
      */
     public function trackEnquiry()
     {
+        $title            = APP_NAME;
+        $description      = "FCCPC Track Enquiry";
+        $details          = details($title, $description);
+        return view('backend.enquiries.track', compact('details'));
+    }
+
+    /**
+     * Handles the authenticate track enquiry page route.
+     * @return void
+     */
+    public function authenticateTrackEnquiry(Request $request)
+    {
         dd(true);
     }
 }

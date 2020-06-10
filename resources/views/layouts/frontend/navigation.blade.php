@@ -39,7 +39,7 @@
                         </li>
                         <li class="sub-list-item">
                             <a href="{{ route('enquiries.track') }}">
-                                <p>Make Enquiry &amp; Others</p>
+                                <p>Make Enquiry</p>
                             </a>
                         </li>
                     </ul>
@@ -79,7 +79,7 @@
 	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry &amp; Others</a>
+	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry</a>
 	            </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>
