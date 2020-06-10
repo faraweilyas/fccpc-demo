@@ -61,10 +61,9 @@ Route::group(['prefix' => 'handlers', 'as' => 'handlers.', 'namespace' => 'Backe
 });
 
 // API Controller
-Route::prefix('api')->group(function()
-{
-    Route::post('application/create/{id}',  'Backend\ApplicationAuthController@createNewCase');
-    Route::post('application/upload/{id}',  'Backend\ApplicationAuthController@uploadNewCase');
-});
+// Route::prefix('api')->group(function()
+// {
+
+// });
 
 Auth::routes();
