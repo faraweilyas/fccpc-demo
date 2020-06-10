@@ -22,7 +22,7 @@ class AppHelper
 		"4"  => "Approved",
 		"5"  => "Rejected",
 	];
-	
+
 	// Valid Case Status
 	static $case_statusHTML = [
 		"1"  => "secondary",
@@ -59,6 +59,12 @@ class AppHelper
 		"IT"  => "warning",
 		"CH"  => "info",
 	];
+
+    // Valid enquiry type
+    static $enquiry_types = [
+        "GEN"  => "General",
+        "PRE"  => "Pre-Notification Enquiry",
+    ];
 
 	/**
 	* Validates array key
@@ -194,5 +200,5 @@ class AppHelper
 		endforeach;
 		return $HTMLOutput;
 	}
-	
+
 }

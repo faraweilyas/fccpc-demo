@@ -82,13 +82,13 @@ section#orderWizard
     opacity: 0;
     cursor: pointer;
     margin-top: 0;
-    color: #0BB783;
-    background-color: #0BB783;
+    color:  #006535;
+    background-color:  #006535;
     border-color: transparent;
 }
 
 .btn--brand {
-    background: #0BB783;
+    background:  #006535;
     color: #fff;
 }
 

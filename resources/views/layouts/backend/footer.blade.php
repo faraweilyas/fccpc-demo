@@ -21,7 +21,7 @@
 <script type="text/javascript">
 	toastr.options = {
 		"progressBar": true,
-		"positionClass": "toast-top-right",
+		"positionClass": "toast-bottom-right",
 	};
 	@if (Session::has('success'))
 		toastr.success("{{ Session::get('success') }}");

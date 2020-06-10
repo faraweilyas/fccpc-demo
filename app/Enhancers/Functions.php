@@ -282,6 +282,30 @@ function formatApplicationType(string $type) : string
 }
 
 /**
+ * Format enquiry type
+ *
+ * @param string $type
+ * @return string
+ */
+function formatEnquiryType(string $type) : string
+{
+    $enquiry = "";
+    switch($type)
+    {
+        case 'general':
+            $enquiry = ucfirst($type);
+            break;
+        case 'pre':
+            $enquiry = ucwords("Pre-Notification Enquiry");
+            break;
+        default:
+            $enquiry = '';
+            break;
+    }
+    return $enquiry;
+}
+
+/**
  * Format case type
  *
  * @param string $type

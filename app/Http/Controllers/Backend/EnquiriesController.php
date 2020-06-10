@@ -23,6 +23,21 @@ class EnquiriesController extends Controller
     }
 
     /**
+     * Handles the create application page route.
+     * @param string $type
+     * @param int $id
+     * @return void
+     */
+    public function create($type, $id)
+    {
+        $enquiry          = formatEnquiryType($type);
+        $title            = APP_NAME;
+        $description      = "FCCPC ".$enquiry." Application Dashboard";
+        $details          = details($title, $description);
+        return view('backend.enquiries.create-enquiry', compact('details', 'id', 'type', 'enquiry'));
+    }
+
+    /**
      * Handles the track enquiry page route.
      * @return void
      */
