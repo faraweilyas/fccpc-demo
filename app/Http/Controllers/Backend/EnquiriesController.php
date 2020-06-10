@@ -26,7 +26,7 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the create application page route.
+     * Handles the create enquiries page route.
      * @param string $type
      * @param int $id
      * @return void

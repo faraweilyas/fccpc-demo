@@ -16,7 +16,7 @@
                     </div>
                     <div class="login-signin">
                         <div class="mb_30">
-                            <h3>Make Enquiry</h3>
+                            <h3>Make Complaint</h3>
                         </div>
                         <form class="form" method="POST" action="{{ route('complaints.track') }}">
                             @csrf

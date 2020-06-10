@@ -40,11 +40,12 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
 });
 
 // Enquiries Controller
-Route::group(['prefix' => 'complaint', 'as' => 'complaints.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
+Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
-    Route::get('{type}/{id}',   'ComplaintsController@index')->name('index');
-    Route::get('track',         'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('track',        'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('track',       'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('track',      'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('{id}',        'ComplaintsController@index')->name('index');
+    Route::post('{id}',       'ComplaintsController@store')->name('create');
 });
 
 // Supervisor Controller

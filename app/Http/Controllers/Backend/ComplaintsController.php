@@ -17,10 +17,86 @@ class ComplaintsController extends Controller
      */
     public function index($id)
     {
-        // $title            = APP_NAME;
-        // $description      = "FCCPC Create Complaint Dashboard";
-        // $details          = details($title, $description);
-        // return view('backend.complaints.create-complaint', compact('details', 'id'));
+        $title            = APP_NAME;
+        $description      = "FCCPC Create Complaint Dashboard";
+        $details          = details($title, $description);
+        return view('backend.complaints.create-complaint', compact('details', 'id'));
+    }
+
+    /**
+     * Handles the create complaint page route.
+     * @param int $id
+     * @return void
+     */
+    public function store(Request $request, $id)
+    {
+        $this->validate($request, [
+            'firm'        => 'required',
+            'firstName'   => 'required',
+            'lastName'    => 'required',
+            'email'       => 'required',
+            'phone'       => 'required',
+            'message'     => 'required',
+        ]);
+
+        // Get the uploades file with name document
+        $document = $request->file('file');
+
+        // Check if uploaded file size was greater than
+        // maximum allowed file size
+        if ($document) {
+            if ($document->getError() == 1) {
+                $max_size = $document->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
+                Session::flash('error', "The document size must be less than {$max_size} Mb!");
+                return redirect()->back();
+            }
+        }
+
+        // Handle File Upload
+        if($request->hasFile('file')) {
+            // Get filename with extension
+            $filenameWithExt = $document->getClientOriginalName();
+            // Get just filename
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            // Get just ext
+            $extension = $document->getClientOriginalExtension();
+            //Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Upload Image
+            $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
+        } else {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+        $result = Enquiry::create([
+            'tracking_id' => $id,
+            'firm'        => trim($request->firm),
+            'firstName'   => trim($request->firstName),
+            'lastName'    => trim($request->lastName),
+            'email'       => trim($request->email),
+            'phone'       => trim($request->phone),
+            'type'        => strtoupper($type),
+            'message'     => $request->message,
+            'file'        => $fileNameToStore ?? '',
+        ]);
+
+        if ($result):
+            Mail::to("kamsikodi@gmail.com")->send(new EnquiryMail([
+                'firm'          => $result->firm ,
+                'firstName'     => $result->firstName,
+                'lastName'      => $result->lastName,
+                'email'         => $result->email,
+                'phone'         => $result->phone,
+                'type'          => $result->type,
+                'message'       => $result->message,
+                'document'      => $document ?? null,
+            ]));
+            Session::flash('success', "Enquiry submitted!");
+            return redirect()->back();
+        else:
+            Session::flash('error', "Enquiry not submitted!");
+            return redirect()->back();
+        endif;
     }
 
     /**
