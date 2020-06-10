@@ -32,6 +32,7 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 // Enquiries Controller
 Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
+    Route::get('select/{id}',   'EnquiriesController@index')->name('index');
     Route::get('track',    'EnquiriesController@trackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
     Route::post('track',   'EnquiriesController@authenticateTrackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
 });
