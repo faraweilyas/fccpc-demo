@@ -59,7 +59,7 @@ class EnquiriesController extends Controller
             'tracking_id' => ['required'],
         ]);
 
-        $result             = Guest::where('tracking_id', $request->tracking_id)->first();
+        $result = Guest::where('tracking_id', $request->tracking_id)->first();
 
         if ($result):
             return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);
