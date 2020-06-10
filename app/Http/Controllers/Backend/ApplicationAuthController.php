@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Cases;
 use Illuminate\Http\Request;
-use App\Mail\ApplicationRequest;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\Controller;
+use App\Mail\ApplicationRequest;
+use App\Models\Cases;
 
 class ApplicationAuthController extends Controller
 {

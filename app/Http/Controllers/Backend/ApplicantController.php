@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Cases;
-use App\Models\Guest;
 use Illuminate\Http\Request;
-use App\Mail\WelcomeApplicant;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
+use App\Mail\WelcomeApplicant;
+use App\Models\Cases;
+use App\Models\Guest;
 
 class ApplicantController extends Controller
 {

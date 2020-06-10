@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 use Auth;
 
 class DashboardController extends Controller

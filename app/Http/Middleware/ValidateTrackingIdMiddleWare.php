@@ -14,9 +14,9 @@ class ValidateTrackingIdMiddleWare
      * @return mixed
      */
     public function handle($request, Closure $next)
-    {   
+    {
         if (!\App\Models\Guest::where('tracking_id', $request->id)->first()):
-            return redirect()->route('applicant.track');
+            return redirect()->route('home.index');
         else:
             return $next($request);
         endif;

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
 use App\Models\Guest;
 
 class EnquiriesController extends Controller
@@ -16,17 +16,6 @@ class EnquiriesController extends Controller
      */
     public function index($id)
     {
-        // if (!Guest::where('tracking_id', '=', $id)->first()) {
-        //     Session::flash('error', "Invalid Credential");
-        //     return redirect()->route('applicant.submit');
-        // }
-
-        // if ($case = Cases::where('tracking_id', '=', $id)->first()):
-        //     if ($case->status > 0):
-        //         return redirect()->route('application.success', ['id' => $id]);
-        //     endif;
-        // endif;
-
         $title            = APP_NAME;
         $description      = "FCCPC Select Enquiry Dashboard";
         $details          = details($title, $description);

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Controllers\Controller;
 use Auth;
 
 class CaseHandlersController extends Controller
@@ -26,7 +26,7 @@ class CaseHandlersController extends Controller
      * @return void
      */
     public function index()
-    { 
+    {
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
         $details          = details($title, $description);
@@ -38,7 +38,7 @@ class CaseHandlersController extends Controller
 	 * @return void
 	 */
     public function create()
-    { 
+    {
     	$title            = APP_NAME;
         $description      = "FCCPC Create Handler Dashboard";
     	$details          = details($title, $description);
@@ -50,7 +50,7 @@ class CaseHandlersController extends Controller
      * @return void
      */
     public function storeHandler(Request $request)
-    { 
+    {
         $this->validate($request, [
             'firstName'       => ['required', 'string', 'max:255'],
             'lastName'        => ['required', 'string', 'max:255'],
@@ -79,7 +79,7 @@ class CaseHandlersController extends Controller
      * @return void
      */
     public function show($id)
-    { 
+    {
         $handler          = \App\User::whereId($id)->first();
         $title            = APP_NAME;
         $description      = "FCCPC View Case Handler Dashboard";
