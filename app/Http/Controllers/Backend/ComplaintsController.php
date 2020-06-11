@@ -80,7 +80,7 @@ class ComplaintsController extends Controller
         ]);
 
         if ($result):
-            Mail::to(COMPANY_EMAIL)->send(new ComplaintMail([
+            Mail::to(config('mail.from.address'))->send(new ComplaintMail([
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,
                 'email'         => $result->email,
@@ -89,11 +89,11 @@ class ComplaintsController extends Controller
                 'document'      => $document ?? null,
             ]));
             Session::flash('success', "Complaint submitted!");
-            return redirect()->back();
         else:
             Session::flash('error', "Complaint not submitted!");
-            return redirect()->back();
         endif;
+
+        return redirect()->back();
     }
 
     /**

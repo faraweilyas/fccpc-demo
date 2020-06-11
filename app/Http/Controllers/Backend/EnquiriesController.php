@@ -99,7 +99,7 @@ class EnquiriesController extends Controller
         ]);
 
         if ($result):
-            Mail::to(COMPANY_EMAIL)->send(new EnquiryMail([
+            Mail::to(config('mail.from.address'))->send(new EnquiryMail([
                 'firm'          => $result->firm,
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,
@@ -110,11 +110,11 @@ class EnquiriesController extends Controller
                 'document'      => $document ?? null,
             ]));
             Session::flash('success', "Enquiry submitted!");
-            return redirect()->back();
         else:
             Session::flash('error', "Enquiry not submitted!");
-            return redirect()->back();
         endif;
+
+        return redirect()->back();
     }
 
     /**
