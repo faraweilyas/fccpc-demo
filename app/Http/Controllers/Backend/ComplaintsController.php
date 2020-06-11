@@ -27,6 +27,7 @@ class ComplaintsController extends Controller
 
     /**
      * Handles the create complaint page route.
+     * @param Request $request
      * @param int $id
      * @return void
      */
@@ -105,6 +106,7 @@ class ComplaintsController extends Controller
 
     /**
      * Handles the authenticate submit complaint page route.
+     * @param Request $request
      * @return void
      */
     public function authenticateSubmitComplaint(Request $request)
@@ -113,16 +115,11 @@ class ComplaintsController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        $result             = Guest::create([
+        Guest::create([
             'email'         => trim($request->email),
             'tracking_id'   => generateApplicantID(),
         ]);
 
-        if ($result):
-            return redirect()->route('complaints.index', ['id' => $result->tracking_id]);
-        else:
-            Session::flash('error', "Invalid Credential!");
-            return redirect()->back();
-        endif;
+        return redirect()->route('complaints.index', ['id' => $result->tracking_id]);
     }
 }

@@ -62,16 +62,16 @@ class EnquiriesController extends Controller
 
         // Check if uploaded file size was greater than
         // maximum allowed file size
-        if ($document) {
-            if ($document->getError() == 1) {
+        if ($document):
+            if ($document->getError() == 1):
                 $max_size = $document->getMaxFileSize() / 1024 / 1024;  // Get size in Mb
                 Session::flash('error', "The document size must be less than {$max_size} Mb!");
-                return redirect()->back();
-            }
-        }
+                return redirect()->back()->with("error", "The document size must be less than {$max_size} Mb!");
+            endif;
+        endif;
 
         // Handle File Upload
-        if($request->hasFile('file')) {
+        if ($request->hasFile('file')):
             // Get filename with extension
             $filenameWithExt = $document->getClientOriginalName();
             // Get just filename
@@ -82,11 +82,11 @@ class EnquiriesController extends Controller
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
-        } else {
+        else:
             $fileNameToStore = 'noimage.jpg';
-        }
+        endif;
 
-        $result = Enquiry::create([
+        Enquiry::create([
             'tracking_id' => $id,
             'firm'        => trim($request->firm),
             'firstName'   => trim($request->firstName),
@@ -98,23 +98,18 @@ class EnquiriesController extends Controller
             'file'        => $fileNameToStore ?? '',
         ]);
 
-        if ($result):
-            Mail::to(config('mail.from.address'))->send(new EnquiryMail([
-                'firm'          => $result->firm,
-                'firstName'     => $result->firstName,
-                'lastName'      => $result->lastName,
-                'email'         => $result->email,
-                'phone'         => $result->phone,
-                'type'          => $result->type,
-                'message'       => $result->message,
-                'document'      => $document ?? null,
-            ]));
-            Session::flash('success', "Enquiry submitted!");
-        else:
-            Session::flash('error', "Enquiry not submitted!");
-        endif;
+        Mail::to(config('mail.from.address'))->send(new EnquiryMail([
+            'firm'          => $result->firm,
+            'firstName'     => $result->firstName,
+            'lastName'      => $result->lastName,
+            'email'         => $result->email,
+            'phone'         => $result->phone,
+            'type'          => $result->type,
+            'message'       => $result->message,
+            'document'      => $document ?? null,
+        ]));
 
-        return redirect()->back();
+        return redirect()->back()->with("success", "Enquiry submitted!");
     }
 
     /**
@@ -147,8 +142,7 @@ class EnquiriesController extends Controller
         if ($result):
             return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);
         else:
-            Session::flash('error', "Invalid Credential!");
-            return redirect()->back();
+            return redirect()->back()->with("error", "Invalid Credentials!");
         endif;
     }
 }

@@ -29,17 +29,17 @@ class ApplicantController extends Controller
             'tracking_id'   => generateApplicantID(),
         ]);
 
-        if ($result):
-            Cases::create([
-                'tracking_id'   => $result->tracking_id,
-                'status'        => 0,
-            ]);
-            Mail::to($request->email)->send(new WelcomeApplicant([
-                'email'         => $result->email ,
-                'tracking_id'   => $result->tracking_id,
-            ]));
-            return redirect()->route('application.index', ['id' => $result->tracking_id]);
-        endif;
+        Cases::create([
+            'tracking_id'   => $result->tracking_id,
+            'status'        => 0,
+        ]);
+
+        Mail::to($request->email)->send(new WelcomeApplicant([
+            'email'         => $result->email ,
+            'tracking_id'   => $result->tracking_id,
+        ]));
+
+        return redirect()->route('application.index', ['id' => $result->tracking_id]);
     }
 
     /**
@@ -89,8 +89,7 @@ class ApplicantController extends Controller
                 return redirect()->route('application.success', ['id' => $request->tracking_id]);
             endif;
         else:
-            Session::flash('error', "Invalid Credentials!");
-            return redirect()->back();
+            return redirect()->back()->with("error", "Invalid Credentials!");
         endif;
     }
 }

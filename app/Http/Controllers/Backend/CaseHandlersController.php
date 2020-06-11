@@ -66,11 +66,9 @@ class CaseHandlersController extends Controller
         ]);
 
         if ($user) {
-            Session::flash('success', "Case handler created sucessfully");
-            return redirect()->back();
+            return redirect()->back()->with("success", "Case handler created sucessfully");
         } else {
-            Session::flash('error', "Case handler not created sucessfully.");
-            return redirect()->back();
+            return redirect()->back()->with("error", "Case handler not created sucessfully");
         }
     }
 
@@ -96,11 +94,9 @@ class CaseHandlersController extends Controller
          ]);
 
         if ($result) {
-            Session::flash('success', "Case handler's status updated");
-            return redirect()->back();
+            return redirect()->back()->with("success", "Case handler's status updated");
         } else {
-            Session::flash('error', "Case handler's status not updated.");
-            return redirect()->back();
+            return redirect()->back()->with("error", "Case handler's status not updated.");
         }
     }
  }

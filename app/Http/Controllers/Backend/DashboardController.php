@@ -57,7 +57,7 @@ class DashboardController extends Controller
             'accountType'     => 'required',
         ]);
 
-        $user = \App\User::create([
+        \App\User::create([
             'firstName'     => trim(ucfirst($request->firstName)),
             'lastName'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
@@ -65,13 +65,7 @@ class DashboardController extends Controller
             'accountType'   => $request->accountType,
         ]);
 
-        if ($user) {
-            Session::flash('success', "User created sucessfully");
-            return redirect()->back();
-        } else {
-            Session::flash('error', "User not created sucessfully.");
-            return redirect()->back();
-        }
+        return redirect()->back()->with("success", "User created sucessfully");
     }
 
     /**
@@ -103,17 +97,11 @@ class DashboardController extends Controller
     {
         $check_status = \App\User::findOrFail($id);
 
-        $result = \App\User::whereId($id)->update([
-                'status' => !$check_status->status
-         ]);
+        \App\User::whereId($id)->update([
+            'status' => !$check_status->status
+        ]);
 
-        if ($result) {
-            Session::flash('success', "User's status updated");
-            return redirect()->back();
-        } else {
-            Session::flash('error', "User's status not updated.");
-            return redirect()->back();
-        }
+        return redirect()->back()->with("success", "User's status updated");
     }
 
     public function updateProfile(Request $request)
@@ -126,36 +114,24 @@ class DashboardController extends Controller
         if (isset($request->password) && $request->change_pass == 'yes') {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
-                    $result = \App\User::whereId(Auth::user()->id)->update([
+                    \App\User::whereId(Auth::user()->id)->update([
                             'firstName' => $request->firstName,
                             'lastName'  => $request->lastName,
                             'password'  => Hash::make($request->new_password)
                      ]);
 
-                    if ($result) {
-                        Session::flash('success', "Profile updated");
-                        return redirect()->back();
-                    } else {
-                        Session::flash('error', "Profile not updated.");
-                        return redirect()->back();
-                    }
+                    return redirect()->back()->with("success", "Profile updated");
                 }
             } else {
-                Session::flash('error', "Password Mismatch");
-                return redirect()->back();
+                return redirect()->back()->with("error", "Password Mismatch");
             }
         }
-        $result = \App\User::whereId(Auth::user()->id)->update([
+
+        \App\User::whereId(Auth::user()->id)->update([
                 'firstName' => $request->firstName,
                 'lastName'  => $request->lastName
          ]);
 
-        if ($result) {
-            Session::flash('success', "Profile updated");
-            return redirect()->back();
-        } else {
-            Session::flash('error', "Profile not updated.");
-            return redirect()->back();
-        }
+        return redirect()->back()->with("success", "Profile updated");
     }
 }

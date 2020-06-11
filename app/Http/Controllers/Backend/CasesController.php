@@ -55,17 +55,12 @@ class CasesController extends Controller
      */
     public function assignCase(Request $request, $id)
     {
-        $result = Cases::whereId($id)->update([
+        Cases::whereId($id)->update([
             'case_handler_id' => $request->case_handler,
             'status'          => 2
         ]);
 
-        if ($result)
-            Session::flash('success', "Transaction has been assigned to case handler");
-        else
-            Session::flash('error', "An error occurred, please try again.");
-
-        return redirect()->back();
+        return redirect()->back()->with("success", "Transaction has been assigned to case handler");
     }
 
     /**
@@ -75,11 +70,10 @@ class CasesController extends Controller
      */
     public function updateCaseStatus($status, $id)
     {
-        if (Cases::whereId($id)->update(['status' => $status]))
-            Session::flash('success', "Transaction status has been updated");
-        else
-            Session::flash('error', "An error occurred, please try again.");
+        Cases::whereId($id)->update([
+            'status' => $status
+        ]);
 
-        return redirect()->back();
+        return redirect()->back()->with("success", "Transaction status has been updated");
     }
 }

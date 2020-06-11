@@ -18,8 +18,7 @@ class ApplicationController extends Controller
     public function index($id)
     {
         if (!Guest::where('tracking_id', '=', $id)->first()) {
-            Session::flash('error', "Invalid Credential");
-            return redirect()->route('applicant.submit');
+            return redirect()->route('applicant.submit')->with("error", "Invalid Credentials!");
         }
 
         if ($case = Cases::where('tracking_id', '=', $id)->first()):
@@ -83,8 +82,7 @@ class ApplicationController extends Controller
     {
         $case = Cases::where('tracking_id', '=', $id)->first();
         if ($case->status <= 0 && !is_null($case->transaction_category)):
-            Session::flash('error', "Please complete your application!");
-            return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $id]);
+            return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $id])->with("error", "Please complete your application!");
         endif;
 
         $title            = APP_NAME;
