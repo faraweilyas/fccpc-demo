@@ -38,12 +38,12 @@
                             </a>
                         </li>
                         <li class="sub-list-item">
-                            <a href="{{ route('enquiries.track') }}">
+                            <a href="{{ route('enquiries.submit') }}">
                                 <p>Make Enquiry</p>
                             </a>
                         </li>
                         <li class="sub-list-item">
-                            <a href="{{ route('complaints.track') }}">
+                            <a href="{{ route('complaints.submit') }}">
                                 <p>Make Complaint</p>
                             </a>
                         </li>
@@ -84,10 +84,10 @@
 	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="{{ route('applicant.track') }}">Make Enquiry</a>
+	                <a class="smalltext" href="{{ route('applicant.submit') }}">Make Enquiry</a>
 	            </li>
                 <li>
-                    <a class="smalltext" href="{{ route('complaints.track') }}">Make Complaint</a>
+                    <a class="smalltext" href="{{ route('complaints.submit') }}">Make Complaint</a>
                 </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>

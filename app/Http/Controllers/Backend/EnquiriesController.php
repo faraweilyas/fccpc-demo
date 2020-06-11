@@ -118,22 +118,22 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the track enquiry page route.
+     * Handles the submit enquiry page route.
      * @return void
      */
-    public function trackEnquiry()
+    public function submitEnquiry()
     {
         $title            = APP_NAME;
         $description      = "FCCPC Track Enquiry";
         $details          = details($title, $description);
-        return view('backend.enquiries.track', compact('details'));
+        return view('backend.enquiries.submit', compact('details'));
     }
 
     /**
-     * Handles the authenticate track enquiry page route.
+     * Handles the authenticate submit enquiry page route.
      * @return void
      */
-    public function authenticateTrackEnquiry(Request $request)
+    public function authenticateSubmitEnquiry(Request $request)
     {
         $this->validate($request, [
             'tracking_id' => 'required',

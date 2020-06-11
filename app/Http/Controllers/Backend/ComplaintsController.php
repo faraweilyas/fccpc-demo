@@ -97,22 +97,22 @@ class ComplaintsController extends Controller
     }
 
     /**
-     * Handles the track complaint page route.
+     * Handles the submit complaint page route.
      * @return void
      */
-    public function trackComplaint()
+    public function submitComplaint()
     {
         $title            = APP_NAME;
         $description      = "FCCPC Track Complaint";
         $details          = details($title, $description);
-        return view('backend.complaints.track', compact('details'));
+        return view('backend.complaints.submit', compact('details'));
     }
 
     /**
-     * Handles the authenticate track complaint page route.
+     * Handles the authenticate submit complaint page route.
      * @return void
      */
-    public function authenticateTrackComplaint(Request $request)
+    public function authenticateSubmitComplaint(Request $request)
     {
         $this->validate($request, [
             'tracking_id' => 'required',

@@ -35,8 +35,8 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
     Route::get('select/{id}',   'EnquiriesController@index')->name('index');
     Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
     Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
-    Route::get('track',         'EnquiriesController@trackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('track',        'EnquiriesController@authenticateTrackEnquiry')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('submit',         'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('submit',        'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
 });
 
 // Complaints Controller
@@ -44,8 +44,8 @@ Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'B
 {
     Route::get('create/{id}',        'ComplaintsController@index')->name('index');
     Route::post('create/{id}',       'ComplaintsController@store')->name('create');
-    Route::get('track',             'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('track',            'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('submit',            'ComplaintsController@authenticateSubmitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
 });
 
 // Supervisor Controller

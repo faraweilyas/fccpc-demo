@@ -18,7 +18,7 @@
                         <div class="mb_30">
                             <h3>Make Enquiry</h3>
                         </div>
-                        <form class="form" method="POST" action="{{ route('enquiries.track') }}">
+                        <form class="form" method="POST" action="{{ route('enquiries.submit') }}">
                             @csrf
                             <div class="form-group mb-5">
                                 @error('tracking_id')
