@@ -99,7 +99,7 @@ class EnquiriesController extends Controller
         ]);
 
         if ($result):
-            Mail::to("kamsikodi@gmail.com")->send(new EnquiryMail([
+            Mail::to(COMPANY_EMAIL)->send(new EnquiryMail([
                 'firm'          => $result->firm,
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,

@@ -6,6 +6,7 @@ defined('APP_NAME') 			? NULL : define('APP_NAME',				"M&A - Federal Competition
 defined('SHORT_APP_NAME') 		? NULL : define('SHORT_APP_NAME',		"M&A - FCCPC");
 defined('COMPANY') 				? NULL : define('COMPANY',				"techbarn");
 defined('COMPANY_LINK') 		? NULL : define('COMPANY_LINK',			"https://techbarn.ng");
+defined('COMPANY_EMAIL')        ? NULL : define('COMPANY_EMAIL',        "kamsikodi@gmail.com");
 defined('AGENCY') 				? NULL : define('AGENCY',				"FCCPC");
 defined('AGENCY_LINK') 			? NULL : define('AGENCY_LINK',			"http://fccpc.gov.ng");
 

@@ -80,7 +80,7 @@ class ComplaintsController extends Controller
         ]);
 
         if ($result):
-            Mail::to("kamsikodi@gmail.com")->send(new ComplaintMail([
+            Mail::to(COMPANY_EMAIL)->send(new ComplaintMail([
                 'firstName'     => $result->firstName,
                 'lastName'      => $result->lastName,
                 'email'         => $result->email,
