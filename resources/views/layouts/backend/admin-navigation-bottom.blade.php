@@ -13,7 +13,7 @@
 					@if(!in_array(\Auth::user()->accountType, ['AD']))
 					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
-							<span class="menu-text">Case</span>
+							<span class="menu-text">Cases</span>
 							<span class="menu-desc">...</span>
 							<i class="menu-arrow"></i>
 						</a>
