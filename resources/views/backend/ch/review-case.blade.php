@@ -38,7 +38,7 @@
 									</p>
 									<p>
 										<b>Subject:&nbsp;</b>
-                                        {{ $case->subject ?? '' }}
+                                        {{ ucfirst($case->subject) ?? '' }}
 									</p>
                                     <p>
                                         <b>Parties:&nbsp;</b>
@@ -46,16 +46,18 @@
                                     </p>
 									<p>
 										<b>Transaction Type:&nbsp;</b>
-                                        {{ $case->getTransactionType() }}
+                                        <span class="label label-lg font-weight-bold label-light-dark text-dark label-inline">
+                                            <b>{{ $case->getTransactionType() }}</b>
+                                        </span>
 									</p>
 									<p>
 										<b>Transaction Category:&nbsp;</b>
-                                        {{ $case->getCaseCategory('strtoupper') }}
+                                        <b>{{ $case->getCaseCategory('strtoupper') }}</b>
 									</p>
 									<p>
 										<b>Status:&nbsp;</b>
                                         <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">
-                                            {{ $case->getCaseStatus('strtoupper') }}
+                                            <b>{{ $case->getCaseStatus('strtoupper') }}</b>
                                         </span>
 									</p>
                                     <p>
