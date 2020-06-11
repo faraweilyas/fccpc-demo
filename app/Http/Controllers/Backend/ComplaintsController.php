@@ -79,21 +79,16 @@ class ComplaintsController extends Controller
             'file'        => $fileNameToStore ?? '',
         ]);
 
-        if ($result):
-            Mail::to(config('mail.from.address'))->send(new ComplaintMail([
-                'firstName'     => $result->firstName,
-                'lastName'      => $result->lastName,
-                'email'         => $result->email,
-                'phone'         => $result->phone,
-                'message'       => $result->message,
-                'document'      => $document ?? null,
-            ]));
-            Session::flash('success', "Complaint submitted!");
-        else:
-            Session::flash('error', "Complaint not submitted!");
-        endif;
+        Mail::to(config('mail.from.address'))->send(new ComplaintMail([
+            'firstName'     => $result->firstName,
+            'lastName'      => $result->lastName,
+            'email'         => $result->email,
+            'phone'         => $result->phone,
+            'message'       => $result->message,
+            'document'      => $document ?? null,
+        ]));
 
-        return redirect()->back();
+        return redirect()->back()->with('success', "Complaint submitted!");
     }
 
     /**
@@ -102,8 +97,9 @@ class ComplaintsController extends Controller
      */
     public function submitComplaint()
     {
+        // dd(config('mail.from.address'));
         $title            = APP_NAME;
-        $description      = "FCCPC Track Complaint";
+        $description      = "FCCPC Submit Complaint";
         $details          = details($title, $description);
         return view('backend.complaints.submit', compact('details'));
     }
@@ -115,10 +111,13 @@ class ComplaintsController extends Controller
     public function authenticateSubmitComplaint(Request $request)
     {
         $this->validate($request, [
-            'tracking_id' => 'required',
+            'email' => ['required', 'email'],
         ]);
 
-        $result = Guest::where('tracking_id', $request->tracking_id)->first();
+        $result             = Guest::create([
+            'email'         => trim($request->email),
+            'tracking_id'   => generateApplicantID(),
+        ]);
 
         if ($result):
             return redirect()->route('complaints.index', ['id' => $result->tracking_id]);

@@ -136,10 +136,13 @@ class EnquiriesController extends Controller
     public function authenticateSubmitEnquiry(Request $request)
     {
         $this->validate($request, [
-            'tracking_id' => 'required',
+            'email' => ['required', 'email'],
         ]);
 
-        $result = Guest::where('tracking_id', $request->tracking_id)->first();
+        $result             = Guest::create([
+            'email'         => trim($request->email),
+            'tracking_id'   => generateApplicantID(),
+        ]);
 
         if ($result):
             return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);

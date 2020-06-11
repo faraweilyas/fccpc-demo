@@ -18,13 +18,13 @@
                         <div class="mb_30">
                             <h3>Make Complaint</h3>
                         </div>
-                        <form class="form" method="POST" action="{{ route('complaints.track') }}">
+                        <form class="form" method="POST" action="{{ route('complaints.submit') }}">
                             @csrf
                             <div class="form-group mb-5">
-                                @error('tracking_id')
+                                @error('email')
                                     <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                 @enderror
-                                <input type="text" placeholder="Please provide tracking id:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
+                                <input type="email" placeholder="Please provide email:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
                             </div>
                             <button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
                         </form>
