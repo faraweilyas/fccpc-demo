@@ -2,11 +2,8 @@
 @section('content')
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-		<!--begin::Info-->
 		<div class="d-flex align-items-center flex-wrap mr-1">
-			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
-				<!--begin::Page Title-->
 				<h5 class="text-dark font-weight-bold my-2 mr-5">User Profile</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
@@ -132,9 +129,7 @@
 			</div>
 		</div>
 	</div>
-	<!--end::Entry-->
 </div>
-<!--end::Content-->
 <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_JS.'update-profile.js') }}"></script>
 @endSection

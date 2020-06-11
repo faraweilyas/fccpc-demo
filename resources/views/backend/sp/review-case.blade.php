@@ -1,13 +1,9 @@
 @extends('layouts.backend.base')
 @section('content')
-<!--begin::Content-->
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-		<!--begin::Info-->
 		<div class="d-flex align-items-center flex-wrap mr-1">
-			<!--begin::Page Heading-->
 			<div class="d-flex align-items-baseline mr-5">
-				<!--begin::Page Title-->
 				<h5 class="text-dark font-weight-bold my-2 mr-5">Case Review</h5>
 				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
 					<li class="breadcrumb-item">
@@ -20,15 +16,11 @@
 						<a href="" class="text-muted">Review Case</a>
 					</li>
 				</ul>
-				<!--end::Page Title-->
 			</div>
-			<!--end::Page Heading-->
 		</div>
-		<!--end::Info-->
 	</div>
 </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Entry-->
 	<div class="d-flex flex-column-fluid">
 		<div class="container">
 			<div class="row mt-4">
@@ -126,10 +118,7 @@
 			</div>
 		</div>
 	</div>
-	<!--end::Entry-->
 </div>
-<!--end::Content-->
-<!-- Modal-->
 <div class="modal fade" id="reassignCaseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -142,7 +131,6 @@
             <form method="POST" action="{{ route('cases.assign', ['id' => $case->id]) }}">
             	@csrf
 	            <div class="modal-body">
-	                <!--begin::Input-->
 	                <div class="row">
 	                	<div class="col-md-6">
 	                		<div class="row">
@@ -187,7 +175,6 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
 <div class="modal fade" id="issueQueryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -200,7 +187,6 @@
             <form method="POST" action="{{ route('cases.update_status', ['status' => 3, 'id' => $case->id]) }}">
             	@csrf
 	            <div class="modal-body">
-	                <!--begin::Input-->
 	                <div class="row">
 	                	<div class="col-md-6">
 	                		<div class="row">

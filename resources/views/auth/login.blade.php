@@ -1,19 +1,13 @@
 @extends('layouts.backend.base-login')
-@section('content')
-<!--begin::Main-->
 <div class="d-flex flex-column flex-root">
-    <!--begin::Login-->
     <div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
         <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}">
             <div class="login-form text-center p-7 position-relative overflow-hidden">
-               <!--begin::Login Header-->
                 <div class="d-flex flex-center mb_15">
                     <a href="{{ route('home.index') }}">
                         <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" class="maxh_130" />
                     </a>
                 </div>
-                <!--end::Login Header-->
-                <!--begin::Login Sign in form-->
                 <div class="login-signin">
                     <div class="mb-20">
                         <h3>Login</h3>
@@ -48,10 +42,8 @@
                         </p>
                     </div>
                 </div>
-                <!--end::Login Sign in form-->
             </div>
         </div>
     </div>
-    <!--end::Login-->
 </div>
 @endSection
