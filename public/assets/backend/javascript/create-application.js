@@ -3,10 +3,10 @@ jQuery(document).ready(function ($) {
 			"progressBar": true,
 			"positionClass": "toast-bottom-right",
 		};
-		
+
 	$("#save-info").on('click', function(e) {
 		e.preventDefault();
-		
+
 	    var tracking_id	  = $("#tracking_id").val();
    		var form_data     = $(".new-case-form").serialize();
    		var token 		  = $("#token").val();
@@ -44,7 +44,7 @@ jQuery(document).ready(function ($) {
 	            showCancelButton: true,
 	            confirmButtonText: "Yes, submit it!"
 	        }).then(function(result) {
-	        	
+
 	            if (result.value) {
 	            	$("#previous-btn").addClass('hide');
 		        	$("#save-btns").addClass('hide');
@@ -52,7 +52,7 @@ jQuery(document).ready(function ($) {
 	            	$.ajax({
 						url: '/api/application/upload/'+tracking_id,
 						data: {
-							'_token': token 
+							'_token': token
 						},
 						type: 'POST',
 						success: function(data) {
@@ -63,7 +63,7 @@ jQuery(document).ready(function ($) {
 				                    "Your details have been uploaded successfully.",
 				                    "success"
 				                ).then(function() {
-				                	window.location.replace('/success/'+tracking_id);
+				                	window.location.replace('/application/success/'+tracking_id);
 				                });
 						    } else {
 						        toastr.error("Your details have been not been uploaded successfully.");
@@ -73,17 +73,17 @@ jQuery(document).ready(function ($) {
 							console.log(err.responseText);
 						}
 				    });
-	                
+
 	            }
 	        });
 	});
 
 	var InputsWrapper   = $(".fields");
-	var x = InputsWrapper.length; 
-	var FieldCount=1; 
+	var x = InputsWrapper.length;
+	var FieldCount=1;
 
 	$('#add-party-fields').on('click', function(e) {
-		FieldCount++; 
+		FieldCount++;
 		$(InputsWrapper).append('<div class="field-item mt-4" id="field_'+ FieldCount +'">'+
 									'<div class="row">'+
 										'<div class="col-lg-5">'+
@@ -113,10 +113,10 @@ jQuery(document).ready(function ($) {
 		x++;
 		return false;
 	});
-	$(document).on("click",".remove", function(e){ 
+	$(document).on("click",".remove", function(e){
 		if( x > 1 ) {
-		$(this).closest('.field-item').remove(); 
-		 x--; 
+		$(this).closest('.field-item').remove();
+		 x--;
 	    }
 	    return false;
 	});

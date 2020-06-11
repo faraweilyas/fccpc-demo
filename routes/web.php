@@ -24,9 +24,10 @@ Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'namespace' => 'Bac
 Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
     Route::get('select/{id}',           'ApplicationController@index')->name('index');
+    Route::get('success/{id}',          'ApplicationController@applicationSuccess')->name('success');
     Route::get('{type}/{id}',           'ApplicationController@create')->name('create');
     Route::get('upload/documents/{id}', 'ApplicationController@supportingDocuments')->name('upload');
-    Route::get('success/{id}',          'ApplicationController@applicationSuccess')->name('success');
+
 });
 
 // Enquiries Controller

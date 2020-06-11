@@ -86,7 +86,7 @@ class ApplicantController extends Controller
                     return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $request->tracking_id]);
                 endif;
             else:
-                return redirect()->route('application.upload', ['id' => $request->tracking_id]);
+                return redirect()->route('application.success', ['id' => $request->tracking_id]);
             endif;
         else:
             Session::flash('error', "Invalid Credentials!");
