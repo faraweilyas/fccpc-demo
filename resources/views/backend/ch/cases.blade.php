@@ -44,29 +44,29 @@
                     <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
                         <thead>
                             <tr>
-                                <th>Ref No</th>
+                                <th class="text-center">Ref No</th>
                                 <th>Subject</th>
-                                <th>Transaction Type</th>
+                                <th class="text-center">Transaction Type</th>
                                 <th>Parties</th>
-                                <th>Category</th>
+                                <th class="text-center">Category</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+                            @foreach($cases as $case)
                             <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getRefNO() }}</b>
                                 </td>
                                 <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getTransactionType() }}</b>
                                 </td>
                                 <td>
-                                    {{ $case->parties }}
+                                    {!! $case->generateCasePartiesBadge() !!}
                                 </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getCaseCategory('strtoupper') }}</b>
                                 </td>
                                 <td>
                                     <a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">

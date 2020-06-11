@@ -323,7 +323,7 @@ function formatCaseType(string $type) : string
 			$case = 'Requests Log';
 			break;
 		default:
-			$case = ucfirst($type).' '.'cases';
+			$case = ucfirst($type).' cases';
 			break;
 	}
 	return $case;

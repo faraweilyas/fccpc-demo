@@ -26,11 +26,12 @@ class CasesController extends Controller
 	 */
     public function index($type)
     {
-        $case             = formatCaseType($type);
-    	$title            = APP_NAME;
-        $description      = "FCCPC Cases Log Dashboard";
-    	$details          = details($title, $description);
-    	return view('backend.'.getAccountType().'.cases', compact('details', 'case', 'type'));
+        $cases          = Cases::where('status', 1)->get();
+        $case           = formatCaseType($type);
+        $title          = APP_NAME;
+        $description    = "FCCPC Cases Log Dashboard";
+        $details        = details($title, $description);
+    	return view('backend.'.getAccountType().'.cases', compact('details', 'cases', 'case', 'type'));
     }
 
     /**

@@ -39,11 +39,6 @@ class Cases extends Model
         })->join(" ");
     }
 
-    public function getCaseCategory($textStyle='strtolower') : string
-    {
-        return textTransformer(AppHelper::$case_categories[$this->transaction_category] ?? "", $textStyle);
-    }
-
     public function getCaseStatus($textStyle='strtolower') : string
     {
         return textTransformer(AppHelper::$case_status[$this->status] ?? "", $textStyle);
@@ -57,6 +52,11 @@ class Cases extends Model
     public function getCaseHandlerName() : string
     {
         return ($caseHandler = User::find($this->case_handler_id)) ? $caseHandler->getFullName() : "";
+    }
+
+    public function getCaseCategory($textStyle='strtolower') : string
+    {
+        return textTransformer(AppHelper::$case_categories[$this->transaction_category] ?? "", $textStyle);
     }
 
     public function getTransactionType($textStyle='ucfirst') : string

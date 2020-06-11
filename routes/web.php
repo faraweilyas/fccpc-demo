@@ -44,7 +44,7 @@ Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'B
 {
     Route::get('create/{id}',        'ComplaintsController@index')->name('index');
     Route::post('create/{id}',       'ComplaintsController@store')->name('create');
-     Route::get('track',             'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('track',             'ComplaintsController@trackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
     Route::post('track',            'ComplaintsController@authenticateTrackComplaint')->name('track')->withoutMiddleware(['ValidateTrackingId']);
 });
 
