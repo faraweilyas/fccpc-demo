@@ -40,13 +40,33 @@ class User extends Authenticatable
     ];
 
     /**
+     * Get users first name
+     *
+     * @return string
+     */
+    public function getFirstName() : string
+    {
+        return !empty($this->firstName) ? $this->firstName : "";
+    }
+
+    /**
+     * Get users last name
+     *
+     * @return string
+     */
+    public function getLastName() : string
+    {
+        return !empty($this->lastName) ? $this->lastName : "";
+    }
+
+    /**
      * Get users full name
      *
      * @return string
      */
     public function getFullName() : string
     {
-        return trim("{$this->firstName} {$this->lastName}");
+        return trim("{$this->getFirstName()} {$this->getLastName()}");
     }
 
     /**
@@ -67,7 +87,7 @@ class User extends Authenticatable
      */
     public function getAccountType() : string
     {
-        return AppHelper::$account_types[$this->accountType];
+        return AppHelper::$account_types[$this->accountType] ?? "";
     }
 
     /**
