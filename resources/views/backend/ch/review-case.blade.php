@@ -39,28 +39,37 @@
 						</div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-12">
+								<div class="col-md-12 p_mb_20">
 									<p>
-										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $case->ref_no ?? '' }}</span>
+										<b>Ref No:&nbsp;</b>
+                                        <b>{{ $case->getRefNO() }}</b>
 									</p>
 									<p>
-										<strong>Subject :</strong>&nbsp;{{ $case->subject ?? '' }}
+										<b>Subject:&nbsp;</b>
+                                        {{ $case->subject ?? '' }}
+									</p>
+                                    <p>
+                                        <b>Parties:&nbsp;</b>
+                                        {!! $case->generateCasePartiesBadge() !!}
+                                    </p>
+									<p>
+										<b>Transaction Type:&nbsp;</b>
+                                        {{ $case->getTransactionType() }}
 									</p>
 									<p>
-										<strong>Transaction Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->transaction_type ?? '' }}</span>
+										<b>Transaction Category:&nbsp;</b>
+                                        {{ $case->getCaseCategory('strtoupper') }}
 									</p>
 									<p>
-										<strong>Parties : </strong>&nbsp;{{ $case->parties ?? '' }}
+										<b>Status:&nbsp;</b>
+                                        <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">
+                                            {{ $case->getCaseStatus('strtoupper') }}
+                                        </span>
 									</p>
-									<p>
-										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
-									</p>
-									<p>
-										<strong>Case Handler : </strong>&nbsp;{{ \App\User::find($case->case_handler_id)->getFullName() }}
-									</p>
-									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status] }} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status] }}</span>
-									</p>
+                                    <p>
+                                        <b>Case Handler:&nbsp;</b>
+                                        <b>{{ $case->getCaseHandlerName() }}</b>
+                                    </p>
 								</div>
 							</div>
 							<div class="row mt-4">
@@ -76,7 +85,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group mb-1">
-								<textarea class="form-control" id="exampleTextarea" rows="6">Make comments to case handler...</textarea>
+								<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Make comments to case handler..."></textarea>
 							</div>
 						</div>
 					</div>
@@ -154,7 +163,7 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ $case->getCaseHandlerName() }}" disabled>
 								</div>
 							</div>
 							<div class="row mt-5">
@@ -173,7 +182,7 @@
 	                		<div class="row">
 								<div class="col-md-12">
 									<label>Reason</label>
-									<textarea class="form-control" id="exampleTextarea" rows="6">Reason...</textarea>
+									<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Reason..."></textarea>
 								</div>
 							</div>
 						</div>
@@ -212,7 +221,7 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ $case->getCaseHandlerName() }}" disabled>
 								</div>
 							</div>
 	                	</div>
@@ -220,7 +229,7 @@
 	                		<div class="row">
 								<div class="col-md-12">
 									<label>Query</label>
-									<textarea class="form-control" id="exampleTextarea" rows="6">Query...</textarea>
+									<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Query..."></textarea>
 								</div>
 							</div>
 						</div>
