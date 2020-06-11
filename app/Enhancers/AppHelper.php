@@ -34,14 +34,14 @@ class AppHelper
 
 	// Valid Status
 	static $status = [
-		'0' 	=> 'Inactive',
-		'1' 	=> 'Active',
+		'0' => 'Inactive',
+		'1' => 'Active',
 	];
 
 	// Valid Status HTML
 	static $statusHTML = [
-		'0' 	=> 'danger',
-		'1' 	=> 'success',
+		'0' => 'danger',
+		'1' => 'success',
 	];
 
 	// Valid Case Categories

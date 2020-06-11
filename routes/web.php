@@ -72,11 +72,11 @@ Route::group(['prefix' => 'cases', 'as' => 'cases.', 'namespace' => 'Backend'], 
 // Case Handler Controller
 Route::group(['prefix' => 'handlers', 'as' => 'handlers.', 'namespace' => 'Backend'], function()
 {
-    Route::get('/',                          'Backend\CaseHandlersController@index')->name('index');
-    Route::get('create',                     'Backend\CaseHandlersController@create')->name('create');
-    Route::post('create',                    'Backend\CaseHandlersController@storeHandler')->name('store');
-    Route::get('status/update/{id}',         'Backend\CaseHandlersController@updateHandlerStatus')->name('update_status');
-    Route::get('view/{id}',                  'Backend\CaseHandlersController@show')->name('view');
+    Route::get('/',                          'CaseHandlersController@index')->name('index');
+    Route::get('create',                     'CaseHandlersController@create')->name('create');
+    Route::post('create',                    'CaseHandlersController@storeHandler')->name('store');
+    Route::get('status/update/{id}',         'CaseHandlersController@updateHandlerStatus')->name('update_status');
+    Route::get('view/{id}',                  'CaseHandlersController@show')->name('view');
 });
 
 Auth::routes();
