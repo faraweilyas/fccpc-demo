@@ -44,29 +44,29 @@
                     <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
                         <thead>
                             <tr>
-                                <th>Ref No</th>
+                                <th class="text-center">Ref No</th>
                                 <th>Subject</th>
-                                <th>Transaction Type</th>
+                                <th class="text-center">Transaction Type</th>
                                 <th>Parties</th>
-                                <th>Category</th>
+                                <th class="text-center">Category</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+                            @foreach($cases as $case)
                             <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getRefNO() }}</b>
                                 </td>
                                 <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getTransactionType() }}</b>
                                 </td>
                                 <td>
-                                    {{ $case->parties }}
+                                    {!! $case->generateCasePartiesBadge() !!}
                                 </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
+                                <td class="text-center">
+                                    <b>{{ $case->getCaseCategory('strtoupper') }}</b>
                                 </td>
                                 <td>
                                     <a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
@@ -145,7 +145,7 @@
                                     {{ \App\User::find($case->case_handler_id)->getFullName() }}
                                 </td>
                                 <td>
-                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
                                 </td>
                                 <td>
                                     <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
@@ -262,7 +262,7 @@
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <label>Select case handler</label><br>
-                            <select class="form-control select2" id="kt_select2_1" name="case_handler" style="width: 100%;">
+                            <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
                                 @foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach

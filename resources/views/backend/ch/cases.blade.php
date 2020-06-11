@@ -145,7 +145,7 @@
                                     {{ \App\User::find($case->case_handler_id)->getFullName() }}
                                 </td>
                                 <td>
-                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
                                 </td>
                                 <td>
                                     <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
