@@ -97,7 +97,6 @@ class ComplaintsController extends Controller
      */
     public function submitComplaint()
     {
-        // dd(config('mail.from.address'));
         $title            = APP_NAME;
         $description      = "FCCPC Submit Complaint";
         $details          = details($title, $description);
