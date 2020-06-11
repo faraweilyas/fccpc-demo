@@ -86,7 +86,7 @@ class EnquiriesController extends Controller
             $fileNameToStore = 'noimage.jpg';
         endif;
 
-        Enquiry::create([
+        $result = Enquiry::create([
             'tracking_id' => $id,
             'firm'        => trim($request->firm),
             'firstName'   => trim($request->firstName),
@@ -139,10 +139,6 @@ class EnquiriesController extends Controller
             'tracking_id'   => generateApplicantID(),
         ]);
 
-        if ($result):
-            return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);
-        else:
-            return redirect()->back()->with("error", "Invalid Credentials!");
-        endif;
+        return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);
     }
 }

@@ -115,7 +115,7 @@ class ComplaintsController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        Guest::create([
+        $result = Guest::create([
             'email'         => trim($request->email),
             'tracking_id'   => generateApplicantID(),
         ]);

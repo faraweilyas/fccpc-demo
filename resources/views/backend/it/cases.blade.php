@@ -25,196 +25,18 @@
                     <div class="card-title">
                         <h3 class="card-label">{{ $case }}</h3>
                     </div>
-
                 </div>
                 <div class="card-body">
                     @if($type == 'new')
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Ref No</th>
-                                <th>Subject</th>
-                                <th class="text-center">Transaction Type</th>
-                                <th>Parties</th>
-                                <th class="text-center">Category</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($cases as $case)
-                            <tr>
-                                <td class="text-center">
-                                    <b>{{ $case->getRefNO() }}</b>
-                                </td>
-                                <td>{{ ucwords($case->subject) }}</td>
-                                <td class="text-center">
-                                    <b>{{ $case->getTransactionType() }}</b>
-                                </td>
-                                <td>
-                                    {!! $case->generateCasePartiesBadge() !!}
-                                </td>
-                                <td class="text-center">
-                                    <b>{{ $case->getCaseCategory('strtoupper') }}</b>
-                                </td>
-                                <td>
-                                    <a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
-                                        <i class="la la-edit"></i>Assign
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @include('layouts.cases.new-cases')
                     @elseif ($type == 'assigned')
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                        <thead>
-                            <tr>
-                                <th>Ref No</th>
-                                <th>Subject</th>
-                                <th>Transaction Type</th>
-                                <th>Case Handler</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(\App\Models\Cases::where('status', 2)->get() as $case)
-                            <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
-                                </td>
-                                <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
-                                </td>
-                                <td>
-                                    {{ \App\User::find($case->case_handler_id)->getFullName() }}
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
-                                </td>
-                                <td>
-                                    <a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-                                        <i class="la la-info-circle"></i>&nbsp;&nbsp;Review
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @include('layouts.cases.assigned-cases')
                     @elseif ($type == 'hold')
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                        <thead>
-                            <tr>
-                                <th>Ref No</th>
-                                <th>Subject</th>
-                                <th>Transaction Type</th>
-                                <th>Case Handler</th>
-                                <th>Category</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(\App\Models\Cases::where('status', 3)->get() as $case)
-                            <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
-                                </td>
-                                <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
-                                </td>
-                                <td>
-                                    {{ \App\User::find($case->case_handler_id)->getFullName() }}
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->getCaseCategory('ucfirst') }}</span>
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
-                                </td>
-                                <td>
-                                    <a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-                                        <i class="la la-info-circle"></i>&nbsp;&nbsp;Review
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @include('layouts.cases.cases-on-hold')
                     @elseif($type == 'approved')
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                        <thead>
-                            <tr>
-                                <th>Ref No</th>
-                                <th>Subject</th>
-                                <th>Transaction Type</th>
-                                <th>Parties</th>
-                                <th>Category</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(\App\Models\Cases::where('status', 4)->get() as $case)
-                            <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
-                                </td>
-                                <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
-                                </td>
-                                <td>
-                                    {{ $case->parties }}
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $case->getCaseCategory() }}</span>
-                                </td>
-                                <td>
-                                    <a href="{{ route('cases.review', ['id' => $case->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-                                        <i class="la la-info-circle"></i>&nbsp;&nbsp;Review
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @include('layouts.cases.approved-cases')
                     @elseif($type == 'archived')
-                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                        <thead>
-                            <tr>
-                                <th>Ref No</th>
-                                <th>Subject</th>
-                                <th>Transaction Type</th>
-                                <th>Parties</th>
-                                <th>Category</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach(\App\Models\Cases::where('status', 5)->get() as $case)
-                            <tr>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-primary label-inline">{{ $case->ref_no }}</span>
-                                </td>
-                                <td>{{ ucwords($case->subject) }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">{{ $case->transaction_type }}</span>
-                                </td>
-                                <td>
-                                    {{ $case->parties }}
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-warning text-dark label-inline">{{ $case->getCaseCategory() }}</span>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @include('layouts.cases.archived-cases')
                     @endif
                 </div>
             </div>
@@ -260,4 +82,6 @@
     </div>
 </div>
 @endforeach
-@endSection('content')
+<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
+@endSection
