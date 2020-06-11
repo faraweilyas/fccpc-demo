@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\Cases;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class CasesController extends Controller
 {
@@ -17,13 +18,14 @@ class CasesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
 	/**
 	 * Handles the cases display page route.
+     *
 	 * @return void
 	 */
     public function index($type)
-    { 
+    {
         $case             = formatCaseType($type);
     	$title            = APP_NAME;
         $description      = "FCCPC Cases Log Dashboard";
@@ -33,11 +35,12 @@ class CasesController extends Controller
 
     /**
      * Handles the case review page route.
+     *
      * @return void
      */
     public function reviewCase($id)
-    { 
-        $case             = \App\Models\Cases::find($id);
+    {
+        $case             = Cases::find($id);
         $title            = APP_NAME;
         $description      = "FCCPC Case Review Dashboard";
         $details          = details($title, $description);
@@ -46,40 +49,36 @@ class CasesController extends Controller
 
     /**
      * Handles the case assign page route.
+     *
      * @return void
      */
     public function assignCase(Request $request, $id)
-    { 
-        $result = \App\Models\Cases::whereId($id)->update([
-                'case_handler_id' => $request->case_handler,
-                'status'          => 2
-         ]);
+    {
+        $result = Cases::whereId($id)->update([
+            'case_handler_id' => $request->case_handler,
+            'status'          => 2
+        ]);
 
-        if ($result) {
-            Session::flash('success', "Transaction updated");
-            return redirect()->back();
-        } else {
-            Session::flash('error', "Transaction not updated.");
-            return redirect()->back();
-        }
+        if ($result)
+            Session::flash('success', "Transaction has been assigned to case handler");
+        else
+            Session::flash('error', "An error occurred, please try again.");
+
+        return redirect()->back();
     }
 
     /**
      * Handles the case update status page route.
+     *
      * @return void
      */
     public function updateCaseStatus($status, $id)
-    { 
-        $result = \App\Models\Cases::whereId($id)->update([
-                'status'          => $status
-         ]);
+    {
+        if (Cases::whereId($id)->update(['status' => $status]))
+            Session::flash('success', "Transaction status has been updated");
+        else
+            Session::flash('error', "An error occurred, please try again.");
 
-        if ($result) {
-            Session::flash('success', "Transaction updated");
-            return redirect()->back();
-        } else {
-            Session::flash('error', "Transaction not updated.");
-            return redirect()->back();
-        }
+        return redirect()->back();
     }
 }

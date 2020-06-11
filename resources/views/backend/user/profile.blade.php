@@ -1,6 +1,5 @@
 @extends('layouts.backend.base')
 @section('content')
-<!--begin::Content-->
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
 	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
 		<!--begin::Info-->
@@ -17,15 +16,11 @@
 						<a href="" class="text-muted">Profile</a>
 					</li>
 				</ul>
-				<!--end::Page Title-->
 			</div>
-			<!--end::Page Heading-->
 		</div>
-		<!--end::Info-->
 	</div>
 </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-	<!--begin::Entry-->
 	<div class="d-flex flex-column-fluid">
 		<div class="container">
 			<div class="row">
@@ -41,7 +36,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Account Type</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" value="{{ \App\Enhancers\AppHelper::$account_types[$user->accountType] ?? '' }}" disabled />
+											<input type="text" class="form-control" value="{{ $user->getAccountType() }}" disabled />
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -59,7 +54,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>First Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->firstName ?? '' }}">
+											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->getFirstName() }}">
 											<span class="form-text text-muted">Please enter first name.</span>
 											@error('firstName')
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -69,7 +64,7 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Last Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->lastName ?? '' }}">
+											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->getLastName() }}">
 											<span class="form-text text-muted">Please enter last name.</span>
 											@error('lastName')
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -140,6 +135,6 @@
 	<!--end::Entry-->
 </div>
 <!--end::Content-->
-<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_JS.'update-profile.js') }}"></script>
 @endSection
