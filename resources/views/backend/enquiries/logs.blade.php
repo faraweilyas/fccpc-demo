@@ -50,7 +50,7 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
-                                    {{ shortenContent($item->message ?? '...', 30) }}
+                                    {{ $item->getMessage() }}
                                 </td>
                                 <td>
                                     <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType('strtoupper') }}</b></span>

@@ -47,7 +47,7 @@
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
-                                    {{ shortenContent($item->message ?? '...', 30) }}
+                                    {{ $item->getMessage() }}
                                 </td>
                                 <td><b>{{ $item->getCaseHandler() }}</b></td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>

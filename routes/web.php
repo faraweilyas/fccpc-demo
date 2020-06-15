@@ -37,6 +37,7 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
     Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
     Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::get('logs',           'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::get('assigned/handler/logs',   'EnquiriesController@assignedLogs')->name('assigned-logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::get('file/download/{file}', 'EnquiriesController@download')->name('download')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');

@@ -35,6 +35,11 @@ class Enquiry extends Model
         return textTransformer(AppHelper::$enquiry_typesHTML[$this->type] ?? "", $textStyle);
     }
 
+    public function getMessage($textStyle='strtoupper') : string
+    {
+        return textTransformer(shortenContent($this->message ?? '...', 30), $textStyle);
+    }
+
     /**
      * Get case handler
      *

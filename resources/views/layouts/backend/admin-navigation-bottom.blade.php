@@ -179,7 +179,7 @@
 						</div>
 					</li>
 					@endif
-					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
+                    <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
 							<span class="menu-text">Enquiries</span>
 							<span class="menu-desc">...</span>
@@ -188,7 +188,7 @@
 						<div class="menu-submenu menu-submenu-classic menu-submenu-left">
 							<ul class="menu-subnav">
 								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="{{ route('enquiries.logs') }}" class="menu-link">
+									<a href="{{ in_array(\Auth::user()->accountType, ['SP']) ? route('enquiries.logs') : route('enquiries.assigned-logs') }}" class="menu-link">
 										<span class="svg-icon svg-icon-primary svg-icon-2x">
 											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
 											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

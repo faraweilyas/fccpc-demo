@@ -24,6 +24,11 @@ class Complaints extends Model
         return textTransformer($this->firstName.' '.$this->lastName, $textStyle);
     }
 
+    public function getMessage($textStyle='strtoupper') : string
+    {
+        return textTransformer(shortenContent($this->message ?? '...', 30), $textStyle);
+    }
+
     /**
      * Get case handler
      *
