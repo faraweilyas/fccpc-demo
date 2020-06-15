@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use Auth;
 class FaqController extends Controller
 {
@@ -44,7 +45,7 @@ class FaqController extends Controller
             'category'    => 'required',
         ]);
 
-        $result = \App\Models\Faq::create([
+        $result = Faq::create([
             'creator'   => Auth::user()->id,
             'question'  => trim($request->question),
             'answer'    => trim($request->answer),
@@ -52,5 +53,18 @@ class FaqController extends Controller
         ]);
 
         return redirect()->back()->with("success", "Faq created successfully!");
+    }
+
+    /**
+     * Handles the destroy faq page route.
+     * @return void
+     */
+    public function destroy($id)
+    {
+        $faq = Faq::find($id);
+        if($faq):
+            $destroy = Faq::destroy($id);
+            return redirect()->back()->with("error", "Faq removed successfully!");
+        endif;
     }
 }

@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Create FAQ</h3>
                         </div>
-                        <form method="POST" action="{{ route('faq.index') }}">
+                        <form method="POST" action="{{ route('faq.create') }}">
                             @csrf
                             <div class="card-body">
                                 <div class="row">

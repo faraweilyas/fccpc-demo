@@ -50,10 +50,27 @@
                                     {{ $item->getCategory() }}
                                 </td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
-                                <td>
-                                    <a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
-                                        <i class="la la-times-circle"></i>&nbsp;&nbsp;Remove
-                                    </a>
+                                <td nowrap="nowrap">
+                                    <div class="dropdown dropdown-inline">
+                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-h"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                            <ul class="nav nav-hoverable flex-column">
+                                                <li class="nav-item">
+                                                    <a class="nav-link text-hover-primary" href="{{ route('faq.destroy', ['id' => $item->id]) }}">
+                                                        <i class="nav-icon la la-edit"></i>
+                                                        <span class="nav-text">Edit</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a href="{{ route('faq.destroy', ['id' => $item->id]) }}" class="nav-link text-hover-danger" title="Remove Faq">
+                                                        <i class="la la-times-circle"></i>&nbsp;&nbsp;Remove
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach

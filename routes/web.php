@@ -33,9 +33,10 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 // FAQ Controller
 Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], function()
 {
-    Route::get('/',        'FaqController@index')->name('index');
-    Route::post('/',       'FaqController@store')->name('index');
-    Route::get('/logs',    'FaqController@logs')->name('logs');
+    Route::get('create/',             'FaqController@index')->name('index');
+    Route::post('create/',            'FaqController@store')->name('create');
+    Route::get('/logs',         'FaqController@logs')->name('logs');
+    Route::get('/logs/{id}',    'FaqController@destroy')->name('destroy');
 });
 
 // Enquiries Controller
