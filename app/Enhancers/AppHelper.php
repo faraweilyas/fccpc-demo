@@ -66,6 +66,12 @@ class AppHelper
         "PRE"  => "Pre-Notification",
     ];
 
+    // Valid enquiry type HTML
+    static $enquiry_typesHTML = [
+        "GEN"  => "primary",
+        "PRE"  => "secondary",
+    ];
+
 	/**
 	* Validates array key
 	* @param string $array

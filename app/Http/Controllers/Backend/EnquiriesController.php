@@ -41,6 +41,18 @@ class EnquiriesController extends Controller
     }
 
     /**
+     * Handles the enquiries log page route.
+     * @return void
+     */
+    public function logs()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Logs Dashboard";
+        $details          = details($title, $description);
+        return view('backend.enquiries.logs', compact('details'));
+    }
+
+    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id
