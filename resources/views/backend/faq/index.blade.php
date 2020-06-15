@@ -26,7 +26,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Create FAQ</h3>
                         </div>
-                        <form method="POST" action="{{ route('dashboard.update_user') }}">
+                        <form method="POST" action="{{ route('faq.index') }}">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
@@ -47,7 +47,7 @@
                                             <label>Answer</label> <span class="text-danger">*</span>
                                             <textarea type="text" class="form-control" cols="4" rows="4" name="answer"></textarea>
                                             <span class="form-text text-muted">Please enter answer.</span>
-                                            @error('message')
+                                            @error('answer')
                                                 <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
@@ -56,11 +56,14 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <label>Question Category</label> <span class="text-danger">*</span>
-                                        <select class="form-control selectpicker">
+                                        <select class="form-control selectpicker" name="category">
                                             @foreach(\App\Enhancers\AppHelper::$faq_categories as $key => $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
                                             @endforeach
                                         </select>
+                                        @error('category')
+                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mt-8">

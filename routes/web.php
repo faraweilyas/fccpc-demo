@@ -34,6 +34,7 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 Route::group(['prefix' => 'enquiries', 'as' => 'faq.', 'namespace' => 'Backend'], function()
 {
     Route::get('/',   'FaqController@index')->name('index');
+    Route::post('/',   'FaqController@store')->name('index');
 });
 
 // Enquiries Controller
