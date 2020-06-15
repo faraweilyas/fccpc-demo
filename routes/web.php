@@ -38,6 +38,7 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
     Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::get('logs',           'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::get('file/download/{file}', 'EnquiriesController@download')->name('download')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
     Route::get('submit',        'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
 });
@@ -46,11 +47,12 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
 Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
     Route::get('create/{id}',        'ComplaintsController@index')->name('index');
-    Route::post('create/{id}',       'ComplaintsController@store')->name('create');
-    Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::post('submit',            'ComplaintsController@authenticateSubmitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::get('logs',   'ComplaintsController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('assign/{id}',   'ComplaintsController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::get('file/download/{file}', 'ComplaintsController@download')->name('download')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::post('create/{id}',       'ComplaintsController@store')->name('create');
+    Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
 });
 
 // Supervisor Controller

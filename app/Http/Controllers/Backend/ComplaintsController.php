@@ -53,6 +53,16 @@ class ComplaintsController extends Controller
     }
 
     /**
+     * Handles the download enquiry file route.
+     *
+     * @return void
+     */
+    public function download($file)
+    {
+      return response()->download(storage_path("app/public/complaint_documents/{$file}"));
+    }
+
+    /**
      * Handles the create complaint page route.
      * @param Request $request
      * @param int $id

@@ -68,6 +68,16 @@ class EnquiriesController extends Controller
     }
 
     /**
+     * Handles the download enquiry file route.
+     *
+     * @return void
+     */
+    public function download($file)
+    {
+      return response()->download(storage_path("app/public/enquiry_documents/{$file}"));
+    }
+
+    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id

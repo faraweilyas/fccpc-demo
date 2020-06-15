@@ -41,7 +41,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Complaints::all() as $item)
+                            @foreach(\App\Models\Complaints::all()->sortByDesc('id') as $item)
                             <tr>
                                 <td><b>{{ $item->getFullName() }}</b></td>
                                 <td>{{ $item->email }}</td>
@@ -66,7 +66,7 @@
                                                 </li>
                                                 @if(!is_null($item->file))
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">
+                                                    <a class="nav-link" href="{{ route('complaints.download', ['file' => $item->file]) }}">
                                                         <i class="nav-icon la la-leaf"></i>
                                                         <span class="nav-text">Download File</span>
                                                     </a>
