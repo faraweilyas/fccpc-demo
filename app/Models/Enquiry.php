@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use App\Enhancers\AppHelper;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,5 +33,20 @@ class Enquiry extends Model
     public function getEnquiryTypeHTML($textStyle='strtolower') : string
     {
         return textTransformer(AppHelper::$enquiry_typesHTML[$this->type] ?? "", $textStyle);
+    }
+
+    /**
+     * Get full name
+     *
+     * @param string $textStyle
+     * @return string
+     */
+    public function getCaseHandler($textStyle='strtoupper') : string
+    {
+        if ($this->caseHandler != null) {
+            $result = User::whereId($this->caseHandler);
+            return textTransformer($result->getFullName(), $textStyle);
+        }
+        return textTransformer('unassigned', $textStyle);
     }
 }

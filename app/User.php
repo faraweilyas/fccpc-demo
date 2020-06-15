@@ -66,7 +66,7 @@ class User extends Authenticatable
      */
     public function getFullName() : string
     {
-        return trim("{$this->getFirstName()} {$this->getLastName()}");
+        return trim($this->firstName.' '.$this->lastName);
     }
 
     /**

@@ -37,6 +37,7 @@
                                 <th>Phone No</th>
                                 <th class="text-center">Message</th>
                                 <th>Type</th>
+                                <th>Case Handler</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
@@ -54,6 +55,7 @@
                                 <td>
                                     <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType('strtoupper') }}</b></span>
                                 </td>
+                                <td><b>{{ $item->getCaseHandler() }}</b></td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                 <td nowrap="nowrap">
                                     <div class="dropdown dropdown-inline">
