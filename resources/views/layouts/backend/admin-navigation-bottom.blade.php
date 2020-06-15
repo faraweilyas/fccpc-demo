@@ -215,7 +215,7 @@
                         <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                             <ul class="menu-subnav">
                                 <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                    <a href="{{ route('complaints.logs') }}" class="menu-link">
+                                    <a href="{{ in_array(\Auth::user()->accountType, ['SP']) ? route('complaints.logs') : route('complaints.assigned-logs') }}" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

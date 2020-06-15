@@ -38,6 +38,18 @@ class ComplaintsController extends Controller
     }
 
     /**
+     * Handles the assigned enquiries log page route.
+     * @return void
+     */
+    public function assignedLogs()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Assigned Logs Dashboard";
+        $details          = details($title, $description);
+        return view('backend.enquiries.assigned-logs', compact('details'));
+    }
+
+    /**
      * Handles the complaints assign page route.
      *
      * @return void

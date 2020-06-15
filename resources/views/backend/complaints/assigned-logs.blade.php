@@ -4,13 +4,13 @@
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
             <div class="d-flex align-items-baseline mr-5">
-                <h5 class="text-dark font-weight-bold my-2 mr-5">Enquiries Log</h5>
+                <h5 class="text-dark font-weight-bold my-2 mr-5">Complaints Log</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Enquiries Log</a>
+                        <a href="" class="text-muted">Complaints Log</a>
                     </li>
                 </ul>
             </div>
@@ -23,7 +23,7 @@
             <div class="card card-custom">
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
-                        <h3 class="card-label">Enquiries Log</h3>
+                        <h3 class="card-label">Complaints Log</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -31,28 +31,22 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Firm</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
                                 <th class="text-center">Message</th>
-                                <th>Type</th>
                                 <th>Case Handler</th>
                                 <th>Created</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Enquiry::where('caseHandler', \Auth::user()->id)->get() as $item)
+                            @foreach(\App\Models\Complaints::where('caseHandler', \Auth::user()->id)->get() as $item)
                             <tr>
                                 <td><b>{{ $item->getFullName() }}</b></td>
-                                <td>{{ $item->firm }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
                                     {{ $item->getMessage() }}
-                                </td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType('strtoupper') }}</b></span>
                                 </td>
                                 <td><b>{{ $item->getCaseHandler() }}</b></td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
