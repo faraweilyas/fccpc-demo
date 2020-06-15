@@ -179,16 +179,9 @@
 						</div>
 					</li>
 					@endif
-					<li class="menu-item menu-item-submenu menu-item-rel">
-						<a href="#" class="menu-link">
-							<span class="menu-text">Requests</span>
-							<span class="menu-desc">...</span>
-							<i class="menu-arrow"></i>
-						</a>
-					</li>
 					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
 						<a href="javascript:;" class="menu-link menu-toggle">
-							<span class="menu-text">Queries</span>
+							<span class="menu-text">Enquiries</span>
 							<span class="menu-desc">...</span>
 							<i class="menu-arrow"></i>
 						</a>
@@ -206,55 +199,82 @@
 											    </g>
 											</svg>
 										</span>
-										&nbsp;&nbsp;<span class="menu-text">Query log</span></a>
+										&nbsp;&nbsp;<span class="menu-text">Enquiry log</span></a>
 										<i class="menu-arrow"></i>
 									</a>
 								</li>
 							</ul>
 						</div>
 					</li>
-					<li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
-						<a href="javascript:;" class="menu-link menu-toggle">
-							<span class="menu-text">Analytics</span>
-							<span class="menu-desc">...</span>
-							<i class="menu-arrow"></i>
-						</a>
-						<div class="menu-submenu menu-submenu-classic menu-submenu-left">
-							<ul class="menu-subnav">
-								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="#" class="menu-link">
-										<span class="svg-icon svg-icon-primary svg-icon-2x">
-										<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-										    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-										        <rect x="0" y="0" width="24" height="24"/>
-										        <rect fill="#000000" opacity="0.3" x="13" y="4" width="3" height="16" rx="1.5"/>
-										        <rect fill="#000000" x="8" y="9" width="3" height="11" rx="1.5"/>
-										        <rect fill="#000000" x="18" y="11" width="3" height="9" rx="1.5"/>
-										        <rect fill="#000000" x="3" y="13" width="3" height="7" rx="1.5"/>
-										    </g>
-										</svg>
-										</span>
-										&nbsp;&nbsp;<span class="menu-text">Generate Report</span></a>
-										<i class="menu-arrow"></i>
-									</a>
-								</li>
-								<li class="menu-item menu-item-submenu" aria-haspopup="true">
-									<a href="#" class="menu-link">
-										<span class="svg-icon svg-icon-primary svg-icon-2x">
-											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-											        <rect x="0" y="0" width="24" height="24"/>
-											        <path d="M5,8.6862915 L5,5 L8.6862915,5 L11.5857864,2.10050506 L14.4852814,5 L19,5 L19,9.51471863 L21.4852814,12 L19,14.4852814 L19,19 L14.4852814,19 L11.5857864,21.8994949 L8.6862915,19 L5,19 L5,15.3137085 L1.6862915,12 L5,8.6862915 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z" fill="#000000"/>
-											    </g>
-											</svg>
-										</span>
-										&nbsp;&nbsp;<span class="menu-text">Administration</span></a>
-										<i class="menu-arrow"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</li>
+                    <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text">Complaints</span>
+                            <span class="menu-desc">...</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true">
+                                    <a href="#" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                    <rect fill="#000000" x="6" y="11" width="9" height="2" rx="1"/>
+                                                    <rect fill="#000000" x="6" y="15" width="5" height="2" rx="1"/>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        &nbsp;&nbsp;<span class="menu-text">Complaints log</span></a>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="menu-text">FAQ</span>
+                            <span class="menu-desc">...</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true">
+                                    <a href="#" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <rect x="0" y="0" width="24" height="24"/>
+                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10"/>
+                                                    <path d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z" fill="#000000"/>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        &nbsp;&nbsp;<span class="menu-text">Create Faq</span></a>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true">
+                                    <a href="#" class="menu-link">
+                                        <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                                    <path d="M5.85714286,2 L13.7364114,2 C14.0910962,2 14.4343066,2.12568431 14.7051108,2.35473959 L19.4686994,6.3839416 C19.8056532,6.66894833 20,7.08787823 20,7.52920201 L20,20.0833333 C20,21.8738751 19.9795521,22 18.1428571,22 L5.85714286,22 C4.02044787,22 4,21.8738751 4,20.0833333 L4,3.91666667 C4,2.12612489 4.02044787,2 5.85714286,2 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                    <rect fill="#000000" x="6" y="11" width="9" height="2" rx="1"/>
+                                                    <rect fill="#000000" x="6" y="15" width="5" height="2" rx="1"/>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                        &nbsp;&nbsp;<span class="menu-text">Faq Log</span></a>
+                                        <i class="menu-arrow"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
 				</ul>
 			</div>
 		</div>
