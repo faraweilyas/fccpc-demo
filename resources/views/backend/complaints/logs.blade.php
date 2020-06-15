@@ -52,7 +52,7 @@
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                             <ul class="nav nav-hoverable flex-column">
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="#">
+                                                    <a class="nav-link" href="javascript:;" title="Assign Complaints" data-toggle="modal" data-target="#assignComplaintsModal{{ $item->id }}">
                                                         <i class="nav-icon la la-edit"></i>
                                                         <span class="nav-text">Assign</span>
                                                     </a>
@@ -76,8 +76,8 @@
         </div>
     </div>
 </div>
-@foreach(\App\Models\Enquiry::all() as $item)
-<div class="modal fade" id="assignEnquiryModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach(\App\Models\Complaints::all() as $item)
+<div class="modal fade" id="assignComplaintsModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
