@@ -2,7 +2,7 @@
 <div class="header-top">
 	<div class="container">
 		<div class="d-none d-lg-flex align-items-center mr-3">
-			<a href="{{ route('application.index', ['id' => $id]) }}" class="mr-20">
+			<a href="#" class="mr-20">
 				<h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
 			</a>
 		</div>
