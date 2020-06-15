@@ -9,7 +9,7 @@ class Complaints extends Model
     protected $table = 'complaints';
 
     protected $fillable = [
-        'tracking_id', 'firstName', 'lastName', 'email', 'phone', 'message', 'file'
+        'tracking_id', 'caseHandler', 'firstName', 'lastName', 'email', 'phone', 'message', 'file', 'status'
     ];
 
     /**
