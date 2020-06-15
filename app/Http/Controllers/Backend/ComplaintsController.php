@@ -26,6 +26,18 @@ class ComplaintsController extends Controller
     }
 
     /**
+     * Handles the complaints log page route.
+     * @return void
+     */
+    public function logs()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Logs Dashboard";
+        $details          = details($title, $description);
+        return view('backend.complaints.logs', compact('details'));
+    }
+
+    /**
      * Handles the create complaint page route.
      * @param Request $request
      * @param int $id

@@ -48,6 +48,7 @@ Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'B
     Route::post('create/{id}',       'ComplaintsController@store')->name('create');
     Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::post('submit',            'ComplaintsController@authenticateSubmitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('logs',   'ComplaintsController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
 });
 
 // Supervisor Controller
