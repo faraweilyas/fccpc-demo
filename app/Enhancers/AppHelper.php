@@ -72,6 +72,13 @@ class AppHelper
         "PRE"  => "secondary",
     ];
 
+    // Valid faq categories
+    static $faq_categories = [
+        "1"  => "General",
+        "2"  => "Enquiry",
+        "3"  => "complaint",
+    ];
+
 	/**
 	* Validates array key
 	* @param string $array

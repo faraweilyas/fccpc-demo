@@ -30,6 +30,12 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 
 });
 
+// FAQ Controller
+Route::group(['prefix' => 'enquiries', 'as' => 'faq.', 'namespace' => 'Backend'], function()
+{
+    Route::get('/',   'FaqController@index')->name('index');
+});
+
 // Enquiries Controller
 Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
 {
