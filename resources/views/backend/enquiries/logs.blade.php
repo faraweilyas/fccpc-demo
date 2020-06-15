@@ -70,12 +70,14 @@
                                                         <span class="nav-text">Assign</span>
                                                     </a>
                                                 </li>
+                                                @if(!is_null($item->file))
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="#">
                                                         <i class="nav-icon la la-leaf"></i>
                                                         <span class="nav-text">Download File</span>
                                                     </a>
                                                 </li>
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>
