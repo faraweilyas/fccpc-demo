@@ -38,6 +38,21 @@ class ComplaintsController extends Controller
     }
 
     /**
+     * Handles the complaints assign page route.
+     *
+     * @return void
+     */
+    public function assignCase(Request $request, $id)
+    {
+        Complaints::whereId($id)->update([
+            'caseHandler' => $request->case_handler,
+            'status'      => 1
+        ]);
+
+        return redirect()->back()->with("success", "Complaint has been assigned to case handler");
+    }
+
+    /**
      * Handles the create complaint page route.
      * @param Request $request
      * @param int $id

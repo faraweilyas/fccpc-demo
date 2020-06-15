@@ -2,6 +2,11 @@
 var KTSelect2 = function() {
     // Private functions
     var demos = function() {
+        for (var i = 1; i <= $('.logs_count').html(); i++) {
+            $('#case_handler'+i).select2({
+                placeholder: "Select a case handler"
+            });
+        }
         // basic
         $('#kt_select2_1, #kt_select2_1_validate').select2({
             placeholder: "Select an option"

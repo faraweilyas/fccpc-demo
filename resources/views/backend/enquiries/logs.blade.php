@@ -24,6 +24,7 @@
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
                         <h3 class="card-label">Enquiries Log</h3>
+                        <span class="hide logs_count">{{ \App\Models\Enquiry::all()->count() }}</span>
                     </div>
                 </div>
                 <div class="card-body">
@@ -86,6 +87,7 @@
         </div>
     </div>
 </div>
+@php $x = 1; @endphp
 @foreach(\App\Models\Enquiry::all() as $item)
 <div class="modal fade" id="assignEnquiryModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -96,13 +98,13 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="{{ route('cases.assign', ['id' => $item->id]) }}">
+            <form method="POST" action="{{ route('enquiries.assign', ['id' => $item->id]) }}">
                 @csrf
                 <div class="modal-body">
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <label>Select case handler</label><br>
-                            <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+                            <select class="form-control select2 case_handler" id="case_handler{{ $x }}" name="case_handler" style="width: 100%;">
                                 @foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
@@ -118,6 +120,7 @@
         </div>
     </div>
 </div>
+@php $x++; @endphp
 @endforeach
 <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>

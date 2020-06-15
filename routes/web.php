@@ -36,9 +36,10 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
     Route::get('select/{id}',   'EnquiriesController@index')->name('index');
     Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
     Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
-    Route::get('submit',         'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('submit',        'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('submit',        'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::get('logs',   'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign');
 });
 
 // Complaints Controller
@@ -49,6 +50,7 @@ Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'B
     Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::post('submit',            'ComplaintsController@authenticateSubmitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
     Route::get('logs',   'ComplaintsController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::post('assign/{id}',   'ComplaintsController@assignLog')->name('assign');
 });
 
 // Supervisor Controller

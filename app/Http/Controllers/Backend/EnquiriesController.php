@@ -53,6 +53,21 @@ class EnquiriesController extends Controller
     }
 
     /**
+     * Handles the enquiry assign page route.
+     *
+     * @return void
+     */
+    public function assignCase(Request $request, $id)
+    {
+        Enquiry::whereId($id)->update([
+            'caseHandler' => $request->case_handler,
+            'status'      => 1
+        ]);
+
+        return redirect()->back()->with("success", "Enquiry has been assigned to case handler");
+    }
+
+    /**
      * Handles the create application page route.
      * @param string $type
      * @param int $id
