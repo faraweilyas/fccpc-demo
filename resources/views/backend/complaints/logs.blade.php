@@ -34,6 +34,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
+                                <th class="text-center">Message</th>
                                 <th>Case Handler</th>
                                 <th>Created</th>
                                 <th>Actions</th>
@@ -45,6 +46,9 @@
                                 <td><b>{{ $item->getFullName() }}</b></td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
+                                <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
+                                    {{ shortenContent($item->message ?? '...', 30) }}
+                                </td>
                                 <td><b>{{ $item->getCaseHandler() }}</b></td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                 <td nowrap="nowrap">
