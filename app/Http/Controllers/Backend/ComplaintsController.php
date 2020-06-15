@@ -42,7 +42,7 @@ class ComplaintsController extends Controller
      *
      * @return void
      */
-    public function assignCase(Request $request, $id)
+    public function assignLog(Request $request, $id)
     {
         Complaints::whereId($id)->update([
             'caseHandler' => $request->case_handler,

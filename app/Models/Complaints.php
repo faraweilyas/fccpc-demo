@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Complaints extends Model
@@ -21,5 +22,20 @@ class Complaints extends Model
     public function getFullName($textStyle='strtoupper') : string
     {
         return textTransformer($this->firstName.' '.$this->lastName, $textStyle);
+    }
+
+    /**
+     * Get case handler
+     *
+     * @param string $textStyle
+     * @return string
+     */
+    public function getCaseHandler($textStyle='strtoupper') : string
+    {
+        if ($this->caseHandler != null) {
+            $result = User::where('id', $this->caseHandler)->first();
+            return textTransformer($result->getFullName(), $textStyle);
+        }
+        return textTransformer('unassigned', $textStyle);
     }
 }

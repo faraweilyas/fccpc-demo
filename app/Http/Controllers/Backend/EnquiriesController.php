@@ -57,7 +57,7 @@ class EnquiriesController extends Controller
      *
      * @return void
      */
-    public function assignCase(Request $request, $id)
+    public function assignLog(Request $request, $id)
     {
         Enquiry::whereId($id)->update([
             'caseHandler' => $request->case_handler,

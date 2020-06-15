@@ -36,7 +36,7 @@ class Enquiry extends Model
     }
 
     /**
-     * Get full name
+     * Get case handler
      *
      * @param string $textStyle
      * @return string
@@ -44,7 +44,7 @@ class Enquiry extends Model
     public function getCaseHandler($textStyle='strtoupper') : string
     {
         if ($this->caseHandler != null) {
-            $result = User::whereId($this->caseHandler);
+            $result = User::where('id', $this->caseHandler)->first();
             return textTransformer($result->getFullName(), $textStyle);
         }
         return textTransformer('unassigned', $textStyle);

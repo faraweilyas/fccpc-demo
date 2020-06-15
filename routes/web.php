@@ -35,11 +35,11 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
 {
     Route::get('select/{id}',   'EnquiriesController@index')->name('index');
     Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
+    Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('logs',           'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
+    Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
     Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
     Route::get('submit',        'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-    Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-    Route::get('logs',   'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
 });
 
 // Complaints Controller
