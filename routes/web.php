@@ -31,10 +31,11 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 });
 
 // FAQ Controller
-Route::group(['prefix' => 'enquiries', 'as' => 'faq.', 'namespace' => 'Backend'], function()
+Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], function()
 {
-    Route::get('/',   'FaqController@index')->name('index');
-    Route::post('/',   'FaqController@store')->name('index');
+    Route::get('/',        'FaqController@index')->name('index');
+    Route::post('/',       'FaqController@store')->name('index');
+    Route::get('/logs',    'FaqController@logs')->name('logs');
 });
 
 // Enquiries Controller

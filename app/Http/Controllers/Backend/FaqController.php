@@ -21,6 +21,18 @@ class FaqController extends Controller
     }
 
     /**
+     * Handles the faq logs page route.
+     * @return void
+     */
+    public function logs()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Faq Logs Dashboard";
+        $details          = details($title, $description);
+        return view('backend.faq.logs', compact('details'));
+    }
+
+    /**
      * Handles the store faq page route.
      * @return void
      */
