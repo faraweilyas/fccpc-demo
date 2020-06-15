@@ -33,6 +33,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
+                                <th>Created</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -42,6 +43,7 @@
                                 <td><b>{{ $item->getFullName() }}</b></td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
+                                <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                 <td nowrap="nowrap">
                                     <div class="dropdown dropdown-inline">
                                         <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">

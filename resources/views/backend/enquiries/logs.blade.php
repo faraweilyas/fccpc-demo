@@ -34,7 +34,9 @@
                                 <th>Firm</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
+                                <th class="text-center">Message</th>
                                 <th>Type</th>
+                                <th>Created</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -45,9 +47,13 @@
                                 <td>{{ $item->firm }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>{{ $item->phone }}</td>
-                                <td>
-                                    <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType() }}</b></span>
+                                <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
+                                    {{ shortenContent($item->message ?? '...', 30) }}
                                 </td>
+                                <td>
+                                    <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType('strtoupper') }}</b></span>
+                                </td>
+                                <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                 <td nowrap="nowrap">
                                     <div class="dropdown dropdown-inline">
                                         <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
