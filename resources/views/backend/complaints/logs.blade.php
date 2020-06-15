@@ -64,7 +64,7 @@
                                                         <span class="nav-text">Assign</span>
                                                     </a>
                                                 </li>
-                                                @if(!is_null($item->file))
+                                                @if($item->file != '')
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="{{ route('complaints.download', ['file' => $item->file]) }}">
                                                         <i class="nav-icon la la-leaf"></i>

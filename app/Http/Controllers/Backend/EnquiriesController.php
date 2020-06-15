@@ -120,7 +120,7 @@ class EnquiriesController extends Controller
             // Upload Image
             $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
         else:
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = null;
         endif;
 
         $result = Enquiry::create([
