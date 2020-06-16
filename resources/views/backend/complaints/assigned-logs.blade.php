@@ -58,14 +58,16 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                             <ul class="nav nav-hoverable flex-column">
+                                                @if(in_array(\Auth::user()->accountType,['SP'])):
                                                 <li class="nav-item">
                                                     <a class="nav-link" href="javascript:;" title="Assign Enquiry" data-toggle="modal" data-target="#assignEnquiryModal{{ $item->id }}">
                                                         <i class="nav-icon la la-edit"></i>
                                                         <span class="nav-text">Assign</span>
                                                     </a>
                                                 </li>
+                                                @endif
                                                 <li class="nav-item">
-                                                    <a class="nav-link" href="{{ route('enquiries.download', ['file' => $item->file]) }}">
+                                                    <a class="nav-link" href="{{ route('complaints.download', ['file' => $item->file]) }}">
                                                         <i class="nav-icon la la-leaf"></i>
                                                         <span class="nav-text">Download File</span>
                                                     </a>
