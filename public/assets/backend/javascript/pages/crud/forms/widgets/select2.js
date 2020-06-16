@@ -2,6 +2,7 @@
 var KTSelect2 = function() {
     // Private functions
     var demos = function() {
+        console.log($('.logs_count').html());
         for (var i = 1; i <= $('.logs_count').html(); i++) {
             $('#case_handler'+i).select2({
                 placeholder: "Select a case handler"
