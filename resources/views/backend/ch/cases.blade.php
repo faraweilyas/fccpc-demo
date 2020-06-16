@@ -45,7 +45,7 @@
     </div>
 </div>
 @php $x = 1; @endphp
-@foreach(\App\Models\Cases::whereIn('status', array(1,2,3,4))->get() as $case)
+@foreach(\App\Models\Cases::where('status', 1)->get() as $case)
 <div class="modal fade" id="assignCaseModal{{$case->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
