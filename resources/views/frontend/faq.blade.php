@@ -21,9 +21,9 @@
 				      </defs>
 				      <polyline points="9 18 15 12 9 6"></polyline>
 				    </svg>
-			        Faqs
+			        Faqs {{ $type }}
 				</div>
-		        <h2>{{ !is_null(\App\Enhancers\AppHelper::$faq_categories[$type]) ? \App\Enhancers\AppHelper::$faq_categories[$type] : '' }} Frequently Asked Questions (FAQs)</h2>
+		        <h2>{{ !is_null($type) ? \App\Enhancers\AppHelper::$faq_categories[$type] : '' }} Frequently Asked Questions (FAQs)</h2>
 		    </div>
 		</section>
 		<section class="maxwidth-sl mx-auto sub-container">
