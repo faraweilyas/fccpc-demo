@@ -46,6 +46,6 @@ class HomeController extends Controller
     	$title            = "Frequently Asked Questions (FAQs) - Federal Competition and Consumer Protection Commission - ".APP_NAME;
 	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
     	$details          = details($title, $description);
-    	return view('frontend.faq', compact('details', 'faq'));
+    	return view('frontend.faq', compact('details', 'faq', 'type'));
     }
 }

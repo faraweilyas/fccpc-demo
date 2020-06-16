@@ -23,7 +23,7 @@
 				    </svg>
 			        Faqs
 				</div>
-		        <h2>Frequently Asked Questions (FAQs)</h2>
+		        <h2>{{ !is_null(\App\Enhancers\AppHelper::$faq_categories[$type]) ? \App\Enhancers\AppHelper::$faq_categories[$type] : '' }} Frequently Asked Questions (FAQs)</h2>
 		    </div>
 		</section>
 		<section class="maxwidth-sl mx-auto sub-container">
