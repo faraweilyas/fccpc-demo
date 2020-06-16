@@ -76,7 +76,7 @@ class AppHelper
     static $faq_categories = [
         "1"  => "General",
         "2"  => "Enquiry",
-        "3"  => "complaint",
+        "3"  => "Complaint",
     ];
 
 	/**
