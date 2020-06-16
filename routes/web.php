@@ -35,8 +35,10 @@ Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], func
 {
     Route::get('create/',             'FaqController@index')->name('index');
     Route::post('create/',            'FaqController@store')->name('create');
-    Route::get('/logs',         'FaqController@logs')->name('logs');
-    Route::get('/logs/{id}',    'FaqController@destroy')->name('destroy');
+    Route::get('edit/{id}',           'FaqController@edit')->name('edit');
+    Route::post('edit/{id}',          'FaqController@update')->name('edit');
+    Route::get('/logs',               'FaqController@logs')->name('logs');
+    Route::get('/logs/{id}',          'FaqController@destroy')->name('destroy');
 });
 
 // Enquiries Controller

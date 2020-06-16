@@ -58,7 +58,7 @@
                                         <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                             <ul class="nav nav-hoverable flex-column">
                                                 <li class="nav-item">
-                                                    <a class="nav-link text-hover-primary" href="{{ route('faq.destroy', ['id' => $item->id]) }}">
+                                                    <a class="nav-link text-hover-primary" href="{{ route('faq.edit', ['id' => $item->id]) }}">
                                                         <i class="nav-icon la la-edit"></i>
                                                         <span class="nav-text">Edit</span>
                                                     </a>
