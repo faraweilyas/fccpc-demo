@@ -28,6 +28,12 @@
                             </div>
                             <button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
                         </form>
+                        <div class="mt-10">
+                            <p>
+                                <span class="opacity-70">Existing question?</span><br />
+                                <a href="{{ route('home.faq', ['type' => '3']) }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Complaints frequently asked questions</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

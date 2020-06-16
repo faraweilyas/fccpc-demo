@@ -12,34 +12,40 @@ class HomeController extends Controller
 	 * @return void
 	 */
     public function index()
-    { 
+    {
     	$title            = APP_NAME;
 	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
     	$details          = details($title, $description);
     	return view('frontend.index', compact('details'));
-    } 
+    }
 
     /**
 	 * Handles the fee calculator page route.
 	 * @return void
 	 */
     public function feeCalcutor()
-    { 
+    {
     	$title          = "Fee Calculator - ".APP_NAME;
 	    $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
     	$details          = details($title, $description);
     	return view('frontend.fee-calculator', compact('details'));
-    } 
+    }
 
     /**
 	 * Handles the faq page route.
 	 * @return void
 	 */
-    public function faq()
-    { 
+    public function faq($type = null)
+    {
+        if ($type != null):
+            $faq          = \App\Models\Faq::where('category', $type)->get();
+        else :
+            $faq          = \App\Models\Faq::all();
+        endif;
+
     	$title            = "Frequently Asked Questions (FAQs) - Federal Competition and Consumer Protection Commission - ".APP_NAME;
 	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
     	$details          = details($title, $description);
-    	return view('frontend.faq', compact('details'));
-    } 
+    	return view('frontend.faq', compact('details', 'faq'));
+    }
 }
