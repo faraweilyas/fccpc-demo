@@ -1,5 +1,5 @@
 <?php
-
+use App\Enhancers\AppHelper;
 /**
  * Prevents file caching for javascript or css files by adding last modified timestamp.
  *
@@ -292,11 +292,14 @@ function formatEnquiryType(string $type) : string
     $enquiry = "";
     switch($type)
     {
-        case 'gen':
-            $enquiry = \App\Enhancers\AppHelper::$enquiry_types[strtoupper($type)];
+        case 'general':
+            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
             break;
-        case 'pre':
-            $enquiry = \App\Enhancers\AppHelper::$enquiry_types[strtoupper($type)];
+        case 'pre-notification':
+            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
+            break;
+        case 'complaint':
+            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
             break;
         default:
             $enquiry = '';

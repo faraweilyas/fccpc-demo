@@ -62,8 +62,9 @@ class AppHelper
 
     // Valid enquiry type
     static $enquiry_types = [
-        "GEN"  => "General",
-        "PRE"  => "Pre-Notification",
+        "GENERAL"                 => "General",
+        "PRE-NOTIFICATION"        => "Pre-Notification",
+        "COMPLAINT"               => "Complaint",
     ];
 
     // Valid enquiry type HTML
@@ -76,7 +77,6 @@ class AppHelper
     static $faq_categories = [
         "1"  => "General",
         "2"  => "Enquiry",
-        "3"  => "Complaint",
     ];
 
 	/**

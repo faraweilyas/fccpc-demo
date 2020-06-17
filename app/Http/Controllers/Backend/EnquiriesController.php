@@ -17,12 +17,12 @@ class EnquiriesController extends Controller
      * @param int $id
      * @return void
      */
-    public function index($id)
+    public function index()
     {
         $title            = APP_NAME;
         $description      = "FCCPC Select Enquiry Dashboard";
         $details          = details($title, $description);
-        return view('backend.enquiries.select-enquiry', compact('details', 'id'));
+        return view('backend.enquiries.select-enquiry', compact('details'));
     }
 
     /**
@@ -31,13 +31,13 @@ class EnquiriesController extends Controller
      * @param int $id
      * @return void
      */
-    public function create($type, $id)
+    public function create($type)
     {
         $enquiry          = formatEnquiryType($type);
         $title            = APP_NAME;
         $description      = "FCCPC ".$enquiry." Application Dashboard";
         $details          = details($title, $description);
-        return view('backend.enquiries.create-enquiry', compact('details', 'id', 'type', 'enquiry'));
+        return view('backend.enquiries.create-enquiry', compact('details', 'type', 'enquiry'));
     }
 
     /**
@@ -90,15 +90,14 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the create application page route.
+     * Handles the store enquiry page route.
      * @param string $type
      * @param int $id
      * @return void
      */
-    public function store(Request $request, $type, $id)
+    public function store(Request $request, $type)
     {
         $this->validate($request, [
-            'firm'        => 'required',
             'firstName'   => 'required',
             'lastName'    => 'required',
             'email'       => 'required',
@@ -136,8 +135,7 @@ class EnquiriesController extends Controller
         endif;
 
         $result = Enquiry::create([
-            'tracking_id' => $id,
-            'firm'        => trim($request->firm),
+            'firm'        => trim($request->firm ?? ''),
             'firstName'   => trim($request->firstName),
             'lastName'    => trim($request->lastName),
             'email'       => trim($request->email),
@@ -161,33 +159,4 @@ class EnquiriesController extends Controller
         return redirect()->back()->with("success", "Enquiry submitted!");
     }
 
-    /**
-     * Handles the submit enquiry page route.
-     * @return void
-     */
-    public function submitEnquiry()
-    {
-        $title            = APP_NAME;
-        $description      = "FCCPC Track Enquiry";
-        $details          = details($title, $description);
-        return view('backend.enquiries.submit', compact('details'));
-    }
-
-    /**
-     * Handles the authenticate submit enquiry page route.
-     * @return void
-     */
-    public function authenticateSubmitEnquiry(Request $request)
-    {
-        $this->validate($request, [
-            'email' => ['required', 'email'],
-        ]);
-
-        $result             = Guest::create([
-            'email'         => trim($request->email),
-            'tracking_id'   => generateApplicantID(),
-        ]);
-
-        return redirect()->route('enquiries.index', ['id' => $result->tracking_id]);
-    }
 }

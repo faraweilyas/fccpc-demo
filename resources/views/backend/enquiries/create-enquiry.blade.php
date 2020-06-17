@@ -7,7 +7,7 @@
                 <h5 class="text-dark font-weight-bold my-2 mr-5">Create {{ $enquiry }} Enquiry</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
-                        <a href="{{ route('enquiries.index', ['id' => $id]) }}" class="text-muted">Home</a>
+                        <a href="{{ route('enquiries.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="" class="text-muted">{{ $enquiry }} Enquiry</a>
@@ -26,18 +26,14 @@
                         <div class="card-header">
                             <h3 class="card-title">{{ $enquiry }} Enquiry</h3>
                         </div>
-                        <form method="POST" action="{{ route('enquiries.create',['type' => $type, 'id' => $id]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('enquiries.create',['type' => $type]) }}" enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Representing Firm</label> <span class="text-danger">*</span>
+                                            <label>Representing Firm</label>
                                             <input type="text" class="form-control" placeholder="Enter representing firm" name="firm">
-                                            <span class="form-text text-muted">Please enter representing firm.</span>
-                                            @error('firm')
-                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>

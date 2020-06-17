@@ -11,7 +11,7 @@ class Enquiry extends Model
     protected $table = 'enquiry';
 
     protected $fillable = [
-        'tracking_id', 'caseHandler', 'firm', 'firstName', 'lastName', 'email', 'phone', 'type', 'message', 'file', 'status'
+        'caseHandler', 'firm', 'firstName', 'lastName', 'email', 'phone', 'type', 'message', 'file', 'status'
     ];
 
     /**

@@ -42,30 +42,15 @@ Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], func
 });
 
 // Enquiries Controller
-Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
+Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend'], function()
 {
-    Route::get('select/{id}',   'EnquiriesController@index')->name('index');
-    Route::get('{type}/{id}',   'EnquiriesController@create')->name('create');
-    Route::post('submit',       'EnquiriesController@authenticateSubmitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-    Route::get('logs',           'EnquiriesController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::get('assigned/handler/logs',   'EnquiriesController@assignedLogs')->name('assigned-logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::post('assign/{id}',   'EnquiriesController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::get('file/download/{file}', 'EnquiriesController@download')->name('download')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::post('{type}/{id}',  'EnquiriesController@store')->name('create');
-    Route::get('submit',        'EnquiriesController@submitEnquiry')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-});
-
-// Complaints Controller
-Route::group(['prefix' => 'complaints', 'as' => 'complaints.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
-{
-    Route::get('create/{id}',        'ComplaintsController@index')->name('index');
-    Route::post('submit',            'ComplaintsController@authenticateSubmitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
-    Route::get('logs',   'ComplaintsController@logs')->name('logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::get('assigned/handler/logs',   'ComplaintsController@assignedLogs')->name('assigned-logs')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::post('assign/{id}',   'ComplaintsController@assignLog')->name('assign')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::get('file/download/{file}', 'ComplaintsController@download')->name('download')->withoutMiddleware(['ValidateTrackingId'])->middleware('auth');
-    Route::post('create/{id}',       'ComplaintsController@store')->name('create');
-    Route::get('submit',             'ComplaintsController@submitComplaint')->name('submit')->withoutMiddleware(['ValidateTrackingId']);
+    Route::get('select',                'EnquiriesController@index')->name('index');
+    Route::get('{type}',                'EnquiriesController@create')->name('create');
+    Route::get('logs',                  'EnquiriesController@logs')->name('logs')->middleware('auth');
+    Route::get('assigned/handler/logs', 'EnquiriesController@assignedLogs')->name('assigned-logs')->middleware('auth');
+    Route::post('assign/{id}',          'EnquiriesController@assignLog')->name('assign')->middleware('auth');
+    Route::get('file/download/{file}',  'EnquiriesController@download')->name('download')->middleware('auth');
+    Route::post('{type}',               'EnquiriesController@store')->name('create');
 });
 
 // Supervisor Controller

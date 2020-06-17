@@ -1,4 +1,4 @@
-@php $guest = App\Models\Guest::where('tracking_id', $id)->first(); @endphp
+@isset($id) $guest = App\Models\Guest::where('tracking_id', $id)->first(); @endif
 <div class="header-top">
 	<div class="container">
 		<div class="d-none d-lg-flex align-items-center mr-3">
@@ -7,6 +7,7 @@
 			</a>
 		</div>
 		<div class="topbar">
+            @isset($id)
 			<div class="topbar-item">
 				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
 					<a href="#">
@@ -41,6 +42,7 @@
 					</div>
 				</div>
 			</div>
+            @endif
 		</div>
 	</div>
 </div>

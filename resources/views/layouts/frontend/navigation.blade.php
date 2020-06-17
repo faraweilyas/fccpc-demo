@@ -38,13 +38,8 @@
                             </a>
                         </li>
                         <li class="sub-list-item">
-                            <a href="{{ route('enquiries.submit') }}">
+                            <a href="{{ route('enquiries.index') }}">
                                 <p>Make Enquiry</p>
-                            </a>
-                        </li>
-                        <li class="sub-list-item">
-                            <a href="{{ route('complaints.submit') }}">
-                                <p>Make Complaint</p>
                             </a>
                         </li>
                     </ul>
@@ -84,11 +79,8 @@
 	                <a class="smalltext" href="{{ route('applicant.submit') }}">Submit Application</a>
 	            </li>
 	            <li>
-	                <a class="smalltext" href="{{ route('applicant.submit') }}">Make Enquiry</a>
+	                <a class="smalltext" href="{{ route('enquiries.index') }}">Make Enquiry</a>
 	            </li>
-                <li>
-                    <a class="smalltext" href="{{ route('complaints.submit') }}">Make Complaint</a>
-                </li>
 	            <li>
 	                <a class="smalltext" href="{{ route('home.calculator') }}">Fee Calculator</a>
 	            </li>
