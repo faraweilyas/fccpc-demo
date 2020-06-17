@@ -1,12 +1,14 @@
 <?php
+
 use App\Enhancers\AppHelper;
+
 /**
  * Prevents file caching for javascript or css files by adding last modified timestamp.
  *
  * @param string $file
  * @return string
  */
-function preventFileCaching(string $file='') : string
+function preventFileCaching($file='') : string
 {
     $file       = "/".ltrim($file, "/");
     $filePath   = public_path().$file;
@@ -27,7 +29,7 @@ function preventFileCaching(string $file='') : string
  * @param string $asset
  * @return string
  */
-function pc_asset(string $asset=NULL) : string
+function pc_asset($asset=NULL) : string
 {
     return asset(preventFileCaching($asset));
 }
