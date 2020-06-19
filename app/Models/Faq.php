@@ -11,26 +11,63 @@ class Faq extends Model
     protected $table = 'faq';
 
     protected $fillable = [
-        'creator', 'question', 'answer', 'category'
+        'creator', 'slug', 'question', 'answer', 'category'
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'creator', 'id');
+    }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'question_id', 'id');
+    }
+
+    public function countFeedbacks() : int
+    {
+        return $this->feedbacks()->count();
+    }
+
+    public function countPositiveFeedbacks() : int
+    {
+        return $this->feedbacks()->where('feedback', 1)->count();
+    }
+
+    public function countNegativeFeedbacks() : int
+    {
+        return $this->feedbacks()->where('feedback', 0)->count();
+    }
+
     /**
-     * Get creator full name
+     * Get creator
      *
      * @param string $textStyle
      * @return string
      */
-    public function getCreatorFullName($textStyle='strtoupper') : string
+    public function getCreator($textStyle='strtoupper') : string
     {
-            $result = User::where('id', $this->creator)->first();
-            return textTransformer($result->getFullName(), $textStyle);
+        return textTransformer($this->user->getFullName(), $textStyle);
     }
 
-    public function getAnswer($textStyle='strtoupper', $length = 30) : string
+    /**
+     * Get answer
+     *
+     * @param int $length
+     * @param string $textStyle
+     * @return string
+     */
+    public function getAnswer(int $length=30, $textStyle='strtoupper') : string
     {
-        return textTransformer(shortenContent($this->answer ?? '...', $length), $textStyle);
+        return textTransformer(shortenContent($this->answer, $length), $textStyle);
     }
 
+    /**
+     * Get category
+     *
+     * @param string $textStyle
+     * @return string
+     */
     public function getCategory($textStyle='strtoupper') : string
     {
         return textTransformer(AppHelper::$faq_categories[$this->category] ?? "", $textStyle);

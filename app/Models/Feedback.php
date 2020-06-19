@@ -11,4 +11,9 @@ class Feedback extends Model
     protected $fillable = [
         'question_id', 'ip_address', 'feedback'
     ];
+
+    public function faq()
+    {
+        return $this->belongsTo(Faq::class, 'question_id');
+    }
 }
