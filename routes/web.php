@@ -6,10 +6,11 @@ use Illuminate\Support\Facades\Route;
 // Base Controller
 Route::group(['prefix' => '/', 'as' => 'home.', 'namespace' => 'Frontend'], function()
 {
-    Route::get('/',               'HomeController@index')->name('index');
-    Route::get('/fee-calculator', 'HomeController@feeCalcutor')->name('calculator');
-    Route::get('/faq/en/{type?}',    'HomeController@faq')->name('faq');
-    Route::get('/faq/feedback/{id}',   'HomeController@updateFaqFeedback')->name('faq.feedback');
+    Route::get('/',                               'HomeController@index')->name('index');
+    Route::get('/fee-calculator',                 'HomeController@feeCalcutor')->name('calculator');
+    Route::get('/faq/en/{type?}',                 'HomeController@faq')->name('faq');
+    Route::get('/faq/view/{id}',                  'HomeController@faqDetails')->name('faq.details');
+    Route::get('/faq/feedback/{id}/{question}',   'HomeController@updateFaqFeedback')->name('faq.feedback');
 });
 
 // Applicant Controller
@@ -34,8 +35,8 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 // FAQ Controller
 Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], function()
 {
-    Route::get('create/',             'FaqController@index')->name('index');
-    Route::post('create/',            'FaqController@store')->name('create');
+    Route::get('create',             'FaqController@index')->name('index');
+    Route::post('create',            'FaqController@store')->name('create');
     Route::get('edit/{id}',           'FaqController@edit')->name('edit');
     Route::post('edit/{id}',          'FaqController@update')->name('edit');
     Route::get('/logs',               'FaqController@logs')->name('logs');

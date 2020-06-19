@@ -9,6 +9,6 @@ class Feedback extends Model
     protected $table = 'feedback';
 
     protected $fillable = [
-        'ip_address', 'feedback'
+        'question_id', 'ip_address', 'feedback'
     ];
 }

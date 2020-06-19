@@ -26,9 +26,9 @@ class Faq extends Model
             return textTransformer($result->getFullName(), $textStyle);
     }
 
-    public function getAnswer($textStyle='strtoupper') : string
+    public function getAnswer($textStyle='strtoupper', $length = 30) : string
     {
-        return textTransformer(shortenContent($this->answer ?? '...', 30), $textStyle);
+        return textTransformer(shortenContent($this->answer ?? '...', $length), $textStyle);
     }
 
     public function getCategory($textStyle='strtoupper') : string

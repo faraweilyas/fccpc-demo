@@ -34,22 +34,11 @@
 		                <h3>{{ $item->question }}</h3>
 	                    <p></p>
 	                    <p>
-	                    	{{ $item->answer }}
+	                    	{{ $item->getAnswer('', 200) }}
 	                    </p>
-	                    <p></p>
+	                    <p class="read-more-link"><a href="{{ route('home.faq.details', ['id' => $item->id]) }}">Read More</a></p>
 	                </li>
                     @endforeach
-                    <div class="sub-article-container shaded mb-9 text-center">
-                        <div class="as">
-                            <div class="title">Was this article helpful?</div>
-                            <div class="clear-fix"></div>
-                            <div class="button-group">
-                                <a href="{{ route('home.faq.feedback', ['id' => 1]) }}" class="as-button" data-value="5" type="button">Yes</a>
-                                <a href="{{ route('home.faq.feedback', ['id' => 0]) }}" class="as-button" data-value="1" type="button">No</a>
-                            </div>
-                            <div class="sub-title">{{ \App\Models\Feedback::where('feedback', 1)->count() }} out of {{ \App\Models\Feedback::all()->count() }} found this helpful</div>
-                        </div>
-                    </div>
 	            </ul>
 		    </div>
 		</section>
