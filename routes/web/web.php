@@ -3,13 +3,37 @@
 use Illuminate\Support\Facades\Route;
 
 // Base Controller
-Route::group(['prefix' => '/', 'as' => 'home.', 'namespace' => 'Frontend'], function()
+Route::group(['as' => 'home.', 'namespace' => 'Frontend'], function()
 {
-    Route::get('/',                               'HomeController@index')->name('index');
-    Route::get('/fee-calculator',                 'HomeController@feeCalcutor')->name('calculator');
-    Route::get('/faq/en/{type?}',                 'HomeController@faq')->name('faq');
-    Route::get('/faq/view/{id}',                  'HomeController@faqDetails')->name('faq.details');
-    Route::get('/faq/feedback/{id}/{question}',   'HomeController@updateFaqFeedback')->name('faq.feedback');
+    Route::get(
+        '/',
+        'HomeController@index'
+    )
+    ->name('index');
+
+    Route::get(
+        '/fee-calculator',
+        'HomeController@feeCalcutor'
+    )
+    ->name('fee.calculator');
+
+    Route::get(
+        '/faqs',
+        'HomeController@faqs'
+    )
+    ->name('faqs');
+
+    Route::get(
+        '/faqs/{faq}',
+        'HomeController@faq'
+    )
+    ->name('faqs.faq');
+
+    Route::post(
+        '/faqs/{faq}/feedback',
+        'HomeController@storeFeedback'
+    )
+    ->name('faq.feedback');
 });
 
 // Applicant Controller
