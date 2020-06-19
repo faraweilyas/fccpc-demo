@@ -32,7 +32,7 @@ Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 
 });
 
 // FAQ Controller
-Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend'], function()
+Route::group(['prefix' => 'faq', 'as' => 'faq.', 'namespace' => 'Backend', 'middleware' => ['auth']], function()
 {
     Route::get('create',             'FaqController@index')->name('index');
     Route::post('create',            'FaqController@store')->name('create');
@@ -47,7 +47,7 @@ Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Bac
 {
     Route::get('select',                'EnquiriesController@index')->name('index');
     Route::get('{type}',                'EnquiriesController@create')->name('create');
-    Route::get('view/logs',                  'EnquiriesController@logs')->name('logs')->middleware('auth');
+    Route::get('view/logs',             'EnquiriesController@logs')->name('logs')->middleware('auth');
     Route::get('assigned/handler/logs', 'EnquiriesController@assignedLogs')->name('assigned-logs')->middleware('auth');
     Route::post('assign/{id}',          'EnquiriesController@assignLog')->name('assign')->middleware('auth');
     Route::get('file/download/{file}',  'EnquiriesController@download')->name('download')->middleware('auth');
