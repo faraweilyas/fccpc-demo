@@ -61,7 +61,7 @@ class DashboardController extends Controller
             'firstName'     => trim(ucfirst($request->firstName)),
             'lastName'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
-            'password'      => Hash::make('fccpc'),
+            'password'      => Hash::make(config('app.default_password')),
             'accountType'   => $request->accountType,
         ]);
 

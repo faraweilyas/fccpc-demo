@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 use Auth;
+use App\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class CaseHandlersController extends Controller
 {
@@ -51,25 +52,17 @@ class CaseHandlersController extends Controller
      */
     public function storeHandler(Request $request)
     {
-        $this->validate($request, [
-            'firstName'       => ['required', 'string', 'max:255'],
-            'lastName'        => ['required', 'string', 'max:255'],
-            'email'           => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        $validated      = request()->validate([
+            'firstName' => ['required', 'string', 'max:255'],
+            'lastName'  => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
-        $user = \App\User::create([
-            'firstName'     => trim(ucfirst($request->firstName)),
-            'lastName'      => trim(ucfirst($request->lastName)),
-            'email'         => $request->email,
-            'password'      => Hash::make(trim(ucfirst($request->firstName)).'123'),
-            'accountType'   => "CH",
-        ]);
+        $validated['password']      = Hash::make(config('app.default_password'));
+        $validated['accountType']   = "CH";
+        $user                       = User::create($validated);
 
-        if ($user) {
-            return redirect()->back()->with("success", "Case handler created sucessfully");
-        } else {
-            return redirect()->back()->with("error", "Case handler not created sucessfully");
-        }
+        return redirect()->back()->with("success", "Case handler has been registered sucessfully");
     }
 
     /**
@@ -78,7 +71,7 @@ class CaseHandlersController extends Controller
      */
     public function show($id)
     {
-        $handler          = \App\User::whereId($id)->first();
+        $handler          = User::whereId($id)->first();
         $title            = APP_NAME;
         $description      = "FCCPC View Case Handler Dashboard";
         $details          = details($title, $description);
@@ -87,16 +80,12 @@ class CaseHandlersController extends Controller
 
     public function updateHandlerStatus($id)
     {
-        $check_status = \App\User::findOrFail($id);
+        $check_status = User::findOrFail($id);
 
-        $result = \App\User::whereId($id)->update([
-                'status' => !$check_status->status
-         ]);
+        User::whereId($id)->update([
+            'status' => !$check_status->status
+        ]);
 
-        if ($result) {
-            return redirect()->back()->with("success", "Case handler's status updated");
-        } else {
-            return redirect()->back()->with("error", "Case handler's status not updated.");
-        }
+        return redirect()->back()->with("success", "Case handler's status updated");
     }
  }

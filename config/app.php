@@ -2,6 +2,8 @@
 
 return [
 
+    'default_password' => env('DEFAULT_PASSWORD', 'password'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
