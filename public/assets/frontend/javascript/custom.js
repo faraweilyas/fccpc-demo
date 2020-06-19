@@ -1,9 +1,8 @@
-var now = new Date();
-    var options = {
+var now     = new Date(),
+    options = {
         year: 'numeric'
-    };
+    },
+    date    = now.toLocaleString('en-us', options),
+    year    = document.querySelector(".year");
 
-    var date = now.toLocaleString('en-us', options);
-    var year = document.querySelector(".year");
-
-    year.innerHTML = date;
+year.innerHTML = date;
