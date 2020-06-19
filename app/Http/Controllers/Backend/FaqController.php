@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Auth;
 use App\Models\Faq;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class FaqController extends Controller
