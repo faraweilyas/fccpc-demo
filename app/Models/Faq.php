@@ -54,10 +54,10 @@ class Faq extends Model
      * Get answer
      *
      * @param int $length
-     * @param string $textStyle
+     * @param mixed $textStyle
      * @return string
      */
-    public function getAnswer(int $length=30, $textStyle='strtoupper') : string
+    public function getAnswer(int $length=30, $textStyle=NULL) : string
     {
         return textTransformer(shortenContent($this->answer, $length), $textStyle);
     }
