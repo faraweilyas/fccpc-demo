@@ -13,16 +13,25 @@ class CreateEnquiryTable extends Migration
      */
     public function up()
     {
-        Schema::create('enquiry', function (Blueprint $table) {
+        Schema::create('enquiries', function(Blueprint $table)
+        {
             $table->id();
-            $table->string('tracking_id');
+            $table->foreignId('case_handler')->nullable();
+            $table->string('type');
             $table->string('firm');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email');
             $table->string('phone');
+            $table->mediumText('message')->nullable();
             $table->string('file')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
+
+            $table->foreign('case_handler')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -33,6 +42,6 @@ class CreateEnquiryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enquiry');
+        Schema::dropIfExists('enquiries');
     }
 }

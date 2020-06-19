@@ -13,13 +13,13 @@ class CreateCasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cases', function (Blueprint $table) {
+        Schema::create('cases', function (Blueprint $table)
+        {
             $table->id();
-            $table->string('ref_no')->nullable();
+            $table->string('reference_number')->nullable();
             $table->string('tracking_id')->nullable();
             $table->string('subject')->nullable();
-            $table->string('parties', 100)->nullable();
-            $table->string('case_rep', 50)->nullable();
+            $table->text('parties')->nullable();
             $table->string('transaction_type', 50)->nullable();
             $table->string('transaction_category', 50)->nullable();
             $table->string('applicant_firm', 150)->nullable();
@@ -32,11 +32,16 @@ class CreateCasesTable extends Migration
             $table->mediumText('applicant_account_documents')->nullable();
             $table->mediumText('applicant_payment_documents')->nullable();
             $table->string('status', 50)->nullable();
-            $table->integer('case_handler_id')->nullable();
+            $table->integer('case_handler')->nullable();
             $table->string('recommendation', 225)->nullable();
             $table->string('comments', 225)->nullable();
             $table->integer('request_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('case_handler')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
