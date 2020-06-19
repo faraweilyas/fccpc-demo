@@ -1,4 +1,4 @@
- <footer class="main-footer nanotext co-platinum bg-primary">
+<footer class="main-footer nanotext co-platinum bg-primary">
     <div class="maxwidth-sl mx-auto">
         <div class="wrapper">
             <h2 class="sr">Give the footer a heading</h2>
@@ -332,3 +332,6 @@
         toastr.error("{{ Session::get('error') }}");
     @endif
 </script>
+@yield('custom.javascript')
+</body>
+</html>

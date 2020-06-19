@@ -32,3 +32,4 @@
     <script type="application/ld+json">
     {"description":"FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.","@type":"WebSite","headline":"Federal Competition and Consumer Protection Commission","url":"http://fccpc.gov.ng/","name":"Federal Competition and Consumer Protection Commission","@context":"https://schema.org"}</script>
 </head>
+<body class="is-home is-loading">
