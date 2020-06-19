@@ -13,13 +13,20 @@ class CreateFaqTable extends Migration
      */
     public function up()
     {
-        Schema::create('faq', function (Blueprint $table) {
+        Schema::create('faqs', function(Blueprint $table)
+        {
             $table->id();
-            $table->integer('creator');
+            $table->integer('user_id');
+            $table->string('category');
+            $table->string('slug');
             $table->string('question');
-            $table->mediumText('answer');
-            $table->integer('category');
+            $table->text('answer');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 
@@ -30,6 +37,6 @@ class CreateFaqTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('faq');
+        Schema::dropIfExists('faqs');
     }
 }
