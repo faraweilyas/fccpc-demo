@@ -7,6 +7,13 @@ namespace App\Enhancers;
  */
 class AppHelper
 {
+    protected $app;
+
+    public function __construct($app=null)
+    {
+        $this->app = is_null($app) ? app() : $app;
+    }
+
 	// Valid Case Categories
 	static $case_categories = [
 		"RG"  => "Regular",
