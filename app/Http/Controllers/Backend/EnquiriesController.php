@@ -58,10 +58,16 @@ class EnquiriesController extends Controller
      */
     public function assignedLogs()
     {
+        if (getAccountType() == 'AD'):
+            $enquiries        = \App\Models\Enquiry::where('caseHandler', \Auth::user()->id)->get();
+        else:
+            $enquiries        = \App\Models\Enquiry::all();
+        endif;
+
         $title            = APP_NAME;
         $description      = "FCCPC Assigned Logs Dashboard";
         $details          = details($title, $description);
-        return view('backend.enquiries.assigned-logs', compact('details'));
+        return view('backend.enquiries.assigned-logs', compact('details', 'enquiries'));
     }
 
     /**

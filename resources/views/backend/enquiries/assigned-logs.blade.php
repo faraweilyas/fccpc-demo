@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Enquiry::where('caseHandler', \Auth::user()->id)->get() as $item)
+                            @foreach($enquiries as $item)
                             <tr>
                                 <td><b>{{ $item->getFullName() }}</b></td>
                                 <td>{{ $item->firm }}</td>
