@@ -116,11 +116,11 @@ class AppHelper
 	/**
 	* Validates and returns array value
 	* @param string $array
-	* @param string $arrayKey
-	* @param string $textStyle
+	* @param mixed $arrayKey
+	* @param mixed $textStyle
 	* @return string
 	*/
-	public static function getArrayValue (string $array=NULL, string $arrayKey=NULL, string $textStyle="strtoupper") : string
+	public static function getArrayValue (string $array=NULL, $arrayKey=NULL, $textStyle="strtoupper") : string
 	{
 		if (!isset(static::$$array)) return '';
 		if (empty($arrayKey)) return '';

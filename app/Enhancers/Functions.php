@@ -413,10 +413,10 @@ function getAccountType() : string
  * Text transformer
  *
  * @param string $value
- * @param string $textStyle
+ * @param mixed $textStyle
  * @return string
  */
-function textTransformer(string $value=NULL, string $textStyle='strtoupper') : string
+function textTransformer(string $value=NULL, $textStyle='strtoupper') : string
 {
     return (is_callable($textStyle)) ? $textStyle($value) : $value;
 }
