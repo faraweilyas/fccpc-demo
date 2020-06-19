@@ -3,8 +3,10 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\Guest;
+use Illuminate\Http\Request;
 
-class ValidateTrackingIdMiddleWare
+class ValidateTrackingId
 {
     /**
      * Handle an incoming request.
@@ -13,9 +15,9 @@ class ValidateTrackingIdMiddleWare
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
-        if (!\App\Models\Guest::where('tracking_id', $request->id)->first()):
+        if (!Guest::where('tracking_id', $request->id)->first()):
             return redirect()->route('home.index');
         else:
             return $next($request);

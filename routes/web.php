@@ -1,6 +1,5 @@
 <?php
 
-use App\Enhancers\Asset;
 use Illuminate\Support\Facades\Route;
 
 // Base Controller
@@ -23,7 +22,7 @@ Route::group(['prefix' => 'applicant', 'as' => 'applicant.', 'namespace' => 'Bac
 });
 
 // Application Controller
-Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 'Backend', 'middleware' => 'ValidateTrackingId'], function()
+Route::group(['prefix' => 'application', 'as' => 'application.', 'namespace' => 'Backend', 'middleware' => 'validate.tracking_id'], function()
 {
     Route::get('select/{id}',           'ApplicationController@index')->name('index');
     Route::get('success/{id}',          'ApplicationController@applicationSuccess')->name('success');
