@@ -2,7 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\URL;
+use App\Enhancers\AppHelper;
+use App\Enhancers\AppRepository;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +17,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        app()->singleton(AppHelper::class, function($app)
+        {
+            return new AppHelper($app);
+        });
+
+        app()->singleton(AppRepository::class, function($app)
+        {
+            return new AppRepository($app);
+        });
     }
 
     /**
@@ -28,8 +37,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        if (config('app.env') === 'production') {
-            URL::forceScheme('https');
-        }
+        forceHTTPSScheme();
     }
 }
