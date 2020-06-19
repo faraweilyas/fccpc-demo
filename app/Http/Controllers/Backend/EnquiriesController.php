@@ -132,7 +132,7 @@ class EnquiriesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             // Get just ext
             $extension = $document->getClientOriginalExtension();
-            //Filename to store
+            // Filename to store
             $fileNameToStore = $filename.'_'.time().'.'.$extension;
             // Upload Image
             $path = $document->storeAs('public/enquiry_documents', $fileNameToStore);
@@ -140,7 +140,7 @@ class EnquiriesController extends Controller
             $fileNameToStore = null;
         endif;
 
-        $result = Enquiry::create([
+        $enquiry = Enquiry::create([
             'firm'        => trim($request->firm ?? ''),
             'firstName'   => trim($request->firstName),
             'lastName'    => trim($request->lastName),
@@ -152,17 +152,16 @@ class EnquiriesController extends Controller
         ]);
 
         Mail::to(config('mail.from.address'))->send(new EnquiryMail([
-            'firm'          => $result->firm,
-            'firstName'     => $result->firstName,
-            'lastName'      => $result->lastName,
-            'email'         => $result->email,
-            'phone'         => $result->phone,
-            'type'          => $result->type,
-            'message'       => $result->message,
+            'firm'          => $enquiry->firm,
+            'firstName'     => $enquiry->firstName,
+            'lastName'      => $enquiry->lastName,
+            'email'         => $enquiry->email,
+            'phone'         => $enquiry->phone,
+            'type'          => $enquiry->type,
+            'message'       => $enquiry->message,
             'document'      => $document ?? null,
         ]));
 
         return redirect()->back()->with("success", "Enquiry submitted!");
     }
-
 }

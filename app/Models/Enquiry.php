@@ -52,6 +52,7 @@ class Enquiry extends Model
             $result = User::where('id', $this->caseHandler)->first();
             return textTransformer($result->getFullName(), $textStyle);
         }
+
         return textTransformer('unassigned', $textStyle);
     }
 }
