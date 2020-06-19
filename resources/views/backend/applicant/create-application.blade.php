@@ -241,8 +241,6 @@
 										</div>
 										<!--end::Input-->
 									</div>
-									<!--end: Wizard Step 1-->
-									<!--begin: Wizard Step 2-->
 									<div class="pb-5" data-wizard-type="step-content">
 										<h4 class="mb-10 font-weight-bold text-dark">Provide your contact details</h4>
 										<div class="row">
@@ -293,8 +291,6 @@
 											</div>
 										</div>
 									</div>
-									<!--end: Wizard Step 2-->
-									<!--begin: Wizard Step 3-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 										<!--begin::Input-->
 										<div class="row mt-4">
@@ -352,8 +348,6 @@
 											</div>
 										</div>
 									</div>
-									<!--end: Wizard Step 3-->
-									<!--begin: Wizard Step 4-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 										<!--begin::Input-->
 										<div class="row mt-4">
@@ -411,8 +405,6 @@
 											</div>
 										</div>
 									</div>
-									<!--end: Wizard Step 4-->
-									<!--begin: Wizard Step 5-->
 									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
 										<!--begin::Input-->
 										<div class="row mt-4">
@@ -470,8 +462,6 @@
 											</div>
 										</div>
 									</div>
-									<!--end: Wizard Step 5-->
-									<!--begin: Wizard Actions-->
 									<div class="d-flex justify-content-between border-top mt-5 pt-10">
 										<div id="upload-img" class="hide">
 											<button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...</button>
@@ -484,21 +474,15 @@
 											<button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
 										</div>
 									</div>
-									<!--end: Wizard Actions-->
 								</form>
 							</div>
-							<!--end: Wizard-->
 						</div>
 					</div>
-					<!--end: Wizard Body-->
 				</div>
-				<!--end: Wizard-->
 			</div>
 		</div>
 	</div>
-	<!--end::Container-->
 </div>
-<!--end::Content-->
 <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ pc_asset(BE_JS.'create-application.js') }}"></script>
 @endSection
