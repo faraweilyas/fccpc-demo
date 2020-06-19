@@ -1,4 +1,5 @@
 @extends('layouts.frontend.base')
+
 @section('content')
 <main>
 	<section class=" maxwidth-sl-2 mx-auto top-heading">
@@ -106,7 +107,6 @@
 	        </div>
 	    </div>
 	</section>
-	<!-- Modal Popup -->
     <div class="modal fade hide" id="localGuideline" tabindex="-1" role="dialog" aria-labelledby="localGuidelineModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -120,7 +120,6 @@
             </div>
         </div>
     </div>
-    <!-- Modal Popup -->
     <div class="modal fade hide" id="ffmGuideline" tabindex="-1" role="dialog" aria-labelledby="ffmGuidelineModalTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -167,7 +166,10 @@
         </div>
     </div>
 </main>
-<script src="{{ asset(FE_JS.'jquery.min.js') }}"></script>
-<script src="{{ asset(BE_JS.'functions.js')  }}"></script>
-<script src="{{ asset(BE_JS.'app.js') 	      }}"></script>
+@endSection
+
+@section('custom.javascript')
+<script src="{{ pc_asset(FE_JS.'jquery.min.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'functions.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'app.js') }}"></script>
 @endSection

@@ -44,7 +44,7 @@
                                 <td><b>{{ $item->getCreatorFullName() }}</b></td>
                                 <td>{{ $item->question }}</td>
                                 <td class="text-center" data-toggle="tooltip" title="{{ $item->answer }}">
-                                    {{ $item->getAnswer('') }}
+                                    {{ $item->getAnswer() }}
                                 </td>
                                 <td class="text-center">
                                     {{ $item->getCategory() }}
