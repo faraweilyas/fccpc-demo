@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Feedback;
 
 class HomeController extends Controller
 {
@@ -38,14 +40,37 @@ class HomeController extends Controller
     public function faq($type = null)
     {
         if ($type != null):
-            $faq          = \App\Models\Faq::where('category', $type)->get();
+            $faq          = Faq::where('category', $type)->get();
         else :
-            $faq          = \App\Models\Faq::all();
+            $faq          = Faq::all();
         endif;
 
     	$title            = "Frequently Asked Questions (FAQs) - Federal Competition and Consumer Protection Commission - ".APP_NAME;
 	    $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
     	$details          = details($title, $description);
     	return view('frontend.faq', compact('details', 'faq', 'type'));
+    }
+
+    /**
+     * Handles the update faq feedback route.
+     * @return void
+     */
+    public function updateFaqFeedback($id)
+    {
+        $ip = request()->ip();
+        if(Feedback::where('ip_address', $ip)->first()):
+            Feedback::where('ip_address', $ip)->update([
+                'feedback' => $id
+            ]);
+            return redirect()->back()->with('success', 'Feedback saved successfully');
+        else:
+            Feedback::create([
+                'ip_address' => $ip,
+                'feedback' => $id
+            ]);
+            return redirect()->back()->with('success', 'Feedback saved successfully');
+        endif;
+
+        return redirect()->back();
     }
 }

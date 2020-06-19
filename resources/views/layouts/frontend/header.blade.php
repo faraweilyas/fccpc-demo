@@ -24,6 +24,7 @@
     <link href="{{ pc_asset(FE_CSS.'style.css') }}" rel="stylesheet" />
     <link href="{{ pc_asset(FE_CSS.'custom.css') }}" rel="stylesheet" />
     <link href="{{ pc_asset(FE_CSS.'custom.min.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'toaster.css') }}" />
     <link rel="canonical" href="{{ agencyLink() }}" />
     <!-- UI JS file -->
     <script src="{{ pc_asset(FE_JS.'photoswipe-ui.min.js') }}"></script>

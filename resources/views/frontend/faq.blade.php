@@ -44,10 +44,10 @@
                             <div class="title">Was this article helpful?</div>
                             <div class="clear-fix"></div>
                             <div class="button-group">
-                                <button class="as-button" data-value="5" type="button">Yes</button>
-                                <button class="as-button" data-value="1" type="button">No</button>
+                                <a href="{{ route('home.faq.feedback', ['id' => 1]) }}" class="as-button" data-value="5" type="button">Yes</a>
+                                <a href="{{ route('home.faq.feedback', ['id' => 0]) }}" class="as-button" data-value="1" type="button">No</a>
                             </div>
-                            <div class="sub-title">22 out of 33 found this helpful</div>
+                            <div class="sub-title">{{ \App\Models\Feedback::where('feedback', 1)->count() }} out of {{ \App\Models\Feedback::all()->count() }} found this helpful</div>
                         </div>
                     </div>
 	            </ul>

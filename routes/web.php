@@ -9,6 +9,7 @@ Route::group(['prefix' => '/', 'as' => 'home.', 'namespace' => 'Frontend'], func
     Route::get('/',               'HomeController@index')->name('index');
     Route::get('/fee-calculator', 'HomeController@feeCalcutor')->name('calculator');
     Route::get('/faq/{type?}',    'HomeController@faq')->name('faq');
+    Route::get('/faq/feedback/{id}',   'HomeController@updateFaqFeedback')->name('faq.feedback');
 });
 
 // Applicant Controller

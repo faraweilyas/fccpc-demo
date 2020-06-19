@@ -313,7 +313,22 @@
         </div>
     </div>
 </footer>
-
+<script src="{{ pc_asset(BE_PLUGIN.'global/plugins.bundle.js') }}"></script>
+<script src="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'scripts.bundle.js') }}"></script>
 <script src="{{ pc_asset(FE_JS.'vue.min.js') }}"></script>
 <script src="{{ pc_asset(FE_JS.'main.js')    }}"></script>
 <script src="{{ pc_asset(FE_JS.'custom.js')  }}"></script>
+<script src="{{ pc_asset(BE_JS.'toaster.js') }}"></script>
+<script type="text/javascript">
+    toastr.options = {
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+    };
+    @if (Session::has('success'))
+        toastr.success("{{ Session::get('success') }}");
+    @endif
+    @if (Session::has('error'))
+        toastr.error("{{ Session::get('error') }}");
+    @endif
+</script>
