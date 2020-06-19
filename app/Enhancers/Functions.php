@@ -1,6 +1,7 @@
 <?php
 
 use App\Enhancers\AppHelper;
+use Illuminate\Support\Facades\URL;
 
 /**
  * Prevents file caching for javascript or css files by adding last modified timestamp.
@@ -32,6 +33,19 @@ function preventFileCaching($file='') : string
 function pc_asset($asset=NULL) : string
 {
     return asset(preventFileCaching($asset));
+}
+
+/**
+ * Force HTTPS Scheme
+ *
+ * @return void
+ */
+function forceHTTPSScheme()
+{
+    if (config('app.env') === 'production')
+    {
+        URL::forceScheme('https');
+    }
 }
 
 /**
