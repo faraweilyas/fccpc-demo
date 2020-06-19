@@ -39,6 +39,17 @@
 	                    <p></p>
 	                </li>
                     @endforeach
+                    <div class="sub-article-container shaded mb-9 text-center">
+                        <div class="as">
+                            <div class="title">Was this article helpful?</div>
+                            <div class="clear-fix"></div>
+                            <div class="button-group">
+                                <button class="as-button" data-value="5" type="button">Yes</button>
+                                <button class="as-button" data-value="1" type="button">No</button>
+                            </div>
+                            <div class="sub-title">22 out of 33 found this helpful</div>
+                        </div>
+                    </div>
 	            </ul>
 		    </div>
 		</section>

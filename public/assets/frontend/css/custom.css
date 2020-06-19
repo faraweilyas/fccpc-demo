@@ -418,8 +418,8 @@ button, input, optgroup, select, textarea {
 
 hr {
      color: #f00;
-     background: #e0e0e0; 
-     width: 100%; 
+     background: #e0e0e0;
+     width: 100%;
      height: 10%;
      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
@@ -453,6 +453,69 @@ hr {
     height: 35px;
 }
 
+.text-center
+{
+    text-align: center;
+}
+.sub-article-container.shaded {
+    margin: 2.25rem 0;
+    border-top: .0625rem solid #dadce0;
+}
+
+.as .title {
+    font-size: 1rem;
+}
+
+.as .sub-title {
+    font-size: .8rem;
+    margin-top: 5px;
+}
+
+.as .title {
+    color: #202124;
+    display: inline-block;
+    font-weight: 500;
+    padding: 1.125rem 0;
+}
+
+.as .button-group {
+    display: inline;
+}
+
+.as .as-button {
+    background-color: #ffffff;
+    border: .0625rem solid #dadce0;
+    border-radius: .25rem;
+    color: #006535;
+    cursor: pointer;
+    display: inline-block;
+    font-family: inherit;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1rem;
+    margin: .375rem .5rem .375rem 0;
+    min-width: 8.5rem;
+    padding: .625rem 0;
+    position: relative;
+    text-align: center;
+}
+
+.clear-fix
+{
+    clear: both;
+}
+
+.as .as-button:hover {
+    background-color: #dadce0;
+}
+
+.as .as-button:active {
+    background-color: #dadce0;
+}
+.mb-8
+{
+    margin-bottom: 9px;
+}
 @media only screen and (min-width: 1200px) {
    .container {
       max-width: 1140px;
