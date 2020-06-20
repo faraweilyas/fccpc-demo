@@ -216,7 +216,7 @@
                         <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                             <ul class="menu-subnav">
                                 <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                    <a href="{{ route('faq.index') }}" class="menu-link">
+                                    <a href="{{ route('faq.create') }}" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -226,12 +226,12 @@
                                                 </g>
                                             </svg>
                                         </span>
-                                        &nbsp;&nbsp;<span class="menu-text">Create Faq</span></a>
+                                        &nbsp;&nbsp;<span class="menu-text">Create FAQ</span></a>
                                         <i class="menu-arrow"></i>
                                     </a>
                                 </li>
                                 <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                    <a href="{{ route('faq.logs') }}" class="menu-link">
+                                    <a href="{{ route('faq.faqs') }}" class="menu-link">
                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -242,7 +242,7 @@
                                                 </g>
                                             </svg>
                                         </span>
-                                        &nbsp;&nbsp;<span class="menu-text">Faq Log</span></a>
+                                        &nbsp;&nbsp;<span class="menu-text">FAQs</span></a>
                                         <i class="menu-arrow"></i>
                                     </a>
                                 </li>
