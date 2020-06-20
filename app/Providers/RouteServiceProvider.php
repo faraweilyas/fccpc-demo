@@ -46,7 +46,28 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapApplicantRoutes();
+
+        $this->mapAdminRoutes();
+
         //
+
+        $this->mapBackendRoutes();
+    }
+
+    /**
+     * Define the "api" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api/api.php'));
     }
 
     /**
@@ -64,17 +85,44 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
-     * Define the "api" routes for the application.
+     * Define the "web" routes for the application.
      *
-     * These routes are typically stateless.
+     * These routes all receive session state, CSRF protection, etc.
      *
      * @return void
      */
-    protected function mapApiRoutes()
+    protected function mapApplicantRoutes()
     {
-        Route::prefix('api')
-            ->middleware('api')
+        Route::middleware('web')
             ->namespace($this->namespace)
-            ->group(base_path('routes/api.php'));
+            ->group(base_path('routes/web/applicant.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web/admin.php'));
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapBackendRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web/backend.php'));
     }
 }
