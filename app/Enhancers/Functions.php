@@ -16,12 +16,8 @@ function preventFileCaching($file='') : string
     if (!file_exists($filePath))
         return $file;
 
-    $fileExtension = pathinfo($file, PATHINFO_EXTENSION);
-    if (in_array($fileExtension, ['css', 'js'])):
-        $lastTimeModified   = filemtime($filePath);
-        $file               .= "?mod={$lastTimeModified}";
-    endif;
-    return $file;
+    $lastTimeModified = filemtime($filePath);
+    return "{$file}?mod={$lastTimeModified}";
 }
 
 /**
