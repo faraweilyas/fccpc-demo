@@ -2,8 +2,6 @@
 
 return [
 
-    'default_password' => env('DEFAULT_PASSWORD', 'password'),
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -232,5 +230,30 @@ return [
         'AppRepository' => App\Enhancers\AppRepository::class,
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default password
+    |--------------------------------------------------------------------------
+    |
+    | This password will be used when registering a new user without providing
+    | a password.
+    |
+    */
+
+    'default_password' => env('DEFAULT_PASSWORD', 'password'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Error theme
+    |--------------------------------------------------------------------------
+    |
+    | The theme to be used for error pages
+    | See available options below
+    | 1-first, 2-second, 3-third, 4-fourth, 5-fifth, 6-sixth
+    |
+    */
+
+    'error_theme' => env('ERROR_THEME', '1-first'),
 
 ];
