@@ -31,12 +31,12 @@ class Faq extends Model
 
     public function countPositiveFeedbacks() : int
     {
-        return $this->feedbacks()->where('feedback', 1)->count();
+        return $this->feedbacks()->where('feedback', 'yes')->count();
     }
 
     public function countNegativeFeedbacks() : int
     {
-        return $this->feedbacks()->where('feedback', 0)->count();
+        return $this->feedbacks()->where('feedback', 'no')->count();
     }
 
     /**
