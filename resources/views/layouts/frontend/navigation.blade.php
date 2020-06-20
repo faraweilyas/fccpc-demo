@@ -30,6 +30,12 @@
                 <a href="/">M&amp;A - FCCPC</a>
             </li>
             <li class="py-1 mg-1 main-list">
+                <a href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
+            </li>
+            <li class="py-1 mg-1 main-list">
+                <a href="{{ route('home.faqs') }}">FAQs</a>
+            </li>
+            <li class="py-1 mg-1 main-list">
                 <a href="#">Application</a>
                 <ul class="none pos-abs sublist">
                     <li class="sub-list-item">
@@ -45,13 +51,7 @@
                 </ul>
             </li>
             <li class="py-1 mg-1 main-list">
-                <a href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
-            </li>
-            <li class="py-1 mg-1 main-list">
-                <a href="{{ route('home.faqs') }}">FAQs</a>
-            </li>
-            <li class="py-1 mg-1 main-list">
-                <a href="#">Account</a>
+                <a href="#">Admin</a>
                 <ul class="none pos-abs sublist">
                     <li class="sub-list-item">
                         <a href="{{ route('login') }}">
