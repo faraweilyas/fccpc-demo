@@ -226,6 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'User' => App\Models\User::class,
         'AppHelper' => App\Enhancers\AppHelper::class,
         'AppRepository' => App\Enhancers\AppRepository::class,
 
