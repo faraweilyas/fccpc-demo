@@ -1,9 +1,9 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Enhancers\AppHelper;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use AppHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'firstName', 'lastName', 'email', 'password', 'accountType', 'status'
+        'account_type', 'first_name', 'last_name', 'email', 'status', 'password'
     ];
 
     /**
@@ -46,7 +46,7 @@ class User extends Authenticatable
      */
     public function getFirstName() : string
     {
-        return !empty($this->firstName) ? $this->firstName : "";
+        return !empty($this->first_name) ? $this->first_name : "";
     }
 
     /**
@@ -56,7 +56,7 @@ class User extends Authenticatable
      */
     public function getLastName() : string
     {
-        return !empty($this->lastName) ? $this->lastName : "";
+        return !empty($this->last_name) ? $this->last_name : "";
     }
 
     /**
@@ -66,7 +66,7 @@ class User extends Authenticatable
      */
     public function getFullName() : string
     {
-        return trim($this->firstName.' '.$this->lastName);
+        return trim($this->first_name.' '.$this->last_name);
     }
 
     /**
@@ -87,7 +87,7 @@ class User extends Authenticatable
      */
     public function getAccountType() : string
     {
-        return AppHelper::$account_types[$this->accountType] ?? "";
+        return AppHelper::$account_types[$this->account_type] ?? "";
     }
 
     /**
@@ -97,7 +97,7 @@ class User extends Authenticatable
      */
     public function getAccountTypeHtml() : string
     {
-        return AppHelper::$account_typesHTML[$this->accountType];
+        return AppHelper::$account_typesHTML[$this->account_type];
     }
 
     /**
