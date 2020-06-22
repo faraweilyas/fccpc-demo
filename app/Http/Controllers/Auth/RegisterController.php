@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -38,7 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        // $this->middleware('guest');
     }
 
      /**
@@ -63,8 +63,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'firstName' => ['required', 'string', 'max:255'],
-            'lastName'  => ['required', 'string', 'max:255'],
+            'first_name'=> ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password'  => ['required', 'string', 'confirmed'],
         ]);
@@ -79,10 +79,10 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'firstName'     => $data['firstName'],
-            'lastName'      => $data['lastName'],
+            'account_type'  => $data['account_type'],
+            'first_name'    => $data['first_name'],
+            'last_name'     => $data['last_name'],
             'email'         => $data['email'],
-            'accountType'   => $data['accountType'],
             'password'      => Hash::make($data['password']),
         ]);
     }
