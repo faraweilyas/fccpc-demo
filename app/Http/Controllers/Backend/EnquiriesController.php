@@ -33,7 +33,7 @@ class EnquiriesController extends Controller
      */
     public function create($type)
     {
-        $enquiry          = formatEnquiryType($type);
+        $enquiry          = getEnquiry($type);
         $title            = APP_NAME;
         $description      = "FCCPC ".$enquiry." Application Dashboard";
         $details          = details($title, $description);
