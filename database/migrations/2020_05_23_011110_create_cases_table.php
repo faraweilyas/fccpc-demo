@@ -16,31 +16,29 @@ class CreateCasesTable extends Migration
         Schema::create('cases', function (Blueprint $table)
         {
             $table->id();
-            $table->string('reference_number')->nullable();
-            $table->string('tracking_id')->nullable();
+            $table->foreignId('user_id')->nullable()->default(false);
+            $table->foreignId('guest_id')->nullable()->default(false);
+            $table->string('reference_number')->unique()->nullable();
             $table->string('subject')->nullable();
             $table->text('parties')->nullable();
-            $table->string('transaction_type', 50)->nullable();
-            $table->string('transaction_category', 50)->nullable();
+            $table->string('case_category', 50)->nullable();
+            $table->string('case_type', 50)->nullable();
             $table->string('applicant_firm', 150)->nullable();
             $table->string('applicant_first_name', 150)->nullable();
             $table->string('applicant_last_name', 150)->nullable();
             $table->string('applicant_email', 150)->nullable();
-            $table->string('applicant_phone_no', 150)->nullable();
+            $table->string('applicant_phone_number', 150)->nullable();
             $table->string('applicant_address', 150)->nullable();
-            $table->mediumText('applicant_company_documents')->nullable();
-            $table->mediumText('applicant_account_documents')->nullable();
-            $table->mediumText('applicant_payment_documents')->nullable();
-            $table->string('status', 50)->nullable();
-            $table->integer('case_handler')->nullable();
-            $table->string('recommendation', 225)->nullable();
-            $table->string('comments', 225)->nullable();
-            $table->integer('request_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('case_handler')
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
+                ->onDelete('cascade');
+
+            $table->foreign('guest_id')
+                ->references('id')
+                ->on('guests')
                 ->onDelete('cascade');
         });
     }

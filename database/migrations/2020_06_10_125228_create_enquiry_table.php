@@ -16,7 +16,6 @@ class CreateEnquiryTable extends Migration
         Schema::create('enquiries', function(Blueprint $table)
         {
             $table->id();
-            $table->foreignId('case_handler')->nullable();
             $table->string('type');
             $table->string('firm');
             $table->string('first_name');
@@ -27,11 +26,6 @@ class CreateEnquiryTable extends Migration
             $table->string('file')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
-
-            $table->foreign('case_handler')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 
