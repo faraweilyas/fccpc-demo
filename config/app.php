@@ -227,8 +227,9 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'User' => App\Models\User::class,
-        'AppHelper' => App\Enhancers\AppHelper::class,
-        'AppRepository' => App\Enhancers\AppRepository::class,
+        'SerialNumber' => App\Facades\SerialNumber::class,
+        'AppRepository' => App\Facades\AppRepository::class,
+        'AppHelper' => App\Facades\AppHelper::class,
 
     ],
 
