@@ -7,22 +7,41 @@ namespace App\Enhancers;
  */
 class AppHelper
 {
+    /**
+     * $app App instance
+     * @var null|Illuminate\Foundation\Application
+     */
     protected $app;
 
+    /**
+     * Loads the app instance into scope
+     *
+     * @param null|Illuminate\Foundation\Application $app
+     * @return void
+     */
     public function __construct($app=null)
     {
         $this->app = is_null($app) ? app() : $app;
     }
 
-	// Valid Case Categories
-	static $case_categories = [
-		"RG"  => "Regular",
+	protected $case_categories = [
+		"REG" => "Regular",
 		"FFM" => "FFM",
 		"FFX" => "FFM-Expediated",
 	];
 
-	// Valid Case Status
-	static $case_status = [
+    protected $case_types = [
+        "SM" => "Small",
+        "LG" => "Large",
+    ];
+
+    protected $file_groups = [
+        "COM" => "Company",
+        "ACC" => "Account",
+        "PAY" => "Payment",
+    ];
+
+	protected $case_status = [
 		"1"  => "New",
 		"2"  => "Assigned",
 		"3"  => "On Hold",
@@ -30,8 +49,7 @@ class AppHelper
 		"5"  => "Rejected",
 	];
 
-	// Valid Case Status
-	static $case_statusHTML = [
+	protected $case_status_html = [
 		"1"  => "secondary",
 		"2"  => "info",
 		"3"  => "warning",
@@ -39,108 +57,155 @@ class AppHelper
 		"5"  => "danger",
 	];
 
-	// Valid Status
-	static $status = [
+	protected $status = [
 		'0' => 'Inactive',
 		'1' => 'Active',
 	];
 
-	// Valid Status HTML
-	static $statusHTML = [
+	protected $status_html = [
 		'0' => 'danger',
 		'1' => 'success',
 	];
 
-	// Valid Case Categories
-	static $account_types = [
-		"AD"  => "Admin",
-		"IT"  => "It",
-		"SP"  => "Supervisor",
-		"CH"  => "Case Handler",
-	];
-
-	// Valid Case Categories
-	static $account_typesHTML = [
-		"AD"  => "danger",
-		"SP"  => "primary",
-		"IT"  => "warning",
-		"CH"  => "info",
-	];
-
-    // Valid enquiry type
-    static $enquiry_types = [
-        "GENERAL"                 => "General",
-        "PRE-NOTIFICATION"        => "Pre-Notification",
-        "COMPLAINT"               => "Complaint",
+    protected $faq_categories = [
+        "GEN" => "General",
+        "ENQ" => "Enquiry",
     ];
 
-    // Valid enquiry type HTML
-    static $enquiry_typesHTML = [
+    protected $enquiry_types = [
+        "GEN" => "General",
+        "PRN" => "Pre-Notification",
+        "COP" => "Complaint",
+    ];
+
+    protected $enquiry_types_html = [
         "GEN"  => "primary",
         "PRE"  => "secondary",
+        "COP"  => "warning",
     ];
 
-    // Valid faq categories
-    static $faq_categories = [
-        "1"  => "General",
-        "2"  => "Enquiry",
+    protected $account_types = [
+        "RT"  => "Root",
+        "AD"  => "Admin",
+        "IT"  => "IT Personnel",
+        "DG"  => "Director General",
+        "SP"  => "Supervisor",
+        "CH"  => "Case Handler",
+        "RG"  => "Registrar",
+        "GT"  => "Guest",
+    ];
+
+    protected $account_types_html = [
+        "RT"  => "danger",
+        "AD"  => "warning",
+        "IT"  => "primary",
+        "DG"  => "info",
+        "SP"  => "info",
+        "CH"  => "info",
+        "RG"  => "info",
+        "GT"  => "info",
     ];
 
 	/**
-	* Validates array key
-	* @param string $array
-	* @param string $arrayKey
-	* @return bool
-	*/
-	public static function validateArrayKey (string $array=NULL, string $arrayKey=NULL) : bool
+	 * Validates array key
+     *
+	 * @param string $array
+	 * @param mixed $arrayKey
+	 * @return bool
+	 */
+	public function validateKey(string $array, $arrayKey) : bool
 	{
-		if (!isset(static::$$array)) return FALSE;
-		return array_key_exists(strtoupper($arrayKey), static::$$array);
+        if (!isset($this->$array) || is_null($arrayKey))
+            return FALSE;
+
+		return array_key_exists($arrayKey, $this->$array);
+	}
+
+    /**
+     * Validates array value
+     *
+     * @param string $array
+     * @param mixed $arrayValue
+     * @return bool
+     */
+    public function validateValue(string $array, $arrayValue) : bool
+    {
+        if (!isset($this->$array) || is_null($arrayValue))
+            return FALSE;
+
+        return in_array($arrayValue, $this->$array);
+    }
+
+	/**
+	 * Validates and returns array
+     *
+	 * @param string $array
+	 * @param mixed $textStyle
+	 * @return array
+	 */
+	public function get(string $array, $textStyle="strtoupper") : array
+	{
+		if (!isset($this->$array)) return [];
+        return collect($this->$array)->map(function($value, $key) use ($textStyle)
+        {
+            return textTransformer($value, $textStyle);
+        })->toArray();
+	}
+
+    /**
+     * Get array keys
+     *
+     * @param string $array
+     * @param mixed $textStyle
+     * @return array
+     */
+    public function keys(string $array, $textStyle="strtoupper") : array
+    {
+        return array_keys($this->get($array, $textStyle));
+    }
+
+    /**
+     * Get array values
+     *
+     * @param string $array
+     * @param mixed $textStyle
+     * @return array
+     */
+    public function values(string $array, $textStyle="strtoupper") : array
+    {
+        return array_values($this->get($array, $textStyle));
+    }
+
+	/**
+	 * Validates and returns array value
+     *
+	 * @param string $array
+	 * @param mixed $arrayKey
+	 * @param mixed $textStyle
+	 * @return mixed
+	 */
+	public function value(string $array, $arrayKey, $textStyle="strtoupper")
+	{
+		if (!isset($this->$array) || is_null($arrayKey))
+            return NULL;
+		if (!$this->validateKey($array, $arrayKey))
+            return NULL;
+
+        return textTransformer($this->$array[$arrayKey], $textStyle);
 	}
 
 	/**
-	* Validates and returns array
-	* @param string $array
-	* @param string $textStyle
-	* @return array
-	*/
-	public static function getArray (string $array=NULL, string $textStyle="strtoupper") : array
-	{
-		if (!isset(static::$$array)) return [];
-		foreach (static::$$array as &$arrayValue):
-			$arrayValue = !empty($textStyle) ? $textStyle($arrayValue) : $arrayValue;
-		endforeach;
-		return static::$$array;
-	}
-
-	/**
-	* Validates and returns array value
-	* @param string $array
-	* @param mixed $arrayKey
-	* @param mixed $textStyle
-	* @return string
-	*/
-	public static function getArrayValue (string $array=NULL, $arrayKey=NULL, $textStyle="strtoupper") : string
-	{
-		if (!isset(static::$$array)) return '';
-		if (empty($arrayKey)) return '';
-		if (static::validateArrayKey($array, $arrayKey))
-			return !empty($textStyle) ? $textStyle(static::$$array[strtoupper($arrayKey)]) : static::$$array[strtoupper($arrayKey)];
-		else
-			return "";
-	}
-
-	/**
-	* Generates HTML SELECT button
-	* @param string $array
-	* @param string $select
-	* @return string
-	*/
-	public static function generateSelect (string $array=NULL, string $select=NULL) : string
+	 * Generates HTML SELECT button
+     *
+	 * @param string $array
+	 * @param string $select
+	 * @return string
+	 */
+	public function select(string $array=NULL, string $select=NULL) : string
 	{
 		$HTMLOutput = '';
-		if (!isset(static::$$array)) return '';
-		array_walk(static::$$array, function ($value, $key) use (&$HTMLOutput, $select)
+		if (!isset($this->$array)) return '';
+		array_walk($this->$array, function ($value, $key) use (&$HTMLOutput, $select)
 		{
 			$selected 	 = (strtoupper($select) == $key) ? " selected" : "";
 			$HTMLOutput .= "<option value='{$key}'$selected>".ucwords($value)."</option>";
@@ -149,12 +214,13 @@ class AppHelper
 	}
 
 	/**
-	* Generates HTML SELECT button for user defined array
-	* @param array $array
-	* @param array $selecteds
-	* @return string
-	*/
-	public static function generateUDASelect (array $array=[], array $selecteds=[]) : string
+	 * Generates HTML SELECT button for user defined array
+     *
+	 * @param array $array
+	 * @param array $selecteds
+	 * @return string
+	 */
+	public function udaSelect(array $array=[], array $selecteds=[]) : string
 	{
 		$HTMLOutput = '';
 		if (empty($array)) return '';
@@ -167,14 +233,15 @@ class AppHelper
 	}
 
 	/**
-	* Generates HTML SELECT button for custom arrays with objects
-	* @param array $array
-	* @param array $properties
-	* @param array $selecteds
-	* @param string $textStyle
-	* @return string
-	*/
-	public static function generateObjSelect(array $array=[], array $properties=[], array $selecteds=[], string $textStyle=NULL) : string
+	 * Generates HTML SELECT button for custom arrays with objects
+     *
+	 * @param array $array
+	 * @param array $properties
+	 * @param array $selecteds
+	 * @param string $textStyle
+	 * @return string
+	 */
+	public function objSelect(array $array=[], array $properties=[], array $selecteds=[], string $textStyle=NULL) : string
 	{
 		$HTMLOutput = '';
 		if (empty($array) || empty($properties)) return '';
@@ -199,17 +266,18 @@ class AppHelper
 	}
 
 	/**
-	* Generates HTML RADIO button
-	* @param string $array
-	* @param string $select
-	* @return string
-	*/
-	public static function generateRadio (string $array=NULL, string $select=NULL, bool $isRequired=TRUE) : string
+	 * Generates HTML RADIO button
+     *
+	 * @param string $array
+	 * @param string $select
+	 * @return string
+	 */
+	public function radio(string $array=NULL, string $select=NULL, bool $isRequired=TRUE) : string
 	{
 		$HTMLOutput = '';
 		$id 		= 1;
-		if (!isset(static::$$array)) return '';
-		foreach (static::$$array as $key => $value):
+		if (!isset($this->$array)) return '';
+		foreach ($this->$array as $key => $value):
 			if (strpos($select, '-') !== FALSE) $select = explode("-", $select)[0];
 			$dataValue 	 = "data-value='".strtoupper($value)."'";
 			$checked 	 = (strtoupper($select) == $key) ? " checked='checked'" : "";
@@ -220,5 +288,4 @@ class AppHelper
 		endforeach;
 		return $HTMLOutput;
 	}
-
 }
