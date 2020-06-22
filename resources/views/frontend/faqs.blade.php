@@ -21,9 +21,9 @@
     			      </defs>
     			      <polyline points="9 18 15 12 9 6"></polyline>
     			    </svg>
-    		        {{ AppHelper::getArrayValue('faq_categories', $category, NULL) }} FAQs
+    		        {{ AppHelper::getValue('faq_categories', $category, NULL) }} FAQs
     			</div>
-    	        <h2>{{ AppHelper::getArrayValue('faq_categories', $category, NULL) }} Frequently Asked Questions (FAQs)</h2>
+    	        <h2>{{ AppHelper::getValue('faq_categories', $category, NULL) }} Frequently Asked Questions (FAQs)</h2>
     	    </div>
     	</section>
     	<section class="maxwidth-sl mx-auto sub-container">
