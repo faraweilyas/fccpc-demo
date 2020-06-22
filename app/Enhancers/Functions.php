@@ -1,6 +1,5 @@
 <?php
 
-use App\Enhancers\AppHelper;
 use Illuminate\Support\Facades\URL;
 
 /**
@@ -294,30 +293,14 @@ function formatApplicationType(string $type) : string
 }
 
 /**
- * Format enquiry type
+ * Format enquiry
  *
- * @param string $type
+ * @param string $enquiry
  * @return string
  */
-function formatEnquiryType(string $type) : string
+function getEnquiry(string $enquiry) : string
 {
-    $enquiry = "";
-    switch($type)
-    {
-        case 'general':
-            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
-            break;
-        case 'pre-notification':
-            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
-            break;
-        case 'complaint':
-            $enquiry = AppHelper::$enquiry_types[strtoupper($type)];
-            break;
-        default:
-            $enquiry = '';
-            break;
-    }
-    return $enquiry;
+    return AppHelper::value('enquiry_types', strtoupper($enquiry));
 }
 
 /**
@@ -342,19 +325,6 @@ function formatCaseType(string $type) : string
 			break;
 	}
 	return $case;
-}
-
-/**
- * Generate serial number
- *
- * @return string
- */
-function generateSerialNumber() : string
-{
-	return generate(function($serialNumber)
-	{
-		return substr($serialNumber, 7, 13);
-	}, "CHCO", "SN");
 }
 
 /**
@@ -398,11 +368,7 @@ function generateRefNo($id) : string
  */
 function getAccountType() : string
 {
-	if(Auth::check()):
-		return strtolower(Auth::user()->accountType);
-	else:
-		return 'guest';
-	endif;
+	return (Auth::check()) ? Auth::user()->getAccountType('strtolower') : 'guest';
 }
 
 /**
