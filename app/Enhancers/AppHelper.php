@@ -24,66 +24,6 @@ class AppHelper
         $this->app = is_null($app) ? app() : $app;
     }
 
-	protected $case_categories = [
-		"REG" => "Regular",
-		"FFM" => "FFM",
-		"FFX" => "FFM-Expediated",
-	];
-
-    protected $case_types = [
-        "SM" => "Small",
-        "LG" => "Large",
-    ];
-
-    protected $file_groups = [
-        "COM" => "Company",
-        "ACC" => "Account",
-        "PAY" => "Payment",
-    ];
-
-	protected $case_status = [
-		"1"  => "New",
-		"2"  => "Assigned",
-		"3"  => "On Hold",
-		"4"  => "Approved",
-		"5"  => "Rejected",
-	];
-
-	protected $case_status_html = [
-		"1"  => "secondary",
-		"2"  => "info",
-		"3"  => "warning",
-		"4"  => "success",
-		"5"  => "danger",
-	];
-
-	protected $status = [
-		'0' => 'Inactive',
-		'1' => 'Active',
-	];
-
-	protected $status_html = [
-		'0' => 'danger',
-		'1' => 'success',
-	];
-
-    protected $faq_categories = [
-        "GEN" => "General",
-        "ENQ" => "Enquiry",
-    ];
-
-    protected $enquiry_types = [
-        "GEN" => "General",
-        "PRN" => "Pre-Notification",
-        "COP" => "Complaint",
-    ];
-
-    protected $enquiry_types_html = [
-        "GEN"  => "primary",
-        "PRE"  => "secondary",
-        "COP"  => "warning",
-    ];
-
     protected $account_types = [
         "RT"  => "Root",
         "AD"  => "Admin",
@@ -105,6 +45,68 @@ class AppHelper
         "RG"  => "info",
         "GT"  => "info",
     ];
+
+    protected $status = [
+        '0' => 'Inactive',
+        '1' => 'Active',
+    ];
+
+    protected $status_html = [
+        '0' => 'danger',
+        '1' => 'success',
+    ];
+
+	protected $case_categories = [
+		"REG" => "Regular",
+		"FFM" => "FFM",
+		"FFX" => "FFM-Expediated",
+	];
+
+    protected $case_types = [
+        "SM" => "Small",
+        "LG" => "Large",
+    ];
+
+	protected $case_status = [
+		"1"  => "New",
+		"2"  => "Assigned",
+		"3"  => "On Hold",
+		"4"  => "Approved",
+		"5"  => "Rejected",
+	];
+
+	protected $case_status_html = [
+		"1"  => "secondary",
+		"2"  => "info",
+		"3"  => "warning",
+		"4"  => "success",
+		"5"  => "danger",
+	];
+
+    protected $file_groups = [
+        "COM" => "Company",
+        "ACC" => "Account",
+        "PAY" => "Payment",
+    ];
+
+    protected $enquiry_types = [
+        "GEN" => "General",
+        "PRN" => "Pre-Notification",
+        "COP" => "Complaint",
+    ];
+
+    protected $enquiry_types_html = [
+        "GEN"  => "primary",
+        "PRE"  => "secondary",
+        "COP"  => "warning",
+    ];
+
+    protected $faq_categories = [
+        "GEN" => "General",
+        "ENQ" => "Enquiry",
+    ];
+
+    protected $feedbacks = ["Yes", "No"];
 
 	/**
 	 * Validates array key
