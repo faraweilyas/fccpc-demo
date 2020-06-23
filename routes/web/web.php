@@ -25,7 +25,7 @@ Route::name('home.')
         ->name('faqs');
 
         Route::get(
-            '/faqs/{faq}',
+            '/faqs/{faq:slug}',
             'HomeController@faq'
         )
         ->name('faqs.faq');
