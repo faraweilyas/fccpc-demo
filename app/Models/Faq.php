@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
+    protected $guarded = [];
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -15,7 +17,7 @@ class Faq extends Model
 
     public function feedbacks()
     {
-        return $this->hasMany(Feedback::class, 'question_id', 'id');
+        return $this->hasMany(Feedback::class);
     }
 
     public function countFeedbacks() : int
@@ -31,6 +33,11 @@ class Faq extends Model
     public function countNegativeFeedbacks() : int
     {
         return $this->feedbacks()->where('feedback', 'no')->count();
+    }
+
+    public function path()
+    {
+        return route('home.faqs.faq', $this);
     }
 
     /**

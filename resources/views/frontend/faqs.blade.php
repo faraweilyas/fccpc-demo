@@ -1,6 +1,13 @@
 @extends('layouts.frontend.base')
 
 @section('content')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(FE_CSS.'pagination.css') }}" />
+    <style type="text/css" media="screen">
+        .wrapper {
+            position: relative;
+            padding: unset;
+        }
+    </style>
     <main>
         <section class=" maxwidth-sl mx-auto top-heading">
     	    <div class="wrapper">
@@ -21,22 +28,23 @@
     			      </defs>
     			      <polyline points="9 18 15 12 9 6"></polyline>
     			    </svg>
-    		        {{ AppHelper::getValue('faq_categories', $category, NULL) }} FAQs
+    		        {{ AppHelper::value('faq_categories', $category, NULL) }} FAQs
     			</div>
-    	        <h2>{{ AppHelper::getValue('faq_categories', $category, NULL) }} Frequently Asked Questions (FAQs)</h2>
+    	        <h2>{{ AppHelper::value('faq_categories', $category, NULL) }} Frequently Asked Question(s)</h2>
     	    </div>
     	</section>
     	<section class="maxwidth-sl mx-auto sub-container">
-    	    <div class="wrapper">
+    	    <div class="wrapper" style='margin-bottom: 40px;'>
     	        <ul class="none pb-1">
                     @foreach($faqs as $faq)
     	            <li>
     	                <h3 style='margin-bottom: 15px;'>{{ $faq->question }}</h3>
                         <p>{{ $faq->getAnswer(200) }}</p>
-                        <p class="read-more-link"><a href="{{ route('home.faqs.faq', $faq) }}">Read More</a></p>
+                        <p class="read-more-link"><a href="{{ $faq->path() }}">Read More</a></p>
                     </li>
                     @endforeach
                 </ul>
+                {{ $faqs->withQueryString()->links() }}
     	    </div>
     	</section>
     </main>

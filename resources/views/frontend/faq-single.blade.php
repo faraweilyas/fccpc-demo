@@ -1,7 +1,13 @@
 @extends('layouts.frontend.base')
 @section('content')
+    <style type="text/css" media="screen">
+        .wrapper {
+            position: relative;
+            padding: unset;
+        }
+    </style>
     <main>
-        <section class=" maxwidth-sl mx-auto top-heading">
+        <section class="maxwidth-sl mx-auto top-heading">
             <div class="wrapper">
                 <div class="py-2 breadcrumbs ff-sans-serif pb-h d-ifx al-i-c">
                     <a href="http://fccpc.gov.ng/" class="opacity-7-link">
@@ -21,17 +27,17 @@
                       </defs>
                       <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
-                    Faq
+                    FAQ
                 </div>
-                <h2>Frequently Asked Question (FAQ)</h2>
+                <h2>Frequently Asked Question</h2>
             </div>
         </section>
         <section class="maxwidth-sl mx-auto sub-container">
             <div class="wrapper">
                 <ul class="none pb-1">
                     <li>
-                        <h3 style='margin-bottom: 15px;'>{{ $faq->question }}</h3>
-                        <p>{{ $faq->answer }}</p>
+                        <h3 style='margin-bottom: 25px;'>{{ $faq->question }}</h3>
+                        <p>{!! nl2br($faq->answer) !!}</p>
                     </li>
                     <div class="sub-article-container shaded mb-9 text-center">
                         <div class="as">

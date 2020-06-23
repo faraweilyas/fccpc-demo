@@ -16,9 +16,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details          = details($title, $description);
+        $title          = APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
         return view('frontend.index', compact('details'));
     }
 
@@ -42,10 +42,10 @@ class HomeController extends Controller
      */
     public function faqs()
     {
-        $category       = request('category');
-        $faqs           = (is_null($category))
-                        ? Faq::all()
-                        : Faq::where('category', $category)->get();
+        $category       = strtoupper(request('category'));
+        $faqs           = (empty($category))
+                        ? Faq::latest()->paginate(10)
+                        : Faq::where('category', $category)->latest()->paginate(10);
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);
@@ -74,7 +74,7 @@ class HomeController extends Controller
     {
         Feedback::updateOrcreate([
             'ip_address'    => request()->ip(),
-            'question_id'   => $faq->id,
+            'faq_id'        => $faq->id,
         ], [
             'feedback'      => request('feedback')
         ]);
