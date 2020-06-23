@@ -8,12 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
-    protected $table = 'enquiry';
-
-    protected $fillable = [
-        'caseHandler', 'firm', 'firstName', 'lastName', 'email', 'phone', 'type', 'message', 'file', 'status'
-    ];
-
     /**
      * Get full name
      *

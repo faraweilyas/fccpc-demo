@@ -8,15 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
-    protected $table = 'faq';
-
-    protected $fillable = [
-        'creator', 'slug', 'question', 'answer', 'category'
-    ];
-
     public function user()
     {
-        return $this->belongsTo(User::class, 'creator', 'id');
+        return $this->belongsTo(User::class);
     }
 
     public function feedbacks()

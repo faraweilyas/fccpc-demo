@@ -6,14 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
-    protected $table = 'feedback';
-
-    protected $fillable = [
-        'question_id', 'ip_address', 'feedback'
-    ];
+    protected $table = 'feedbacks';
 
     public function faq()
     {
-        return $this->belongsTo(Faq::class, 'question_id');
+        return $this->belongsTo(Faq::class);
     }
 }
