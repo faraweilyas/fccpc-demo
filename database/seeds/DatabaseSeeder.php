@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder
             GuestSeeder::class,
             CaseSeeder::class,
             DocumentSeeder::class,
+            EnquirySeeder::class,
+            FaqSeeder::class,
+            FeedbackSeeder::class,
         ]);
     }
 }
