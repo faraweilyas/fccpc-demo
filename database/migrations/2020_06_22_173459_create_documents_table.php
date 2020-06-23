@@ -16,7 +16,7 @@ class CreateDocumentsTable extends Migration
         Schema::create('documents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('case_id');
-            $table->sting('group', 50)->nullable();
+            $table->string('group', 50)->nullable();
             $table->string('file');
             $table->text('additional_info')->nullable();
             $table->timestamps();
