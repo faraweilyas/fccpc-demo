@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Controller;
 use Auth;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
+    protected $userView;
+
     /**
      * Create a new controller instance.
      *
@@ -17,6 +20,7 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
+        $this->userView = getAccountType();
         $this->middleware('auth');
     }
 
@@ -57,7 +61,7 @@ class DashboardController extends Controller
             'accountType'     => 'required',
         ]);
 
-        \App\User::create([
+        User::create([
             'firstName'     => trim(ucfirst($request->firstName)),
             'lastName'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
@@ -95,9 +99,9 @@ class DashboardController extends Controller
 
     public function updateUserStatus($id)
     {
-        $check_status = \App\User::findOrFail($id);
+        $check_status = User::findOrFail($id);
 
-        \App\User::whereId($id)->update([
+        User::whereId($id)->update([
             'status' => !$check_status->status
         ]);
 
@@ -114,7 +118,7 @@ class DashboardController extends Controller
         if (isset($request->password) && $request->change_pass == 'yes') {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
-                    \App\User::whereId(Auth::user()->id)->update([
+                    User::whereId(Auth::user()->id)->update([
                             'firstName' => $request->firstName,
                             'lastName'  => $request->lastName,
                             'password'  => Hash::make($request->new_password)
@@ -127,7 +131,7 @@ class DashboardController extends Controller
             }
         }
 
-        \App\User::whereId(Auth::user()->id)->update([
+        User::whereId(Auth::user()->id)->update([
                 'firstName' => $request->firstName,
                 'lastName'  => $request->lastName
          ]);
