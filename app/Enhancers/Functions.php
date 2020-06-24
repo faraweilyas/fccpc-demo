@@ -253,46 +253,6 @@ function agencyLink() : string
 }
 
 /**
- * Generate serial number with length 13
- *
- * @param callable $callable
- * @param string $preText
- * @param string $postText
- * @return string
- */
-function generate(callable $callable, string $preText=NULL, string $postText=NULL) : string
-{
-	return strtoupper($preText.$callable(uniqid()).$postText);
-}
-
-/**
- * Format application type
- *
- * @param string $type
- * @return string
- */
-function formatApplicationType(string $type) : string
-{
-	$case = "";
-	switch($type)
-	{
-		case 'regular':
-			$case = ucfirst($type);
-			break;
-		case 'ffm':
-			$case = strtoupper($type);
-			break;
-		case 'ffm-expediated':
-			$case = 'FFM Expediated';
-			break;
-		default:
-			$case = '';
-			break;
-	}
-	return $case;
-}
-
-/**
  * Format enquiry
  *
  * @param string $enquiry
@@ -325,20 +285,6 @@ function formatCaseType(string $type) : string
 			break;
 	}
 	return $case;
-}
-
-/**
- * Generate applicant ID
- *
- * @return string
- */
-function generateApplicantID() : string
-{
-	$monthDay = date('md');
-	return generate(function($serialNumber)
-	{
-		return substr($serialNumber, 7, 13);
-	}, "APP{$monthDay}");
 }
 
 /**
