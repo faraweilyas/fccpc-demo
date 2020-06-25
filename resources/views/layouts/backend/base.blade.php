@@ -6,13 +6,11 @@
 		<div class="d-flex flex-row flex-column-fluid page">
 			<div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
 				<div id="kt_header" class="header flex-column header-fixed">
-					@guest
-						@include("layouts.backend.guest-navigation-top")
-					@else
-						@include("layouts.backend.admin-navigation-top")
-					@endif
 					@auth
+                        @include("layouts.backend.admin-navigation-top")
 						@include("layouts.backend.admin-navigation-bottom")
+                    @else
+                        @include("layouts.backend.guest-navigation-top")
 					@endif
 				</div>
 				@yield('content')

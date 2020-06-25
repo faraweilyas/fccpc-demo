@@ -1,6 +1,6 @@
 <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
 	<a href="/">
-		<h3 class="text-white text-bold font-weight-bolder text-dark">M&A FCCPC</h3>
+		<h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
 	</a>
 	<div class="d-flex align-items-center">
 		<button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
