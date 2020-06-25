@@ -1,4 +1,5 @@
 @extends('layouts.backend.base-login')
+
 @section('content')
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
@@ -19,13 +20,13 @@
 							<h3>Submit Application</h3>
 							<div class="text-muted font-weight-bold">Enter your email to submit your application:</div>
 						</div>
-						<form class="form" method="POST" action="{{ route('applicant.authenticate') }}">
+						<form class="form" method="POST" action="{{ route('applicant.store') }}">
 							@csrf
 							<div class="form-group mb-5">
+								<input type="email" placeholder="Email address:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
                                 @error('email')
                                     <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                 @enderror
-								<input type="email" placeholder="Email address:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" />
 							</div>
 							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
 						</form>
