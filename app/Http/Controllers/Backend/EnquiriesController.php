@@ -33,8 +33,6 @@ class EnquiriesController extends Controller
      */
     public function create($type)
     {
-        abort_if(\AppHelper::validateKey('enquiry_types', $type), 400);
-
         $enquiry          = getEnquiry($type);
         $title            = APP_NAME;
         $description      = "FCCPC ".$enquiry." Application Dashboard";
