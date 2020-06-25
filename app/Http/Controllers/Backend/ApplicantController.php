@@ -2,73 +2,79 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\Controller;
-use App\Mail\WelcomeApplicant;
 use App\Models\Cases;
 use App\Models\Guest;
+use Illuminate\Http\Request;
+use App\Mail\WelcomeApplicant;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ApplicantController extends Controller
 {
     /**
-     * Handles the authentication page route.
+     * Handles submit application page.
      *
-     * @param Request $request
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
-    public function authenticate(Request $request)
+    public function show()
     {
-        $this->validate($request, [
+        $title          = 'Submit Application | '.APP_NAME;
+        $description    = 'Submit Application | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.applicant.show', compact('details'));
+    }
+
+    /**
+     * Handles authentication page.
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function store()
+    {
+        request()->validate([
             'email' => ['required', 'email'],
         ]);
 
-        $result             = Guest::create([
-            'email'         => trim($request->email),
-            'tracking_id'   => generateApplicantID(),
+        $guest = Guest::create([
+            'ip_address'    => request()->ip(),
+            'email'         => trim(request('email')),
+            'tracking_id'   => \SerialNumber::trackingId(),
         ]);
 
-        Cases::create([
-            'tracking_id'   => $result->tracking_id,
-            'status'        => 0,
-        ]);
+        $case = $guest->startCase();
 
-        Mail::to($request->email)->send(new WelcomeApplicant([
-            'email'         => $result->email ,
-            'tracking_id'   => $result->tracking_id,
-        ]));
+        try
+        {
+            Mail::to(request('email'))->send(new WelcomeApplicant($guest, $case));
+            $message = 'Mail notification sent!';
+        }
+        catch (\Exception $exception)
+        {
+            $message = $exception->getMessage();
+        }
 
-        return redirect()->route('application.index', ['id' => $result->tracking_id]);
+        return redirect($guest->applicationPath());
     }
 
     /**
-     * Handles the submit application page route.
-     * @return void
-     */
-    public function submitApplication()
-    {
-        $title            = APP_NAME;
-        $description      = "FCCPC Submit Application";
-        $details          = details($title, $description);
-        return view('backend.applicant.submit', compact('details'));
-    }
-
-    /**
-     * Handles the track application page route.
-     * @return void
+     * Handles track application page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function trackApplication()
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC Track Application";
-        $details          = details($title, $description);
+        $title          = 'Track Application | '.APP_NAME;
+        $description    = 'Track Application | '.APP_NAME;
+        $details        = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }
 
     /**
-     * Handles the authenticate track application page route.
-     * @return void
+     * Handles authenticate track application page.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function authenticateTrack(Request $request)
     {
@@ -86,7 +92,7 @@ class ApplicantController extends Controller
                     return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $request->tracking_id]);
                 endif;
             else:
-                return redirect()->route('application.success', ['id' => $request->tracking_id]);
+                return redirect()->route('application.submitted', ['id' => $request->tracking_id]);
             endif;
         else:
             return redirect()->back()->with("error", "Invalid Credentials!");
