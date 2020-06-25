@@ -21,22 +21,22 @@ Route::prefix('application')
         ->name('create');
 
         Route::post(
-            'upload/{id}',
-            'ApplicationController@uploadNewCase'
+            'submit/{guest:tracking_id}',
+            'ApplicationController@submit'
         )
-        ->name('create');
-
-        Route::get(
-            'upload/documents/{guest:tracking_id}',
-            'ApplicationController@uploadDocuments'
-        )
-        ->name('upload');
+        ->name('submit');
 
         Route::get(
             'submitted/{guest:tracking_id}',
             'ApplicationController@applicationSubmitted'
         )
         ->name('submitted');
+
+        Route::get(
+            'upload/documents/{guest:tracking_id}',
+            'ApplicationController@uploadDocuments'
+        )
+        ->name('upload');
 
         Route::get(
             '{guest:tracking_id}/{case_category}',
