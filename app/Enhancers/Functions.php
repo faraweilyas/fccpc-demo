@@ -258,9 +258,12 @@ function agencyLink() : string
  * @param string $enquiry
  * @return string
  */
-function getEnquiry(string $enquiry)
+function getEnquiry(string $enquiry) : string
 {
-    return AppHelper::value('enquiry_types', strtoupper($enquiry));
+    if (empty($enquiry = AppHelper::value('enquiry_types', strtoupper($enquiry), 'ucwords')))
+        abort(404);
+
+    return $enquiry;
 }
 
 /**
