@@ -148,10 +148,12 @@
     						<div class="row">
     							<div class="offset-xxl-2 col-xxl-8">
     								<form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
+
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
     									<input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
-    									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-    										<h4 class="mb-10 font-weight-bold text-dark">Enter your Case Details</h4>
+
+    									<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='CaseInfo'>
+    										<h4 class="mb-10 font-weight-bold text-dark">Enter your case information</h4>
     										<div class="form-group fv-plugins-icon-container">
     											<label>Subject</label> <span class="text-danger">*</span>
     											<input type="text" id="subject" class="form-control" placeholder="Enter subject name" name="subject" value="{{ $case->subject }}">
@@ -214,13 +216,13 @@
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content">
+    									<div class="pb-5" data-wizard-type="step-content" data-form='ContactInfo'>
     										<h4 class="mb-10 font-weight-bold text-dark">Provide your contact details</h4>
     										<div class="row">
     											<div class="col-xl-12">
     												<div class="form-group fv-plugins-icon-container">
     													<label>Applicant/Representing Firm</label> <span class="text-danger">*</span>
-    													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="representingFirm" value="{{ $case->applicant_firm ?? '' }}">
+    													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="applicant_firm" value="{{ $case->applicant_firm ?? '' }}">
     													<span class="form-text text-muted">Please enter your representing firm.</span>
     													<div class="fv-plugins-message-container"></div>
     												</div>
@@ -228,10 +230,10 @@
     													<label>Contact Person</label> <span class="text-danger">*</span>
     													<div class="row">
     														<div class="col-lg-6">
-    															<input type="text" class="form-control" placeholder="Enter first name" name="fName" value="{{ $case->applicant_first_name ?? '' }}">
+    															<input type="text" class="form-control" placeholder="Enter first name" name="applicant_first_name" value="{{ $case->applicant_first_name }}">
     														</div>
     														<div class="col-lg-6">
-    															<input type="text" class="form-control" placeholder="Enter last name" name="lName" value="{{ $case->applicant_last_name ?? '' }}">
+    															<input type="text" class="form-control" placeholder="Enter last name" name="applicant_last_name" value="{{ $case->applicant_last_name }}">
     														</div>
     													</div>
     												</div>
@@ -239,7 +241,7 @@
     													<div class="col-lg-6">
     														<div class="form-group fv-plugins-icon-container">
     															<label>Email Address</label> <span class="text-danger">*</span>
-    															<input type="email" class="form-control" placeholder="Enter email address" name="email" value="{{ $case->applicant_email ?? '' }}">
+    															<input type="email" class="form-control" placeholder="Enter email address" name="applicant_email" value="{{ $case->applicant_email }}">
     															<span class="form-text text-muted">Please enter your email address.</span>
     															<div class="fv-plugins-message-container"></div>
     														</div>
@@ -247,7 +249,7 @@
     													<div class="col-lg-6">
     														<div class="form-group fv-plugins-icon-container">
     															<label>Telephone No</label> <span class="text-danger">*</span>
-    															<input type="text" class="form-control" placeholder="Enter telephone no" name="phone" value="{{ $case->applicant_phone_no ?? '' }}">
+    															<input type="text" class="form-control" placeholder="Enter telephone no" name="applicant_phone_number" value="{{ $case->applicant_phone_number }}">
     															<span class="form-text text-muted">Please enter your phone no.</span>
     															<div class="fv-plugins-message-container"></div>
     														</div>
@@ -255,20 +257,19 @@
     												</div>
     												<div class="form-group fv-plugins-icon-container">
     													<label>Address</label> <span class="text-danger">*</span>
-    													<input type="text" class="form-control" placeholder="Enter address" name="address" value="{{ $case->applicant_address ?? '' }}">
+    													<input type="text" class="form-control" placeholder="Enter address" name="applicant_address" value="{{ $case->applicant_address }}">
     													<span class="form-text text-muted">Please enter your address.</span>
     													<div class="fv-plugins-message-container"></div>
     												</div>
-    												<!--end::Input-->
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content">
+    									<div class="pb-5" data-wizard-type="step-content" data-form='CompanyDocuments'>
     										<div class="row mt-4">
     											<div class="col-md-12">
     												<div class="card card-custom gutter-b example example-compact">
     													<div class="card-header">
-    														<h3 class="card-title">Submit Company Documents</h3>
+    														<h3 class="card-title">Submit Company Documentsuments</h3>
     													</div>
     													<div class="card-body">
     														<p>
@@ -319,7 +320,7 @@
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content">
+    									<div class="pb-5" data-wizard-type="step-content" data-form='AccountDocuments'>
     										<div class="row mt-4">
     											<div class="col-md-12">
     												<div class="card card-custom gutter-b example example-compact">
@@ -375,7 +376,7 @@
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content">
+    									<div class="pb-5" data-wizard-type="step-content" data-form='PaymentDocuments'>
     										<div class="row mt-4">
     											<div class="col-md-12">
     												<div class="card card-custom gutter-b example example-compact">
