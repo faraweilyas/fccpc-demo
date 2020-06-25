@@ -23,46 +23,19 @@ jQuery(document).ready(function($)
     {
         event.preventDefault();
 
-        var tracking_id   = $("#tracking_id").val();
-        var token         = $("#token").val();
         swal.fire({
-                title: "Are you sure?",
-                text: "You won\"t be able to revert this!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, submit it!"
-            }).then(function(result) {
-
-                if (result.value) {
-                    $("#previous-btn").addClass('hide');
-                    $("#save-btns").addClass('hide');
-                    $("#upload-img").toggle();
-                    $.ajax({
-                        url: '/api/application/upload/'+tracking_id,
-                        data: {
-                            '_token': token
-                        },
-                        type: 'POST',
-                        success: function(data) {
-                            res = JSON.parse(data);
-                            if (res.responseType == "success") {
-                                swal.fire(
-                                    "Submitted!",
-                                    "Your details have been uploaded successfully.",
-                                    "success"
-                                ).then(function() {
-                                    window.location.replace('/application/success/'+tracking_id);
-                                });
-                            } else {
-                                toastr.error("Your details have been not been uploaded successfully.");
-                            }
-                        },
-                        error: function (err) {
-                            console.log(err.responseText);
-                        }
-                    });
-                }
-            });
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, submit it!"
+        }).then(function(result)
+        {
+            if (result.value)
+                submitCase();
+            else
+                return false;
+        });
     });
 
     var InputsWrapper   = $(".fields"),
@@ -202,6 +175,7 @@ function saveCompanyDocuments(action)
     formData.append('document', '');
     formData.append('file', files);
     formData.append('additional_info', '');
+    formData.append('group', 'COM');
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -211,7 +185,6 @@ function saveCompanyDocuments(action)
         function(data, status)
         {
             result = JSON.parse(data);
-            console.log(result);
             notify(result.responseType, result.message);
         }
     );
@@ -220,10 +193,96 @@ function saveCompanyDocuments(action)
 
 function saveAccountDocuments(action)
 {
-    //
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#company_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+    formData.append('group', 'ACC');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
 }
 
 function savePaymentDocuments(action)
 {
-    //
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#company_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+    formData.append('group', 'PAY');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
+}
+
+function submitCase()
+{
+    var tracking_id = $("#tracking_id").val();
+
+    $("#previous-btn").addClass('hide');
+    $("#save-btns").addClass('hide');
+    $("#upload-img").toggle();
+
+    sendRequest(
+        '/application/submit/'+tracking_id,
+        {
+            _token: $("#token").val(),
+        },
+        'application/x-www-form-urlencoded; charset=UTF-8',
+        true,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            if (result.responseType != "success")
+            {
+                notify(result.responseType, result.message);
+                return;
+            }
+
+            swal.fire(
+                "Submitted!",
+                "Your application has been submitted.",
+                "success"
+            ).then(function()
+            {
+                window.location.replace('/application/submitted/'+tracking_id);
+            });
+        },
+        function(xhr, desc, err)
+        {
+            $("#previous-btn").removeClass('hide');
+            $("#save-btns").removeClass('hide');
+            $("#upload-img").toggle();
+            notify(desc, err);
+        }
+    );
+    return;
 }
