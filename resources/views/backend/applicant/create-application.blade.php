@@ -222,7 +222,7 @@
     											<div class="col-xl-12">
     												<div class="form-group fv-plugins-icon-container">
     													<label>Applicant/Representing Firm</label> <span class="text-danger">*</span>
-    													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="applicant_firm" value="{{ $case->applicant_firm ?? '' }}">
+    													<input type="text" class="form-control" placeholder="Enter applicant/representing firm" name="applicant_firm" value="{{ $case->applicant_firm }}">
     													<span class="form-text text-muted">Please enter your representing firm.</span>
     													<div class="fv-plugins-message-container"></div>
     												</div>
