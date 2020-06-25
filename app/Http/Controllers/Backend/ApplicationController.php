@@ -109,7 +109,7 @@ class ApplicationController extends Controller
         $guest->case->saveCaseInfo(
             request('subject'),
             implode(':', $parties),
-            request('case_type'),
+            request('case_type')
         );
 
         $this->sendResponse("Case info saved.", "success", $guest->case);
