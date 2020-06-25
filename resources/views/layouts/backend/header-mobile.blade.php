@@ -1,5 +1,5 @@
 <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
-	<a href="/">
+	<a data-turbolinks="false" href="/">
 		<h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
 	</a>
 	<div class="d-flex align-items-center">
