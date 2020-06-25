@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Auth;
-use App\Facades\AppHelper;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -93,7 +92,7 @@ class User extends Authenticatable
      */
     public function getAccountType($textStyle = null) : string
     {
-        return AppHelper::value('account_types', strtoupper($this->account_type), $textStyle);
+        return \AppHelper::value('account_types', strtoupper($this->account_type), $textStyle);
     }
 
     /**
@@ -103,7 +102,7 @@ class User extends Authenticatable
      */
     public function getAccountTypeHtml() : string
     {
-        return AppHelper::value('account_types_html', strtoupper($this->account_type), NULL);
+        return \AppHelper::value('account_types_html', strtoupper($this->account_type), NULL);
     }
 
     /**
@@ -113,7 +112,7 @@ class User extends Authenticatable
      */
     public function getStatus() : string
     {
-        return AppHelper::value('status', (int) $this->status, NULL);
+        return \AppHelper::value('status', (int) $this->status, NULL);
     }
 
     /**
@@ -123,6 +122,6 @@ class User extends Authenticatable
      */
     public function getStatusHtml() : string
     {
-        return AppHelper::value('status_html', (int) $this->status, NULL);
+        return \AppHelper::value('status_html', (int) $this->status, NULL);
     }
 }
