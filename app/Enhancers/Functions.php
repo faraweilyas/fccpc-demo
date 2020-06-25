@@ -258,7 +258,7 @@ function agencyLink() : string
  * @param string $enquiry
  * @return string
  */
-function getEnquiry(string $enquiry) : string
+function getEnquiry(string $enquiry)
 {
     return AppHelper::value('enquiry_types', strtoupper($enquiry));
 }
