@@ -15,8 +15,8 @@ jQuery(document).ready(function($)
                         }),
             sendForm    = 'save'+currentForm.attr('data-form');
 
-        console.log(sendForm);
         window[sendForm](sendForm);
+        return;
     });
 
     $("#upload-info").on('click', function(event)
@@ -127,6 +127,8 @@ function notify(messageType, message)
 function sendRequest(
     path,
     requestData,
+    contentType = 'application/x-www-form-urlencoded; charset=UTF-8',
+    processData = true,
     onSuccess = function(data, status)
     {
         result = JSON.parse(data);
@@ -136,12 +138,14 @@ function sendRequest(
     {
         notify(desc, err);
     },
-    method='POST')
-{
+    method = 'POST'
+) {
     $.ajax({
         url: path,
         data: requestData,
         type: method,
+        contentType: contentType,
+        processData: processData,
         success: onSuccess,
         error: onError
     });
@@ -190,7 +194,28 @@ function saveContactInfo(action)
 
 function saveCompanyDocuments(action)
 {
-    //
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#company_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            console.log(result);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
 }
 
 function saveAccountDocuments(action)
