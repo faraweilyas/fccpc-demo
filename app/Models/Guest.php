@@ -36,7 +36,7 @@ class Guest extends Model
         return route('application.index', ['guest' => $this->guest_tracking_id]);
     }
 
-    public function createApplicationPath(string $case_category='reg')
+    public function createApplicationPath(string $case_category)
     {
         return route('application.show', ['guest' => $this->guest_tracking_id, 'case_category' => $case_category]);
     }
@@ -44,6 +44,11 @@ class Guest extends Model
     public function submittedApplicationPath()
     {
         return route('application.submitted', ['guest' => $this->guest_tracking_id]);
+    }
+
+    public function uploadDocumentsPath()
+    {
+        return route('application.upload', ['guest' => $this->guest_tracking_id]);
     }
 
     /**
