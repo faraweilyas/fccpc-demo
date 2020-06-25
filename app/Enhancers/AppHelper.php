@@ -97,7 +97,7 @@ class AppHelper
 
     protected $enquiry_types_html = [
         "GEN"  => "primary",
-        "PRE"  => "secondary",
+        "PRN"  => "secondary",
         "COP"  => "warning",
     ];
 
