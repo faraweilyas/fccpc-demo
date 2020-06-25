@@ -269,52 +269,49 @@
     											<div class="col-md-12">
     												<div class="card card-custom gutter-b example example-compact">
     													<div class="card-header">
-    														<h3 class="card-title">Submit Company Documentsuments</h3>
+    														<h3 class="card-title">Submit Company Documents</h3>
     													</div>
     													<div class="card-body">
     														<p>
     															Kindly upload company document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
     														</p>
-    														<p>
-    															Upload a single pdf file containing the following.
-    														</p>
-    														<div class="row mt-4">
-    															<div class="col-md-4">
-    																<div class="row">
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Document
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 7
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 2
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12 mb-4">
-    																		<div class="uploadButton tw-mb-4">
-    								                                       	   <input accept=".doc, .docx, .pdf" id="company_doc" class="js-file-upload-input ember-view" type="file" name="company_doc">
-    								                                            <span class="btn btn--small btn--brand">Upload File</span>
-    								                                        </div>
-    																	</div>
-    																</div>
-    															</div>
-    															<div class="col-md-8">
-    																<div class="col-md-12">
-    																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info" placeholder="Additional Information..."></textarea>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-5 col-lg-6 col-form-label">Checklist of documents:</label>
+                                                                <div class="col-xl-7 col-lg-6">
+                                                                    <select class="form-control form-control-lg form-control-solid">
+                                                                        <option>Select document...</option>
+                                                                        <option value="en" selected="selected">English</option>
+                                                                        <option value="id">Bahasa Indonesia - Indonesian</option>
+                                                                        <option value="msa">Bahasa Melayu - Malay</option>
+                                                                        <option value="ca">Català - Catalan</option>
+                                                                        <option value="cs">Čeština - Czech</option>
+                                                                        <option value="da">Dansk - Danish</option>
+                                                                        <option value="de">Deutsch - German</option>
+                                                                        <option value="es">Español - Spanish</option>
+                                                                        <option value="eu">Euskara - Basque (beta)</option>
+                                                                        <option value="fil">Filipino</option>
+                                                                        <option value="fr">Français - French</option>
+                                                                        <option value="ga">Gaeilge - Irish (beta)</option>
+                                                                        <option value="gl">Galego - Galician (beta)</option>
+                                                                        <option value="hr">Hrvatski - Croatian</option>
+                                                                        <option value="it">Italiano - Italian</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label class="col-xl-5 col-lg-6 col-form-label">Additional Information:</label>
+                                                                <div class="col-xl-7 col-lg-6">
+                                                                    <textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info" placeholder="Additional Information..."></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input type="file" id="company_doc" name="company_doc" class="js-file-upload-input ember-view" accept=".doc, .docx, .pdf" />
+                                                                        <span class="btn btn--small btn--brand">Select File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
     													</div>
     												</div>
     											</div>
