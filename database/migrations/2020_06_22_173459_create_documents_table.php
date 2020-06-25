@@ -17,6 +17,7 @@ class CreateDocumentsTable extends Migration
             $table->id();
             $table->foreignId('case_id');
             $table->string('group', 50)->nullable();
+            $table->string('document_name', 255);
             $table->string('file');
             $table->text('additional_info')->nullable();
             $table->timestamps();

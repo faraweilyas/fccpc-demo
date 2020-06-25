@@ -11,7 +11,8 @@ $factory->define(Document::class, function(Faker $faker)
     return [
         'case_id'           => factory(Cases::class),
         'group'             => $faker->randomElement(AppHelper::keys('file_groups')),
+        'document_name'     => $faker->words(3, true),
         'file'              => $faker->imageUrl($width = 640, $height = 480),
-        'additional_info'   => $faker->paragraphs(3, true),
+        'additional_info'   => $faker->paragraphs(1, true),
     ];
 });
