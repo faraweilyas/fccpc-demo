@@ -310,7 +310,7 @@
     															<div class="col-md-8">
     																<div class="col-md-12">
     																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info">Additional Information...</textarea>
+    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info" placeholder="Additional Information..."></textarea>
     																	</div>
     																</div>
     															</div>
@@ -366,7 +366,7 @@
     															<div class="col-md-8">
     																<div class="col-md-12">
     																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info">Additional Information...</textarea>
+    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
     																	</div>
     																</div>
     															</div>
@@ -422,7 +422,7 @@
     															<div class="col-md-8">
     																<div class="col-md-12">
     																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_payment_doc_info">Additional Information...</textarea>
+    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_payment_doc_info" placeholder="Additional Information..."></textarea>
     																	</div>
     																</div>
     															</div>
