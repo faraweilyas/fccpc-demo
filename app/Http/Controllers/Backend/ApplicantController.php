@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Cases;
 use App\Models\Guest;
 use Illuminate\Http\Request;
 use App\Mail\WelcomeApplicant;
@@ -73,29 +72,23 @@ class ApplicantController extends Controller
     /**
      * Handles authenticate track application page.
      *
-     * @param Request $request
+     * @param Guest $guest
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function authenticateTrack(Request $request)
+    public function authenticateTrack(Guest $guest)
     {
-        $this->validate($request, [
-            'tracking_id'       => 'required',
+        request()->validate([
+            'tracking_id' => ['required', 'exists:guests,tracking_id'],
         ]);
 
-        $guest = Guest::where('tracking_id', '=', $request->tracking_id)->first();
-        $case  = Cases::where('tracking_id', '=', $request->tracking_id)->first();
-        if ($guest):
-            if ($case->status <= 0):
-                if (is_null($case->transaction_category)):
-                    return redirect()->route('application.index', ['id' => $request->tracking_id]);
-                else:
-                    return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $request->tracking_id]);
-                endif;
-            else:
-                return redirect()->route('application.submitted', ['id' => $request->tracking_id]);
-            endif;
-        else:
-            return redirect()->back()->with("error", "Invalid Credentials!");
-        endif;
+        $guest = Guest::where('tracking_id', '=', request('tracking_id'))->firstOrFail();
+
+        // Check if case has been submitted
+        if ($guest->case->isSubmitted())
+            return redirect($guest->uploadDocumentsPath());
+
+        return (!$guest->case->isCategorySet())
+                ? redirect($guest->applicationPath())
+                : redirect($guest->createApplicationPath($guest->case->case_category));
     }
 }

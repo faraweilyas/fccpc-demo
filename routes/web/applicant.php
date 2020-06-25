@@ -7,17 +7,17 @@ Route::prefix('applicant')
     ->namespace('Backend')
     ->group(function()
     {
+        Route::get(
+            '',
+            'ApplicantController@show'
+        )
+        ->name('show');
+
         Route::post(
             'authenticate',
-            'ApplicantController@authenticate'
+            'ApplicantController@store'
         )
-        ->name('authenticate');
-
-        Route::get(
-            'submit',
-            'ApplicantController@submitApplication'
-        )
-        ->name('submit');
+        ->name('store');
 
         Route::get(
             'track',
@@ -29,5 +29,5 @@ Route::prefix('applicant')
             'track',
             'ApplicantController@authenticateTrack'
         )
-        ->name('authenticate_track');
+        ->name('authenticate.track');
     });
