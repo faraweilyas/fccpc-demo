@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Cases;
 use App\Models\Guest;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -131,8 +132,22 @@ class ApplicationController extends Controller
 
     public function saveDocument(Guest $guest)
     {
-        // $company_doc    = !empty($_FILES['company_doc']['name']) ? $_FILES['company_doc'] : [];
-        // $newFileName    = substr(uniqid(), 5, 13).".$id";
+        if (!request()->hasFile('file'))
+            $this->sendResponse("No file has been uploaded.", "error", []);
+
+        $file           = request('file');
+        $extension      = $file->getClientOriginalExtension();
+        $newFileName    = substr(uniqid(), 5, 13).'-'.time().'.'.$extension;
+        $path           = $file->storeAs('public/documents', $newFileName);
+        $file           = Document::create([
+            'case_id'           => $guest->case->id,
+            'group'             => 'COM',
+            'document_name'     => trim(request('document_name')),
+            'file'              => $newFileName,
+            'additional_info'   => trim(request('additional_info')),
+        ]);
+
+        $this->sendResponse("Document saved.", "success", $file);
     }
 
     /**
