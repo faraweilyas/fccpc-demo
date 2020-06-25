@@ -1,7 +1,7 @@
 <div class="header-top">
 	<div class="container">
 		<div class="d-none d-lg-flex align-items-center mr-3">
-			<a href="@isset($guest) # @else / @endif" class="mr-20">
+			<a data-turbolinks="false" href="@isset($guest) # @else / @endif" class="mr-20">
 				<h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
 			</a>
 		</div>
@@ -29,7 +29,7 @@
     			<div class="topbar-item">
     				<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
     					<div class="d-flex flex-column text-right pr-3">
-    						<a href="/" title="Logout">
+    						<a data-turbolinks="false" href="/" title="Logout">
     							<span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
     								<span class="svg-icon svg-icon-xl svg-icon-white">
     									<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">

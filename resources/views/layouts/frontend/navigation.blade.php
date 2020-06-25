@@ -27,7 +27,7 @@
     <div class="maxwidth-sl wrapper-x mx-auto">
         <ul class="none d-flx pos-rel main-nav">
             <li class="py-1 mg-1 main-list">
-                <a href="/">M&amp;A - FCCPC</a>
+                <a href="/">{!! config('app.name') !!}</a>
             </li>
             <li class="py-1 mg-1 main-list">
                 <a href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
@@ -73,7 +73,7 @@
     <div class="overlay-content smalltext">
         <ul class="none">
             <li class="smalltext">
-                <a class="smalltext" href="/">M&amp;A - FCCPC</a>
+                <a class="smalltext" href="/">{!! config('app.name') !!}</a>
             </li>
             <li>
                 <a class="smalltext" href="{{ route('applicant.show') }}">Submit Application</a>
