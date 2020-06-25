@@ -25,5 +25,6 @@ $factory->define(Cases::class, function(Faker $faker)
         'applicant_email'           => $faker->safeEmail,
         'applicant_phone_number'    => $faker->tollFreePhoneNumber,
         'applicant_address'         => $faker->address,
+        'submitted_at'              => now(),
     ];
 });

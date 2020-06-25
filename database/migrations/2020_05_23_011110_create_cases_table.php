@@ -29,6 +29,7 @@ class CreateCasesTable extends Migration
             $table->string('applicant_email', 150)->nullable();
             $table->string('applicant_phone_number', 150)->nullable();
             $table->string('applicant_address', 255)->nullable();
+            $table->timestamp('submitted_at')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
