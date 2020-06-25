@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Cases;
 use App\Models\Guest;
 use App\Models\Document;
-use Illuminate\Http\Request;
+use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -141,7 +140,7 @@ class ApplicationController extends Controller
         $path           = $file->storeAs('public/documents', $newFileName);
         $file           = Document::create([
             'case_id'           => $guest->case->id,
-            'group'             => 'COM',
+            'group'             => request('group'),
             'document_name'     => trim(request('document_name')),
             'file'              => $newFileName,
             'additional_info'   => trim(request('additional_info')),
@@ -151,25 +150,29 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Upload New Case.
+     * Submit case.
      *
-     * @param string $id
+     * @param Guest $guest
      * @return void
      */
-    public function uploadNewCase(Request $request, $id)
+    public function submit(Guest $guest)
     {
-        Cases::where('tracking_id', '=', $id)->update([
-            'ref_no' => generateRefNo($id),
-            'status' => 1
-        ]);
+        $guest->case->submit();
 
-        $case = Cases::where('tracking_id', '=', $id)->first();
-        Mail::to($case->applicant_email)->send(new ApplicationRequest([
-            'firstName'       => $case->applicant_first_name,
-            'lastName'        => $case->applicant_last_name,
-            'ref_no'          => $case->ref_no
-        ]));
-        $this->sendResponse(200, "OK!", "success", $case);
+        $case = $guest->case;
+        try
+        {
+            Mail::to($case->applicant_email)->send(new ApplicationRequest([
+                'firstName'       => $case->applicant_first_name,
+                'lastName'        => $case->applicant_last_name,
+                'ref_no'          => $case->ref_no
+            ]));
+        }
+        catch (\Exception $exception)
+        {
+            $message = $exception->getMessage();
+        }
+        $this->sendResponse("Application submitted.", "success", $case);
     }
 
     /**
@@ -180,6 +183,9 @@ class ApplicationController extends Controller
      */
     public function applicationSubmitted(Guest $guest)
     {
+        if (!$guest->case->isSubmitted())
+            return redirect($guest->applicationPath());
+
         $title          = 'Application Submitted | '.APP_NAME;
         $description    = 'Application Submitted | '.APP_NAME;
         $details        = details($title, $description);
