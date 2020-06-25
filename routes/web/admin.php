@@ -6,32 +6,43 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
-    ->middleware('validate.tracking_id')
     ->group(function()
     {
         Route::get(
-            'select/{id}',
+            'select/{guest:tracking_id}',
             'ApplicationController@index'
         )
         ->name('index');
 
-        Route::get(
-            'success/{id}',
-            'ApplicationController@applicationSuccess'
-        )
-        ->name('success');
-
-        Route::get(
-            '{type}/{id}',
+        Route::post(
+            'create/{guest:tracking_id}/{action}',
             'ApplicationController@create'
         )
         ->name('create');
 
+        Route::post(
+            'upload/{id}',
+            'ApplicationController@uploadNewCase'
+        )
+        ->name('create');
+
         Route::get(
-            'upload/documents/{id}',
-            'ApplicationController@supportingDocuments'
+            'upload/documents/{guest:tracking_id}',
+            'ApplicationController@uploadDocuments'
         )
         ->name('upload');
+
+        Route::get(
+            'submitted/{guest:tracking_id}',
+            'ApplicationController@applicationSubmitted'
+        )
+        ->name('submitted');
+
+        Route::get(
+            '{guest:tracking_id}/{case_category}',
+            'ApplicationController@show'
+        )
+        ->name('show');
     });
 
 // FAQ
@@ -43,9 +54,9 @@ Route::prefix('faq')
     {
         Route::get(
             'create',
-            'FaqController@index'
+            'FaqController@create'
         )
-        ->name('index');
+        ->name('create');
 
         Route::post(
             'create',
@@ -54,28 +65,28 @@ Route::prefix('faq')
         ->name('create');
 
         Route::get(
-            'edit/{id}',
+            'edit/{faq}',
             'FaqController@edit'
         )
         ->name('edit');
 
         Route::post(
-            'edit/{id}',
+            'edit/{faq}',
             'FaqController@update'
         )
-        ->name('edit');
+        ->name('update');
 
         Route::get(
-            '/logs',
-            'FaqController@logs'
+            '/faqs',
+            'FaqController@index'
         )
-        ->name('logs');
+        ->name('faqs');
 
         Route::get(
-            '/logs/{id}',
+            '/faqs/{faq}',
             'FaqController@destroy'
         )
-        ->name('destroy');
+        ->name('delete');
     });
 
 // Enquiries
