@@ -50,6 +50,7 @@ class ApplicationController extends Controller
         abort_if($result, 404);
 
         $case = $guest->case;
+
         // Check if case has been submitted
         if ($case->isSubmitted())
             return redirect($guest->submittedApplicationPath());
@@ -63,20 +64,6 @@ class ApplicationController extends Controller
         $description    = "{$case_category} Application | ".APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.create-application', compact('details', 'guest', 'case', 'case_category', 'case_parties'));
-    }
-
-    /**
-     * Handles application submitted page route.
-     *
-     * @param Guest $guest
-     * @return \Illuminate\Contracts\View\Factory
-     */
-    public function applicationSubmitted(Guest $guest)
-    {
-        $title          = 'Application Submitted | '.APP_NAME;
-        $description    = 'Application Submitted | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.applicant.submitted', compact('details', 'guest'));
     }
 
     /**
@@ -171,6 +158,20 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Handles application submitted page route.
+     *
+     * @param Guest $guest
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function applicationSubmitted(Guest $guest)
+    {
+        $title          = 'Application Submitted | '.APP_NAME;
+        $description    = 'Application Submitted | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.applicant.submitted', compact('details', 'guest'));
+    }
+
+    /**
      * Handles upload documents page
      *
      * @param Guest $guest
@@ -181,14 +182,9 @@ class ApplicationController extends Controller
         if (!$guest->case->isSubmitted())
             return redirect($guest->submittedApplicationPath());
 
-        $case = Cases::where('tracking_id', '=', $id)->first();
-        if ($case->status <= 0 && !is_null($case->transaction_category)):
-            return redirect()->route('application.create', ['type' => $case->getCaseCategory(), 'id' => $id])->with("error", "Please complete your application!");
-        endif;
-
         $title          = 'Upload Documents | '.APP_NAME;
         $description    = 'Upload Documents | '.APP_NAME;
         $details        = details($title, $description);
-        return view('backend.applicant.upload-documents', compact('details', 'id'));
+        return view('backend.applicant.upload-documents', compact('details', 'guest'));
     }
 }
