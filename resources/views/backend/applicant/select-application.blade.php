@@ -23,7 +23,7 @@
             <div class="container">
                  <div class="row">
                     <div class="col-md-4">
-                        <a href="{{ $guest->createApplicationPath() }}">
+                        <a href="{{ $guest->createApplicationPath('reg') }}">
                             @php
                                 $regStyle = $guest->case->selectedCategoryStyle('REG');
                                 $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
