@@ -32,7 +32,7 @@ class AppHelper
         "SP"  => "Supervisor",
         "CH"  => "Case Handler",
         "RG"  => "Registrar",
-        "GT"  => "Guest",
+        "AP"  => "Applicant",
     ];
 
     protected $account_types_html = [
