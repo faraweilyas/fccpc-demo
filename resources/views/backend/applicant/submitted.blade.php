@@ -15,8 +15,15 @@
     							</div>
     							<div class="row mt-6">
     								<div class="col-md-12 text-center">
-    									<p><strong>Your application has been submitted successfully.</strong></p>
+    									<p><strong>Your application <b>{{ $guest->getTrackingID() }}</b> has been submitted successfully.</strong></p>
     									<p><strong>Our representative would get back to you.</strong></p>
+
+                                        <a href="{{ $guest->applicantPath() }}" class="btn btn-primary font-weight-bold text-uppercase mr-5 px-9 py-4">
+                                            Create a New Application
+                                        </a>
+                                        <a href="/" class="btn btn-success font-weight-bold text-uppercase px-9 py-4">
+                                            Return Home
+                                        </a>
     								</div>
     							</div>
     						</div>

@@ -1,16 +1,17 @@
 @extends('layouts.backend.base')
+
 @section('content')
     <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Select Transaction Type</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('application.index', ['id' => $id]) }}" class="text-muted">Home</a>
+                            <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">Application</a>
+                            <a href="#" class="text-muted">Select transaction category</a>
                         </li>
                     </ul>
                 </div>
@@ -22,10 +23,15 @@
             <div class="container">
                  <div class="row">
                     <div class="col-md-4">
-                        <a href="{{ route('application.create', ['type' => 'regular', 'id' => $id]) }}">
-                            <div class="card card-custom bg-success gutter-b" style="height: 150px">
+                        <a href="{{ $guest->createApplicationPath() }}">
+                            @php
+                                $regStyle = $guest->case->selectedCategoryStyle('REG');
+                                $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
+                                $ffxStyle = $guest->case->selectedCategoryStyle('FFX');
+                            @endphp
+                            <div class="card card-custom gutter-b {{ $regStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
-                                    <span class="svg-icon svg-icon-white svg-icon-2x">
+                                    <span class="svg-icon svg-icon-2x {{ $regStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <rect x="0" y="0" width="24" height="24"/>
@@ -33,7 +39,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <span class="svg-icon svg-icon-white svg-icon-2x float-right">
+                                    <span class="svg-icon svg-icon-2x float-right {{ $regStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -42,17 +48,19 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">Regular</div>
-                                    <span class="text-inverse-success font-weight-bold font-size-lg mt-1"><small>Submit Regular</small></span>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Regular</div>
+                                    <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
+                                        <small>Regular</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('application.create', ['type' => 'ffm', 'id' => $id]) }}">
-                            <div class="card card-custom gutter-b" style="height: 150px">
+                        <a href="{{ $guest->createApplicationPath('ffm') }}">
+                            <div class="card card-custom gutter-b {{ $ffmStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
-                                   <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                    <span class="svg-icon svg-icon-2x {{ $ffmStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -61,7 +69,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x float-right">
+                                    <span class="svg-icon svg-icon-2x float-right {{ $ffmStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -70,17 +78,19 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="text-dark font-weight-bolder font-size-h2 mt-3">FFM</div>
-                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit FFM</small></span>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">FFM</div>
+                                    <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
+                                        <small>Foreign to Foreign Merger</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
-                        <a href="{{ route('application.create', ['type' => 'ffm-expediated', 'id' => $id]) }}">
-                            <div class="card card-custom gutter-b" style="height: 150px">
+                        <a href="{{ $guest->createApplicationPath('ffx') }}">
+                            <div class="card card-custom gutter-b {{ $ffxStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                    <span class="svg-icon svg-icon-2x {{ $ffxStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -89,7 +99,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <span class="svg-icon svg-icon-primary svg-icon-2x float-right">
+                                    <span class="svg-icon svg-icon-2x float-right {{ $ffxStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                 <polygon points="0 0 24 0 24 24 0 24"/>
@@ -98,8 +108,10 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="text-dark font-weight-bolder font-size-h2 mt-3">FFM Expediated</div>
-                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit FFM Expediated</small></span>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">FFM - Expediated</div>
+                                    <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
+                                        <small>Foreign to Foreign Merger (Expediated)</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>

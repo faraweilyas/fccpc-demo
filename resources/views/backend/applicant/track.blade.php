@@ -1,4 +1,5 @@
 @extends('layouts.backend.base-login')
+
 @section('content')
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
@@ -19,7 +20,7 @@
 							<h3>Add Supporting Document</h3>
 							<div class="text-muted font-weight-bold">Add supporting document or continue where you left off</div>
 						</div>
-						<form class="form" method="POST" action="{{ route('applicant.authenticate_track') }}">
+						<form class="form" method="POST" action="{{ route('applicant.authenticate.track') }}">
 							@csrf
 							<div class="form-group mb-5">
 								@error('tracking_id')
@@ -32,7 +33,7 @@
 						<div class="mt-10">
                             <p>
                                 <span class="opacity-70">New application?</span>
-                                <a href="{{ route('applicant.submit') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Submit Application</a>
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Submit Application</a>
                             </p>
 	                    </div>
 					</div>
