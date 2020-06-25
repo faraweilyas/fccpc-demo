@@ -8,18 +8,3 @@ Route::middleware('auth:api')
     {
         return $request->user();
     });
-
-Route::prefix('application')
-    ->namespace('Backend')
-    ->group(function()
-    {
-        Route::post(
-            'create/{id}',
-            'ApplicationAuthController@createNewCase'
-        );
-
-        Route::post(
-            'upload/{id}',
-            'ApplicationAuthController@uploadNewCase'
-        );
-    });
