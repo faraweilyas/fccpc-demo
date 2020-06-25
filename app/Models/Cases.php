@@ -62,9 +62,14 @@ class Cases extends Model
         return $this->hasMany(Document::class, 'case_id');
     }
 
+    public function isCategorySet() : bool
+    {
+        return empty($this->case_category) ? false : true;
+    }
+
     public function isSubmitted() : bool
     {
-        return is_null($this->submitted_at) ? false : true;
+        return empty($this->submitted_at) ? false : true;
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass
