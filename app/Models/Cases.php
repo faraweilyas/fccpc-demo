@@ -36,6 +36,13 @@ class Cases extends Model
         return $this->save();
     }
 
+    public function submit() : bool
+    {
+        $this->reference_number = \SerialNumber::referenceNumber();
+        $this->submitted_at     = now();
+        return $this->save();
+    }
+
     public function creator()
     {
         if (!empty($this->user_id))
