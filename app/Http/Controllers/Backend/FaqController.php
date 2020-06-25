@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Faq;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -11,22 +12,23 @@ use Illuminate\Support\Facades\Session;
 class FaqController extends Controller
 {
     /**
-     * Handles the create faq page route.
-     * @return void
+     * Handles the create faq page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function index()
+    public function create()
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC Create Faq Dashboard";
+        $title            = "Create FAQ - ".APP_NAME;
+        $description      = "Create FAQ - ".APP_NAME;
         $details          = details($title, $description);
-        return view('backend.faq.index', compact('details'));
+        return view('backend.faq.create', compact('details'));
     }
 
     /**
      * Handles the faq logs page route.
      * @return void
      */
-    public function logs()
+    public function index()
     {
         $title            = APP_NAME;
         $description      = "FCCPC Faq Logs Dashboard";
@@ -61,6 +63,7 @@ class FaqController extends Controller
 
         $result = Faq::where('id', '=', $request->id)->update([
             'creator'   => Auth::user()->id,
+            'slug'      => Str::slug($request->question),
             'question'  => trim($request->question),
             'answer'    => trim($request->answer),
             'category'  => trim($request->category),
