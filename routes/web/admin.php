@@ -93,11 +93,11 @@ Route::prefix('faq')
 Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend'], function()
 {
     Route::get('select',                'EnquiriesController@index')->name('index');
-    Route::get('{type}',                'EnquiriesController@create')->name('create');
     Route::get('view/logs',             'EnquiriesController@logs')->name('logs')->middleware('auth');
     Route::get('assigned/handler/logs', 'EnquiriesController@assignedLogs')->name('assigned-logs')->middleware('auth');
     Route::post('assign/{id}',          'EnquiriesController@assignLog')->name('assign')->middleware('auth');
     Route::get('file/download/{file}',  'EnquiriesController@download')->name('download')->middleware('auth');
+    Route::get('{type}',                'EnquiriesController@create')->name('create');
     Route::post('{type}',               'EnquiriesController@store')->name('create');
 });
 
