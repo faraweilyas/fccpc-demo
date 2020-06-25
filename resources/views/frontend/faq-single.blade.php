@@ -1,9 +1,10 @@
 @extends('layouts.frontend.base')
+
 @section('content')
     <style type="text/css" media="screen">
-        .wrapper {
-            position: relative;
-            padding: unset;
+        .faq__wrapper {
+            position: relative !important;
+            padding: unset !important;
         }
     </style>
     <main>
@@ -33,7 +34,7 @@
             </div>
         </section>
         <section class="maxwidth-sl mx-auto sub-container">
-            <div class="wrapper">
+            <div class="wrapper faq__wrapper">
                 <ul class="none pb-1">
                     <li>
                         <h3 style='margin-bottom: 25px;'>{{ $faq->question }}</h3>

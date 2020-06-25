@@ -3,9 +3,9 @@
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(FE_CSS.'pagination.css') }}" />
     <style type="text/css" media="screen">
-        .wrapper {
-            position: relative;
-            padding: unset;
+        .faq__wrapper {
+            position: relative !important;
+            padding: unset !important;
         }
     </style>
     <main>
@@ -34,7 +34,7 @@
     	    </div>
     	</section>
     	<section class="maxwidth-sl mx-auto sub-container">
-    	    <div class="wrapper" style='margin-bottom: 40px;'>
+    	    <div class="wrapper faq__wrapper" style='margin-bottom: 40px;'>
     	        <ul class="none pb-1">
                     @foreach($faqs as $faq)
     	            <li>
