@@ -11,16 +11,19 @@ class WelcomeApplicant extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $guest;
+
+    public $case;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($guest, $case)
     {
-        $this->data = $data;
+        $this->guest = $guest;
+        $this->case = $case;
     }
 
     /**
