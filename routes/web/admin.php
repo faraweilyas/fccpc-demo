@@ -92,7 +92,7 @@ Route::prefix('enquiries')
         ->name('create');
 
         Route::post(
-            '',
+            '/',
             'EnquiriesController@store'
         )
         ->name('store');
@@ -143,32 +143,118 @@ Route::prefix('faq')
     });
 
 // Supervisor
-Route::group(['prefix' => '/', 'as' => 'dashboard.', 'namespace' => 'Backend'], function()
-{
-    Route::get('dashboard',                'DashboardController@index')->name('index');
-    Route::get('user/create',              'DashboardController@createUser')->name('create_user');
-    Route::post('user/create',             'DashboardController@storeUser')->name('user_store');
-    Route::get('users',                    'DashboardController@viewUsers')->name('users');
-    Route::get('users/status/update/{id}', 'DashboardController@updateUserStatus')->name('update_users_status');
-    Route::get('profile',                  'DashboardController@viewProfile')->name('profile');
-    Route::post('profile',                 'DashboardController@updateProfile')->name('update_user');
-});
+Route::prefix('/')
+    ->name('dashboard.')
+    ->namespace('Backend')
+    ->group(function()
+    {
+        Route::get(
+            'dashboard',
+            'DashboardController@index'
+        )
+        ->name('index');
+
+        Route::get(
+            'user/create',
+            'DashboardController@createUser'
+        )
+        ->name('create_user');
+
+        Route::post(
+            'user/create',
+            'DashboardController@storeUser'
+        )
+        ->name('user_store');
+
+        Route::get(
+            'users',
+            'DashboardController@viewUsers'
+        )
+        ->name('users');
+
+        Route::get(
+            'users/status/update/{id}',
+            'DashboardController@updateUserStatus'
+        )
+        ->name('update_users_status');
+
+        Route::get(
+            'profile',
+            'DashboardController@viewProfile'
+        )
+        ->name('profile');
+
+        Route::post(
+            'profile',
+            'DashboardController@updateProfile'
+        )
+        ->name('update_user');
+    });
 
 // Cases
-Route::group(['prefix' => 'cases', 'as' => 'cases.', 'namespace' => 'Backend'], function()
-{
-    Route::get('{type}',                 'CasesController@index')->name('index');
-    Route::get('review/{id}',            'CasesController@reviewCase')->name('review');
-    Route::post('assign/{id}',           'CasesController@assignCase')->name('assign');
-    Route::post('update/{status}/{id}',  'CasesController@updateCaseStatus')->name('update_status');
-});
+Route::prefix('cases')
+    ->name('cases.')
+    ->namespace('Backend')
+    ->group(function()
+    {
+        Route::get(
+            '{type}',
+            'CasesController@index'
+        )
+        ->name('index');
+
+        Route::get(
+            'review/{id}',
+            'CasesController@reviewCase'
+        )
+        ->name('review');
+
+        Route::post(
+            'assign/{id}',
+            'CasesController@assignCase'
+        )
+        ->name('assign');
+
+        Route::post(
+            'update/{status}/{id}',
+            'CasesController@updateCaseStatus'
+        )
+        ->name('update_status');
+    });
 
 // Case Handler
-Route::group(['prefix' => 'handlers', 'as' => 'handlers.', 'namespace' => 'Backend'], function()
-{
-    Route::get('/',                          'CaseHandlersController@index')->name('index');
-    Route::get('create',                     'CaseHandlersController@create')->name('create');
-    Route::post('create',                    'CaseHandlersController@storeHandler')->name('store');
-    Route::get('status/update/{id}',         'CaseHandlersController@updateHandlerStatus')->name('update_status');
-    Route::get('view/{id}',                  'CaseHandlersController@show')->name('view');
-});
+Route::prefix('handlers')
+    ->name('handlers.')
+    ->namespace('Backend')
+    ->group(function()
+    {
+        Route::get(
+            '/',
+            'CaseHandlersController@index'
+        )
+        ->name('index');
+
+        Route::get(
+            'create',
+            'CaseHandlersController@create'
+        )
+        ->name('create');
+
+        Route::post(
+            'create',
+            'CaseHandlersController@storeHandler'
+        )
+        ->name('store');
+
+        Route::get(
+            'status/update/{id}',
+            'CaseHandlersController@updateHandlerStatus'
+        )
+        ->name('update_status');
+
+        Route::get(
+            'view/{id}',
+            'CaseHandlersController@show'
+        )
+        ->name('view');
+    });

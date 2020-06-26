@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class EnquiriesController extends Controller
 {
     /**
-     * Handles the select enquiry page.
+     * Handles select enquiry page.
      *
      * @return \Illuminate\Contracts\View\Factory
      */
@@ -26,7 +26,7 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the create enquiry page.
+     * Handles create enquiry page.
      *
      * @param string $type
      * @return \Illuminate\Contracts\View\Factory
@@ -85,7 +85,8 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the enquiries log page route.
+     * Handles enquiries log page route.
+     *
      * @return void
      */
     public function logs()
@@ -97,7 +98,7 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the assigned enquiries log page route.
+     * Handles assigned enquiries log page route.
      * @return void
      */
     public function assignedLogs()
@@ -115,7 +116,7 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the enquiry assign page route.
+     * Handles enquiry assign page route.
      *
      * @return void
      */
@@ -130,7 +131,7 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles the download enquiry file route.
+     * Handles download enquiry file route.
      *
      * @return void
      */

@@ -8,7 +8,7 @@ Route::prefix('applicant')
     ->group(function()
     {
         Route::get(
-            '',
+            '/',
             'ApplicantController@show'
         )
         ->name('show');
