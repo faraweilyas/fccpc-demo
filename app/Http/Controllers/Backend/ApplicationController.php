@@ -136,7 +136,7 @@ class ApplicationController extends Controller
 
         $file           = request('file');
         $extension      = $file->getClientOriginalExtension();
-        $newFileName    = substr(uniqid(), 5, 13).'-'.time().'.'.$extension;
+        $newFileName    = \SerialNumber::randomFileName($extension);
         $path           = $file->storeAs('public/documents', $newFileName);
         $file           = Document::create([
             'case_id'           => $guest->case->id,
