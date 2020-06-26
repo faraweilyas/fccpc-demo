@@ -1,4 +1,5 @@
 @extends('layouts.backend.base')
+
 @section('content')
     <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -43,7 +44,9 @@
                                         </svg>
                                     </span>
                                     <div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">General Enquiry</div>
-                                    <span class="text-inverse-success font-weight-bold font-size-lg mt-1"><small>Submit Enquiry</small></span>
+                                    <span class="text-inverse-success font-weight-bold font-size-lg mt-1">
+                                        <small>Submit Enquiry</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>
@@ -71,7 +74,9 @@
                                         </svg>
                                     </span>
                                     <div class="text-dark font-weight-bolder font-size-h2 mt-3">Pre Notification Enquiry</div>
-                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit Enquiry</small></span>
+                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+                                        <small>Submit Enquiry</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>
@@ -99,7 +104,9 @@
                                         </svg>
                                     </span>
                                     <div class="text-dark font-weight-bolder font-size-h2 mt-3">Complaint</div>
-                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1"><small>Submit Complaint</small></span>
+                                    <span class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">
+                                        <small>Submit Complaint</small>
+                                    </span>
                                 </div>
                             </div>
                         </a>

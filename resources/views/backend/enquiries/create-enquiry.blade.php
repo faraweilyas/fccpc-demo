@@ -27,34 +27,35 @@
                             <div class="card-header">
                                 <h3 class="card-title">{{ $enquiry }} Enquiry</h3>
                             </div>
-                            <form method="POST" action="{{ route('enquiries.create',['type' => $type]) }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('enquiries.store') }}" enctype="multipart/form-data">
                                 @csrf
+                                <input type="hidden" name="type" value="{{ $type }}" />
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Representing Firm</label>
-                                                <input type="text" class="form-control" placeholder="Enter representing firm" name="firm">
+                                                <label>Representing Firm:</label>
+                                                <input type="text" name="firm" value="{{ old('firm') }}" class="form-control" placeholder="Enter representing firm:" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>First Name</label> <span class="text-danger">*</span>
-                                                <input type="text" class="form-control" placeholder="Enter first name" name="firstName">
+                                                <label>First Name:</label> <span class="text-danger">*</span>
+                                                <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control" placeholder="Enter first name:" />
                                                 <span class="form-text text-muted">Please enter first name.</span>
-                                                @error('firstName')
+                                                @error('first_name')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Last Name</label> <span class="text-danger">*</span>
-                                                <input type="text" class="form-control" placeholder="Enter last name" name="lastName">
+                                                <label>Last Name:</label> <span class="text-danger">*</span>
+                                                <input type="text" name="last_name" value="{{ old('last_name') }}" class="form-control" placeholder="Enter last name:" />
                                                 <span class="form-text text-muted">Please enter last name.</span>
-                                                @error('lastName')
+                                                @error('last_name')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -63,8 +64,8 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Email</label> <span class="text-danger">*</span>
-                                                <input type="email" class="form-control" placeholder="Enter email" name="email">
+                                                <label>Email:</label> <span class="text-danger">*</span>
+                                                <input type="text" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter email:" />
                                                 <span class="form-text text-muted">Please enter email.</span>
                                                 @error('email')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -73,10 +74,10 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Phone Number</label> <span class="text-danger">*</span>
-                                                <input type="text" class="form-control" placeholder="Enter phone number" name="phone">
+                                                <label>Phone Number:</label> <span class="text-danger">*</span>
+                                                <input type="text" name="phone_number" value="{{ old('phone_number') }}" class="form-control" placeholder="Enter phone number:" />
                                                 <span class="form-text text-muted">Please enter phone number.</span>
-                                                @error('phone')
+                                                @error('phone_number')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                                 @enderror
                                             </div>
@@ -85,8 +86,8 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label>Message</label> <span class="text-danger">*</span>
-                                                <textarea type="text" class="form-control" cols="4" rows="4" name="message"></textarea>
+                                                <label>Message:</label> <span class="text-danger">*</span>
+                                                <textarea type="text" name="message" class="form-control" cols="4" rows="4">{{ old('message') }}</textarea>
                                                 <span class="form-text text-muted">Please enter message.</span>
                                                 @error('message')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -97,7 +98,7 @@
                                     <div class="row">
                                         <div class="col-md-12 mb-4">
                                             <div class="uploadButton tw-mb-4">
-                                               <input id="file" class="js-file-upload-input ember-view" type="file" name="file">
+                                                <input type="file" name="file" id="file" class="js-file-upload-input ember-view" />
                                                 <span class="btn btn--small btn--brand img-info">Attach Document</span>
                                             </div>
                                         </div>
