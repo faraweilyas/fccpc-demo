@@ -11,15 +11,16 @@ class EnquiryMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    public $enquiry;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($enquiry)
     {
-        $this->data = $data;
+        $this->enquiry = $enquiry;
     }
 
     /**
@@ -29,19 +30,22 @@ class EnquiryMail extends Mailable
      */
     public function build()
     {
-        if ($this->data['document']) {
+        if (isset($this->enquiry->file))
+        {
             return $this
                 ->view('emails.applicant-enquiry')
-                ->subject(config('app.name').' Applicant Enquiry')->attach($this->data['document']->getRealPath(),
+                ->subject('Applicant Enquiry - '.config('app.name'))
+                ->attach(
+                    $this->enquiry->document->getRealPath(),
                     [
-                        'as'   => $this->data['document']->getClientOriginalName(),
-                        'mime' => $this->data['document']->getClientMimeType(),
-                    ]);
-        } else {
-            return $this
-                ->view('emails.applicant-enquiry')
-                ->subject(config('app.name').' Applicant Enquiry');
+                        'as'   => $this->enquiry->document->getClientOriginalName(),
+                        'mime' => $this->enquiry->document->getClientMimeType(),
+                    ]
+                );
         }
 
+        return $this
+            ->view('emails.applicant-enquiry')
+            ->subject('Applicant Enquiry - '.config('app.name'));
     }
 }
