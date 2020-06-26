@@ -3,30 +3,25 @@
 namespace App\Models;
 
 use App\User;
-use App\Enhancers\AppHelper;
 use Illuminate\Database\Eloquent\Model;
 
 class Enquiry extends Model
 {
-    /**
-     * Get full name
-     *
-     * @param string $textStyle
-     * @return string
-     */
+    protected $guarded = [];
+
     public function getFullName($textStyle='strtoupper') : string
     {
-        return textTransformer($this->firstName.' '.$this->lastName, $textStyle);
+        return textTransformer($this->first_name.' '.$this->last_name, $textStyle);
     }
 
     public function getEnquiryType($textStyle='strtolower') : string
     {
-        return textTransformer(AppHelper::$enquiry_types[$this->type] ?? "", $textStyle);
+        return \AppHelper::value('enquiry_types', $this->type, $textStyle);
     }
 
     public function getEnquiryTypeHTML($textStyle='strtolower') : string
     {
-        return textTransformer(AppHelper::$enquiry_typesHTML[$this->type] ?? "", $textStyle);
+        return \AppHelper::value('enquiry_types_html', $this->type, $textStyle);
     }
 
     public function getMessage($textStyle='strtoupper') : string
@@ -34,14 +29,10 @@ class Enquiry extends Model
         return textTransformer(shortenContent($this->message ?? '...', 30), $textStyle);
     }
 
-    /**
-     * Get case handler
-     *
-     * @param string $textStyle
-     * @return string
-     */
     public function getCaseHandler($textStyle='strtoupper') : string
     {
+        return textTransformer('unassigned', $textStyle);
+
         if ($this->caseHandler != null) {
             $result = User::where('id', $this->caseHandler)->first();
             return textTransformer($result->getFullName(), $textStyle);
