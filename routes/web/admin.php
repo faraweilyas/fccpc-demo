@@ -45,6 +45,59 @@ Route::prefix('application')
         ->name('show');
     });
 
+// Enquiries
+Route::prefix('enquiries')
+    ->name('enquiries.')
+    ->namespace('Backend')
+    ->group(function()
+    {
+        Route::get(
+            'select',
+            'EnquiriesController@index'
+        )
+        ->name('index');
+
+        Route::get(
+            'view/logs',
+            'EnquiriesController@logs'
+        )
+        ->name('logs')
+        ->middleware('auth');
+
+        Route::get(
+            'assigned/handler/logs',
+            'EnquiriesController@assignedLogs'
+        )
+        ->name('assigned-logs')
+        ->middleware('auth');
+
+        Route::post(
+            'assign/{id}',
+            'EnquiriesController@assignLog'
+        )
+        ->name('assign')
+        ->middleware('auth');
+
+        Route::get(
+            'file/download/{file}',
+            'EnquiriesController@download'
+        )
+        ->name('download')
+        ->middleware('auth');
+
+        Route::get(
+            '{type}',
+            'EnquiriesController@create'
+        )
+        ->name('create');
+
+        Route::post(
+            '',
+            'EnquiriesController@store'
+        )
+        ->name('store');
+    });
+
 // FAQ
 Route::prefix('faq')
     ->name('faq.')
@@ -89,18 +142,6 @@ Route::prefix('faq')
         ->name('delete');
     });
 
-// Enquiries
-Route::group(['prefix' => 'enquiries', 'as' => 'enquiries.', 'namespace' => 'Backend'], function()
-{
-    Route::get('select',                'EnquiriesController@index')->name('index');
-    Route::get('view/logs',             'EnquiriesController@logs')->name('logs')->middleware('auth');
-    Route::get('assigned/handler/logs', 'EnquiriesController@assignedLogs')->name('assigned-logs')->middleware('auth');
-    Route::post('assign/{id}',          'EnquiriesController@assignLog')->name('assign')->middleware('auth');
-    Route::get('file/download/{file}',  'EnquiriesController@download')->name('download')->middleware('auth');
-    Route::get('{type}',                'EnquiriesController@create')->name('create');
-    Route::post('{type}',               'EnquiriesController@store')->name('create');
-});
-
 // Supervisor
 Route::group(['prefix' => '/', 'as' => 'dashboard.', 'namespace' => 'Backend'], function()
 {
@@ -131,4 +172,3 @@ Route::group(['prefix' => 'handlers', 'as' => 'handlers.', 'namespace' => 'Backe
     Route::get('status/update/{id}',         'CaseHandlersController@updateHandlerStatus')->name('update_status');
     Route::get('view/{id}',                  'CaseHandlersController@show')->name('view');
 });
-
