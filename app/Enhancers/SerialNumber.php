@@ -79,4 +79,15 @@ class SerialNumber
             return substr($serialNumber, 7, 13);
         }, "FCCPC|M&A|{$monthDay}|");
     }
+
+    /**
+     * Generate random file name
+     *
+     * @param string $fileExtension
+     * @return string
+     */
+    public function randomFileName(string $fileExtension) : string
+    {
+        return substr(uniqid(), 5, 13).'-'.time().'.'.$fileExtension;
+    }
 }
