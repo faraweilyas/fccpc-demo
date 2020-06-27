@@ -58,7 +58,7 @@ class ApplicationController extends Controller
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        $case_category  = $case->getCaseCategory();
+        $case_category  = $case->getCategory();
         $case_parties   = $case->getCaseParties(false);
         $title          = "{$case_category} Application | ".APP_NAME;
         $description    = "{$case_category} Application | ".APP_NAME;
