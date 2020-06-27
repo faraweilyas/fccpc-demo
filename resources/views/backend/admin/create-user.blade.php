@@ -34,10 +34,10 @@
 										<div class="form-group">
 											<label>Account Type</label> <span class="text-danger">*</span>
 											<select class="form-control selectpicker" name="accountType">
-												<option value="">Select account type</option>
-												 @foreach(\App\Enhancers\AppHelper::$account_types as $key => $value)
-												 <option value="{{ $key }}">{{ strtoupper($value) }}</option>
-												 @endforeach
+                                                <option value="">Select account type</option>
+                                                @foreach(\AppHelper::values('account_types') as $key => $value)
+                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                                @endforeach
 											</select>
 											<span class="form-text text-muted">Please select account type.</span>
 											@error('accountType')
