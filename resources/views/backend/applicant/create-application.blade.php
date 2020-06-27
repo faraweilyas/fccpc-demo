@@ -275,11 +275,24 @@
     														<p>
     															Kindly upload company document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
     														</p>
-                                                            <div class="form-group row">
-                                                                <label class="col-xl-5 col-lg-6 col-form-label">Checklist of documents:</label>
-                                                                <div class="col-xl-7 col-lg-6">
-                                                                    <select class="form-control form-control-lg form-control-solid">
-                                                                        <option>Select document...</option>
+
+                            {{-- <div class="row mt-5">
+                                <div class="col-md-12">
+                                    <label>New case handler</label>
+                                    <br />
+                                    <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+                                        <option value="">Select Case Handler</option>
+                                        @foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
+                                            <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div> --}}
+                                                            <div class="row mt-5">
+                                                                <label class="col-md-6 col-lg-6 col-xl-5">Checklist of documents:</label>
+                                                                <div class="col-md-6 col-lg-6 col-xl-7">
+                                                                    <select class="form-control" id="checklist" name="checklist" style="width: 100%;">
+                                                                        <option value="">Select document...</option>
                                                                         <option value="en" selected="selected">English</option>
                                                                         <option value="id">Bahasa Indonesia - Indonesian</option>
                                                                         <option value="msa">Bahasa Melayu - Malay</option>
@@ -450,6 +463,6 @@
     		</div>
     	</div>
     </div>
-    <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+    <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'create-application.js') }}"></script>
 @endSection

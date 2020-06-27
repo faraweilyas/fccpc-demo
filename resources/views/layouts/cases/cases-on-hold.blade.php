@@ -11,20 +11,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(\App\Models\Cases::where('status', 3)->get() as $case)
+        @foreach(\App\Models\Cases::all() as $case)
         <tr>
             <td class="text-center">
                 <b>{{ $case->getRefNO() }}</b>
             </td>
             <td>{{ ucwords($case->subject) }}</td>
             <td class="text-center">
-                <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline"><b>{{ $case->transaction_type }}</b></span>
+                <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline"><b>{{ $case->getType() }}</b></span>
             </td>
             <td>
-                {{ \App\Models\User::find($case->case_handler_id)->getFullName() }}
+                {{ $case->getCaseHandlerName() }}
             </td>
             <td>
-                <b>{{ $case->getCaseCategory('strtoupper') }}</b>
+                <b>{{ $case->getCategory('strtoupper') }}</b>
             </td>
             <td>
                 <b>{{ $case->getCaseStatus('strtoupper') }}</b>

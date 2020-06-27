@@ -10,20 +10,20 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(\App\Models\Cases::where('status', 1)->get() as $case)
+        @foreach(\App\Models\Cases::all() as $case)
         <tr>
             <td class="text-center">
                 <b>{{ $case->getRefNO() }}</b>
             </td>
             <td>{{ ucwords($case->subject) }}</td>
             <td class="text-center">
-                <b>{{ $case->getTransactionType() }}</b>
+                <b>{{ $case->getType() }}</b>
             </td>
             <td>
                 {!! $case->generateCasePartiesBadge() !!}
             </td>
             <td class="text-center">
-                <b>{{ $case->getCaseCategory('strtoupper') }}</b>
+                <b>{{ $case->getCategory('strtoupper') }}</b>
             </td>
             <td>
                 <a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">

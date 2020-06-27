@@ -33,25 +33,40 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $case->ref_no ?? '' }}</span>
+										<strong>Ref No:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">
+                                            {{ $case->getRefNO() }}
+                                        </span>
 									</p>
 									<p>
-										<strong>Subject :</strong>&nbsp;{{ $case->subject ?? '' }}
+										<strong>Subject:</strong>&nbsp;
+                                        {{ $case->subject ?? '' }}
 									</p>
 									<p>
-										<strong>Transaction Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->transaction_type ?? '' }}</span>
+										<strong>Case Type:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">
+                                            {{ $case->getType() }}
+                                        </span>
 									</p>
 									<p>
-										<strong>Parties : </strong>&nbsp;{{ $case->parties ?? '' }}
+										<strong>Parties:</strong>&nbsp;
+                                        {!! $case->generateCasePartiesBadge() !!}
 									</p>
 									<p>
-										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
+										<strong>Case Category:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-success text-dark label-inline">
+                                            {{ $case->getCategory() }}
+                                        </span>
 									</p>
 									<p>
-										<strong>Case Handler : </strong>&nbsp;{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}
+										<strong>Case Handler: </strong>&nbsp;
+                                        {{ $case->getCaseHandlerName() }}
 									</p>
 									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status] }} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status] }}</span>
+										<strong>Status:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">
+                                            {{ $case->getCaseStatus() }}
+                                        </span>
 									</p>
 								</div>
 							</div>
@@ -142,15 +157,16 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ $case->getCaseHandlerName() }}" disabled>
 								</div>
 							</div>
 							<div class="row mt-5">
 								<div class="col-md-12">
-									<label>New case handler</label><br>
+									<label>New case handler</label>
+                                    <br />
 									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
 										<option value="">Select Case Handler</option>
-										@foreach(\App\Models\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+										@foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
 											<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
 										@endforeach
 									</select>
@@ -198,7 +214,7 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ $case->getCaseHandlerName() }}" disabled>
 								</div>
 							</div>
 	                	</div>

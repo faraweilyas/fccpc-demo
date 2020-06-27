@@ -51,9 +51,9 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>First Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter first name" name="firstName" value="{{ $user->getFirstName() }}">
+											<input type="text" class="form-control" placeholder="Enter first name" name="first_name" value="{{ $user->getFirstName() }}">
 											<span class="form-text text-muted">Please enter first name.</span>
-											@error('firstName')
+											@error('first_name')
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>
@@ -61,9 +61,9 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<label>Last Name</label> <span class="text-danger">*</span>
-											<input type="text" class="form-control" placeholder="Enter last name" name="lastName" value="{{ $user->getLastName() }}">
+											<input type="text" class="form-control" placeholder="Enter last name" name="last_name" value="{{ $user->getLastName() }}">
 											<span class="form-text text-muted">Please enter last name.</span>
-											@error('lastName')
+											@error('last_name')
 				                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
 				                            @enderror
 										</div>

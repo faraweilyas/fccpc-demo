@@ -1,7 +1,7 @@
 <div class="header-top">
     <div class="container">
         <div class="d-none d-lg-flex align-items-center mr-3">
-            <a href="/" class="mr-20">
+            <a data-turbolinks="false" href="/" class="mr-20">
                 <h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
             </a>
         </div>
