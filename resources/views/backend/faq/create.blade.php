@@ -58,7 +58,7 @@
                                         <div class="col-md-8 mx-auto">
                                             <label>Question Category</label> <span class="text-danger">*</span>
                                             <select class="form-control selectpicker" name="category">
-                                                @foreach(\App\Enhancers\AppHelper::$faq_categories as $key => $value)
+                                                @foreach(\AppHelper::values('faq_categories') as $key => $value)
                                                 <option value="{{ $key }}">{{ $value }}</option>
                                                 @endforeach
                                             </select>
