@@ -26,7 +26,7 @@ class CasesController extends Controller
 	 */
     public function index($type)
     {
-        $cases          = Cases::where('status', 1)->get();
+        $cases          = Cases::all();
         $case           = formatCaseType($type);
         $title          = APP_NAME;
         $description    = "FCCPC Cases Log Dashboard";
