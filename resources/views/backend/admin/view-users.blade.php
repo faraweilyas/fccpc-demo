@@ -38,7 +38,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							@foreach(\App\User::where('id', '!=', \Auth::user()->id)->get() as $item)
+							@foreach(\App\Models\User::where('id', '!=', \Auth::user()->id)->get() as $item)
 							<tr>
 								<td>{{ $item->getFullName() }}</td>
 								<td>{{ $item->email }}</td>

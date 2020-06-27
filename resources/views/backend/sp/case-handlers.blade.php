@@ -38,7 +38,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach(\App\User::where('accountType', 'CH')->get() as $handler)
+								@foreach(\App\Models\User::where('accountType', 'CH')->get() as $handler)
 								<tr>
 									<td>
 										{{ $handler->getFullName() }}

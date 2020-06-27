@@ -48,7 +48,7 @@
 										<strong>Transaction Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_categories[$case->transaction_category] }}</span>
 									</p>
 									<p>
-										<strong>Case Handler : </strong>&nbsp;{{ \App\User::find($case->case_handler_id)->getFullName() }}
+										<strong>Case Handler : </strong>&nbsp;{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}
 									</p>
 									<p>
 										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$case_statusHTML[$case->status] }} text-dark label-inline">{{ \App\Enhancers\AppHelper::$case_status[$case->status] }}</span>
@@ -142,7 +142,7 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}" disabled>
 								</div>
 							</div>
 							<div class="row mt-5">
@@ -150,7 +150,7 @@
 									<label>New case handler</label><br>
 									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
 										<option value="">Select Case Handler</option>
-										@foreach(\App\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+										@foreach(\App\Models\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
 											<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
 										@endforeach
 									</select>
@@ -198,7 +198,7 @@
 							<div class="row mt-5">
 								<div class="col-md-12">
 									<label>Previous case handler</label>
-									<input type="text" class="form-control" value="{{ \App\User::find($case->case_handler_id)->getFullName() }}" disabled>
+									<input type="text" class="form-control" value="{{ \App\Models\User::find($case->case_handler_id)->getFullName() }}" disabled>
 								</div>
 							</div>
 	                	</div>

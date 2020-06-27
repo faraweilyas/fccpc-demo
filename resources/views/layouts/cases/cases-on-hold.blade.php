@@ -21,7 +21,7 @@
                 <span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline"><b>{{ $case->transaction_type }}</b></span>
             </td>
             <td>
-                {{ \App\User::find($case->case_handler_id)->getFullName() }}
+                {{ \App\Models\User::find($case->case_handler_id)->getFullName() }}
             </td>
             <td>
                 <b>{{ $case->getCaseCategory('strtoupper') }}</b>
