@@ -31,30 +31,24 @@
                         <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Firm</th>
                                 <th>Email</th>
                                 <th>Phone No</th>
-                                <th class="text-center">Message</th>
                                 <th>Type</th>
-                                <th>Case Handler</th>
-                                <th>Created</th>
-                                <th>Actions</th>
+                                <th>Date Submitted</th>
+                                <th>Action(s)</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($enquiries as $item)
                             <tr>
                                 <td><b>{{ $item->getFullName() }}</b></td>
-                                <td>{{ $item->firm }}</td>
                                 <td>{{ $item->email }}</td>
-                                <td>{{ $item->phone }}</td>
-                                <td class="text-center" data-toggle="tooltip" title="{{ $item->message }}">
-                                    {{ $item->getMessage() }}
-                                </td>
+                                <td>{{ $item->phone_number }}</td>
                                 <td>
-                                    <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline"><b>{{ $item->getEnquiryType('strtoupper') }}</b></span>
+                                    <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
+                                        <b>{{ $item->getEnquiryType('strtoupper') }}</b>
+                                    </span>
                                 </td>
-                                <td><b>{{ $item->getCaseHandler() }}</b></td>
                                 <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                 <td nowrap="nowrap">
                                     @if($item->file != '')
@@ -82,7 +76,7 @@
                                         </div>
                                     </div>
                                     @endif
-                                    <span class="text-muted">-</span>
+                                    {{-- <span class="text-muted">-</span> --}}
                                 </td>
                             </tr>
                             @endforeach
