@@ -275,54 +275,44 @@
     														<p>
     															Kindly upload company document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
     														</p>
-
-                            {{-- <div class="row mt-5">
-                                <div class="col-md-12">
-                                    <label>New case handler</label>
-                                    <br />
-                                    <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
-                                        <option value="">Select Case Handler</option>
-                                        @foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
-                                            <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
+                                                            {{-- <div class="row mt-5">
+                                                                <div class="col-md-12">
+                                                                    <label>New case handler</label>
+                                                                    <br />
+                                                                    <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+                                                                        <option value="">Select Case Handler</option>
+                                                                        @foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
+                                                                            <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                </div>
+                                                            </div> --}}
                                                             <div class="row mt-5">
                                                                 <label class="col-md-6 col-lg-6 col-xl-5">Checklist of documents:</label>
                                                                 <div class="col-md-6 col-lg-6 col-xl-7">
                                                                     <select class="form-control" id="checklist" name="checklist" style="width: 100%;">
                                                                         <option value="">Select document...</option>
-                                                                        <option value="en" selected="selected">English</option>
-                                                                        <option value="id">Bahasa Indonesia - Indonesian</option>
-                                                                        <option value="msa">Bahasa Melayu - Malay</option>
-                                                                        <option value="ca">Català - Catalan</option>
-                                                                        <option value="cs">Čeština - Czech</option>
-                                                                        <option value="da">Dansk - Danish</option>
-                                                                        <option value="de">Deutsch - German</option>
-                                                                        <option value="es">Español - Spanish</option>
-                                                                        <option value="eu">Euskara - Basque (beta)</option>
-                                                                        <option value="fil">Filipino</option>
-                                                                        <option value="fr">Français - French</option>
-                                                                        <option value="ga">Gaeilge - Irish (beta)</option>
-                                                                        <option value="gl">Galego - Galician (beta)</option>
-                                                                        <option value="hr">Hrvatski - Croatian</option>
-                                                                        <option value="it">Italiano - Italian</option>
+                                                                        <option value="1">Extract of Board Resolutions of the Merging Companies duly certified by a Director  and the Company Secretary</option>
+                                                                        <option value="2">Signed and notarized consent letters of Directors and Parties to the merger</option>   
+                                                                        <option value="3">2 Copies of draft Proxy forms for each of the merging parties</option>  
+                                                                        <option value="4">Evidence of dispatch of Scheme documents to the shareholders of the merging undertakings</option>   
+                                                                        <option value="5">A copy of the letter appointing the Financial Adviser(s)</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row">
+                                                            <div class="form-group row mt-5">
+                                                                <label class="col-xl-5 col-lg-6 col-form-label">Select File:</label>
+                                                                <div class="col-xl-7 col-lg-6 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input type="file" id="company_doc" name="company_doc" class="js-file-upload-input ember-view" accept=".doc, .docx, .pdf" />
+                                                                        <span class="btn btn--small btn--brand">Upload Document</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mt-5">
                                                                 <label class="col-xl-5 col-lg-6 col-form-label">Additional Information:</label>
                                                                 <div class="col-xl-7 col-lg-6">
                                                                     <textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info" placeholder="Additional Information..."></textarea>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row">
-                                                                <div class="col-md-12 mb-4">
-                                                                    <div class="uploadButton tw-mb-4">
-                                                                       <input type="file" id="company_doc" name="company_doc" class="js-file-upload-input ember-view" accept=".doc, .docx, .pdf" />
-                                                                        <span class="btn btn--small btn--brand">Select File</span>
-                                                                    </div>
                                                                 </div>
                                                             </div>
     													</div>
@@ -463,6 +453,7 @@
     		</div>
     	</div>
     </div>
+    <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'create-application.js') }}"></script>
 @endSection

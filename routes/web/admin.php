@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+// auth()->loginUsingId(2);
+
 // Application
 Route::prefix('application')
     ->name('application.')
