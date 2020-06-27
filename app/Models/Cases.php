@@ -96,6 +96,16 @@ class Cases extends Model
         return textTransformer($refrenceNo, $textStyle);
     }
 
+    public function getCategory($textStyle='strtoupper') : string
+    {
+        return \AppHelper::value('case_categories', $this->case_category, $textStyle) ?? "";
+    }
+
+    public function getType($textStyle='ucfirst') : string
+    {
+        return \AppHelper::value('case_types', $this->case_type, $textStyle) ?? "";
+    }
+
     public function getCaseParties(bool $collect=true)
     {
         $parties = (empty($this->parties)) ? [] : explode(':', $this->parties);
@@ -112,28 +122,18 @@ class Cases extends Model
         })->join(" ");
     }
 
-    public function getCaseStatus($textStyle='strtolower') : string
+    public function getCaseStatus($textStyle='strtolower')
     {
-        return \AppHelper::value('case_status', $this->status, $textStyle);
+        return \AppHelper::value('case_status', $this->status ?? 1, $textStyle);
     }
 
-    public function getCaseStatusHTML($textStyle='strtolower') : string
+    public function getCaseStatusHTML($textStyle='strtolower')
     {
-        return \AppHelper::value('case_status_html', $this->status, $textStyle);
+        return \AppHelper::value('case_status_html', $this->status ?? 1, $textStyle);
     }
 
     public function getCaseHandlerName() : string
     {
         return ($caseHandler = User::find($this->case_handler_id)) ? $caseHandler->getFullName() : "";
-    }
-
-    public function getCaseCategory($textStyle='strtoupper') : string
-    {
-        return \AppHelper::value('case_categories', $this->case_category, $textStyle);
-    }
-
-    public function getTransactionType($textStyle='ucfirst') : string
-    {
-        return textTransformer($this->transaction_type ?? '', $textStyle);
     }
 }
