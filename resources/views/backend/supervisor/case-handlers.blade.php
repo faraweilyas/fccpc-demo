@@ -38,7 +38,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach(\App\Models\User::where('accountType', 'CH')->get() as $handler)
+								@foreach(\App\Models\User::where('account_type', 'CH')->get() as $handler)
 								<tr>
 									<td>
 										{{ $handler->getFullName() }}
@@ -51,7 +51,7 @@
 										<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">0</span>
 									</td>
 									<td>
-										<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>
+										<span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">{{ $handler->getStatus() }}</span>
 									</td>
 									<td nowrap="nowrap">
 	                                    <div class="dropdown dropdown-inline">

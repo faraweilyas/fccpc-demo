@@ -31,39 +31,28 @@
 						</div>
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-12 p_mb_20">
+								<div class="col-md-12">
 									<p>
-										<b>Ref No:&nbsp;</b>
-                                        <b>{{ $case->getRefNO() }}</b>
+										<strong>Ref No :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">{{ $case->getRefNO() }}</span>
 									</p>
 									<p>
-										<b>Subject:&nbsp;</b>
-                                        {{ ucfirst($case->subject) ?? '' }}
-									</p>
-                                    <p>
-                                        <b>Parties:&nbsp;</b>
-                                        {!! $case->generateCasePartiesBadge() !!}
-                                    </p>
-									<p>
-										<b>Transaction Type:&nbsp;</b>
-                                        <span class="label label-lg font-weight-bold label-light-dark text-dark label-inline">
-                                            <b>{{ $case->getTransactionType() }}</b>
-                                        </span>
+										<strong>Subject :</strong>&nbsp;{{ $case->subject ?? '' }}
 									</p>
 									<p>
-										<b>Transaction Category:&nbsp;</b>
-                                        <b>{{ $case->getCaseCategory('strtoupper') }}</b>
+										<strong>Case Type :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">{{ $case->getType() ?? '' }}</span>
 									</p>
 									<p>
-										<b>Status:&nbsp;</b>
-                                        <span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">
-                                            <b>{{ $case->getCaseStatus('strtoupper') }}</b>
-                                        </span>
+										<strong>Parties : </strong>&nbsp;{!! $case->generateCasePartiesBadge() !!}
 									</p>
-                                    <p>
-                                        <b>Case Handler:&nbsp;</b>
-                                        <b>{{ $case->getCaseHandlerName() }}</b>
-                                    </p>
+									<p>
+										<strong>Case Category :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-success text-dark label-inline">{{ $case->getCategory('ucfirst') }}</span>
+									</p>
+									<p>
+										<strong>Case Handler : </strong>&nbsp;{{ $case->getCaseHandlerName() }}
+									</p>
+									<p>
+										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ $case->getCaseStatusHTML() }} text-dark label-inline">{{ $case->getCaseStatus('ucfirst') }}</span>
+									</p>
 								</div>
 							</div>
 							<div class="row mt-4">
@@ -79,7 +68,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div class="form-group mb-1">
-								<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Make comments to case handler..."></textarea>
+								<textarea class="form-control" id="exampleTextarea" rows="6">Make comments to case handler...</textarea>
 							</div>
 						</div>
 					</div>
@@ -161,7 +150,7 @@
 									<label>New case handler</label><br>
 									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
 										<option value="">Select Case Handler</option>
-										@foreach(\App\Models\User::where('status', 1)->where('accountType', 'CH')->get() as $handler)
+										@foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
 											<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
 										@endforeach
 									</select>
@@ -172,7 +161,7 @@
 	                		<div class="row">
 								<div class="col-md-12">
 									<label>Reason</label>
-									<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Reason..."></textarea>
+									<textarea class="form-control" id="exampleTextarea" rows="6">Reason...</textarea>
 								</div>
 							</div>
 						</div>
@@ -186,7 +175,6 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
 <div class="modal fade" id="issueQueryModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
@@ -204,7 +192,7 @@
 	                		<div class="row">
 								<div class="col-md-12">
 									<label>Subject</label>
-									<input type="text" class="form-control" value="{{ ucwords($case->subject) ?? '' }}" disabled>
+									<input type="text" class="form-control" value="{{ $case->subject }}" disabled>
 								</div>
 							</div>
 							<div class="row mt-5">
@@ -218,7 +206,7 @@
 	                		<div class="row">
 								<div class="col-md-12">
 									<label>Query</label>
-									<textarea class="form-control" id="exampleTextarea" rows="6" placeholder="Query..."></textarea>
+									<textarea class="form-control" id="exampleTextarea" placeholder="Query..." rows="6"></textarea>
 								</div>
 							</div>
 						</div>
@@ -232,6 +220,5 @@
         </div>
     </div>
 </div>
-<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
 <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
 @endSection

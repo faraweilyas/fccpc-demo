@@ -30,34 +30,40 @@
 							<div class="row">
 								<div class="col-md-12">
 									<p>
-										<strong>Name :</strong>&nbsp;{{ $handler->getFullName() }}
+										<strong>Name:</strong>&nbsp;
+                                        {{ $handler->getFullName() }}
 									</p>
 									<p>
-										<strong>Email :</strong>&nbsp;{{ $handler->email }}
+										<strong>Email:</strong>&nbsp;
+                                        {{ $handler->email }}
 									</p>
 									<p>
-										<strong>Approved Cases :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-info text-dark label-inline">0</span>
+										<strong>Approved Cases:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-info text-dark label-inline">0</span>
 									</p>
 									<p>
-										<strong>Cases working on : </strong>&nbsp;0
+										<strong>Cases working on:</strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Status :</strong>&nbsp;<span class="label label-lg font-weight-bold label-light-{{ \App\Enhancers\AppHelper::$statusHTML[$handler->status] }} text-white label-inline">{{ \App\Enhancers\AppHelper::$status[$handler->status] }}</span>
+										<strong>Status:</strong>&nbsp;
+                                        <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} text-white label-inline">
+                                            {{ $handler->getStatus() }}
+                                        </span>
 									</p>
 									<p>
-										<strong>Cases on hold : </strong>&nbsp;0
+										<strong>Cases on hold:</strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Expedited Cases : </strong>&nbsp;0
+										<strong>Expedited Cases:</strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Pending Approval: </strong>&nbsp;0
+										<strong>Pending Approval:</strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Exceeded timeline: </strong>&nbsp;0
+										<strong>Exceeded timeline:</strong>&nbsp;0
 									</p>
 									<p>
-										<strong>Extensions: </strong>&nbsp;0
+										<strong>Extensions:</strong>&nbsp;0
 									</p>
 								</div>
 							</div>
