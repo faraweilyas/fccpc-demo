@@ -68,7 +68,7 @@ class AppHelper
     ];
 
 	protected $case_status = [
-		"1"  => "New",
+		"1"  => "Unassigned",
 		"2"  => "Assigned",
 		"3"  => "On Hold",
 		"4"  => "Approved",
