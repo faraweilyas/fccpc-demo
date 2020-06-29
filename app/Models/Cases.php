@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cases extends Model
 {
-    use CaseSaveable, CaseAssignable;
+    use CaseSaveable, CaseGettable, CaseAssignable;
 
 	protected $table = 'cases';
 
