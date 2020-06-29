@@ -73,31 +73,4 @@ trait CaseAssignable
     {
         return $this->supervisors()->where('dropped_at', null);
     }
-
-    public function asignedCases()
-    {
-        return static::with(['handlers' => function($query)
-            {
-                $query->where('dropped_at', '=', null);
-            }])
-            ->where('submitted_at', '!=', null)
-            ->latest()
-            ->get()
-            ->reject(function($case)
-            {
-                return $case->handlers->isEmpty() ? true : false;
-            });
-    }
-
-    public function unasignedCases()
-    {
-        return static::with('handlers')
-            ->where('submitted_at', '!=', null)
-            ->latest()
-            ->get()
-            ->reject(function($case)
-            {
-                return $case->handlers->isEmpty() ? false : true;
-            });
-    }
 }
