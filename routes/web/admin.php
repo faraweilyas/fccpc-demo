@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\User;
+use App\Models\Cases;
 use Illuminate\Support\Facades\Route;
 
-// auth()->loginUsingId(2);
+auth()->loginUsingId(5);
 
 // Application
 Route::prefix('application')
@@ -10,6 +12,33 @@ Route::prefix('application')
     ->namespace('Backend')
     ->group(function()
     {
+        Route::get('/', function()
+        {
+            $case = Cases::find(2);
+            $submittedCases = (new Cases)->submittedCases();
+            $unasignedCases = (new Cases)->unasignedCases();
+            $asignedCases   = (new Cases)->asignedCases();
+
+            // $caseHandlers       = User::findMany([12, 13]);
+            // $oldCaseHandler     = User::find(11);
+            // $currentCaseHandler = User::find(12);
+            // $newCaseHandler     = User::find(13);
+
+            // dd(
+            //     $case->assign($currentCaseHandler),
+            //     $case->retract($oldCaseHandler),
+            //     $case->disolve($oldCaseHandler),
+            //     $case->reAssign($currentCaseHandler, $newCaseHandler)
+            // );
+
+            return [
+                "case" => $case,
+                "submittedCases" => $submittedCases,
+                "unasignedCases" => $unasignedCases,
+                "asignedCases" => $asignedCases,
+            ];
+        });
+
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
