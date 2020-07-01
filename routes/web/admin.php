@@ -4,8 +4,6 @@ use App\Models\User;
 use App\Models\Cases;
 use Illuminate\Support\Facades\Route;
 
-auth()->loginUsingId(5);
-
 // Application
 Route::prefix('application')
     ->name('application.')
