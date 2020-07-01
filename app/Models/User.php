@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Auth;
+use App\Models\UserTraits\UserGettable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UserGettable;
 
     /**
      * The attributes that are mass assignable.
@@ -37,11 +38,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function cases()
-    {
-        return $this->hasMany(Cases::class);
-    }
 
     /**
      * Get users first name
@@ -75,6 +71,7 @@ class User extends Authenticatable
 
     /**
      * Get method for initials.
+     *
      * @return string
      */
     public function getInitials() : string
