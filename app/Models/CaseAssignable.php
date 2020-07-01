@@ -47,7 +47,7 @@ trait CaseAssignable
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'handler_id')
             ->withPivot('supervisor_id', 'dropped_at')
-            ->as('handler')
+            ->as('case_handler')
             ->withTimestamps();
     }
 
@@ -64,7 +64,7 @@ trait CaseAssignable
     public function supervisors()
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'supervisor_id')
-            ->as('supervisor')
+            ->as('case_supervisor')
             ->withPivot('handler_id', 'dropped_at')
             ->withTimestamps();
     }
