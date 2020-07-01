@@ -11,8 +11,8 @@ trait CaseGettable
 
     public function unasignedCases()
     {
-        return static::with('handlers')
-            ->where('submitted_at', '!=', null)
+        return static::where('submitted_at', '!=', null)
+            ->with('handlers')
             ->latest()
             ->get()
             ->reject(function($case)
@@ -23,11 +23,26 @@ trait CaseGettable
 
     public function asignedCases()
     {
-        return static::with(['handlers' => function($query)
+        return static::where('submitted_at', '!=', null)
+            ->with(['handlers' => function($query)
             {
                 $query->where('dropped_at', '=', null);
             }])
-            ->where('submitted_at', '!=', null)
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
+    }
+
+    public function archivedCases()
+    {
+        return static::where('submitted_at', '!=', null)
+            ->with(['handlers' => function($query)
+            {
+                $query->where('dropped_at', '!=', null);
+            }])
             ->latest()
             ->get()
             ->reject(function($case)
