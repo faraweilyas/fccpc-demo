@@ -18,17 +18,17 @@ class CreateCasesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable()->default(false);
             $table->foreignId('guest_id')->nullable()->default(false);
-            $table->string('reference_number')->unique()->nullable();
-            $table->string('subject', 255)->nullable();
+            $table->string('reference_number', 100)->unique()->nullable();
+            $table->string('subject')->nullable();
             $table->text('parties')->nullable();
             $table->string('case_category', 50)->nullable();
             $table->string('case_type', 50)->nullable();
-            $table->string('applicant_firm', 255)->nullable();
+            $table->string('applicant_firm')->nullable();
             $table->string('applicant_first_name', 150)->nullable();
             $table->string('applicant_last_name', 150)->nullable();
             $table->string('applicant_email', 150)->nullable();
             $table->string('applicant_phone_number', 150)->nullable();
-            $table->string('applicant_address', 255)->nullable();
+            $table->string('applicant_address')->nullable();
             $table->timestamp('submitted_at')->nullable();
             $table->timestamps();
 

@@ -16,8 +16,8 @@ class CreateGuestsTable extends Migration
         Schema::create('guests', function(Blueprint $table)
         {
             $table->id();
-            $table->string('ip_address');
-            $table->string('tracking_id');
+            $table->string('ip_address', 100);
+            $table->string('tracking_id', 100);
             $table->string('email');
             $table->timestamps();
         });

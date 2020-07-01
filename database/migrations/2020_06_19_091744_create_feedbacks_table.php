@@ -17,8 +17,8 @@ class CreateFeedbacksTable extends Migration
         {
             $table->id();
             $table->foreignId('faq_id');
-            $table->string('ip_address');
-            $table->string('feedback');
+            $table->string('ip_address', 50);
+            $table->string('feedback', 10);
             $table->timestamps();
 
             $table->foreign('faq_id')

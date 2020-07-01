@@ -17,9 +17,9 @@ class CreateFaqsTable extends Migration
         {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('category');
-            $table->string('slug', 255);
-            $table->string('question', 255);
+            $table->string('category', 50);
+            $table->string('slug');
+            $table->string('question');
             $table->text('answer');
             $table->timestamps();
 

@@ -16,12 +16,12 @@ class CreateEnquiriesTable extends Migration
         Schema::create('enquiries', function(Blueprint $table)
         {
             $table->id();
-            $table->string('type');
+            $table->string('type', 50);
             $table->string('firm');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email');
-            $table->string('phone_number');
+            $table->string('phone_number', 50);
             $table->text('message')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
