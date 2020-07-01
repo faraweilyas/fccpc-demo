@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\CaseTraits\CaseGettable;
+use App\Models\CaseTraits\CaseSaveable;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CaseTraits\CaseAssignable;
 
 class Cases extends Model
 {
