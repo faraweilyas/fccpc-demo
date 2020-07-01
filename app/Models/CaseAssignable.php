@@ -79,6 +79,11 @@ trait CaseAssignable
         return $this->handlers()->detach($caseHandler);
     }
 
+    /**
+     * Defines a many to many relationship for case and case handlers
+     *
+     * @return HasRelationships
+     */
     public function handlers()
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'handler_id')
@@ -87,16 +92,31 @@ trait CaseAssignable
             ->withTimestamps();
     }
 
+    /**
+     * Defines a many to many relationship for case and active case handlers
+     *
+     * @return HasRelationships
+     */
     public function active_handlers()
     {
         return $this->handlers()->where('dropped_at', null);
     }
 
+    /**
+     * Defines a many to many relationship for case and dropped case handlers
+     *
+     * @return HasRelationships
+     */
     public function dropped_handlers()
     {
         return $this->handlers()->where('dropped_at', '!=', null);
     }
 
+    /**
+     * Defines a many to many relationship for case and supervisors
+     *
+     * @return HasRelationships
+     */
     public function supervisors()
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'supervisor_id')
