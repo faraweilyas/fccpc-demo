@@ -4,12 +4,26 @@ namespace App\Models\CaseTraits;
 
 trait CaseSaveable
 {
+    /**
+     * Saves case category
+     *
+     * @param  string $case_category
+     * @return bool
+     */
     public function saveCategory(string $case_category) : bool
     {
         $this->case_category = strtoupper($case_category);
         return $this->save();
     }
 
+    /**
+     * Saves case information
+     *
+     * @param  string $subject
+     * @param  string $parties
+     * @param  string $case_type
+     * @return bool
+     */
     public function saveCaseInfo($subject, $parties, $case_type) : bool
     {
         $this->subject      = $subject;
@@ -18,6 +32,12 @@ trait CaseSaveable
         return $this->save();
     }
 
+    /**
+     * Saves contact information
+     *
+     * @param  \stdClass $contactInfo
+     * @return bool
+     */
     public function saveContactInfo(\stdClass $contactInfo) : bool
     {
         $this->applicant_firm           = $contactInfo->applicant_firm;
@@ -29,6 +49,11 @@ trait CaseSaveable
         return $this->save();
     }
 
+    /**
+     * Submits case
+     *
+     * @return bool
+     */
     public function submit() : bool
     {
         $this->reference_number = \SerialNumber::referenceNumber();
