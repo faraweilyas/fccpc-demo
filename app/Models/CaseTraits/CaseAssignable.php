@@ -2,6 +2,8 @@
 
 namespace App\Models\CaseTraits;
 
+use App\Models\User;
+
 trait CaseAssignable
 {
     /**
