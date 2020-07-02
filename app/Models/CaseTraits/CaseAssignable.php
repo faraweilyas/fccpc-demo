@@ -113,17 +113,4 @@ trait CaseAssignable
     {
         return $this->handlers()->where('dropped_at', '!=', null);
     }
-
-    /**
-     * Defines a many to many relationship for case and supervisors
-     *
-     * @return HasRelationships
-     */
-    public function supervisors()
-    {
-        return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'supervisor_id')
-            ->as('case_supervisor')
-            ->withPivot('handler_id', 'dropped_at', 'archived_at')
-            ->withTimestamps();
-    }
 }
