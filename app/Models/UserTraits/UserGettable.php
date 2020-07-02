@@ -9,6 +9,7 @@ trait UserGettable
 {
     /**
      * Defines a one to many relationship for user that has created one or more cases
+     * The user is expected to be a registrar
      *
      * @return HasRelationships
      */
@@ -19,6 +20,7 @@ trait UserGettable
 
     /**
      * Defines a many to many relationship for user that has been assigned to one or more cases
+     * The user is expected to be a case handler
      *
      * @return HasRelationships
      */
@@ -51,8 +53,8 @@ trait UserGettable
     }
 
     /**
-     * Defines a many to many relationship for user that has assigned
-     * another user to one or more cases
+     * Defines a many to many relationship for user that has assigned another user
+     * to one or more cases and the user is expected to be a supervisor
      *
      * @return HasRelationships
      */
