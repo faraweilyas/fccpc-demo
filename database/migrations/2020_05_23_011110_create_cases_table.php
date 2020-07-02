@@ -13,7 +13,7 @@ class CreateCasesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cases', function (Blueprint $table)
+        Schema::create('cases', function(Blueprint $table)
         {
             $table->id();
             $table->foreignId('user_id')->nullable()->default(false);

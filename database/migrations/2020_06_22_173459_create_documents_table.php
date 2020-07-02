@@ -13,7 +13,8 @@ class CreateDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('documents', function (Blueprint $table) {
+        Schema::create('documents', function(Blueprint $table)
+        {
             $table->id();
             $table->foreignId('case_id');
             $table->string('group', 50)->nullable();
