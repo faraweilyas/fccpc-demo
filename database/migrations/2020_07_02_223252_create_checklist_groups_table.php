@@ -17,6 +17,7 @@ class CreateChecklistGroupsTable extends Migration
         {
             $table->id();
             $table->string('name');
+            $table->string('label')->nullable();
             $table->timestamps();
         });
     }

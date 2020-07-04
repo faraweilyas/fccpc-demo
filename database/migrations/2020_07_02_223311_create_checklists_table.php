@@ -18,6 +18,7 @@ class CreateChecklistsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('group_id');
             $table->string('name');
+            $table->string('label')->nullable();
             $table->timestamps();
 
             $table->foreign('group_id')
