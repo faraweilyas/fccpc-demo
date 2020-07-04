@@ -1,114 +1,94 @@
 @extends('layouts.backend.base')
 @section('content')
-    <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
-        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }}</h5>
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="" class="text-muted">{{ $case }}</a>
-                        </li>
-                    </ul>
-                </div>
+<div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline mr-5">
+                <h5 class="text-dark font-weight-bold my-2 mr-5">{{ $case }}</h5>
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="" class="text-muted">{{ $case }}</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <div class="d-flex flex-column-fluid">
-            <div class="container">
-                <div class="card card-custom">
-                    <div class="card-header flex-wrap py-5">
-                        <div class="card-title">
-                            <h3 class="card-label">{{ $case }}</h3>
-                        </div>
+</div>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <div class="card card-custom">
+                <div class="card-header flex-wrap py-5">
+                    <div class="card-title">
+                        <h3 class="card-label">{{ $case }}</h3>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-                            <thead>
-                                <tr>
-                                    <th class="text-center">Ref No</th>
-                                    <th>Subject</th>
-                                    <th class="text-center">Transaction Type</th>
-                                    <th>Parties</th>
-                                    <th class="text-center">Category</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach(\App\Models\Cases::all() as $case)
-                                <tr>
-                                    <td class="text-center">
-                                        <b>{{ $case->getRefNO() }}</b>
-                                    </td>
-                                    <td>{{ ucwords($case->subject) }}</td>
-                                    <td class="text-center">
-                                        <b>{{ $case->getType() }}</b>
-                                    </td>
-                                    <td>
-                                        {!! $case->generateCasePartiesBadge() !!}
-                                    </td>
-                                    <td class="text-center">
-                                        <b>{{ $case->getCategory('strtoupper') }}</b>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:;" class="btn btn-sm btn-icon" title="Edit details" data-toggle="modal" data-target="#assignCaseModal{{ $case->id }}">
-                                            <i class="la la-edit"></i>Assign
+                </div>
+                <div class="card-body">
+                    <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Ref No</th>
+                                <th>Subject</th>
+                                <th class="text-center">Transaction Type</th>
+                                {{-- <th>Parties</th> --}}
+                                <th class="text-center">Category</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach(\App\Models\Cases::where('user_id',  null)->get() as $case)
+                            <tr>
+                                <td class="text-center">
+                                    <b>{{ $case->getRefNO() }}</b>
+                                </td>
+                                <td class="case-subject">{{ ucwords($case->subject) }}</td>
+                                <td class="text-center">
+                                    <b>{{ $case->getType() }}</b>
+                                </td>
+                                {{-- <td>
+                                    {!! $case->generateCasePartiesBadge() !!}
+                                </td> --}}
+                                <td class="text-center">
+                                    <b>{{ $case->getCategory('strtoupper') }}</b>
+                                </td>
+                                <td nowrap="nowrap">
+                                    <div class="dropdown dropdown-inline">
+                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
+                                            <i class="fas fa-ellipsis-h"></i>
                                         </a>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
+                                            <ul class="nav nav-hoverable flex-column">
+                                                <li class="nav-item nav-item-hover">
+                                                    <a class="nav-link nav-link-padding" href="#" title="Assign Case Handler">
+                                                        <i class="nav-icon la la-info"></i>
+                                                        <span class="nav-text">View</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item nav-item-hover">
+                                                    <a class="nav-link nav-link-padding" href="#" data-toggle="modal" data-target="#assignCaseModal" title="Assign Case Handler">
+                                                        <i class="nav-icon la la-edit"></i>
+                                                        <span class="nav-text">Assign</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    @php $x = 1; @endphp
-    @foreach(\App\Models\Cases::all() as $case)
-    <div class="modal fade" id="assignCaseModal{{$case->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Assign case handler to case</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i aria-hidden="true" class="ki ki-close"></i>
-                    </button>
-                </div>
-                <form method="POST" action="{{ route('cases.assign', ['id' => $case->id]) }}">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Subject</label>
-                                <input type="text" class="form-control" value="{{ ucfirst($case->subject) }}" disabled>
-                            </div>
-                        </div>
-                        <div class="row mt-5">
-                            <div class="col-md-12">
-                                <label>Select case handler</label><br>
-                                <select class="form-control select2" id="case_handler{{ $x }}" name="case_handler" style="width: 100%;">
-                                    @foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
-                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary font-weight-bold">Assign</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @php $x++; @endphp
-    @endforeach
-    <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
-    <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
+</div>
+<!-- Modals -->
+@include("layouts.modals.case-handler")
+<script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
+<script src="{{ pc_asset(BE_JS.'case-modal.js') }}"></script>
 @endSection

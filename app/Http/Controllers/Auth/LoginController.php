@@ -66,7 +66,7 @@ class LoginController extends Controller
             'password'  =>  'required'
         ]);
 
-        if ($this->guard()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 1])) {
+        if ($this->guard()->attempt(['email' => $request->email, 'password' => $request->password, 'status' => 'active'])) {
             return redirect()->intended('/dashboard');
         }
         Session::flash('error', "Invalid credentials.");
