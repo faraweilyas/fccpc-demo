@@ -31,7 +31,7 @@ class CaseHandlersController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.case-handlers', compact('details'));
+        return view('backend.cases.case-handlers', compact('details'));
     }
 
 	/**
@@ -43,7 +43,7 @@ class CaseHandlersController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC Create Handler Dashboard";
     	$details          = details($title, $description);
-    	return view('backend.'.getAccountType().'.create-handler', compact('details'));
+    	return view('backend.cases.create-handler', compact('details'));
     }
 
     /**
@@ -75,7 +75,7 @@ class CaseHandlersController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC View Case Handler Dashboard";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.view-case-handler', compact('details', 'handler'));
+        return view('backend.cases.view-case-handler', compact('details', 'handler'));
     }
 
     public function updateHandlerStatus($id)

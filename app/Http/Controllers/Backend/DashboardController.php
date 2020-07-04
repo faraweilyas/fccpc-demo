@@ -33,7 +33,7 @@ class DashboardController extends Controller
     	$title            = APP_NAME;
         $description      = "FCCPC Dashboard";
     	$details          = details($title, $description);
-    	return view('backend.'.getAccountType().'.index', compact('details'));
+    	return view('backend.admin.index', compact('details'));
     }
 
     /**
@@ -45,7 +45,7 @@ class DashboardController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard Create User";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.create-user', compact('details'));
+        return view('backend.admin.create-user', compact('details'));
     }
 
     /**
@@ -81,7 +81,7 @@ class DashboardController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard View Users";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.view-users', compact('details'));
+        return view('backend.admin.view-users', compact('details'));
     }
 
     /**

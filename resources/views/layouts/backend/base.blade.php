@@ -1,6 +1,9 @@
 <html lang="en">
 @include("layouts.backend.header")
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
+    @if(in_array(\Request::route()->getName(), ['login', 'register', 'applicant.show', 'applicant.track']))
+    @yield('content')
+    @else
 	@include("layouts.backend.header-mobile")
 	<div class="d-flex flex-column flex-root">
 		<div class="d-flex flex-row flex-column-fluid page">
@@ -18,6 +21,7 @@
 			</div>
 		</div>
 	</div>
+    @endif
 	@include("layouts.backend.footer")
 </body>
 </html>

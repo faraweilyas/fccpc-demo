@@ -280,11 +280,8 @@ function formatCaseType(string $type) : string
 		case 'hold':
 			$case = 'Cases On Hold';
 			break;
-		case 'requests':
-			$case = 'Requests Log';
-			break;
 		default:
-			$case = ucfirst($type).' cases';
+			$case = ucfirst($type).' Cases';
 			break;
 	}
 	return $case;

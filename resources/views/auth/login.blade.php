@@ -1,4 +1,4 @@
-@extends('layouts.backend.base-login')
+@extends('layouts.backend.base')
 @section('content')
 <div class="d-flex flex-column flex-root">
     <div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">

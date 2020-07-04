@@ -26,12 +26,11 @@ class CasesController extends Controller
 	 */
     public function index($type)
     {
-        $cases          = Cases::all();
         $case           = formatCaseType($type);
         $title          = APP_NAME;
         $description    = "FCCPC Cases Log Dashboard";
         $details        = details($title, $description);
-    	return view('backend.'.getAccountType().'.cases', compact('details', 'cases', 'case', 'type'));
+    	return view('backend.cases.cases-'.$type, compact('details', 'case', 'type'));
     }
 
     /**
@@ -45,7 +44,7 @@ class CasesController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Case Review Dashboard";
         $details          = details($title, $description);
-        return view('backend.'.getAccountType().'.review-case', compact('details', 'id', 'case'));
+        return view('backend.cases.review-case', compact('details', 'id', 'case'));
     }
 
     /**
