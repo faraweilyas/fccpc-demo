@@ -8,6 +8,7 @@ use App\Models\ChecklistGroup;
 $factory->define(ChecklistGroup::class, function(Faker $faker)
 {
     return [
-        'name' => $faker->sentence,
+        'name'      => $faker->sentence,
+        'label'     => $faker->words(3, true),
     ];
 });

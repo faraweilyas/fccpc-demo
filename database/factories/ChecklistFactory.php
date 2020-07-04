@@ -10,5 +10,6 @@ $factory->define(Checklist::class, function (Faker $faker) {
     return [
         'group_id'  => factory(ChecklistGroup::class),
         'name'      => $faker->sentence(rand(6, 10)),
+        'label'     => $faker->words(3, true),
     ];
 });
