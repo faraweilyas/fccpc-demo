@@ -1,4 +1,4 @@
-@extends('layouts.backend.base')
+@extends('layouts.backend.guest')
 
 @section('content')
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
