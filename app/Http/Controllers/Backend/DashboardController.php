@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
-    protected $userView;
-
     /**
      * Create a new controller instance.
      *
@@ -20,7 +18,6 @@ class DashboardController extends Controller
      */
     public function __construct()
     {
-        $this->userView = getAccountType();
         $this->middleware('auth');
     }
 
