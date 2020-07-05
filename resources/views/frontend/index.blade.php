@@ -72,4 +72,4 @@
 		    </aside>
 		</div>
 	</main>
-@endSection
+@endsection

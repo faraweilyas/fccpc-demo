@@ -166,10 +166,10 @@
             </div>
         </div>
     </main>
-@endSection
+@endsection
 
 @section('custom.javascript')
     <script src="{{ pc_asset(FE_JS.'jquery.min.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'functions.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'app.js') }}"></script>
-@endSection
+@endsection

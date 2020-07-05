@@ -456,4 +456,4 @@
     <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'create-application.js') }}"></script>
-@endSection
+@endsection

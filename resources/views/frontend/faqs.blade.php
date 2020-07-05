@@ -48,4 +48,4 @@
     	    </div>
     	</section>
     </main>
-@endSection
+@endsection
