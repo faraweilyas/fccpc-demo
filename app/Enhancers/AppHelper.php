@@ -173,7 +173,7 @@ class AppHelper
      * @param mixed $textStyle
      * @return array
      */
-    public function values(string $array, $textStyle="strtoupper") : array
+    public function values(string $array, $textStyle=NULL) : array
     {
         return array_values($this->get($array, $textStyle));
     }
@@ -186,7 +186,7 @@ class AppHelper
 	 * @param mixed $textStyle
 	 * @return mixed
 	 */
-	public function value(string $array, $arrayKey, $textStyle="strtoupper")
+	public function value(string $array, $arrayKey, $textStyle=NULL)
 	{
 		if (!isset($this->$array) || is_null($arrayKey))
             return NULL;
