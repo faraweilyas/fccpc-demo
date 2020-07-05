@@ -1,6 +1,6 @@
 @extends('layouts.backend.base')
 
-@section('content')
+@section('base_content')
     <div class="d-flex flex-column flex-root">
         <div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
             <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }});">
@@ -69,4 +69,4 @@
             </div>
         </div>
     </div>
-@endSection
+@endsection

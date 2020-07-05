@@ -1,6 +1,6 @@
 @extends('layouts.backend.base')
 
-@section('content')
+@section('base_content')
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
 			<div class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
@@ -41,4 +41,4 @@
 			</div>
 		</div>
 	</div>
-@endSection
+@endsection
