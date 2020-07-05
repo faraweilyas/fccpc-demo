@@ -47,14 +47,29 @@
         }
     </style>
     <script type="text/javascript" src="http://unpkg.com/turbolinks" defer></script>
-    <script src="{{ pc_asset(BE_PLUGIN.'global/plugins.bundle.js') }}"></script>
-    <script src="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
-    <script src="{{ pc_asset(BE_JS.'scripts.bundle.js') }}"></script>
-    <script src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script src="{{ pc_asset(BE_JS.'pages/crud/datatables/advanced/column-rendering.js') }}" defer></script>
-    <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}" defer></script>
-    <script src="{{ pc_asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}" defer></script>
-    <script src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
-    <script src="{{ pc_asset(BE_JS.'custom.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'global/plugins.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'scripts.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/crud/datatables/advanced/column-rendering.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'custom.js') }}" defer></script>
+    <script type="text/javascript" defer>
+        $(document).ready(function($)
+        {
+            toastr.options = {
+                "progressBar": true,
+                "positionClass": "toast-bottom-right",
+            };
+            @if (Session::has('success'))
+                toastr.success("{{ Session::get('success') }}");
+            @endif
+            @if (Session::has('error'))
+                toastr.error("{{ Session::get('error') }}");
+            @endif
+        });
+    </script>
 </body>
 </html>
