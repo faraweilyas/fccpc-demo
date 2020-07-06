@@ -29,3 +29,5 @@ defined('BE_IMAGE') 			? NULL : define('BE_IMAGE', 			BE_ASSETS."images".DS);
 defined('BE_JS') 				? NULL : define('BE_JS', 				BE_ASSETS."javascript".DS);
 defined('BE_PLUGIN') 			? NULL : define('BE_PLUGIN', 			BE_ASSETS."plugins".DS);
 defined('BE_MEDIA') 			? NULL : define('BE_MEDIA', 			BE_ASSETS."media".DS);
+
+defined('BE_APP_JS')            ? NULL : define('BE_APP_JS',            BE_JS."app".DS);

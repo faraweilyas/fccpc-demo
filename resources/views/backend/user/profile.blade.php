@@ -132,5 +132,5 @@
     	</div>
     </div>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_JS.'update-profile.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'update-profile.js') }}"></script>
 @endsection

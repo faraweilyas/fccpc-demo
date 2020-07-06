@@ -55,7 +55,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_JS.'custom.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}" defer></script>
     <script type="text/javascript" defer>
         $(document).ready(function($)
         {
