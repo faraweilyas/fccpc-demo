@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'MAP - Mergers & Acquisition Platform'),
 
     /*
     |--------------------------------------------------------------------------
@@ -232,6 +232,28 @@ return [
         'AppHelper' => App\Facades\AppHelper::class,
 
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Short Application Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the short name of your application.
+    |
+    */
+
+    'short_name' => env('SHORT_APP_NAME', 'MAP'),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Department Name
+    |--------------------------------------------------------------------------
+    |
+    | This value is the department name.
+    |
+    */
+
+    'department_name' => env('DEPARTMENT_NAME', 'M&A - FCCPC'),
 
     /*
     |--------------------------------------------------------------------------
