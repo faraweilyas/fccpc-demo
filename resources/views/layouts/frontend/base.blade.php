@@ -46,7 +46,11 @@
                             <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" alt="">
                         </a>
                     </div>
-                    <p class="smalllh"><a class="site-title" href="<?= route('home.index'); ?>">Federal Competition and Consumer Protection Commission</a></p>
+                    <p class="smalllh">
+                        <a class="site-title" href="<?= route('home.index'); ?>">
+                            Federal Competition and Consumer Protection Commission
+                        </a>
+                    </p>
                 </div>
                 <div class="small-logo suffix is-wider">
                     <img src="{{ asset(FE_IMAGE.'icons/coat_of_arm.png') }}" alt="">
@@ -64,7 +68,7 @@
         <div class="maxwidth-sl wrapper-x mx-auto">
             <ul class="none d-flx pos-rel main-nav">
                 <li class="py-1 mg-1 main-list">
-                    <a href="/">{!! config('app.name') !!}</a>
+                    <a href="/">{!! config('app.department_name') !!}</a>
                 </li>
                 <li class="py-1 mg-1 main-list">
                     <a href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
