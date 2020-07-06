@@ -2,8 +2,8 @@
 
 // PROFILING
 defined('AUTHORS') 				? NULL : define('AUTHORS', 				["iLyas Farawe", "Kamsi Kodi"]);
-defined('APP_NAME') 			? NULL : define('APP_NAME',				"M&A - Federal Competition and Consumer Protection Commission");
-defined('SHORT_APP_NAME') 		? NULL : define('SHORT_APP_NAME',		"M&A - FCCPC");
+defined('APP_NAME') 			? NULL : define('APP_NAME',				"MAP - Mergers & Acquisition Platform");
+defined('SHORT_APP_NAME') 		? NULL : define('SHORT_APP_NAME',		"MAP");
 defined('COMPANY') 				? NULL : define('COMPANY',				"techbarn");
 defined('COMPANY_LINK') 		? NULL : define('COMPANY_LINK',			"https://techbarn.ng");
 defined('AGENCY') 				? NULL : define('AGENCY',				"FCCPC");
