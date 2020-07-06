@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use App\Models\Cases;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,6 +18,22 @@ class CasesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    /**
+     * Handles unassigned cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function unassignedCases()
+    {
+        $cases          = (new Cases)->unassignedCases();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Unassigned Cases | '.APP_NAME;
+        $description    = 'Unassigned Cases | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.cases.unassigned', compact('details', 'cases', 'caseHandlers'));
     }
 
 	/**

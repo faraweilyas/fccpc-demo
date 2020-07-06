@@ -308,3 +308,25 @@ function textTransformer(string $value=NULL, $textStyle='strtoupper') : string
 {
     return (is_callable($textStyle)) ? $textStyle($value) : $value;
 }
+
+function mockFilesData() : array
+{
+    return [
+        (object) [
+            'name' => 'Agreement Samle.pdf',
+            'icon' => 'pdf.svg',
+        ],
+        (object) [
+            'name' => 'Requirements.docx',
+            'icon' => 'doc.svg',
+        ],
+        (object) [
+            'name' => 'December 2019 Flights.csv',
+            'icon' => 'csv.svg',
+        ],
+        (object) [
+            'name' => 'Passenger Profiles.zip',
+            'icon' => 'zip.svg',
+        ]
+    ];
+}
