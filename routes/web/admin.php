@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\User;
-use App\Models\Cases;
 use Illuminate\Support\Facades\Route;
 
 // Application
@@ -144,7 +142,7 @@ Route::prefix('faq')
         ->name('delete');
     });
 
-// Supervisor
+// User
 Route::prefix('/')
     ->name('dashboard.')
     ->namespace('Backend')
@@ -199,6 +197,12 @@ Route::prefix('cases')
     ->namespace('Backend')
     ->group(function()
     {
+        Route::get(
+            '/unassigned',
+            'CasesController@unassignedCases'
+        )
+        ->name('index');
+
         Route::get(
             '{type}',
             'CasesController@index'
