@@ -2,11 +2,20 @@
 
 namespace App\Models\UserTraits;
 
-use App\Models\User;
 use App\Models\Cases;
 
 trait UserGettable
 {
+    /**
+     * Gets case handlers
+     *
+     * @return Collection
+     */
+    public function caseHandlers()
+    {
+        return static::where('status', 'active')->where('account_type', 'CH')->get();
+    }
+
     /**
      * Defines a one to many relationship for user that has created one or more cases
      * The user is expected to be a registrar
