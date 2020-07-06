@@ -89,6 +89,9 @@
     </div>
     <!-- Modals -->
     @include("layouts.modals.case-handler")
+@endsection
+
+@section('custom.javascript')
     <script src="{{ pc_asset(BE_JS.'jquery.js') }}"></script>
     <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>

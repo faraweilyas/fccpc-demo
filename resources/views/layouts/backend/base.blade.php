@@ -71,5 +71,8 @@
             @endif
         });
     </script>
+
+    @yield('custom.javascript')
+
 </body>
 </html>
