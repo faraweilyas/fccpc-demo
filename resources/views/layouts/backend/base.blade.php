@@ -1,6 +1,5 @@
 <html lang="en">
 <head>
-    <base href="" />
     <meta charset="utf-8" />
     <title>{{ $details->title }}</title>
     <meta name="author" content="{{ author() }}">
@@ -28,6 +27,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'scripts.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" defer>
         $(document).ready(function($)
@@ -62,5 +62,6 @@
     </div>
 
     @yield('custom.javascript')
+
 </body>
 </html>
