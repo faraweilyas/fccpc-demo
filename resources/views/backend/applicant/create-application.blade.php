@@ -455,8 +455,22 @@
     </div>
 @endsection
 
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'pages/wizard/wizard-2.css') }}" />
+@endsection
+
 @section('custom.javascript')
-    <script src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
-    <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
-    <script src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function($)
+        {
+            $('input[type="file"]').on('change', function(event)
+            {
+                var fileName = event.target.files[0].name;
+
+                $('.img-info').html(fileName);
+            });
+        });
+    </script>
 @endsection
