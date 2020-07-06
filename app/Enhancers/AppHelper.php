@@ -63,9 +63,9 @@ class AppHelper
 	];
 
     protected $case_categories_html = [
-        "REG" => "primary",
-        "FFM" => "warning",
-        "FFX" => "dark",
+        "REG" => "warning",
+        "FFM" => "dark",
+        "FFX" => "danger",
     ];
 
     protected $case_types = [
@@ -74,7 +74,7 @@ class AppHelper
     ];
 
     protected $case_types_html = [
-        "SM" => "success",
+        "SM" => "info",
         "LG" => "danger",
     ];
 
