@@ -59,12 +59,23 @@ class AppHelper
 	protected $case_categories = [
 		"REG" => "Regular",
 		"FFM" => "FFM",
-		"FFX" => "FFM-Expediated",
+		"FFX" => "FFM - Expediated",
 	];
+
+    protected $case_categories_html = [
+        "REG" => "primary",
+        "FFM" => "warning",
+        "FFX" => "dark",
+    ];
 
     protected $case_types = [
         "SM" => "Small",
         "LG" => "Large",
+    ];
+
+    protected $case_types_html = [
+        "SM" => "success",
+        "LG" => "danger",
     ];
 
 	protected $case_status = [
