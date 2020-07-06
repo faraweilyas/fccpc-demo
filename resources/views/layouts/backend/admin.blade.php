@@ -26,7 +26,7 @@
             <a
                 href="{{ route('logout') }}"
                 title="Logout"
-                onclick="event.preventDefault(); document.getElementById('frm-logout').submit();"
+                onclick="event.preventDefault(); document.getElementById('mobile-form-logout').submit();"
             >
                 <button class="btn p-0 ml-2" id="kt_header_mobile_topbar_toggle">
                     <span class="svg-icon svg-icon-xl svg-icon-white">
@@ -41,7 +41,7 @@
                     </span>
                 </button>
             </a>
-            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+            <form id="mobile-form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                 {{ csrf_field() }}
             </form>
         </div>
@@ -82,7 +82,7 @@
                 <div class="topbar-item">
                     <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                         <div class="d-flex flex-column text-right pr-3">
-                            <a href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">
+                            <a href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
                                 <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
                                     <span class="svg-icon svg-icon-xl svg-icon-white">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -94,7 +94,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                     Sign Out
