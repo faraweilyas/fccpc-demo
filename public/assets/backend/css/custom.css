@@ -3,6 +3,12 @@
     display: none;
 }
 
+.turbolinks-progress-bar
+{
+    height: 5px;
+    background-color: #1BC5BD;
+}
+
 .login.login-3.login-signin-on .login-signup {
     display: block;
 }
