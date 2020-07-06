@@ -7,9 +7,6 @@ var KTSelect2 = function() {
             placeholder: "Select an option"
         });
 
-        $('#case_handler').select2({
-            placeholder: "Select a case handler"
-        })
         // nested
         $('#kt_select2_2, #kt_select2_2_validate').select2({
             placeholder: "Select a state"
