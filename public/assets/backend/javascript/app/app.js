@@ -1,21 +1,25 @@
 $(document).ready(function()
 {
-    $(".localGuideline").on('click', function() {
+    $(".localGuideline").on('click', function()
+    {
         $("#localGuideline").removeClass('hide');
         $("#localGuideline").removeClass('show');
     });
 
-    $(".close-localGuideline").on('click', function() {
+    $(".close-localGuideline").on('click', function()
+    {
         $("#localGuideline").addClass('hide');
         $("#localGuideline").removeClass('show');
     });
 
-    $(".ffmGuideline").on('click', function() {
+    $(".ffmGuideline").on('click', function()
+    {
         $("#ffmGuideline").removeClass('hide');
         $("#ffmGuideline").removeClass('show');
     });
 
-    $(".close-ffmGuideline").on('click', function() {
+    $(".close-ffmGuideline").on('click', function()
+    {
         $("#ffmGuideline").addClass('hide');
         $("#ffmGuideline").removeClass('show');
     });
