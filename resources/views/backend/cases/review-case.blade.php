@@ -151,7 +151,7 @@
     									<label>New case handler</label><br>
     									<select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
     										<option value="">Select Case Handler</option>
-    										@foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
+    										@foreach(\App\Models\User::where('status', 'active')->where('account_type', 'CH')->get() as $handler)
     											<option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
     										@endforeach
     									</select>
