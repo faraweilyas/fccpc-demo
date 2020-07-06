@@ -68,14 +68,34 @@ class Cases extends Model
         return textTransformer($refrenceNo, $textStyle);
     }
 
-    public function getCategory($textStyle='strtoupper') : string
+    public function getSubject($textStyle=NULL) : string
+    {
+        return textTransformer(shortenContent($this->subject, 45), $textStyle);
+    }
+
+    public function getCategory($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories', $this->case_category, $textStyle) ?? "";
+    }
+
+    public function getCategoryHtml($textStyle=NULL) : string
+    {
+        $category       = $this->getCategory($textStyle);
+        $categoryHtml   = \AppHelper::value('case_categories_html', $this->case_category, NULL) ?? "";
+        return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
     }
 
     public function getType($textStyle='ucfirst') : string
     {
         return \AppHelper::value('case_types', $this->case_type, $textStyle) ?? "";
+    }
+
+    public function getTypeHtml($textStyle='ucfirst') : string
+    {
+        $type       = $this->getType($textStyle);
+        $typeHtml   = \AppHelper::value('case_types_html', $this->case_type, NULL) ?? "";
+        return "<span class='label label-{$typeHtml} label-dot mr-2'></span>
+                <span class='font-weight-bold text-{$typeHtml}'>{$type}</span>";
     }
 
     public function getCaseParties(bool $collect=true)
@@ -84,16 +104,27 @@ class Cases extends Model
         return ($collect) ? collect($parties) : $parties;
     }
 
-    public function generateCasePartiesBadge() : string
+    public function generateCasePartiesBadge($extraStyles='mr_10') : string
     {
         $styles = ['success', 'danger', 'warning', 'info', 'primary'];
-        return $this->getCaseParties()->map(function($party) use ($styles)
+        return $this->getCaseParties()->map(function($party) use ($styles, $extraStyles)
         {
             $style = $styles[rand(0, count($styles) - 1)];
-            return "<span class='label label-lg font-weight-bold label-light-{$style} text-dark label-inline mr_10'>{$party}</span>";
+            return "<span class='label label-lg font-weight-bold label-light-{$style} text-dark label-inline {$extraStyles}'>{$party}</span>";
         })->join(" ");
     }
 
+    public function getApplicantName() : string
+    {
+        return trim($this->applicant_first_name.' '.$this->applicant_last_name);
+    }
+
+    public function getSubmittedAt() : string
+    {
+        return datetimeToText($this->submitted_at, 'customd');
+    }
+
+    // ...
     public function getCaseStatus($textStyle='strtolower')
     {
         return \AppHelper::value('case_status', $this->status ?? 1, $textStyle);
@@ -106,6 +137,7 @@ class Cases extends Model
 
     public function getCaseHandlerName() : string
     {
+        return "";
         return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";
     }
 }
