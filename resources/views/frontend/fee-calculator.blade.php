@@ -169,7 +169,7 @@
 @endsection
 
 @section('custom.javascript')
-    <script src="{{ pc_asset(FE_JS.'jquery.min.js') }}"></script>
+    <script src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'app.js') }}"></script>
 @endsection
