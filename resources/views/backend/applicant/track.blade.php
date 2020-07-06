@@ -1,5 +1,9 @@
 @extends('layouts.backend.base')
 
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'pages/users/login-3.css') }}" />
+@endsection
+
 @section('base_content')
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">

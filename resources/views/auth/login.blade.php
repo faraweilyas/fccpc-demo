@@ -1,12 +1,16 @@
 @extends('layouts.backend.base')
 
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'pages/users/login-3.css') }}" />
+@endsection
+
 @section('base_content')
     <div class="d-flex flex-column flex-root">
         <div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
             <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}">
                 <div class="login-form text-center p-7 position-relative overflow-hidden">
                     <div class="d-flex flex-center mb_15">
-                        <a href="{{ route('home.index') }}">
+                        <a data-turbolinks="false" href="{{ route('home.index') }}">
                             <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" class="maxh_130" />
                         </a>
                     </div>
