@@ -85,7 +85,7 @@
                                                 data-toggle="modal"
                                                 data-target="#assignCaseModal"
                                             >
-                                                <i class="flaticon-user-add"></i> Assign
+                                                <i class="flaticon-user-add"></i> Re-Assign
                                             </a>
                                             <div class="hide">
                                                 {{-- Case --}}

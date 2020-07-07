@@ -103,14 +103,11 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function assignCase(Request $request, $id)
+    public function assignCase(Cases $case, User $user)
     {
-        Cases::whereId($id)->update([
-            'case_handler_id' => $request->case_handler,
-            'status'          => 2
-        ]);
-
-        return redirect()->back()->with("success", "Transaction has been assigned to case handler");
+        abort_if(!auth()->user(), 404);
+        $case->assign($user);
+        $this->sendResponse("Case assigned.", "success");
     }
 
     /**
@@ -125,5 +122,23 @@ class CasesController extends Controller
         ]);
 
         return redirect()->back()->with("success", "Transaction status has been updated");
+    }
+
+    /**
+     * Send response.
+     *
+     * @param string $message
+     * @param string $responseType
+     * @param mixed $response
+     * @return void
+     */
+    public function sendResponse(string $message, string $responseType, $response=null)
+    {
+        echo json_encode([
+            'message'       => $message,
+            'responseType'  => $responseType,
+            'response'      => $response,
+        ]);
+        exit;
     }
 }

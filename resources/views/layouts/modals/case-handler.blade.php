@@ -7,7 +7,6 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            {{-- <form method="POST" action="{{ route('cases.assign', ['id' => $case->id]) }}"> --}}
             <form method="POST" action="#">
                 @csrf
                 <div class="modal-body">
@@ -30,7 +29,7 @@
                         <div class="col-md-12">
                             <label>Select case handler:</label>
                             <br />
-                            <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+                            <select class="form-control select2" id="caseHandler" name="caseHandler" style="width: 100%;">
                                 @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
@@ -39,8 +38,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <input type="hidden" id="caseID">
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-light-primary font-weight-bold">Assign</button>
+                    <button type="submit" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
                 </div>
             </form>
         </div>

@@ -89,6 +89,7 @@
                                             </a>
                                             <div class="hide">
                                                 {{-- Case --}}
+                                                <span class="case_id">{{ $case->id }}</span>
                                                 <span class="reference_no">{{ $case->getRefNO() }}</span>
                                                 <span class="subject">{{ $case->subject }}</span>
                                                 <span class="category">{!! $case->getCategoryHtml() !!}</span>

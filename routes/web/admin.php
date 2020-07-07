@@ -222,19 +222,13 @@ Route::prefix('cases')
         ->name('archived');
 
         Route::get(
-            '{type}',
-            'CasesController@index'
-        )
-        ->name('index');
-
-        Route::get(
             'review/{id}',
             'CasesController@reviewCase'
         )
         ->name('review');
 
         Route::post(
-            'assign/{id}',
+            'assign/{case}/{user}',
             'CasesController@assignCase'
         )
         ->name('assign');

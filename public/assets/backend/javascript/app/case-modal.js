@@ -1,19 +1,18 @@
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 function assignCaseHandler(caseID, caseHandlerID)
 {
     $.ajax
     ({
-        url: "/reported-case/assign/"+caseID+"/"+caseHandlerID,
+        url: "/cases/assign/"+caseID+"/"+caseHandlerID,
         type: "post",
-        data: '',
+        data: {_token: CSRF_TOKEN},
         success: function(response)
         {
+            console.log(response);
             var result = JSON.parse(response);
-            if (result.status == "success")
+            if (result.responseType == "success")
             {
-                var caseStatus  = $(".case_row_"+caseID).children('.case-status'),
-                    caseHandler = $(".case_row_"+caseID).children('.case__data').children('.case-handler');
-                caseStatus.html(result.data.htmlStatus);
-                caseHandler.html(result.data.caseHandler);
                 toastr.success(result.message);
             } else {
                 toastr.error(result.message);
@@ -30,7 +29,7 @@ $(document).ready(function()
         paging: true,
     });
 
-    $('#case_handler').select2
+    $('#caseHandler').select2
     ({
         placeholder: "Select a case handler",
         dropdownParent: $("#assignCaseModal"),
@@ -76,24 +75,26 @@ $(document).ready(function()
         var assignButton        = $(event.relatedTarget);
             caseContainer       = assignButton.parent('td').parent('tr'),
             thisModal           = $(this),
+            caseID              = thisModal.find('#caseID'),
             refrenceNo          = thisModal.find('#refrenceNo'),
             subject             = thisModal.find('#subject'),
             submittedAt         = thisModal.find('#submittedAt');
 
+        caseID.val(caseContainer.find('.case_id').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
         submittedAt.html(caseContainer.find('.submitted_at').html());
         return;
     });
 
-    $("#assignSubmitBtn").on("click", function(event)
+    $("#assignCaseButton").on("click", function(event)
     {
         event.preventDefault();
 
-        var thisModal   = $("#modalAssignCase"),
-            caseID      = $("#case_id").val(),
-            caseHandler = $("#case_handler").val();
+        var caseID      = $("#caseID").val(),
+            caseHandler = $("#caseHandler").val();
 
+        console.log(caseID);
         if (isNaN(caseID))
         {
             toastr.error("An error occured!");
