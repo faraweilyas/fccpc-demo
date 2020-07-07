@@ -81,15 +81,17 @@
                                             <a
                                                 href="#"
                                                 class="btn btn-sm btn-light-info mr-3"
-                                                title="Assign Case Handler"
+                                                title="Reassign Case Handler"
                                                 data-toggle="modal"
-                                                data-target="#assignCaseModal"
+                                                data-target="#reassignCaseModal"
                                             >
                                                 <i class="flaticon-user-add"></i> Re-Assign
                                             </a>
                                             <div class="hide">
                                                 {{-- Case --}}
+                                                <span class="case_id">{{ $case->id }}</span>
                                                 <span class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span>
+                                                <span class="case_handler_id">{{ $case->active_handlers->first()->id }}</span>
                                                 <span class="reference_no">{{ $case->getRefNO() }}</span>
                                                 <span class="subject">{{ $case->subject }}</span>
                                                 <span class="category">{!! $case->getCategoryHtml() !!}</span>

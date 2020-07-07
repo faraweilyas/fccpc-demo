@@ -9,7 +9,26 @@ function assignCaseHandler(caseID, caseHandlerID)
         data: {_token: CSRF_TOKEN},
         success: function(response)
         {
-            console.log(response);
+            var result = JSON.parse(response);
+            if (result.responseType == "success")
+            {
+                toastr.success(result.message);
+            } else {
+                toastr.error(result.message);
+            }
+        }
+    });
+}
+
+function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID)
+{
+    $.ajax
+    ({
+        url: "/cases/reassign/"+caseID+"/"+oldCaseHandlerID+"/"+newcaseHandlerID,
+        type: "post",
+        data: {_token: CSRF_TOKEN},
+        success: function(response)
+        {
             var result = JSON.parse(response);
             if (result.responseType == "success")
             {
@@ -37,6 +56,12 @@ $(document).ready(function()
         // minimumResultsForSearch: Infinity
         // tags: true
         // allowClear: true
+    });
+
+    $('#newCaseHandler').select2
+    ({
+        placeholder: "Select a case handler",
+        dropdownParent: $("#reassignCaseModal"),
     });
 
     $('#viewCaseModal').on('shown.bs.modal', function(event)
@@ -89,6 +114,27 @@ $(document).ready(function()
         return;
     });
 
+    $('#reassignCaseModal').on('shown.bs.modal', function(event)
+    {
+        var reassignButton      = $(event.relatedTarget);
+            caseContainer       = reassignButton.parent('td').parent('tr'),
+            thisModal           = $(this),
+            caseID              = thisModal.find('#reassigncaseID'),
+            oldcaseHandlerID    = thisModal.find('#oldCaseHandlerID'),
+            caseHandler         = thisModal.find('#case_handler'),
+            refrenceNo          = thisModal.find('#refrenceNo'),
+            subject             = thisModal.find('#subject'),
+            submittedAt         = thisModal.find('#submittedAt');
+
+        caseID.val(caseContainer.find('.case_id').html());
+        oldcaseHandlerID.val(caseContainer.find('.case_handler_id').html());
+        caseHandler.html(caseContainer.find('.case_handler').html());
+        refrenceNo.html(caseContainer.find('.reference_no').html());
+        subject.html(caseContainer.find('.subject').html());
+        submittedAt.html(caseContainer.find('.submitted_at').html());
+        return;
+    });
+
     $("#assignCaseButton").on("click", function(event)
     {
         event.preventDefault();
@@ -96,7 +142,6 @@ $(document).ready(function()
         var caseID      = $("#caseID").val(),
             caseHandler = $("#caseHandler").val();
 
-        console.log(caseID);
         if (isNaN(caseID))
         {
             toastr.error("An error occured!");
@@ -109,6 +154,28 @@ $(document).ready(function()
             return false;
         }
         assignCaseHandler(caseID, caseHandler);
+        return;
+    });
+
+    $("#reassignCaseButton").on("click", function(event)
+    {
+        event.preventDefault();
+        var caseID         = $("#reassigncaseID").val(),
+            newCaseHandler = $("#newCaseHandler").val();
+            oldCaseHandler = $("#oldCaseHandlerID").val();
+            console.log(caseID);
+        if (isNaN(caseID))
+        {
+            toastr.error("An error occured!");
+            return false;
+        }
+
+        if ((isNaN(newCaseHandler) || newCaseHandler <= 0) && (isNaN(oldCaseHandler) || oldCaseHandler <= 0) )
+        {
+            toastr.error("Please select a case handler!");
+            return false;
+        }
+        reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
     });
 });

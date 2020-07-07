@@ -111,6 +111,18 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles the case reassign page route.
+     *
+     * @return void
+     */
+    public function reassignCase(Cases $case, User $oldUser, User $newUser)
+    {
+        abort_if(!auth()->user(), 404);
+        $case->reAssign($oldUser, $newUser);
+        $this->sendResponse("Case reassigned.", "success");
+    }
+
+    /**
      * Handles the case update status page route.
      *
      * @return void

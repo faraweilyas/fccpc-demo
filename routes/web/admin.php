@@ -234,6 +234,12 @@ Route::prefix('cases')
         ->name('assign');
 
         Route::post(
+            'reassign/{case}/{old_user}/{new_user}',
+            'CasesController@reassignCase'
+        )
+        ->name('assign');
+
+        Route::post(
             'update/{status}/{id}',
             'CasesController@updateCaseStatus'
         )
