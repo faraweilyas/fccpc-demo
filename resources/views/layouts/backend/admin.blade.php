@@ -163,37 +163,36 @@
                                             <i class="menu-arrow"></i>
                                         </a>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+                        @endif
+
+                        @if(in_array(\Auth::user()->account_type,['SP']))
+                        <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
+                            <a href="javascript:;" class="menu-link menu-toggle">
+                                <span class="menu-text">Case Handlers</span>
+                                <span class="menu-desc">...</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="menu-submenu menu-submenu-classic menu-submenu-left">
+                                <ul class="menu-subnav">
                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                        <a href="{{ route('cases.approved') }}" class="menu-link">
-                                            <span class="svg-icon svg-icon-primary svg-icon-2x">
+                                        <a href="{{ route('handlers.create') }}" class="menu-link">
+                                             <span class="svg-icon svg-icon-primary svg-icon-2x">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                                         <polygon points="0 0 24 0 24 24 0 24"/>
-                                                        <path d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) "/>
+                                                        <path d="M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z M21,8 L17,8 C16.4477153,8 16,7.55228475 16,7 C16,6.44771525 16.4477153,6 17,6 L21,6 C21.5522847,6 22,6.44771525 22,7 C22,7.55228475 21.5522847,8 21,8 Z" fill="#000000" fill-rule="nonzero" opacity="0.3"/>
+                                                        <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fill-rule="nonzero"/>
                                                     </g>
                                                 </svg>
                                             </span>
-                                            &nbsp;&nbsp;<span class="menu-text">Approved Cases</span></a>
-                                            <i class="menu-arrow"></i>
+                                            &nbsp;&nbsp;<span class="menu-text">New Case Handler</span></a>
                                         </a>
                                     </li>
-                                    <li class="menu-item menu-item-submenu" aria-haspopup="true">
-                                        <a href="{{ route('cases.archived') }}" class="menu-link">
-                                            <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                        <rect x="0" y="0" width="24" height="24"/>
-                                                        <path d="M4.5,3 L19.5,3 C20.3284271,3 21,3.67157288 21,4.5 L21,19.5 C21,20.3284271 20.3284271,21 19.5,21 L4.5,21 C3.67157288,21 3,20.3284271 3,19.5 L3,4.5 C3,3.67157288 3.67157288,3 4.5,3 Z M8,5 C7.44771525,5 7,5.44771525 7,6 C7,6.55228475 7.44771525,7 8,7 L16,7 C16.5522847,7 17,6.55228475 17,6 C17,5.44771525 16.5522847,5 16,5 L8,5 Z" fill="#000000"/>
-                                                    </g>
-                                                </svg>
-                                            </span>
-                                            &nbsp;&nbsp;<span class="menu-text">Archived Cases</span></a>
-                                            <i class="menu-arrow"></i>
-                                        </a>
-                                    </li>
-                                    @if(in_array(\Auth::user()->account_type, ['SP']))
-                                    <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="menu-link menu-toggle">
+                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
+                                        <a href="{{ route('handlers.index') }}" class="menu-link">
                                             <span class="svg-icon svg-icon-primary svg-icon-2x">
                                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -203,31 +202,9 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            &nbsp;&nbsp;<span class="menu-text">Case Handlers</span>
-                                            <i class="menu-arrow"></i>
+                                            &nbsp;&nbsp;<span class="menu-text">View Handlers</span></a>
                                         </a>
-                                        <div class="menu-submenu menu-submenu-classic menu-submenu-right">
-                                            <ul class="menu-subnav">
-                                                <li class="menu-item" aria-haspopup="true">
-                                                    <a href="{{ route('handlers.create') }}" class="menu-link">
-                                                        <i class="menu-bullet menu-bullet-dot">
-                                                            <span></span>
-                                                        </i>
-                                                        <span class="menu-text">New Case Handler</span>
-                                                    </a>
-                                                </li>
-                                                <li class="menu-item" aria-haspopup="true">
-                                                    <a href="{{ route('handlers.index') }}" class="menu-link">
-                                                        <i class="menu-bullet menu-bullet-dot">
-                                                            <span></span>
-                                                        </i>
-                                                        <span class="menu-text">View Handlers</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
                                     </li>
-                                    @endif
                                 </ul>
                             </div>
                         </li>
@@ -305,7 +282,7 @@
                             </div>
                         </li>
 
-                        @if(in_array(\Auth::user()->account_type,['AD'])):
+                        @if(in_array(\Auth::user()->account_type,['AD']))
                         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
                                 <span class="menu-text">FAQ</span>
