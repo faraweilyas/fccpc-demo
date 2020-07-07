@@ -201,7 +201,25 @@ Route::prefix('cases')
             '/unassigned',
             'CasesController@unassignedCases'
         )
-        ->name('index');
+        ->name('unassigned');
+
+        Route::get(
+            '/assigned',
+            'CasesController@assignedCases'
+        )
+        ->name('assigned');
+
+        Route::get(
+            '/approved',
+            'CasesController@approvedCases'
+        )
+        ->name('approved');
+
+        Route::get(
+            '/archived',
+            'CasesController@archivedCases'
+        )
+        ->name('archived');
 
         Route::get(
             '{type}',

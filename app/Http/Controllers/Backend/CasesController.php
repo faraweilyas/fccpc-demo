@@ -36,18 +36,52 @@ class CasesController extends Controller
         return view('backend.cases.unassigned', compact('details', 'cases', 'caseHandlers'));
     }
 
-	/**
-	 * Handles the cases display page route.
+    /**
+     * Handles assigned cases page.
      *
-	 * @return void
-	 */
-    public function index($type)
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function assignedCases()
     {
-        $case           = formatCaseType($type);
-        $title          = APP_NAME;
-        $description    = "FCCPC Cases Log Dashboard";
+        $cases          = (new Cases)->assignedCases();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Assigned Cases | '.APP_NAME;
+        $description    = 'Assigned Cases | '.APP_NAME;
         $details        = details($title, $description);
-    	return view('backend.cases.cases-'.$type, compact('details', 'case', 'type'));
+        return view('backend.cases.cases-assigned', compact('details', 'cases', 'caseHandlers'));
+    }
+
+    /**
+     * Handles approved cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function approvedCases()
+    {
+        $cases          = (new Cases)->assignedCases();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Approved Cases | '.APP_NAME;
+        $description    = 'Approved Cases | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.cases.cases-approved', compact('details', 'cases', 'caseHandlers'));
+    }
+
+    /**
+     * Handles archived cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function archivedCases()
+    {
+        $cases          = (new Cases)->archivedCases();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Archived Cases | '.APP_NAME;
+        $description    = 'Archived Cases | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.cases.cases-archived', compact('details', 'cases', 'caseHandlers'));
     }
 
     /**
