@@ -5,13 +5,13 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Unassigned Cases</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Assigned Cases</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">Unassigned Cases</a>
+                            <a href="" class="text-muted">Assigned Cases</a>
                         </li>
                     </ul>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
-                            <h3 class="card-label">Unassigned Cases</h3>
+                            <h3 class="card-label">Assigned Cases</h3>
                         </div>
                     </div>
                     <div class="card-body">
@@ -89,6 +89,7 @@
                                             </a>
                                             <div class="hide">
                                                 {{-- Case --}}
+                                                <span class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span>
                                                 <span class="reference_no">{{ $case->getRefNO() }}</span>
                                                 <span class="subject">{{ $case->subject }}</span>
                                                 <span class="category">{!! $case->getCategoryHtml() !!}</span>

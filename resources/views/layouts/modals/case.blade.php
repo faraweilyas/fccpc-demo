@@ -47,6 +47,10 @@
                             {{-- Case --}}
                             <div class="tab-pane fade show active" id="case_tab" role="tabpanel">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Case Handler:</span>
+                                    <span class="text-dark" id="case_handler">...</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="font-weight-bold mr-2">Reference NO:</span>
                                     <span class="text-muted text-hover-primary" id="refrenceNo">#</span>
                                 </div>

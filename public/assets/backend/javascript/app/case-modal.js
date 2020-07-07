@@ -44,6 +44,7 @@ $(document).ready(function()
         var viewButton              = $(event.relatedTarget);
             caseContainer           = viewButton.parent('td').parent('tr'),
             thisModal               = $(this),
+            caseHandler             = thisModal.find('#case_handler'),
             refrenceNo              = thisModal.find('#refrenceNo'),
             subject                 = thisModal.find('#subject'),
             category                = thisModal.find('#category'),
@@ -56,6 +57,7 @@ $(document).ready(function()
             applicant_address       = thisModal.find('#applicant_address'),
             submittedAt             = thisModal.find('#submittedAt');
 
+        caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
         category.html(caseContainer.find('.category').html());
