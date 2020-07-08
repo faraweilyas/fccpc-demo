@@ -244,6 +244,114 @@ var KTWizard2 = function () {
 				}
 			}
 		));
+
+        // Step 6
+        _validations.push(FormValidation.formValidation(
+            _formEl,
+            {
+                fields: {
+                    // ccname: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card name is required'
+                    //      }
+                    //  }
+                    // },
+                    // ccnumber: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card number is required'
+                    //      },
+                    //      creditCard: {
+                    //          message: 'The credit card number is not valid'
+                    //      }
+                    //  }
+                    // },
+                    // ccmonth: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card month is required'
+                    //      }
+                    //  }
+                    // },
+                    // ccyear: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card year is required'
+                    //      }
+                    //  }
+                    // },
+                    // cccvv: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card CVV is required'
+                    //      },
+                    //      digits: {
+                    //          message: 'The CVV value is not valid. Only numbers is allowed'
+                    //      }
+                    //  }
+                    // }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                }
+            }
+        ));
+
+        // Step 7
+        _validations.push(FormValidation.formValidation(
+            _formEl,
+            {
+                fields: {
+                    // ccname: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card name is required'
+                    //      }
+                    //  }
+                    // },
+                    // ccnumber: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card number is required'
+                    //      },
+                    //      creditCard: {
+                    //          message: 'The credit card number is not valid'
+                    //      }
+                    //  }
+                    // },
+                    // ccmonth: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card month is required'
+                    //      }
+                    //  }
+                    // },
+                    // ccyear: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card year is required'
+                    //      }
+                    //  }
+                    // },
+                    // cccvv: {
+                    //  validators: {
+                    //      notEmpty: {
+                    //          message: 'Credit card CVV is required'
+                    //      },
+                    //      digits: {
+                    //          message: 'The CVV value is not valid. Only numbers is allowed'
+                    //      }
+                    //  }
+                    // }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                }
+            }
+        ));
 	}
 
 	return {

@@ -92,8 +92,8 @@
     										</span>
     									</div>
     									<div class="wizard-label">
-    										<h3 class="wizard-title">Company Documents</h3>
-    										<div class="wizard-desc">Provide your company documents</div>
+    										<h3 class="wizard-title">Letter of intent to merge</h3>
+    										<div class="wizard-desc">Provide your letter of intent to merge</div>
     									</div>
     								</div>
     							</div>
@@ -101,47 +101,122 @@
     								<div class="wizard-wrapper">
     									<div class="wizard-icon">
     										<span class="svg-icon svg-icon-2x">
-    											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    											        <rect x="0" y="0" width="24" height="24"/>
-    											        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
-    											        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
-    											        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
-    											        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
-    											        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
-    											        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
-    											        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
-    											        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
-    											    </g>
-    											</svg>
-    										</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
     									</div>
     									<div class="wizard-label">
-    										<h3 class="wizard-title">Account Documents</h3>
-    										<div class="wizard-desc">Provide your account documents</div>
+    										<h3 class="wizard-title">Information Memorandum</h3>
+    										<div class="wizard-desc">Provide your Information Memorandum documents</div>
     									</div>
     								</div>
     							</div>
     							<div class="wizard-step" data-wizard-type="step">
     								<div class="wizard-wrapper">
     									<div class="wizard-icon">
-    										<span class="svg-icon svg-icon-2x">
-    											<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-    											    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    											        <rect x="0" y="0" width="24" height="24"/>
-    											        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
-    											        <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000"/>
-    											        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
-    											    </g>
-    											</svg>
-    										</span>
+                                            <span class="svg-icon svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
     									</div>
     									<div class="wizard-label">
-    										<h3 class="wizard-title">Payment Documents</h3>
-    										<div class="wizard-desc">Provide your payment documents</div>
+    										<h3 class="wizard-title">Consent and resolution documents</h3>
+    										<div class="wizard-desc">Provide your consent and resolution document</div>
     									</div>
     								</div>
     							</div>
+                                <div class="wizard-step" data-wizard-type="step">
+                                    <div class="wizard-wrapper">
+                                        <div class="wizard-icon">
+                                            <span class="svg-icon svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">Incorporation Documents</h3>
+                                            <div class="wizard-desc">Provide your incorporation documents</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wizard-step" data-wizard-type="step">
+                                    <div class="wizard-wrapper">
+                                        <div class="wizard-icon">
+                                            <span class="svg-icon svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="13" width="7" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2" rx="1"/>
+                                                        <rect fill="#000000" opacity="0.3" x="10" y="17" width="7" height="2" rx="1"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">Transaction Agreement and regulatory approval/no-objection </h3>
+                                            <div class="wizard-desc">Provide your transaction agreement documents</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="wizard-step" data-wizard-type="step">
+                                    <div class="wizard-wrapper">
+                                        <div class="wizard-icon">
+                                            <span class="svg-icon svg-icon-2x">
+                                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                        <rect x="0" y="0" width="24" height="24"/>
+                                                        <path d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z" fill="#000000" opacity="0.3"/>
+                                                        <path d="M10.875,15.75 C10.6354167,15.75 10.3958333,15.6541667 10.2041667,15.4625 L8.2875,13.5458333 C7.90416667,13.1625 7.90416667,12.5875 8.2875,12.2041667 C8.67083333,11.8208333 9.29375,11.8208333 9.62916667,12.2041667 L10.875,13.45 L14.0375,10.2875 C14.4208333,9.90416667 14.9958333,9.90416667 15.3791667,10.2875 C15.7625,10.6708333 15.7625,11.2458333 15.3791667,11.6291667 L11.5458333,15.4625 C11.3541667,15.6541667 11.1145833,15.75 10.875,15.75 Z" fill="#000000"/>
+                                                        <path d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z" fill="#000000"/>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                        <div class="wizard-label">
+                                            <h3 class="wizard-title">Financials</h3>
+                                            <div class="wizard-desc">Provide your financials documents</div>
+                                        </div>
+                                    </div>
+                                </div>
     						</div>
     					</div>
     					<div class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
@@ -264,55 +339,195 @@
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content" data-form='CompanyDocuments'>
+    									<div class="pb-5" data-wizard-type="step-content" data-form='letterOfIntent'>
     										<div class="row mt-4">
     											<div class="col-md-12">
     												<div class="card card-custom gutter-b example example-compact">
     													<div class="card-header">
-    														<h3 class="card-title">Submit Company Documents</h3>
+    														<h3 class="card-title">Submit letter of intent to merge</h3>
     													</div>
     													<div class="card-body">
-    														<p>
-    															Kindly upload company document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
-    														</p>
-                                                            {{-- <div class="row mt-5">
+                                                            <p>
+                                                                Kindly upload letter of intent to merge.
+                                                            </p>
+                                                            <p>
+                                                                Upload a single pdf file containing the letter of intent to merge.
+                                                            </p>
+                                                            <div class="row mt-4">
                                                                 <div class="col-md-12">
-                                                                    <label>New case handler</label>
-                                                                    <br />
-                                                                    <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
-                                                                        <option value="">Select Case Handler</option>
-                                                                        @foreach(\App\Models\User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
-                                                                            <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-                                                                        @endforeach
-                                                                    </select>
-                                                                </div>
-                                                            </div> --}}
-                                                            <div class="row mt-5">
-                                                                <label class="col-md-6 col-lg-6 col-xl-5">Checklist of documents:</label>
-                                                                <div class="col-md-6 col-lg-6 col-xl-7">
-                                                                    <select class="form-control" id="checklist" name="checklist" style="width: 100%;">
-                                                                        <option value="">Select document...</option>
-                                                                        <option value="1">Extract of Board Resolutions of the Merging Companies duly certified by a Director  and the Company Secretary</option>
-                                                                        <option value="2">Signed and notarized consent letters of Directors and Parties to the merger</option>   
-                                                                        <option value="3">2 Copies of draft Proxy forms for each of the merging parties</option>  
-                                                                        <option value="4">Evidence of dispatch of Scheme documents to the shareholders of the merging undertakings</option>   
-                                                                        <option value="5">A copy of the letter appointing the Financial Adviser(s)</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group row mt-5">
-                                                                <label class="col-xl-5 col-lg-6 col-form-label">Select File:</label>
-                                                                <div class="col-xl-7 col-lg-6 mb-4">
-                                                                    <div class="uploadButton tw-mb-4">
-                                                                       <input type="file" id="company_doc" name="company_doc" class="js-file-upload-input ember-view" accept=".doc, .docx, .pdf" />
-                                                                        <span class="btn btn--small btn--brand">Upload Document</span>
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-group row mt-5">
-                                                                <label class="col-xl-5 col-lg-6 col-form-label">Additional Information:</label>
-                                                                <div class="col-xl-7 col-lg-6">
-                                                                    <textarea class="form-control" id="additional_info" rows="6" name="additional_company_doc_info" placeholder="Additional Information..."></textarea>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    												</div>
+    											</div>
+    										</div>
+    									</div>
+    									<div class="pb-5" data-wizard-type="step-content" data-form='InformationMemorandum'>
+    										<div class="row mt-4">
+    											<div class="col-md-12">
+    												<div class="card card-custom gutter-b example example-compact">
+    													<div class="card-header">
+    														<h3 class="card-title">Submit Information Memorandum</h3>
+    													</div>
+    													<div class="card-body">
+    														<p>
+    															Kindly upload information memorandum document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+    														</p>
+    														<p>
+    															Upload a single pdf file containing the following.
+    														</p>
+															<div class="row mt-4">
+																<div class="col-md-12">
+																	<label class="checkbox mb-4">
+																		<input type="checkbox">
+																		<span></span>
+                                                                        <small>
+                                                                            Background of the transaction, including any preliminary and final studies (if available) regarding the subject of consideration.
+                                                                        </small>
+																	</label>
+																</div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Detailed information about products and all stock keeping units of Target, Acquirer and Holder specifying produced, imported or exported.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Identify specific competitor products that are considered equivalent substitute or otherwise interchangeable with products between Target, Acquirer and or Holder and other competitors
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            List of competitors
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Market Share of the Target, Acquirer and of competitors.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Turnover/revenue of Target, Acquirer, and or Holder.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Any business relationships between Target, Acquirer and or Holder currently existing.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Competition Analysis. [S.94]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Effect of the Transaction on the relevant market including, any material post transaction changes to the market position and share of emergent organization.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Structure and Organization of the Target and Acquirer
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Identify geographic market segment/areas in Nigeria where specific products of Target, Acquirer and or Holder.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Any goods or ancillary goods or service providers or suppliers that are mutual to Target, Acquirer and Holder.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Market Analysis (s 71)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Any interest in or relationship with goods or service providers or suppliers.
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+															</div>
+															<div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
     													</div>
@@ -320,118 +535,339 @@
     											</div>
     										</div>
     									</div>
-    									<div class="pb-5" data-wizard-type="step-content" data-form='AccountDocuments'>
-    										<div class="row mt-4">
-    											<div class="col-md-12">
-    												<div class="card card-custom gutter-b example example-compact">
-    													<div class="card-header">
-    														<h3 class="card-title">Submit Account Documents</h3>
-    													</div>
-    													<div class="card-body">
-    														<p>
-    															Kindly upload account document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
-    														</p>
-    														<p>
-    															Upload a single pdf file containing the following.
-    														</p>
-    														<div class="row mt-4">
-    															<div class="col-md-4">
-    																<div class="row">
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Document
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 7
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 2
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12 mb-4">
-    																		<div class="uploadButton tw-mb-4">
-    								                                       	   <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
-    								                                            <span class="btn btn--small btn--brand">Upload File</span>
-    								                                        </div>
-    																	</div>
-    																</div>
-    															</div>
-    															<div class="col-md-8">
-    																<div class="col-md-12">
-    																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
-    													</div>
-    												</div>
-    											</div>
-    										</div>
-    									</div>
-    									<div class="pb-5" data-wizard-type="step-content" data-form='PaymentDocuments'>
-    										<div class="row mt-4">
-    											<div class="col-md-12">
-    												<div class="card card-custom gutter-b example example-compact">
-    													<div class="card-header">
-    														<h3 class="card-title">Submit Payment Documents</h3>
-    													</div>
-    													<div class="card-body">
-    														<p>
-    															Kindly upload payment document. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
-    														</p>
-    														<p>
-    															Upload a single pdf file containing the following.
-    														</p>
-    														<div class="row mt-4">
-    															<div class="col-md-4">
-    																<div class="row">
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Document
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 7
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12">
-    																		<label class="checkbox mb-4">
-    																			<input type="checkbox">
-    																			<span></span>CAC Form 2
-    																		</label>
-    																	</div>
-    																	<div class="col-md-12 mb-4">
-    																		<div class="uploadButton tw-mb-4">
-    								                                       	   <input accept=".doc, .docx, .pdf" id="payment_doc" class="js-file-upload-input ember-view" type="file" name="payment_doc">
-    								                                            <span class="btn btn--small btn--brand">Upload File</span>
-    								                                        </div>
-    																	</div>
-    																</div>
-    															</div>
-    															<div class="col-md-8">
-    																<div class="col-md-12">
-    																	<div class="form-group mb-1">
-    																		<textarea class="form-control" id="additional_info" rows="6" name="additional_payment_doc_info" placeholder="Additional Information..."></textarea>
-    																	</div>
-    																</div>
-    															</div>
-    														</div>
-    													</div>
-    												</div>
-    											</div>
-    										</div>
-    									</div>
+    									<div class="pb-5" data-wizard-type="step-content" data-form='ConsentAndResolution'>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="card card-custom gutter-b example example-compact">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">Submit consent and resolution documents</h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>
+                                                                Kindly upload consent and resolution documents. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+                                                            </p>
+                                                            <p>
+                                                                Upload a single pdf file containing the following.
+                                                            </p>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Extract of Board Resolutions of the Merging Companies duly certified by a Director
+                                                                            and the Company Secretary
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Signed and notarized consent letters of Directors and Parties to the merger
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            2 Copies of draft Proxy forms for each of the merging parties
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Evidence of dispatch of Scheme documents to the shareholders of the merging undertakings
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            A copy of the letter appointing the Financial Adviser(s)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='IncorporationDocuments'>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="card card-custom gutter-b example example-compact">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">Submit incorporation documents</h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>
+                                                                Kindly upload incorporation documents. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+                                                            </p>
+                                                            <p>
+                                                                Upload a single pdf file containing the following.
+                                                            </p>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Copies of the Certificates of Incorporation of the merging entities certified by the
+                                                                            Company Secretary [S.92]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Certified True Copy (CTC) of CAC Form(s) showing Statement of Share Capital, Return of Allotment, and particulars of directors. This should bear the original stamp
+                                                                            of the CAC. [S.92]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Memorandum and Articles of Association of the merging entities duly certified by CAC
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='TransactionAgreementDocuments'>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="card card-custom gutter-b example example-compact">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">Transaction Agreement and regulatory approval/no-objection</h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>
+                                                                Kindly upload transaction agreement documents. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+                                                            </p>
+                                                            <p>
+                                                                Upload a single pdf file containing the following.
+                                                            </p>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                             2 hard copies of Scheme Document and an electronic copy
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Draft Financial Services Agreement between the merging parties and their Financial
+                                                                            Advisers
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Copy of merger implementation agreement and any other agreements executed by the
+                                                                            merging parties (where applicable)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Evidence of increase in Authorized Share Capital (where necessary)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Agreement between the Companies and their Shareholders’ Representatives(where
+                                                                            applicable)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            A letter of undertaking to file evidence of settlement of all tax liabilities
+                                                                            with the Federal Inland Revenue Services (FIRS)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            A letter of “No objection” from the Companies’ Regulator(s) (where applicable) [S.105]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='TransactionAgreementDocuments'>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="card card-custom gutter-b example example-compact">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">Financials</h3>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p>
+                                                                Kindly upload financials documents. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+                                                            </p>
+                                                            <p>
+                                                                Upload a single pdf file containing the following.
+                                                            </p>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                             Certificate of capital importation (where applicable)
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            List of claims and litigation of the merging parties
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Evidence of payment of processing fee as well as fees for proxy materials as captured
+                                                                            in the Appendix on Fees
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            The Audited Accounts of the merging entities for the preceding Three  (3 ) year. [S. 93]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox">
+                                                                        <span></span>
+                                                                        <small>
+                                                                            Evidence of payment of merger filing fee of N50, 000.00 (Fifty Thousand Naira only)
+                                                                            per merging entity. [S23 (2)(d)]
+                                                                        </small>
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12 mb-4">
+                                                                    <div class="uploadButton tw-mb-4">
+                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
     									<div class="d-flex justify-content-between border-top mt-5 pt-10">
     										<div id="upload-img" class="hide">
     											<button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...</button>
