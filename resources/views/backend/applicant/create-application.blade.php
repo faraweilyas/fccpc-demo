@@ -460,6 +460,7 @@
 @endsection
 
 @section('custom.javascript')
+    <script src="{{ pc_asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
     <script type="text/javascript">
