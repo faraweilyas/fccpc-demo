@@ -10,16 +10,28 @@ function assignCaseHandler(caseID, caseHandlerID)
         success: function(response)
         {
             var result = JSON.parse(response);
+
+            $("#unassigning-handler").removeClass('hide');
+            $("#assigning-handler").addClass('hide');
+            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
+
             if (result.responseType == "success")
             {
                 toastr.success(result.message);
+                setTimeout(
+                  function()
+                  {
+                    location.reload();
+                  }, 3500);
             } else {
                 toastr.error(result.message);
             }
         },
         error: function(xhr, desc, err)
         {
-            //
+            $("#unassigning-handler").removeClass('hide');
+            $("#assigning-handler").addClass('hide');
+            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
         }
     });
 }
@@ -157,6 +169,10 @@ $(document).ready(function()
             toastr.error("Please select a case handler!");
             return false;
         }
+
+        $("#unassigning-handler").addClass('hide');
+        $("#assigning-handler").removeClass('hide');
+        $('select[name="caseHandler"]').attr('disabled', 'disabled');
         assignCaseHandler(caseID, caseHandler);
         return;
     });
@@ -179,6 +195,7 @@ $(document).ready(function()
             toastr.error("Please select a case handler!");
             return false;
         }
+
         reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
     });
