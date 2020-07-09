@@ -18,11 +18,11 @@ function assignCaseHandler(caseID, caseHandlerID)
             if (result.responseType == "success")
             {
                 toastr.success(result.message);
-                setTimeout(
-                  function()
-                  {
-                    location.reload();
-                  }, 3500);
+                // setTimeout(
+                //   function()
+                //   {
+                //     location.reload();
+                //   }, 3500);
             } else {
                 toastr.error(result.message);
             }
@@ -46,12 +46,28 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID)
         success: function(response)
         {
             var result = JSON.parse(response);
+
+            $("#re-unassigning-handler").removeClass('hide');
+            $("#re-assigning-handler").addClass('hide');
+            $('select[name="newCaseHandler"]').removeAttr('disabled', 'disabled');
+
             if (result.responseType == "success")
             {
                 toastr.success(result.message);
+                // setTimeout(
+                //   function()
+                //   {
+                //     location.reload();
+                //   }, 3500);
             } else {
                 toastr.error(result.message);
             }
+        },
+        error: function(xhr, desc, err)
+        {
+            $("#re-unassigning-handler").removeClass('hide');
+            $("#re-assigning-handler").addClass('hide');
+            $('select[name="newCaseHandler"]').removeAttr('disabled', 'disabled');
         }
     });
 }
@@ -183,19 +199,22 @@ $(document).ready(function()
         var caseID         = $("#reassigncaseID").val(),
             newCaseHandler = $("#newCaseHandler").val();
             oldCaseHandler = $("#oldCaseHandlerID").val();
-            console.log(caseID);
+
         if (isNaN(caseID))
         {
             toastr.error("An error occured!");
             return false;
         }
 
-        if ((isNaN(newCaseHandler) || newCaseHandler <= 0) && (isNaN(oldCaseHandler) || oldCaseHandler <= 0) )
+        if ((isNaN(newCaseHandler) || newCaseHandler <= 0) && (isNaN(oldCaseHandler) || oldCaseHandler <= 0))
         {
             toastr.error("Please select a case handler!");
             return false;
         }
 
+        $("#re-unassigning-handler").addClass('hide');
+        $("#re-assigning-handler").removeClass('hide');
+        $('select[name="newCaseHandler"]').attr('disabled', 'disabled');
         reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
     });

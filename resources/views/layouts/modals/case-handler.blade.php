@@ -29,7 +29,7 @@
                         <div class="col-md-12">
                             <label>Select case handler:</label>
                             <br />
-                            <select class="form-control select2" id="caseHandler" name="caseHandler" style="width: 100%;" >
+                            <select class="form-control select2" id="caseHandler" name="caseHandler" style="width: 100%;">
                                 @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
@@ -99,7 +99,14 @@
                     <input type="hidden" id="reassigncaseID">
                     <input type="hidden" id="oldCaseHandlerID">
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
-                    <button type="submit" id="reassignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
+                    <div id="re-unassigning-handler">
+                        <button type="submit" id="reassignCaseButton" class="btn btn-light-primary font-weight-bold">Re-Assign</button>
+                    </div>
+                    <div id="re-assigning-handler" class="hide">
+                        <button class="btn btn-light-primary font-weight-bold" disabled>
+                            <i class="fas fa-spinner fa-pulse"></i>&nbsp;Re-Assigning...
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
