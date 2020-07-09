@@ -16,6 +16,10 @@ function assignCaseHandler(caseID, caseHandlerID)
             } else {
                 toastr.error(result.message);
             }
+        },
+        error: function(xhr, desc, err)
+        {
+            //
         }
     });
 }
