@@ -5,6 +5,353 @@ $(document).ready(function()
         "positionClass": "toast-bottom-right",
     };
 
+    var _wizardEl       = KTUtil.getById('kt_wizard_v2'),
+        _formEl         = KTUtil.getById('kt_form'),
+        _validations    = [];
+        _wizard         = new KTWizard(_wizardEl, {
+                            // initial active step number
+                            startStep: 1,
+                            // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
+                            clickableSteps: false
+                        });
+    // var initValidation = function () {
+    //     // Step 1
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 subject: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Subject field is required'
+    //                         }
+    //                     }
+    //                 },
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 2
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 representingFirm: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Applicant firm field is required'
+    //                         }
+    //                     }
+    //                 },
+    //                 fName: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'First name field is required'
+    //                         }
+    //                     }
+    //                 },
+    //                 lName: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Last Name field is required'
+    //                         }
+    //                     }
+    //                 },
+    //                 phone: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Phone Number field is required'
+    //                         }
+    //                     }
+    //                 },
+    //                 address: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Address field is required'
+    //                         }
+    //                     }
+    //                 },
+    //                 email: {
+    //                     validators: {
+    //                         notEmpty: {
+    //                             message: 'Email field is required'
+    //                         },
+    //                         emailAddress: {
+    //                             message: 'The value is not a valid email address'
+    //                         }
+    //                     }
+    //                 }
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 3
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             // fields: {
+    //             //  company_doc: {
+    //             //      validators: {
+    //             //          notEmpty: {
+    //             //              message: 'Company Doc is required'
+    //             //          }
+    //             //      }
+    //             //  },
+    //             // },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 4
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 // locaddress1: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Address is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // locpostcode: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Postcode is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // loccity: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'City is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // locstate: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'State is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // loccountry: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Country is required'
+    //                 //      }
+    //                 //  }
+    //                 // }
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 5
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 // ccname: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card name is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccnumber: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card number is required'
+    //                 //      },
+    //                 //      creditCard: {
+    //                 //          message: 'The credit card number is not valid'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccmonth: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card month is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccyear: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card year is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // cccvv: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card CVV is required'
+    //                 //      },
+    //                 //      digits: {
+    //                 //          message: 'The CVV value is not valid. Only numbers is allowed'
+    //                 //      }
+    //                 //  }
+    //                 // }
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 6
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 // ccname: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card name is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccnumber: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card number is required'
+    //                 //      },
+    //                 //      creditCard: {
+    //                 //          message: 'The credit card number is not valid'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccmonth: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card month is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccyear: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card year is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // cccvv: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card CVV is required'
+    //                 //      },
+    //                 //      digits: {
+    //                 //          message: 'The CVV value is not valid. Only numbers is allowed'
+    //                 //      }
+    //                 //  }
+    //                 // }
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+
+    //     // Step 7
+    //     _validations.push(FormValidation.formValidation(
+    //         _formEl,
+    //         {
+    //             fields: {
+    //                 // ccname: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card name is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccnumber: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card number is required'
+    //                 //      },
+    //                 //      creditCard: {
+    //                 //          message: 'The credit card number is not valid'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccmonth: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card month is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // ccyear: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card year is required'
+    //                 //      }
+    //                 //  }
+    //                 // },
+    //                 // cccvv: {
+    //                 //  validators: {
+    //                 //      notEmpty: {
+    //                 //          message: 'Credit card CVV is required'
+    //                 //      },
+    //                 //      digits: {
+    //                 //          message: 'The CVV value is not valid. Only numbers is allowed'
+    //                 //      }
+    //                 //  }
+    //                 // }
+    //             },
+    //             plugins: {
+    //                 trigger: new FormValidation.plugins.Trigger(),
+    //                 bootstrap: new FormValidation.plugins.Bootstrap()
+    //             }
+    //         }
+    //     ));
+    // }
+
+    _wizard.on('beforeNext', function (wizard)
+    {
+        // Validation before going to next page
+        // _validations[wizard.getStep() - 1].validate().then(function (status) {
+        //     if (status == 'Valid') {
+        //         _wizard.goNext();
+        //         KTUtil.scrollTop();
+        //     } else {
+        //         swal.fire({
+        //             text: "Sorry, looks like there are some errors detected, please try again.",
+        //             icon: "error",
+        //             buttonsStyling: false,
+        //             confirmButtonText: "Ok, got it!",
+        //             confirmButtonClass: "btn font-weight-bold btn-light"
+        //         }).then(function () {
+        //             KTUtil.scrollTop();
+        //         });
+        //     }
+        // });
+
+        _wizard.stop();  // Don't go to the next step
+    });
+
+    // Change event
+    _wizard.on('change', function (wizard) {
+        KTUtil.scrollTop();
+    });
+
     $("#save-info").on('click', function(event)
     {
         event.preventDefault();
@@ -16,6 +363,8 @@ $(document).ready(function()
             sendForm    = 'save'+currentForm.attr('data-form');
 
         window[sendForm](sendForm);
+        _wizard.goNext();
+        KTUtil.scrollTop();
         return;
     });
 
@@ -165,11 +514,11 @@ function saveContactInfo(action)
     return;
 }
 
-function saveCompanyDocuments(action)
+function saveletterOfIntent(action)
 {
     var tracking_id = $("#tracking_id").val(),
         formData    = new FormData(),
-        files       = $('#company_doc')[0].files[0];
+        files       = $('#loi_doc')[0].files[0];
 
     formData.append('_token', $("#token").val());
     formData.append('document', '');
@@ -191,11 +540,11 @@ function saveCompanyDocuments(action)
     return;
 }
 
-function saveAccountDocuments(action)
+function saveInformationMemorandum(action)
 {
     var tracking_id = $("#tracking_id").val(),
         formData    = new FormData(),
-        files       = $('#company_doc')[0].files[0];
+        files       = $('#im_doc')[0].files[0];
 
     formData.append('_token', $("#token").val());
     formData.append('document', '');
@@ -217,11 +566,89 @@ function saveAccountDocuments(action)
     return;
 }
 
-function savePaymentDocuments(action)
+function saveConsentAndResolution(action)
 {
     var tracking_id = $("#tracking_id").val(),
         formData    = new FormData(),
-        files       = $('#company_doc')[0].files[0];
+        files       = $('#car_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+    formData.append('group', 'PAY');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
+}
+
+function saveIncorporationDocuments(action)
+{
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#incorporation_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+    formData.append('group', 'COM');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
+}
+
+function saveTransactionAgreementDocuments(action)
+{
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#ta_doc')[0].files[0];
+
+    formData.append('_token', $("#token").val());
+    formData.append('document', '');
+    formData.append('file', files);
+    formData.append('additional_info', '');
+    formData.append('group', 'ACC');
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            notify(result.responseType, result.message);
+        }
+    );
+    return;
+}
+
+function saveFinancialDocuments(action)
+{
+    var tracking_id = $("#tracking_id").val(),
+        formData    = new FormData(),
+        files       = $('#financial_doc')[0].files[0];
 
     formData.append('_token', $("#token").val());
     formData.append('document', '');
