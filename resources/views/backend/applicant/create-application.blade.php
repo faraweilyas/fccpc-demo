@@ -356,14 +356,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="loi_additional_info" rows="6" name="loi_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="loi_doc" class="js-file-upload-input ember-view" type="file" name="loi_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -518,14 +518,14 @@
 															<div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="im_additional_info" rows="6" name="im_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12 mb-4">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="im_doc" class="js-file-upload-input ember-view" type="file" name="im_doc" />
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -600,14 +600,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="car_additional_info" rows="6" name="car_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12 mb-4">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="car_doc" class="js-file-upload-input ember-view" type="file" name="car_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -665,14 +665,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="incorporation_additional_info" rows="6" name="incorporation_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12 mb-4">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="incorporation_doc" class="js-file-upload-input ember-view" type="file" name="incorporation_doc" />
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -768,14 +768,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="ta_additional_info" rows="6" name="ta_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12 mb-4">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="ta_doc" class="js-file-upload-input ember-view" type="file" name="ta_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -785,7 +785,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="pb-5" data-wizard-type="step-content" data-form='TransactionAgreementDocuments'>
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='FinancialDocuments'>
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
                                                     <div class="card card-custom gutter-b example example-compact">
@@ -851,14 +851,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="additional_account_doc_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="financial_additional_info" rows="6" name="financial_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12 mb-4">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="account_doc" class="js-file-upload-input ember-view" type="file" name="account_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="financial_doc" class="js-file-upload-input ember-view" type="file" name="financial_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
@@ -896,7 +896,6 @@
 @endsection
 
 @section('custom.javascript')
-    <script src="{{ pc_asset(BE_JS.'pages/custom/wizard/wizard-2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
     <script type="text/javascript">
