@@ -11,12 +11,15 @@ use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
-    protected $methods          = [
-        'saveCaseInfo'          => 'saveCaseInfo',
-        'saveContactInfo'       => 'saveContactInfo',
-        'saveCompanyDocuments'  => 'saveDocument',
-        'saveAccountDocuments'  => 'saveDocument',
-        'savePaymentDocuments'  => 'saveDocument',
+    protected $methods                      = [
+        'saveCaseInfo'                      => 'saveCaseInfo',
+        'saveContactInfo'                   => 'saveContactInfo',
+        'saveletterOfIntent'                => 'saveDocument',
+        'saveInformationMemorandum'         => 'saveDocument',
+        'saveConsentAndResolution'          => 'saveDocument',
+        'saveIncorporationDocuments'        => 'saveDocument',
+        'saveTransactionAgreementDocuments' => 'saveDocument',
+        'saveFinancialDocuments'            => 'saveDocument',
     ];
 
 	/**
