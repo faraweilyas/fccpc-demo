@@ -44,6 +44,7 @@
                     </div>
                     <div class="card-body">
                         <div class="tab-content">
+
                             {{-- Case --}}
                             <div class="tab-pane fade show active" id="case_tab" role="tabpanel">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
@@ -77,6 +78,7 @@
                                     <span id="subject">...</span>
                                 </div>
                             </div>
+
                             {{-- Applicant --}}
                             <div class="tab-pane fade" id="applicant_tab" role="tabpanel">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
