@@ -31,7 +31,7 @@ class AppHelper
         "DG"  => "Director General",
         "SP"  => "Supervisor",
         "CH"  => "Case Handler",
-        "RG"  => "Registrar",
+        "DE"  => "Data Entry",
         "AP"  => "Applicant",
     ];
 
@@ -42,8 +42,8 @@ class AppHelper
         "DG"  => "info",
         "SP"  => "info",
         "CH"  => "info",
-        "RG"  => "info",
-        "GT"  => "info",
+        "DE"  => "info",
+        "AP"  => "info",
     ];
 
     protected $status = [
