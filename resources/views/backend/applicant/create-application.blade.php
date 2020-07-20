@@ -53,7 +53,7 @@
     										</span>
     									</div>
     									<div class="wizard-label">
-    										<h3 class="wizard-title">Applicant Case Information</h3>
+    										<h3 class="wizard-title">Case Information</h3>
     										<div class="wizard-desc">Provide your case details</div>
     									</div>
     								</div>
