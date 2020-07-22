@@ -43,6 +43,9 @@
                     <div id="unassigning-handler">
                         <button type="submit" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
                     </div>
+                    <div id="unassign-handler-btn" class="hide">
+                        <button type="submit" id="unAssignCaseButton" class="btn btn-light-danger font-weight-bold">Unassign</button>
+                    </div>
                     <div id="assigning-handler" class="hide">
                         <button class="btn btn-light-primary font-weight-bold" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
                     </div>

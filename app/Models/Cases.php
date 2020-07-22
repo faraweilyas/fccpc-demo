@@ -140,4 +140,19 @@ class Cases extends Model
         return "";
         return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";
     }
+
+    public function getTotalCases() : int
+    {
+        return (int) $this->submittedCases()->count();
+    }
+
+    public function getTotalUnAssignedCases() : int
+    {
+        return (int) $this->unassignedCases()->count();
+    }
+
+     public function getTotalAssignedCases() : int
+    {
+        return (int) $this->assignedCases()->count();
+    }
 }

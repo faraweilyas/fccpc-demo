@@ -10,9 +10,9 @@ function assignCaseHandler(caseID, caseHandlerID)
         success: function(response)
         {
             var result = JSON.parse(response);
-
-            $("#unassigning-handler").removeClass('hide');
+            console.log(result);
             $("#assigning-handler").addClass('hide');
+            $("#unassign-handler-btn").removeClass('hide');
             $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
 
             if (result.responseType == "success")

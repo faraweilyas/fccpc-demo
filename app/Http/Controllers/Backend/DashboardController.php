@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Auth;
 use App\Models\User;
+use App\Models\Cases;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -27,10 +28,11 @@ class DashboardController extends Controller
 	 */
     public function index()
     {
+        $cases            = new Cases();
     	$title            = APP_NAME;
         $description      = "FCCPC Dashboard";
     	$details          = details($title, $description);
-    	return view('backend.admin.index', compact('details'));
+    	return view('backend.admin.index', compact('details', 'cases'));
     }
 
     /**
