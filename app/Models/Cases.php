@@ -134,10 +134,4 @@ class Cases extends Model
     {
         return \AppHelper::value('case_status_html', $this->status ?? 1, $textStyle);
     }
-
-    public function getCaseHandlerName() : string
-    {
-        return "";
-        return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";
-    }
 }
