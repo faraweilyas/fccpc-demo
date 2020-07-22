@@ -106,8 +106,11 @@ class CasesController extends Controller
     public function assignCase(Cases $case, User $user)
     {
         abort_if(!auth()->user(), 404);
-        $result = $case->assign($user);
-        $this->sendResponse("Case assigned.", "success", ['data' => $result]);
+        $case->assign($user);
+        $this->sendResponse("Case assigned.", "success", [
+            'case'      => $case,
+            'handler'   => $user
+        ]);
     }
 
     /**
