@@ -33,7 +33,7 @@
     								</svg>
     							</span>
     							<span class="float-right">
-    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->getTotalCases() }}</div>
+    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->submittedCases()->count() }}</div>
     							</span>
     							<div class="mt-14">
     								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">All Cases</a>
@@ -54,7 +54,7 @@
     								</svg>
     							</span>
     							<span class="float-right">
-    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->getTotalUnAssignedCases() }}</div>
+    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->unassignedCases()->count() }}</div>
     							</span>
     							<div class="mt-14">
     								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Unassigned Cases</a>
@@ -76,7 +76,7 @@
     								</svg>
     							</span>
     							<span class="float-right">
-    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->getTotalAssignedCases() }}</div>
+    								<div class="text-inverse-success font-weight-bolder font-size-h2 mt-3">{{ $cases->assignedCases()->count() }}</div>
     							</span>
     							<div class="mt-14">
     								<a href="#" class="text-inverse-success font-weight-bold font-size-lg mt-1">Assigned Cases</a>
