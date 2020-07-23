@@ -122,7 +122,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $result = $case->disolve($user);
-        $this->sendResponse("Case unassigned.", "error", [$case, $user]);
+        $this->sendResponse("Case unassigned.", "error");
     }
 
     /**
