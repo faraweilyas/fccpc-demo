@@ -40,15 +40,9 @@
                 <div class="modal-footer">
                     <input type="hidden" id="caseID">
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
-                    <div id="unassigning-handler">
-                        <button type="submit" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
-                    </div>
-                    <div id="unassign-handler-btn" class="hide">
-                        <button type="submit" id="unAssignCaseButton" class="btn btn-light-danger font-weight-bold">Unassign</button>
-                    </div>
-                    <div id="assigning-handler" class="hide">
-                        <button class="btn btn-light-primary font-weight-bold" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
-                    </div>
+                    <button type="button" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
+                    <button type="button" id="unassignCaseButton" class="btn btn-light-danger font-weight-bold hide">Unassign</button>
+                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
                 </div>
             </form>
         </div>
