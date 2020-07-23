@@ -9,13 +9,16 @@ function assignCaseHandler(caseID, caseHandlerID)
         data: {_token: CSRF_TOKEN},
         success: function(response)
         {
-            var result = JSON.parse(response);
-            console.log(result);
+            var result  = JSON.parse(response);
+            var caseId  = result.response.case.id;
+            var handler = result.response.handler.id;
+
             $("#assigning-handler").addClass('hide');
             $("#unassign-handler-btn").removeClass('hide');
             $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
-            $("#assign"+result.response.case.id).addClass('hide');
-            $("#unassign"+result.response.case.id).removeClass('hide');
+            $("#assign"+caseId).addClass('hide');
+            $("#unassign"+caseId).removeClass('hide');
+            $("#unassign"+caseId).attr('data-assigned-handler-id', handler);
 
             if (result.responseType == "success")
             {
@@ -34,6 +37,31 @@ function assignCaseHandler(caseID, caseHandlerID)
             $("#unassigning-handler").removeClass('hide');
             $("#assigning-handler").addClass('hide');
             $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
+        }
+    });
+}
+
+function unassignCaseHandler(caseID, caseHandlerID)
+{
+    $.ajax
+    ({
+        url: "/cases/unassign/"+caseID+"/"+caseHandlerID,
+        type: "post",
+        data: {_token: CSRF_TOKEN},
+        success: function(response)
+        {
+            var result = JSON.parse(response);
+            console.log(result);
+            if (result.responseType == "success")
+            {
+                toastr.success(result.message);
+            } else {
+                toastr.error(result.message);
+            }
+        },
+        error: function(xhr, desc, err)
+        {
+            
         }
     });
 }
@@ -192,6 +220,29 @@ $(document).ready(function()
         $("#assigning-handler").removeClass('hide');
         $('select[name="caseHandler"]').attr('disabled', 'disabled');
         assignCaseHandler(caseID, caseHandler);
+        return;
+    });
+
+    $(".unassignCaseButton").on("click", function(event)
+    {
+        event.preventDefault();
+
+        var caseID      = $(this).attr('data-case-id'),
+            caseHandler = $(this).attr('data-assigned-handler-id');
+
+        if (isNaN(caseID))
+        {
+            toastr.error("An error occured!");
+            return false;
+        }
+
+        if (isNaN(caseHandler) || caseHandler <= 0)
+        {
+            toastr.error("Please select a case handler!");
+            return false;
+        }
+
+        unassignCaseHandler(caseID, caseHandler);
         return;
     });
 

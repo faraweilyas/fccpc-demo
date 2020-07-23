@@ -91,7 +91,7 @@
                                             <a 
                                                 id="unassign{{ $case->id }}"
                                                 href="#"
-                                                class="btn btn-sm btn-light-danger mr-3 hide"
+                                                class="btn btn-sm btn-light-danger mr-3 unassignCaseButton hide" data-case-id="{{ $case->id }}"
                                                 title="Unassign Case Handler"
                                             >
                                                 <i class="la la-trash"></i> Unassign

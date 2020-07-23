@@ -111,6 +111,18 @@ class CasesController extends Controller
             'case'      => $case,
             'handler'   => $user
         ]);
+    } 
+
+    /**
+     * Handles the case unassign page route.
+     *
+     * @return void
+     */
+    public function unassignCase(Cases $case, User $user)
+    {
+        abort_if(!auth()->user(), 404);
+        $result = $case->disolve($user);
+        $this->sendResponse("Case unassigned.", "error", [$case, $user]);
     }
 
     /**
