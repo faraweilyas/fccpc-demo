@@ -14,6 +14,8 @@ function assignCaseHandler(caseID, caseHandlerID)
             $("#assigning-handler").addClass('hide');
             $("#unassign-handler-btn").removeClass('hide');
             $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
+            $("#assign"+result.response.case.id).addClass('hide');
+            $("#unassign"+result.response.case.id).removeClass('hide');
 
             if (result.responseType == "success")
             {

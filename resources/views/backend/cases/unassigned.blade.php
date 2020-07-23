@@ -79,6 +79,7 @@
                                                 <i class="flaticon-eye"></i> View
                                             </a>
                                             <a
+                                                id="assign{{ $case->id }}"
                                                 href="#"
                                                 class="btn btn-sm btn-light-info mr-3"
                                                 title="Assign Case Handler"
@@ -86,6 +87,14 @@
                                                 data-target="#assignCaseModal"
                                             >
                                                 <i class="flaticon-user-add"></i> Assign
+                                            </a>
+                                            <a 
+                                                id="unassign{{ $case->id }}"
+                                                href="#"
+                                                class="btn btn-sm btn-light-danger mr-3 hide"
+                                                title="Unassign Case Handler"
+                                            >
+                                                <i class="la la-trash"></i> Unassign
                                             </a>
                                             <div class="hide">
                                                 {{-- Case --}}
