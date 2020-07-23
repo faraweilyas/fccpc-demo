@@ -12,7 +12,6 @@ function assignCaseHandler(caseID, caseHandlerID)
             var result  = JSON.parse(response);
             $(".assigningCaseButton"+caseID).addClass('hide');
             $(".unassignCaseButton"+caseID).removeClass('hide');
-            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
             $(".assignCaseButton"+caseID).addClass('hide');
             $(".unassignCaseButton"+caseID).attr('data-assigned-handler-id', caseHandlerID);
             $(".assigned_handler_id").html(caseHandlerID);
@@ -20,11 +19,6 @@ function assignCaseHandler(caseID, caseHandlerID)
             if (result.responseType == "success")
             {
                 toastr.success(result.message);
-                // setTimeout(
-                //   function()
-                //   {
-                //     location.reload();
-                //   }, 3500);
             } else {
                 toastr.error(result.message);
             }
@@ -52,6 +46,7 @@ function unassignCaseHandler(caseID, caseHandlerID)
             $(".assignCaseButton"+caseID).removeClass('hide');
             $(".unassignCaseButton"+caseID).addClass('hide');
             $(".unassignCaseButton"+caseID).addClass('hide');
+            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
 
             if (result.responseType == "success")
             {
