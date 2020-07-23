@@ -45,7 +45,7 @@ function unassignCaseHandler(caseID, caseHandlerID)
             
             $(".assignCaseButton"+caseID).removeClass('hide');
             $(".unassignCaseButton"+caseID).addClass('hide');
-            $(".unassignCaseButton"+caseID).addClass('hide');
+            $(".unassigningCaseButton"+caseID).addClass('hide');
             $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
 
             if (result.responseType == "success")
@@ -57,8 +57,8 @@ function unassignCaseHandler(caseID, caseHandlerID)
         },
         error: function(xhr, desc, err)
         {
-            $(".assignCaseButton"+caseID).removeClass('hide');
-            $(".unassignCaseButton"+caseID).removeClass('hide');
+            $(".assignCaseButton"+caseID).addClass('hide');
+            $(".unassigningCaseButton"+caseID).removeClass('hide');
             $(".unassignCaseButton"+caseID).addClass('hide');
         }
     });
@@ -159,21 +159,23 @@ $(document).ready(function()
 
     $('#assignCaseModal').on('shown.bs.modal', function(event)
     {
-        var assignButton        = $(event.relatedTarget);
-            caseContainer       = assignButton.parent('td').parent('tr'),
-            thisModal           = $(this),
-            caseID              = thisModal.find('#caseID'),
-            assignCaseButton    = thisModal.find('#assignCaseButton'),
-            unassignCaseButton  = thisModal.find('#unassignCaseButton'),
-            assigningCaseButton = thisModal.find('#assigningCaseButton'),
-            refrenceNo          = thisModal.find('#refrenceNo'),
-            subject             = thisModal.find('#subject'),
-            submittedAt         = thisModal.find('#submittedAt');
+        var assignButton          = $(event.relatedTarget);
+            caseContainer         = assignButton.parent('td').parent('tr'),
+            thisModal             = $(this),
+            caseID                = thisModal.find('#caseID'),
+            assignCaseButton      = thisModal.find('#assignCaseButton'),
+            unassignCaseButton    = thisModal.find('#unassignCaseButton'),
+            assigningCaseButton   = thisModal.find('#assigningCaseButton'),
+            unassigningCaseButton = thisModal.find('#unassigningCaseButton'),
+            refrenceNo            = thisModal.find('#refrenceNo'),
+            subject               = thisModal.find('#subject'),
+            submittedAt           = thisModal.find('#submittedAt');
 
         caseID.val(caseContainer.find('.case_id').html());
         assignCaseButton.addClass("assignCaseButton"+caseContainer.find('.case_id').html());
         unassignCaseButton.addClass("unassignCaseButton"+caseContainer.find('.case_id').html());
         assigningCaseButton.addClass("assigningCaseButton"+caseContainer.find('.case_id').html());
+        unassigningCaseButton.addClass("unassigningCaseButton"+caseContainer.find('.case_id').html());
         unassignCaseButton.attr("data-case-id", caseContainer.find('.case_id').html());
         unassignCaseButton.attr("data-assigned-handler-id", caseContainer.find('.assigned_handler_id').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());
@@ -255,7 +257,7 @@ $(document).ready(function()
 
         $(".assignCaseButton"+caseID).addClass('hide');
         $(".unassignCaseButton"+caseID).addClass('hide');
-        $(".unassignCaseButton"+caseID).removeClass('hide');
+        $(".unassigningCaseButton"+caseID).removeClass('hide');
         unassignCaseHandler(caseID, caseHandler);
         return;
     });
@@ -281,7 +283,7 @@ $(document).ready(function()
 
         $(".assignCaseButton"+caseID).addClass('hide');
         $(".unassignCaseButton"+caseID).addClass('hide');
-        $(".unassignCaseButton"+caseID).removeClass('hide');
+        $(".unassigningCaseButton"+caseID).removeClass('hide');
         unassignCaseHandler(caseID, caseHandler);
         return;
     });

@@ -42,7 +42,8 @@
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                     <button type="button" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
                     <button type="button" id="unassignCaseButton" class="btn btn-light-danger font-weight-bold hide">Unassign</button>
-                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
+                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button> 
+                    <button id="unassigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Unassigning...</button>
                 </div>
             </form>
         </div>
