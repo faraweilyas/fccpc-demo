@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChecklistDocumentsTable extends Migration
+class CreateChecklistDocumentTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateChecklistDocumentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('checklist_documents', function (Blueprint $table) {
+        Schema::create('checklist_document', function (Blueprint $table) {
             $table->id();
             $table->foreignId('document_id');
             $table->foreignId('checklist_id');

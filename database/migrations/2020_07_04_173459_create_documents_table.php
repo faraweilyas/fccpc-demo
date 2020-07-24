@@ -17,27 +17,13 @@ class CreateDocumentsTable extends Migration
         {
             $table->id();
             $table->foreignId('case_id');
-            $table->foreignId('checklist_group_id');
-            $table->foreignId('checklist_id');
             $table->string('file');
             $table->text('additional_info')->nullable();
             $table->timestamps();
 
-            $table->unique(['case_id', 'checklist_group_id', 'checklist_id']);
-
             $table->foreign('case_id')
                 ->references('id')
                 ->on('cases')
-                ->onDelete('cascade');
-
-            $table->foreign('checklist_group_id')
-                ->references('id')
-                ->on('checklist_groups')
-                ->onDelete('cascade');
-
-            $table->foreign('checklist_id')
-                ->references('id')
-                ->on('checklists')
                 ->onDelete('cascade');
         });
     }
