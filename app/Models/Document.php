@@ -13,8 +13,10 @@ class Document extends Model
         return $this->hasOne(Cases::class, 'id');
     }
 
-    public function checklistDocuments()
+    public function checklists()
     {
-        return $this->hasMany(ChecklistDocument::class, 'document_id');
+        return $this->belongsToMany(Checklist::class, 'checklist_document', 'document_id', 'checklist_id')
+            ->as('checklist_document')
+            ->withTimestamps();
     }
 }
