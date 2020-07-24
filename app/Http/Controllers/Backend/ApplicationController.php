@@ -141,15 +141,13 @@ class ApplicationController extends Controller
         $extension      = $file->getClientOriginalExtension();
         $newFileName    = \SerialNumber::randomFileName($extension);
         $path           = $file->storeAs('public/documents', $newFileName);
-        $file           = Document::create([
+        $document       = Document::create([
             'case_id'           => $guest->case->id,
-            'group'             => request('group'),
-            'document_name'     => trim(request('document_name')),
             'file'              => $newFileName,
             'additional_info'   => trim(request('additional_info')),
         ]);
 
-        $this->sendResponse("Document saved.", "success", $file);
+        $this->sendResponse("Document saved.", "success", $document);
     }
 
     /**
