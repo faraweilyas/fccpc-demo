@@ -147,7 +147,10 @@ class ApplicationController extends Controller
             'additional_info'   => trim(request('additional_info')),
         ]);
 
-        $this->sendResponse("Document saved.", "success", $document);
+        // $checklistIds;
+        // $document->checklists()->syncWithoutDetaching([$checklistIds]);
+
+        $this->sendResponse("Document has been saved.", "success", $document);
     }
 
     /**
