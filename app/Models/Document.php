@@ -12,4 +12,9 @@ class Document extends Model
     {
         return $this->hasOne(Cases::class, 'id');
     }
+
+    public function checklistDocuments()
+    {
+        return $this->hasMany(ChecklistDocument::class, 'document_id');
+    }
 }
