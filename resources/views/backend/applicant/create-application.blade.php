@@ -227,6 +227,9 @@
                                             </div>
                                         </div>
                                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
+                                        @php
+                                            $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                                        @endphp
                                         <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
@@ -243,13 +246,14 @@
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
+                                                                @php
+                                                                    $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
+                                                                @endphp
                                                                 <div class="col-md-12">
                                                                     <label class="checkbox mb-4">
-                                                                        <input type="checkbox" id="checklist_id" value="{{ $checklist->id }}">
+                                                                        <input type="checkbox" value="{{ $checklist->id }}" {{ $checked }} id="checklist_id" />
                                                                         <span></span>
-                                                                        <small>
-                                                                            {{ ucfirst($checklist->name) }}
-                                                                        </small>
+                                                                        <small>{{ ucfirst($checklist->name) }}</small>
                                                                     </label>
                                                                 </div>
                                                                 @endforeach
@@ -257,7 +261,7 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
