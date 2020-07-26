@@ -227,7 +227,7 @@
                                             </div>
                                         </div>
                                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                                        <div class="pb-5" data-wizard-type="step-content" data-form='{{ Str::camel($checklistGroup->label) }}'>
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
                                             <div class="row mt-4">
                                                 <div class="col-md-12">
                                                     <div class="card card-custom gutter-b example example-compact">
@@ -245,7 +245,7 @@
                                                                 @foreach($checklistGroup->checklists as $checklist)
                                                                 <div class="col-md-12">
                                                                     <label class="checkbox mb-4">
-                                                                        <input type="checkbox" value="{{ $checklist->id }}">
+                                                                        <input type="checkbox" id="checklist_id" value="{{ $checklist->id }}">
                                                                         <span></span>
                                                                         <small>
                                                                             {{ ucfirst($checklist->name) }}
@@ -257,14 +257,14 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="form-group mb-1">
-                                                                        <textarea class="form-control" id="{{ Str::camel($checklistGroup->label) }}_additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information..."></textarea>
+                                                                        <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information..."></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="loi_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
+                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>

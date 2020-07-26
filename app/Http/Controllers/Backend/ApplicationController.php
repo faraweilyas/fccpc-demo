@@ -14,12 +14,7 @@ class ApplicationController extends Controller
     protected $methods                      = [
         'saveCaseInfo'                      => 'saveCaseInfo',
         'saveContactInfo'                   => 'saveContactInfo',
-        'saveletterOfIntent'                => 'saveDocument',
-        'saveInformationMemorandum'         => 'saveDocument',
-        'saveConsentAndResolution'          => 'saveDocument',
-        'saveIncorporationDocuments'        => 'saveDocument',
-        'saveTransactionAgreementDocuments' => 'saveDocument',
-        'saveFinancialDocuments'            => 'saveDocument',
+        'saveChecklistDocument'             => 'saveDocument',
     ];
 
 	/**
@@ -147,8 +142,8 @@ class ApplicationController extends Controller
             'additional_info'   => trim(request('additional_info')),
         ]);
 
-        // $checklistIds;
-        // $document->checklists()->syncWithoutDetaching([$checklistIds]);
+        $checklistIds = request('checklists');
+        $document->checklists()->syncWithoutDetaching([$checklistIds]);
 
         $this->sendResponse("Document has been saved.", "success", $document);
     }

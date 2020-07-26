@@ -362,7 +362,7 @@ $(document).ready(function()
                         }),
             sendForm    = 'save'+currentForm.attr('data-form');
 
-        window[sendForm](sendForm);
+        window[sendForm](sendForm, currentForm);
         _wizard.goNext();
         KTUtil.scrollTop();
         return;
@@ -474,7 +474,7 @@ function sendRequest(
     return;
 }
 
-function saveCaseInfo(action)
+function saveCaseInfo(action, currentForm)
 {
     var tracking_id = $("#tracking_id").val(),
         case_type   = $("input[name='case_type']:checked").val();
@@ -495,7 +495,7 @@ function saveCaseInfo(action)
     return;
 }
 
-function saveContactInfo(action)
+function saveContactInfo(action, currentForm)
 {
     var tracking_id = $("#tracking_id").val();
 
@@ -514,147 +514,22 @@ function saveContactInfo(action)
     return;
 }
 
-function saveletterOfIntent(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#loi_doc')[0].files[0];
+function saveChecklistDocument(action, currentForm)
+{   
+    var tracking_id     = $("#tracking_id").val(),
+        formData        = new FormData(),
+        checklists      = [],
+        additional_info = $(currentForm).parent().find('#additional_info').val();
+        file        = $(currentForm).parent().find('#checklist_doc')[0].files[0];
+
+    $(currentForm).parent().find(':checkbox:checked').each(function(i){                         
+       checklists[i] = $(this).val();  
+    });
 
     formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'COM');
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-        }
-    );
-    return;
-}
-
-function saveInformationMemorandum(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#im_doc')[0].files[0];
-
-    formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'ACC');
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-        }
-    );
-    return;
-}
-
-function saveConsentAndResolution(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#car_doc')[0].files[0];
-
-    formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'PAY');
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-        }
-    );
-    return;
-}
-
-function saveIncorporationDocuments(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#incorporation_doc')[0].files[0];
-
-    formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'COM');
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-        }
-    );
-    return;
-}
-
-function saveTransactionAgreementDocuments(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#ta_doc')[0].files[0];
-
-    formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'ACC');
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-        }
-    );
-    return;
-}
-
-function saveFinancialDocuments(action)
-{
-    var tracking_id = $("#tracking_id").val(),
-        formData    = new FormData(),
-        files       = $('#financial_doc')[0].files[0];
-
-    formData.append('_token', $("#token").val());
-    formData.append('document', '');
-    formData.append('file', files);
-    formData.append('additional_info', '');
-    formData.append('group', 'PAY');
+    formData.append('file', file);
+    formData.append('additional_info', additional_info);
+    formData.append('checklists', checklists);
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
