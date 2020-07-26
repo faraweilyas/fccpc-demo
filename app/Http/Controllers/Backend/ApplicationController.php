@@ -58,10 +58,26 @@ class ApplicationController extends Controller
 
         $case_category  = $case->getCategory();
         $case_parties   = $case->getCaseParties(false);
+
+        $checklistIds               = [];
+        $checklistGroupDocuments    = [];
+        $case->documents->map(function($document) use (&$checklistIds, &$checklistGroupDocuments)
+        {
+            $checklistIds[] = $document->checklists->pluck('id');
+
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupDocuments)
+            {
+                $checklistGroupDocuments[$checklist->group->id] = $document;
+            });
+        });
+
+        $checklistIds   = collect($checklistIds)->flatten()->toArray();
         $title          = "{$case_category} Application | ".APP_NAME;
         $description    = "{$case_category} Application | ".APP_NAME;
         $details        = details($title, $description);
-        return view('backend.applicant.create-application', compact('details', 'guest', 'case', 'case_category', 'case_parties'));
+        return view('backend.applicant.create-application', compact(
+            'details', 'guest', 'case', 'case_category', 'case_parties', 'checklistIds', 'checklistGroupDocuments'
+        ));
     }
 
     /**
