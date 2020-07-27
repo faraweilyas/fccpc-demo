@@ -515,15 +515,16 @@ function saveContactInfo(action, currentForm)
 }
 
 function saveChecklistDocument(action, currentForm)
-{   
+{
     var tracking_id     = $("#tracking_id").val(),
         formData        = new FormData(),
         checklists      = [],
-        additional_info = $(currentForm).parent().find('#additional_info').val();
-        file        = $(currentForm).parent().find('#checklist_doc')[0].files[0];
+        additional_info = $(currentForm).find('#additional_info').val(),
+        file            = $(currentForm).find('#checklist_doc')[0].files[0];
 
-    $(currentForm).parent().find(':checkbox:checked').each(function(i){                         
-       checklists[i] = $(this).val();  
+    $(currentForm).find(':checkbox:checked').each(function(i)
+    {
+       checklists[i] = $(this).val();
     });
 
     formData.append('_token', $("#token").val());
