@@ -14,7 +14,7 @@ class ApplicationController extends Controller
     protected $methods                      = [
         'saveCaseInfo'                      => 'saveCaseInfo',
         'saveContactInfo'                   => 'saveContactInfo',
-        'saveChecklistDocument'             => 'saveDocument',
+        'saveChecklistDocument'             => 'saveChecklistDocument',
     ];
 
 	/**
@@ -127,7 +127,7 @@ class ApplicationController extends Controller
         $this->sendResponse("Contact info saved.", "success", $guest->case);
     }
 
-    public function saveDocument(Guest $guest)
+    public function saveChecklistDocument(Guest $guest)
     {
         if (!request()->hasFile('file'))
             $this->sendResponse("No file has been uploaded.", "error", []);
@@ -142,9 +142,9 @@ class ApplicationController extends Controller
             'additional_info'   => trim(request('additional_info')),
         ]);
 
-        $checklistIds = request('checklists');
-        $document->checklists()->syncWithoutDetaching([$checklistIds]);
-
+        $checklistIds           = request('checklists');
+        $arrayOfchecklistIds    = (array) explode(',', $checklistIds);
+        $document->checklists()->syncWithoutDetaching($arrayOfchecklistIds);
         $this->sendResponse("Document has been saved.", "success", $document);
     }
 
