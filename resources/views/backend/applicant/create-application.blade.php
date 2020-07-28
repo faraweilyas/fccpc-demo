@@ -280,6 +280,9 @@
                                                                     </span>
                                                                 </div>
                                                                 @endif
+                                                                <input type="hidden" id="uploaded_doc" value="{{ !empty($document) ? $document->file : '' }}">
+                                                                <input type="hidden" id="checklist_doc_name" value="{{ strtolower($checklist->name) }}">
+                                                                <input type="hidden" id="doc_id" value="{{ !empty($document) ? $document->id : '' }}">
                                                             </div>
                                                         </div>
                                                     </div>

@@ -141,11 +141,23 @@ class ApplicationController extends Controller
         $extension      = $file->getClientOriginalExtension();
         $newFileName    = \SerialNumber::randomFileName($extension);
         $path           = $file->storeAs('public/documents', $newFileName);
-        $document       = Document::create([
-            'case_id'           => $guest->case->id,
-            'file'              => $newFileName,
-            'additional_info'   => trim(request('additional_info')),
-        ]);
+        if (request('override')) {
+            $previous_document = Document::find(request('document_id'));
+            unlink(storage_path('app/public/documents/'.$previous_document->file));
+            Document::destroy($previous_document->id);
+            $document       = Document::create([
+                'case_id'           => $guest->case->id,
+                'file'              => $newFileName,
+                'additional_info'   => trim(request('additional_info')),
+            ]);
+        } else {
+            $document       = Document::create([
+                'case_id'           => $guest->case->id,
+                'file'              => $newFileName,
+                'additional_info'   => trim(request('additional_info')),
+            ]);
+        }
+        
 
         $checklistIds           = request('checklists');
         $arrayOfchecklistIds    = (array) explode(',', $checklistIds);
