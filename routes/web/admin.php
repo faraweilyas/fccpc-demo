@@ -239,6 +239,12 @@ Route::prefix('cases')
         )
         ->name('checklists');
 
+        Route::get(
+            'documents/{case}',
+            'CasesController@caseDocuments'
+        )
+        ->name('documents');
+
         Route::post(
             'unassign/{case}/{user}',
             'CasesController@unassignCase'

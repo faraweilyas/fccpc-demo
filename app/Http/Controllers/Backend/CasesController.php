@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
 use App\Models\Cases;
-use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -122,7 +121,7 @@ class CasesController extends Controller
     } 
 
     /**
-     * Handles the case case checklists page route.
+     * Handles the case checklists page route.
      *
      * @return void
      */
@@ -134,6 +133,22 @@ class CasesController extends Controller
         $this->sendResponse("Case checklists received.", "success", [
             'checklists'   => $checklists,
         ]);
+    } 
+
+    /**
+     * Handles the case documents page route.
+     *
+     * @return void
+     */
+    public function caseDocuments(Cases $case)
+    {
+        $documents = $case->getChecklistGroupDocuments();
+        dd($documents);
+        // abort_if(!auth()->user(), 404);
+
+        // $this->sendResponse("Case documents received.", "success", [
+        //     'documents'   => $checklists,
+        // ]);
     } 
 
     /**
