@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
-    protected $methods                      = [
-        'saveCaseInfo'                      => 'saveCaseInfo',
-        'saveContactInfo'                   => 'saveContactInfo',
-        'saveChecklistDocument'             => 'saveChecklistDocument',
+    protected $methods              = [
+        'saveCaseInfo'              => 'saveCaseInfo',
+        'saveContactInfo'           => 'saveContactInfo',
+        'saveChecklistDocument'     => 'saveChecklistDocument',
     ];
 
 	/**
@@ -146,22 +146,16 @@ class ApplicationController extends Controller
             $previous_document = Document::find(request('document_id'));
             unlink(storage_path('app/public/documents/'.$previous_document->file));
             Document::destroy($previous_document->id);
-            $document       = Document::create([
-                'case_id'           => $guest->case->id,
-                'file'              => $newFileName,
-                'additional_info'   => trim(request('additional_info')),
-            ]);
-        else:
-            $document       = Document::create([
-                'case_id'           => $guest->case->id,
-                'file'              => $newFileName,
-                'additional_info'   => trim(request('additional_info')),
-            ]);
         endif;
-        
+
+        $document               = Document::create([
+            'case_id'           => $guest->case->id,
+            'file'              => $newFileName,
+            'additional_info'   => trim(request('additional_info')),
+        ]);
 
         $checklistIds           = request('checklists');
-        $arrayOfchecklistIds    = (array) explode(',', $checklistIds);
+        $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
         $document->checklists()->syncWithoutDetaching($arrayOfchecklistIds);
         $this->sendResponse("Document has been saved.", "success", $document);
     }
