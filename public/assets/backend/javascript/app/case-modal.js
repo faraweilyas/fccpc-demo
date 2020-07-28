@@ -197,7 +197,7 @@ $(document).ready(function()
                                                         '</a>'+
                                                     '</span>'+
                                                     '<span class="text-body text-hover-info" id="applicant_phone_number">'+
-                                                        '<a href="/applicant/document/download/'+value.file+'" class="text-muted text-hover-success mr-2">'+
+                                                        '<a href="/applicant/document/download/'+value.id+'" class="text-muted text-hover-success mr-2">'+
                                                             '<span class="flaticon2-download icon-1x"></span> Download'+
                                                         '</a>'+
                                                     '</span>'+
