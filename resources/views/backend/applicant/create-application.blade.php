@@ -272,11 +272,10 @@
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
                                                                 </div>
-                                                                @isset($document)
+                                                                @if(!empty($document))
                                                                 <div class="col-md-3 my-1">
                                                                     <span>
-                                                                        {{-- Check if theres a document to show document icon and make it downloadable --}}
-                                                                        <img onclick="window.location.href = '{{ route('applicant.document.download', ['file' => !empty($document) ? $document->file : '']) }}';" class="max-h-30px mr-3 doc-cursor-pointer" src="{{ !empty($document) ? $document->getIconText() : '' }}" title="Download Document" />
+                                                                        <img onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';" class="max-h-30px mr-3 doc-cursor-pointer" src="{{ $document->getIconText() }}" title="Download Document" />
                                                                     </span>
                                                                 </div>
                                                                 @endif
