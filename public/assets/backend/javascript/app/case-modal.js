@@ -153,12 +153,16 @@ $(document).ready(function()
                 var result = JSON.parse(response);
                 $("#checklist_items").empty();
                 $.each(result.response.checklists, function(index, value){
-                    $("#checklist_items").append('<div class="d-flex align-items-center justify-content-start mb-2"><span class="icon-1x mr-2"><b>'+(index+1)+'.</b> '+value+'</span></a></span>');
+                    $("#checklist_items").append('<div class="d-flex align-items-center justify-content-start mb-2">'+
+                                                    '<span class="icon-1x mr-2"><b>'+
+                                                        (index+1)+'.</b> '+value
+                                                    +'</span>'
+                                                 +'</div>');
                 });
             },
         });
 
-        
+       
 
         caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());

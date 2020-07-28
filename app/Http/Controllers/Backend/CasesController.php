@@ -146,7 +146,7 @@ class CasesController extends Controller
         abort_if(!auth()->user(), 404);
 
         $this->sendResponse("Case documents received.", "success", [
-            'documents'   => $checklists,
+            'documents'   => $documents,
         ]);
     } 
 
