@@ -113,26 +113,8 @@
 
                             {{-- Documents --}}
                             <div class="tab-pane fade" id="documents_tab" role="tabpanel">
-                                <div class="d-flex flex-column font-size-sm font-weight-bold">
-                                    @php $files = mockFilesData(); @endphp
-                                    @foreach($files as $file)
-                                        <div class="d-flex align-items-center justify-content-between mb-2">
-                                            <span class="font-weight-bold mr-2">
-                                                <a href="#" class="d-flex align-items-center text-muted text-hover-success py-1">
-                                                    <img class="max-h-30px mr-3" src="/assets/backend/media/svg/files/{{ $file->icon }}" />
-                                                    <span class="icon-1x mr-2">{{ $file->name }}</span>
-                                                </a>
-                                            </span>
-                                            <span class="text-body text-hover-info" id="applicant_phone_number">
-                                                <a href="#" class="text-muted text-hover-success mr-2">
-                                                    <span class="flaticon-eye icon-1x"></span> View
-                                                </a>
-                                                <a href="#" class="text-muted text-hover-success mr-2">
-                                                    <span class="flaticon2-download icon-1x"></span> Download
-                                                </a>
-                                            </span>
-                                        </div>
-                                    @endforeach
+                                <div id="document_items" class="d-flex flex-column font-size-sm font-weight-bold">
+                                    ...
                                 </div>
                             </div>
                         </div>

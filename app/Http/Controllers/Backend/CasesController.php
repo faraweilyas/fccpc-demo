@@ -143,12 +143,11 @@ class CasesController extends Controller
     public function caseDocuments(Cases $case)
     {
         $documents = $case->getChecklistGroupDocuments();
-        dd($documents);
-        // abort_if(!auth()->user(), 404);
+        abort_if(!auth()->user(), 404);
 
-        // $this->sendResponse("Case documents received.", "success", [
-        //     'documents'   => $checklists,
-        // ]);
+        $this->sendResponse("Case documents received.", "success", [
+            'documents'   => $checklists,
+        ]);
     } 
 
     /**
