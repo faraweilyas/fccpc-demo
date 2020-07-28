@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\User;
 use App\Models\Cases;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -150,6 +151,20 @@ class CasesController extends Controller
             'group'       => $case->getChecklistGroupName(),
         ]);
     } 
+
+    /**
+     * Handles the get document icon text page route.
+     *
+     * @return void
+     */
+    public function getDocumentIconText(Document $document)
+    {
+       abort_if(!auth()->user(), 404);
+
+        $this->sendResponse("Document Icon received.", "success", [
+            'icon'   => $document->getIconText(),
+        ]);
+    }
 
     /**
      * Handles the case unassign page route.

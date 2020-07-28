@@ -100,6 +100,21 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID)
     });
 }
 
+function getIconText(documentID) 
+{
+
+    $.ajax
+        ({
+            url: "/cases/document/icon/"+documentID,
+            type: "get",
+            success: function(response)
+            {
+                var result = JSON.parse(response);
+                return result.response.icon;
+            }
+        });
+}
+
 $(document).ready(function()
 {
     $('#unassigned_cases_datatable').DataTable
@@ -157,7 +172,7 @@ $(document).ready(function()
                                                     '<span class="icon-1x mr-2"><b>'+
                                                         (index+1)+'.</b> '+value
                                                     +'</span>'+
-                                                 +'</div>');
+                                                 '</div>');
                 });
             },
         });

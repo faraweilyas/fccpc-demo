@@ -245,6 +245,12 @@ Route::prefix('cases')
         )
         ->name('documents');
 
+        Route::get(
+            'document/icon/{document}',
+            'CasesController@getDocumentIconText'
+        )
+        ->name('documents');
+
         Route::post(
             'unassign/{case}/{user}',
             'CasesController@unassignCase'
