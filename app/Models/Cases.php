@@ -134,6 +134,16 @@ class Cases extends Model
         return collect($checklistIds)->flatten()->toArray();
     }
 
+    public function getChecklistName() : array
+    {
+        $checklistNames = [];
+        $this->documents->map(function($document) use (&$checklistNames)
+        {
+            $checklistNames[] = $document->checklists->pluck('name');
+        });
+        return collect($checklistNames)->flatten()->toArray();
+    }
+
     public function getChecklistGroupDocuments() : array
     {
         $checklistGroupDocuments = [];

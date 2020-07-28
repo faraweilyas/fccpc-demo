@@ -129,6 +129,7 @@ $(document).ready(function()
         var viewButton              = $(event.relatedTarget);
             caseContainer           = viewButton.parent('td').parent('tr'),
             thisModal               = $(this),
+            caseID                  = caseContainer.find('.case_id').html(),
             caseHandler             = thisModal.find('#case_handler'),
             refrenceNo              = thisModal.find('#refrenceNo'),
             subject                 = thisModal.find('#subject'),
@@ -141,6 +142,21 @@ $(document).ready(function()
             applicant_phone_number  = thisModal.find('#applicant_phone_number'),
             applicant_address       = thisModal.find('#applicant_address'),
             submittedAt             = thisModal.find('#submittedAt');
+
+        // Get Case Checklists Asynchronously
+        $.ajax
+        ({
+            url: "/cases/checklists/"+caseID,
+            type: "get",
+            success: function(response)
+            {
+                var result = JSON.parse(response);
+                $("#checklist_tab").empty();
+                $.each(result.response.checklists, function(index, value){
+                    $("#checklist_tab").append('<div class="d-flex align-items-center justify-content-start mb-2"><span class="icon-1x mr-2"><b>'+(index+1)+'.</b> '+value+'</span></a></span>');
+                });
+            },
+        });
 
         caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());

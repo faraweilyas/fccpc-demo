@@ -233,6 +233,12 @@ Route::prefix('cases')
         )
         ->name('assign');
 
+        Route::get(
+            'checklists/{case}',
+            'CasesController@caseChecklists'
+        )
+        ->name('checklists');
+
         Route::post(
             'unassign/{case}/{user}',
             'CasesController@unassignCase'
