@@ -102,7 +102,7 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID)
 
 function getIconText(documentID) 
 {
-
+    var icon = '/assets/backend/media/svg/files/pdf.svg';
     $.ajax
         ({
             url: "/cases/document/icon/"+documentID,
@@ -110,9 +110,11 @@ function getIconText(documentID)
             success: function(response)
             {
                 var result = JSON.parse(response);
-                return result.response.icon;
+                icon = result.response.icon;
             }
         });
+
+    return icon;
 }
 
 $(document).ready(function()
@@ -190,7 +192,7 @@ $(document).ready(function()
                     $("#document_items").append('<div class="d-flex align-items-center justify-content-between mb-2">'+
                                                     '<span class="font-weight-bold mr-2">'+
                                                         '<a href="#" class="d-flex align-items-center text-muted text-hover-success py-1">'+
-                                                            '<img class="max-h-30px mr-3" src="/assets/backend/media/svg/files/pdf.svg" />'+
+                                                            '<img class="max-h-30px mr-3" src="'+getIconText(value.id)+'" />'+
                                                             '<span class="icon-1x mr-2">'+result.response.group[index]+'</span>'+
                                                         '</a>'+
                                                     '</span>'+
