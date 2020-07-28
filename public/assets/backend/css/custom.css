@@ -28,6 +28,11 @@ select.form-control:not([size]):not([multiple])
     padding: 9rem 0;
 }
 
+.doc-cursor-pointer
+{
+    cursor: pointer;
+}
+
 section#orderWizard
 {
     padding: 1rem 0;

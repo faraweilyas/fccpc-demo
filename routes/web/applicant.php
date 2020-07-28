@@ -30,4 +30,10 @@ Route::prefix('applicant')
             'ApplicantController@authenticateTrack'
         )
         ->name('authenticate.track');
+
+        Route::get(
+            'document/download/{file?}',
+            'ApplicantController@downloadDocument'
+        )
+        ->name('document.download');
     });

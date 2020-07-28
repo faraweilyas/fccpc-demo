@@ -90,5 +90,15 @@ class ApplicantController extends Controller
         return (!$guest->case->isCategorySet())
                 ? redirect($guest->applicationPath())
                 : redirect($guest->createApplicationPath($guest->case->case_category));
+    }  
+
+    /**
+     * Handles download document page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function downloadDocument($file)
+    {
+        return response()->download(storage_path("app/public/documents/{$file}"));
     }
 }

@@ -266,14 +266,25 @@
                                                                 </div>
                                                             </div>
                                                             <div class="row mt-4">
-                                                                <div class="col-md-12">
+                                                                <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4">
                                                                        <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
+                                                                        @php
+                                                                            $document_preview = !empty($document) ? $document->file : '';
+                                                                            $document_file    = !empty($document) ? $document->file : '';
+                                                                            $extension        = Str::contains('.pdf', $document_preview);
+                                                                        @endphp
                                                                     </div>
-                                                                    {{-- Check if theres a document to show document icon and make it downloadable --}}
-                                                                    <img class="max-h-30px mr-3" src="{{ !empty($document) ? $document->getIconText() : '' }}" />
                                                                 </div>
+                                                                @isset($document)
+                                                                <div class="col-md-3 my-1">
+                                                                    <span>
+                                                                        {{-- Check if theres a document to show document icon and make it downloadable --}}
+                                                                        <img onclick="window.location.href = '{{ route('applicant.document.download', ['file' => $document_file]) }}';" class="max-h-30px mr-3 doc-cursor-pointer" src="{{ !empty($document) ? $document->getIconText() : '' }}" title="Download Document" />
+                                                                    </span>
+                                                                </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
