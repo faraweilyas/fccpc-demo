@@ -157,6 +157,19 @@ class Cases extends Model
         return $checklistGroupDocuments;
     }
 
+    public function getChecklistGroupName() : array
+    {
+        $checklistGroupName = [];
+        $this->documents->map(function($document) use (&$checklistGroupName)
+        {
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupName)
+            {
+                $checklistGroupName[$checklist->group->id] = $checklist->group->name;
+            });
+        });
+        return $checklistGroupName;
+    }
+
     // ...
     public function getCaseStatus($textStyle='strtolower')
     {

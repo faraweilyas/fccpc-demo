@@ -156,13 +156,39 @@ $(document).ready(function()
                     $("#checklist_items").append('<div class="d-flex align-items-center justify-content-start mb-2">'+
                                                     '<span class="icon-1x mr-2"><b>'+
                                                         (index+1)+'.</b> '+value
-                                                    +'</span>'
+                                                    +'</span>'+
                                                  +'</div>');
                 });
             },
         });
 
-       
+         // Get Case Documents Asynchronously
+        $.ajax
+        ({
+            url: "/cases/documents/"+caseID,
+            type: "get",
+            success: function(response)
+            {
+                var result = JSON.parse(response);
+                $("#document_items").empty();
+                $.each(result.response.documents, function(index, value){
+                    $("#document_items").append('<div class="d-flex align-items-center justify-content-between mb-2">'+
+                                                    '<span class="font-weight-bold mr-2">'+
+                                                        '<a href="#" class="d-flex align-items-center text-muted text-hover-success py-1">'+
+                                                            '<img class="max-h-30px mr-3" src="/assets/backend/media/svg/files/pdf.svg" />'+
+                                                            '<span class="icon-1x mr-2">'+result.response.group[index]+'</span>'+
+                                                        '</a>'+
+                                                    '</span>'+
+                                                    '<span class="text-body text-hover-info" id="applicant_phone_number">'+
+                                                        '<a href="/applicant/document/download/'+value.file+'" class="text-muted text-hover-success mr-2">'+
+                                                            '<span class="flaticon2-download icon-1x"></span> Download'+
+                                                        '</a>'+
+                                                    '</span>'+
+                                                '</div>'
+                                                );
+                });
+            }
+        });
 
         caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());

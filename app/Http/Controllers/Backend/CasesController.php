@@ -147,6 +147,7 @@ class CasesController extends Controller
 
         $this->sendResponse("Case documents received.", "success", [
             'documents'   => $documents,
+            'group'       => $case->getChecklistGroupName(),
         ]);
     } 
 
