@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
+use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Mail\WelcomeApplicant;
 use App\Http\Controllers\Controller;
@@ -90,15 +91,17 @@ class ApplicantController extends Controller
         return (!$guest->case->isCategorySet())
                 ? redirect($guest->applicationPath())
                 : redirect($guest->createApplicationPath($guest->case->case_category));
-    }  
+    }
 
     /**
      * Handles download document page.
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function downloadDocument($file)
+    public function downloadDocument(Document $document)
     {
-        return response()->download(storage_path("app/public/documents/{$file}"));
+        $groupName = \Str::slug($document->checklists[0]->group->name);
+        $extension = pathinfo($document->file)['extension'];
+        return response()->download(storage_path("app/public/documents/{$document->file}"), "{$groupName}.{$extension}");
     }
 }
