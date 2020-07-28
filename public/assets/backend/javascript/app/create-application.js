@@ -576,8 +576,6 @@ function saveChecklistDocument(action, currentForm)
         formData.append('file', file);
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
-        formData.append('override', false);
-
         sendRequest(
             '/application/create/'+tracking_id+'/'+action,
             formData,
