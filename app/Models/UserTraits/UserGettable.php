@@ -13,7 +13,7 @@ trait UserGettable
      */
     public function caseHandlers()
     {
-        return static::where('status', 'active')->where('account_type', 'CH')->get();
+        return static::where('account_type', 'CH')->get();
     }
 
     /**
