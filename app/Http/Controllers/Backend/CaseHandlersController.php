@@ -23,15 +23,15 @@ class CaseHandlersController extends Controller
 
     /**
      * Handles the Case handlers display page route.
-     * @param int $id
      * @return void
      */
     public function index()
-    {
+    {   
+        $handlers         = User::where('account_type', 'CH')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
         $details          = details($title, $description);
-        return view('backend.cases.case-handlers', compact('details'));
+        return view('backend.cases.case-handlers', compact('details', 'handlers'));
     }
 
 	/**
@@ -78,14 +78,19 @@ class CaseHandlersController extends Controller
         return view('backend.cases.view-case-handler', compact('details', 'handler'));
     }
 
-    public function updateHandlerStatus($id)
+    /**
+     * Handles the update case handler status page route.
+     * @return void
+     */
+    public function updateHandlerStatus(User $handler)
     {
-        $check_status = User::findOrFail($id);
-
-        User::whereId($id)->update([
-            'status' => !$check_status->status
+        $status    = $handler->status;
+        $type      = ($status == 'active') ? 'error' : 'success'; 
+        $message   = ($status == 'active') ? 'Case handler deactivated' : 'Case handler activated'; 
+        User::whereId($handler->id)->update([
+            'status' => ($status == 'active') ? 'inactive' : 'active',
         ]);
 
-        return redirect()->back()->with("success", "Case handler's status updated");
+        return redirect()->back()->with($type, $message);
     }
  }

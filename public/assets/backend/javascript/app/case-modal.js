@@ -125,6 +125,12 @@ $(document).ready(function()
         paging: true,
     });
 
+    $('#case_handlers_datatable').DataTable
+    ({
+        responsive: true,
+        paging: true,
+    });
+
     $('#caseHandler').select2
     ({
         placeholder: "Select a case handler",

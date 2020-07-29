@@ -295,7 +295,7 @@ Route::prefix('handlers')
         ->name('store');
 
         Route::get(
-            'status/update/{id}',
+            'status/update/{handler}',
             'CaseHandlersController@updateHandlerStatus'
         )
         ->name('update_status');

@@ -47,13 +47,13 @@ class AppHelper
     ];
 
     protected $status = [
-        '0' => 'Inactive',
-        '1' => 'Active',
+        'inactive' => 'Inactive',
+        'active' => 'Active',
     ];
 
     protected $status_html = [
-        '0' => 'danger',
-        '1' => 'success',
+        'inactive' => 'danger',
+        'active' => 'success',
     ];
 
 	protected $case_categories = [

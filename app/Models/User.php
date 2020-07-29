@@ -109,7 +109,7 @@ class User extends Authenticatable
      */
     public function getStatus() : string
     {
-        return \AppHelper::value('status', (int) $this->status, NULL);
+        return \AppHelper::value('status', $this->status, NULL);
     }
 
     /**
@@ -119,6 +119,6 @@ class User extends Authenticatable
      */
     public function getStatusHtml() : string
     {
-        return \AppHelper::value('status_html', (int) $this->status, NULL);
+        return \AppHelper::value('status_html', $this->status, NULL);
     }
 }

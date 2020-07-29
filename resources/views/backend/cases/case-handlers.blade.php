@@ -2,95 +2,97 @@
 
 @section('content')
     <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
-    	<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-    		<div class="d-flex align-items-center flex-wrap mr-1">
-    			<div class="d-flex align-items-baseline mr-5">
-    				<h5 class="text-dark font-weight-bold my-2 mr-5">Case Handlers</h5>
-    				<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-    					<li class="breadcrumb-item">
-    						<a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-    					</li>
-    					<li class="breadcrumb-item">
-    						<a href="" class="text-muted">Case Handlers</a>
-    					</li>
-    				</ul>
-    			</div>
-    		</div>
-    	</div>
+        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+            <div class="d-flex align-items-center flex-wrap mr-1">
+                <div class="d-flex align-items-baseline mr-5">
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Case Handlers</h5>
+                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Case Handlers</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    	<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    		<div class="d-flex flex-column-fluid">
-    			<div class="container">
-    				<div class="card card-custom">
-    					<div class="card-header flex-wrap py-5">
-    						<div class="card-title">
-    							<h3 class="card-label">Case Handlers</h3>
-    						</div>
-    					</div>
-    					<div class="card-body">
-    						<table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
-    							<thead>
-    								<tr>
-    									<th>Name</th>
-    									<th>Approved Cases</th>
-    									<th>Working on</th>
-    									<th>Status</th>
-    									<th>Actions</th>
-    								</tr>
-    							</thead>
-    							<tbody>
-    								@foreach(\App\Models\User::where('account_type', 'CH')->get() as $handler)
-    								<tr>
-    									<td>
-    										{{ $handler->getFullName() }}
-    									</td>
-    									<td>
-    										<span class="label label-lg font-weight-bold label-light-secondary text-dark label-inline">0</span>
-    									</td>
-    									<td>
+        <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+            <div class="d-flex flex-column-fluid">
+                <div class="container">
+                    <div class="card card-custom">
+                        <div class="card-header flex-wrap py-5">
+                            <div class="card-title">
+                                <h3 class="card-label">Case Handlers</h3>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-separate table-head-custom table-checkable" id="case_handlers_datatable">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th class="text-center">Assigned Cases</th>
+                                        <th>Status</th>
+                                        <th class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($handlers as $handler)
+                                    <tr>
+                                        <td>
+                                            <b>{{ $handler->getFullName() }}</b>
+                                        </td>
+                                        <td class="text-center">
+                                            <b>0</b>
+                                        </td>
+                                        <td>
+                                            <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">
+                                                {{ $handler->status }}
+                                            </span>
+                                        </td>
+                                        <td class="text-center" nowrap="nowrap">
+                                             <a
+                                                href="#"
+                                                class="btn btn-sm btn-light-warning mr-3"
+                                                title="View Assigned Cases"
+                                            >
+                                                <i class="flaticon-file-2"></i> View Cases
+                                            </a>
+                                            @if($handler->status === "active")
+                                                <a
+                                                    href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-danger mr-3"
+                                                    title="Deactivate Case Handler"
+                                                >
+                                                    <i class="flaticon-user-add"></i> Deactivate
+                                                </a>
+                                            @elseif($handler->status === "inactive")
+                                                <a
+                                                    href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-success mr-3"
+                                                    title="Activate Case Handler"
+                                                >
+                                                    <i class="flaticon-user-add"></i> Activate.....
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+@endsection
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
+@endsection
 
-    										<span class="label label-lg font-weight-bold label-light-primary text-dark label-inline">0</span>
-    									</td>
-    									<td>
-    										<span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">{{ $handler->getStatus() }}</span>
-    									</td>
-    									<td nowrap="nowrap">
-    	                                    <div class="dropdown dropdown-inline">
-    	                                        <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-    	                                            <span class="text-center"><i class="la la-ellipsis-h"></i></span>
-    	                                        </a>
-    	                                        <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-    	                                            <ul class="nav nav-hoverable flex-column">
-    	                                                <li class="nav-item">
-    	                                                    <a class="nav-link text-hover-primary" href="{{ route('handlers.view', ['id' => $handler->id]) }}">
-    	                                                        <i class="nav-icon la la-info-circle"></i>
-    	                                                        <span class="nav-text text-hover-primary">View</span>
-    	                                                    </a>
-    	                                                </li>
-    	                                                <li class="nav-item">
-    	                                                	@if($handler->status == 1)
-    	                                                    <a class="nav-link text-hover-danger" href="{{ route('handlers.update_status', ['id' => $handler->id]) }}">
-    	                                                        <i class="nav-icon la la-times-circle"></i>
-    	                                                        <span class="nav-text text-hover-danger">Deactivate</span>
-    	                                                    </a>
-    	                                                    @else
-    	                                                    <a class="nav-link text-hover-primary" href="{{ route('handlers.update_status', ['id' => $handler->id]) }}">
-    	                                                        <i class="nav-icon la la-times-circle"></i>
-    	                                                        <span class="nav-text text-hover-primary">Activate</span>
-    	                                                    </a>
-    	                                                    @endif
-    	                                                </li>
-    	                                            </ul>
-    	                                        </div>
-    	                                    </div>
-    	                                </td>
-    								</tr>
-    								@endforeach
-    							</tbody>
-    						</table>
-    					</div>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection
