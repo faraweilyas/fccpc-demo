@@ -29,13 +29,7 @@ class CasesController extends Controller
     public function unassignedCases()
     {
         $cases          = (new Cases)->unassignedCases();
-        // $cases          = (new Cases)->assignedCases();
-        // $names = [];
-        // foreach ($cases as $case)
-        // {
-        //     $names[] = $case->active_handlers->first()->getFullName();
-        // }
-        // return $names;
+    
         $caseHandlers   = (new User)->caseHandlers();
 
         $title          = 'Unassigned Cases | '.APP_NAME;
@@ -49,9 +43,14 @@ class CasesController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function assignedCases()
+    public function assignedCases(User $handler)
     {
-        $cases          = (new Cases)->assignedCases();
+        if($handler):
+            $cases          = $handler->active_cases_assigned_to()->get();
+        else:
+            $cases          = (new Cases)->assignedCases();
+        endif;
+        
         $caseHandlers   = (new User)->caseHandlers();
 
         $title          = 'Assigned Cases | '.APP_NAME;

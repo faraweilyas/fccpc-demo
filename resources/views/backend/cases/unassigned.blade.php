@@ -78,6 +78,7 @@
                                             >
                                                 <i class="flaticon-eye"></i> View
                                             </a>
+                                            @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a
                                                 href="#"
                                                 class="assignCaseButton{{ $case->id }} btn btn-sm btn-light-info mr-3"
@@ -100,6 +101,7 @@
                                             >
                                                 <i class="fas fa-spinner fa-pulse"></i> Unassigning...
                                             </a>
+                                            @endif
                                             <div class="hide">
                                                 {{-- Case --}}
                                                 <span class="case_id">{{ $case->id }}</span>

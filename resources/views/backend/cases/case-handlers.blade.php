@@ -57,7 +57,7 @@
                                         </td>
                                         <td class="text-center" nowrap="nowrap">
                                              <a
-                                                href="#"
+                                                href="{{ route('cases.assigned', ['handler' => $handler->id]) }}"
                                                 class="btn btn-sm btn-light-warning mr-3"
                                                 title="View Assigned Cases"
                                             >

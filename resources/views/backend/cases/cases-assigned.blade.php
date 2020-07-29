@@ -76,8 +76,9 @@
                                                 data-toggle="modal"
                                                 data-target="#viewCaseModal"
                                             >
-                                                <i class="flaticon-eye"></i> View
+                                                <i class="flaticon-eye"></i> View 
                                             </a>
+                                            @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a
                                                 href="#"
                                                 class="btn btn-sm btn-light-info mr-3"
@@ -87,6 +88,7 @@
                                             >
                                                 <i class="flaticon-user-add"></i> Re-Assign
                                             </a>
+                                            @endif
                                             <div class="hide">
                                                 {{-- Case --}}
                                                 <span class="case_id">{{ $case->id }}</span>

@@ -204,7 +204,7 @@ Route::prefix('cases')
         ->name('unassigned');
 
         Route::get(
-            '/assigned',
+            '/assigned/{handler?}',
             'CasesController@assignedCases'
         )
         ->name('assigned');
