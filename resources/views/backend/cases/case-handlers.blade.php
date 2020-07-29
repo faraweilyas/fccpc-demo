@@ -33,6 +33,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th class="text-center">Assigned Cases</th>
+                                        <th class="text-center">Dropped Cases</th>
                                         <th>Status</th>
                                         <th class="text-center">Actions</th>
                                     </tr>
@@ -44,7 +45,10 @@
                                             <b>{{ $handler->getFullName() }}</b>
                                         </td>
                                         <td class="text-center">
-                                            <b>0</b>
+                                            <b>{{ $handler->active_cases_assigned_to()->count() }}</b>
+                                        </td>
+                                        <td class="text-center">
+                                            <b>{{ $handler->dropped_cases_assigned_to()->count() }}</b>
                                         </td>
                                         <td>
                                             <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">
