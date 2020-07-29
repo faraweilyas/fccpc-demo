@@ -45,10 +45,14 @@ class CasesController extends Controller
      */
     public function assignedCases(User $handler)
     {
-        if($handler):
+        if(isset($handler->status)):
             $cases          = $handler->active_cases_assigned_to()->get();
         else:
-            $cases          = (new Cases)->assignedCases();
+            if (auth()->user()->account_type == 'CH'):
+                $cases          = auth()->user()->active_cases_assigned_to()->get();
+            else:
+                $cases          = (new Cases)->assignedCases();
+            endif;
         endif;
         
         $caseHandlers   = (new User)->caseHandlers();

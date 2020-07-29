@@ -130,6 +130,7 @@
                             </a>
                             <div class="menu-submenu menu-submenu-classic menu-submenu-left">
                                 <ul class="menu-subnav">
+                                    @if(in_array(\Auth::user()->account_type, ['SP']))
                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
                                         <a href="{{ route('cases.unassigned') }}" class="menu-link">
                                             <span class="svg-icon svg-icon-primary svg-icon-2x">
@@ -147,6 +148,7 @@
                                             <i class="menu-arrow"></i>
                                         </a>
                                     </li>
+                                    @endif
                                     <li class="menu-item menu-item-submenu" aria-haspopup="true">
                                         <a href="{{ route('cases.assigned') }}" class="menu-link">
                                             <span class="svg-icon svg-icon-primary svg-icon-2x">
@@ -253,7 +255,7 @@
                             </div>
                         </li>
                         @endif
-
+                        @if(in_array(\Auth::user()->account_type, ['SP', 'AD']))
                         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
                                 <span class="menu-text">Enquiries</span>
@@ -281,7 +283,7 @@
                                 </ul>
                             </div>
                         </li>
-
+                        @endif
                         @if(in_array(\Auth::user()->account_type,['AD']))
                         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
