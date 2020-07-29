@@ -131,6 +131,12 @@ $(document).ready(function()
         paging: true,
     });
 
+    $('#enquiries_log_datatable').DataTable
+    ({
+        responsive: true,
+        paging: true,
+    });
+
     $('#caseHandler').select2
     ({
         placeholder: "Select a case handler",

@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                        <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -122,7 +122,12 @@
     @endforeach
 @endsection
 
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
+@endsection
+
 @section('custom.javascript')
-    <script src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
-    <script src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection
