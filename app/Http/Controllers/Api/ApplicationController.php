@@ -141,7 +141,7 @@ class ApplicationController extends Controller
     public function saveChecklistDocument(Guest $guest)
     {
         if (!request()->hasFile('file'))
-            return $this->sendResponse(404, 'error', 'No file has been uploaded.', []);
+            return $this->sendResponse(400, 'error', 'No file has been uploaded.', []);
 
         $file           = request('file');
         $extension      = $file->getClientOriginalExtension();
