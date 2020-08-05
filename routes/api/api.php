@@ -25,29 +25,18 @@ Route::prefix('applicant')
         );
     });
 
-// Checklists
+// Application
 Route::prefix('checklist')
     ->namespace('Api')
     ->group(function()
     {
         Route::get(
             'groups',
-            'CasesController@getChecklistGroups'
+            'ApplicationController@getChecklistGroups'
         );
 
         Route::get(
             'all',
-            'CasesController@getChecklists'
-        );
-    });
-
-//Cases
-Route::prefix('cases')
-    ->namespace('Api')
-    ->group(function()
-    {
-        Route::get(
-            'checklist/groups',
-            'CasesController@getChecklistGroups'
+            'ApplicationController@getChecklists'
         );
     });

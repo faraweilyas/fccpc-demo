@@ -10,7 +10,7 @@ use App\Models\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
-class CasesController extends Controller
+class ApplicationController extends Controller
 {
 	/**
      * Get checklist groups.
