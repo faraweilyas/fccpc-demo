@@ -25,7 +25,7 @@ Route::prefix('applicant')
         );
     });
 
-// Application
+// Application Checklist
 Route::prefix('checklist')
     ->namespace('Api')
     ->group(function()
@@ -38,5 +38,21 @@ Route::prefix('checklist')
         Route::get(
             'all',
             'ApplicationController@getChecklists'
+        );
+    });
+
+// Application
+Route::prefix('application')
+    ->namespace('Api')
+    ->group(function()
+    {
+        Route::get(
+            'case-types/all',
+            'ApplicationController@getCaseTypes'
+        );
+
+        Route::post(
+            'case-info/save/{guest:tracking_id}',
+            'ApplicationController@saveCaseInfo'
         );
     });
