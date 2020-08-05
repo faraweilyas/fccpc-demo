@@ -8,3 +8,15 @@ Route::middleware('auth:api')
     {
         return $request->user();
     });
+
+// Applicant
+Route::prefix('applicant')
+    ->namespace('Api')
+    ->group(function()
+    {
+        Route::post(
+            'create',
+            'ApplicantController@store'
+        );
+    });
+
