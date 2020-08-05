@@ -70,4 +70,9 @@ Route::prefix('application')
             'contact-info/save/{guest:tracking_id}',
             'ApplicationController@saveContactInfo'
         );
+
+        Route::post(
+            'document/save/{guest:tracking_id}',
+            'ApplicationController@saveChecklistDocument'
+        );
     });

@@ -127,8 +127,44 @@ class ApplicationController extends Controller
             'applicant_address'         => request('applicant_address'),
         ]);
 
-        return $this->sendResponse(200, 'success', 'Contact info saved.', [
+        return $this->sendResponse(201, 'success', 'Contact info saved.', [
                 'case' => $guest->case,
+            ]);
+    }
+
+    /**
+     * Save checklist document.
+     *
+     * @param Guest $guest
+     * @return json
+     */
+    public function saveChecklistDocument(Guest $guest)
+    {
+        if (!request()->hasFile('file'))
+            return $this->sendResponse(404, 'error', 'No file has been uploaded.', []);
+
+        $file           = request('file');
+        $extension      = $file->getClientOriginalExtension();
+        $newFileName    = \SerialNumber::randomFileName($extension);
+        $path           = $file->storeAs('public/documents', $newFileName);
+
+        if (request('override')):
+            $previous_document = Document::find(request('document_id'));
+            unlink(storage_path('app/public/documents/'.$previous_document->file));
+            Document::destroy($previous_document->id);
+        endif;
+
+        $document               = Document::create([
+            'case_id'           => $guest->case->id,
+            'file'              => $newFileName,
+            'additional_info'   => trim(request('additional_info')),
+        ]);
+
+        $checklistIds           = request('checklists');
+        $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
+        $document->checklists()->syncWithoutDetaching($arrayOfchecklistIds);
+        return $this->sendResponse(201, 'success', 'Document has been saved.', [
+                'document' => $document,
             ]);
     }
 
