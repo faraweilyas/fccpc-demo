@@ -86,7 +86,7 @@ class ApplicationController extends Controller
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        return $this->sendResponse(200, 'success', 'Category saved!');
+        return $this->sendResponse(201, 'success', 'Category saved!');
     }
 
 	/**
@@ -105,9 +105,31 @@ class ApplicationController extends Controller
             request('case_type')
         );
 
-        return $this->sendResponse(200, 'success', 'Case info saved.', [
+        return $this->sendResponse(201, 'success', 'Case info saved.', [
         		'case' => $guest->case,
 	        ]);
+    }
+
+    /**
+     * Save contact info.
+     *
+     * @param Guest $guest
+     * @return json
+     */
+    public function saveContactInfo(Guest $guest)
+    {
+        $guest->case->saveContactInfo((object) [
+            'applicant_firm'            => request('applicant_firm'),
+            'applicant_first_name'      => request('applicant_first_name'),
+            'applicant_last_name'       => request('applicant_last_name'),
+            'applicant_email'           => request('applicant_email'),
+            'applicant_phone_number'    => request('applicant_phone_number'),
+            'applicant_address'         => request('applicant_address'),
+        ]);
+
+        return $this->sendResponse(200, 'success', 'Contact info saved.', [
+                'case' => $guest->case,
+            ]);
     }
 
 	/**

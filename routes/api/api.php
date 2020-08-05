@@ -65,4 +65,9 @@ Route::prefix('application')
             'case-info/save/{guest:tracking_id}',
             'ApplicationController@saveCaseInfo'
         );
+
+        Route::post(
+            'contact-info/save/{guest:tracking_id}',
+            'ApplicationController@saveContactInfo'
+        );
     });
