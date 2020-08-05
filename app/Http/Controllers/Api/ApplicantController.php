@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Guest;
-use Illuminate\Http\Request;
 use App\Mail\WelcomeApplicant;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -16,14 +15,16 @@ class ApplicantController extends Controller
      *
      * @return void
      */
-    public function store(Request $request)
+    public function store()
     {
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make(request()->all(), [
 	        'email' => 'required|string|email',
 	    ]);
 
         if($validator->fails()):
-            return response()->json($validator->errors(), 400);
+        	return $this->sendResponse(400, 'error', 'Field validation error!', [
+	        	$validator->errors()
+	        ]);
         endif;
 
         $guest = Guest::create([
@@ -46,6 +47,42 @@ class ApplicantController extends Controller
         return $this->sendResponse(201, 'success', 'Guest created!', [
         	'tracking_id' => $guest->tracking_id
         ]);
+    }
+
+    /**
+     * Handles the tracking authentication.
+     *
+     * @return void
+     */
+    public function authenticateTracking()
+    {
+        $validator = Validator::make(request()->all(), [
+	        'tracking_id' => ['required', 'exists:guests,tracking_id'],
+	    ]);
+
+	    if($validator->fails()):
+           	return $this->sendResponse(400, 'error', 'Field validation error!', [
+	        	$validator->errors()
+	        ]);
+        endif;
+
+        $guest = Guest::where('tracking_id', '=', request('tracking_id'))->firstOrFail();
+
+        // Check if case has been submitted
+        if ($guest->case->isSubmitted())
+        	return $this->sendResponse(200, 'success', 'Guest exists!', [
+        		'submitted' => true
+	        ]);
+
+        return (!$guest->case->isCategorySet())
+                ?  $this->sendResponse(200, 'success', 'Guest exists!', [
+		        		'submitted'     => false,
+		        		'category'      => null
+			        ])
+                :	$this->sendResponse(200, 'success', 'Guest exists!', [
+		        		'submitted'     => false,
+		        		'category' 		=> $guest->case->case_category,
+			        ]); 
     }
 
     /**

@@ -18,5 +18,10 @@ Route::prefix('applicant')
             'create',
             'ApplicantController@store'
         );
+
+        Route::post(
+            'track',
+            'ApplicantController@authenticateTracking'
+        );
     });
 
