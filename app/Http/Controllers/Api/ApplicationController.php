@@ -16,11 +16,11 @@ class ApplicationController extends Controller
 	/**
      * Get checklist groups.
      *
-     * @return void
+     * @return json
      */
     public function getChecklistGroups()
     {
-        return $this->sendResponse(200, 'success', 'Checklist Groups Resolved!', [
+        return $this->sendResponse(200, 'success', 'Checklist groups resolved!', [
         		'checklist_groups' => ChecklistGroup::all(),
 	        ]);
 	}
@@ -28,11 +28,11 @@ class ApplicationController extends Controller
 	/**
      * Get checklists.
      *
-     * @return void
+     * @return json
      */
     public function getChecklists()
     {
-        return $this->sendResponse(200, 'success', 'Checklists Resolved!', [
+        return $this->sendResponse(200, 'success', 'Checklists resolved!', [
         		'checklists' => Checklist::all(),
 	        ]);
 	}
@@ -40,19 +40,60 @@ class ApplicationController extends Controller
 	/**
      * Get case types.
      *
-     * @return void
+     * @return json
      */
     public function getCaseTypes()
     {
-        return $this->sendResponse(200, 'success', 'Types Resolved!', [
+        return $this->sendResponse(200, 'success', 'Types resolved!', [
         		'types' => \AppHelper::get('case_types'),
 	        ]);
 	}
 
+    /**
+     * Get case application.
+     *
+     * @param Guest $guest
+     * @return json
+     */
+    public function getCaseApplication(Guest $guest)
+    {
+        $case = $guest->case;
+
+        return $this->sendResponse(200, 'success', 'Case application resolved!', [
+                'case'                    => $case,
+                'case_category'           => $case->getCategory(),
+                'case_parties'            => $case->getCaseParties(false),
+                'checklistIds'            => $case->getChecklistIds(),
+                'checklistGroupDocuments' => $case->getChecklistGroupDocuments(),
+            ]);
+    }
+
+    /**
+     * Save case category
+     *.
+     * @param Guest $guest
+     * @param string $case_category_key
+     * @return json
+     */
+    public function saveCategory(Guest $guest, string $case_category_key)
+    {
+        // Validate case category
+        if (!\AppHelper::validateKey('case_categories', strtoupper($case_category_key)))
+             return $this->sendResponse(404, 'error', 'Category does not exist!');
+
+        $case = $guest->case;
+
+        // Save selected case category
+        $case->saveCategory($case_category_key);
+
+        return $this->sendResponse(200, 'success', 'Category saved!');
+    }
+
 	/**
      * Save case info.
      *
-     * @return void
+     * @param Guest $guest
+     * @return json
      */
 	public function saveCaseInfo(Guest $guest)
     {
@@ -75,7 +116,7 @@ class ApplicationController extends Controller
      * @param string $message
      * @param string $responseType
      * @param mixed $response
-     * @return void
+     * @return json
      */
     public function sendResponse(int $statusCode, string $message, string $responseType, $response=null)
     {

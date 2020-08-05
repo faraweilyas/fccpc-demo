@@ -13,7 +13,7 @@ class ApplicantController extends Controller
     /**
      * Create New Applicant.
      *
-     * @return void
+     * @return json
      */
     public function store()
     {
@@ -52,7 +52,7 @@ class ApplicantController extends Controller
     /**
      * Handles the tracking authentication.
      *
-     * @return void
+     * @return json
      */
     public function authenticateTracking()
     {

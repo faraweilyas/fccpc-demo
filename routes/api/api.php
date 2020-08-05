@@ -51,6 +51,16 @@ Route::prefix('application')
             'ApplicationController@getCaseTypes'
         );
 
+        Route::get(
+            '{guest:tracking_id}',
+            'ApplicationController@getCaseApplication'
+        );
+
+        Route::get(
+            'category/save/{guest:tracking_id}/{case_category_key}',
+            'ApplicationController@saveCategory'
+        );
+
         Route::post(
             'case-info/save/{guest:tracking_id}',
             'ApplicationController@saveCaseInfo'
