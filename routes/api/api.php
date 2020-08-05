@@ -34,6 +34,11 @@ Route::prefix('checklist')
             'groups',
             'CasesController@getChecklistGroups'
         );
+
+        Route::get(
+            'all',
+            'CasesController@getChecklists'
+        );
     });
 
 //Cases

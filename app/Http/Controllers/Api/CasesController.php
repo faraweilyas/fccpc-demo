@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\ChecklistGroup;
+use App\Models\Checklist;
 use App\Models\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
@@ -20,6 +21,18 @@ class CasesController extends Controller
     {
         return $this->sendResponse(200, 'success', 'Checklist Groups Resolved!', [
         		'checklist_groups' => ChecklistGroup::all(),
+	        ]);
+	}
+
+	/**
+     * Get checklists.
+     *
+     * @return void
+     */
+    public function getChecklists()
+    {
+        return $this->sendResponse(200, 'success', 'Checklists Resolved!', [
+        		'checklists' => Checklist::all(),
 	        ]);
 	}
 
