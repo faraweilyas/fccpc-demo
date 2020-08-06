@@ -75,4 +75,9 @@ Route::prefix('application')
             'document/save/{guest:tracking_id}',
             'ApplicationController@saveChecklistDocument'
         );
+
+        Route::post(
+            'submit/{guest:tracking_id}',
+            'ApplicationController@submit'
+        );
     });

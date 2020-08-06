@@ -168,6 +168,35 @@ class ApplicationController extends Controller
             ]);
     }
 
+    /**
+     * Submit case.
+     *
+     * @param Guest $guest
+     * @return void
+     */
+    public function submit(Guest $guest)
+    {
+        $guest->case->submit();
+
+        $case = $guest->case;
+        try
+        {
+            Mail::to($case->applicant_email)->send(new ApplicationRequest([
+                'firstName'       => $case->applicant_first_name,
+                'lastName'        => $case->applicant_last_name,
+                'ref_no'          => $case->ref_no
+            ]));
+        }
+        catch (\Exception $exception)
+        {
+            $message = $exception->getMessage();
+        }
+        
+        return $this->sendResponse(200, 'success', 'Application submitted.', [
+                'case' => $case,
+            ]);
+    }
+
 	/**
      * Send response.
      * @param int $statusCode
