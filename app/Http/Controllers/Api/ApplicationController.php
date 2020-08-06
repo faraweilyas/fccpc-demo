@@ -10,6 +10,8 @@ use App\Models\Checklist;
 use App\Models\Document;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ApplicationRequest;
 
 class ApplicationController extends Controller
 {
