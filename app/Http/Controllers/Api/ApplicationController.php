@@ -50,6 +50,18 @@ class ApplicationController extends Controller
 	}
 
     /**
+     * Get case categories.
+     *
+     * @return json
+     */
+    public function getCaseCategories()
+    {
+        return $this->sendResponse(200, 'success', 'Categories resolved!', [
+                'categories' => \AppHelper::get('case_categories'),
+            ]);
+    }
+
+    /**
      * Get case application.
      *
      * @param Guest $guest
@@ -191,7 +203,7 @@ class ApplicationController extends Controller
         {
             $message = $exception->getMessage();
         }
-        
+
         return $this->sendResponse(200, 'success', 'Application submitted.', [
                 'case' => $case,
             ]);

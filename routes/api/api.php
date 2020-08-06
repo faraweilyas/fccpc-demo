@@ -52,6 +52,11 @@ Route::prefix('application')
         );
 
         Route::get(
+            'case-categories/all',
+            'ApplicationController@getCaseCategories'
+        );
+
+        Route::get(
             '{guest:tracking_id}',
             'ApplicationController@getCaseApplication'
         );
