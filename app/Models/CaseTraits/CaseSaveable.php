@@ -41,8 +41,7 @@ trait CaseSaveable
     public function saveContactInfo(\stdClass $contactInfo) : bool
     {
         $this->applicant_firm           = $contactInfo->applicant_firm;
-        $this->applicant_first_name     = $contactInfo->applicant_first_name;
-        $this->applicant_last_name      = $contactInfo->applicant_last_name;
+        $this->applicant_fullname       = $contactInfo->applicant_fullname;
         $this->applicant_email          = $contactInfo->applicant_email;
         $this->applicant_phone_number   = $contactInfo->applicant_phone_number;
         $this->applicant_address        = $contactInfo->applicant_address;

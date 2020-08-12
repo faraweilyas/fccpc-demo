@@ -134,8 +134,7 @@ class ApplicationController extends Controller
     {
         $guest->case->saveContactInfo((object) [
             'applicant_firm'            => request('applicant_firm'),
-            'applicant_first_name'      => request('applicant_first_name'),
-            'applicant_last_name'       => request('applicant_last_name'),
+            'applicant_fullname'        => request('applicant_fullname'),
             'applicant_email'           => request('applicant_email'),
             'applicant_phone_number'    => request('applicant_phone_number'),
             'applicant_address'         => request('applicant_address'),
