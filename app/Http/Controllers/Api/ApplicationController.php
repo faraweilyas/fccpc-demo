@@ -39,6 +39,19 @@ class ApplicationController extends Controller
 	        ]);
 	}
 
+    /**
+     * Get checklists.
+     *
+     * @param int $group_id
+     * @return json
+     */
+    public function getChecklistsByGroup($group_id)
+    {
+        return $this->sendResponse(200, 'success', 'Checklists resolved!', [
+                'checklists' => Checklist::where('group_id', $group_id)->get(),
+            ]);
+    }
+
 	/**
      * Get case types.
      *

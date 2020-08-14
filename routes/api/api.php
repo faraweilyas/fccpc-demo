@@ -39,6 +39,11 @@ Route::prefix('checklist')
             'all',
             'ApplicationController@getChecklists'
         );
+
+        Route::get(
+            'all/{group_id}',
+            'ApplicationController@getChecklistsByGroup'
+        );
     });
 
 // Application
