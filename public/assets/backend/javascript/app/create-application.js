@@ -504,8 +504,7 @@ function saveContactInfo(action, currentForm)
         {
             _token:                     $("#token").val(),
             applicant_firm:             $("input[name='applicant_firm']").val(),
-            applicant_first_name:       $("input[name='applicant_first_name']").val(),
-            applicant_last_name:        $("input[name='applicant_last_name']").val(),
+            applicant_fullname:         $("input[name='applicant_fullname']").val(),
             applicant_email:            $("input[name='applicant_email']").val(),
             applicant_phone_number:     $("input[name='applicant_phone_number']").val(),
             applicant_address:          $("input[name='applicant_address']").val(),

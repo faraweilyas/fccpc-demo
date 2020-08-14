@@ -188,7 +188,7 @@ class ApplicationController extends Controller
 
         $checklistIds           = request('checklists');
         $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
-        $document->checklists()->syncWithoutDetaching($arrayOfchecklistIds);
+        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         return $this->sendResponse(201, 'success', 'Document has been saved.', [
                 'document' => $document,
             ]);
