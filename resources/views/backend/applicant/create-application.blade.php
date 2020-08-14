@@ -191,11 +191,8 @@
                                                     <div class="form-group">
                                                         <label>Contact Person</label> <span class="text-danger">*</span>
                                                         <div class="row">
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control" placeholder="Enter first name" name="applicant_first_name" value="{{ $case->applicant_first_name }}">
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control" placeholder="Enter last name" name="applicant_last_name" value="{{ $case->applicant_last_name }}">
+                                                            <div class="col-lg-12">
+                                                                <input type="text" class="form-control" placeholder="Enter full name" name="applicant_fullname" value="{{ $case->applicant_fullname }}">
                                                             </div>
                                                         </div>
                                                     </div>

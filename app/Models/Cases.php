@@ -116,7 +116,7 @@ class Cases extends Model
 
     public function getApplicantName() : string
     {
-        return trim($this->applicant_first_name.' '.$this->applicant_last_name);
+        return trim($this->applicant_fullname);
     }
 
     public function getSubmittedAt() : string
