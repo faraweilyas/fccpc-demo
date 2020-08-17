@@ -113,13 +113,18 @@ Route::prefix('user')
         );
 
         Route::post(
+            'login',
+            'UserController@authenticate'
+        );
+
+        Route::post(
             'register',
             'UserController@register'
         );
 
         Route::post(
-            'login',
-            'UserController@authenticate'
+            'forgot-password',
+            'UserController@forgotPassword'
         );
     });
 

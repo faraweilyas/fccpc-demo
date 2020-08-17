@@ -6,6 +6,7 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Validator;
+    use Illuminate\Support\Facades\Password; 
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
     use App\Http\Controllers\Controller;
@@ -47,7 +48,12 @@
                 'email'         => ['required', 'string', 'email'],
                 'password'      => ['required', 'string'],
             ]);
-            // $credentials = $request->only('email', 'password');
+
+            if ($validator->fails()):
+                return $this->sendResponse(400, 'error', 'Field validation error!', [
+                    $validator->errors()
+                ]);
+            endif;
 
             try {
                 if (! $token = JWTAuth::attempt(['email' => request('email'), 'password' => request('password'), 'status' => 'active'])):
@@ -102,6 +108,33 @@
                 'token' => $token,
                 'user'  => $user
             ]);
+        }
+
+        /**
+         * Forgot password.
+         *
+         * @return json
+         */
+        public function forgotPassword()
+        {
+            $validator = Validator::make(request()->all(), [
+                'email'         => ['required', 'string', 'email'],
+            ]);
+
+            if ($validator->fails()):
+                return $this->sendResponse(400, 'error', 'Field validation error!', [
+                    $validator->errors()
+                ]);
+            endif;
+
+            if (!User::where('email', request('email'))->first()):
+                return $this->sendResponse(400, 'error', 'User does not exist!');
+            endif;
+            // $credentials = request()->validate(['email' => 'required|email']);
+
+            Password::sendResetLink(['email' => request('email')]);
+
+            return $this->sendResponse(200, 'success', 'Reset password link sent!');
         }
 
         /**
