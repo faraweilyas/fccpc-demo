@@ -107,6 +107,11 @@ Route::prefix('user')
             'UserController@getAccountTypes'
         );
 
+        Route::get(
+            'status-types',
+            'UserController@getAccountStatusTypes'
+        );
+
         Route::post(
             'register',
             'UserController@register'

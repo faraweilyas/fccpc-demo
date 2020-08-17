@@ -25,6 +25,18 @@
         }
 
         /**
+         * Get valid account status types.
+         *
+         * @return json
+         */
+        public function getAccountStatusTypes()
+        {
+            return $this->sendResponse(200, 'success', 'Status types resolved!', [
+                    'status_types' => \AppHelper::get('status'),
+                ]);
+        }
+
+        /**
          * Get valid account types.
          *
          * @return json
