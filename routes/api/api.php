@@ -92,6 +92,30 @@ Route::prefix('application')
         );
     });
 
-    Route::fallback(function(){
-        return response()->json(['message' => 'Not Found.'], 404);
-    })->name('api.fallback.404');
+// User 
+Route::prefix('user')
+->namespace('Api')
+->group(function()
+    {
+        Route::get(
+            'account-types',
+            'UserController@getAccountTypes'
+        );
+
+        Route::post(
+            'register',
+            'UserController@register'
+        );
+
+        Route::post(
+            'login',
+            'UserController@authenticate'
+        );
+    });
+// Route::group(['middleware' => ['jwt.verify']], function() {
+//     Route::get('user', 'Api\UserController@getAuthenticatedUser');
+// });
+
+Route::fallback(function(){
+    return response()->json(['message' => 'Not Found.'], 404);
+})->name('api.fallback.404');
