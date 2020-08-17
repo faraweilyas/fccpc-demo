@@ -118,21 +118,23 @@ class DashboardController extends Controller
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
                     User::whereId(Auth::user()->id)->update([
-                            'firstName' => $request->firstName,
-                            'lastName'  => $request->lastName,
+                            'first_name' => $request->firstName,
+                            'last_name'  => $request->lastName,
                             'password'  => Hash::make($request->new_password)
                      ]);
 
                     return redirect()->back()->with("success", "Profile updated");
+                } else {
+                    return redirect()->back()->with("error", "Password Mismatch");
                 }
             } else {
-                return redirect()->back()->with("error", "Password Mismatch");
+                return redirect()->back()->with("error", "Invalid Password");
             }
         }
 
         User::whereId(Auth::user()->id)->update([
-                'firstName' => $request->firstName,
-                'lastName'  => $request->lastName
+                'first_name' => $request->firstName,
+                'last_name'  => $request->lastName
          ]);
 
         return redirect()->back()->with("success", "Profile updated");

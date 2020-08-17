@@ -117,6 +117,7 @@ Route::prefix('user')
             'UserController@authenticate'
         );
     });
+
 Route::prefix('user')
 ->namespace('Api')
 ->middleware(['jwt.verify'])
@@ -125,6 +126,11 @@ Route::prefix('user')
         Route::get(
             '/',
             'UserController@getAuthenticatedUser'
+        );
+
+        Route::post(
+            'edit',
+            'UserController@editUser'
         );
     });
 

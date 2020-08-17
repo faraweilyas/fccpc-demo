@@ -119,6 +119,51 @@
         }
 
         /**
+         * Edit user.
+         *
+         * @return json
+         */
+        public function editUser()
+        {
+            $validator = Validator::make(request()->all(), [
+                'first_name'    => 'required',
+                'last_name'     => 'required'
+            ]);
+
+            if ($validator->fails()):
+                return $this->sendResponse(400, 'error', 'Field validation error!', [
+                    $validator->errors()
+                ]);
+            endif;
+
+            $user = JWTAuth::parseToken()->authenticate();
+
+            if (request('old_password') != null && request('change_password') == true):
+                if (Hash::check(request('old_password'), $user->password)):
+                    if (request('new_password') === request('password_confirmation')):
+
+                        User::whereId($user->id)->update([
+                            'password'  => Hash::make(request('new_password'))
+                         ]);
+                    else: 
+                        return $this->sendResponse(400, 'error', 'Password Mismatch!');
+                    endif;
+                else:
+                    return $this->sendResponse(400, 'error', 'Invalid password!');
+                endif;
+            endif;
+
+            User::whereId($user->id)->update([
+                'first_name' => request('first_name'),
+                'last_name'  => request('last_name')
+            ]);
+
+            return $this->sendResponse(200, 'success', 'Profile updated!', [
+                'user' => User::whereId($user->id)->first(),
+            ]);
+        }
+
+        /**
          * Send response.
          * @param int $statusCode
          * @param string $message
