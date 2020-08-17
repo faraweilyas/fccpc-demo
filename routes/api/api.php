@@ -132,6 +132,11 @@ Route::prefix('user')
             'edit',
             'UserController@editUser'
         );
+
+        Route::get(
+            'delete/{user_id}',
+            'UserController@deleteUser'
+        );
     });
 
 Route::fallback(function(){

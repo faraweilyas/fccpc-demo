@@ -164,6 +164,23 @@
         }
 
         /**
+         * Delete user.
+         *
+         * @return json
+         */
+        public function deleteUser(User $user_id)
+        {
+            if (!$user_id)
+                return $this->sendResponse(400, 'error', 'Invalid user!');
+
+            User::whereId($user_id->id)->update([
+                'status' => 'inactive',
+            ]);
+
+            return $this->sendResponse(200, 'success', 'User deleted!');
+        }
+
+        /**
          * Send response.
          * @param int $statusCode
          * @param string $message
