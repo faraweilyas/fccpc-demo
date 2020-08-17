@@ -117,6 +117,16 @@ Route::prefix('user')
             'UserController@authenticate'
         );
     });
+Route::prefix('user')
+->namespace('Api')
+->middleware(['jwt.verify'])
+->group(function()
+    {
+        Route::get(
+            '/',
+            'UserController@getAuthenticatedUser'
+        );
+    });
 // Route::group(['middleware' => ['jwt.verify']], function() {
 //     Route::get('user', 'Api\UserController@getAuthenticatedUser');
 // });
