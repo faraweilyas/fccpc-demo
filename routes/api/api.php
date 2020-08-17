@@ -62,6 +62,11 @@ Route::prefix('application')
         );
 
         Route::get(
+            'guest/{guest:tracking_id}',
+            'ApplicationController@getGuest'
+        );
+
+        Route::get(
             '{guest:tracking_id}',
             'ApplicationController@getCaseApplication'
         );

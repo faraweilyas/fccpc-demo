@@ -77,6 +77,19 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Get guest.
+     *
+     * @param Guest $guest
+     * @return json
+     */
+    public function getGuest(Guest $guest)
+    {
+        return $this->sendResponse(200, 'success', 'Guest resolved!', [
+                'guest' => $guest,
+            ]);
+    }
+    
+    /**
      * Get case application.
      *
      * @param Guest $guest
