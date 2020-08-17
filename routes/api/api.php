@@ -127,9 +127,6 @@ Route::prefix('user')
             'UserController@getAuthenticatedUser'
         );
     });
-// Route::group(['middleware' => ['jwt.verify']], function() {
-//     Route::get('user', 'Api\UserController@getAuthenticatedUser');
-// });
 
 Route::fallback(function(){
     return response()->json(['message' => 'Not Found.'], 404);
