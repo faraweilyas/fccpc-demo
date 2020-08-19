@@ -6,10 +6,14 @@
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Facades\Validator;
-    use Illuminate\Support\Facades\Password; 
+    use Carbon\Carbon;
+    use App\Notifications\PasswordResetRequest;
+    use App\Notifications\PasswordResetSuccess;
     use JWTAuth;
     use Tymon\JWTAuth\Exceptions\JWTException;
     use App\Http\Controllers\Controller;
+    use App\Models\PasswordReset;
+    use Illuminate\Support\Str;
 
     class UserController extends Controller
     {
@@ -121,20 +125,57 @@
                 'email'         => ['required', 'string', 'email'],
             ]);
 
-            if ($validator->fails()):
-                return $this->sendResponse(400, 'error', 'Field validation error!', [
-                    $validator->errors()
-                ]);
+            $user = User::where('email', request('email'))->first();        
+            if (!$user)
+                return $this->sendResponse(400, 'error', 'Email does not exist!');
+
+            $passwordReset = PasswordReset::updateOrCreate([
+                    'email' => $user->email,
+                    'token' => Str::random(60)
+            ]);        
+
+            if ($user && $passwordReset):
+                $user->notify(
+                    new PasswordResetRequest($passwordReset->token)
+                );        
+                return $this->sendResponse(200, 'success', 'Reset password link sent!');
             endif;
+        }
 
-            if (!User::where('email', request('email'))->first()):
-                return $this->sendResponse(400, 'error', 'User does not exist!');
-            endif;
-            // $credentials = request()->validate(['email' => 'required|email']);
+        /**
+         * Reset password.
+         *
+         * @return json
+         */
+        public function resetPassword()
+        {
+            $validator = Validator::make(request()->all(), [
+                'email'     => 'required|string|email',
+                'password'  => 'required|string|confirmed',
+                'token'     => 'required|string'
+            ]);        
 
-            Password::sendResetLink(['email' => request('email')]);
+            $passwordReset = PasswordReset::where([
+                ['token', request('token')],
+                ['email', request('email')]
+            ])->first();        
 
-            return $this->sendResponse(200, 'success', 'Reset password link sent!');
+            if (!$passwordReset)
+                return $this->sendResponse(404, 'error', 'This password reset token is invalid!');       
+
+            $user = User::where('email', $passwordReset->email)->first();        
+
+            if (!$user)
+                return $this->sendResponse(404, 'error', 'Invalid email address!');     
+
+            $user->password = Hash::make(request('password'));
+            $user->save();   
+            PasswordReset::where('email', $passwordReset->email)->delete();           
+            $user->notify(new PasswordResetSuccess($passwordReset));  
+
+            return $this->sendResponse(200, 'success', 'Password reset successful!', [
+                'user' => $user
+            ]);   
         }
 
         /**

@@ -126,6 +126,11 @@ Route::prefix('user')
             'forgot-password',
             'UserController@forgotPassword'
         );
+
+        Route::post(
+            'reset-password',
+            'UserController@resetPassword'
+        );
     });
 
 Route::prefix('user')
