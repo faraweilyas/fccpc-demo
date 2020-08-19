@@ -123,7 +123,14 @@
         {
             $validator = Validator::make(request()->all(), [
                 'email'         => ['required', 'string', 'email'],
+                'reset_url'     => ['required', 'string'],
             ]);
+
+            if ($validator->fails()):
+                return $this->sendResponse(400, 'error', 'Field validation error!', [
+                    $validator->errors()
+                ]);
+            endif;
 
             $user = User::where('email', request('email'))->first();        
             if (!$user)
@@ -136,7 +143,7 @@
 
             if ($user && $passwordReset):
                 $user->notify(
-                    new PasswordResetRequest($passwordReset->token)
+                    new PasswordResetRequest(request('reset_url'), $passwordReset->token)
                 );        
                 return $this->sendResponse(200, 'success', 'Reset password link sent!');
             endif;
@@ -153,7 +160,13 @@
                 'email'     => 'required|string|email',
                 'password'  => 'required|string|confirmed',
                 'token'     => 'required|string'
-            ]);        
+            ]);    
+
+            if ($validator->fails()):
+                return $this->sendResponse(400, 'error', 'Field validation error!', [
+                    $validator->errors()
+                ]);
+            endif;    
 
             $passwordReset = PasswordReset::where([
                 ['token', request('token')],
