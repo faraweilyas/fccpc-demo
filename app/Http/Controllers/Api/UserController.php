@@ -176,7 +176,7 @@
             if (!$passwordReset)
                 return $this->sendResponse(404, 'error', 'This password reset token is invalid!');       
 
-            if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()):
+            if (Carbon::now()->diffInHours($passwordReset->updated_at) >= 1):
                 PasswordReset::where('email', $passwordReset->email)->delete();  
                 return $this->sendResponse(404, 'error', 'This password reset token is invalid.');  
             endif;
