@@ -44,6 +44,11 @@ Route::prefix('checklist')
             'all/{group_id}',
             'ApplicationController@getChecklistsByGroup'
         );
+
+        Route::get(
+            'document/download/{document_id}',
+            'ApplicationController@downloadChecklistGroupDocument'
+        );
     });
 
 // Application

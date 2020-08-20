@@ -52,6 +52,19 @@ class ApplicationController extends Controller
             ]);
     }
 
+    /**
+     * Handles download checklist group document.
+     *
+     * @param int $document
+     * @return json
+     */
+    public function downloadChecklistGroupDocument(Document $document)
+    {
+        $groupName = \Str::slug($document->checklists[0]->group->name);
+        $extension = pathinfo($document->file)['extension'];
+        return response()->download(storage_path("app/public/documents/{$document->file}"), "{$groupName}.{$extension}");
+    }
+
 	/**
      * Get case types.
      *
