@@ -45,10 +45,6 @@ Route::prefix('checklist')
             'ApplicationController@getChecklistsByGroup'
         );
 
-        Route::get(
-            'document/download/{document_id}',
-            'ApplicationController@downloadChecklistGroupDocument'
-        );
     });
 
 // Application
@@ -99,6 +95,11 @@ Route::prefix('application')
         Route::post(
             'submit/{guest:tracking_id}',
             'ApplicationController@submit'
+        );
+
+        Route::get(
+            'document/download/{document}',
+            'ApplicationController@downloadChecklistGroupDocument'
         );
     });
 
