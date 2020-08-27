@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Models\Guest;
 use App\Mail\WelcomeApplicant;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Api\ApiResponseTrait;
 
 class ApplicantController extends Controller
 {
+    use ApiResponseTrait;
+    
     /**
      * Create New Applicant.
      *
@@ -83,23 +86,5 @@ class ApplicantController extends Controller
 		        		'submitted'     => false,
 		        		'category' 		=> $guest->case->case_category,
 			        ]); 
-    }
-
-    /**
-     * Send response.
-     * @param int $statusCode
-     * @param string $message
-     * @param string $responseType
-     * @param mixed $response
-     * @return void
-     */
-    public function sendResponse(int $statusCode, string $message, string $responseType, $response=null)
-    {
-        return response()->json([
-        	'statusCode' 	=> $statusCode,
-            'message'       => $message,
-            'responseType'  => $responseType,
-            'response'      => $response,
-        ]);
     }
 }

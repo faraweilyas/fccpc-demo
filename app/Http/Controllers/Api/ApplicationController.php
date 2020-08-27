@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Api;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\Guest;
-use App\Models\ChecklistGroup;
-use App\Models\Checklist;
 use App\Models\Document;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Mail;
+use App\Models\Checklist;
+use App\Models\ChecklistGroup;
 use App\Mail\ApplicationRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Api\ApiResponseTrait;
 
 class ApplicationController extends Controller
 {
+    use ApiResponseTrait;
+
 	/**
      * Get checklist groups.
      *
@@ -247,23 +250,5 @@ class ApplicationController extends Controller
         return $this->sendResponse(200, 'success', 'Application submitted.', [
                 'case' => $case,
             ]);
-    }
-
-	/**
-     * Send response.
-     * @param int $statusCode
-     * @param string $message
-     * @param string $responseType
-     * @param mixed $response
-     * @return json
-     */
-    public function sendResponse(int $statusCode, string $message, string $responseType, $response=null)
-    {
-        return response()->json([
-        	'statusCode' 	=> $statusCode,
-            'message'       => $message,
-            'responseType'  => $responseType,
-            'response'      => $response,
-        ]);
     }
 }
