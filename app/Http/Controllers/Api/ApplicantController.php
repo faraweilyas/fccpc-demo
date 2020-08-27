@@ -60,7 +60,7 @@ class ApplicantController extends Controller
     public function authenticateTracking()
     {
         $validator = Validator::make(request()->all(), [
-	        'tracking_id' => ['required', 'exists:guests,tracking_id'],
+	        'tracking_id' => 'required',
 	    ]);
 
 	    if($validator->fails()):
