@@ -179,6 +179,7 @@ class UserController extends Controller
         if (!$passwordReset)
             return $this->sendResponse(404, 'error', 'This password reset token is invalid!');       
 
+        // Token expires after one hour
         if (Carbon::now()->diffInHours($passwordReset->updated_at) >= 1):
             PasswordReset::where('email', $passwordReset->email)->delete();  
             return $this->sendResponse(404, 'error', 'This password reset token is invalid.');  
