@@ -32,6 +32,6 @@ class ApplicationRequest extends Mailable
     {
         return $this
             ->view('emails.application-request')
-            ->subject(config('app.name').' Application Received');
+            ->subject('Merger Application Submitted');
     }
 }

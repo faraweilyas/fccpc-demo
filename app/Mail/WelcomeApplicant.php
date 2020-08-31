@@ -15,18 +15,15 @@ class WelcomeApplicant extends Mailable
 
     public $case;
 
-    public $subject;
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($guest, $case, $subject)
+    public function __construct($guest, $case)
     {
         $this->guest   = $guest;
         $this->case    = $case;
-        $this->subject = $subject;
     }
 
     /**

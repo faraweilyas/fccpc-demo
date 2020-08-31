@@ -236,10 +236,11 @@ class ApplicationController extends Controller
         $case = $guest->case;
         try
         {
-            Mail::to($case->applicant_email)->send(new ApplicationRequest([
-                'firstName'       => $case->applicant_first_name,
-                'lastName'        => $case->applicant_last_name,
-                'ref_no'          => $case->ref_no
+            Mail::to($guest->email)->send(new ApplicationRequest([
+                'fullname'        => $case->applicant_fullname,
+                'ref_no'          => $case->ref_no,
+                'case'            => $case,
+                'guest'           => $guest
             ]));
         }
         catch (\Exception $exception)
