@@ -7,20 +7,10 @@
 <meta property="fb:page_id" content="43929265776">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="referrer" content="origin">        
-    <!-- NAME: SIMPLE TEXT -->
-    <!--[if gte mso 15]>
-    <xml>
-      <o:OfficeDocumentSettings>
-      <o:AllowPNG/>
-      <o:PixelsPerInch>96</o:PixelsPerInch>
-      </o:OfficeDocumentSettings>
-    </xml>
-    <![endif]-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Notification: Merger Application</title>
-    
   <style type="text/css">
     p{
       margin:10px 0;
