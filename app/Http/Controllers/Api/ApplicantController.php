@@ -40,7 +40,7 @@ class ApplicantController extends Controller
 
         try
         {
-            Mail::to(request('email'))->send(new WelcomeApplicant($guest, $case));
+            Mail::to(request('email'))->send(new WelcomeApplicant($guest, $case, 'Merger Application'));
         }
         catch (\Exception $exception)
         {

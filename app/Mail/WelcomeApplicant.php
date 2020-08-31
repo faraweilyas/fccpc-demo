@@ -15,15 +15,18 @@ class WelcomeApplicant extends Mailable
 
     public $case;
 
+    public $subject;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($guest, $case)
+    public function __construct($guest, $case, $subject)
     {
-        $this->guest = $guest;
-        $this->case = $case;
+        $this->guest   = $guest;
+        $this->case    = $case;
+        $this->subject = $subject;
     }
 
     /**
@@ -35,6 +38,6 @@ class WelcomeApplicant extends Mailable
     {
         return $this
             ->view('emails.welcome-applicant')
-            ->subject(config('app.name').' Welcome On Board');
+            ->subject('Merger Application');
     }
 }
