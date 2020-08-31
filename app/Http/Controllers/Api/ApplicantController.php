@@ -48,7 +48,8 @@ class ApplicantController extends Controller
         }
 
         return $this->sendResponse(201, 'success', 'Guest created!', [
-        	'tracking_id' => $guest->tracking_id
+        	'tracking_id' => $guest->tracking_id,
+            'email'       => $guest->email
         ]);
     }
 
@@ -74,17 +75,29 @@ class ApplicantController extends Controller
         // Check if case has been submitted
         if ($guest->case->isSubmitted())
         	return $this->sendResponse(200, 'success', 'Guest exists!', [
-        		'submitted' => true
+        		'submitted' => true,
+                'guest'     => [
+                    'tracking_id'   => $guest->tracking_id,
+                    'email'         => $guest->email
+                ]
 	        ]);
 
         return (!$guest->case->isCategorySet())
                 ?  $this->sendResponse(200, 'success', 'Guest exists!', [
 		        		'submitted'     => false,
-		        		'category'      => null
+		        		'category'      => null,
+                        'guest'         => [
+                            'tracking_id'   => $guest->tracking_id,
+                            'email'         => $guest->email
+                        ]
 			        ])
                 :	$this->sendResponse(200, 'success', 'Guest exists!', [
 		        		'submitted'     => false,
 		        		'category' 		=> $guest->case->case_category,
+                        'guest'         => [
+                            'tracking_id'   => $guest->tracking_id,
+                            'email'         => $guest->email
+                        ]
 			        ]); 
     }
 }
