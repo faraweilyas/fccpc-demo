@@ -108,7 +108,7 @@ function stripper(string $value, int $length=1) : string
  * @param int $fixedLength
  * @return string
  */
-function shortenContent(string $content, int $fixedLength) : string
+function shortenContent($content=null, int $fixedLength) : string
 {
     $content = trim($content);
     if (strlen($content) < $fixedLength) return $content;
