@@ -167,6 +167,12 @@ class ApplicationController extends Controller
      */
     public function submit(Guest $guest)
     {
+        $case = $guest->case;
+        
+        if (is_null($case->subject) || is_null($case->parties) || is_null($case->case_category) || is_null($case->case_type) || is_null($case->applicant_firm) || is_null($case->applicant_fullname) || is_null($case->applicant_email) || is_null($case->applicant_phone_number) || is_null($case->applicant_address)):
+            $this->sendResponse("Provide required fields.", "error");
+        endif;
+
         $guest->case->submit();
 
         $case = $guest->case;

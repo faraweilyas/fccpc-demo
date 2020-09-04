@@ -611,6 +611,9 @@ function submitCase()
             if (result.responseType != "success")
             {
                 notify(result.responseType, result.message);
+                setTimeout(() => { 
+                    location.reload();
+                }, 1500);
                 return;
             }
 
