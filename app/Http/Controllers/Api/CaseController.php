@@ -64,10 +64,7 @@ class CaseController extends Controller
     public function assignCase(Cases $case, User $handler)
     {
     	$case->assign($handler);
-    	return $this->sendResponse(200, "Case assigned.", "success", [
-            'case'      => $case,
-            'handler'   => $handler
-        ]);
+    	return $this->sendResponse(200, "Case assigned.", "success");
     }
 
     /**
@@ -79,5 +76,16 @@ class CaseController extends Controller
     {
     	$case->disolve($handler);
     	return $this->sendResponse(200, "Case unassigned.", "success");
+    }
+
+    /**
+     * Re-assign case.
+     *
+     * @return json
+     */
+    public function reAssignCase(Cases $case, User $previous_handler, User $new_handler)
+    {
+    	$case->reAssign($previous_handler, $new_handler);
+    	return $this->sendResponse(200, "Case reassigned.", "success");
     }
 }

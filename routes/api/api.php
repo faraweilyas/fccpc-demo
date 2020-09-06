@@ -190,6 +190,11 @@ Route::prefix('case')
             '/unassign/{case}/{handler}',
             'CaseController@unassignCase'
         );
+
+        Route::get(
+            '/reassign/{case}/{previous_handler}/{new_handler}',
+            'CaseController@reAssignCase'
+        );
     });
 
 Route::fallback(function(){
