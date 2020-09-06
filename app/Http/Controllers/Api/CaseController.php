@@ -124,4 +124,17 @@ class CaseController extends Controller
     		'checklists' => $case->getChecklistName()
     	]);
     }
+
+    /**
+     * Get case documents.
+     *
+     * @return json
+     */
+    public function getCaseDocuments(Cases $case)
+    {
+    	return $this->sendResponse(200, "Case documents resolved.", "success", [
+    		'documents'   => $case->getChecklistGroupDocuments(),
+    		'group'       => $case->getChecklistGroupName()
+    	]);
+    }
 }

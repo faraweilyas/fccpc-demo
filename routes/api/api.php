@@ -197,13 +197,18 @@ Route::prefix('case')
         );
 
         Route::get(
+            '/filter/{case}/{case_type}',
+            'CaseController@getCaseByType'
+        );
+
+        Route::get(
             '/checklists/{case}',
             'CaseController@getCaseChecklists'
         );
 
         Route::get(
-            '/{case}/{case_type}',
-            'CaseController@getCaseByType'
+            '/documents/{case}',
+            'CaseController@getCaseDocuments'
         );
     });
 
