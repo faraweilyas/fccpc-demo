@@ -185,6 +185,11 @@ Route::prefix('case')
             '/assign/{case}/{user}',
             'CaseController@assignCase'
         );
+
+        Route::get(
+            '/unassign/{case}/{user}',
+            'CaseController@unassignCase'
+        );
     });
 
 Route::fallback(function(){

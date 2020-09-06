@@ -69,4 +69,15 @@ class CaseController extends Controller
             'handler'   => $user
         ]);
     }
+
+    /**
+     * Unassign case.
+     *
+     * @return json
+     */
+    public function unassignCase(Cases $case, User $user)
+    {
+    	$case->disolve($user);
+    	return $this->sendResponse(200, "Case unassigned.", "success");
+    }
 }
