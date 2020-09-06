@@ -160,6 +160,18 @@ Route::prefix('user')
         );
     });
 
+// Case Management 
+Route::prefix('case')
+->namespace('Api')
+->middleware(['jwt.verify'])
+->group(function()
+    {
+        Route::get(
+            '/unassigned',
+            'CaseController@getUnassignedCases'
+        );
+    });
+
 Route::fallback(function(){
     return response()->json(['message' => 'Not Found.'], 404);
 })->name('api.fallback.404');
