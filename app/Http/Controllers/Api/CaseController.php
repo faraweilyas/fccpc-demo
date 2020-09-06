@@ -101,7 +101,7 @@ class CaseController extends Controller
     	]);
     }
 
-     /**
+    /**
      * Get case by type.
      *
      * @return json
@@ -110,6 +110,18 @@ class CaseController extends Controller
     {
     	return $this->sendResponse(200, "Cases resolved.", "success", [
     		'cases' => $case->filterCasesByType($case_type)
+    	]);
+    }
+
+    /**
+     * Get case checklists.
+     *
+     * @return json
+     */
+    public function getCaseChecklists(Cases $case)
+    {
+    	return $this->sendResponse(200, "Case checklists resolved.", "success", [
+    		'checklists' => $case->getChecklistName()
     	]);
     }
 }
