@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use JWTAuth;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
@@ -23,5 +24,35 @@ class CaseController extends Controller
         		'cases' => (new Cases)->unassignedCases(),
 	        ]);
 	}
-}
 
+	/**
+     * Get all assigned cases.
+     *
+     * @return json
+     */
+    public function getAllAssignedCases()
+    {
+        return $this->sendResponse(200, 'success', 'All assigned cases resolved!', [
+        		'cases' => (new Cases)->assignedCases(),
+	        ]);
+	}
+
+	/**
+     * Get case handler assigned cases.
+     *
+     * @return json
+     */
+    public function getCaseHandlerAssignedCases(User $handler)
+    {
+    	if(isset($handler->status)):
+            $cases       = $handler->active_cases_assigned_to()->get();
+        else:
+        	$user 		 = JWTAuth::parseToken()->authenticate();
+        	$cases       = $user->active_cases_assigned_to()->get();
+        endif;
+
+        return $this->sendResponse(200, 'success', 'Case handler\'s assigned cases resolved!', [
+        		'cases' => $cases,
+	        ]);
+	}
+}

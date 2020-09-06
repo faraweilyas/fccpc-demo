@@ -170,6 +170,16 @@ Route::prefix('case')
             '/unassigned',
             'CaseController@getUnassignedCases'
         );
+
+        Route::get(
+            '/assigned/all',
+            'CaseController@getAllAssignedCases'
+        );
+
+        Route::get(
+            '/assigned/{handler?}',
+            'CaseController@getCaseHandlerAssignedCases'
+        );
     });
 
 Route::fallback(function(){
