@@ -55,4 +55,18 @@ class CaseController extends Controller
         		'cases' => $cases,
 	        ]);
 	}
+
+	/**
+     * Assign case.
+     *
+     * @return json
+     */
+    public function assignCase(Cases $case, User $user)
+    {
+    	$case->assign($user);
+    	return $this->sendResponse(200, "Case assigned.", "success", [
+            'case'      => $case,
+            'handler'   => $user
+        ]);
+    }
 }

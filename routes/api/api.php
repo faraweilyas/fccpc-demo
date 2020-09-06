@@ -180,6 +180,11 @@ Route::prefix('case')
             '/assigned/{handler?}',
             'CaseController@getCaseHandlerAssignedCases'
         );
+
+        Route::get(
+            '/assign/{case}/{user}',
+            'CaseController@assignCase'
+        );
     });
 
 Route::fallback(function(){
