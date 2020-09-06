@@ -61,12 +61,12 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function assignCase(Cases $case, User $user)
+    public function assignCase(Cases $case, User $handler)
     {
-    	$case->assign($user);
+    	$case->assign($handler);
     	return $this->sendResponse(200, "Case assigned.", "success", [
             'case'      => $case,
-            'handler'   => $user
+            'handler'   => $handler
         ]);
     }
 
@@ -75,9 +75,9 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function unassignCase(Cases $case, User $user)
+    public function unassignCase(Cases $case, User $handler)
     {
-    	$case->disolve($user);
+    	$case->disolve($handler);
     	return $this->sendResponse(200, "Case unassigned.", "success");
     }
 }

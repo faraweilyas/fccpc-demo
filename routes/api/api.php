@@ -182,12 +182,12 @@ Route::prefix('case')
         );
 
         Route::get(
-            '/assign/{case}/{user}',
+            '/assign/{case}/{handler}',
             'CaseController@assignCase'
         );
 
         Route::get(
-            '/unassign/{case}/{user}',
+            '/unassign/{case}/{handler}',
             'CaseController@unassignCase'
         );
     });
