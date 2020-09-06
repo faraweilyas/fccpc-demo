@@ -197,8 +197,8 @@ Route::prefix('case')
         );
 
         Route::get(
-            '/{case}',
-            'CaseController@getCaseDetails'
+            '/{case}/{case_type}',
+            'CaseController@getCaseByType'
         );
     });
 

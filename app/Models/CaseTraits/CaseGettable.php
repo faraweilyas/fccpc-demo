@@ -15,6 +15,16 @@ trait CaseGettable
     }
 
     /**
+     * Gets cases by type
+     *
+     * @return Collection
+     */
+    public function filterCasesByType($type = null)
+    {
+        return static::where('case_type', $type)->get();
+    }
+
+    /**
      * Gets unassigned cases with handlers
      *
      * @return Collection

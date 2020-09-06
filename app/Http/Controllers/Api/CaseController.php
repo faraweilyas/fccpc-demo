@@ -100,4 +100,16 @@ class CaseController extends Controller
     		'case' => $case
     	]);
     }
+
+     /**
+     * Get case by type.
+     *
+     * @return json
+     */
+    public function getCaseByType(Cases $case, $case_type)
+    {
+    	return $this->sendResponse(200, "Cases resolved.", "success", [
+    		'cases' => $case->filterCasesByType($case_type)
+    	]);
+    }
 }
