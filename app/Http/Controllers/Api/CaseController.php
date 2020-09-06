@@ -88,4 +88,16 @@ class CaseController extends Controller
     	$case->reAssign($previous_handler, $new_handler);
     	return $this->sendResponse(200, "Case reassigned.", "success");
     }
+
+    /**
+     * Get case details.
+     *
+     * @return json
+     */
+    public function getCaseDetails(Cases $case)
+    {
+    	return $this->sendResponse(200, "Case resolved.", "success", [
+    		'case' => $case
+    	]);
+    }
 }
