@@ -155,4 +155,22 @@ class CaseController extends Controller
             ]);
         endif;
     }
+
+    /**
+     * Export generated report to csv.
+     *
+     * @return json
+     */
+    public function exportGeneratedReportCsv($start_date, $end_date, $handler_id = null)
+    {
+        $cases       = (new Cases)->submittedCases();
+        if (is_null($handler_id)):
+            $cases   = (new Cases)->getCaseByDateRange($start_date, $end_date);
+        else:
+            $cases   = (new Cases)->getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id);
+        endif;
+
+        $csvExporter = new \Laracsv\Export();
+        $csvExporter->build($cases, ['subject', 'parties', 'case_category', 'case_type', 'applicant_firm', 'applicant_fullname', 'applicant_email', 'applicant_phone_number', 'applicant_address', 'submitted_at'])->download('case_report.csv');
+    }
 }
