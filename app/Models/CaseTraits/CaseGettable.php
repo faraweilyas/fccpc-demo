@@ -25,6 +25,36 @@ trait CaseGettable
     }
 
     /**
+     * Gets case by date range
+     *
+     * @return Collection
+     */
+    public function getCaseByDateRangeOrHandler($start_date, $end_date)
+    {
+        return static::whereBetween('submitted_at', [$start_date, $end_date])->get();
+    }
+
+    /**
+     * Gets case by date range & case handler
+     *
+     * @return Collection
+     */
+    public function getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id)
+    {
+         return static::whereBetween('submitted_at', [$start_date, $end_date])
+            ->with(['handlers' => function($query) use ($handler_id)
+            {
+                $query->where('handler_id', $handler_id);
+            }])
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
+    }
+
+    /**
      * Gets unassigned cases with handlers
      *
      * @return Collection

@@ -183,7 +183,6 @@ class Cases extends Model
 
     public function getCaseHandlerName() : string
     {
-        return "";
         return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";
     }
 

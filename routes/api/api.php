@@ -210,6 +210,11 @@ Route::prefix('case')
             '/documents/{case}',
             'CaseController@getCaseDocuments'
         );
+
+        Route::get(
+            '/report/{start_date}/{end_date}/{handler_id?}',
+            'CaseController@getGeneratedReport'
+        );
     });
 
 Route::fallback(function(){

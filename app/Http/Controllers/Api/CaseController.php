@@ -137,4 +137,22 @@ class CaseController extends Controller
     		'group'       => $case->getChecklistGroupName()
     	]);
     }
+
+    /**
+     * Get generated report.
+     *
+     * @return json
+     */
+    public function getGeneratedReport($start_date, $end_date, $handler_id = null)
+    {
+        if (is_null($handler_id)):
+            return $this->sendResponse(200, "Case report resolved.", "success", [
+                'cases' => (new Cases)->getCaseByDateRange($start_date, $end_date)
+            ]);
+        else:
+            return $this->sendResponse(200, "Case report resolved.", "success", [
+                'cases' => (new Cases)->getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id)
+            ]);
+        endif;
+    }
 }
