@@ -171,6 +171,12 @@ class CaseController extends Controller
         endif;
 
         $csvExporter = new \Laracsv\Export();
+
+        $csvExporter->beforeEach(function ($case) {
+            $case->case_category = \AppHelper::value('case_categories', $case->case_category);
+            $case->case_type     = \AppHelper::value('case_types', $case->case_type);
+        });
+
         $csvExporter->build($cases, ['subject', 'parties', 'case_category', 'case_type', 'applicant_firm', 'applicant_fullname', 'applicant_email', 'applicant_phone_number', 'applicant_address', 'submitted_at'])->download('case_report.csv');
     }
 }
