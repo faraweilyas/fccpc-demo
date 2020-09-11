@@ -44,7 +44,7 @@ class CaseController extends Controller
      */
     public function getCaseHandlerAssignedCases(User $handler)
     {
-    	if(isset($handler->status)):
+    	if($handler->isActive()):
             $cases       = $handler->active_cases_assigned_to()->get();
         else:
         	$user 		 = JWTAuth::parseToken()->authenticate();
@@ -64,7 +64,10 @@ class CaseController extends Controller
     public function assignCase(Cases $case, User $handler)
     {
     	$case->assign($handler);
-    	return $this->sendResponse(200, "Case assigned.", "success");
+    	return $this->sendResponse(200, "Case assigned.", "success", [
+            'case'          => $case,
+            'case_handler'  => $handler
+        ]);
     }
 
     /**
@@ -75,7 +78,10 @@ class CaseController extends Controller
     public function unassignCase(Cases $case, User $handler)
     {
     	$case->disolve($handler);
-    	return $this->sendResponse(200, "Case unassigned.", "success");
+    	return $this->sendResponse(200, "Case unassigned.", "success", [
+            'case'          => $case,
+            'case_handler'  => $handler
+        ]);
     }
 
     /**
@@ -86,7 +92,11 @@ class CaseController extends Controller
     public function reAssignCase(Cases $case, User $previous_handler, User $new_handler)
     {
     	$case->reAssign($previous_handler, $new_handler);
-    	return $this->sendResponse(200, "Case reassigned.", "success");
+    	return $this->sendResponse(200, "Case reassigned.", "success", [
+            'case'                   => $case,
+            'previous_case_handler'  => $previous_handler,
+            'new_handler'            => $new_handler
+        ]);
     }
 
     /**
@@ -94,7 +104,7 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function getCaseDetails(Cases $case)
+    public function getCase(Cases $case)
     {
     	return $this->sendResponse(200, "Case resolved.", "success", [
     		'case' => $case
@@ -111,6 +121,18 @@ class CaseController extends Controller
     	return $this->sendResponse(200, "Cases resolved.", "success", [
     		'cases' => $case->filterCasesByType($case_type)
     	]);
+    }
+
+    /**
+     * Get case by category.
+     *
+     * @return json
+     */
+    public function getCaseByCategory(Cases $case, $case_category)
+    {
+        return $this->sendResponse(200, "Cases resolved.", "success", [
+            'cases' => $case->filterCasesByCategory($case_category)
+        ]);
     }
 
     /**

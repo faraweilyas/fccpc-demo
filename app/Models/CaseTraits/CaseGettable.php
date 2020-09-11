@@ -21,7 +21,17 @@ trait CaseGettable
      */
     public function filterCasesByType($type = null)
     {
-        return static::where('case_type', $type)->get();
+        return (\AppHelper::validateKey('case_types', $type)) ? static::where('case_type', $type)->get() : [];
+    }
+
+    /**
+     * Gets cases by category
+     *
+     * @return Collection
+     */
+    public function filterCasesByCategory($category = null)
+    {
+        return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->get() : [];
     }
 
     /**
@@ -29,7 +39,7 @@ trait CaseGettable
      *
      * @return Collection
      */
-    public function getCaseByDateRangeOrHandler($start_date, $end_date)
+    public function getCaseByDateRange($start_date, $end_date)
     {
         return static::whereBetween('submitted_at', [$start_date, $end_date])->get();
     }

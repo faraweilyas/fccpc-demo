@@ -103,6 +103,16 @@ class User extends Authenticatable implements JWTSubject
     }
 
     /**
+     * Get method for is active user.
+     *
+     * @return string
+     */
+    public function isActive() : bool
+    {
+        return ($this->status == "active") ? true : false;
+    }
+
+    /**
      * Get account type
      *
      * @return mixed $textStyle
