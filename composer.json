@@ -15,7 +15,6 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
-        "maatwebsite/excel": "^3.0.1",
         "nesbot/carbon": "^2.38",
         "tymon/jwt-auth": "dev-develop",
         "usmanhalalit/laracsv": "^2.0"

@@ -15,13 +15,11 @@ return [
     |
     */
 
-    'paths' => ['*'],
+    'paths' => ['api/*'],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
-
-    'Access-Control-Allow-Origin' => '*',
 
     'allowed_origins_patterns' => [],
 
