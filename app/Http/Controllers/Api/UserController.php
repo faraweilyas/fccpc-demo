@@ -214,11 +214,11 @@ class UserController extends Controller
                 ]);
             endif;
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json(['token_expired'], $e->getStatusCode());
+            return $this->sendResponse($e->getStatusCode(), 'error', 'Token is expired');  
         } catch (Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json(['token_invalid'], $e->getStatusCode());
+            return $this->sendResponse($e->getStatusCode(), 'error', 'Token is invalid');  
         } catch (Tymon\JWTAuth\Exceptions\JWTException $e) {
-            return response()->json(['token_absent'], $e->getStatusCode());
+            return $this->sendResponse($e->getStatusCode(), 'error', 'Token is absent');  
         }
 
         return $this->sendResponse(200, 'success', 'User resolved!', [
