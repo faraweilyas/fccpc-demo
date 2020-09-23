@@ -32,8 +32,13 @@ class CaseController extends Controller
      */
     public function getAllAssignedCases()
     {
+        $user        = JWTAuth::parseToken()->authenticate();
+        $cases       = (new Cases)->assignedCases();
+        if ($user->account_type == "CH"):
+            $cases       = $user->active_cases_assigned_to()->get();
+        endif;
         return $this->sendResponse(200, 'success', 'All assigned cases resolved!', [
-        		'cases' => (new Cases)->assignedCases(),
+        		'cases' => $cases,
 	        ]);
 	}
 
@@ -44,13 +49,7 @@ class CaseController extends Controller
      */
     public function getCaseHandlerAssignedCases(User $handler)
     {
-    	if($handler->isActive()):
-            $cases       = $handler->active_cases_assigned_to()->get();
-        else:
-        	$user 		 = JWTAuth::parseToken()->authenticate();
-        	$cases       = $user->active_cases_assigned_to()->get();
-        endif;
-
+        $cases       = $handler->active_cases_assigned_to()->get();
         return $this->sendResponse(200, 'success', 'Case handler\'s assigned cases resolved!', [
         		'cases' => $cases,
 	        ]);
@@ -61,12 +60,15 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function assignCase(Cases $case, User $handler)
+    public function assignCase()
     {
-    	$case->assign($handler);
-    	return $this->sendResponse(200, "Case assigned.", "success", [
-            'case'          => $case,
-            'case_handler'  => $handler
+        $case    = Cases::find(request()->case_id);
+        $handler = User::find(request()->handler_id);
+        $case->assign($handler);
+
+        return $this->sendResponse(200, "Case assigned.", "success", [
+            'case'      => $case,
+            'handler'   => $handler
         ]);
     }
 
@@ -75,8 +77,10 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function unassignCase(Cases $case, User $handler)
+    public function unassignCase()
     {
+        $case    = Cases::find(request()->case_id);
+        $handler = User::find(request()->handler_id);
     	$case->disolve($handler);
     	return $this->sendResponse(200, "Case unassigned.", "success", [
             'case'          => $case,
@@ -89,8 +93,11 @@ class CaseController extends Controller
      *
      * @return json
      */
-    public function reAssignCase(Cases $case, User $previous_handler, User $new_handler)
+    public function reAssignCase()
     {
+        $case             = Cases::find(request()->case_id);
+        $previous_handler = User::find(request()->previous_handler_id);
+        $new_handler      = User::find(request()->new_handler_id);
     	$case->reAssign($previous_handler, $new_handler);
     	return $this->sendResponse(200, "Case reassigned.", "success", [
             'case'                   => $case,

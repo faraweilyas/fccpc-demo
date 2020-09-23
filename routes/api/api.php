@@ -172,27 +172,27 @@ Route::prefix('case')
         );
 
         Route::get(
-            '/assigned/all',
+            '/assigned',
             'CaseController@getAllAssignedCases'
         );
 
         Route::get(
-            '/assigned/{handler?}',
+            '/assigned/{handler}',
             'CaseController@getCaseHandlerAssignedCases'
         );
 
-        Route::get(
-            '/assign/{case}/{handler}',
+        Route::post(
+            'assign',
             'CaseController@assignCase'
         );
 
-        Route::get(
-            '/unassign/{case}/{handler}',
+        Route::post(
+            'unassign',
             'CaseController@unassignCase'
         );
 
-        Route::get(
-            '/reassign/{case}/{previous_handler}/{new_handler}',
+        Route::post(
+            'reassign',
             'CaseController@reAssignCase'
         );
 
