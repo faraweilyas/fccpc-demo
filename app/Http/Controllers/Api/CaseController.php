@@ -74,8 +74,8 @@ class CaseController extends Controller
      */
     public function assignCase()
     {
-        $case    = Cases::find(request()->case_id);
-        $handler = User::find(request()->handler_id);
+        $case    = Cases::find(request('case_id'));
+        $handler = User::find(request('handler_id'));
         $case->assign($handler);
 
         return $this->sendResponse(200, "Case assigned.", "success", [
@@ -91,8 +91,8 @@ class CaseController extends Controller
      */
     public function unassignCase()
     {
-        $case    = Cases::find(request()->case_id);
-        $handler = User::find(request()->handler_id);
+        $case    = Cases::find(request('case_id'));
+        $handler = User::find(request('handler_id'));
     	$case->disolve($handler);
     	return $this->sendResponse(200, "Case unassigned.", "success", [
             'case'          => $case,
@@ -107,14 +107,31 @@ class CaseController extends Controller
      */
     public function reAssignCase()
     {
-        $case             = Cases::find(request()->case_id);
-        $previous_handler = User::find(request()->previous_handler_id);
-        $new_handler      = User::find(request()->new_handler_id);
+        $case             = Cases::find(request('case_id'));
+        $previous_handler = User::find(request('previous_handler_id'));
+        $new_handler      = User::find(request('new_handler_id'));
     	$case->reAssign($previous_handler, $new_handler);
     	return $this->sendResponse(200, "Case reassigned.", "success", [
             'case'                   => $case,
             'previous_case_handler'  => $previous_handler,
             'new_handler'            => $new_handler
+        ]);
+    }
+
+    /**
+     * Update document checklist status.
+     *
+     * @return json
+     */
+    public function updateDocumentChecklistStatus(Document $document)
+    {
+        $case                   = Cases::find($document->case_id);
+        $checklistIds           = request('checklists');
+        $arrayOfChecklistIds    = (array) $checklistIds;
+
+        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
+        return $this->sendResponse(200, "Checklist document updated", "success", [
+            'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);
     }
 

@@ -201,6 +201,11 @@ Route::prefix('case')
             'CaseController@reAssignCase'
         );
 
+        Route::post(
+            'checklist-approval/{document}',
+            'CaseController@updateDocumentChecklistStatus'
+        );
+
         Route::get(
             '{case}',
             'CaseController@getCase'

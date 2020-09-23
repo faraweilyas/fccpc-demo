@@ -16,6 +16,7 @@ class Document extends Model
     public function checklists()
     {
         return $this->belongsToMany(Checklist::class, 'checklist_document', 'document_id', 'checklist_id')
+            ->withPivot('status')
             ->as('checklist_document')
             ->withTimestamps();
     }
