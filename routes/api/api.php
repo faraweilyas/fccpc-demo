@@ -177,6 +177,11 @@ Route::prefix('case')
         );
 
         Route::get(
+            'handlers',
+            'CaseController@getCaseHandlers'
+        );
+
+        Route::get(
             '/assigned/{handler}',
             'CaseController@getCaseHandlerAssignedCases'
         );

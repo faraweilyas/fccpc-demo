@@ -42,6 +42,18 @@ class CaseController extends Controller
 	        ]);
 	}
 
+    /**
+     * Get all case handlers.
+     *
+     * @return json
+     */
+    public function getCaseHandlers()
+    {
+        return $this->sendResponse(200, 'success', 'Case Handlers Resolved!', [
+                'handlers' => User::where('account_type', 'CH')->get(),
+            ]);
+    }
+
 	/**
      * Get case handler assigned cases.
      *
