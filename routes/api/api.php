@@ -239,7 +239,7 @@ Route::prefix('case')
         Route::get(
             '/report/export/{start_date}/{end_date}/{handler_id?}',
             'CaseController@exportGeneratedReportCsv'
-        );
+        )->withoutMiddleWare(['jwt.verify']);
     });
 
 Route::fallback(function(){
