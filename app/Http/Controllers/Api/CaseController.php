@@ -197,18 +197,31 @@ class CaseController extends Controller
     }
 
     /**
-     * Get case handler working on count.
+     * Get dashboard reports.
      *
      * @return json
      */
-    public function getCaseHandlerWorkingOnCount(User $handler)
+    public function getDashboardReports()
     {
-        return $this->sendResponse(200, "Case handlers working on cases resolved.", "success", [
-            'total'   => $handler->active_cases_assigned_to()->count(),
+        return $this->sendResponse(200, "Case handlers report resolved.", "success", [
+            'all_cases'        => (new Cases)->count(),
+            'unassigned_cases' => (new Cases)->unassignedCases()->count(),
+            'assigned_cases'   => (new Cases)->assignedCases()->count()
+        ]);
+    }
+
+    /**
+     * Get case handler report.
+     *
+     * @return json
+     */
+    public function getCaseHandlerReport(User $handler)
+    {
+        return $this->sendResponse(200, "Case handlers report resolved.", "success", [
+            'workingon'   => $handler->active_cases_assigned_to()->count(),
         ]);
     }
     
-
     /**
      * Get generated report.
      *

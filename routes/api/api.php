@@ -232,8 +232,13 @@ Route::prefix('case')
         );
 
         Route::get(
-            'working-on/{handler}',
-            'CaseController@getCaseHandlerWorkingOnCount'
+            'dashboard/reports',
+            'CaseController@getDashboardReports'
+        );
+
+        Route::get(
+            'report/{handler}',
+            'CaseController@getCaseHandlerReport'
         );
 
         Route::get(
