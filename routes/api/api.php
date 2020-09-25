@@ -167,12 +167,12 @@ Route::prefix('case')
 ->group(function()
     {
         Route::get(
-            '/unassigned',
+            'unassigned',
             'CaseController@getUnassignedCases'
         );
 
         Route::get(
-            '/assigned',
+            'assigned',
             'CaseController@getAllAssignedCases'
         );
 
@@ -182,7 +182,7 @@ Route::prefix('case')
         );
 
         Route::get(
-            '/assigned/{handler}',
+            'assigned/{handler}',
             'CaseController@getCaseHandlerAssignedCases'
         );
 
@@ -212,32 +212,37 @@ Route::prefix('case')
         );
 
         Route::get(
-            '/filter/{case}/{case_type}',
+            'filter/{case}/{case_type}',
             'CaseController@getCaseByType'
         );
 
         Route::get(
-            '/filter-category/{case}/{case_category}',
+            'filter-category/{case}/{case_category}',
             'CaseController@getCaseByCategory'
         );
 
         Route::get(
-            '/checklists/{case}',
+            'checklists/{case}',
             'CaseController@getCaseChecklists'
         );
 
         Route::get(
-            '/documents/{case}',
+            'documents/{case}',
             'CaseController@getCaseDocuments'
         );
 
         Route::get(
-            '/report/{start_date}/{end_date}/{handler_id?}',
+            'working-on/{handler}',
+            'CaseController@getCaseHandlerWorkingOnCount'
+        );
+
+        Route::get(
+            'report/{start_date}/{end_date}/{handler_id?}',
             'CaseController@getGeneratedReport'
         );
 
         Route::get(
-            '/report/export/{start_date}/{end_date}/{handler_id?}',
+            'report/export/{start_date}/{end_date}/{handler_id?}',
             'CaseController@exportGeneratedReportCsv'
         )->withoutMiddleWare(['jwt.verify']);
     });

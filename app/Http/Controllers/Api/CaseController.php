@@ -50,7 +50,7 @@ class CaseController extends Controller
     public function getCaseHandlers()
     {
         return $this->sendResponse(200, 'success', 'Case Handlers Resolved!', [
-                'handlers' => User::where('account_type', 'CH')->get(),
+                'handlers' => (new User)->caseHandlers(),
             ]);
     }
 
@@ -195,6 +195,19 @@ class CaseController extends Controller
     		'group'       => $case->getChecklistGroupName()
     	]);
     }
+
+    /**
+     * Get case handler working on count.
+     *
+     * @return json
+     */
+    public function getCaseHandlerWorkingOnCount(User $handler)
+    {
+        return $this->sendResponse(200, "Case handlers working on cases resolved.", "success", [
+            'total'   => $handler->active_cases_assigned_to()->count(),
+        ]);
+    }
+    
 
     /**
      * Get generated report.
