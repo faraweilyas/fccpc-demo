@@ -6,6 +6,7 @@ use JWTAuth;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
+use App\Notifications\CaseAssigned;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Api\ApiResponseTrait;
 
@@ -77,6 +78,10 @@ class CaseController extends Controller
         $case    = Cases::find(request('case_id'));
         $handler = User::find(request('handler_id'));
         $case->assign($handler);
+
+        $handler->notify(
+            new CaseAssigned()
+        );   
 
         return $this->sendResponse(200, "Case assigned.", "success", [
             'case'      => $case,
