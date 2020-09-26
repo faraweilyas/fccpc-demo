@@ -13,6 +13,18 @@ Route::prefix('applicant')
         )
         ->name('show');
 
+        Route::get(
+            'confirm/{email}',
+            'ApplicantController@confirm'
+        )
+        ->name('confirm'); 
+
+        Route::post(
+            'confirm',
+            'ApplicantController@confirmSubmit'
+        )
+        ->name('confirm');
+
         Route::post(
             'authenticate',
             'ApplicantController@store'

@@ -26,6 +26,38 @@ class ApplicantController extends Controller
     }
 
     /**
+     * Handles confirm tracking id page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function confirm($email)
+    {
+        $title          = 'Confirm Tracking ID | '.APP_NAME;
+        $description    = 'Confirm Tracking ID | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.applicant.confirm', compact('details', 'email'));
+    }
+
+    /**
+     * Handles submit confirm tracking id page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function confirmSubmit()
+    {
+        request()->validate([
+            'tracking_id' => 'required'
+        ]);
+
+        $guest = Guest::where('tracking_id', request('tracking_id'))->first();
+
+        if (!$guest)
+            return redirect()->back()->with("error", "Invalid tracking ID!");
+
+        return redirect($guest->applicationPath());
+    }
+
+    /**
      * Handles authentication page.
      *
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
@@ -54,7 +86,7 @@ class ApplicantController extends Controller
             $message = $exception->getMessage();
         }
 
-        return redirect($guest->applicationPath());
+        return redirect()->route('applicant.confirm', ['email' => request('email')]);
     }
 
     /**

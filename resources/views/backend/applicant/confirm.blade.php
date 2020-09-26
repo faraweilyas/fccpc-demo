@@ -21,25 +21,19 @@
 					</div>
 					<div class="login-signin">
 						<div class="mb_30">
-							<h3>Submit Application</h3>
-							<div class="text-muted font-weight-bold">Enter your email to submit your application:</div>
+							<h3>Confirm Tracking ID</h3>
+							<div class="text-muted font-weight-bold">Enter your tracking id to continue application submission:</div>
 						</div>
-						<form class="form" method="POST" action="{{ route('applicant.store') }}">
+						<form class="form" method="POST" action="{{ route('applicant.confirm') }}">
 							@csrf
 							<div class="form-group mb-5">
-								<input type="email" placeholder="Email address:" name="email" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" required/>
-                                @error('email')
+								<input type="text" placeholder="Tracking ID:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" required />
+                                @error('tracking_id')
                                     <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                 @enderror
 							</div>
-							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Submit</button>
+							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Confirm ID</button>
 						</form>
-						<div class="mt-10">
-                            <p>
-                                <span class="opacity-70">Existing application?</span><br />
-                                <a href="{{ route('applicant.track') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Add supporting documents or continue where you left off</a>
-                            </p>
-	                    </div>
 					</div>
 				</div>
 			</div>
