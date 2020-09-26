@@ -57,6 +57,11 @@ Route::prefix('application')
             'ApplicationController@getCaseTypes'
         );
 
+        Route::post(
+            'fee-calculator',
+            'ApplicationController@getCalculatedFee'
+        );
+
         Route::get(
             'case-categories/all',
             'ApplicationController@getCaseCategories'

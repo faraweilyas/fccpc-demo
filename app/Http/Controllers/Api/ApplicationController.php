@@ -81,6 +81,87 @@ class ApplicationController extends Controller
 	}
 
     /**
+     * Get calculated fee.
+     *
+     * @return json
+     */
+    public function getCalculatedFee()
+    {   
+        $amount            = (int) request('combined_turnover');
+        $transaction_type  = request('transaction_type');
+        $fillingFee        = 0;
+        $processingFee     = 0;
+        $expeditedFee      = 0;
+        $totalAmount       = 0;
+        $result            = 50000;
+
+        if ($amount <= 0):
+            $fillingFee        = 0.9;
+            $processingFee     = 0;
+            $expeditedFee      = 0;
+            $totalAmount       = 0;
+        endif;
+
+        if ($transaction_type == "REG"):
+            if ($amount >= 500000000 && $amount <= 1000000000)
+            {
+                $result += (0.3 / 100) * 500000000;
+                $secondAmount = $amount - 500000000;
+                $result += (0.225 / 100) * $secondAmount;
+            }
+            if ($amount > 1000000000)
+            {
+                $result += (0.3 / 100) * 500000000;
+                $result += (0.225 / 100) * 500000000;
+                $thirdAmount = $amount - 1000000000;
+                $result += (0.15 / 100) * $thirdAmount;
+            }
+
+            $fillingFee        = 50000;
+            $processingFee     = $result - 50000;
+            $expeditedFee      = 0;
+            $totalAmount       = $result;
+        elseif ($transaction_type == "FFM"):
+            if ($amount >= 500000000 && $amount < 1000000000)
+            {
+                $result += 2000000;
+            }
+            if ($amount >= 1000000000)
+            {
+                $otherAmount = (0.1 / 100) * $amount;
+                $result += ($otherAmount > 3000000) ? $otherAmount : 3000000;
+            }
+
+            $fillingFee        = 50000;
+            $processingFee     = $result - 50000;
+            $expeditedFee      = 0;
+            $totalAmount       = $result;
+        elseif ($transaction_type == "FFX"):
+            if ($amount >= 500000000 && $amount < 1000000000)
+            {
+                $result += 2000000;
+            }
+            if ($amount >= 1000000000)
+            {
+                $otherAmount = (0.1 / 100) * $amount;
+                $result += ($otherAmount > 3000000) ? $otherAmount : 3000000;
+            }
+
+            $fillingFee        = 50000;
+            $processingFee     = $result - 50000;
+            $expeditedFee      = 5000000;
+            $totalAmount       = $result + 5000000;
+        endif;
+
+        return $this->sendResponse(200, 'success', 'Combined turnover resolved!', [
+            'Filling Fee'    => $fillingFee,
+            'Processing Fee' => $processingFee,
+            'Expedited Fee'  => $expeditedFee,
+            'Total'          => $totalAmount
+        ]);
+    }
+
+    /**
      * Get case categories.
      *
      * @return json
