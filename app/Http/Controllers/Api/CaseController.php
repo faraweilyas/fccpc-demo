@@ -116,6 +116,11 @@ class CaseController extends Controller
         $previous_handler = User::find(request('previous_handler_id'));
         $new_handler      = User::find(request('new_handler_id'));
     	$case->reAssign($previous_handler, $new_handler);
+
+        $new_handler->notify(
+            new CaseAssigned()
+        );   
+        
     	return $this->sendResponse(200, "Case reassigned.", "success", [
             'case'                   => $case,
             'previous_case_handler'  => $previous_handler,
