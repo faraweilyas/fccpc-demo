@@ -34,6 +34,12 @@
 							</div>
 							<button id="kt_login_signin_submit" type="submit" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Confirm ID</button>
 						</form>
+						<div class="mt-10">
+                            <p>
+                                <span class="opacity-70">New application?</span><br />
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Go back to submit application</a>
+                            </p>
+	                    </div>
 					</div>
 				</div>
 			</div>
