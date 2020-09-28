@@ -23,7 +23,7 @@ Route::prefix('applicant')
             'confirm',
             'ApplicantController@confirmSubmit'
         )
-        ->name('confirm');
+        ->name('confirm.store');
 
         Route::post(
             'authenticate',
