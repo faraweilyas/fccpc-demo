@@ -24,7 +24,7 @@
 							<h3>Confirm Tracking ID</h3>
 							<div class="text-muted font-weight-bold">Enter your tracking id to continue application submission:</div>
 						</div>
-						<form class="form" method="POST" action="{{ route('applicant.confirm', ['email' => $email]) }}">
+						<form class="form" method="POST" action="{{ route('applicant.confirm.store') }}">
 							@csrf
 							<div class="form-group mb-5">
 								<input type="text" placeholder="Tracking ID:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" required />
