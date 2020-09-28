@@ -54,7 +54,7 @@
                                         </span>
     								</td>
     								<td>
-    									@if($item->status == 1)
+    									@if($item->status == 'active')
     										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
     											<i class="la la-times-circle"></i>&nbsp;&nbsp;Deactivate
     										</a>
@@ -73,4 +73,13 @@
     		</div>
     	</div>
     </div>
+@endsection
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
+@endsection
+
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection

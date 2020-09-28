@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable" id="unassigned_cases_datatable">
+                        <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
                                     <th class="text-center">#</th>

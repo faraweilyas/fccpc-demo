@@ -40,7 +40,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(\App\Models\Enquiry::all()->sortByDesc('id') as $item)
+                                @foreach(\App\Models\Enquiry::orderBy('id', 'DESC')->get() as $item)
                                 <tr>
                                     <td><b>{{ $item->getFullName() }}</b></td>
                                     <td>{{ $item->email }}</td>

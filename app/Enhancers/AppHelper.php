@@ -27,6 +27,7 @@ class AppHelper
     protected $account_types = [
         "RT"  => "Root",
         "AD"  => "Admin",
+        "RG"  => "Registrar",
         "IT"  => "IT Personnel",
         "DG"  => "Director General",
         "SP"  => "Supervisor",
@@ -38,6 +39,7 @@ class AppHelper
     protected $account_types_html = [
         "RT"  => "danger",
         "AD"  => "warning",
+        "RG"  => "info",
         "IT"  => "primary",
         "DG"  => "info",
         "SP"  => "info",

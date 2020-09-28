@@ -125,7 +125,19 @@ $(document).ready(function()
         paging: true,
     });
 
+    $('#assigned_cases_datatable').DataTable
+    ({
+        responsive: true,
+        paging: true,
+    });
+
     $('#case_handlers_datatable').DataTable
+    ({
+        responsive: true,
+        paging: true,
+    });
+
+    $('#kt_datatable').DataTable
     ({
         responsive: true,
         paging: true,

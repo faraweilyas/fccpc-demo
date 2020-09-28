@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class FaqController extends Controller
 {
@@ -40,9 +41,8 @@ class FaqController extends Controller
      * Handles the faq edit page route.
      * @return void
      */
-    public function edit($id)
+    public function edit(Faq $faq)
     {
-        $faq              = Faq::where('id', $id)->first();
         $title            = APP_NAME;
         $description      = "FCCPC Faq Edit Log Dashboard";
         $details          = details($title, $description);
@@ -53,20 +53,20 @@ class FaqController extends Controller
      * Handles the store faq page route.
      * @return void
      */
-    public function update(Request $request)
+    public function update(Request $request, Faq $faq)
     {
-        $this->validate($request, [
+         $this->validate($request, [
             'question'    => 'required',
             'answer'      => 'required',
             'category'    => 'required',
         ]);
 
-        $result = Faq::where('id', '=', $request->id)->update([
-            'creator'   => Auth::user()->id,
-            'slug'      => Str::slug($request->question),
-            'question'  => trim($request->question),
-            'answer'    => trim($request->answer),
-            'category'  => trim($request->category),
+        $faq->where('id', $faq->id)->update([
+            'user_id'   => Auth::user()->id,
+            'slug'      => Str::slug(request('question')),
+            'question'  => trim(request('question')),
+            'answer'    => trim(request('answer')),
+            'category'  => trim(request('category')),
         ]);
 
         return redirect()->back()->with("success", "Faq updated successfully!");
@@ -85,10 +85,10 @@ class FaqController extends Controller
         ]);
 
         $result = Faq::create([
-            'creator'   => Auth::user()->id,
-            'question'  => trim($request->question),
-            'answer'    => trim($request->answer),
-            'category'  => trim($request->category),
+            'user_id'   => Auth::user()->id,
+            'question'  => trim(request('question')),
+            'answer'    => trim(request('answer')),
+            'category'  => trim(request('category')),
         ]);
 
         return redirect()->back()->with("success", "Faq created successfully!");
@@ -98,12 +98,9 @@ class FaqController extends Controller
      * Handles the destroy faq page route.
      * @return void
      */
-    public function destroy($id)
+    public function destroy(Faq $faq)
     {
-        $faq = Faq::find($id);
-        if($faq):
-            $destroy = Faq::destroy($id);
-            return redirect()->back()->with("error", "Faq removed successfully!");
-        endif;
+        $faq->destroy($faq->id);
+        return redirect()->back()->with("error", "Faq removed successfully!");
     }
 }

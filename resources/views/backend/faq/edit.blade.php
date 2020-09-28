@@ -69,7 +69,6 @@
                                     </div>
                                     <div class="row mt-8">
                                         <div class="col-md-8 text-right">
-                                            <input type="hidden" name="id" value="{{ $faq->id }}">
                                             <button type="submit" class="btn btn-primary mr-2"><i class="la la-cloud-upload"></i> Update</button>
                                         </div>
                                     </div>

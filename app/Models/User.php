@@ -112,17 +112,6 @@ class User extends Authenticatable implements JWTSubject
         return ($this->status == "active") ? true : false;
     }
 
-
-    /**
-     * Get method for is active user.
-     *
-     * @return string
-     */
-    public function getCaseHandlerWorkingOnCount() : int
-    {
-        return 3;
-    }
-
     /**
      * Get account type
      *

@@ -59,13 +59,13 @@
                                             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
                                                 <ul class="nav nav-hoverable flex-column">
                                                     <li class="nav-item">
-                                                        <a class="nav-link text-hover-primary" href="{{ route('faq.edit', ['id' => $item->id]) }}">
+                                                        <a class="nav-link text-hover-primary" href="{{ route('faq.edit', ['faq' => $item->id]) }}">
                                                             <i class="nav-icon la la-edit"></i>
                                                             <span class="nav-text">Edit</span>
                                                         </a>
                                                     </li>
                                                     <li class="nav-item">
-                                                        <a href="{{ route('faq.destroy', ['id' => $item->id]) }}" class="nav-link text-hover-danger" title="Remove Faq">
+                                                        <a href="{{ route('faq.delete', ['faq' => $item->id]) }}" class="nav-link text-hover-danger" title="Remove Faq">
                                                             <i class="la la-times-circle"></i>&nbsp;&nbsp;Remove
                                                         </a>
                                                     </li>
@@ -82,4 +82,13 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
+@endsection
+
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection

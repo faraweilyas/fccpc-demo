@@ -58,7 +58,7 @@ Route::prefix('enquiries')
         ->name('index');
 
         Route::get(
-            'view/logs',
+            'all',
             'EnquiriesController@logs'
         )
         ->name('logs')
@@ -130,13 +130,13 @@ Route::prefix('faq')
         ->name('update');
 
         Route::get(
-            '/faqs',
+            'all',
             'FaqController@index'
         )
         ->name('faqs');
 
         Route::get(
-            '/faqs/{faq}',
+            'faq/{faq}',
             'FaqController@destroy'
         )
         ->name('delete');
