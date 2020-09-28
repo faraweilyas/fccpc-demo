@@ -198,7 +198,7 @@ Route::prefix('cases')
     ->group(function()
     {
         Route::get(
-            '/unassigned',
+            '/new',
             'CasesController@unassignedCases'
         )
         ->name('unassigned');

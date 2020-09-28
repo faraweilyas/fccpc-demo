@@ -144,7 +144,7 @@
                                                     </g>
                                                 </svg>
                                             </span>
-                                            &nbsp;&nbsp;<span class="menu-text">Unassigned Cases</span></a>
+                                            &nbsp;&nbsp;<span class="menu-text">New Cases</span></a>
                                             <i class="menu-arrow"></i>
                                         </a>
                                     </li>
