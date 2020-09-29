@@ -60,18 +60,21 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="/">
-                M & A HOME
+                M & A
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
+              <a class="nav-link" href="{{ route('applicant.show') }}">Submit Applciation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('enquiries.index') }}">Enquiry</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Applications</a>
+              <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
