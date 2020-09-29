@@ -19,6 +19,18 @@ Route::name('home.')
         ->name('fee.calculator');
 
         Route::get(
+            '/publications',
+            'HomeController@publications'
+        )
+        ->name('publications');
+
+        Route::get(
+            '/publications/{publication}',
+            'HomeController@publicationView'
+        )
+        ->name('publications.view');
+
+        Route::get(
             '/faqs',
             'HomeController@faqs'
         )

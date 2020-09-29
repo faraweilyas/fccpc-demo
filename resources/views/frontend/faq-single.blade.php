@@ -1,68 +1,59 @@
 @extends('layouts.frontend.base')
 
 @section('content')
-    <style type="text/css" media="screen">
-        .faq__wrapper {
-            position: relative !important;
-            padding: unset !important;
-        }
-    </style>
-    <main>
-        <section class="maxwidth-sl mx-auto top-heading">
-            <div class="wrapper">
-                <div class="py-2 breadcrumbs ff-sans-serif pb-h d-ifx al-i-c">
-                    <a href="http://fccpc.gov.ng/" class="opacity-7-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon" style="transform:translateY(-2px)">
-                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                        </svg>
-                    </a>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-cheveron-right">
-                      <defs>
-                        <style>
-                          svg {
-                            width: 15px;
-                          }
+<div class="page-content my-5">
+      <div class="container container-sm  ">
+        <div class="row row-top home-content-header">
+          <h2 class=" publications-header faq-content-header">
+            <span>Frequently Asked Questions/</span> {{ $faq->question }}
+          </h2>
+        </div>
 
-                        </style>
-                      </defs>
-                      <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                    FAQ
+        <div class="row publication-container">
+          <div class="col-md-5 ">
+            <ul class="faq-questions__ul">
+              <li class="faq-questions__li"><a href="{{ $faq->path() }}" class="faq-questions__a faq-questions__a__active">{{ $faq->getQuestion() }}</a>
+              </li>
+              @foreach($related_faq as $related_faq)
+              <li class="faq-questions__li"><a href="{{ $related_faq->path() }}" class="faq-questions__a">{{ $related_faq->getQuestion() }}</a></li>
+              @endforeach
+            </ul>
+          </div>
+
+          <div class="col-md-7">
+            <div class="faq-answer-header">
+              {{ $faq->question }}
+            </div>
+            <div class="faq-answer-content">
+              {{ $faq->answer }}
+            </div>
+
+            <div class="faq-answer-header">
+              Was this article Helpful?
+            </div>
+            <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
+                @csrf
+                <input type="hidden" id="feedback" name="feedback" value="yes" required />
+                <div class=" like-article">
+                  <a href="#" class="like-article-section">
+                    <img src="{{ FE_IMAGE.'png/thumbs-up.png' }}" alt="thumbs up" />
+                    <span  class="like-article-yes">
+                      Yes
+                    </span>
+                  </a>
+                  <a href="#" class="unlike-article-section" onclick="document.getElementById('feedback').value = 'no';">
+                    <img src="{{ FE_IMAGE.'png/thumbs-down.png' }}" alt="thumbs down" />
+                    <span  class="like-article-no"> &nbsp; No</span>
+                  </a>
                 </div>
-                <h2>Frequently Asked Question</h2>
+            </form>
+            <div class="sub-title">
+                {{ $faq->countPositiveFeedbacks() }} out of {{ $faq->countFeedbacks() }} found this helpful
             </div>
-        </section>
-        <section class="maxwidth-sl mx-auto sub-container">
-            <div class="wrapper faq__wrapper">
-                <ul class="none pb-1">
-                    <li>
-                        <h3 style='margin-bottom: 25px;'>{{ $faq->question }}</h3>
-                        <p>{!! nl2br($faq->answer) !!}</p>
-                    </li>
-                    <div class="sub-article-container shaded mb-9 text-center">
-                        <div class="as">
-                            <div class="title">Was this article helpful?</div>
-                            <div class="clear-fix"></div>
-                            <form action="{{ route('home.faq.feedback', $faq) }}" method="POST">
-                                @csrf
-                                <input type="hidden" id="feedback" name="feedback" value="yes" required />
-                                <div class="button-group">
-                                    <button type="submit"onclick="document.getElementById('feedback').value = 'yes';" class="as-button">
-                                        Yes
-                                    </button>
-                                    <button type="submit"onclick="document.getElementById('feedback').value = 'no';" class="as-button">
-                                        No
-                                    </button>
-                                </div>
-                            </form>
-                            <div class="sub-title">
-                                {{ $faq->countPositiveFeedbacks() }} out of {{ $faq->countFeedbacks() }} found this helpful
-                            </div>
-                        </div>
-                    </div>
-                </ul>
-            </div>
-        </section>
-    </main>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
 @endsection

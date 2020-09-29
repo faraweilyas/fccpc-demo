@@ -36,6 +36,32 @@ class HomeController extends Controller
     }
 
     /**
+     * Handles the publications page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function publications()
+    {
+        $title          = "Publications - ".APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
+        return view('frontend.publications', compact('details'));
+    }
+
+    /**
+     * Handles the publications view page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function publicationView($publication)
+    {
+        $title          = "Publications - ".APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
+        return view('frontend.publications-single', compact('details', 'publication'));
+    }
+
+    /**
      * Handles the faqs page.
      *
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
@@ -44,8 +70,8 @@ class HomeController extends Controller
     {
         $category       = strtoupper(request('category'));
         $faqs           = (empty($category))
-                        ? Faq::latest()->paginate(10)
-                        : Faq::where('category', $category)->latest()->paginate(10);
+                        ? Faq::latest()->paginate(8)
+                        : Faq::where('category', $category)->latest()->paginate(8);
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);
@@ -59,10 +85,11 @@ class HomeController extends Controller
      */
     public function faq(Faq $faq)
     {
+        $related_faq    = $faq->where('category', $faq->category)->get()->take(4);
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);
-        return view('frontend.faq-single', compact('details', 'faq'));
+        return view('frontend.faq-single', compact('details', 'faq', 'related_faq'));
     }
 
     /**
