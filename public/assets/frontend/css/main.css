@@ -903,4 +903,16 @@ textarea {
   margin-top: 2rem;
   margin-bottom: 4rem;
 }
+
+@media only screen and (max-width: 768px) {
+  .header
+  {
+    justify-content: space-between;
+  }
+  
+  .header__content
+  {
+    display: none;
+  }
+}
 /*# sourceMappingURL=main.css.map */

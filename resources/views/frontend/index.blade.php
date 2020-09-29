@@ -20,10 +20,7 @@
           />
         </div>
         <div class="col-xs-12 col-md-12 col-lg-5">
-          <div
-            class="card__box card__box-stack shadow card__box-stack-active"
-            id="control-1"
-            onclick="window.location.href = '{{ route('applicant.show') }}';"
+          <div class="card__box card__box-stack shadow card__box-stack-active" id="control-1" onclick="window.location.href = '{{ route('applicant.show') }}';"
           >
             <img
               class="card__box-stack-img"
@@ -35,7 +32,7 @@
               <span>Submit a Merger Application</span>
             </div>
           </div>
-          <div class="card__box card__box-stack shadow" id="control-2">
+          <div class="card__box card__box-stack shadow" id="control-2" onclick="window.location.href = '{{ route('home.fee.calculator') }}';">
             <img
               class="card__box-stack-img"
               src="{{ FE_IMAGE.'png/calculator.png' }}"

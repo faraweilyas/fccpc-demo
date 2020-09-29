@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ pc_asset(FE_CSS.'main.css') }}" />
 </head>
 <body class="content">
-     <header class="fixed-top bg-dark shadow">
+    <header class="fixed-top bg-dark shadow">
       <div class="header">
         <div class="header_logo">
           <a href="#">
@@ -64,7 +64,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/fee.html">Fee Calculator</a>
+              <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/publication.html">Publications</a>
@@ -323,6 +323,7 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="{{ pc_asset(FE_JS.'app.js') }}"></script>
+    @yield('custom.javascript')
 </body>
 </html>
 
