@@ -36,6 +36,32 @@ class HomeController extends Controller
     }
 
     /**
+     * Handles the publications page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function publications()
+    {
+        $title          = "Publications - ".APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
+        return view('frontend.publications', compact('details'));
+    }
+
+    /**
+     * Handles the publications view page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function publicationView($publication)
+    {
+        $title          = "Publications - ".APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
+        return view('frontend.publications-single', compact('details', 'publication'));
+    }
+
+    /**
      * Handles the faqs page.
      *
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory

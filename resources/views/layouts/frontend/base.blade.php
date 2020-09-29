@@ -68,7 +68,7 @@
               <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/publication.html">Publications</a>
+              <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Applications</a>
