@@ -50,7 +50,7 @@
               alt="user-bg"
             />
             <div class="card__box--content">
-              <p>Application Case Information</p>
+              <p>Enquiry</p>
               <span>
                 Get Relevant information on application cases
               </span>
@@ -60,7 +60,7 @@
             <div>
               <img
                 class="card__box-stack-img"
-                src="{{ FE_IMAGE.'png/question-circle.png' }}" 
+                src="{{ FE_IMAGE.'png/questioncircle.png' }}"
                 alt="user-bg"
               />
             </div>
