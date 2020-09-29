@@ -51,6 +51,18 @@ class Faq extends Model
         return textTransformer($this->user->getFullName(), $textStyle);
     }
 
+     /**
+     * Get Question
+     *
+     * @param int $length
+     * @param mixed $textStyle
+     * @return string
+     */
+    public function getQuestion(int $length=30, $textStyle=NULL) : string
+    {
+        return textTransformer(shortenContent($this->question, $length), $textStyle);
+    }
+
     /**
      * Get answer
      *

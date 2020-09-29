@@ -9,6 +9,16 @@ $(document).ready(function () {
     console.log('clicked')
   })
 
+  $(".like-article-section").on('click', function () {
+     $("#feedback").val('yes');
+     $("#feedback-form").submit();
+  });
+
+  $(".unlike-article-section").on('click', function () {
+     $("#feedback").val('no');
+     $("#feedback-form").submit();
+  });
+
   $('[id^=control]').each(function (index, el) {
     $(this).click(function () {
       $('#control-1').removeClass('card__box-stack-active')

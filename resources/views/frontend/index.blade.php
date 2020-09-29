@@ -56,11 +56,11 @@
               </span>
             </div>
           </div>
-          <div class="card__box card__box-stack shadow" id="control-4">
+          <div class="card__box card__box-stack shadow" id="control-4" onclick="window.location.href = '{{ route('home.faqs') }}';">
             <div>
               <img
                 class="card__box-stack-img"
-                src="{{ FE_IMAGE.'png/question-circle.png' }}"
+                src="{{ FE_IMAGE.'png/question-circle.png' }}" 
                 alt="user-bg"
               />
             </div>

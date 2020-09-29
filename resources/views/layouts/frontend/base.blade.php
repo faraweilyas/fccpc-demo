@@ -16,6 +16,7 @@
     <meta property="og:site_name" content="Federal Competition and Consumer Protection Commission" />
     <link rel="shortcut icon" href="{{ BE_IMAGE.'favicon/fccpc_favicon.ico' }}" />
     <link rel="stylesheet" href="{{ pc_asset(FE_CSS.'main.css') }}" />
+    <link rel="stylesheet" href="{{ pc_asset(FE_CSS.'custom.css') }}" />
 </head>
 <body class="content">
     <header class="fixed-top bg-dark shadow">
@@ -73,7 +74,7 @@
               <a class="nav-link" href="#">Applications</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="faq.html">Faqs</a>
+              <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
             </li>
 
             <li class="nav-item dropdown">
@@ -88,9 +89,8 @@
                 Admininstrator
               </a>
               <div class="dropdown-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                <a class="dropdown-item" href="{{ route('register') }}">Register</a>
               </div>
             </li>
           </ul>
