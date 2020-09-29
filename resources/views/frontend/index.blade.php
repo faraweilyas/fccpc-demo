@@ -32,18 +32,7 @@
               <span>Submit a Merger Application</span>
             </div>
           </div>
-          <div class="card__box card__box-stack shadow" id="control-2" onclick="window.location.href = '{{ route('home.fee.calculator') }}';">
-            <img
-              class="card__box-stack-img"
-              src="{{ FE_IMAGE.'png/calculator.png' }}"
-              alt="user-bg"
-            />
-            <div class="card__box--content">
-              <p>Fee Calculator</p>
-              <span>Fees Guideline for Regular Merger</span>
-            </div>
-          </div>
-          <div class="card__box card__box-stack shadow" id="control-3">
+          <div class="card__box card__box-stack shadow" id="control-3" onclick="window.location.href = '{{ route('enquiries.index') }}';">
             <img
               class="card__box-stack-img"
               src="{{ FE_IMAGE.'svg/book-open.svg' }}"
@@ -54,6 +43,17 @@
               <span>
                 Get Relevant information on application cases
               </span>
+            </div>
+          </div>
+          <div class="card__box card__box-stack shadow" id="control-2" onclick="window.location.href = '{{ route('home.fee.calculator') }}';">
+            <img
+              class="card__box-stack-img"
+              src="{{ FE_IMAGE.'png/calculator.png' }}"
+              alt="user-bg"
+            />
+            <div class="card__box--content">
+              <p>Fee Calculator</p>
+              <span>Fees Guideline for Regular Merger</span>
             </div>
           </div>
           <div class="card__box card__box-stack shadow" id="control-4" onclick="window.location.href = '{{ route('home.faqs') }}';">
