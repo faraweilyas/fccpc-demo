@@ -29,7 +29,7 @@
                                 $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
                                 $ffxStyle = $guest->case->selectedCategoryStyle('FFX');
                             @endphp
-                            <div class="card card-custom gutter-b {{ $regStyle->bg }}" style="height: 150px">
+                            <div class="card card-custom gutter-b card__with__bg {{ $regStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $regStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -48,17 +48,20 @@
                                             </g>
                                         </svg>
                                     </span>
+                                 
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Regular</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <small>Regular</small>
                                     </span>
+
+                                    
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="col-md-4">
                         <a href="{{ $guest->createApplicationPath('ffm') }}">
-                            <div class="card card-custom gutter-b {{ $ffmStyle->bg }}" style="height: 150px">
+                            <div class="card card-custom gutter-b card__with__bg {{ $ffmStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $ffmStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -88,7 +91,7 @@
                     </div>
                     <div class="col-md-4">
                         <a href="{{ $guest->createApplicationPath('ffx') }}">
-                            <div class="card card-custom gutter-b {{ $ffxStyle->bg }}" style="height: 150px">
+                            <div class="card card-custom gutter-b  card__with__bg {{ $ffxStyle->bg }}" style="height: 150px">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $ffxStyle->svg }}">
                                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
