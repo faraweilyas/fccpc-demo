@@ -68,14 +68,26 @@ class HomeController extends Controller
      */
     public function faqs()
     {
-        $category       = strtoupper(request('category'));
-        $faqs           = (empty($category))
-                        ? Faq::latest()->paginate(8)
-                        : Faq::where('category', $category)->latest()->paginate(8);
+        $faq_categories = \AppHelper::get('faq_categories');
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);
-        return view('frontend.faqs', compact('details', 'faqs', 'category'));
+        return view('frontend.faqs', compact('details', 'faq_categories'));
+    } 
+
+    /**
+     * Handles the faqs category view page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function faqCategoryView($category)
+    {
+        $faq            = Faq::where('category', $category)->first();
+        $related_faq    = $faq->where('category', $category)->get();
+        $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
+        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
+        $details        = details($title, $description);
+        return view('frontend.faq-single', compact('details', 'faq', 'related_faq'));
     }
 
     /**
@@ -83,9 +95,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function faq(Faq $faq)
+    public function faq($category, $slug)
     {
-        $related_faq    = $faq->where('category', $faq->category)->get()->take(4);
+        $faq            = Faq::where('slug', $slug)->first();
+        $related_faq    = $faq->where('category', $category)->get();
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);

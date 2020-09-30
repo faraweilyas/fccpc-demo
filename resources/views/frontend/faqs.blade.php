@@ -43,20 +43,21 @@
         </div>
 
         <div class="row publication-container">
-            @foreach($faqs as $faq)
+            @foreach($faq_categories as $key => $value)
+              @if(\App\Models\Faq::where('category', $key)->count() > 0)
               <div class="col-md-3">
-                <a href="{{ $faq->path() }}">
+                <a href="{{ route('home.faqs.category', ['category' => $key]) }}">
                   <div class="faq-card">
-                    <div class="faq-header">{{ $faq->getQuestion() }}</div>
+                    <div class="faq-header">{{ $value }}</div>
                     <div class="faq-content">
-                      {{ $faq->getAnswer(200) }}
+                      {{ \AppHelper::value('faq_categories_description', $key) }}
                     </div>
                   </div>
                 </a>
               </div>
+              @endif
             @endforeach
         </div>
-        {{ $faqs->withQueryString()->links() }}
       </div>
     </div>
 @endsection

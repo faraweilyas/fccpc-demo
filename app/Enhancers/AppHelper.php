@@ -117,6 +117,13 @@ class AppHelper
     protected $faq_categories = [
         "GEN" => "General",
         "ENQ" => "Enquiry",
+        "GES" => "Getting Started"
+    ];
+
+    protected $faq_categories_description = [
+        "GEN" => "General information about Paystack, our clients, and security",
+        "ENQ" => "Get Relevant information on application cases",
+        "GES" => "Everything you need to know about getting started"
     ];
 
     protected $feedbacks = ["Yes", "No"];

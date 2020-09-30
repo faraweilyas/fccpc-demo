@@ -15,7 +15,9 @@
               <li class="faq-questions__li"><a href="{{ $faq->path() }}" class="faq-questions__a faq-questions__a__active">{{ $faq->getQuestion() }}</a>
               </li>
               @foreach($related_faq as $related_faq)
-              <li class="faq-questions__li"><a href="{{ $related_faq->path() }}" class="faq-questions__a">{{ $related_faq->getQuestion() }}</a></li>
+              @if($related_faq->id !== $faq->id)
+                <li class="faq-questions__li"><a href="{{ $related_faq->path() }}" class="faq-questions__a">{{ $related_faq->getQuestion() }}</a></li>
+              @endif
               @endforeach
             </ul>
           </div>

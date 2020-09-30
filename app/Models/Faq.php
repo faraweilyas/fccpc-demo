@@ -37,7 +37,7 @@ class Faq extends Model
 
     public function path()
     {
-        return route('home.faqs.faq', $this);
+        return route('home.faqs.faq', ['category' => $this->category, 'slug' => $this->slug]);
     }
 
     /**
