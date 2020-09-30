@@ -50,6 +50,13 @@ $(document).ready(function () {
         $(this).addClass('card__box-stack-active')
         $('#contact').toggle('fast')
       }
-    })
-  })
+    });
+  });
+
+  $('.faq-search-input').keypress(function (e) {
+    if (e.which == 13) {
+      $('#faqSearchForm').submit();
+      return false;   
+    }
+  });
 });

@@ -301,11 +301,11 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-6">
-                    <span style="font-size: 1.1rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC) 
+                    <span style="font-size: 1.3rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC) 
                       <br>Copyright © 2020 Federal Competition and Consumer Protection Commission</span>
                   </div>
                   <div class="col-md-6">
-                    <span class="float-right" style="font-size: 1.5rem">  Powered by Techbarn </span>
+                    <span class="float-right" style="font-size: 1.5rem">  Powered by <a href="https://techbarn.ng/" target="_blank">techbarn </span>
 
                   </div>
                 </div>

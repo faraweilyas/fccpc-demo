@@ -36,6 +36,23 @@ body {
   box-sizing: border-box;
 }
 
+.faq-search{
+  /* width: 100%; */
+  height: 50vh;
+  background: #227a4e;
+  padding: 10rem 3rem;
+}
+.faq-search-title{
+  color: #fff;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.faq-search-input{
+  padding: 0 3rem !important;
+  
+}
+
 .row-space {
   margin-top: 2rem;
   margin-bottom: 2rem;

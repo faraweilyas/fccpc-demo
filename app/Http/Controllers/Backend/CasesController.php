@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
 use Illuminate\Http\Request;
+use App\Notifications\CaseAssigned;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -53,7 +54,7 @@ class CasesController extends Controller
             else:
                 $cases          = (new Cases)->assignedCases();
             endif;
-        endif;
+        endif; 
         
         $caseHandlers   = (new User)->caseHandlers();
 
@@ -118,6 +119,9 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
+        $user->notify(
+            new CaseAssigned()
+        );  
         $this->sendResponse("Case assigned.", "success", [
             'case'      => $case,
             'handler'   => $user
@@ -190,6 +194,9 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->reAssign($oldUser, $newUser);
+        $newUser->notify(
+            new CaseAssigned()
+        );  
         $this->sendResponse("Case reassigned.", "success");
     }
 

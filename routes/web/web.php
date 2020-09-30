@@ -37,6 +37,12 @@ Route::name('home.')
         ->name('faqs');
 
         Route::get(
+            '/faqs/search',
+            'HomeController@faqSearch'
+        )
+        ->name('faqs.search');
+
+        Route::get(
             '/faqs/{category}',
             'HomeController@faqCategoryView'
         )
