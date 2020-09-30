@@ -84,10 +84,13 @@ class HomeController extends Controller
     {
         $search_param   = $_GET['query'] ?? '';
         $faq            = Faq::where('question', 'LIKE', '%'.$search_param.'%')->first();
-        $related_faq    = Faq::where('question', 'LIKE', '%'.$search_param.'%')->get();
+        if (!is_null($faq))
+            $related_faq    = Faq::where('question', 'LIKE', '%'.$search_param.'%')->get();
         $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
         $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
         $details        = details($title, $description);
+        if (is_null($faq))
+            return false;
         return view('frontend.faq-search', compact('details', 'faq', 'related_faq'));
     } 
 
