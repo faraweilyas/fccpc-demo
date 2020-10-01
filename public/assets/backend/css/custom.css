@@ -15,7 +15,9 @@ body {
     display: block;
 }
 
-.login.login-3 .login-signin, .login.login-3 .login-signup, .login.login-3 .login-forgot {
+.login.login-3 .login-signin,
+.login.login-3 .login-signup,
+.login.login-3 .login-forgot {
     display: block;
 }
 
@@ -132,7 +134,8 @@ section#orderWizard {
     background: #ccc;
 }
 
-.text-disabled, .text-link-disabled a {
+.text-disabled,
+.text-link-disabled a {
     color: #ccc;
 }
 
@@ -157,6 +160,7 @@ section#orderWizard {
         margin-top: 80px;
         margin-bottom: -50px;
     }
+
     .sub-header-mobile {
         margin-right: 0.25rem !important;
         -webkit-box-align: center !important;
@@ -164,9 +168,11 @@ section#orderWizard {
         flex-wrap: wrap !important;
         display: flex !important;
     }
+
     .sub-header-desktop {
         display: none;
     }
+
     .mt-sm-10 {
         margin-top: 10px;
     }
@@ -197,7 +203,9 @@ section#orderWizard {
     margin: 1rem .2rem;
 }
 
-.card__with__bg:hover, .card__with__bg:focus, .card__with__bg:visited {
+.card__with__bg:hover,
+.card__with__bg:focus,
+.card__with__bg:visited {
     -webkit-transform: translateX(1rem) !;
     transform: translateX(1rem);
 }
@@ -229,4 +237,27 @@ section#orderWizard {
     font-size: 1.5rem;
     font-weight: 600;
     color: #227a4e;
+}
+
+.aside,
+.brand {
+    background-color: #227a4e !important;
+}
+
+.aside-menu {
+    background-color: #227a4e !important;
+}
+
+
+.aside-menu .menu-nav>.menu-item.menu-item-active>.menu-heading,
+.aside-menu .menu-nav>.menu-item.menu-item-active>.menu-link {
+    background-color: #227a4e !important;
+    font-size: 3rem !important;
+}
+
+
+.aside-menu .menu-nav>.menu-item {
+    position: relative;
+    margin: 0;
+    margin: 20px 0;
 }
