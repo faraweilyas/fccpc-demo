@@ -6,14 +6,14 @@
     <meta name="description" content="{{ $details->description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
+       <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_LAYOUT_PLUGIN.'global/plugins.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_LAYOUT_PLUGIN.'custom/prismjs/prismjs.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_LAYOUT_CSS.'style.bundle.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_LAYOUT_CSS.'toaster.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'toaster.css') }}" />
     <!-- Custom CSS -->
 
 
@@ -28,7 +28,7 @@
 
     
     @yield('custom.css')
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_LAYOUT_CSS.'custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'custom.css') }}" />
 </head>
 <body id="kt_body"
 class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed aside-minimize-hoverable page-loading">
@@ -57,9 +57,9 @@ class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_PLUGIN.'global/plugins.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'scripts.bundle.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'toaster.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
 
 
 
