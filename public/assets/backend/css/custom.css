@@ -15,9 +15,7 @@ body {
     display: block;
 }
 
-.login.login-3 .login-signin,
-.login.login-3 .login-signup,
-.login.login-3 .login-forgot {
+.login.login-3 .login-signin, .login.login-3 .login-signup, .login.login-3 .login-forgot {
     display: block;
 }
 
@@ -134,8 +132,7 @@ section#orderWizard {
     background: #ccc;
 }
 
-.text-disabled,
-.text-link-disabled a {
+.text-disabled, .text-link-disabled a {
     color: #ccc;
 }
 
@@ -160,7 +157,6 @@ section#orderWizard {
         margin-top: 80px;
         margin-bottom: -50px;
     }
-
     .sub-header-mobile {
         margin-right: 0.25rem !important;
         -webkit-box-align: center !important;
@@ -168,19 +164,13 @@ section#orderWizard {
         flex-wrap: wrap !important;
         display: flex !important;
     }
-
     .sub-header-desktop {
         display: none;
     }
-
     .mt-sm-10 {
         margin-top: 10px;
     }
 }
-
-
-
-
 
 .subheader {
     background: #fff;
@@ -188,25 +178,55 @@ section#orderWizard {
     box-shadow: 0px 5px 15px rgba(106, 127, 130, 0.09);
 }
 
-
 .bg-success {
     background: #006535 !important;
 }
 
 .card__with__bg {
-    background-image: url('../images/svg/lines.svg');
-    background-size: 18rem;
+    background-image: url('../images/svg/linesx2.png');
+    /* background-size: 22rem; */
     background-position: center right;
     background-repeat: no-repeat;
     backface-visibility: hidden;
     transition: all .8s ease-in-out;
-
-
+    height: auto !important;
+    padding: 1.5rem 0 !important;
 }
 
-.card__with__bg:hover,
-.card__with__bg:focus,
-.card__with__bg:visited {
+.checklist-list {
+    margin: 1rem .2rem;
+}
+
+.card__with__bg:hover, .card__with__bg:focus, .card__with__bg:visited {
     -webkit-transform: translateX(1rem) !;
     transform: translateX(1rem);
+}
+
+.yellow__info-box {
+    width: auto;
+    height: 10rem auto;
+    padding: 2rem 1.5rem;
+    background: #f0f3bd;
+    border-radius: 0.3rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.yellow__info-box .yellow__info-box-icon {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.yellow__info-box .yellow_info-box-body {
+    position: relative;
+    left: 1rem;
+    padding: 2rem;
+}
+
+.yellow__info-box .yellow_info-box-body .yellow_info-box-content {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #227a4e;
 }

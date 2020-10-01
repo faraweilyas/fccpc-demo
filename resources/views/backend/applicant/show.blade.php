@@ -21,8 +21,10 @@
 					</div>
 					<div class="login-signin">
 						<div class="mb_30">
-							<h3>Submit Application</h3>
-							<div class="text-muted font-weight-bold">Enter your email to submit your application:</div>
+							<h3>Merger & Acquisition Application 
+							</h3>
+							<div class="text-muted font-weight-bold">Enter your email to begin your application
+								:</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.store') }}">
 							@csrf
@@ -36,7 +38,7 @@
 						</form>
 						<div class="mt-10">
                             <p>
-                                <span class="opacity-70">Existing application?</span><br />
+                                <span class="opacity-70" style="font-weight: bold; color: #006535">Existing application?</span><br />
                                 <a href="{{ route('applicant.track') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Add supporting documents or continue where you left off</a>
                             </p>
 	                    </div>

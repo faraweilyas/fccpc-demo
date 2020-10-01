@@ -16,9 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $title          = APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
+        $title = APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
         return view('frontend.index', compact('details'));
     }
 
@@ -29,9 +30,10 @@ class HomeController extends Controller
      */
     public function feeCalcutor()
     {
-        $title          = "Fee Calculator - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
+        $title = 'Fee Calculator - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
         return view('frontend.fee-calculator', compact('details'));
     }
 
@@ -42,9 +44,10 @@ class HomeController extends Controller
      */
     public function publications()
     {
-        $title          = "Publications - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
+        $title = 'Publications - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
         return view('frontend.publications', compact('details'));
     }
 
@@ -55,10 +58,14 @@ class HomeController extends Controller
      */
     public function publicationView($publication)
     {
-        $title          = "Publications - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
-        return view('frontend.publications-single', compact('details', 'publication'));
+        $title = 'Publications - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        return view(
+            'frontend.publications-single',
+            compact('details', 'publication')
+        );
     }
 
     /**
@@ -69,11 +76,12 @@ class HomeController extends Controller
     public function faqs()
     {
         $faq_categories = \AppHelper::get('faq_categories');
-        $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
+        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
         return view('frontend.faqs', compact('details', 'faq_categories'));
-    } 
+    }
 
     /**
      * Handles the faq search page.
@@ -82,17 +90,63 @@ class HomeController extends Controller
      */
     public function faqSearch()
     {
-        $search_param   = $_GET['query'] ?? '';
-        $faq            = Faq::where('question', 'LIKE', '%'.$search_param.'%')->first();
-        if (!is_null($faq))
-            $related_faq    = Faq::where('question', 'LIKE', '%'.$search_param.'%')->get();
-        $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
-        if (is_null($faq))
+        $search_param = $_GET['query'] ?? '';
+        $faq = Faq::where(
+            'question',
+            'LIKE',
+            '%' . $search_param . '%'
+        )->first();
+        if (!is_null($faq)) {
+            $related_faq = Faq::where(
+                'question',
+                'LIKE',
+                '%' . $search_param . '%'
+            )->get();
+        }
+        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        if (is_null($faq)) {
             return false;
-        return view('frontend.faq-search', compact('details', 'faq', 'related_faq'));
-    } 
+        }
+        return view(
+            'frontend.faq-search',
+            compact('details', 'faq', 'related_faq')
+        );
+    }
+    /**
+     * Handles the faq NotFound page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function faqNotFound()
+    {
+        $search_param = $_GET['query'] ?? '';
+        $faq = Faq::where(
+            'question',
+            'LIKE',
+            '%' . $search_param . '%'
+        )->first();
+        if (!is_null($faq)) {
+            $related_faq = Faq::where(
+                'question',
+                'LIKE',
+                '%' . $search_param . '%'
+            )->get();
+        }
+        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        if (is_null($faq)) {
+            return false;
+        }
+        return view(
+            'frontend.faq-not-found',
+            compact('details', 'faq', 'related_faq')
+        );
+    }
 
     /**
      * Handles the faqs category view page.
@@ -101,15 +155,21 @@ class HomeController extends Controller
      */
     public function faqCategoryView($category)
     {
-        $faq            = Faq::where('category', $category)->first();
-        if (!is_null($faq))
-            $related_faq    = $faq->where('category', $category)->get();
-        $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
-        if (is_null($faq))
+        $faq = Faq::where('category', $category)->first();
+        if (!is_null($faq)) {
+            $related_faq = $faq->where('category', $category)->get();
+        }
+        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        if (is_null($faq)) {
             return false;
-        return view('frontend.faq-single', compact('details', 'faq', 'related_faq'));
+        }
+        return view(
+            'frontend.faq-single',
+            compact('details', 'faq', 'related_faq')
+        );
     }
 
     /**
@@ -119,12 +179,16 @@ class HomeController extends Controller
      */
     public function faq($category, $slug)
     {
-        $faq            = Faq::where('slug', $slug)->first();
-        $related_faq    = $faq->where('category', $category)->get();
-        $title          = "Frequently Asked Questions (FAQs) - ".APP_NAME;
-        $description    = "FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.";
-        $details        = details($title, $description);
-        return view('frontend.faq-single', compact('details', 'faq', 'related_faq'));
+        $faq = Faq::where('slug', $slug)->first();
+        $related_faq = $faq->where('category', $category)->get();
+        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        return view(
+            'frontend.faq-single',
+            compact('details', 'faq', 'related_faq')
+        );
     }
 
     /**
@@ -134,12 +198,15 @@ class HomeController extends Controller
      */
     public function storeFeedback(Faq $faq)
     {
-        Feedback::updateOrcreate([
-            'ip_address'    => request()->ip(),
-            'faq_id'        => $faq->id,
-        ], [
-            'feedback'      => request('feedback')
-        ]);
+        Feedback::updateOrcreate(
+            [
+                'ip_address' => request()->ip(),
+                'faq_id' => $faq->id,
+            ],
+            [
+                'feedback' => request('feedback'),
+            ]
+        );
 
         return back()->with('success', 'Thanks for your feedback');
     }

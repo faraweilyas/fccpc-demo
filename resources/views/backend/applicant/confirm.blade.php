@@ -21,8 +21,11 @@
 					</div>
 					<div class="login-signin">
 						<div class="mb_30">
-							<h3>Confirm Tracking ID</h3>
-							<div class="text-muted font-weight-bold">Enter your tracking id to continue application submission:</div>
+							<h3>Get your Application ID 
+							</h3>
+							<div class="text-muted font-weight-bold">
+								We sent your application ID to {user email address}. Get that code and enter it here
+							</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.confirm.store') }}">
 							@csrf
@@ -36,8 +39,10 @@
 						</form>
 						<div class="mt-10">
                             <p>
-                                <span class="opacity-70">New application?</span><br />
-                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Go back to submit application</a>
+                                <span class="opacity-70" style="font-weight: bold; color: #006535">Didn't receive it? Check your Spam Folder 
+																	</span><br />
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Still cant find it? Resend the code
+																</a>
                             </p>
 	                    </div>
 					</div>
