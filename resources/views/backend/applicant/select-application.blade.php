@@ -18,30 +18,6 @@
             </div>
         </div>
     </div>
-
-{{-- 
-    <div class="container my-5 my-sm-10 my-md-10">
-        <div class="row my-16">
-       
-           <div class="col-md-4 yellow__info-box">
-               <svg class="yellow__info-box-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   <path opacity="0.3" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#1F877A"/>
-                   <path d="M13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11V16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16V11Z" fill="#1F877A"/>
-                   <path d="M13 8C13 7.44772 12.5523 7 12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9C12.5523 9 13 8.55228 13 8Z" fill="#1F877A"/>
-                   </svg>
-                   
-                  <p class="yellow_info-box-body">
-                    <span class="yellow_info-box-content"> View the checklist of required documents before you proceed to
-                      submitting a new
-                      application</span>
-                  </p>
-           
-              </div>
-       </div>
-   </div> --}}
-
-
-
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="d-flex flex-column-fluid">
             <div class="container">
@@ -73,21 +49,15 @@
                                         </svg>
                                     </span>
                                  
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Local Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Regular</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <small>Regular</small>
-                                        <br>
-                                        <br>
-                                        <small>A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. Applications take 60 days</small>
                                     </span>
 
                                     
                                 </div>
                             </div>
                         </a>
-
-          <a href="#" class="checklist-list">View Local Merger Document Checklist</a>
-
                     </div>
                     <div class="col-md-4">
                         <a href="{{ $guest->createApplicationPath('ffm') }}">
@@ -111,18 +81,13 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Foreign to Foreign Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">FFM</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                         <small>Foreign to Foreign Merger</small>
-                                        <br>
-                                        <br>
-                                        <small>A transaction between 2 Foreign entities but have a local effect in Nigeria. Application takes 60 days</small>
                                     </span>
                                 </div>
                             </div>
                         </a>
-          <a href="#" class="checklist-list">View Foreign to Foreign Merger Document Checklist</a>
-
                     </div>
                     <div class="col-md-4">
                         <a href="{{ $guest->createApplicationPath('ffx') }}">
@@ -146,18 +111,13 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Expedited to Expedited</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">FFM - Expediated</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         <small>Foreign to Foreign Merger (Expediated)</small>
-                                        <br>
-                                        <br>
-                                        <small>A transaction between 2 Foreign entities but have a local effect in Nigeria. Application takes 15 days</small>
                                     </span>
                                 </div>
                             </div>
                         </a>
-          <a href="#" class="checklist-list">View Expedited to Expedited Document Checklist</a>
-
                     </div>
                 </div>
             </div>

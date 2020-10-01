@@ -33,8 +33,8 @@ class CasesController extends Controller
     
         $caseHandlers   = (new User)->caseHandlers();
 
-        $title          = 'Unassigned Cases | '.APP_NAME;
-        $description    = 'Unassigned Cases | '.APP_NAME;
+        $title          = 'New Cases | '.APP_NAME;
+        $description    = 'New Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view('backend.cases.unassigned', compact('details', 'cases', 'caseHandlers'));
     }
