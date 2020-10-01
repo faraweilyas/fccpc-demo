@@ -1,4 +1,4 @@
-@extends('layouts.backend.guest')
+@extends('layouts.backend.old.guest')
 
 @section('content')
     <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">

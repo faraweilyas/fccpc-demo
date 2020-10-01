@@ -1,4 +1,4 @@
-@extends('layouts.backend.base')
+@extends('layouts.backend.old.base')
 
 @section('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'pages/users/login-3.css') }}" />
