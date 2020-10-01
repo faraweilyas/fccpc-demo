@@ -108,7 +108,7 @@ class HomeController extends Controller
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
         $details = details($title, $description);
         if (is_null($faq)) {
-            return false;
+            return redirect()->route('home.faqs.NotFound');
         }
         return view(
             'frontend.faq-search',
@@ -122,29 +122,13 @@ class HomeController extends Controller
      */
     public function faqNotFound()
     {
-        $search_param = $_GET['query'] ?? '';
-        $faq = Faq::where(
-            'question',
-            'LIKE',
-            '%' . $search_param . '%'
-        )->first();
-        if (!is_null($faq)) {
-            $related_faq = Faq::where(
-                'question',
-                'LIKE',
-                '%' . $search_param . '%'
-            )->get();
-        }
         $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
         $description =
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
         $details = details($title, $description);
-        if (is_null($faq)) {
-            return false;
-        }
         return view(
             'frontend.faq-not-found',
-            compact('details', 'faq', 'related_faq')
+            compact('details')
         );
     }
 
@@ -164,7 +148,7 @@ class HomeController extends Controller
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
         $details = details($title, $description);
         if (is_null($faq)) {
-            return false;
+            return redirect()->route('home.faqs.NotFound');
         }
         return view(
             'frontend.faq-single',
