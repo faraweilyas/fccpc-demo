@@ -3,8 +3,9 @@
 @section('base_content')
 <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 
-    <a href="index.html">
-      <img alt="Logo" src="assets/media/logos/logo-light.png" />
+    <a href="/dashboard" style="color: #fff">
+      {{ \Auth::user()->getAccountType('strtoupper') }}
+
     </a>
 
     <div class="d-flex align-items-center">
