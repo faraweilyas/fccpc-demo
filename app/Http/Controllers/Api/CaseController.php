@@ -135,7 +135,7 @@ class CaseController extends Controller
      */
     public function updateDocumentChecklistStatus(Document $document)
     {
-        $case                   = $document->case;
+        $case                   = Cases::find($document->case_id);
         $checklistIds           = request('checklists');
         $arrayOfChecklistIds    = (array) $checklistIds;
 
