@@ -70,7 +70,7 @@ class Cases extends Model
 
     public function getSubject($textStyle=NULL) : string
     {
-        return textTransformer(shortenContent($this->subject, 45), $textStyle);
+        return textTransformer(shortenContent($this->subject, 35), $textStyle);
     }
 
     public function getCategory($textStyle=NULL) : string
@@ -119,9 +119,9 @@ class Cases extends Model
         return trim($this->applicant_fullname);
     }
 
-    public function getSubmittedAt() : string
+    public function getSubmittedAt(string $format='customdate') : string
     {
-        return datetimeToText($this->submitted_at, 'customd');
+        return datetimeToText($this->submitted_at, $format);
     }
 
     public function getChecklistIds() : array
