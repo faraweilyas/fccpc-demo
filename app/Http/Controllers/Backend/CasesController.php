@@ -30,6 +30,7 @@ class CasesController extends Controller
     public function unassignedCases()
     {
         $cases          = (new Cases)->unassignedCases();
+    
         $caseHandlers   = (new User)->caseHandlers();
 
         $title          = 'New Cases | '.APP_NAME;
@@ -53,8 +54,8 @@ class CasesController extends Controller
             else:
                 $cases          = (new Cases)->assignedCases();
             endif;
-        endif;
-
+        endif; 
+        
         $caseHandlers   = (new User)->caseHandlers();
 
         $title          = 'Assigned Cases | '.APP_NAME;
@@ -120,12 +121,12 @@ class CasesController extends Controller
         $case->assign($user);
         $user->notify(
             new CaseAssigned()
-        );
+        );  
         $this->sendResponse("Case assigned.", "success", [
             'case'      => $case,
             'handler'   => $user
         ]);
-    }
+    } 
 
     /**
      * Handles the case checklists page route.
@@ -140,7 +141,7 @@ class CasesController extends Controller
         $this->sendResponse("Case checklists received.", "success", [
             'checklists'   => $checklists,
         ]);
-    }
+    } 
 
     /**
      * Handles the case documents page route.
@@ -156,7 +157,7 @@ class CasesController extends Controller
             'documents'   => $documents,
             'group'       => $case->getChecklistGroupName(),
         ]);
-    }
+    } 
 
     /**
      * Handles the get document icon text page route.
@@ -195,7 +196,7 @@ class CasesController extends Controller
         $case->reAssign($oldUser, $newUser);
         $newUser->notify(
             new CaseAssigned()
-        );
+        );  
         $this->sendResponse("Case reassigned.", "success");
     }
 
