@@ -50,7 +50,7 @@
                                     <tr>
                                         <td class="text-center">{{ $id }}</td>
                                         <td>
-                                            <div class="font-weight-bolder text-primary mb-0">
+                                            <div class="font-weight-bolder text-dark mb-0">
                                                 {!! $case->getRefNO() !!}
                                             </div>
                                         </td>
@@ -65,7 +65,7 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="font-weight-bold text-success mb-0">
-                                                {!! $case->getSubmittedAt() !!}
+                                                {!! $case->getSubmittedAt('customdate') !!}
                                             </div>
                                         </td>
                                         <td nowrap="nowrap">
@@ -88,14 +88,14 @@
                                             >
                                                 <i class="flaticon-user-add"></i> Assign
                                             </a>
-                                            <a 
+                                            <a
                                                 href="#"
                                                 class="unassignCaseButton{{ $case->id }} btn btn-sm btn-light-danger mr-3 unassignCaseButton hide" data-case-id="{{ $case->id }}"
                                                 title="Unassign Case Handler"
                                             >
                                                 <i class="la la-trash"></i> Unassign
                                             </a>
-                                            <a 
+                                            <a
                                                 class="unassigningCaseButton{{ $case->id }} btn btn-sm btn-light-danger mr-3 disabled hide"
                                                 title="Unassigning Case Handler"
                                             >

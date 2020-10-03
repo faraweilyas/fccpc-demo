@@ -50,7 +50,7 @@
                                     <tr>
                                         <td class="text-center">{{ $id }}</td>
                                         <td>
-                                            <div class="font-weight-bolder text-primary mb-0">
+                                            <div class="font-weight-bolder text-dark mb-0">
                                                 {!! $case->getRefNO() !!}
                                             </div>
                                         </td>
@@ -76,7 +76,7 @@
                                                 data-toggle="modal"
                                                 data-target="#viewCaseModal"
                                             >
-                                                <i class="flaticon-eye"></i> View 
+                                                <i class="flaticon-eye"></i> View
                                             </a>
                                             @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a

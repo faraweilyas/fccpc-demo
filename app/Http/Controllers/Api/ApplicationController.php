@@ -185,7 +185,7 @@ class ApplicationController extends Controller
                 'guest' => $guest,
             ]);
     }
-    
+
     /**
      * Get case application.
      *
@@ -300,8 +300,8 @@ class ApplicationController extends Controller
         $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         return $this->sendResponse(201, 'success', 'Document has been saved.', [
-                'document' => $document,
-            ]);
+            'document' => $document,
+        ]);
     }
 
     /**

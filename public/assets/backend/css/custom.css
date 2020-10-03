@@ -152,8 +152,15 @@ section#orderWizard {
     margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 768px) {
-    .subheader {
+.icon-1x
+{
+    font-size: .8rem !important;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .subheader
+    {
         margin-top: 80px;
         margin-bottom: -50px;
     }
@@ -294,3 +301,4 @@ section#orderWizard {
     .header-mobile {
         background-color: #227a4e !important;
     }
+}
