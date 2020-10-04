@@ -876,7 +876,7 @@
 </style>
 
 
-<div class="container py-5">
+<div id="kt_wizard_v2" class="container py-5">
     <div class="row">
         <div class="col-md-12 ">
             <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
@@ -898,7 +898,7 @@
                     <div class="grid-col-2">
                         <div class="grid-row-2">
                             <h4 class="info-title">Subject</h4>
-                            <h4>{subject}</h4>
+                            <h4>{{ $guest->case->subject }}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Filling Fees</h4>
@@ -906,7 +906,7 @@
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Parties:</h4>
-                            <h4>{parties}</h4>
+                            <h4>{!! $guest->case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Processing Fees:</h4>
@@ -916,7 +916,7 @@
                             <h4 class="info-title">
                                 Transaction Type:
                             </h4>
-                            <h4>Small</h4>
+                            <h4>{{ $guest->case->getType() }}</h4>
                         </div>
                     </div>
 
@@ -928,64 +928,68 @@
                             <h4 class="info-title">
                                 Applicant/Representing Firm
                             </h4>
-                            <h4>{applicant_firm}</h4>
+                            <h4>{{ $guest->case->applicant_firm }}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Contact Person</h4>
-                            <h4>{applicant_fullname}</h4>
+                            <h4>{{ $guest->case->getApplicantName() }}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Email address:</h4>
-                            <h4>{applicant_email}</h4>
+                            <h4>{{ $guest->case->applicant_email }}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Phone number:</h4>
-                            <h4>{applicant_phone_number}</h4>
+                            <h4>{{ $guest->case->applicant_phone_number }}</h4>
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Address:</h4>
-                            <h4>{applicant_address}</h4>
+                            <h4>{{ $guest->case->applicant_address }}</h4>
                         </div>
                     </div>
 
                     <p class="section-header">Relevant Documents</p>
+                    @foreach($documents as $document)
                     <div class="grid-col-2">
 
                         <div class="grid-col-2-files my-5" key={item[0]}>
                             <img src="{{ pc_asset(BE_IMAGE.'pdf.png') }}" alt="pdf" />
 
-                            <h4> 983682792.pdf</h4>
-                            <button class="btn btn-success ">
-
+                            <h4> {{ $document->file }}</h4>
+                            <button class="btn btn-success" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
                                 Download
                             </button>
                         </div>
-
-
                         <div class="grid-row-2">
                             <h4 class="info-title">
                                 Additional Information:
                             </h4>
-                            <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae minima quis ipsam
-                                rem amet sunt dignissimos, exercitationem error ad adipisci ab facilis unde eum fuga
-                                tempora velit a eaque impedit.</h4>
+                            <h4>{{ $document->additional_info }}</h4>
                         </div>
                     </div>
-                    <div class="grid-col-2-btn ">
-                        <button class="btn btn-success width-100">
-                            Go back to edit
-                        </button>
-
-                        <button class="btn btn-success" type="submit" onClick={this.submitApplication}>
-                            Submit
-                        </button>
-                    </div>
+                    @endforeach
+                    <form class="form" id="kt_form">
+                        <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
+                        <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
+                        <div class="grid-col-2-btn">
+                            <button id="goback-btn" class="btn btn-success width-100" onclick="window.location.href = '/application/{{ $guest->tracking_id }}/{{ $guest->case->case_category }}'">
+                                Go back to edit
+                            </button>
+                            <button id="upload-info" class="btn btn-success" data-wizard-type="action-submit">
+                                Submit
+                            </button> 
+                            <button id="upload-img" class="btn btn-success hide" disabled>
+                                <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
 
-
-
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
 @endsection

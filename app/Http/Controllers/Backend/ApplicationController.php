@@ -146,11 +146,11 @@ class ApplicationController extends Controller
     {
         $guest->case->saveContactInfo(
             (object) [
-                'applicant_firm' => request('applicant_firm'),
-                'applicant_fullname' => request('applicant_fullname'),
-                'applicant_email' => request('applicant_email'),
+                'applicant_firm'         => request('applicant_firm'),
+                'applicant_fullname'     => request('applicant_fullname'),
+                'applicant_email'        => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
-                'applicant_address' => request('applicant_address'),
+                'applicant_address'      => request('applicant_address'),
             ]
         );
 
@@ -242,9 +242,9 @@ class ApplicationController extends Controller
             return redirect($guest->applicationPath());
         }
 
-        $title = 'Application Submitted | ' . APP_NAME;
+        $title       = 'Application Submitted | ' . APP_NAME;
         $description = 'Application Submitted | ' . APP_NAME;
-        $details = details($title, $description);
+        $details     = details($title, $description);
         return view('backend.applicant.submitted', compact('details', 'guest'));
     }
 
@@ -260,9 +260,9 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
-        $title = 'Upload Documents | ' . APP_NAME;
+        $title       = 'Upload Documents | ' . APP_NAME;
         $description = 'Upload Documents | ' . APP_NAME;
-        $details = details($title, $description);
+        $details     = details($title, $description);
         return view(
             'backend.applicant.upload-documents',
             compact('details', 'guest')
@@ -276,13 +276,10 @@ class ApplicationController extends Controller
      */
     public function review(Guest $guest)
     {
-        if ($guest->case->isSubmitted()) {
-            return redirect($guest->submittedApplicationPath());
-        }
-
-        $title = 'Review Application | ' . APP_NAME;
+        $documents   = Document::where('case_id', $guest->case->id)->get();
+        $title       = 'Review Application | ' . APP_NAME;
         $description = 'Review Application | ' . APP_NAME;
-        $details = details($title, $description);
-        return view('backend.applicant.review', compact('details', 'guest'));
+        $details     = details($title, $description);
+        return view('backend.applicant.review', compact('details', 'guest', 'documents'));
     }
 }

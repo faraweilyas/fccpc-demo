@@ -48,7 +48,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" defer>
         $(document).ready(function($)
-        {
+        {   
             toastr.options = {
                 "progressBar": true,
                 "positionClass": "toast-bottom-right",
