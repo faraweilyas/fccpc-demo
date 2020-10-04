@@ -33,21 +33,26 @@
 }
 
 @media only screen and (max-width: 768px) {
-   .col-md-6 {
-    max-width: 100%;
-  }
+    .col-md-6 {
+        max-width: 100%;
+    }
 
-  .row {
-    display: block;
-  }
+    .row {
+        display: block;
+    }
 
-  .header
-  {
-    justify-content: space-between;
-  }
+    .header {
+        justify-content: space-between;
+    }
 
-  .header__content
-  {
-    display: none;
-  }
+    .header__content {
+        display: none;
+    }
+}
+
+
+.text-paragh {
+    font-size: 2rem !important;
+    /* margin: 2rem !important; */
+    /* padding: 2rem !important; */
 }

@@ -8,6 +8,7 @@
 
     <a href="/dashboard" class="brand-logo">
 
+      
      <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
 
     </a>
