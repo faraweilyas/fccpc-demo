@@ -11,13 +11,13 @@ use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
-    protected $methods              = [
-        'saveCaseInfo'              => 'saveCaseInfo',
-        'saveContactInfo'           => 'saveContactInfo',
-        'saveChecklistDocument'     => 'saveChecklistDocument',
+    protected $methods = [
+        'saveCaseInfo' => 'saveCaseInfo',
+        'saveContactInfo' => 'saveContactInfo',
+        'saveChecklistDocument' => 'saveChecklistDocument',
     ];
 
-	/**
+    /**
      * Handles select application page.
      *
      * @param Guest $guest
@@ -25,13 +25,17 @@ class ApplicationController extends Controller
      */
     public function index(Guest $guest)
     {
-        if ($guest->case->isSubmitted())
+        if ($guest->case->isSubmitted()) {
             return redirect($guest->submittedApplicationPath());
+        }
 
-        $title            = 'Select Application | '.APP_NAME;
-        $description      = 'Select Application | '.APP_NAME;
-        $details          = details($title, $description);
-        return view('backend.applicant.select-application', compact('details', 'guest'));
+        $title = 'Select Application | ' . APP_NAME;
+        $description = 'Select Application | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.applicant.select-application',
+            compact('details', 'guest')
+        );
     }
 
     /**
@@ -44,29 +48,42 @@ class ApplicationController extends Controller
     public function show(Guest $guest, string $case_category_key)
     {
         // Validate case category
-        $result = !\AppHelper::validateKey('case_categories', strtoupper($case_category_key));
+        $result = !\AppHelper::validateKey(
+            'case_categories',
+            strtoupper($case_category_key)
+        );
         abort_if($result, 404);
 
         $case = $guest->case;
 
         // Check if case has been submitted
-        if ($case->isSubmitted())
+        if ($case->isSubmitted()) {
             return redirect($guest->submittedApplicationPath());
+        }
 
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        $case_category              = $case->getCategory();
-        $case_parties               = $case->getCaseParties(false);
-        $checklistIds               = $case->getChecklistIds();
-        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
+        $case_category = $case->getCategory();
+        $case_parties = $case->getCaseParties(false);
+        $checklistIds = $case->getChecklistIds();
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
 
-        $title          = "{$case_category} Application | ".APP_NAME;
-        $description    = "{$case_category} Application | ".APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.applicant.create-application', compact(
-            'details', 'guest', 'case', 'case_category', 'case_parties', 'checklistIds', 'checklistGroupDocuments'
-        ));
+        $title = "{$case_category} Application | " . APP_NAME;
+        $description = "{$case_category} Application | " . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.applicant.create-application',
+            compact(
+                'details',
+                'guest',
+                'case',
+                'case_category',
+                'case_parties',
+                'checklistIds',
+                'checklistGroupDocuments'
+            )
+        );
     }
 
     /**
@@ -77,14 +94,17 @@ class ApplicationController extends Controller
      * @param mixed $response
      * @return void
      */
-    public function sendResponse(string $message, string $responseType, $response=null)
-    {
+    public function sendResponse(
+        string $message,
+        string $responseType,
+        $response = null
+    ) {
         echo json_encode([
-            'message'       => $message,
-            'responseType'  => $responseType,
-            'response'      => $response,
+            'message' => $message,
+            'responseType' => $responseType,
+            'response' => $response,
         ]);
-        exit;
+        exit();
     }
 
     /**
@@ -96,8 +116,12 @@ class ApplicationController extends Controller
      */
     public function create(Guest $guest, string $action)
     {
-        if (!in_array($action, array_keys($this->methods)))
-            $this->sendResponse("Something went wrong, please try again", "error");
+        if (!in_array($action, array_keys($this->methods))) {
+            $this->sendResponse(
+                'Something went wrong, please try again',
+                'error'
+            );
+        }
 
         $method = $this->methods[$action];
         call_user_func([$this, $method], $guest);
@@ -115,48 +139,53 @@ class ApplicationController extends Controller
             request('case_type')
         );
 
-        $this->sendResponse("Case info saved.", "success", $guest->case);
+        $this->sendResponse('Case info saved.', 'success', $guest->case);
     }
 
     public function saveContactInfo(Guest $guest)
     {
-        $guest->case->saveContactInfo((object) [
-            'applicant_firm'            => request('applicant_firm'),
-            'applicant_fullname'        => request('applicant_fullname'),
-            'applicant_email'           => request('applicant_email'),
-            'applicant_phone_number'    => request('applicant_phone_number'),
-            'applicant_address'         => request('applicant_address'),
-        ]);
+        $guest->case->saveContactInfo(
+            (object) [
+                'applicant_firm' => request('applicant_firm'),
+                'applicant_fullname' => request('applicant_fullname'),
+                'applicant_email' => request('applicant_email'),
+                'applicant_phone_number' => request('applicant_phone_number'),
+                'applicant_address' => request('applicant_address'),
+            ]
+        );
 
-        $this->sendResponse("Contact info saved.", "success", $guest->case);
+        $this->sendResponse('Contact info saved.', 'success', $guest->case);
     }
 
     public function saveChecklistDocument(Guest $guest)
     {
-        if (!request()->hasFile('file'))
-            $this->sendResponse("No file has been uploaded.", "error", []);
+        if (!request()->hasFile('file')) {
+            $this->sendResponse('No file has been uploaded.', 'error', []);
+        }
 
-        $file           = request('file');
-        $extension      = $file->getClientOriginalExtension();
-        $newFileName    = \SerialNumber::randomFileName($extension);
-        $path           = $file->storeAs('public/documents', $newFileName);
+        $file = request('file');
+        $extension = $file->getClientOriginalExtension();
+        $newFileName = \SerialNumber::randomFileName($extension);
+        $path = $file->storeAs('public/documents', $newFileName);
 
         if (request('override')):
             $previous_document = Document::find(request('document_id'));
-            unlink(storage_path('app/public/documents/'.$previous_document->file));
+            unlink(
+                storage_path('app/public/documents/' . $previous_document->file)
+            );
             Document::destroy($previous_document->id);
         endif;
 
-        $document               = Document::create([
-            'case_id'           => $guest->case->id,
-            'file'              => $newFileName,
-            'additional_info'   => trim(request('additional_info')),
+        $document = Document::create([
+            'case_id' => $guest->case->id,
+            'file' => $newFileName,
+            'additional_info' => trim(request('additional_info')),
         ]);
 
-        $checklistIds           = request('checklists');
-        $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
+        $checklistIds = request('checklists');
+        $arrayOfChecklistIds = (array) explode(',', $checklistIds);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
-        $this->sendResponse("Document has been saved.", "success", $document);
+        $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
     /**
@@ -168,28 +197,37 @@ class ApplicationController extends Controller
     public function submit(Guest $guest)
     {
         $case = $guest->case;
-        
-        if (is_null($case->subject) || is_null($case->parties) || is_null($case->case_category) || is_null($case->case_type) || is_null($case->applicant_firm) || is_null($case->applicant_fullname) || is_null($case->applicant_email) || is_null($case->applicant_phone_number) || is_null($case->applicant_address)):
-            $this->sendResponse("Provide required fields.", "error");
+
+        if (
+            is_null($case->subject) ||
+            is_null($case->parties) ||
+            is_null($case->case_category) ||
+            is_null($case->case_type) ||
+            is_null($case->applicant_firm) ||
+            is_null($case->applicant_fullname) ||
+            is_null($case->applicant_email) ||
+            is_null($case->applicant_phone_number) ||
+            is_null($case->applicant_address)
+        ):
+            $this->sendResponse('Provide required fields.', 'error');
         endif;
 
         $guest->case->submit();
 
         $case = $guest->case;
-        try
-        {
-            Mail::to($guest->email)->send(new ApplicationRequest([
-                'fullname'        => $case->applicant_fullname,
-                'ref_no'          => $case->ref_no,
-                'case'            => $case,
-                'guest'           => $guest
-            ]));
-        }
-        catch (\Exception $exception)
-        {
+        try {
+            Mail::to($guest->email)->send(
+                new ApplicationRequest([
+                    'fullname' => $case->applicant_fullname,
+                    'ref_no' => $case->ref_no,
+                    'case' => $case,
+                    'guest' => $guest,
+                ])
+            );
+        } catch (\Exception $exception) {
             $message = $exception->getMessage();
         }
-        $this->sendResponse("Application submitted.", "success", $case);
+        $this->sendResponse('Application submitted.', 'success', $case);
     }
 
     /**
@@ -200,12 +238,13 @@ class ApplicationController extends Controller
      */
     public function applicationSubmitted(Guest $guest)
     {
-        if (!$guest->case->isSubmitted())
+        if (!$guest->case->isSubmitted()) {
             return redirect($guest->applicationPath());
+        }
 
-        $title          = 'Application Submitted | '.APP_NAME;
-        $description    = 'Application Submitted | '.APP_NAME;
-        $details        = details($title, $description);
+        $title = 'Application Submitted | ' . APP_NAME;
+        $description = 'Application Submitted | ' . APP_NAME;
+        $details = details($title, $description);
         return view('backend.applicant.submitted', compact('details', 'guest'));
     }
 
@@ -217,12 +256,33 @@ class ApplicationController extends Controller
      */
     public function uploadDocuments(Guest $guest)
     {
-        if (!$guest->case->isSubmitted())
+        if (!$guest->case->isSubmitted()) {
             return redirect($guest->submittedApplicationPath());
+        }
 
-        $title          = 'Upload Documents | '.APP_NAME;
-        $description    = 'Upload Documents | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.applicant.upload-documents', compact('details', 'guest'));
+        $title = 'Upload Documents | ' . APP_NAME;
+        $description = 'Upload Documents | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.applicant.upload-documents',
+            compact('details', 'guest')
+        );
+    }
+
+    /**
+     * Handles Review application page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function review(Guest $guest)
+    {
+        if ($guest->case->isSubmitted()) {
+            return redirect($guest->submittedApplicationPath());
+        }
+
+        $title = 'Review Application | ' . APP_NAME;
+        $description = 'Review Application | ' . APP_NAME;
+        $details = details($title, $description);
+        return view('backend.applicant.review', compact('details', 'guest'));
     }
 }

@@ -19,9 +19,9 @@ class ApplicantController extends Controller
      */
     public function show()
     {
-        $title          = 'Submit Application | '.APP_NAME;
-        $description    = 'Submit Application | '.APP_NAME;
-        $details        = details($title, $description);
+        $title = 'Submit Application | ' . APP_NAME;
+        $description = 'Submit Application | ' . APP_NAME;
+        $details = details($title, $description);
         return view('backend.applicant.show', compact('details'));
     }
 
@@ -32,9 +32,9 @@ class ApplicantController extends Controller
      */
     public function confirm($email)
     {
-        $title          = 'Confirm Tracking ID | '.APP_NAME;
-        $description    = 'Confirm Tracking ID | '.APP_NAME;
-        $details        = details($title, $description);
+        $title = 'Confirm Tracking ID | ' . APP_NAME;
+        $description = 'Confirm Tracking ID | ' . APP_NAME;
+        $details = details($title, $description);
         return view('backend.applicant.confirm', compact('details', 'email'));
     }
 
@@ -46,13 +46,16 @@ class ApplicantController extends Controller
     public function confirmSubmit()
     {
         request()->validate([
-            'tracking_id' => 'required'
+            'tracking_id' => 'required',
         ]);
 
         $guest = Guest::where('tracking_id', request('tracking_id'))->first();
 
-        if (!$guest)
-            return redirect()->back()->with("error", "Invalid tracking ID!");
+        if (!$guest) {
+            return redirect()
+                ->back()
+                ->with('error', 'Invalid tracking ID!');
+        }
 
         return redirect($guest->applicationPath());
     }
@@ -69,24 +72,25 @@ class ApplicantController extends Controller
         ]);
 
         $guest = Guest::create([
-            'ip_address'    => request()->ip(),
-            'email'         => trim(request('email')),
-            'tracking_id'   => \SerialNumber::trackingId(),
+            'ip_address' => request()->ip(),
+            'email' => trim(request('email')),
+            'tracking_id' => \SerialNumber::trackingId(),
         ]);
 
         $case = $guest->startCase();
 
-        try
-        {
-            Mail::to(request('email'))->send(new WelcomeApplicant($guest, $case));
+        try {
+            Mail::to(request('email'))->send(
+                new WelcomeApplicant($guest, $case)
+            );
             $message = 'Mail notification sent!';
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
             $message = $exception->getMessage();
         }
 
-        return redirect()->route('applicant.confirm', ['email' => request('email')]);
+        return redirect()->route('applicant.confirm', [
+            'email' => request('email'),
+        ]);
     }
 
     /**
@@ -96,9 +100,9 @@ class ApplicantController extends Controller
      */
     public function trackApplication()
     {
-        $title          = 'Track Application | '.APP_NAME;
-        $description    = 'Track Application | '.APP_NAME;
-        $details        = details($title, $description);
+        $title = 'Track Application | ' . APP_NAME;
+        $description = 'Track Application | ' . APP_NAME;
+        $details = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }
 
@@ -114,15 +118,22 @@ class ApplicantController extends Controller
             'tracking_id' => ['required', 'exists:guests,tracking_id'],
         ]);
 
-        $guest = Guest::where('tracking_id', '=', request('tracking_id'))->firstOrFail();
+        $guest = Guest::where(
+            'tracking_id',
+            '=',
+            request('tracking_id')
+        )->firstOrFail();
 
         // Check if case has been submitted
-        if ($guest->case->isSubmitted())
+        if ($guest->case->isSubmitted()) {
             return redirect($guest->uploadDocumentsPath());
+        }
 
-        return (!$guest->case->isCategorySet())
-                ? redirect($guest->applicationPath())
-                : redirect($guest->createApplicationPath($guest->case->case_category));
+        return !$guest->case->isCategorySet()
+            ? redirect($guest->applicationPath())
+            : redirect(
+                $guest->createApplicationPath($guest->case->case_category)
+            );
     }
 
     /**
@@ -134,6 +145,11 @@ class ApplicantController extends Controller
     {
         $groupName = \Str::slug($document->checklists[0]->group->name);
         $extension = pathinfo($document->file)['extension'];
-        return response()->download(storage_path("app/public/documents/{$document->file}"), "{$groupName}.{$extension}");
+        return response()->download(
+            storage_path("app/public/documents/{$document->file}"),
+            "{$groupName}.{$extension}"
+        );
     }
+
+
 }
