@@ -594,6 +594,8 @@ function submitCase()
 {
     var tracking_id = $("#tracking_id").val();
 
+    $("#goback-btn").addClass('hide');
+    $("#upload-info").addClass('hide');
     $("#previous-btn").addClass('hide');
     $("#save-btns").addClass('hide');
     $("#upload-img").toggle();
