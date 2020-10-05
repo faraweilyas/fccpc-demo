@@ -294,7 +294,7 @@
                                                 <button class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
                                             </div>
                                             <div id="save-btns">
-                                                <button id="upload-info" class="btn btn-success font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">Save & Upload Case Documents</button>
+                                                <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">Save & Upload Case Documents</button>
                                                 <button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
                                             </div>
                                         </div>
@@ -308,10 +308,8 @@
         
             <div class="row">
                 <div class="col-md-4"></div>
-                <div class="col-md-4">
-
-                </div>
-                <div class="col-md-4">
+                <div class="col-md-4"></div>
+                <div class="col-md-4 mt-4">
                     <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 float-right" onclick="window.location.href = '{{ url('/application/applicant')}}/{{$guest->tracking_id }}/{{'review'}}'">Review Application</button>
                 </div>
             </div>
