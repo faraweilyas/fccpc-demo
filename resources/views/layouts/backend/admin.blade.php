@@ -39,7 +39,7 @@
 
       <ul class="menu-nav">
         <li class="menu-item bb_home mt-n5" aria-haspopup="true">
-          <a href="/" class="menu-link">
+          <a href="/" target="_blank" class="menu-link">
             <span class="svg-icon menu-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.3" d="M8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 7.10457 4.89543 8 6 8C7.10457 8 8 7.10457 8 6Z" fill="#A9B3BE"/>
