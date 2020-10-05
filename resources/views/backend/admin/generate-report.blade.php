@@ -23,7 +23,7 @@
 
 <div class="container py-5">
 
-    <div class="row my-sm-20">
+    <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="d-flex py-4">
@@ -51,9 +51,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <label>Select Case Handler</label>
-                                <select class="form-control form-control-table select2" id="caseHandler" name="caseHandler" style="width: 100%;">
-                                   @foreach($handlers as $handler)
-                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                <select class="form-control form-control-table select2" id="get_handler"
+                                    name="caseHandler" style="width: 100%;">
+                                    @foreach($handlers as $handler)
+                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -104,7 +105,7 @@
                             <label>Case Type</label>
                             <select class="form-control form-control-table" name="type">
                                 @foreach(\AppHelper::get('case_types') as $key => $value)
-                                    <option value="{{ $key }}">{{ $value }}</option>
+                                <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
 
@@ -115,7 +116,7 @@
                             <label>Case Category</label>
                             <select class="form-control form-control-table" name="category">
                                 @foreach(\AppHelper::get('case_categories') as $key => $value)
-                                    <option value="{{ $key }}">{{ $value }}</option>
+                                <option value="{{ $key }}">{{ $value }}</option>
                                 @endforeach
                             </select>
 
@@ -144,7 +145,18 @@
 @endsection
 
 @section('custom.javascript')
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
+
+
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#get_handler').select2();
+
+    })
+
+</script>
 @endsection

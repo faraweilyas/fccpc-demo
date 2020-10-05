@@ -755,6 +755,20 @@ textarea {
     color: #103f29 !important;
 }
 
+.administrator-right {
+    position: absolute;
+    top: 1rem;
+    right: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+    .administrator-right {
+        position: relative;
+        top: 0;
+        right: 0;
+    }
+}
+
 .landing-footer {
     height: -webkit-fit-content;
     height: -moz-fit-content;

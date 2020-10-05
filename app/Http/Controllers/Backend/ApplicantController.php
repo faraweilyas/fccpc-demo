@@ -46,15 +46,15 @@ class ApplicantController extends Controller
     public function confirmSubmit()
     {
         request()->validate([
-            'tracking_id' => 'required',
+            'application_id' => 'required',
         ]);
 
-        $guest = Guest::where('tracking_id', request('tracking_id'))->first();
+        $guest = Guest::where('tracking_id', request('application_id'))->first();
 
         if (!$guest) {
             return redirect()
                 ->back()
-                ->with('error', 'Invalid tracking ID!');
+                ->with('error', 'Invalid application ID!');
         }
 
         return redirect($guest->applicationPath());

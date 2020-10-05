@@ -38,8 +38,9 @@
       data-menu-dropdown-timeout="500">
 
       <ul class="menu-nav">
-        <li class="menu-item bb_home mt-n5" aria-haspopup="true">
-          <a href="/" target="_blank" class="menu-link">
+    
+        <li class="menu-item " aria-haspopup="true">
+          <a href="/" class="menu-link">
             <span class="svg-icon menu-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.3" d="M8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 7.10457 4.89543 8 6 8C7.10457 8 8 7.10457 8 6Z" fill="#A9B3BE"/>
@@ -52,10 +53,13 @@
                 <path d="M14 18C14 16.8954 13.1046 16 12 16C10.8954 16 10 16.8954 10 18C10 19.1046 10.8954 20 12 20C13.1046 20 14 19.1046 14 18Z" fill="#A9B3BE"/>
                 <path d="M20 18C20 16.8954 19.1046 16 18 16C16.8954 16 16 16.8954 16 18C16 19.1046 16.8954 20 18 20C19.1046 20 20 19.1046 20 18Z" fill="#A9B3BE"/>
                 </svg>
+                
+
             </span>
             <span class="menu-text">Home</span>
           </a>
         </li>
+  
         <li class="menu-item " aria-haspopup="true">
           <a href="{{ route('dashboard.index') }}" class="menu-link">
             <span class="svg-icon menu-icon">
@@ -273,7 +277,7 @@
 @section('top_navigation')
 
     <!-- Top navigation -->
-    <div class="header-top">
+    <div class="header-top header-top-custom">
         <div class="container">
 
           <a data-turbolinks="false" href="/" class="map mr-20">

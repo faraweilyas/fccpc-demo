@@ -30,8 +30,8 @@
 						<form class="form" method="POST" action="{{ route('applicant.confirm.store') }}">
 							@csrf
 							<div class="form-group mb-5">
-								<input type="text" placeholder="Tracking ID:" name="tracking_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" required />
-                                @error('tracking_id')
+								<input type="text" placeholder="Application ID:" name="application_id" class="form-control h-auto form-control-solid py-4 px-8" autocomplete="off" required />
+                                @error('application_id')
                                     <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
                                 @enderror
 							</div>
