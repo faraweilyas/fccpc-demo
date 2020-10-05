@@ -12,7 +12,8 @@
      @elseif (\Auth::user()->account_type == 'AD')
        // Administrator
      @elseif (\Auth::user()->account_type == 'CH')
-       // Case Handler
+     <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+
      @else
        // Administator
      @endif
@@ -271,7 +272,7 @@
         <div class="container">
 
           <a data-turbolinks="false" href="/" class="map mr-20">
-            <h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
+            <h3 class="text-white text-bold font-weight-bolder text-dark">FCCPC</h3>
         </a>
             <div class="topbar">
             
