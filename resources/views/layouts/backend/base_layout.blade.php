@@ -51,9 +51,12 @@ class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_PLUGIN.'global/plugins.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_PLUGIN.'custom/prismjs/prismjs.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'scripts.bundle.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_LAYOUT_JS.'pages/widgets.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
+
+
 
     <script type="text/javascript" defer>
         $(document).ready(function($)
