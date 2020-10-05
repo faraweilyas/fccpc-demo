@@ -24,7 +24,7 @@
 							<h3>Get your Application ID 
 							</h3>
 							<div class="text-muted font-weight-bold">
-								We sent your application ID to {user email address}. Get that code and enter it here
+								We sent your application ID to {{ $email }}. Get that code and enter it here
 							</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.confirm.store') }}">
