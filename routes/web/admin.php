@@ -123,6 +123,14 @@ Route::prefix('/')
         Route::get('report', 'DashboardController@generateReport')->name(
             'report'
         );
+
+        Route::post('report', 'DashboardController@exportReportCSV')->name(
+            'report'
+        );
+
+        Route::post('report/custom', 'DashboardController@exportReportCSVCustom')->name(
+            'report.custom'
+        );
     });
 
 // Cases
@@ -139,6 +147,10 @@ Route::prefix('cases')
             'CasesController@assignedCases'
         )->name('assigned');
 
+        Route::get('/dropped/{handler}', 'CasesController@droppedCases')->name(
+            'dropped'
+        );
+
         Route::get('/approved', 'CasesController@approvedCases')->name(
             'approved'
         );
@@ -147,7 +159,7 @@ Route::prefix('cases')
             'archived'
         );
 
-        Route::get('review/{id}', 'CasesController@reviewCase')->name('review');
+        Route::get('analyze/{id}', 'CasesController@analyzeCase')->name('analyze');
 
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'

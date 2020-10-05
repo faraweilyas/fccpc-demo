@@ -64,7 +64,7 @@ class Cases extends Model
 
     public function getRefNO($textStyle='strtoupper') : string
     {
-        $refrenceNo = !empty($this->reference_number) ? "#{$this->reference_number}" : '';
+        $refrenceNo = !empty($this->reference_number) ? "{$this->reference_number}" : '';
         return textTransformer($refrenceNo, $textStyle);
     }
 

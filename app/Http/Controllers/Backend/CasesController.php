@@ -65,6 +65,22 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles dropped cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function droppedCases(User $handler)
+    {
+        $cases          = $handler->dropped_cases_assigned_to()->get();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Dropped Cases | '.APP_NAME;
+        $description    = 'Dropped Cases | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.cases.cases-dropped', compact('details', 'cases', 'caseHandlers'));
+    } 
+
+    /**
      * Handles approved cases page.
      *
      * @return \Illuminate\Contracts\View\Factory
@@ -97,17 +113,16 @@ class CasesController extends Controller
     }
 
     /**
-     * Handles the case review page route.
+     * Handles the case analysis page route.
      *
      * @return void
      */
-    public function reviewCase($id)
+    public function analyzeCase($id)
     {
-        $case             = Cases::find($id);
         $title            = APP_NAME;
-        $description      = "FCCPC Case Review Dashboard";
+        $description      = "FCCPC Case Analysis Dashboard";
         $details          = details($title, $description);
-        return view('backend.cases.review-case', compact('details', 'id', 'case'));
+        return view('backend.cases.analyze-case', compact('details', 'id'));
     }
 
     /**

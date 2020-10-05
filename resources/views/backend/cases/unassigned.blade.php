@@ -64,7 +64,7 @@
                                             {!! $case->getTypeHtml() !!}
                                         </td>
                                         <td class="text-center">
-                                            <div class="font-weight-bold text-success mb-0">
+                                            <div class="font-weight-bold text-dark mb-0">
                                                 {!! $case->getSubmittedAt('customdate') !!}
                                             </div>
                                         </td>

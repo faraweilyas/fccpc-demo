@@ -147,9 +147,10 @@ $(document).ready(function () {
 
     $('#viewCaseModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent('td').parent('tr'),
-            thisModal = $(this),
-            caseID = caseContainer.find('.case_id').html(),
+        caseContainer               = viewButton.parent('td').parent('tr'),
+            thisModal               = $(this),
+            caseID                  = caseContainer.find('.case_id').html(),
+            analyzeCase             = thisModal.find('#analyze-case'),
             caseHandler = thisModal.find('#case_handler'),
             refrenceNo = thisModal.find('#refrenceNo'),
             subject = thisModal.find('#subject'),
@@ -206,6 +207,7 @@ $(document).ready(function () {
             }
         });
 
+        analyzeCase.attr('case_id', caseID);
         caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
@@ -221,6 +223,18 @@ $(document).ready(function () {
         return;
     });
 
+
+   $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
+        var viewButton = $(event.relatedTarget);
+            caseContainer = viewButton.parent('td').parent('tr'),
+            thisModal = $(this),
+            email = thisModal.find('#email');
+            message = thisModal.find('#message');
+
+            email.html(caseContainer.find('.email').html());
+            message.html(caseContainer.find('.message').html());
+        return;
+    });
     $('#assignCaseModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
         caseContainer = assignButton.parent('td').parent('tr'),
@@ -362,5 +376,9 @@ $(document).ready(function () {
         $('select[name="newCaseHandler"]').attr('disabled', 'disabled');
         reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
+    });
+
+    $("#analyze-case").on('click', function (event) {
+       window.location.replace('/cases/analyze/'+$(this).attr('case_id'));
     });
 });

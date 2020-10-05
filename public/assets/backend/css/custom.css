@@ -20,6 +20,16 @@ body {
     display: none;
 }
 
+.bb_home
+{
+    border-bottom: 3px solid #123237;
+}
+
+.mr__10
+{
+    margin-right: 10px;
+}
+
 .turbolinks-progress-bar {
     height: 5px;
     background-color: #1BC5BD;
@@ -222,8 +232,14 @@ section#orderWizard {
     padding: 1.5rem 0 !important;
 }
 
-
-
+.box-scroll
+{
+    padding: 20px 50px 0px 30px;
+    color: rgb(116, 124, 142);
+    font-size: 15px;
+    overflow: auto;
+    height: 200px;
+}
 
 .dashboard-card {
     position: relative;
@@ -236,6 +252,7 @@ section#orderWizard {
     background-image: url('../images/svg/linesx2.png');
     background-size: 35rem;
     background-position: center center;
+    cursor: pointer;
     background-repeat: no-repeat;
     backface-visibility: hidden;
     transition: all .8s ease-in-out;

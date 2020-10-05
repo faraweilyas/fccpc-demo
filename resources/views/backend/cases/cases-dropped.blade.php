@@ -37,7 +37,7 @@
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Type</th>
                                     <th class="text-center">Submited At</th>
-                                    <th class="text-center">Action(s)</th>
+                                    <th >Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -78,22 +78,11 @@
                                             >
                                                 <i class="flaticon-eye"></i> View
                                             </a>
-                                            @if(in_array(\Auth::user()->account_type, ['SP']))
-                                            <a
-                                                href="#"
-                                                class="btn btn-sm btn-light-info mr-3"
-                                                title="Reassign Case Handler"
-                                                data-toggle="modal"
-                                                data-target="#reassignCaseModal"
-                                            >
-                                                <i class="flaticon-user-add"></i> Re-Assign
-                                            </a>
-                                            @endif
                                             <div class="hide">
                                                 {{-- Case --}}
                                                 <span class="case_id">{{ $case->id }}</span>
-                                                <span class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span>
-                                                <span class="case_handler_id">{{ $case->active_handlers->first()->id }}</span>
+                                                {{-- <span class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span> --}}
+                                                {{-- <span class="case_handler_id">{{ $case->active_handlers->first()->id }}</span> --}}
                                                 <span class="reference_no">{{ $case->getRefNO() }}</span>
                                                 <span class="subject">{{ $case->subject }}</span>
                                                 <span class="category">{!! $case->getCategoryHtml() !!}</span>

@@ -146,9 +146,58 @@ class DashboardController extends Controller
      */
     public function generateReport()
     {
+        $handlers         = User::where('account_type', 'CH')->where('status', 'active')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard Generate Report";
         $details          = details($title, $description);
-        return view('backend.admin.generate-report', compact('details'));
+        return view('backend.admin.generate-report', compact('details', 'handlers'));
+    }
+
+    /**
+     * Handles the export report to csv page route.
+     * @return void
+     */
+    public function exportReportCSV()
+    {
+        $start_date  = request('start_date');
+        $end_date    = request('end_date');
+        $handler_id  = request('handler_id');
+
+        $cases       = (new Cases)->submittedCases();
+        if (is_null($handler_id)):
+            $cases   = (new Cases)->getCaseByDateRange($start_date, $end_date);
+        else:
+            $cases   = (new Cases)->getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id);
+        endif;
+
+        $csvExporter = new \Laracsv\Export();
+
+        $csvExporter->beforeEach(function ($case) {
+            $case->case_category = \AppHelper::value('case_categories', $case->case_category);
+            $case->case_type     = \AppHelper::value('case_types', $case->case_type);
+        });
+
+        $csvExporter->build($cases, ['subject', 'parties', 'case_category', 'case_type', 'applicant_firm', 'applicant_fullname', 'applicant_email', 'applicant_phone_number', 'applicant_address', 'submitted_at'])->download('case_report.csv');
+    }
+
+    /**
+     * Handles the export report to csv custom page route.
+     * @return void
+     */
+    public function exportReportCSVCustom()
+    {
+        $category    = request('category');
+        $type        = request('type');
+
+        $cases   = (new Cases)->getCaseByCategoryAndType($category, $type);
+
+        $csvExporter = new \Laracsv\Export();
+
+        $csvExporter->beforeEach(function ($case) {
+            $case->case_category = \AppHelper::value('case_categories', $case->case_category);
+            $case->case_type     = \AppHelper::value('case_types', $case->case_type);
+        });
+
+        $csvExporter->build($cases, ['subject', 'parties', 'case_category', 'case_type', 'applicant_firm', 'applicant_fullname', 'applicant_email', 'applicant_phone_number', 'applicant_address', 'submitted_at'])->download('case_report.csv');
     }
 }
