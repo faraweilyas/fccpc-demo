@@ -1,0 +1,119 @@
+.row-top {
+    margin-top: 80px;
+}
+
+.card__box {
+    width: auto;
+    height: 12rem;
+    /* padding: 1.5rem 2rem; */
+    border-radius: 0.6rem;
+    -webkit-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
+    margin: 0.2rem;
+}
+
+
+
+.card__box__large {
+    background: #fff;
+    height: auto;
+
+}
+
+.card__box__large .card__box__large-content {
+    padding: 5rem;
+}
+
+.card__box__large .card__box__large-content .card__box__large-content--intro {
+    padding: 3rem;
+}
+
+.card__box__large .card__box__large-content .card__box__large-content--intro p {
+    font-size: 2rem;
+}
+
+.card__box__large .card__box__large-content .card__box__large-content--intro a {
+    font-size: 2rem;
+    color: #227a4e;
+    text-decoration: underline;
+}
+
+.card__box__large .card__box__large-content--success {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.card__box__large .card__box__large-content--success p {
+    font-size: 3rem;
+    color: #227a4e;
+}
+
+.card__box__large .card__box__large-content--success p:nth-child(3) {
+    font-size: 1.5rem;
+    color: #4f4f4f;
+}
+
+.container-sm {
+    max-width: 1250px !important;
+}
+
+.form-group {
+    margin: 4rem 0;
+}
+
+.form-group label {
+    font-size: 1.5rem;
+    color: #4f4f4f;
+}
+
+.form-group .form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.5em + 1.5rem + 2px);
+    /* padding: 2rem; */
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #f3f6f9;
+    background-clip: padding-box;
+    border: 1px solid #f3f6f9;
+    border-radius: 0.25rem;
+    -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    outline: none;
+}
+
+.btn-success {
+    background: #227a4e !important;
+    border-color: #227a4e !important;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    margin: 1rem 0;
+
+}
+
+.gr-header-content {
+    margin-left: 1rem;
+}
+
+.gr-header-content p {
+    font-size: 1.5rem;
+    color: #4f4f4f;
+    margin-bottom: 0px !important;
+}
+
+.gr-header-content span {
+    font-size: 1.2rem;
+    color: #274c36;
+}
+
+/* @media only screen and (min-width: 280px) and (max-width: 565px) {
+
+    .card__box__large .card__box__large-content {
+        padding: 2rem;
+    }
+
+} */

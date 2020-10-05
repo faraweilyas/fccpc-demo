@@ -27,7 +27,7 @@
                     <div class="mb_30">
                         <h3>Merger & Acquisition Application
                         </h3>
-                        <div class="text-muted font-weight-bold">Enter your email to begin your application
+                        <div class="font-weight-bold text-black-sm" >Enter your email to begin your application
                             :</div>
                     </div>
                     <form class="form" method="POST" action="{{ route('applicant.store') }}">
@@ -47,7 +47,7 @@
                             <span class="opacity-70" style="font-weight: bold; color: #006535">Existing
                                 application?</span><br />
                             <a href="{{ route('applicant.track') }}" id="kt_login_signup2"
-                                class="text-muted text-hover-primary font-weight-bold">Add supporting documents or
+                                class="text-hover-primary font-weight-bold text-black-sm">Add supporting documents or
                                 continue where you left off</a>
                         </p>
                     </div>

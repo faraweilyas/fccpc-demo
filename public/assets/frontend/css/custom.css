@@ -1,3 +1,7 @@
+body {
+    color: #242424 !important;
+}
+
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
