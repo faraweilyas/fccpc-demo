@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\NewCaseHandler;
 
 class CaseHandlersController extends Controller
 {
@@ -27,7 +28,7 @@ class CaseHandlersController extends Controller
      */
     public function index()
     {   
-        $handlers         = (new User)->caseHandlers();
+        $handlers         = (new User)->where('account_type', 'CH')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
         $details          = details($title, $description);
@@ -58,10 +59,17 @@ class CaseHandlersController extends Controller
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
         ]);
 
-        $validated['password']      = Hash::make(config('app.default_password'));
-        $validated['accountType']   = "CH";
-        $user                       = User::create($validated);
+        $user = User::create([
+            'account_type'  => 'CH',
+            'first_name'    => request('firstName'),
+            'last_name'     => request('lastName'),
+            'email'         => request('email'),
+            'password'      => Hash::make(config('app.default_password'))
+        ]);
 
+        $user->notify(
+                new NewCaseHandler($user->email, config('app.default_password'))
+            );   
         return redirect()->back()->with("success", "Case handler has been registered sucessfully");
     }
 

@@ -72,7 +72,7 @@
             </span>
             <span class="menu-text">My Cases</span>
 
-     <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
+           <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
 
           </a>
           <div class="menu-submenu">
@@ -139,7 +139,7 @@
               <!--end::Svg Icon-->
             </span>
             <span class="menu-text">Enquiries</span>
-            <i class="menu-arrow"></i>
+            <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
           </a>
           <div class="menu-submenu">
             <i class="menu-arrow"></i>
@@ -162,7 +162,7 @@
         </li>
         @endif
         <li class="menu-item " aria-haspopup="true">
-          <a href="#" class="menu-link">
+          <a href="{{ route('dashboard.report') }}" class="menu-link">
             <span class="svg-icon menu-icon">
 
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -139,4 +139,16 @@ class DashboardController extends Controller
 
         return redirect()->back()->with("success", "Profile updated");
     }
+
+    /**
+     * Handles the generate report page route.
+     * @return void
+     */
+    public function generateReport()
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Dashboard Generate Report";
+        $details          = details($title, $description);
+        return view('backend.admin.generate-report', compact('details'));
+    }
 }

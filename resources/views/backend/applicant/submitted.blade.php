@@ -21,7 +21,7 @@
                                         <a href="{{ $guest->applicantPath() }}" class="btn btn-primary font-weight-bold text-uppercase mr-5 px-9 py-4">
                                             Create a New Application
                                         </a>
-                                        <a data-turbolinks="false" href="/" class="btn btn-success font-weight-bold text-uppercase px-9 py-4">
+                                        <a data-turbolinks="false" href="/" class="btn btn-secondary font-weight-bold text-uppercase mr-5 px-9 py-4">
                                             Return Home
                                         </a>
     								</div>

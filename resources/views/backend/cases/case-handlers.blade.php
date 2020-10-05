@@ -26,6 +26,7 @@
                             <div class="card-title">
                                 <h3 class="card-label">Case Handlers</h3>
                             </div>
+                            <span class="float-right"><button class="btn btn-primary" onclick="window.location.href = '{{ route('handlers.create') }}';">New Case Handler</button></span>
                         </div>
                         <div class="card-body">
                             <table class="table table-separate table-head-custom table-checkable" id="case_handlers_datatable">
@@ -77,7 +78,7 @@
                                                     class="btn btn-sm btn-light-success mr-3"
                                                     title="Activate Case Handler"
                                                 >
-                                                    <i class="flaticon-user-add"></i> Activate.....
+                                                    <i class="flaticon-user-add"></i> Activate
                                                 </a>
                                             @endif
                                         </td>

@@ -49,16 +49,16 @@
                             <h4>{{ $guest->case->subject }}</h4>
                         </div>
                         <div class="grid-row-2">
-                            <h4 class="info-title">Filling Fees</h4>
-                            <h4>Paid</h4>
+                            {{-- <h4 class="info-title">Filling Fees</h4>
+                            <h4>Paid</h4> --}}
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">Parties:</h4>
                             <h4>{!! $guest->case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
                         <div class="grid-row-2">
-                            <h4 class="info-title">Processing Fees:</h4>
-                            <h4>Not Paid</h4>
+                            {{-- <h4 class="info-title">Processing Fees:</h4>
+                            <h4>Not Paid</h4> --}}
                         </div>
                         <div class="grid-row-2">
                             <h4 class="info-title">
@@ -122,12 +122,8 @@
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
                         <div class="grid-col-2-btn">
-                            <button id="goback-btn" class="btn btn-success width-100" onclick="window.location.href = '/application/{{ $guest->tracking_id }}/{{ $guest->case->case_category }}'">
-                                Go back to edit
-                            </button>
-                            <button id="upload-info" class="btn btn-success" data-wizard-type="action-submit">
-                                Submit
-                            </button> 
+                            <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ url('/application')}}/{{$guest->tracking_id }}/{{ $guest->case->case_category }}'">Go back to edit</button>
+                            <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" data-wizard-type="action-submit">Submit</button>
                             <button id="upload-img" class="btn btn-success hide" disabled>
                                 <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
                             </button>

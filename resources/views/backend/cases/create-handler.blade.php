@@ -50,7 +50,7 @@
     									</div>
     									<div class="form-group">
     										<label>Email</label> <span class="text-danger">*</span>
-    										<input type="eamil" class="form-control" placeholder="Enter email" name="email">
+    										<input type="email" class="form-control" placeholder="Enter email" name="email">
     										<span class="form-text text-muted">Please enter email.</span>
     										@error('email')
     			                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
