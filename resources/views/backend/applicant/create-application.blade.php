@@ -99,7 +99,7 @@
                                         </div>
                                         <div class="wizard-label">
                                             <h3 class="wizard-title">{{ $group->name }}</h3>
-                                            <div class="wizard-desc">Provide your {{ strtolower($group->name) }}</div>
+                                            <div class="wizard-desc">Provide relevant documents</div>
                                         </div>
                                     </div>
                                 </div>
@@ -312,7 +312,7 @@
 
                 </div>
                 <div class="col-md-4">
-                <a href="{{ url('/application/applicant')}}/{{$guest->tracking_id }}/{{'review'}}" class="btn btn-success my-5 float-right" style="padding: 2rem !important">Review Application</a>
+                    <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 float-right" onclick="window.location.href = '{{ url('/application/applicant')}}/{{$guest->tracking_id }}/{{'review'}}'">Review Application</button>
                 </div>
             </div>
         </div>
