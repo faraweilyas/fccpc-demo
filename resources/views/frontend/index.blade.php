@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="row row-space home-content-container">
-        <div class="col-xs-12 col-md-12 col-lg-7 no_display">
-          <p class="text-paragh">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit
+        <div class="col-xs-12 col-md-12 col-lg-7 no_display ">
+          <p class="text-paragh my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit
             sequi voluptas sapiente culpa. Perferendis, delectus ad dolor est veritatis dicta! Reprehenderit
             mollitia natus facilis excepturi.</p>
         <p class="text-paragh">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit

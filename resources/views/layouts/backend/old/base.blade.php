@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'custom.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'review.css') }}" />
 </head>
-<body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
+<body id="kt_body" class="header-fixed header-mobile-fixed page-loading greyed-out">
 
     @yield('base_content')
 
