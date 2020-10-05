@@ -23,7 +23,7 @@
 
 <div class="container py-5">
 
-    <div class="row my-sm-20">
+    <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="d-flex py-4">
