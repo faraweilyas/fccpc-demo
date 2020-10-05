@@ -65,6 +65,23 @@ trait CaseGettable
     }
 
     /**
+     * Gets case by category & type
+     *
+     * @return Collection
+     */
+    public function getCaseByCategoryAndType($category, $type)
+    {
+         return static::where('case_category', $category)->where('case_type', $type)
+            ->with('handlers')
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
+    }
+
+    /**
      * Gets unassigned cases with handlers
      *
      * @return Collection

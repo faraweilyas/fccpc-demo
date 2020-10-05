@@ -36,16 +36,16 @@
                 </div>
             </div>
             <form method="POST" action="{{ route('dashboard.report') }}">
-            @csrf
+                @csrf
                 <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
                     <div class="card__box__large-content">
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input class="form-control" type="date" />
+                            <input class="form-control" type="date" name="start_date" />
                         </div>
                         <div class="form-group">
                             <label>End Date</label>
-                            <input class="form-control" type="date" />
+                            <input class="form-control" type="date" name="end_date" />
                         </div>
 
                         <div class="row">
@@ -94,7 +94,7 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="{{ route('dashboard.report') }}">
+            <form method="POST" action="{{ route('dashboard.report.custom') }}">
                 @csrf
                 <div class="modal-body">
 
@@ -102,38 +102,31 @@
                         <div class="col-md-12">
 
                             <label>Case Type</label>
-                            <select class="form-control form-control-table" placeholder="Select Option">
-                                <option>Application</option>
-                                <option>John Roe</option>
+                            <select class="form-control form-control-table" name="type">
+                                @foreach(\AppHelper::get('case_types') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
 
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-4">
 
-                            <label>Transaction Type</label>
-                            <select class="form-control form-control-table" placeholder="Select Option">
-                                <option>Regular</option>
-                                <option>John Roe</option>
+                            <label>Case Category</label>
+                            <select class="form-control form-control-table" name="category">
+                                @foreach(\AppHelper::get('case_categories') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
 
 
                         </div>
-                        <div class="col-md-12">
-
-                            <label>Fees</label><select class="form-control form-control-table"
-                                placeholder="Select Option">
-                                <option>Paid</option>
-                                <option>Not Paid</option>
-                            </select>
-                        </div>
-
                     </div>
-
 
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" id="caseID">
+                    <button type="submit" class="btn btn-light-primary font-weight-bold">Submit Request</button>
                     <button type="button" class="btn btn-light-danger font-weight-bold"
                         data-dismiss="modal">Close</button>
 

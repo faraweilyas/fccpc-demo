@@ -127,6 +127,10 @@ Route::prefix('/')
         Route::post('report', 'DashboardController@exportReportCSV')->name(
             'report'
         );
+
+        Route::post('report/custom', 'DashboardController@exportReportCSVCustom')->name(
+            'report.custom'
+        );
     });
 
 // Cases
