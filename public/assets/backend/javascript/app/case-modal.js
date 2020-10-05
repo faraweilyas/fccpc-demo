@@ -171,6 +171,7 @@ $(document).ready(function()
             caseContainer           = viewButton.parent('td').parent('tr'),
             thisModal               = $(this),
             caseID                  = caseContainer.find('.case_id').html(),
+            analyzeCase             = thisModal.find('#analyze-case'),
             caseHandler             = thisModal.find('#case_handler'),
             refrenceNo              = thisModal.find('#refrenceNo'),
             subject                 = thisModal.find('#subject'),
@@ -231,6 +232,7 @@ $(document).ready(function()
             }
         });
 
+        analyzeCase.attr('case_id', caseID);
         caseHandler.html(caseContainer.find('.case_handler').html());
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
@@ -401,5 +403,9 @@ $(document).ready(function()
         $('select[name="newCaseHandler"]').attr('disabled', 'disabled');
         reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
+    });
+
+    $("#analyze-case").on('click', function (event) {
+       window.location.replace('/cases/analyze/'+$(this).attr('case_id'));
     });
 });

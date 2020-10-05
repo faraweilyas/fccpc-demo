@@ -122,6 +122,7 @@
                 </div>
             </div>
             <div class="modal-footer">
+                <button id="analyze-case" type="button" class="btn btn-light-primary font-weight-bold">Analyze Case</button>
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>

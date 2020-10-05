@@ -147,7 +147,7 @@ Route::prefix('cases')
             'archived'
         );
 
-        Route::get('review/{id}', 'CasesController@reviewCase')->name('review');
+        Route::get('analyze/{id}', 'CasesController@analyzeCase')->name('analyze');
 
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
