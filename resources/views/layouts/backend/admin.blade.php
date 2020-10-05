@@ -246,7 +246,7 @@
                 
 
             </span>
-            <span class="menu-text" href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">LogOut</span>
+            <span class="menu-text" href="{{ route('logout') }}" title="Logout" onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign Out</span>
              <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                   {{ csrf_field() }}
               </form>

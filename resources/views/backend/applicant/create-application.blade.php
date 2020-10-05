@@ -315,7 +315,7 @@
                                         </div>
                                         @endforeach
                                         <div class="pb-5" data-wizard-type="step-content" data-form='ContactInfo'>
-                                            <h4 class="mb-10 font-weight-bold text-dark">Please review all the information you provided before submitting application.</h4>
+                                            <h6 class="mb-10 font-weight-bold text-dark">Please review all the information you provided before submitting application.</h6>
                                         </div>
                                         <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                             <div id="upload-img" class="hide">

@@ -105,7 +105,7 @@
                             </div>
 
                             {{-- Checklist --}}
-                            <div class="tab-pane fade" id="checklist_tab" role="tabpanel">
+                            <div class="tab-pane fade box-scroll" id="checklist_tab" role="tabpanel">
                                 <div id="checklist_items" class="d-flex flex-column font-size-sm font-weight-bold">
                                 ...
                                 </div>

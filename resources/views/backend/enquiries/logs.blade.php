@@ -31,50 +31,38 @@
                         <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
+                                    <th>Date Submitted</th>
+                                    <th>Type</th>
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone No</th>
-                                    <th>Type</th>
-                                    <th>Date Submitted</th>
                                     <th>Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach(\App\Models\Enquiry::orderBy('id', 'DESC')->get() as $item)
                                 <tr>
-                                    <td><b>{{ $item->getFullName() }}</b></td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone_number }}</td>
+                                    <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                     <td>
                                         <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
                                             <b>{{ $item->getEnquiryType('strtoupper') }}</b>
                                         </span>
                                     </td>
-                                    <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
+                                    <td><b>{{ $item->getFullName() }}</b></td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone_number }}</td>
                                     <td nowrap="nowrap">
-                                        <div class="dropdown dropdown-inline">
-                                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-h"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <ul class="nav nav-hoverable flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="javascript:;" title="Assign Enquiry" data-toggle="modal" data-target="#assignEnquiryModal{{ $item->id }}">
-                                                            <i class="nav-icon la la-edit"></i>
-                                                            <span class="nav-text">Assign</span>
-                                                        </a>
-                                                    </li>
-                                                    @if ($item->file != '')
-                                                    <li class="nav-item">
-                                                        <a class="nav-link" href="{{ route('enquiries.download', ['file' => $item->file]) }}">
-                                                            <i class="nav-icon la la-leaf"></i>
-                                                            <span class="nav-text">Download File</span>
-                                                        </a>
-                                                    </li>
-                                                    @endif
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        @if ($item->file != '')
+                                        <a
+                                           href="{{ route('enquiries.download', ['file' => $item->file]) }}"
+                                            class="btn btn-sm btn-light-primary mr-3"
+                                            title="Download enquiry document"
+                                        >
+                                            <i class="la la-download"></i> Download
+                                        </a>
+                                        @else
+                                            <span></span>
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach
