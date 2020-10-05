@@ -98,23 +98,25 @@
 
                     <p class="section-header">Relevant Documents</p>
                     @foreach($documents as $document)
-                    <div class="grid-col-2">
-
-                        <div class="grid-col-2-files my-5" key={item[0]}>
+                    <div class="row">
+                        <div class="col-md-6 my-5" key={item[0]}>
+                         <div class="py-3 px-3">
                             <img src="{{ pc_asset(BE_IMAGE.'pdf.png') }}" alt="pdf" />
 
-                            <h4> {{ $document->file }}</h4>
-                            <button class="btn btn-success" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
+                            <h4 class="py-5"> {{ $document->file }}</h4>
+                            <button class="btn btn-info btn-info-green" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
                                 Download
                             </button>
+                         </div>
                         </div>
-                        <div class="grid-row-2">
+                        <div class="col-md-6">
                             <h4 class="info-title">
                                 Additional Information:
                             </h4>
                             <h4>{{ $document->additional_info }}</h4>
-                        </div>
+                        </div>      
                     </div>
+                  
                     @endforeach
                     <form class="form" id="kt_form">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
