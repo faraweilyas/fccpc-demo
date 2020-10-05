@@ -1,5 +1,5 @@
 body {
-    background: #fff;
+    background: #f2f2f2;
 }
 
 .greyed-out {
@@ -8,6 +8,12 @@ body {
 
 .text-black {
     color: #242424;
+    font-size: 1.5rem;
+}
+
+.text-black-sm {
+    color: #242424;
+    font-size: 1.2rem;
 }
 
 .hide {
@@ -29,7 +35,8 @@ body {
     display: block;
 }
 
-.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-bullet.menu-bullet-line > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-bullet.menu-bullet-line > span {
+.aside-menu .menu-nav>.menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover>.menu-heading .menu-bullet.menu-bullet-line>span,
+.aside-menu .menu-nav>.menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover>.menu-link .menu-bullet.menu-bullet-line>span {
     background-color: #227a4e !important;
 }
 
@@ -169,8 +176,8 @@ section#orderWizard {
 
 @media only screen and (max-width: 768px) {
     .subheader {
-        margin-top: 80px;
-        margin-bottom: -50px;
+        /* margin-top: 80px;
+        margin-bottom: -50px; */
     }
 
     .sub-header-mobile {
@@ -211,7 +218,7 @@ section#orderWizard {
     background-repeat: no-repeat;
     backface-visibility: hidden;
     transition: all .8s ease-in-out;
-    height: auto !important;
+    height: 35vh !important;
     padding: 1.5rem 0 !important;
 }
 

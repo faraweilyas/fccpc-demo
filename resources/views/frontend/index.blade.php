@@ -1,14 +1,14 @@
 @extends('layouts.frontend.base')
 @section('content')
   <div class="page-content my-5">
-    <div class="container">
+    <div class="container row-top">
       <div class="row home-content-header">
         <div class="col-md-7 home-content-header1">
           <h2>Mergers and Aquisition Portal</h2>
           <div class="custom-bar"></div>
         </div>
         <div class="col-md-5 home-content-header2">
-          <h2>Take an action</h2>
+          <h2 >Quick Links</h2>
         </div>
       </div>
       <div class="row row-space home-content-container">

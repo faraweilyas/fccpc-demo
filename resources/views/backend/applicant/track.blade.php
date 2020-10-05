@@ -8,7 +8,7 @@
 	<div class="d-flex flex-column flex-root">
 		<div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
 			<div class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
-				<span class="font-weight-bold text-dark-50">Do you need help?</span>
+				<span class="font-weight-bold ">Do you need help?</span>
 				<a data-turbolinks="false" href="{{ route('home.faqs') }}" class="font-weight-bold ml-2" id="kt_login_signup">FAQ</a> |
 				<a data-turbolinks="false" href="{{ route('home.fee.calculator') }}" class="font-weight-bold ml-2" id="kt_login_signup">Fee Calculator</a>
 			</div>
@@ -22,7 +22,7 @@
 					<div class="login-signin">
 						<div class="mb_30">
 							<h3>Add Supporting Document</h3>
-							<div class="text-muted font-weight-bold">Add supporting document or continue where you left off</div>
+							<div class="font-weight-bold text-black-sm">Add supporting document or continue where you left off</div>
 						</div>
 						<form class="form" method="POST" action="{{ route('applicant.authenticate.track') }}">
 							@csrf
@@ -36,8 +36,8 @@
 						</form>
 						<div class="mt-10">
                             <p>
-                                <span class="opacity-70">New application?</span>
-                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Submit Application</a>
+                                {{-- <span class="opacity-70">New application?</span> --}}
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class=" text-hover-primary font-weight-bold text-black-sm">Submit Application</a>
                             </p>
 	                    </div>
 					</div>

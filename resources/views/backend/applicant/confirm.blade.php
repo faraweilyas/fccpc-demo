@@ -23,7 +23,7 @@
 						<div class="mb_30">
 							<h3>Get your Application ID 
 							</h3>
-							<div class="text-muted font-weight-bold">
+							<div class=" font-weight-bold text-black-sm">
 								We sent your application ID to {user email address}. Get that code and enter it here
 							</div>
 						</div>
@@ -41,7 +41,7 @@
                             <p>
                                 <span class="opacity-70" style="font-weight: bold; color: #006535">Didn't receive it? Check your Spam Folder 
 																	</span><br />
-                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Still cant find it? Resend the code
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class=" text-hover-primary font-weight-bold text-black-sm">Still cant find it? Resend the code
 																</a>
                             </p>
 	                    </div>
