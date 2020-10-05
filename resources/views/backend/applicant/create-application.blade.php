@@ -305,7 +305,19 @@
                     </div>
                 </div>
             </div>
+        
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+
+                </div>
+                <div class="col-md-4">
+                <a href="{{ url('/application/applicant')}}/{{$guest->tracking_id }}/{{'review'}}" class="btn btn-success my-5 float-right" style="padding: 2rem !important">Review Application</a>
+                </div>
+            </div>
         </div>
+
+        
     </div>
 @endsection
 
