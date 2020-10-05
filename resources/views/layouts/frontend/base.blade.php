@@ -80,10 +80,10 @@
               <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
             </li>
 
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown administrator-right">
               <a
                 class="nav-link dropdown-toggle"
-                href="http://example.com"
+                href="#"
                 id="dropdown01"
                 data-toggle="dropdown"
                 aria-haspopup="true"
