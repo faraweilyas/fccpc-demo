@@ -35,7 +35,6 @@
                                     <th>Type</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th>Phone No</th>
                                     <th>Action(s)</th>
                                 </tr>
                             </thead>
@@ -50,8 +49,16 @@
                                     </td>
                                     <td><b>{{ $item->getFullName() }}</b></td>
                                     <td>{{ $item->email }}</td>
-                                    <td>{{ $item->phone_number }}</td>
                                     <td nowrap="nowrap">
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-light-warning mr-3"
+                                            title="View Enquiry Info"
+                                            data-toggle="modal"
+                                            data-target="#viewEnqiryModal"
+                                        >
+                                            <i class="flaticon-eye"></i> View
+                                        </a>
                                         @if ($item->file != '')
                                         <a
                                            href="{{ route('enquiries.download', ['file' => $item->file]) }}"
@@ -63,6 +70,11 @@
                                         @else
                                             <span></span>
                                         @endif
+                                        <div class="hide">
+                                            {{-- Case --}}
+                                            <span class="email">{{ $item->email }}</span>
+                                            <span class="message">{{ $item->message }}</span>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -108,6 +120,9 @@
     </div>
     @php $x++; @endphp
     @endforeach
+
+    <!-- Modals -->
+    @include("layouts.modals.enquiry")
 @endsection
 
 @section('custom.css')

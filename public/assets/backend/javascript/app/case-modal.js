@@ -223,6 +223,18 @@ $(document).ready(function () {
         return;
     });
 
+
+   $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
+        var viewButton = $(event.relatedTarget);
+            caseContainer = viewButton.parent('td').parent('tr'),
+            thisModal = $(this),
+            email = thisModal.find('#email');
+            message = thisModal.find('#message');
+
+            email.html(caseContainer.find('.email').html());
+            message.html(caseContainer.find('.message').html());
+        return;
+    });
     $('#assignCaseModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
         caseContainer = assignButton.parent('td').parent('tr'),
