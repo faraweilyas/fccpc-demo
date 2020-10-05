@@ -123,6 +123,10 @@ Route::prefix('/')
         Route::get('report', 'DashboardController@generateReport')->name(
             'report'
         );
+
+        Route::post('report', 'DashboardController@exportReportCSV')->name(
+            'report'
+        );
     });
 
 // Cases

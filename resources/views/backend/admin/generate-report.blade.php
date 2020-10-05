@@ -30,56 +30,53 @@
 
                 <img src="{{ pc_asset(BE_IMAGE.'svg/book-open.svg') }}" alt="book-open" />
 
-
                 <div class="gr-header-content">
                     <p>New Report</p>
                     <span>Create your new report</span>
                 </div>
             </div>
+            <form method="POST" action="{{ route('dashboard.report') }}">
+            @csrf
+                <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
+                    <div class="card__box__large-content">
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <input class="form-control" type="date" />
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <input class="form-control" type="date" />
+                        </div>
 
-            <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
-                <div class="card__box__large-content">
-                    <div class="form-group">
-                        <label>Start Date</label>
-                        <input class="form-control" type="date" />
-                    </div>
-                    <div class="form-group">
-                        <label>End Date</label>
-                        <input class="form-control" type="date" />
-                    </div>
-
-                    <div class="form-group">
-                        <label>Select Case Handler</label>
-                        <select class="form-control select2" id="caseHandler" name="caseHandler" style="width: 100%;">
-
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="2">2</option>
-                            <option value="2">2</option>
-                            <option value="2">2</option>
-
-                        </select>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="view-doc-link">
-                                <a href="#" data-toggle="modal" data-target="#assignCaseModal">
-                                    Custom Filter
-                                </a>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Select Case Handler</label>
+                                <select class="form-control form-control-table select2" id="caseHandler" name="caseHandler" style="width: 100%;">
+                                   @foreach($handlers as $handler)
+                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
-                        <div class="col-md-12  ">
-                            <button class="btn btn-success btn-block">
-                                Submit Request
-                            </button>
-                        </div>
 
+                        <div class="row">
+                            <div class="col-md-4 mt-4">
+                                <div class="view-doc-link">
+                                    <a href="#" data-toggle="modal" data-target="#generateReportModal">
+                                        Custom Filter
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-success btn-block">
+                                    Submit Request
+                                </button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            </form>
         </div>
         <div class="col-md-2"></div>
     </div>
@@ -87,7 +84,7 @@
 
 
 
-<div class="modal fade" id="assignCaseModal" data-backdrop="static" tabindex="-1" role="dialog"
+<div class="modal fade" id="generateReportModal" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -97,7 +94,7 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="#">
+            <form method="POST" action="{{ route('dashboard.report') }}">
                 @csrf
                 <div class="modal-body">
 
@@ -151,8 +148,6 @@
 
 @section('custom.css')
 <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
-
-
 @endsection
 
 @section('custom.javascript')

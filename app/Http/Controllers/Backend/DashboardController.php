@@ -146,9 +146,19 @@ class DashboardController extends Controller
      */
     public function generateReport()
     {
+        $handlers         = User::where('account_type', 'CH')->where('status', 'active')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard Generate Report";
         $details          = details($title, $description);
-        return view('backend.admin.generate-report', compact('details'));
+        return view('backend.admin.generate-report', compact('details', 'handlers'));
+    }
+
+    /**
+     * Handles the export report to csv page route.
+     * @return void
+     */
+    public function exportReportCSV()
+    {
+        return true;
     }
 }

@@ -4,8 +4,9 @@
 <div id="kt_header_mobile" class="header-mobile align-items-center header-mobile-fixed">
 
     <a href="/dashboard" style="color: #fff">
+      @if (\Auth::check())
       {{ \Auth::user()->getAccountType('strtoupper') }}
-
+      @endif
     </a>
 
     <div class="d-flex align-items-center">
