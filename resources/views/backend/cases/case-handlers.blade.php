@@ -26,6 +26,7 @@
                             <div class="card-title">
                                 <h3 class="card-label">Case Handlers</h3>
                             </div>
+                            <span class="float-right"><button class="btn btn-primary" onclick="window.location.href = '{{ route('handlers.create') }}';">New Case Handler</button></span>
                         </div>
                         <div class="card-body">
                             <table class="table table-separate table-head-custom table-checkable" id="case_handlers_datatable">
