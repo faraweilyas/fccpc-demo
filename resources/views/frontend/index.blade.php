@@ -13,11 +13,15 @@
       </div>
       <div class="row row-space home-content-container">
         <div class="col-xs-12 col-md-12 col-lg-7 no_display">
-          <img
-            class="img-fluid"
-            src="{{ FE_IMAGE.'png/home-img.png' }}"
-            alt="fccpc"
-          />
+          <p class="text-paragh">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit
+            sequi voluptas sapiente culpa. Perferendis, delectus ad dolor est veritatis dicta! Reprehenderit
+            mollitia natus facilis excepturi.</p>
+        <p class="text-paragh">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit
+            sequi voluptas sapiente culpa. Perferendis, delectus ad dolor est veritatis dicta! Reprehenderit
+            mollitia natus facilis excepturi.</p>
+        <p class="text-paragh">Lorem ipsum dolor sit amet consectetur adipisicing elit. At laboriosam hic deserunt velit, sit
+            sequi voluptas sapiente culpa. Perferendis, delectus ad dolor est veritatis dicta! Reprehenderit
+            mollitia natus facilis excepturi.</p>
         </div>
         <div class="col-xs-12 col-md-12 col-lg-5">
           <div class="card__box card__box-stack shadow card__box-stack-active" id="control-1" onclick="window.location.href = '{{ route('applicant.show') }}';"

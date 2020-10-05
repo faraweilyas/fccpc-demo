@@ -15,8 +15,14 @@ body {
     display: block;
 }
 
-.login.login-3 .login-signin, .login.login-3 .login-signup, .login.login-3 .login-forgot {
+.login.login-3 .login-signin,
+.login.login-3 .login-signup,
+.login.login-3 .login-forgot {
     display: block;
+}
+
+.aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-heading .menu-bullet.menu-bullet-line > span, .aside-menu .menu-nav > .menu-item .menu-submenu .menu-item:not(.menu-item-parent):not(.menu-item-open):not(.menu-item-here):not(.menu-item-active):hover > .menu-link .menu-bullet.menu-bullet-line > span {
+    background-color: #227a4e !important;
 }
 
 select.form-control:not([size]):not([multiple]) {
@@ -132,7 +138,8 @@ section#orderWizard {
     background: #ccc;
 }
 
-.text-disabled, .text-link-disabled a {
+.text-disabled,
+.text-link-disabled a {
     color: #ccc;
 }
 
@@ -157,6 +164,7 @@ section#orderWizard {
         margin-top: 80px;
         margin-bottom: -50px;
     }
+
     .sub-header-mobile {
         margin-right: 0.25rem !important;
         -webkit-box-align: center !important;
@@ -164,9 +172,11 @@ section#orderWizard {
         flex-wrap: wrap !important;
         display: flex !important;
     }
+
     .sub-header-desktop {
         display: none;
     }
+
     .mt-sm-10 {
         margin-top: 10px;
     }
@@ -197,7 +207,9 @@ section#orderWizard {
     margin: 1rem .2rem;
 }
 
-.card__with__bg:hover, .card__with__bg:focus, .card__with__bg:visited {
+.card__with__bg:hover,
+.card__with__bg:focus,
+.card__with__bg:visited {
     -webkit-transform: translateX(1rem) !;
     transform: translateX(1rem);
 }
@@ -231,16 +243,18 @@ section#orderWizard {
     color: #227a4e;
 }
 
-.aside, .brand {
-    background-color: #227a4e !important;
+.aside,
+.brand {
+    background-color: #123237 !important;
 }
 
 .aside-menu {
-    background-color: #227a4e !important;
+    background-color: #123237 !important;
 }
 
-.aside-menu .menu-nav>.menu-item.menu-item-active>.menu-heading, .aside-menu .menu-nav>.menu-item.menu-item-active>.menu-link {
-    background-color: #227a4e !important;
+.aside-menu .menu-nav>.menu-item.menu-item-active>.menu-heading,
+.aside-menu .menu-nav>.menu-item.menu-item-active>.menu-link {
+    background-color: #123237 !important;
     font-size: 3rem !important;
 }
 
@@ -256,7 +270,7 @@ section#orderWizard {
 
 .brand-logo {
     color: #fff;
-    font-size: 1rem;
+    font-size: 2rem;
     text-decoration: none;
 }
 
@@ -294,3 +308,5 @@ section#orderWizard {
     .header-mobile {
         background-color: #227a4e !important;
     }
+
+}

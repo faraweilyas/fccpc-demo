@@ -16,6 +16,7 @@
     <!-- Custom CSS -->
     @yield('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'custom.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'review.css') }}" />
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
 
@@ -48,7 +49,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" defer>
         $(document).ready(function($)
-        {
+        {   
             toastr.options = {
                 "progressBar": true,
                 "positionClass": "toast-bottom-right",

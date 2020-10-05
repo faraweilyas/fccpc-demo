@@ -7,7 +7,15 @@
   <div class="brand flex-column-auto" id="kt_brand">
 
     <a href="/dashboard" class="brand-logo">
-     {{-- {{ \Auth::user()->getAccountType('strtoupper') }} --}}
+     @if (\Auth::user()->account_type == 'SP')
+       <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+     @elseif (\Auth::user()->account_type == 'AD')
+       // Administrator
+     @elseif (\Auth::user()->account_type == 'CH')
+       // Case Handler
+     @else
+       // Administator
+     @endif
     </a>
 
     <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -62,7 +70,9 @@
               <!--end::Svg Icon-->
             </span>
             <span class="menu-text">My Cases</span>
-            <i class="menu-arrow"></i>
+
+           <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
+
           </a>
           <div class="menu-submenu">
             <i class="menu-arrow"></i>
@@ -128,7 +138,7 @@
               <!--end::Svg Icon-->
             </span>
             <span class="menu-text">Enquiries</span>
-            <i class="menu-arrow"></i>
+            <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
           </a>
           <div class="menu-submenu">
             <i class="menu-arrow"></i>
