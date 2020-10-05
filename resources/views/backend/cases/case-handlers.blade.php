@@ -78,7 +78,7 @@
                                                     class="btn btn-sm btn-light-success mr-3"
                                                     title="Activate Case Handler"
                                                 >
-                                                    <i class="flaticon-user-add"></i> Activate.....
+                                                    <i class="flaticon-user-add"></i> Activate
                                                 </a>
                                             @endif
                                         </td>

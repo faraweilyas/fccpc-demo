@@ -28,7 +28,7 @@ class CaseHandlersController extends Controller
      */
     public function index()
     {   
-        $handlers         = (new User)->caseHandlers();
+        $handlers         = (new User)->where('account_type', 'CH')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
         $details          = details($title, $description);

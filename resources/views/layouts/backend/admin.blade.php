@@ -161,7 +161,7 @@
         </li>
         @endif
         <li class="menu-item " aria-haspopup="true">
-          <a href="#" class="menu-link">
+          <a href="{{ route('dashboard.report') }}" class="menu-link">
             <span class="svg-icon menu-icon">
 
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

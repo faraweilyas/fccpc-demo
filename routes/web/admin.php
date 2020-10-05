@@ -119,6 +119,10 @@ Route::prefix('/')
         Route::post('profile', 'DashboardController@updateProfile')->name(
             'update_user'
         );
+
+        Route::get('report', 'DashboardController@generateReport')->name(
+            'report'
+        );
     });
 
 // Cases
