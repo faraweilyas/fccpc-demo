@@ -65,6 +65,22 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles dropped cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function droppedCases(User $handler)
+    {
+        $cases          = $handler->dropped_cases_assigned_to()->get();
+        $caseHandlers   = (new User)->caseHandlers();
+
+        $title          = 'Dropped Cases | '.APP_NAME;
+        $description    = 'Dropped Cases | '.APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.cases.cases-dropped', compact('details', 'cases', 'caseHandlers'));
+    } 
+
+    /**
      * Handles approved cases page.
      *
      * @return \Illuminate\Contracts\View\Factory

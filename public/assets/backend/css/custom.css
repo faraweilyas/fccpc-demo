@@ -14,6 +14,11 @@ body {
     display: none;
 }
 
+.bb_home
+{
+    border-bottom: 3px solid #123237;
+}
+
 .mr__10
 {
     margin-right: 10px;

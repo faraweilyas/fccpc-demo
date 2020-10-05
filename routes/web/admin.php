@@ -139,6 +139,10 @@ Route::prefix('cases')
             'CasesController@assignedCases'
         )->name('assigned');
 
+        Route::get('/dropped/{handler}', 'CasesController@droppedCases')->name(
+            'dropped'
+        );
+
         Route::get('/approved', 'CasesController@approvedCases')->name(
             'approved'
         );

@@ -46,10 +46,14 @@
                                             <b>{{ $handler->getFullName() }}</b>
                                         </td>
                                         <td class="text-center">
-                                            <b>{{ $handler->active_cases_assigned_to()->count() }}</b>
+                                            <a href="{{ route('cases.assigned', ['handler' => $handler->id]) }}">
+                                                <span class="badge badge-primary"><b>{{ $handler->active_cases_assigned_to()->count() }}</b></span>
+                                            </a>
                                         </td>
                                         <td class="text-center">
-                                            <b>{{ $handler->dropped_cases_assigned_to()->count() }}</b>
+                                             <a href="{{ route('cases.dropped', ['handler' => $handler->id]) }}">
+                                                <span class="badge badge-secondary"><b>{{ $handler->dropped_cases_assigned_to()->count() }}</b></span>
+                                            </a>
                                         </td>
                                         <td>
                                             <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">

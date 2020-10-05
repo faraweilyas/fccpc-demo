@@ -38,6 +38,24 @@
       data-menu-dropdown-timeout="500">
 
       <ul class="menu-nav">
+        <li class="menu-item bb_home mt-n5" aria-haspopup="true">
+          <a href="/" class="menu-link">
+            <span class="svg-icon menu-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.3" d="M8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 7.10457 4.89543 8 6 8C7.10457 8 8 7.10457 8 6Z" fill="#A9B3BE"/>
+                <path d="M8 12C8 10.8954 7.10457 10 6 10C4.89543 10 4 10.8954 4 12C4 13.1046 4.89543 14 6 14C7.10457 14 8 13.1046 8 12Z" fill="#A9B3BE"/>
+                <path d="M14 6C14 4.89543 13.1046 4 12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6Z" fill="#A9B3BE"/>
+                <path d="M14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14C13.1046 14 14 13.1046 14 12Z" fill="#A9B3BE"/>
+                <path d="M20 6C20 4.89543 19.1046 4 18 4C16.8954 4 16 4.89543 16 6C16 7.10457 16.8954 8 18 8C19.1046 8 20 7.10457 20 6Z" fill="#A9B3BE"/>
+                <path d="M20 12C20 10.8954 19.1046 10 18 10C16.8954 10 16 10.8954 16 12C16 13.1046 16.8954 14 18 14C19.1046 14 20 13.1046 20 12Z" fill="#A9B3BE"/>
+                <path d="M8 18C8 16.8954 7.10457 16 6 16C4.89543 16 4 16.8954 4 18C4 19.1046 4.89543 20 6 20C7.10457 20 8 19.1046 8 18Z" fill="#A9B3BE"/>
+                <path d="M14 18C14 16.8954 13.1046 16 12 16C10.8954 16 10 16.8954 10 18C10 19.1046 10.8954 20 12 20C13.1046 20 14 19.1046 14 18Z" fill="#A9B3BE"/>
+                <path d="M20 18C20 16.8954 19.1046 16 18 16C16.8954 16 16 16.8954 16 18C16 19.1046 16.8954 20 18 20C19.1046 20 20 19.1046 20 18Z" fill="#A9B3BE"/>
+                </svg>
+            </span>
+            <span class="menu-text">Home</span>
+          </a>
+        </li>
         <li class="menu-item " aria-haspopup="true">
           <a href="{{ route('dashboard.index') }}" class="menu-link">
             <span class="svg-icon menu-icon">
@@ -220,19 +238,6 @@
             </div>
           </li>
         @endif
-        <li class="menu-item " aria-haspopup="true">
-          <a href="#" class="menu-link">
-            <span class="svg-icon menu-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path opacity="0.3" d="M5.85714 2H13.7364C14.0911 2 14.4343 2.12568 14.7051 2.35474L19.4687 6.38394C19.8057 6.66895 20 7.08788 20 7.5292V20.0833C20 21.8739 19.9796 22 18.1429 22H5.85714C4.02045 22 4 21.8739 4 20.0833V3.91667C4 2.12612 4.02045 2 5.85714 2Z" fill="#A9B3BE"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M11 14H9C8.44772 14 8 13.5523 8 13C8 12.4477 8.44772 12 9 12H11V10C11 9.44772 11.4477 9 12 9C12.5523 9 13 9.44772 13 10V12H15C15.5523 12 16 12.4477 16 13C16 13.5523 15.5523 14 15 14H13V16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16V14Z" fill="#A9B3BE"/>
-                </svg>
-                
-
-            </span>
-            <span class="menu-text">Administration</span>
-          </a>
-        </li>
   
         <li class="menu-item " aria-haspopup="true">
           <a href="#" class="menu-link">
