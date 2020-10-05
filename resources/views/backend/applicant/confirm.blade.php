@@ -39,9 +39,7 @@
 						</form>
 						<div class="mt-10">
                             <p>
-                                <span class="opacity-70" style="font-weight: bold; color: #006535">Didn't receive it? Check your Spam Folder 
-																	</span><br />
-                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Still cant find it? Resend the code
+                                <a href="{{ route('applicant.show') }}" id="kt_login_signup2" class="text-muted text-hover-primary font-weight-bold">Didn't receive it? Resend application ID
 																</a>
                             </p>
 	                    </div>
