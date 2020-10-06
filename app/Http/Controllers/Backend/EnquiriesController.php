@@ -50,6 +50,7 @@ class EnquiriesController extends Controller
         $validated = request()->validate([
             'type'          => ['required', 'string'],
             'firm'          => ['required', 'string'],
+            'subject'       => ['required', 'string'],
             'first_name'    => ['required', 'string'],
             'first_name'    => ['required', 'string'],
             'last_name'     => ['required', 'string'],

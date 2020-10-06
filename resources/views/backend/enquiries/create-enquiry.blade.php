@@ -34,6 +34,14 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
+                                                <label>Subject:</label><span class="text-danger">*</span>
+                                                <input type="text" name="subject" value="{{ old('subject') }}" class="form-control" placeholder="Enter subject:" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
                                                 <label>Representing Firm:</label>
                                                 <input type="text" name="firm" value="{{ old('firm') }}" class="form-control" placeholder="Enter representing firm:" />
                                             </div>

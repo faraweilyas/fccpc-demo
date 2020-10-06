@@ -73,7 +73,7 @@
 								<ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
 									<li class="nav-item">
 										<a class="nav-link py-2 px-4 active" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_1">
-											<span class="nav-text font-size-sm">REG</span>
+											<span class="nav-text font-size-sm">Local</span>
 										</a>
 									</li>
 									<li class="nav-item">

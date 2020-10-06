@@ -33,8 +33,8 @@
                                 <tr>
                                     <th>Date Submitted</th>
                                     <th>Type</th>
+                                    <th>Subject</th>
                                     <th>Name</th>
-                                    <th>Email</th>
                                     <th>Action(s)</th>
                                 </tr>
                             </thead>
@@ -47,8 +47,8 @@
                                             <b>{{ $item->getEnquiryType('strtoupper') }}</b>
                                         </span>
                                     </td>
+                                    <td>{{ $item->subject }}</td>
                                     <td><b>{{ $item->getFullName() }}</b></td>
-                                    <td>{{ $item->email }}</td>
                                     <td nowrap="nowrap">
                                         <a
                                             href="#"
