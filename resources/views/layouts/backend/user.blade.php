@@ -15,12 +15,8 @@
         <span></span>
       </button>
 
-      <button class="btn p-0 burger-icon ml-4" id="kt_header_mobile_toggle">
-        <span></span>
-      </button>
-
       <button class="btn btn-hover-text-primary p-0 ml-2" id="kt_header_mobile_topbar_toggle" onclick="window.location.href = '{{ route('dashboard.profile') }}';">
-        <span class="svg-icon svg-icon-xl">
+        <span class="svg-icon svg-icon-xl svg-icon-white">
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
             viewBox="0 0 24 24" version="1.1">
             <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

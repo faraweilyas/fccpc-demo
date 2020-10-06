@@ -24,11 +24,11 @@
 
 @media (max-width: 991.98px) {
   .header-mobile {
-    background-color: #1a1a27; }
+    background-color: #fff; }
     .header-mobile .burger-icon span {
-      background-color: #484f66; }
+      background-color: #fff; }
       .header-mobile .burger-icon span::before, .header-mobile .burger-icon span::after {
-        background-color: #484f66; }
+        background-color: #fff; }
     .header-mobile .burger-icon:hover span {
       background-color: #3699FF; }
       .header-mobile .burger-icon:hover span::before, .header-mobile .burger-icon:hover span::after {
