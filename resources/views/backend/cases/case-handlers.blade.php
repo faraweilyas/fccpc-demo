@@ -51,7 +51,7 @@
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                             <a href="@if(handler->dropped_cases_assigned_to()->count() > 0) {{ route('cases.dropped', ['handler' => $handler->id]) }} @else # @endif">
+                                             <a href="@if($handler->dropped_cases_assigned_to()->count() > 0) {{ route('cases.dropped', ['handler' => $handler->id]) }} @else # @endif">
                                                 <span class="badge badge-secondary"><b>{{ $handler->dropped_cases_assigned_to()->count() }}</b></span>
                                             </a>
                                         </td>
