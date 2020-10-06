@@ -126,6 +126,19 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles the case analysis case documents page route.
+     *
+     * @return void
+     */
+    public function analyzeCaseDocuments(Cases $case)
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Case Documents Analysis Dashboard";
+        $details          = details($title, $description);
+        return view('backend.cases.analyze-case-documents', compact('details', 'case'));
+    }
+
+    /**
      * Handles the case assign page route.
      *
      * @return void

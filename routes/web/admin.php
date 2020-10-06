@@ -161,6 +161,8 @@ Route::prefix('cases')
 
         Route::get('analyze/{case}', 'CasesController@analyzeCase')->name('analyze');
 
+        Route::get('analyze-documents/{case}', 'CasesController@analyzeCaseDocuments')->name('analyze-documents');
+
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
         );

@@ -11,9 +11,6 @@
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Analyze Cases</a>
-                    </li>
-                    <li class="breadcrumb-item">
                         <a href="" class="text-muted">Analyze Case</a>
                     </li>
                 </ul>
@@ -128,7 +125,7 @@
                     <div class="col-md-3">
                         <p>CONTACT REP INFO:</p>
                         <span>{!! $case->getApplicantName() !!}<br/>
-                            {!! $case->applicant_email !!},<br/>
+                            {!! $case->applicant_email !!}<br/>
                             {!! $case->applicant_phone_number !!}
                         </span>
                     </div>
@@ -139,7 +136,7 @@
 
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-success-sm my-5">View Document Checklist</button>
+                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Document Checklist</button>
                     </div>
                 </div>
 
