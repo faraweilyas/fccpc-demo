@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3 my-4">
+                <div class="col-lg-3">
                     <div class="dashboard-card redish-orange">
                         <p>Deficiencies</p>
                         <span>53</span>
@@ -65,7 +65,7 @@
                     </div>
                 </div>
 			</div>	
-			<div class="row">
+			<div class="row mt-10">
 				<div class="col-lg-6">
 					<div class="card card-custom bg-gray-100 card-stretch gutter-b">
 						<div class="card-header h-auto border-0">

@@ -10,6 +10,8 @@
         <div
             class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
             <span class="font-weight-bold text-dark-50">Do you need help?</span>
+            <a data-turbolinks="false" href="{{ route('home.index') }}" class="font-weight-bold ml-2"
+                id="kt_login_signup">Home</a> |
             <a data-turbolinks="false" href="{{ route('home.faqs') }}" class="font-weight-bold ml-2"
                 id="kt_login_signup">FAQ</a> |
             <a data-turbolinks="false" href="{{ route('home.fee.calculator') }}" class="font-weight-bold ml-2"
@@ -27,8 +29,7 @@
                     <div class="mb_30">
                         <h3>Merger & Acquisition Application
                         </h3>
-                        <div class="font-weight-bold text-black-sm" >Enter your email to begin your application
-                            :</div>
+                        <div class="font-weight-bold text-black-sm" >Enter your email to begin your application:</div>
                     </div>
                     <form class="form" method="POST" action="{{ route('applicant.store') }}">
                         @csrf
