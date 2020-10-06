@@ -47,7 +47,7 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="@if($handler->active_cases_assigned_to()->count() > 0) {{ route('cases.assigned', ['handler' => $handler->id]) }} @else # @endif">
-                                                <span class="badge badge-primary"><b>{{ $handler->active_cases_assigned_to()->count() }}</b></span>
+                                                <span class="badge badge-success"><b>{{ $handler->active_cases_assigned_to()->count() }}</b></span>
                                             </a>
                                         </td>
                                         <td class="text-center">
@@ -57,17 +57,10 @@
                                         </td>
                                         <td>
                                             <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">
-                                                {{ $handler->status }}
+                                                {{ ucfirst($handler->status) }}
                                             </span>
                                         </td>
                                         <td class="text-center" nowrap="nowrap">
-                                             <a
-                                                href="{{ route('cases.assigned', ['handler' => $handler->id]) }}"
-                                                class="btn btn-sm btn-light-warning mr-3"
-                                                title="View Assigned Cases"
-                                            >
-                                                <i class="flaticon-file-2"></i> View Cases
-                                            </a>
                                             @if($handler->status === "active")
                                                 <a
                                                     href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
