@@ -1,5 +1,5 @@
 <div class="modal fade" id="viewCaseModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="viewCaseModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="viewCaseModalLabel">View Case</h5>
@@ -105,7 +105,7 @@
                             </div>
 
                             {{-- Checklist --}}
-                            <div class="tab-pane fade box-scroll" id="checklist_tab" role="tabpanel">
+                            <div class="tab-pane fade" id="checklist_tab" role="tabpanel">
                                 <div id="checklist_items" class="d-flex flex-column font-size-sm font-weight-bold">
                                 ...
                                 </div>

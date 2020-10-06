@@ -235,6 +235,7 @@ $(document).ready(function () {
             message.html(caseContainer.find('.message').html());
         return;
     });
+
     $('#assignCaseModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
         caseContainer = assignButton.parent('td').parent('tr'),
