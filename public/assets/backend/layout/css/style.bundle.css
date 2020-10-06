@@ -2469,7 +2469,7 @@ textarea.form-control {
       -webkit-transition: none;
       transition: none; } }
   .btn:hover {
-    color: #3F4254;
+    color: #eee;
     text-decoration: none; }
   .btn:focus, .btn.focus {
     outline: 0;

@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
                     <div class="dashboard-card purple">
                         <p>New Cases</p>
                         <span>{{ $cases->unassignedCases()->count() }}</span>
@@ -36,7 +36,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
                         <p>Assigned Cases</p>
                         <span>{{ $cases->assignedCases()->count() }}</span>

@@ -40,7 +40,7 @@
       <ul class="menu-nav">
     
         <li class="menu-item bb_home mt-n5" aria-haspopup="true">
-          <a href="/" class="menu-link">
+          <a href="/" class="menu-link" target="_blank">
             <span class="svg-icon menu-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.3" d="M8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 7.10457 4.89543 8 6 8C7.10457 8 8 7.10457 8 6Z" fill="#A9B3BE"/>
@@ -56,7 +56,7 @@
                 
 
             </span>
-            <span class="menu-text">Home</span>
+            <span class="menu-text">FCCPC</span>
           </a>
         </li>
   
@@ -281,7 +281,7 @@
         <div class="container">
 
           <a data-turbolinks="false" href="/" class="map mr-20">
-            <h3 class="text-white text-bold font-weight-bolder text-dark">FCCPC</h3>
+            <h3 class="text-white text-bold font-weight-bolder text-dark">Mergers &amp; Acqusition Platform</h3>
         </a>
             <div class="topbar">
             
