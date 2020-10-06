@@ -28,6 +28,7 @@
                     </div>
                 </div>
 
+                @if(in_array(\Auth::user()->account_type, ['SP']))
                 <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
                     <div class="dashboard-card purple">
                         <p>New Cases</p>
@@ -35,11 +36,15 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
-
+                @endif
                 <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
                         <p>Assigned Cases</p>
-                        <span>{{ $cases->assignedCases()->count() }}</span>
+                        @if(in_array(\Auth::user()->account_type, ['CH']))
+                         <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
+                        @else
+                            <span>{{ $cases->assignedCases()->count() }}</span>
+                        @endif
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
