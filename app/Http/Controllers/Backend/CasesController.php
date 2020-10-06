@@ -117,12 +117,12 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function analyzeCase($id)
+    public function analyzeCase(Cases $case)
     {
         $title            = APP_NAME;
         $description      = "FCCPC Case Analysis Dashboard";
         $details          = details($title, $description);
-        return view('backend.cases.analyze-case', compact('details', 'id'));
+        return view('backend.cases.analyze-case', compact('details', 'case'));
     }
 
     /**

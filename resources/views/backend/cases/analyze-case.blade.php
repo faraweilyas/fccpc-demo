@@ -69,22 +69,31 @@
                 <div class="row py-5">
                     <div class="col-md-3">
                         <p>REF NO:</p>
-                        <span>FCCPC/BC/M&A/00/20/VOLNo
+                        <span>
+                            {!! $case->getRefNO() !!}
                         </span>
                     </div>
                     <div class="col-md-3">
                         <p>CASE TYPE:</p>
-                        <span>Application
+                        <span>
+                            {!! $case->getTypeHtml() !!}
                         </span>
                     </div>
                     <div class="col-md-3">
                         <p>CASE REP:</p>
-                        <span>T & A Legal
+                        <span>
+                            {!! $case->applicant_firm !!}
                         </span>
                     </div>
-                    <div class="col-md-3">
+                   {{--  <div class="col-md-3">
                         <p>STATUS:</p>
                         <span class="label-custom-warning">IN-PROGRESS
+                        </span>
+                    </div> --}}
+                    <div class="col-md-3">
+                        <p>Address:</p>
+                        <span>
+                            {!! $case->applicant_address !!}
                         </span>
                     </div>
                 </div>
@@ -92,33 +101,35 @@
                 <div class="row py-5">
                     <div class="col-md-3">
                         <p>MATTER NAME:</p>
-                        <span>Access Bank Merger
+                        <span>
+                            {{ $case->getSubject() }}
                         </span>
                     </div>
                     <div class="col-md-3">
                         <p>PARTIES:</p>
-                        <span>Access Bank, Diamond Bank,
-                            Central Bank of Nigeria
+                        <span>
+                            {!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}
                         </span>
                     </div>
                     <div class="col-md-3">
                         <p>CATEGORY:</p>
-                        <span>FFM Expediated
+                        <span>
+                            {!! $case->getCategoryHtml() !!}
                         </span>
                     </div>
-                    <div class="col-md-3">
+                   {{--  <div class="col-md-3">
                         <p>PAID/NOT PAID::</p>
                         <span class="label-custom-danger">NOT PAID
                         </span>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="row py-5">
                     <div class="col-md-3">
                         <p>CONTACT REP INFO:</p>
-                        <span>Olusegun Aribido
-                            segunaribido@gmail.com,
-                            09048374824
+                        <span>{!! $case->getApplicantName() !!}<br/>
+                            {!! $case->applicant_email !!},<br/>
+                            {!! $case->applicant_phone_number !!}
                         </span>
                     </div>
                     <div class="col-md-3">
@@ -146,17 +157,18 @@
                 <div class="row py-5">
                     <div class="col-md-6 my-5">
 
-                        <div id="drop-area"><input type="file" id="fileElem"><label class="drop-label"
-                                for="fileElem"><img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
+                        <div id="drop-area">
+                            <input type="file" id="fileElem">
+                            <label class="drop-label" for="fileElem">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
                                 <br>
                                 <br>Drop
                                 file here or click
-                                to upload.</label></div>
+                                to upload.</label>
+                        </div>
                     </div>
                     <div class="col-md-6 my-5">
-                        <textarea class="form-control form-control-teaxtarea" name="" id="" cols="30" rows="10">
-													State your recommendation
-												</textarea>
+                        <textarea class="form-control form-control-teaxtarea" name="" id="" cols="30" rows="10">State your recommendation</textarea>
 
                         <br>
 
