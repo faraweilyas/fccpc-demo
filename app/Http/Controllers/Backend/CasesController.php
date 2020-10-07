@@ -29,14 +29,17 @@ class CasesController extends Controller
      */
     public function unassignedCases()
     {
-        $cases          = (new Cases)->unassignedCases();
-    
-        $caseHandlers   = (new User)->caseHandlers();
+        $cases = (new Cases())->unassignedCases();
 
-        $title          = 'New Cases | '.APP_NAME;
-        $description    = 'New Cases | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.cases.unassigned', compact('details', 'cases', 'caseHandlers'));
+        $caseHandlers = (new User())->caseHandlers();
+
+        $title = 'New Cases | ' . APP_NAME;
+        $description = 'New Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.unassigned',
+            compact('details', 'cases', 'caseHandlers')
+        );
     }
 
     /**
@@ -46,22 +49,28 @@ class CasesController extends Controller
      */
     public function assignedCases(User $handler)
     {
-        if(isset($handler->status)):
-            $cases          = $handler->active_cases_assigned_to()->get();
+        if (isset($handler->status)):
+            $cases = $handler->active_cases_assigned_to()->get();
         else:
             if (auth()->user()->account_type == 'CH'):
-                $cases          = auth()->user()->active_cases_assigned_to()->get();
+                $cases = auth()
+                    ->user()
+                    ->active_cases_assigned_to()
+                    ->get();
             else:
-                $cases          = (new Cases)->assignedCases();
+                $cases = (new Cases())->assignedCases();
             endif;
-        endif; 
-        
-        $caseHandlers   = (new User)->caseHandlers();
+        endif;
 
-        $title          = 'Assigned Cases | '.APP_NAME;
-        $description    = 'Assigned Cases | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.cases.cases-assigned', compact('details', 'cases', 'caseHandlers'));
+        $caseHandlers = (new User())->caseHandlers();
+
+        $title = 'Assigned Cases | ' . APP_NAME;
+        $description = 'Assigned Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-assigned',
+            compact('details', 'cases', 'caseHandlers')
+        );
     }
 
     /**
@@ -71,14 +80,17 @@ class CasesController extends Controller
      */
     public function droppedCases(User $handler)
     {
-        $cases          = $handler->dropped_cases_assigned_to()->get();
-        $caseHandlers   = (new User)->caseHandlers();
+        $cases = $handler->dropped_cases_assigned_to()->get();
+        $caseHandlers = (new User())->caseHandlers();
 
-        $title          = 'Dropped Cases | '.APP_NAME;
-        $description    = 'Dropped Cases | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.cases.cases-dropped', compact('details', 'cases', 'caseHandlers'));
-    } 
+        $title = 'Dropped Cases | ' . APP_NAME;
+        $description = 'Dropped Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-dropped',
+            compact('details', 'cases', 'caseHandlers')
+        );
+    }
 
     /**
      * Handles approved cases page.
@@ -87,13 +99,16 @@ class CasesController extends Controller
      */
     public function approvedCases()
     {
-        $cases          = (new Cases)->assignedCases();
-        $caseHandlers   = (new User)->caseHandlers();
+        $cases = (new Cases())->assignedCases();
+        $caseHandlers = (new User())->caseHandlers();
 
-        $title          = 'Approved Cases | '.APP_NAME;
-        $description    = 'Approved Cases | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.cases.cases-approved', compact('details', 'cases', 'caseHandlers'));
+        $title = 'Approved Cases | ' . APP_NAME;
+        $description = 'Approved Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-approved',
+            compact('details', 'cases', 'caseHandlers')
+        );
     }
 
     /**
@@ -103,13 +118,16 @@ class CasesController extends Controller
      */
     public function archivedCases()
     {
-        $cases          = (new Cases)->archivedCases();
-        $caseHandlers   = (new User)->caseHandlers();
+        $cases = (new Cases())->archivedCases();
+        $caseHandlers = (new User())->caseHandlers();
 
-        $title          = 'Archived Cases | '.APP_NAME;
-        $description    = 'Archived Cases | '.APP_NAME;
-        $details        = details($title, $description);
-        return view('backend.cases.cases-archived', compact('details', 'cases', 'caseHandlers'));
+        $title = 'Archived Cases | ' . APP_NAME;
+        $description = 'Archived Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-archived',
+            compact('details', 'cases', 'caseHandlers')
+        );
     }
 
     /**
@@ -119,9 +137,9 @@ class CasesController extends Controller
      */
     public function analyzeCase(Cases $case)
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC Case Analysis Dashboard";
-        $details          = details($title, $description);
+        $title = APP_NAME;
+        $description = 'FCCPC Case Analysis Dashboard';
+        $details = details($title, $description);
         return view('backend.cases.analyze-case', compact('details', 'case'));
     }
 
@@ -132,10 +150,13 @@ class CasesController extends Controller
      */
     public function checklistApproval(Cases $case)
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC Checklist Approval Dashboard";
-        $details          = details($title, $description);
-        return view('backend.cases.checklist-approval', compact('details', 'case'));
+        $title = APP_NAME;
+        $description = 'FCCPC Checklist Approval Dashboard';
+        $details = details($title, $description);
+        return view(
+            'backend.cases.checklist-approval',
+            compact('details', 'case')
+        );
     }
 
     /**
@@ -145,10 +166,14 @@ class CasesController extends Controller
      */
     public function analyzeCaseDocuments(Cases $case)
     {
-        $title            = APP_NAME;
-        $description      = "FCCPC Case Documents Analysis Dashboard";
-        $details          = details($title, $description);
-        return view('backend.cases.analyze-case-documents', compact('details', 'case'));
+        $title = APP_NAME;
+        $description = 'FCCPC Case Documents Analysis Dashboard';
+        $details = details($title, $description);
+
+        return view(
+            'backend.cases.analyze-case-documents',
+            compact('details', 'case')
+        );
     }
 
     /**
@@ -160,14 +185,12 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
-        $user->notify(
-            new CaseAssigned()
-        );  
-        $this->sendResponse("Case assigned.", "success", [
-            'case'      => $case,
-            'handler'   => $user
+        $user->notify(new CaseAssigned());
+        $this->sendResponse('Case assigned.', 'success', [
+            'case' => $case,
+            'handler' => $user,
         ]);
-    } 
+    }
 
     /**
      * Handles the case checklists page route.
@@ -179,10 +202,10 @@ class CasesController extends Controller
         $checklists = $case->getChecklistName();
         abort_if(!auth()->user(), 404);
 
-        $this->sendResponse("Case checklists received.", "success", [
-            'checklists'   => $checklists,
+        $this->sendResponse('Case checklists received.', 'success', [
+            'checklists' => $checklists,
         ]);
-    } 
+    }
 
     /**
      * Handles the case documents page route.
@@ -194,11 +217,11 @@ class CasesController extends Controller
         $documents = $case->getChecklistGroupDocuments();
         abort_if(!auth()->user(), 404);
 
-        $this->sendResponse("Case documents received.", "success", [
-            'documents'   => $documents,
-            'group'       => $case->getChecklistGroupName(),
+        $this->sendResponse('Case documents received.', 'success', [
+            'documents' => $documents,
+            'group' => $case->getChecklistGroupName(),
         ]);
-    } 
+    }
 
     /**
      * Handles the get document icon text page route.
@@ -207,10 +230,10 @@ class CasesController extends Controller
      */
     public function getDocumentIconText(Document $document)
     {
-       abort_if(!auth()->user(), 404);
+        abort_if(!auth()->user(), 404);
 
-        $this->sendResponse("Document Icon received.", "success", [
-            'icon'   => $document->getIconText(),
+        $this->sendResponse('Document Icon received.', 'success', [
+            'icon' => $document->getIconText(),
         ]);
     }
 
@@ -223,7 +246,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $result = $case->disolve($user);
-        $this->sendResponse("Case unassigned.", "error");
+        $this->sendResponse('Case unassigned.', 'error');
     }
 
     /**
@@ -235,10 +258,8 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->reAssign($oldUser, $newUser);
-        $newUser->notify(
-            new CaseAssigned()
-        );  
-        $this->sendResponse("Case reassigned.", "success");
+        $newUser->notify(new CaseAssigned());
+        $this->sendResponse('Case reassigned.', 'success');
     }
 
     /**
@@ -249,10 +270,12 @@ class CasesController extends Controller
     public function updateCaseStatus($status, $id)
     {
         Cases::whereId($id)->update([
-            'status' => $status
+            'status' => $status,
         ]);
 
-        return redirect()->back()->with("success", "Transaction status has been updated");
+        return redirect()
+            ->back()
+            ->with('success', 'Transaction status has been updated');
     }
 
     /**
@@ -263,13 +286,16 @@ class CasesController extends Controller
      * @param mixed $response
      * @return void
      */
-    public function sendResponse(string $message, string $responseType, $response=null)
-    {
+    public function sendResponse(
+        string $message,
+        string $responseType,
+        $response = null
+    ) {
         echo json_encode([
-            'message'       => $message,
-            'responseType'  => $responseType,
-            'response'      => $response,
+            'message' => $message,
+            'responseType' => $responseType,
+            'response' => $response,
         ]);
-        exit;
+        exit();
     }
 }
