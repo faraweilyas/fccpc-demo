@@ -20,7 +20,7 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-lg-3">
+                <div class="col-lg-3 my-5">
                     <div class="dashboard-card">
                         <p>All Cases</p>
                         <span>{{ $cases->submittedCases()->count() }}</span>
@@ -29,7 +29,7 @@
                 </div>
 
                 @if(in_array(\Auth::user()->account_type, ['SP']))
-                <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
+                <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
                     <div class="dashboard-card purple">
                         <p>New Cases</p>
                         <span>{{ $cases->unassignedCases()->count() }}</span>
@@ -37,7 +37,7 @@
                     </div>
                 </div>
                 @endif
-                <div class="col-lg-3" onclick="window.location.href = '{{ route('cases.assigned') }}';">
+                <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
                         <p>Assigned Cases</p>
                         @if(in_array(\Auth::user()->account_type, ['CH']))
@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-3 my-5">
                     <div class="dashboard-card orange">
                         <p>Exceeded Timeline</p>
                         <span>53</span>
@@ -57,7 +57,7 @@
                     </div>
                 </div>
 
-                <div class="col-lg-3">
+                <div class="col-lg-3 my-5">
                     <div class="dashboard-card redish-orange">
                         <p>Deficiencies</p>
                         <span>53</span>
