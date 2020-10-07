@@ -163,6 +163,8 @@ Route::prefix('cases')
 
         Route::get('analyze-documents/{case}', 'CasesController@analyzeCaseDocuments')->name('analyze-documents');
 
+        Route::get('checklist-approval/{case}', 'CasesController@checklistApproval')->name('checklist-approval');
+
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
         );

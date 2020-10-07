@@ -125,6 +125,19 @@ class CasesController extends Controller
         return view('backend.cases.analyze-case', compact('details', 'case'));
     }
 
+    /*
+     * Handles the checklist approval page route.
+     *
+     * @return void
+     */
+    public function checklistApproval(Cases $case)
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Checklist Approval Dashboard";
+        $details          = details($title, $description);
+        return view('backend.cases.checklist-approval', compact('details', 'case'));
+    }
+
     /**
      * Handles the case analysis case documents page route.
      *
