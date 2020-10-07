@@ -48,24 +48,45 @@
                             <input class="form-control" type="date" name="end_date" />
                         </div>
 
-                        <div class="row">
+                        @if (in_array(\Auth::user()->account_type, ['CH']))
+                            <input type="hidden" name="handler_id[]" value="{{ \Auth::user()->id }}">
+                        @else
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Select Case Handler</label>
+                                    <select class="form-control form-control-table select2" id="get_handler"
+                                        name="handler_id[]" style="width: 100%;" multiple="multiple">
+                                        @foreach($handlers as $handler)
+                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        @endif
+                        <div id="custom-filter" class="row mt-4 hide">
                             <div class="col-md-12">
-                                <label>Select Case Handler</label>
-                                <select class="form-control form-control-table select2" id="get_handler"
-                                    name="caseHandler" style="width: 100%;">
-                                    @foreach($handlers as $handler)
-                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                <label>Transaction Type</label>
+                                <select class="form-control form-control-table" name="type">
+                                    @foreach(\AppHelper::get('case_types') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label>Transaction Category</label>
+                                <select class="form-control form-control-table" name="category">
+                                    @foreach(\AppHelper::get('case_categories') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
                         <div class="row">
                             <div class="col-md-4 mt-4">
-                                <div class="view-doc-link">
-                                    <a href="#" data-toggle="modal" data-target="#generateReportModal">
-                                        Custom Filter
-                                    </a>
+                                <div class="checkbox-inline">
+                                    <label class="checkbox checkbox-primary">
+                                    <input id="custom-filter-check" type="checkbox" name="custom-filter-check">
+                                    <span></span></label>Custom Filter
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -82,62 +103,6 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
-
-
-<div class="modal fade" id="generateReportModal" data-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Custom Filter</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <i aria-hidden="true" class="ki ki-close"></i>
-                </button>
-            </div>
-            <form method="POST" action="{{ route('dashboard.report.custom') }}">
-                @csrf
-                <div class="modal-body">
-
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <label>Case Type</label>
-                            <select class="form-control form-control-table" name="type">
-                                @foreach(\AppHelper::get('case_types') as $key => $value)
-                                <option value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
-
-                        <div class="col-md-12 mt-4">
-
-                            <label>Case Category</label>
-                            <select class="form-control form-control-table" name="category">
-                                @foreach(\AppHelper::get('case_categories') as $key => $value)
-                                <option value="{{ $key }}">{{ $value }}</option>
-                                @endforeach
-                            </select>
-
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" id="caseID">
-                    <button type="submit" class="btn btn-light-primary font-weight-bold">Submit Request</button>
-                    <button type="button" class="btn btn-light-danger font-weight-bold"
-                        data-dismiss="modal">Close</button>
-
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-
 @endsection
 
 @section('custom.css')
@@ -150,12 +115,17 @@
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
 
-
-
 <script>
     $(document).ready(function () {
         $('#get_handler').select2();
-
+        $('#custom-filter-check').on('click', function(){
+            if($(this).prop("checked") == true){
+                $("#custom-filter").toggle();
+            }
+            else if($(this).prop("checked") == false){
+                $("#custom-filter").toggle();
+            }
+        });
     })
 
 </script>

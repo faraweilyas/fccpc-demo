@@ -41,7 +41,31 @@ trait CaseGettable
      */
     public function getCaseByDateRange($start_date, $end_date)
     {
-        return static::whereBetween('submitted_at', [$start_date, $end_date])->get();
+        return static::whereBetween('submitted_at', [$start_date, $end_date])->with('handlers')
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
+    }
+
+    /**
+     * Gets case by date range, type and category
+     *
+     * @return Collection
+     */
+    public function getCaseByDateRangeTypeAndCategory($start_date, $end_date, $category, $type)
+    {
+        return static::whereBetween('submitted_at', [$start_date, $end_date])
+            ->where('case_category', $category)->where('case_type', $type)
+            ->with('handlers')
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
     }
 
     /**
@@ -54,7 +78,28 @@ trait CaseGettable
          return static::whereBetween('submitted_at', [$start_date, $end_date])
             ->with(['handlers' => function($query) use ($handler_id)
             {
-                $query->where('handler_id', $handler_id);
+                $query->whereIn('handler_id', $handler_id);
+            }])
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->isEmpty() ? true : false;
+            });
+    }
+
+    /**
+     * Gets case by date range & case handler, type and category
+     *
+     * @return Collection
+     */
+    public function getCaseByDateRangeTypeCategoryAndHandler($start_date, $end_date, $handler_id, $category, $type)
+    {
+         return static::whereBetween('submitted_at', [$start_date, $end_date])
+            ->where('case_category', $category)->where('case_type', $type)
+            ->with(['handlers' => function($query) use ($handler_id)
+            {
+                $query->whereIn('handler_id', $handler_id);
             }])
             ->latest()
             ->get()

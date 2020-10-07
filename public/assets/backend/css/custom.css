@@ -6,6 +6,11 @@ body {
     background: #f2f2f2 !important;
 }
 
+.radio-inline .radio span {
+    margin-right: 0.75rem;
+    margin-left: 5px;
+}
+
 .text-black {
     color: #242424;
     font-size: 1.5rem;

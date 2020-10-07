@@ -143,7 +143,7 @@
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
 
                                         <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='CaseInfo'>
-                                            <h4 class="mb-10 font-weight-bold text-dark">Enter your case information</h4>
+                                            <h4 class="mb-10 font-weight-bold text-dark">Transaction information</h4>
                                             <div class="form-group fv-plugins-icon-container">
                                                 <label>Subject</label> <span class="text-danger">*</span>
                                                 <input type="text" id="subject" class="form-control" placeholder="Enter subject name" name="subject" value="{{ $case->subject }}">

@@ -65,19 +65,19 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p>REF NO:</p>
+                        <p><b>REF NO:</b></p>
                         <span>
                             {!! $case->getRefNO() !!}
                         </span>
                     </div>
                     <div class="col-md-3">
-                        <p>CASE TYPE:</p>
+                        <p><b>TRANSACTION TYPE:</b></p>
                         <span>
                             {!! $case->getTypeHtml() !!}
                         </span>
                     </div>
                     <div class="col-md-3">
-                        <p>CASE REP:</p>
+                        <p><b>TRANSACTION REP:</b></p>
                         <span>
                             {!! $case->applicant_firm !!}
                         </span>
@@ -88,7 +88,7 @@
                         </span>
                     </div> --}}
                     <div class="col-md-3">
-                        <p>Address:</p>
+                        <p><b>Address:</b></p>
                         <span>
                             {!! $case->applicant_address !!}
                         </span>
@@ -97,19 +97,19 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p>MATTER NAME:</p>
+                        <p><b>MATTER NAME:</b></p>
                         <span>
                             {{ $case->getSubject() }}
                         </span>
                     </div>
                     <div class="col-md-3">
-                        <p>PARTIES:</p>
+                        <p><b>PARTIES:</b></p>
                         <span>
                             {!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}
                         </span>
                     </div>
                     <div class="col-md-3">
-                        <p>CATEGORY:</p>
+                        <p><b>CATEGORY:</b></p>
                         <span>
                             {!! $case->getCategoryHtml() !!}
                         </span>
