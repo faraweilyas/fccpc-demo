@@ -150,12 +150,14 @@ class CasesController extends Controller
      */
     public function checklistApproval(Cases $case)
     {
+        $checklistIds            = $case->getChecklistIds();
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
         $title = APP_NAME;
         $description = 'FCCPC Checklist Approval Dashboard';
         $details = details($title, $description);
         return view(
             'backend.cases.checklist-approval',
-            compact('details', 'case')
+            compact('details', 'case', 'checklistIds', 'checklistGroupDocuments')
         );
     }
 
@@ -166,13 +168,15 @@ class CasesController extends Controller
      */
     public function analyzeCaseDocuments(Cases $case)
     {
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
+
         $title = APP_NAME;
         $description = 'FCCPC Case Documents Analysis Dashboard';
         $details = details($title, $description);
 
         return view(
             'backend.cases.analyze-case-documents',
-            compact('details', 'case')
+            compact('details', 'case', 'checklistGroupDocuments')
         );
     }
 

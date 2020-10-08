@@ -24,51 +24,25 @@
         <div class="col-md-12">
             <div class="card-custom">
                 <h5 class="text-bold">Completed / Submitted</h5>
-                <a href="{{ route('cases.checklist-approval',array($case->id)) }}"
+                <a href="{{ route('cases.checklist-approval',[$case->id]) }}"
                     class="btn btn-success-transparent-download">
                     Start Document Approval
                 </a>
 
                 <div class="download-content py-5 my-5">
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
+                    @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
+                    @php
+                        $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                    @endphp
+                    @if($document !== '')
+                        <div class="download-card">
+                            <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
 
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
-                </div>
-
-                <div class="download-content my-3">
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
-                    <div class="download-card">
-                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-
-                        <p>Letter of intent to merge</p>
-                        <button class="btn btn-success-sm">View Details</button>
-                    </div>
+                            <p>{{ $checklistGroup->name }}</p>
+                            <button class="btn btn-success-sm" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';" >Download</button>
+                        </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

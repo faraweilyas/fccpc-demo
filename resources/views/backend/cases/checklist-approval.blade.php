@@ -498,7 +498,7 @@
                         Previous
                     </button>
                     <button class="btn btn-success-pale-ts no-border mx-5" id="next">
-                        Save & Contiune
+                       Next
                     </button>
 
                     <button class="btn btn-success no-border mx-5 hide" id="approve">
