@@ -28,20 +28,21 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
-                <h5 class="text-bold">
-                    Consent and resolution documents
-                    <button class="btn btn-danger-pale-ts no-border mx-5">
-                        Issue a Deficiency Notice
-                    </button>
-                    {{-- <button class="btn btn-success-ts no-border mx-5">
-                        Request Absent Document
-                    </button> --}}
-                    <button class="btn btn-success no-border">
-                        Download Checklist Document
-                    </button>
-                </h5>
 
                 <div class="row my-3 py-5" id="step-1">
+                    <h5 class="text-bold">
+                        Consent and resolution documents
+                        <button class="btn btn-danger-pale-ts no-border mx-5">
+                            Issue a Deficiency Notice
+                        </button>
+                        {{-- <button class="btn btn-success-ts no-border mx-5">
+                            Request Absent Document
+                        </button> --}}
+                        <button class="btn btn-success no-border">
+                            Download Checklist Document
+                        </button>
+                    </h5>
+
                     <div class="consent-content">
                         <div class="consent-card">
                             <div class="d-flex">
@@ -192,6 +193,19 @@
                 </div>
 
                 <div class="row my-3 py-5 hide" id="step-2">
+                    <h5 class="text-bold">
+                        Consent and resolution documents
+                        <button class="btn btn-danger-pale-ts no-border mx-5">
+                            Issue a Deficiency Notice
+                        </button>
+                        {{-- <button class="btn btn-success-ts no-border mx-5">
+                            Request Absent Document
+                        </button> --}}
+                        <button class="btn btn-success no-border">
+                            Download Checklist Document
+                        </button>
+                    </h5>
+
                     <h2>Step 2</h2>
                     <div class="consent-content">
                         <div class="consent-card">
@@ -343,6 +357,19 @@
                 </div>
 
                 <div class="row my-3 py-5 hide" id="step-3">
+                    <h5 class="text-bold">
+                        Consent and resolution documents
+                        <button class="btn btn-danger-pale-ts no-border mx-5">
+                            Issue a Deficiency Notice
+                        </button>
+                        {{-- <button class="btn btn-success-ts no-border mx-5">
+                            Request Absent Document
+                        </button> --}}
+                        <button class="btn btn-success no-border">
+                            Download Checklist Document
+                        </button>
+                    </h5>
+
                     <h2>Step 3</h2>
                     <div class="consent-content">
                         <div class="consent-card">
@@ -498,7 +525,7 @@
                         Previous
                     </button>
                     <button class="btn btn-success-pale-ts no-border mx-5" id="next">
-                       Next
+                        Next
                     </button>
 
                     <button class="btn btn-success no-border mx-5 hide" id="approve">

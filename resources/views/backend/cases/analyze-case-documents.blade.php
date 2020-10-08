@@ -29,7 +29,7 @@
                     Start Document Approval
                 </a>
 
-                <div class="download-content py-5 my-5">
+                <div class="col-md-3 download-content py-5 my-5">
                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                     @php
                         $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
