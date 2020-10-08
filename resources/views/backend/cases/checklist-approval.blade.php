@@ -11,7 +11,8 @@
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('cases.analyze-documents', ['case' => $case->id]) }}" class="text-muted">Analyze Case</a>
+                        <a href="{{ route('cases.analyze-documents', ['case' => $case->id]) }}"
+                            class="text-muted">Analyze Case</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="" class="text-muted">Checklist Approval</a>
@@ -190,14 +191,316 @@
                     </div>
                 </div>
 
+                <div class="row my-3 py-5 hide" id="step-2">
+                    <h2>Step 2</h2>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row my-3 py-5 hide" id="step-3">
+                    <h2>Step 3</h2>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                    <div class="consent-content">
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+
+                        <div class="consent-card">
+                            <div class="d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value=""
+                                        checked="true" />
+                                    <label class="form-check-label margin-t">
+                                        Approved
+                                    </label>
+                                </div>
+                                <div class="form-check mx-5">
+                                    <input class="form-check-input" type="radio" name="exampleRadios" value="" />
+                                    <label class="form-check-label margin-t">
+                                        Deficient
+                                    </label>
+                                </div>
+                            </div>
+
+                            <p>
+                                Extract of Board Resolutions of the Merging
+                                Companies duly certified by a Director and the
+                                Company Secretary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="d-flex justify-center align-center align-items-center align-self-end">
                     <button class="btn btn-success-pale-ts no-border mx-5" id="prev">
                         Previous
                     </button>
-                    <button class="btn btn-success-pale-ts no-border mx-5">
+                    <button class="btn btn-success-pale-ts no-border mx-5" id="next">
                         Save & Contiune
                     </button>
-                   
+
                     <button class="btn btn-success no-border mx-5">
                         Approve Complete Documents in the Checklist
                     </button>
@@ -210,20 +513,43 @@
 </div>
 @endsection
 
- @section('custom.css')
+@section('custom.css')
 <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
 @endsection
 
 
 @section('custom.javascript')
-    
-    <script >
-        $(document).ready(function(){
-            $('#prev').click(function(){
-                // $('[id^=step-1]').hide();
-                $('#step-1').hide();
-            })
+
+<script>
+    var counter = 1;
+
+    $(document).ready(function () {
+        $('#prev').click(function () {
+            if (counter > 1) {
+                counter--;
+                $('[id^=step]').hide();
+                $(`#step-${counter}`).show();
+                console.log(counter);
+            } else {
+                counter = 1;
+                $('[id^=step]').hide();
+                $(`#step-${counter}`).show();
+                console.log(counter);
+                return false;
+            }
 
         })
-    </script>
+        $('#next').click(function () {
+            counter++;
+            $('[id^=step]').hide();
+            $(`#step-${counter}`).show();
+            console.log(counter);
+
+        })
+
+
+
+    })
+
+</script>
 @endsection
