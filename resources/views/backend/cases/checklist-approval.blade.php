@@ -522,6 +522,7 @@
 
 <script>
     var counter = 1;
+    var arr_lenght = 3;
 
     $(document).ready(function () {
         $('#prev').click(function () {
@@ -529,21 +530,26 @@
                 counter--;
                 $('[id^=step]').hide();
                 $(`#step-${counter}`).show();
-                console.log(counter);
+
             } else {
                 counter = 1;
                 $('[id^=step]').hide();
                 $(`#step-${counter}`).show();
-                console.log(counter);
+
                 return false;
             }
 
         })
         $('#next').click(function () {
-            counter++;
-            $('[id^=step]').hide();
-            $(`#step-${counter}`).show();
-            console.log(counter);
+
+            if (counter < arr_lenght) {
+                counter++;
+                $('[id^=step]').hide();
+                $(`#step-${counter}`).show();
+                // console.log('Counter ', counter);
+                // console.log('Array lenght', arr_lenght);
+            }
+
 
         })
 
