@@ -501,7 +501,7 @@
                         Save & Contiune
                     </button>
 
-                    <button class="btn btn-success no-border mx-5">
+                    <button class="btn btn-success no-border mx-5 hide" id="approve">
                         Approve Complete Documents in the Checklist
                     </button>
                 </div>
@@ -527,11 +527,18 @@
     $(document).ready(function () {
         $('#prev').click(function () {
             if (counter > 1) {
+                $('#next').show();
+                $('#approve').hide();
+
                 counter--;
                 $('[id^=step]').hide();
                 $(`#step-${counter}`).show();
 
+
             } else {
+                $('#next').show();
+                $('#approve').hide();
+
                 counter = 1;
                 $('[id^=step]').hide();
                 $(`#step-${counter}`).show();
@@ -548,6 +555,11 @@
                 $(`#step-${counter}`).show();
                 // console.log('Counter ', counter);
                 // console.log('Array lenght', arr_lenght);
+            }
+
+            if (counter === arr_lenght) {
+                $('#next').hide();
+                $('#approve').show();
             }
 
 
