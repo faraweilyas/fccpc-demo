@@ -371,34 +371,6 @@
           <td align="left" valign="top" id="bodyCell" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 10px;width: 100%;border-top: 0;">
             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
               <tr>
-                <td valign="top" id="templateHeader" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-  <tbody class="mcnTextBlockOuter">
-    <tr>
-      <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-        <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
-          <tbody><tr>
-            
-            <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-            
-              <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: center;">Merger Application</h1>
-
-            </td>
-          </tr>
-        </tbody></table>
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-        
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-  </tbody>
-</table></td>
-              </tr>
-              <tr>
                 <td valign="top" id="templateBody" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
   <tbody class="mcnTextBlockOuter">
     <tr>
@@ -416,12 +388,13 @@
             
             <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
             
-              <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{230}" paraid="1301569454" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">You are receiving this email because you started a new merger application on the M&amp;A Merger Application Platform.&nbsp;&nbsp;</p>
+              <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{230}" paraid="1301569454" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Dear applicant&nbsp;&nbsp;</p>
 
-<p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}" paraid="1117038438" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Your application tracking ID is: <strong>#{{ $guest->tracking_id }}</strong><br>
+<p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}" paraid="1117038438" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Thank you for your application, your application reference no is <strong>{{ $guest->tracking_id }}</strong><br>
 &nbsp;</p>
 
-<p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}" paraid="1344694371" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">You can use this tracking ID to access your saved application before it has been submitted.&nbsp;If&nbsp;you have any queries, please visit the&nbsp;FAQ section&nbsp;<a href="{{ config("app.url") }}" rel="noreferrer noopener" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>&nbsp;for more information. Please keep your application ID safe.&nbsp;</p>
+<p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}" paraid="1344694371" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">You can use this reference number to access your saved application before it has been submitted. If you have any queries, please visit the FAQ section <a href="{{ config("app.url") }}" rel="noreferrer noopener" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a> for more information. Please keep your application reference number safe.
+</p>
 
 <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{2}" paraid="411573197" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;"><br>
 Thank you&nbsp;</p>

@@ -339,7 +339,7 @@
 }</style>                 <link rel="stylesheet" href="https://us17.campaign-archive.com/css/archivebar-desktop.css" mc:nocompile>  </head> <body id="archivebody"> 
     <body style="background:#FFFFFF none no-repeat center/cover;height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
     <!---->
-    <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Notification: Merger Application</span><!--<![endif]-->
+    <!--[if !gte mso 9]><!----><span class="mcnPreviewText" style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger Application Submission</span><!--<![endif]-->
     <!---->
     <center>
       <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable" style="background:#FFFFFF none no-repeat center/cover;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
@@ -352,42 +352,6 @@
             <td align="center" valign="top" width="600" style="width:600px;">
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" class="templateContainer" style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
-              <tr>
-                <td valign="top" id="templateHeader" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-  <tbody class="mcnTextBlockOuter">
-    <tr>
-      <td valign="top" class="mcnTextBlockInner" style="padding-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
-        <!--[if mso]>
-        <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
-        <tr>
-        <![endif]-->
-        
-        <!--[if mso]>
-        <td valign="top" width="600" style="width:600px;">
-        <![endif]-->
-        <table align="left" border="0" cellpadding="0" cellspacing="0" style="max-width: 100%;min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" width="100%" class="mcnTextContentContainer">
-          <tbody><tr>
-            
-            <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-            
-              <h1 style="display: block;margin: 0;padding: 0;color: #202020;font-family: Helvetica;font-size: 26px;font-style: normal;font-weight: bold;line-height: 125%;letter-spacing: normal;text-align: left;">Merger Application</h1>
-
-            </td>
-          </tr>
-        </tbody></table>
-        <!--[if mso]>
-        </td>
-        <![endif]-->
-        
-        <!--[if mso]>
-        </tr>
-        </table>
-        <![endif]-->
-      </td>
-    </tr>
-  </tbody>
-</table></td>
-              </tr>
               <tr>
                 <td valign="top" id="templateBody" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;"><table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock" style="min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
   <tbody class="mcnTextBlockOuter">
@@ -406,9 +370,9 @@
             
             <td valign="top" class="mcnTextContent" style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
             
-              <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}" paraid="1620294906" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">A&nbsp;new&nbsp;merger application&nbsp;was&nbsp;submitted on&nbsp;&nbsp;</p>
+              <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}" paraid="1620294906" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Dear {{ $data['fullname'] }}</p>
 
-<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{75}" paraid="516275675" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Date: <strong>{{ datetimeToText($data['case']->submitted_at, "customdated") }}</strong></p>
+{{-- <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{75}" paraid="516275675" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Date: <strong>{{ datetimeToText($data['case']->submitted_at, "customdated") }}</strong></p>
 
 <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{79}" paraid="588330951" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Time: <strong>{{ datetimeToText($data['case']->submitted_at, "time") }}</strong></p>
 
@@ -418,11 +382,11 @@
 
 <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{87}" paraid="315038907" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Contact&nbsp;Name: <strong>{{ $data['fullname'] }}</strong></p>
 
-<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{93}" paraid="2074469410" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">&nbsp;</p>
+<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{93}" paraid="2074469410" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">&nbsp;</p> --}}
 
-<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}" paraid="640540932" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">This email represents an acknowledgment of&nbsp;the&nbsp;application&nbsp;submitted. The Mergers &amp; Acquisition Team will&nbsp;review&nbsp;the documents submitted to ensure it is complete.&nbsp;Your application processing commences when all your required documents have been received.&nbsp;If you have any queries, please visit the&nbsp;FAQ section&nbsp;<a href="{{ config("app.url") }}" rel="noreferrer noopener" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>&nbsp;for more information. Please keep your application ID safe.&nbsp;</p>
-
-<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{124}" paraid="1226713408" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">&nbsp;</p>
+<p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}" paraid="640540932" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Your application to the Commission on {{ datetimeToText($data['case']->submitted_at, "customdated") }} {{ datetimeToText($data['case']->submitted_at, "time") }} has been received and the Commission will revert shortly.</p>
+<p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}" paraid="1344694371" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">If you have any queries, please visit the FAQ section <a href="{{ config("app.url") }}" rel="noreferrer noopener" target="_blank" style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a> for more information. Please keep your application reference number safe.
+</p>
 
 <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}" paraid="622938900" style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Thank you&nbsp;</p>
 
