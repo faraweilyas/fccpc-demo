@@ -48,26 +48,26 @@
             @endphp
             @if($document !== '')
             <div class="col-md-4 ">
-            <div class="download-card">
-                <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
+                <div class="download-card">
+                    <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
 
-                <p>{{ $checklistGroup->name }}</p>
-                <button class="btn btn-success-sm"
-                    onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">Download</button>
-            </div>
+                    <p>{{ $checklistGroup->name }}</p>
+                    <button class="btn btn-success-sm"
+                        onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">Download</button>
+                </div>
             </div>
             @endif
             @endforeach
-         
+
+
+
+        </div>
+
 
 
     </div>
 
-
-
-</div>
-
-@endsection
-@section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
-@endsection
+    @endsection
+    @section('custom.css')
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+    @endsection
