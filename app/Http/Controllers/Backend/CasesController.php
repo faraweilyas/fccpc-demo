@@ -169,7 +169,6 @@ class CasesController extends Controller
     public function analyzeCaseDocuments(Cases $case)
     {
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-
         $title = APP_NAME;
         $description = 'FCCPC Case Documents Analysis Dashboard';
         $details = details($title, $description);

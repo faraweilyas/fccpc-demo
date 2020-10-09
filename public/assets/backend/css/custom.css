@@ -25,6 +25,11 @@ body {
     display: none;
 }
 
+.mw-40
+{
+    max-width: 40%;
+}
+
 .bb_home {
     border-bottom: 3px solid #123237;
 }
