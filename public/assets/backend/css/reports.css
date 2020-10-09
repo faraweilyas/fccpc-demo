@@ -204,7 +204,7 @@
     background: #227a4e;
 }
 
-.tab-link.active>a {
+.tab-link.active > a {
     color: #fff;
 }
 
@@ -383,6 +383,8 @@
 
 .consent-card-active {
     border: 1px solid #1c645b;
+    background-color: #2b5d41;
+    color: #fff;
 }
 
 .consent-card p {
