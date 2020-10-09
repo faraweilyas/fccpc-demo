@@ -7,6 +7,16 @@
 @section('base_content')
     <div class="d-flex flex-column flex-root">
         <div class="login login-signin-on login-3 d-flex flex-row-fluid" id="kt_login">
+            <div
+                class="position-absolute top-0 right-0 text-right mt-5 mb-15 mb-lg-0 flex-column-auto justify-content-center py-5 px-10">
+                <span class="font-weight-bold text-dark-50">Do you need help?</span>
+                <a data-turbolinks="false" href="{{ route('home.index') }}" class="font-weight-bold ml-2"
+                    id="kt_login_signup">Home</a> |
+                <a data-turbolinks="false" href="{{ route('home.faqs') }}" class="font-weight-bold ml-2"
+                    id="kt_login_signup">FAQ</a> |
+                <a data-turbolinks="false" href="{{ route('home.fee.calculator') }}" class="font-weight-bold ml-2"
+                    id="kt_login_signup">Fee Calculator</a>
+            </div>
             <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}">
                 <div class="login-form text-center p-7 position-relative overflow-hidden">
                     <div class="d-flex flex-center mb_15">

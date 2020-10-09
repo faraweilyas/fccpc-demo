@@ -103,18 +103,17 @@
                 </div>
                 @php $x++ @endphp
                 @endif
-                <input class="checklist_group_count" type="hidden"
-                    value="{{ count(\App\Models\ChecklistGroup::with('checklists')->get()) }}">
+                <input class="checklist_group_count" type="hidden" value="{{ $x }}">
                 @endforeach
                 <div class="d-flex justify-center align-center align-items-center align-self-end">
-                    <button class="btn btn-success-pale-ts no-border mx-5" id="prev">
+                    <button class="btn btn-success-pale-ts no-border mx-5 px-8 py-3" id="prev">
                         Previous
                     </button>
-                    <button class="btn btn-success-pale-ts no-border mx-5" id="next">
+                    <button class="btn btn-success-pale-ts no-border mx-5 px-8 py-3" id="next">
                         Next
                     </button>
 
-                    <button class="btn btn-success no-border mx-5 hide" id="approve">
+                    <button class="btn btn-success no-border mx-5 px-8 py-3 hide" id="approve">
                         Approve Complete Documents in the Checklist
                     </button>
                 </div>
