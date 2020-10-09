@@ -381,7 +381,9 @@
 }
 
 .consent-card-active {
-    border: 2px solid #1c645b;
+    border: 1px solid #408a60;
+    background-color: #408a60;
+    color: #FFF;
 }
 
 .consent-card p {
