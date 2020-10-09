@@ -10,6 +10,16 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
+                    @if(in_array(\Auth::user()->account_type, ['SP']))
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('cases.unassigned') }}"
+                            class="text-muted">New Cases</a>
+                    </li>
+                    @endif
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('cases.assigned') }}"
+                            class="text-muted">Assigned Cases</a>
+                    </li>
                     <li class="breadcrumb-item">
                         <a href="" class="text-muted">Analyze Case</a>
                     </li>
@@ -123,7 +133,7 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p>CONTACT REP INFO:</p>
+                        <p><b>CONTACT REP INFO:</b></p>
                         <span>{!! $case->getApplicantName() !!}<br/>
                             {!! $case->applicant_email !!}<br/>
                             {!! $case->applicant_phone_number !!}

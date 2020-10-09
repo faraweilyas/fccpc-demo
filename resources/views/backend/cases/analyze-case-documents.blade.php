@@ -10,8 +10,21 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
+                    @if(in_array(\Auth::user()->account_type, ['SP']))
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Documents Checklist</a>
+                        <a href="{{ route('cases.unassigned') }}"
+                            class="text-muted">New Cases</a>
+                    </li>
+                    @endif
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('cases.assigned') }}"
+                            class="text-muted">Assigned Cases</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('cases.analyze', ['case' => $case->id]) }}" class="text-muted">Analyze Case</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="" class="text-muted">Checklist Documents</a>
                     </li>
                 </ul>
             </div>
@@ -23,7 +36,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
-                <h5 class="text-bold">Completed / Submitted</h5>
+                <h5 class="text-bold">Submitted Checklist Document</h5>
                 <a href="{{ route('cases.checklist-approval',[$case->id]) }}"
                     class="btn btn-success-transparent-download">
                     Start Document Approval
