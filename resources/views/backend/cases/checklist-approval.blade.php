@@ -210,8 +210,9 @@
                         </div>
                     </div>
                 </div>
-                <input class="checklist_group_count" type="hidden" value="{{ ++$x }}">
+                @php $x++ @endphp
                 @endif
+                <input class="checklist_group_count" type="hidden" value="{{ $x - 1 }}">
                 @endforeach
                 <div class="d-flex justify-center align-center align-items-center align-self-end">
                     <button class="btn btn-success-pale-ts no-border mx-5" id="prev">
