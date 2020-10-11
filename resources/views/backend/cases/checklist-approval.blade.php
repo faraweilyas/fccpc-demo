@@ -108,7 +108,7 @@
                 </div>
                 @php $x++ @endphp
                 @endif
-                <input class="checklist_group_count" type="hidden" value="{{ $x }}">
+                <input class="checklist_group_count" type="hidden" value="{{ $checklistGroup->count() }}">
                 @endforeach
                 <div class="d-flex justify-center align-center align-items-center align-self-end">
                     <button class="btn btn-success-pale-ts no-border mx-5 px-8 py-3" id="prev">
@@ -161,9 +161,7 @@
         $('#step-1').show();
         $('#prev').hide();
 
-
-
-
+        console.log($(".checklist_group_count").val());
         $('#prev').click(function () {
             if (counter > 1) {
                 $('#next').show();
