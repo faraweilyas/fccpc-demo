@@ -159,6 +159,7 @@
         background: #fff;
         box-shadow: 0px 5px 15px rgba(106, 127, 130, 0.09);
     }
+
     .tab-link {
         cursor: pointer;
         width: 100%;
@@ -169,6 +170,7 @@
         padding: 0.5rem 2rem;
         transition: all 0.3s ease-in-out;
     }
+
     #drop-area {
         border: 0.2rem dashed #227a4e;
         border-radius: 0.5rem;
@@ -183,6 +185,7 @@
         justify-content: center;
         text-align: center;
     }
+
     #drop-area .drop-label {
         width: 10rem;
         font-weight: light;
@@ -191,13 +194,16 @@
         color: #227a4e;
         margin-left: -40px;
     }
+
     .view-doc-link {
         color: #227a4e;
         text-decoration: underline;
         padding-top: 1rem;
         margin-right: 21%;
         font-size: 1.1rem;
-    } //
+    }
+
+    //
 }
 
 .tab-link.active {
@@ -440,6 +446,13 @@
 .btn-danger-pale-ts:hover {
     background: #fff !important;
     color: #e72828;
+    border-color: #e72828;
+}
+
+.pull-button-right {
+    position: absolute;
+    top: 5rem;
+    right: 5rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -448,14 +461,17 @@
         display: flex;
         flex-direction: column;
     }
+
     .consent-content {
         width: 100%;
         display: flex;
         flex-direction: column;
     }
+
     .consent-card {
         width: 100%;
     }
+
     .download-card {
         width: 100%;
         margin: 1rem;
@@ -464,6 +480,7 @@
         box-sizing: border-box;
         border-radius: 0.5rem;
     }
+
     .btn-success-transparent-download {
         position: relative;
         top: 0;
@@ -475,7 +492,14 @@
         color: #227a4e;
         border-radius: 0px;
     }
+
     .d-flex {
         flex-direction: column !important;
+    }
+
+    .pull-button-right {
+        position: relative;
+        top: 5rem;
+        left: 5rem;
     }
 }

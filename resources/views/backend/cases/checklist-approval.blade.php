@@ -47,11 +47,12 @@
                 @endphp
                 @if($document !== '')
                 <div class="row my-3 py-5 hide" id="step-{{ $x }}">
-                    <h5 class="text-bold">
-                        <br>
+                    <h5 class="text-bold w-50">
+
                         {{ $checklistGroup->name }}
-                        <div class="pull-right">
-                            <button class="btn btn-danger-pale-ts no-border mx-lg-5">
+                        <div class="pull-button-right">
+                            <button class="btn btn-danger-pale-ts no-border mx-lg-5"    data-toggle="modal"
+                            data-target="#Issue">
                                 Issue a Deficiency Notice
                             </button>
 
@@ -61,6 +62,10 @@
                             </button>
                         </div>
                     </h5>
+
+                    <br>
+                    <br>
+                    <br>
                     <div class="row">
                         @php $checklist_count = 1 @endphp
                         @foreach($checklistGroup->checklists as $checklist)
@@ -123,6 +128,22 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"  aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Issue a Deficiency Notice</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @section('custom.css')
@@ -139,6 +160,8 @@
     $(document).ready(function () {
         $('#step-1').show();
         $('#prev').hide();
+
+
 
 
         $('#prev').click(function () {
