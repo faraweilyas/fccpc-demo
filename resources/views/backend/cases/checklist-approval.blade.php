@@ -160,8 +160,6 @@
     $(document).ready(function () {
         $('#step-1').show();
         $('#prev').hide();
-
-        console.log($(".checklist_group_count").val());
         $('#prev').click(function () {
             if (counter > 1) {
                 $('#next').show();
