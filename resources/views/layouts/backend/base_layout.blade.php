@@ -55,9 +55,7 @@ class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_JS.'custom.js') }}" defer></script>
-
-
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
 
     <script type="text/javascript" defer>
         $(document).ready(function($)

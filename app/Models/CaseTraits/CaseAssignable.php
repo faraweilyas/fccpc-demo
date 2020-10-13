@@ -25,6 +25,21 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler updates working on
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function update_working_on(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'workingon_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * Sets the dropped at timestamp to indicate that a case handler has been dropped
      * from the case but the history of the case with the case handler can be viewed
      * after that it assigns a new case handler to case to continue where it was left off

@@ -174,6 +174,17 @@
 
                                 </a>
                             </li>
+                            @if(in_array(\Auth::user()->account_type, ['CH']))
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="{{ route('cases.working_on') }}" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Workingon Cases</span>
+
+                                </a>
+                            </li>
+                            @endif
                         </ul>
                     </div>
                 </li>

@@ -86,6 +86,16 @@ trait UserGettable
     }
 
     /**
+     * Defines a relationship for case being worked on by case handler
+     *
+     * @return HasRelationships
+     */
+    public function cases_working_on()
+    {
+        return $this->cases_assigned_to()->where('workingon_at', '!=', null);
+    }
+
+    /**
      * Defines a many to many relationship for case and dropped case handlers
      *
      * @return HasRelationships

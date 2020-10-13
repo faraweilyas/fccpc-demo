@@ -93,6 +93,29 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles workingon cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function workingonCases(User $handler)
+    {
+        if ($handler->status):
+            $cases = $handler->cases_working_on()->get();
+        else:
+            $cases = \Auth::user()->cases_working_on()->get();
+        endif;
+
+        $caseHandlers = (new User())->caseHandlers();
+        $title = 'Workingon Cases | ' . APP_NAME;
+        $description = 'Workingon Cases | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-working-on',
+            compact('details', 'caseHandlers', 'cases')
+        );
+    }
+
+    /**
      * Handles approved cases page.
      *
      * @return \Illuminate\Contracts\View\Factory
@@ -211,6 +234,18 @@ class CasesController extends Controller
             'case' => $case,
             'handler' => $user,
         ]);
+    }
+
+    /**
+     * Handles the update case working on .
+     *
+     * @return void
+     */
+    public function updateWorkingOn(Cases $case, User $user)
+    {
+        abort_if(!auth()->user(), 404);
+        $case->update_working_on($user);
+        $this->sendResponse('Case working on updated.', 'success');
     }
 
     /**

@@ -62,7 +62,7 @@
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 data: {checklist: checklist_id, status: status}, 
                 success: function(response){
-                  console.log(response);
+                  // console.log(response);
                 }
             });
         });

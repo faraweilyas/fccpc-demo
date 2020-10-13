@@ -14,7 +14,7 @@ class AddWorkingonAtColumnToCaseHandlerTable extends Migration
     public function up()
     {
         Schema::table('case_handler', function (Blueprint $table) {
-            //
+            $table->timestamp('workingon_at')->nullable()->after('handler_id');
         });
     }
 
@@ -26,7 +26,7 @@ class AddWorkingonAtColumnToCaseHandlerTable extends Migration
     public function down()
     {
         Schema::table('case_handler', function (Blueprint $table) {
-            //
+            $table->dropColumn('workingon_at');
         });
     }
 }

@@ -147,6 +147,10 @@ Route::prefix('cases')
             'dropped'
         );
 
+        Route::get('/workingon/{handler?}', 'CasesController@workingonCases')->name(
+            'working_on'
+        );
+
         Route::get('/approved', 'CasesController@approvedCases')->name(
             'approved'
         );
@@ -165,6 +169,10 @@ Route::prefix('cases')
 
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
+        );
+
+        Route::post('update-working-on/{case}/{user}', 'CasesController@updateWorkingOn')->name(
+            'update_working_on'
         );
 
         Route::get('checklists/{case}', 'CasesController@caseChecklists')->name(
