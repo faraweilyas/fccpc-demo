@@ -386,9 +386,9 @@
     border-radius: 0.5rem;
 }
 
-.consent-card-active {
+.consent-card-active {   
     border: 1px solid #408a60;
-    background-color: #408a60;
+    background-color: #5fb78a;
     color: #FFF;
 }
 
