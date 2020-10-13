@@ -45,46 +45,6 @@
 
             <ul class="menu-nav">
 
-                <li class="menu-item bb_home mt-n5" aria-haspopup="true">
-                    <a href="/" class="menu-link" target="_blank">
-                        <span class="svg-icon menu-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path opacity="0.3"
-                                    d="M8 6C8 4.89543 7.10457 4 6 4C4.89543 4 4 4.89543 4 6C4 7.10457 4.89543 8 6 8C7.10457 8 8 7.10457 8 6Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M8 12C8 10.8954 7.10457 10 6 10C4.89543 10 4 10.8954 4 12C4 13.1046 4.89543 14 6 14C7.10457 14 8 13.1046 8 12Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M14 6C14 4.89543 13.1046 4 12 4C10.8954 4 10 4.89543 10 6C10 7.10457 10.8954 8 12 8C13.1046 8 14 7.10457 14 6Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14C13.1046 14 14 13.1046 14 12Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M20 6C20 4.89543 19.1046 4 18 4C16.8954 4 16 4.89543 16 6C16 7.10457 16.8954 8 18 8C19.1046 8 20 7.10457 20 6Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M20 12C20 10.8954 19.1046 10 18 10C16.8954 10 16 10.8954 16 12C16 13.1046 16.8954 14 18 14C19.1046 14 20 13.1046 20 12Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M8 18C8 16.8954 7.10457 16 6 16C4.89543 16 4 16.8954 4 18C4 19.1046 4.89543 20 6 20C7.10457 20 8 19.1046 8 18Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M14 18C14 16.8954 13.1046 16 12 16C10.8954 16 10 16.8954 10 18C10 19.1046 10.8954 20 12 20C13.1046 20 14 19.1046 14 18Z"
-                                    fill="#A9B3BE" />
-                                <path
-                                    d="M20 18C20 16.8954 19.1046 16 18 16C16.8954 16 16 16.8954 16 18C16 19.1046 16.8954 20 18 20C19.1046 20 20 19.1046 20 18Z"
-                                    fill="#A9B3BE" />
-                            </svg>
-
-
-                        </span>
-                        <span class="menu-text">FCCPC</span>
-                    </a>
-                </li>
-
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('dashboard.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
@@ -180,7 +140,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Workingon Cases</span>
+                                    <span class="menu-text">Ongoing Cases</span>
 
                                 </a>
                             </li>
@@ -385,7 +345,12 @@
 
             @foreach(\Auth::user()->cases_working_on()->get() as $case)
             <!-- case-handler -->
-            <div class="notifications-cards" onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
+            <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
+                 <div class="d-flex">
+                    <div class="notifications-card-col w-100">
+                        <p class="subject my-1">{{ $case->subject }}</p>
+                    </div>
+                </div>
                 <div class="d-flex">
                     <div class="notifications-card-col w-75">
                         <p class="subject my-1">{{ $case->applicant_firm }}</p>

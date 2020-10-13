@@ -35,7 +35,7 @@
                                         <th>Name</th>
                                         <th class="text-center">Assigned Cases</th>
                                         <th class="text-center">Dropped Cases</th>
-                                        <th class="text-center">Workingon Cases</th>
+                                        <th class="text-center">Ongoing Cases</th>
                                         <th>Status</th>
                                         <th class="text-center">Actions</th>
                                     </tr>

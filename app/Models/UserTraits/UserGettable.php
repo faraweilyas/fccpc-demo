@@ -82,7 +82,7 @@ trait UserGettable
      */
     public function active_cases_assigned_to()
     {
-        return $this->cases_assigned_to()->where('dropped_at', null);
+        return $this->cases_assigned_to()->where('dropped_at', null)->where('workingon_at', null);
     }
 
     /**

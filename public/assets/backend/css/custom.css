@@ -16,6 +16,11 @@ body {
     font-size: 1.5rem;
 }
 
+.cr-pointer
+{
+    cursor: pointer;
+}
+
 .text-black-sm {
     color: #242424;
     font-size: 1.2rem;
