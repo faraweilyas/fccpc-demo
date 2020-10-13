@@ -385,7 +385,7 @@
 
             @foreach(\Auth::user()->cases_working_on()->get() as $case)
             <!-- case-handler -->
-            <div class="notifications-cards">
+            <div class="notifications-cards" onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
                 <div class="d-flex">
                     <div class="notifications-card-col w-75">
                         <p class="subject my-1">{{ $case->applicant_firm }}</p>
