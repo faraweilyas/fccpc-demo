@@ -115,11 +115,11 @@
                 @endif
                 <input class="checklist_group_count" type="hidden" value="{{ $checklistGroup->count() }}">
                 @endforeach
-                <div class="d-flex justify-center align-center align-items-center align-self-end">
-                    <button class="btn btn-success-pale-ts no-border mx-5 px-8 py-3" id="prev">
+                <div class="btn-group">
+                    <button class="btn btn-success-pale-ts no-border mx-1" id="prev">
                         Previous
                     </button>
-                    <button class="btn btn-success-pale-ts no-border mx-5 px-8 py-3" id="next">
+                    <button class="btn btn-success-pale-ts no-border mx-1 px-5" id="next">
                         Next
                     </button>
 
@@ -152,7 +152,7 @@
                         <div class="col-md-12">
 
                             <br />
-                            <select class="form-control select2" id="add_more" name="caseHandler" style="width: 100%;">
+                            <select class=" select2" multiple="multiple" id="add_more" name="caseHandler" style="width: 100%;">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
