@@ -145,7 +145,7 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Foreign To Foreign Expedited</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Foreign to Foreign Merger Expedited</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         
                                         <br>

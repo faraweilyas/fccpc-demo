@@ -51,8 +51,8 @@
 
                         {{ $checklistGroup->name }}
                         <div class="pull-button-right">
-                            <button class="btn btn-danger-pale-ts no-border mx-lg-5"    data-toggle="modal"
-                            data-target="#Issue">
+                            <button class="btn btn-danger-pale-ts no-border mx-lg-5" data-toggle="modal"
+                                data-target="#Issue">
                                 Issue a Deficiency Notice
                             </button>
 
@@ -69,8 +69,9 @@
                     <div class="row">
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
-                        $checked                   = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
-                        $checklist_document        = $document->checklists->where('id', $checklist->id)->first()->checklist_document ?? NULL;
+                        $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
+                        $checklist_document = $document->checklists->where('id',
+                        $checklist->id)->first()->checklist_document ?? NULL;
                         $checklist_document_status = $checklist_document->status ?? NULL;
                         @endphp
                         <div class="col-lg-6">
@@ -79,12 +80,22 @@
                                     <div class="form-check" style="padding: 0px">
                                         <div class="radio-inline">
                                             <label class="radio">
-                                                <input class="form-check-input save_approval" type="radio" name="exampleRadios{{ $checklist->id }}" value="approved" @if($checklist_document_status == 'approved') checked="checked" @endif data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled @endif> 
+                                                <input class="form-check-input save_approval" type="radio"
+                                                    name="exampleRadios{{ $checklist->id }}" value="approved"
+                                                    @if($checklist_document_status=='approved' ) checked="checked"
+                                                    @endif data-document-id="{{ $document->id }}"
+                                                    data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled
+                                                    @endif>
                                                 <span></span>
                                                 Approve
                                             </label>
                                             <label class="radio">
-                                                <input class="form-check-input save_approval" type="radio" name="exampleRadios{{ $checklist->id }}" value="deficient" @if($checklist_document_status == 'deficient') checked="checked" @endif data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled @endif>
+                                                <input class="form-check-input save_approval" type="radio"
+                                                    name="exampleRadios{{ $checklist->id }}" value="deficient"
+                                                    @if($checklist_document_status=='deficient' ) checked="checked"
+                                                    @endif data-document-id="{{ $document->id }}"
+                                                    data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled
+                                                    @endif>
                                                 <span></span>
                                                 Deficient
                                             </label>
@@ -123,17 +134,64 @@
     </div>
 </div>
 
-
-<div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"  aria-hidden="true">
+<div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Issue a Deficiency Notice</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Request New Document</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
+            <form method="POST" action="#">
+                @csrf
+                <div class="modal-body">
 
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <br />
+                            <select class="form-control select2" id="add_more" name="caseHandler" style="width: 100%;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="py-5">
+                        <br>
+                        <br>
+
+                        <p class="alert-custom ">
+                            Extract of Board Resolutions of the Merging Companies duly certified by a Director
+                            and the Company Secretary. (.pdf/.docx)
+                        </p>
+
+                        <p class="alert-custom">
+                            Evidence of increase in Authorized Share Capital (where necessary)
+                        </p>
+
+                        <button class="btn btn-success btn-sm px-4 align-self-center ">Send
+                            Request</button>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="caseID">
+                    <button type="button" class="btn btn-light-danger font-weight-bold"
+                        data-dismiss="modal">Close</button>
+
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -146,5 +204,16 @@
 
 
 @section('custom.javascript')
- <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'checklist_approval.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'checklist_approval.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#add_more').select2();
+
+    })
+
+</script>
 @endsection

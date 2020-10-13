@@ -455,6 +455,20 @@
     right: 5rem;
 }
 
+.alert-custom {
+    height: 12vh auto;
+    padding: 2rem 1rem;
+    color: #227a4e;
+    font-size: 1.2rem;
+
+    border: 1px solid #227a4e;
+    border-radius: .5rem;
+}
+
+.align-self-center {
+    margin-left: 30%;
+}
+
 @media only screen and (max-width: 768px) {
     .download-content {
         width: 100%;
@@ -493,9 +507,6 @@
         border-radius: 0px;
     }
 
-    .d-flex {
-        flex-direction: column !important;
-    }
 
     .pull-button-right {
         position: relative;
