@@ -35,6 +35,7 @@
                                         <th>Name</th>
                                         <th class="text-center">Assigned Cases</th>
                                         <th class="text-center">Dropped Cases</th>
+                                        <th class="text-center">Workingon Cases</th>
                                         <th>Status</th>
                                         <th class="text-center">Actions</th>
                                     </tr>
@@ -53,6 +54,11 @@
                                         <td class="text-center">
                                              <a href="@if($handler->dropped_cases_assigned_to()->count() > 0) {{ route('cases.dropped', ['handler' => $handler->id]) }} @else # @endif">
                                                 <span class="badge badge-secondary"><b>{{ $handler->dropped_cases_assigned_to()->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                             <a href="@if($handler->cases_working_on()->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
+                                                <span class="badge badge-secondary"><b>{{ $handler->cases_working_on()->count() }}</b></span>
                                             </a>
                                         </td>
                                         <td>

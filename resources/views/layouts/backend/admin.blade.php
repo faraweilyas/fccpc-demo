@@ -383,103 +383,25 @@
         <!--begin::Content-->
         <div class="offcanvas-content pr-5 mr-n5">
 
-
+            @foreach(\Auth::user()->cases_working_on()->get() as $case)
             <!-- case-handler -->
             <div class="notifications-cards">
                 <div class="d-flex">
                     <div class="notifications-card-col w-75">
-                        <p class="subject my-1">Access Bank Merger</p>
+                        <p class="subject my-1">{{ $case->applicant_firm }}</p>
                         <p class="title">CATEGORY:</p>
 
-                        <span class="description">FFM Expediated</span>
+                        <span class="description">{!! $case->getCategoryHtml() !!}</span>
                     </div>
                     <div class="notifications-card-col">
                         <p class="title">PARTIES:</p>
-
-                        <span class="description">Access Bank, Diamond Bank,
-                            Central Bank of Nigeria</span>
+                           
+                        <span class="description">{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</span>
                     </div>
                 </div>
             </div>
             <!-- case-handler -->
-
-            <!-- case-handler -->
-            <div class="notifications-cards">
-                <div class="d-flex">
-                    <div class="notifications-card-col w-75">
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <p class="title">CATEGORY:</p>
-
-                        <span class="description">FFM Expediated</span>
-                    </div>
-                    <div class="notifications-card-col">
-                        <p class="title">PARTIES:</p>
-
-                        <span class="description">Access Bank, Diamond Bank,
-                            Central Bank of Nigeria</span>
-                    </div>
-                </div>
-            </div>
-            <!-- case-handler -->
-
-            <!-- case-handler -->
-            <div class="notifications-cards">
-                <div class="d-flex">
-                    <div class="notifications-card-col w-75">
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <p class="title">CATEGORY:</p>
-
-                        <span class="description">FFM Expediated</span>
-                    </div>
-                    <div class="notifications-card-col">
-                        <p class="title">PARTIES:</p>
-
-                        <span class="description">Access Bank, Diamond Bank,
-                            Central Bank of Nigeria</span>
-                    </div>
-                </div>
-            </div>
-            <!-- case-handler -->
-
-            <!-- case-handler -->
-            <div class="notifications-cards">
-                <div class="d-flex">
-                    <div class="notifications-card-col w-75">
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <p class="title">CATEGORY:</p>
-
-                        <span class="description">FFM Expediated</span>
-                    </div>
-                    <div class="notifications-card-col">
-                        <p class="title">PARTIES:</p>
-
-                        <span class="description">Access Bank, Diamond Bank,
-                            Central Bank of Nigeria</span>
-                    </div>
-                </div>
-            </div>
-            <!-- case-handler -->
-
-            <!-- case-handler -->
-            <div class="notifications-cards">
-                <div class="d-flex">
-                    <div class="notifications-card-col w-75">
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <p class="title">CATEGORY:</p>
-
-                        <span class="description">FFM Expediated</span>
-                    </div>
-                    <div class="notifications-card-col">
-                        <p class="title">PARTIES:</p>
-
-                        <span class="description">Access Bank, Diamond Bank,
-                            Central Bank of Nigeria</span>
-                    </div>
-                </div>
-            </div>
-            <!-- case-handler -->
-
-
+            @endforeach
         </div>
         <!--end::Content-->
     </div>

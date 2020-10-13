@@ -48,6 +48,13 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
+                <div class="col-lg-3 my-5"  onclick="window.location.href = '{{ route('cases.working_on') }}';">
+                    <div class="dashboard-card orange">
+                        <p>Workingon</p>
+                        <span>{{ \Auth::user()->cases_working_on()->count() }}</span>
+                        <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                    </div>
+                </div>
                 <div class="col-lg-3 my-5">
                     <div class="dashboard-card redish-orange">
                         <p>Deficiencies</p>
