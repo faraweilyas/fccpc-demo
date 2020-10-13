@@ -41,11 +41,11 @@
                     <div class="card__box__large-content">
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input class="form-control" type="date" name="start_date" />
+                            <input id="start_date" class="form-control" name="start_date"  placeholder="2020-01-01" />
                         </div>
                         <div class="form-group">
                             <label>End Date</label>
-                            <input class="form-control" type="date" name="end_date" />
+                            <input id="end_date" class="form-control" type="date" name="end_date" placeholder="2020-01-01" />
                         </div>
 
                         @if (in_array(\Auth::user()->account_type, ['CH']))
@@ -107,16 +107,23 @@
 
 @section('custom.css')
 <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/flatpickr/flatpickr.min.css') }}" />
+
 @endsection
 
 @section('custom.javascript')
 
 
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/flatpickr/flatpickr.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
 
 <script>
     $(document).ready(function () {
+        //flatpickr
+            $("#start_date").flatpickr();
+            $("#end_date").flatpickr();
+        //flatpickr
         $('#get_handler').select2();
         $('#custom-filter-check').on('click', function(){
             if($(this).prop("checked") == true){
