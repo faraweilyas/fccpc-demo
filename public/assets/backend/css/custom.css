@@ -430,6 +430,13 @@ section#orderWizard {
 
 /*  */
 
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    color: #3F4254;
+    padding: 1rem 1rem;
+    line-height: 1.5;
+}
+
 .notifications-cards {
     width: 100%;
     height: auto;

@@ -152,7 +152,7 @@
                         <div class="col-md-12">
 
                             <br />
-                            <select class="form-control select2" id="add_more" name="caseHandler" style="width: 100%;">
+                            <select class=" select2" multiple="multiple" id="add_more" name="caseHandler" style="width: 100%;">
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
