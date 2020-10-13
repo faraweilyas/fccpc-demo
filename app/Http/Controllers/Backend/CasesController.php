@@ -162,6 +162,21 @@ class CasesController extends Controller
     }
 
     /**
+     * Update document checklist status.
+     *
+     * @return json
+     */
+    public function saveChecklistApproval(Document $document)
+    {
+        $case                   = Cases::find($document->case_id);
+        $checklist              = request('checklist');
+        $document->checklists()->syncWithoutDetaching([ $checklist => ['status' => request('status')]]);
+        return $this->sendResponse(200, "Checklist document updated", "success", [
+            'case_group_documents' => $case->getChecklistGroupDocuments()
+        ]);
+    }
+
+    /**
      * Handles the case analysis case documents page route.
      *
      * @return void

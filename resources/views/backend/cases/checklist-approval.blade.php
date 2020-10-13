@@ -67,42 +67,36 @@
                     <br>
                     <br>
                     <div class="row">
-                        @php $checklist_count = 1 @endphp
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
-                        $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
+                        $checked                   = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
+                        $checklist_document        = $document->checklists->where('id', $checklist->id)->first()->checklist_document ?? NULL;
+                        $checklist_document_status = $checklist_document->status ?? NULL;
                         @endphp
                         <div class="col-lg-6">
                             <div class="consent-card {{ $checked }}">
                                 <div class="d-flex">
                                     <div class="form-check" style="padding: 0px">
-                                        {{-- <input class="form-check-input" type="radio" name="exampleRadios" value="active" checked="true"  />
-                                        <label class="form-check-label margin-t">
-                                            Approve
-                                        </label> --}}
                                         <div class="radio-inline">
                                             <label class="radio">
-                                                <input class="form-check-input" type="radio"
-                                                    name="exampleRadios{{ $checklist_count }}" value="approve">
+                                                <input class="form-check-input save_approval" type="radio" name="exampleRadios{{ $checklist->id }}" value="approved" @if($checklist_document_status == 'approved') checked="checked" @endif data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled @endif> 
                                                 <span></span>
                                                 Approve
                                             </label>
                                             <label class="radio">
-                                                <input class="form-check-input" type="radio"
-                                                    name="exampleRadios{{ $checklist_count }}" value="deficient">
+                                                <input class="form-check-input save_approval" type="radio" name="exampleRadios{{ $checklist->id }}" value="deficient" @if($checklist_document_status == 'deficient') checked="checked" @endif data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" @empty($checked) disabled @endif>
                                                 <span></span>
                                                 Deficient
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-
+                                <input type="hidden" id="check_name" value="{{ $checklistGroup->name }}">
                                 <p>
                                     {{ ucfirst($checklist->name) }}
                                 </p>
                             </div>
                         </div>
-                        @php $checklist_count++ @endphp
                         @endforeach
                     </div>
                 </div>
@@ -152,65 +146,5 @@
 
 
 @section('custom.javascript')
-
-<script>
-    var counter = 1;
-    var arr_lenght = $(".checklist_group_count").val();
-
-    $(document).ready(function () {
-        $('#step-1').show();
-        $('#prev').hide();
-        $('#prev').click(function () {
-            if (counter > 1) {
-                $('#next').show();
-                $('#approve').hide();
-                counter--;
-                $('[id^=step]').hide();
-                $(`#step-${counter}`).show();
-                $(window).scrollTop(0);
-            } else {
-                $('#next').show();
-                $('#approve').hide();
-                counter = 1;
-                $('[id^=step]').hide();
-                $(`#step-${counter}`).show();
-                $(window).scrollTop(0);
-                return false;
-            }
-
-
-            if (counter === 1) {
-                $('#prev').hide();
-
-            }
-
-        })
-        $('#next').click(function () {
-
-
-
-            if (counter < arr_lenght) {
-                $('#prev').show();
-
-                counter++;
-                $('[id^=step]').hide();
-                $(`#step-${counter}`).show();
-                $(window).scrollTop(0);
-
-            }
-
-            if (parseInt(counter) === parseInt(arr_lenght)) {
-                $('#next').hide();
-
-                $('#approve').show();
-            }
-
-
-        })
-
-
-
-    })
-
-</script>
+ <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'checklist_approval.js') }}"></script>
 @endsection
