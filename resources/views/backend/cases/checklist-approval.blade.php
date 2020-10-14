@@ -53,7 +53,7 @@
                         <div class="pull-button-right">
                             <button class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
                                 data-target="#Issue">
-                                Cart (0)
+                                Cart ({{ $checklistStatusCount->deficient }})
                             </button>
 
                             <button class="btn btn-success no-border px-10 py-4"
@@ -129,7 +129,7 @@
                         Previous
                     </button>
                     <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">
-                        Next 
+                        Next
                     </button>
 
                     <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">
