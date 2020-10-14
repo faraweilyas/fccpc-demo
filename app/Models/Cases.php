@@ -124,6 +124,22 @@ class Cases extends Model
         return datetimeToText($this->submitted_at, $format);
     }
 
+    public function getChecklistStatusCount() : array
+    {
+        $checklistDocuments = [];
+        $this->documents->map(function($document) use (&$checklistDocuments)
+        {
+            $checklistDocuments[] = $document->checklists->pluck('checklist_document');
+        });
+
+        $allChecklistStatus = [];
+        collect($checklistDocuments)->map(function($checklistDocument) use (&$allChecklistStatus)
+        {
+            $allChecklistStatus[] = $checklistDocument->pluck('status');
+        });
+        return collect($allChecklistStatus)->flatten()->countBy()->toArray();
+    }
+
     public function getChecklistIds() : array
     {
         $checklistIds = [];
