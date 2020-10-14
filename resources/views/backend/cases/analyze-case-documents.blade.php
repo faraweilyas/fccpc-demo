@@ -40,7 +40,7 @@
             Start Document Approval
         </a>
         @else
-            @if(\Auth::user()->cases_assigned_to()->where('case_id', $case->id)->count() > 0)
+            @if(\Auth::user()->cases_working_on()->where('case_id', $case->id)->count() > 0)
                 <a href="{{ route('cases.checklist-approval',[$case->id]) }}" class="btn btn-success-transparent-download">
                     Start Document Approval
                 </a>
