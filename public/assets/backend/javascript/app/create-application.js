@@ -517,7 +517,7 @@ function saveChecklistDocument(action, currentForm)
 {
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
-        checklists         = [],
+        checklists         = {},
         additional_info    = $(currentForm).find('#additional_info').val(),
         file               = $(currentForm).find('#checklist_doc')[0].files[0],
         checklist_doc_name = $("#checklist_doc_name").val();
@@ -534,10 +534,10 @@ function saveChecklistDocument(action, currentForm)
             }).then(function(result)
             {
                 if (result.value) {
-                     $(currentForm).find(':checkbox:checked').each(function(i)
+                    $(currentForm).find(':checkbox:checked').each(function(i)
                     {
                        checklists[i] = $(this).val();
-                    });
+                    }); 
 
                     formData.append('_token', $("#token").val());
                     formData.append('file', file);

@@ -201,7 +201,7 @@ class CasesController extends Controller
     {
         $case                   = Cases::find($document->case_id);
         $checklist              = request('checklist');
-        $document->checklists()->syncWithoutDetaching([ $checklist => ['status' => request('status')]]);
+        $document->checklists()->syncWithoutDetaching([ $checklist => ['status' => request('status'), 'selected_at' => NULL]]);
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);

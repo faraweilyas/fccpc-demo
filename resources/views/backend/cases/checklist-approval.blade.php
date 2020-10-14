@@ -219,9 +219,9 @@
                     <div class="row">
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
-                        $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
                         $checklist_document = $document->checklists->where('id', $checklist->id)->first()->checklist_document ?? NULL;
                         $checklist_document_status = $checklist_document->status ?? NULL;
+                        $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
                         @endphp
                         <div class="col-lg-6">
                             <div class="consent-card {{ $checked }}">
@@ -261,7 +261,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" id="check_name" value="{{ $checklistGroup->name }}">
                                 <p>
                                     {{ ucfirst($checklist->name) }}
                                 </p>
