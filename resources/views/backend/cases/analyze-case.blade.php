@@ -40,26 +40,26 @@
     <div class="row px-3">
         <div class="tab-custom">
             <div class="tab-link active">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/position.svg') }}" alt="position">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
                 <a class="nav-link active" href="#">Documentation
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
-                <a class="nav-link active" href="#">Documentation
+                <a class="nav-link active" href="#">Case Analysis
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
-                <a class="nav-link active" href="#">Documentation
+                <a class="nav-link active" href="#">Approval
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
-                <a class="nav-link active" href="#">Documentation
+                <a class="nav-link active" href="#">Publication
                     <span>Duration: 10 days</span>
                 </a>
             </div>

@@ -173,14 +173,22 @@ class CasesController extends Controller
      */
     public function checklistApproval(Cases $case)
     {
-        $checklistIds            = $case->getChecklistIds();
-        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        $title = APP_NAME;
-        $description = 'FCCPC Checklist Approval Dashboard';
-        $details = details($title, $description);
+        $checklistIds               = $case->getChecklistIds();
+        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
+        $checklistStatusCount       = (object) $case->getChecklistStatusCount();
+
+        // Checklist Objects
+        // $case->getCaseSubmittedChecklistByStatus(); // NULL
+        // $case->getCaseSubmittedChecklistByStatus('approval'); // approval
+        // $case->getCaseSubmittedChecklistByStatus('deficient'); // deficient
+
+        $title          = APP_NAME;
+        $description    = 'FCCPC Checklist Approval Dashboard';
+        $details        = details($title, $description);
+
         return view(
             'backend.cases.checklist-approval',
-            compact('details', 'case', 'checklistIds', 'checklistGroupDocuments')
+            compact('details', 'case', 'checklistIds', 'checklistGroupDocuments', 'checklistStatusCount')
         );
     }
 
@@ -193,7 +201,7 @@ class CasesController extends Controller
     {
         $case                   = Cases::find($document->case_id);
         $checklist              = request('checklist');
-        $document->checklists()->syncWithoutDetaching([ $checklist => ['status' => request('status')]]);
+        $document->checklists()->syncWithoutDetaching([ $checklist => ['status' => request('status'), 'selected_at' => NULL]]);
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);
@@ -208,7 +216,7 @@ class CasesController extends Controller
     {
         if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0)
             return redirect()->route('cases.assigned');
-        
+
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
         $title = APP_NAME;
         $description = 'FCCPC Case Documents Analysis Dashboard';

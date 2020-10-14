@@ -124,24 +124,50 @@ class Cases extends Model
         return datetimeToText($this->submitted_at, $format);
     }
 
+    public function getCaseSubmittedChecklist()
+    {
+        $checklistDocuments = [];
+        $this->documents->map(function($document) use (&$checklistDocuments)
+        {
+            $checklistDocuments[] = $document->checklists;
+        });
+        return collect($checklistDocuments)->flatten();
+    }
+
+    public function getCaseSubmittedChecklistByStatus(string $status=NULL)
+    {
+        $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status)
+        {
+            return $checklistDocument->checklist_document->status == $status;
+        });
+
+        return $deficientChecklist->toArray();
+    }
+
+    public function getChecklistStatusCount() : array
+    {
+        return $this
+            ->getCaseSubmittedChecklist()
+            ->pluck('checklist_document')
+            ->pluck('status')
+            ->countBy()
+            ->toArray();
+    }
+
     public function getChecklistIds() : array
     {
-        $checklistIds = [];
-        $this->documents->map(function($document) use (&$checklistIds)
-        {
-            $checklistIds[] = $document->checklists->pluck('id');
-        });
-        return collect($checklistIds)->flatten()->toArray();
+        return $this
+            ->getCaseSubmittedChecklist()
+            ->pluck('id')
+            ->toArray();
     }
 
     public function getChecklistName() : array
     {
-        $checklistNames = [];
-        $this->documents->map(function($document) use (&$checklistNames)
-        {
-            $checklistNames[] = $document->checklists->pluck('name');
-        });
-        return collect($checklistNames)->flatten()->toArray();
+        return $this
+            ->getCaseSubmittedChecklist()
+            ->pluck('name')
+            ->toArray();
     }
 
     public function getChecklistGroupDocuments() : array

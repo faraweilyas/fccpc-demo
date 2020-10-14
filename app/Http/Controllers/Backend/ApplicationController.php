@@ -181,7 +181,7 @@ class ApplicationController extends Controller
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);
-
+        
         $checklistIds = request('checklists');
         $arrayOfChecklistIds = (array) explode(',', $checklistIds);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
