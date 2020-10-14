@@ -51,12 +51,12 @@
 
                         {{ $checklistGroup->name }}
                         <div class="pull-button-right">
-                            <button class="btn btn-danger-pale-ts no-border mx-lg-5" data-toggle="modal"
+                            <button class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
                                 data-target="#Issue">
-                                Issue a Deficiency Notice
+                                Cart (0)
                             </button>
 
-                            <button class="btn btn-success no-border"
+                            <button class="btn btn-success no-border px-10 py-4"
                                 onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
                                 Download Checklist Document
                             </button>
@@ -70,8 +70,7 @@
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
                         $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
-                        $checklist_document = $document->checklists->where('id',
-                        $checklist->id)->first()->checklist_document ?? NULL;
+                        $checklist_document = $document->checklists->where('id', $checklist->id)->first()->checklist_document ?? NULL;
                         $checklist_document_status = $checklist_document->status ?? NULL;
                         @endphp
                         <div class="col-lg-6">
@@ -126,14 +125,14 @@
                 <input class="checklist_group_count" type="hidden" value="{{ count($checklistGroupDocuments) }}">
                 @endforeach
                 <div class="btn-group">
-                    <button class="btn btn-success-pale-ts no-border mx-1" id="prev">
+                    <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="prev">
                         Previous
                     </button>
-                    <button class="btn btn-success-pale-ts no-border mx-1 px-5" id="next">
+                    <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">
                         Next 
                     </button>
 
-                    <button class="btn btn-success no-border mx-5 px-8 py-3 hide" id="approve">
+                    <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">
                         Approve Complete Documents in the Checklist
                     </button>
                 </div>
@@ -146,7 +145,7 @@
 
 <div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Request New Document</h5>
@@ -154,54 +153,24 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST" action="#">
-                @csrf
-                <div class="modal-body">
+        <div class="modal-body">
+            <div class="py-5">
+                <p class="alert-custom ">
+                    Extract of Board Resolutions of the Merging Companies duly certified by a Director
+                    and the Company Secretary. (.pdf/.docx)
+                </p>
 
-                    <div class="row">
-                        <div class="col-md-12">
+                <p class="alert-custom">
+                    Evidence of increase in Authorized Share Capital (where necessary)
+                </p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <input type="hidden" id="caseID">
+            <button type="button" class="btn btn-light-danger font-weight-bold"
+                data-dismiss="modal">Close</button>
 
-                            <br />
-                            <select class=" select2" multiple="multiple" id="add_more" name="caseHandler" style="width: 100%;">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="py-5">
-                        <br>
-                        <br>
-
-                        <p class="alert-custom ">
-                            Extract of Board Resolutions of the Merging Companies duly certified by a Director
-                            and the Company Secretary. (.pdf/.docx)
-                        </p>
-
-                        <p class="alert-custom">
-                            Evidence of increase in Authorized Share Capital (where necessary)
-                        </p>
-
-                        <button class="btn btn-success btn-sm px-4 align-self-center ">Send
-                            Request</button>
-
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <input type="hidden" id="caseID">
-                    <button type="button" class="btn btn-light-danger font-weight-bold"
-                        data-dismiss="modal">Close</button>
-
-                </div>
-            </form>
+        </div>
         </div>
     </div>
 </div>

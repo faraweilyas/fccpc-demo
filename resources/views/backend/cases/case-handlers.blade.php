@@ -73,7 +73,7 @@
                                                     class="btn btn-sm btn-light-danger mr-3"
                                                     title="Deactivate Case Handler"
                                                 >
-                                                    <i class="flaticon-user-add"></i> Deactivate
+                                                    <i class="flaticon-user-settings"></i> Deactivate
                                                 </a>
                                             @elseif($handler->status === "inactive")
                                                 <a
