@@ -113,7 +113,7 @@
                 </div>
                 @php $x++ @endphp
                 @endif
-                <input class="checklist_group_count" type="hidden" value="{{ $x }}">
+                <input class="checklist_group_count" type="hidden" value="{{ count($checklistGroupDocuments) }}">
                 @endforeach
                 <div class="btn-group">
                     <button class="btn btn-success-pale-ts no-border mx-1" id="prev">
