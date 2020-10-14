@@ -518,7 +518,7 @@
                                 </span>
                             </span>
                         </div>
-                        <input type="text" class="form-control h-45px" placeholder="Search..." />
+                        <input type="text" class="form-control h-45px" placeholder="Search..." id="search" />
                         <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="quick-search-close ki ki-close icon-sm"></i>
@@ -545,7 +545,7 @@
 
             <!--begin::Toggle-->
 
-  
+
 
             <div class="topbar-item mx-2" id="kt_quick_panel_toggle">
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
@@ -635,14 +635,52 @@
 
 @endsection
 
+@section('custom.css')
 
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
+
+@endsection
 
 @section('custom.javascript')
+
+
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
+
+
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
     $(document).ready(function () {
         $('#kt-search').click(function () {
             $(this).toggleClass('show');
             $('#show_search').toggleClass('show');
+        });
+
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $("#search").autocomplete({
+            source: availableTags
         });
 
     })
