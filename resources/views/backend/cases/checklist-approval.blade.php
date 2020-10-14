@@ -47,11 +47,15 @@
                 @endphp
                 @if($document !== '')
                 <div class="row my-3 py-5 hide" id="step-{{ $x }}">
-                    
+
                     <h5 class="text-bold w-50">
 
                         {{ $checklistGroup->name }}
                         <div class="pull-button-right">
+                            <button class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
+                                data-target="#Issue">
+                                Cart ({{ $checklistStatusCount->deficient }})
+                            </button>
                             <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">
 
@@ -65,8 +69,6 @@
                                     </svg>
                                     <!--end::Svg Icon-->
                                 </span>
-
-                                
                             </button>
 
                             <div class="dropdown-menu p-0 m-0 dropdown-menu-right dropdown-menu-xl dropdown-menu-anim-up " id="cart-dropdown">
@@ -102,7 +104,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                           
+
                                         </div>
                                         <!--end::Item-->
                                         <!--begin::Separator-->
@@ -126,7 +128,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                           
+
                                         </div>
                                         <!--end::Item-->
                                         <!--begin::Separator-->
@@ -150,7 +152,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                           
+
                                         </div>
                                         <!--end::Item-->
                                         <!--begin::Separator-->
@@ -173,7 +175,7 @@
                                                     </a>
                                                 </div>
                                             </div>
-                                          
+
                                         </div>
                                         <!--end::Item-->
                                         <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
@@ -209,7 +211,7 @@
                         </div>
                     </h5>
 
-                    
+
 
                     <br>
                     <br>
@@ -277,7 +279,7 @@
                         Previous
                     </button>
                     <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">
-                        Next 
+                        Next
                     </button>
 
                     <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">

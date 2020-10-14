@@ -177,6 +177,11 @@ class CasesController extends Controller
         $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
         $checklistStatusCount       = (object) $case->getChecklistStatusCount();
 
+        // Checklist Objects
+        // $case->getCaseSubmittedChecklistByStatus(); // NULL
+        // $case->getCaseSubmittedChecklistByStatus('approval'); // approval
+        // $case->getCaseSubmittedChecklistByStatus('deficient'); // deficient
+
         $title          = APP_NAME;
         $description    = 'FCCPC Checklist Approval Dashboard';
         $details        = details($title, $description);
