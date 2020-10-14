@@ -83,6 +83,16 @@ trait UserGettable
     public function active_cases_assigned_to()
     {
         return $this->cases_assigned_to()->where('dropped_at', null)->where('workingon_at', null);
+    } 
+
+    /**
+     * Defines a many to many relationship for case and active case handlers
+     *
+     * @return HasRelationships
+     */
+    public function active_cases_assigned_to_all()
+    {
+        return $this->cases_assigned_to()->where('dropped_at', null);
     }
 
     /**

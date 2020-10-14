@@ -147,7 +147,7 @@ Route::prefix('cases')
             'dropped'
         );
 
-        Route::get('/workingon/{handler?}', 'CasesController@workingonCases')->name(
+        Route::get('/ongoing/{handler?}', 'CasesController@workingonCases')->name(
             'working_on'
         );
 
