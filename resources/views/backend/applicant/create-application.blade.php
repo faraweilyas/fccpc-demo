@@ -294,7 +294,7 @@
                                                                 <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4">
                                                                        <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
-                                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                                        <span class="btn btn--small btn--brand checklist_doc_name">Upload File</span>
                                                                     </div>
                                                                 </div>
                                                                 @if(!empty($document))

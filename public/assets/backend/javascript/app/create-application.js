@@ -433,6 +433,12 @@ $(document).ready(function()
 
         return false;
     });
+
+    $('#checklist_doc').change(function(e){ 
+        var fileName = e.target.files[0].name; 
+        var new_file = fileName.split('.').pop();
+        $('.checklist_doc_name').html('file.'+new_file);
+    });  
 });
 
 function notify(messageType, message)
