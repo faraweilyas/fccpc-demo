@@ -461,6 +461,9 @@ function sendRequest(
     {
         result = JSON.parse(data);
         notify(result.responseType, result.message);
+        $("#previous-btn").removeAttr('disabled');
+        $("#save-info").toggle();
+        $("#saving-img").toggle();
          _wizard.goNext();
         KTUtil.scrollTop();
     },
@@ -487,6 +490,9 @@ function saveCaseInfo(action, currentForm)
     var tracking_id = $("#tracking_id").val(),
         case_type   = $("input[name='case_type']:checked").val();
 
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
         {
@@ -506,6 +512,9 @@ function saveCaseInfo(action, currentForm)
 function saveContactInfo(action, currentForm)
 {
     var tracking_id = $("#tracking_id").val();
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").toggle();
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -531,6 +540,10 @@ function saveChecklistDocument(action, currentForm)
         checklist_doc_name = currentForm.find("#checklist_doc_name").val();
         doc_id             = currentForm.find("#doc_id").val();
 
+        $("#previous-btn").attr('disabled', 'disabled');
+        $("#save-info").toggle();
+        $("#saving-img").toggle();
+
         $(currentForm).find(':checkbox:checked').each(function(i)
         {
            checklists[i] = $(this).val();
@@ -551,6 +564,9 @@ function saveChecklistDocument(action, currentForm)
                 result = JSON.parse(data);
                 currentForm.find("#doc_id").val(result.response.id);
                 notify(result.responseType, result.message);
+                $("#previous-btn").removeAttr('disabled');
+                $("#save-info").toggle();
+                $("#saving-img").toggle();
                 _wizard.goNext();
                 KTUtil.scrollTop();
             }

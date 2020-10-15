@@ -327,6 +327,7 @@
                                             <div id="save-btns">
                                                 <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">Save & Upload Case Documents</button>
                                                 <button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
+                                                <button id="saving-img" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Saving...</button>
                                             </div>
                                         </div>
                                     </form>
