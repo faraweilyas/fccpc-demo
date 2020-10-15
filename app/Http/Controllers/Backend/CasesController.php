@@ -192,6 +192,30 @@ class CasesController extends Controller
         );
     }
 
+    /*
+     * Handles the get checklist count page route.
+     *
+     * @return void
+     */
+    public function getChecklistCount(Cases $case)
+    {
+        $checklistStatusCount       = (object) $case->getChecklistStatusCount();
+        $this->sendResponse('Case checklist status count.', 'success', $checklistStatusCount);
+    }
+
+    /*
+     * Handles the get submitted checklist by status route.
+     *
+     * @return void
+     */
+    public function getChecklistByStatus(Cases $case)
+    {
+        $this->sendResponse('Case checklist by status.', 'success', [
+            'deficent_cases' => $case->getCaseSubmittedChecklistByStatus('deficient'),
+            'approved_cases' => $case->getCaseSubmittedChecklistByStatus('approval')
+        ]);
+    }
+
     /**
      * Update document checklist status.
      *

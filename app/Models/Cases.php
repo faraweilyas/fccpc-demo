@@ -141,7 +141,7 @@ class Cases extends Model
             return $checklistDocument->checklist_document->status == $status;
         });
 
-        return $deficientChecklist->toArray();
+        return $deficientChecklist;
     }
 
     public function getChecklistStatusCount() : array

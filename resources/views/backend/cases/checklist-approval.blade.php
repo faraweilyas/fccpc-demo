@@ -52,9 +52,9 @@
 
                         {{ $checklistGroup->name }}
                         <div class="pull-button-right">
-                            <button class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
-                                data-target="#Issue">
-                                Cart ({{ $checklistStatusCount->deficient ?? 0 }})
+                            <button id="deficient-basket" class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
+                                data-target="#Issue" data-case-id="{{ $case->id }}">
+                                Deficient Basket (<span id="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>)
                             </button>
                             <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">
@@ -236,7 +236,7 @@
                                                     <input type="checkbox" class="save_approval" name="select" @if($checklist_document_status=='deficient' ) checked="checked" @endif value="deficient"
                                                     @if($checklist_document_status=='deficient' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
                                                     <span></span>
                                                 </label>
                                                 Deficient
@@ -247,7 +247,7 @@
                                                     name="exampleRadios{{ $checklist->id }}" value="approved"
                                                     @if($checklist_document_status=='approved' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
                                                 <span></span>
                                                 Approve
                                             </label>
@@ -256,7 +256,7 @@
                                                     name="exampleRadios{{ $checklist->id }}" value="deficient"
                                                     @if($checklist_document_status=='deficient' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
                                                 <span></span>
                                                 Deficient
                                             </label>
@@ -300,21 +300,20 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Request New Document</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Deficient Documents</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
         <div class="modal-body">
-            <div class="py-5">
-                <p class="alert-custom ">
-                    Extract of Board Resolutions of the Merging Companies duly certified by a Director
-                    and the Company Secretary. (.pdf/.docx)
-                </p>
-
-                <p class="alert-custom">
-                    Evidence of increase in Authorized Share Capital (where necessary)
-                </p>
+            <div id="deficient_cases_list" class="py-5">
+                @foreach($case->getCaseSubmittedChecklistByStatus('deficient') as $checklist)
+                <div>
+                    <p class="alert-custom ">
+                        {{ $checklist->name }}
+                    </p>
+                </div>
+                @endforeach
             </div>
         </div>
         <div class="modal-footer">

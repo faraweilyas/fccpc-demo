@@ -331,13 +331,21 @@
     </div>
 
     <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
-        <!--begin::Header-->
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-5">
-            <h3 class="font-weight-bold m-0">Ongoing Cases
-                <small class="text-muted font-size-sm ml-2">.</small></h3>
-            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
-                <i class="ki ki-close icon-xs text-muted"></i>
-            </a>
+         <!--begin::Header-->
+        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                role="tablist">
+
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#kt_quick_panel_notifications">Ongoing Cases</a>
+                </li>
+
+            </ul>
+            <div class="offcanvas-close mt-n1 pr-5">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
         </div>
         <!--end::Header-->
         <!--begin::Content-->

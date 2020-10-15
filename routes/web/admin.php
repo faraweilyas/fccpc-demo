@@ -166,6 +166,10 @@ Route::prefix('cases')
 
         Route::get('checklist-approval/{case}', 'CasesController@checklistApproval')->name('checklist-approval');
 
+        Route::get('checklist-status-count/{case}', 'CasesController@getChecklistCount')->name('checklist-status-count');
+
+        Route::get('checklist-by-status/{case}', 'CasesController@getChecklistByStatus')->name('checklist-by-status');
+
         Route::post('checklist-approval/{document}', 'CasesController@saveChecklistApproval')->name('checklist-approval');
 
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(

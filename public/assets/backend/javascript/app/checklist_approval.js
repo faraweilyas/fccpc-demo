@@ -53,6 +53,7 @@
 
         $(".save_approval").on('change', function(){
             var formData      = new FormData(),
+                case_id       = $(this).attr('data-case-id'),
                 doc_id        = $(this).attr('data-document-id'),
                 checklist_id  = $(this).attr('data-checklist-id'),
                 status        = $(this).val();
@@ -63,6 +64,40 @@
                 data: {checklist: checklist_id, status: status}, 
                 success: function(response){
                   // console.log(response);
+                }
+            });
+
+            $.ajax({
+                url: '/cases/checklist-status-count/'+case_id,
+                type: 'GET',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: {}, 
+                success: function(response){
+                    var result = JSON.parse(response);
+                    $("#checklist-deficient-count").html(result.response.deficient)
+                }
+            });
+        });
+
+        $("#deficient-basket").on('click', function (event) {
+            var case_id = $(this).attr('data-case-id');
+            $("#deficient_cases_list div").empty();
+            $.ajax({
+                url: '/cases/checklist-by-status/'+case_id,
+                type: 'GET',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: {}, 
+                success: function(response){
+                    var result          = JSON.parse(response);
+                    var deficient_cases = result.response.deficent_cases;
+                    $.each(deficient_cases, function(index, value){
+                        $("#deficient_cases_list").append('<div>'
+                                                            +'<p class="alert-custom ">'
+                                                            +value.name
+                                                            +'</p>'
+                                                            +'</div>'
+                                                        );
+                    });
                 }
             });
         });
