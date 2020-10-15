@@ -37,12 +37,12 @@
         <h5 class="text-bold">Submitted Documents</h5>
         @if(in_array(\Auth::user()->account_type, ['SP']))
         <a href="{{ route('cases.checklist-approval',[$case->id]) }}" class="btn btn-success-transparent-download">
-            Start Document Approval
+            Continue Document Approval
         </a>
         @else
             @if(\Auth::user()->cases_working_on()->where('case_id', $case->id)->count() > 0)
                 <a href="{{ route('cases.checklist-approval',[$case->id]) }}" class="btn btn-success-transparent-download">
-                    Start Document Approval
+                    Continue Document Approval
                 </a>
             @else
                 <span id="start_doc_approval" class="btn btn-success-transparent-download" data-link="{{ route('cases.checklist-approval',[$case->id]) }}" data-workingon-link="{{ route('cases.update_working_on',[$case->id, \Auth::user()->id]) }}">
