@@ -7,6 +7,7 @@ Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
     ->group(function () {
+
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'

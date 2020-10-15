@@ -551,28 +551,24 @@
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                     <span class="symbol symbol-35 mx-2">
                         <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
-
                     </span>
                     <a href="#">
                         <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                             Notifications
                         </span>
                     </a>
-
                 </div>
             </div>
             <div class="topbar-item mx-2" id="kt_quick_user_toggle">
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                     <span class="symbol symbol-35 mx-2">
                         <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
-
                     </span>
                     <a href="#">
                         <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                             Ongoing Cases
                         </span>
                     </a>
-
                 </div>
             </div>
             <div class="topbar-item">
@@ -624,8 +620,8 @@
                                     {{ csrf_field() }}
                                 </form>
                                 Sign Out
+                            </span>
                         </a>
-                        </span>
                     </div>
                 </div>
             </div>
