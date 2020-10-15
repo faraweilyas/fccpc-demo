@@ -10,7 +10,7 @@ class Document extends Model
 
     public function case()
     {
-        return $this->hasOne(Cases::class, 'id');
+        return $this->hasOne(Cases::class, 'id', 'case_id');
     }
 
     public function checklists()
