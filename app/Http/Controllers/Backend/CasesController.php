@@ -106,8 +106,8 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers = (new User())->caseHandlers();
-        $title = 'Workingon Cases | ' . APP_NAME;
-        $description = 'Workingon Cases | ' . APP_NAME;
+        $title = 'Ongoing Cases | ' . APP_NAME;
+        $description = 'Ongoing Cases | ' . APP_NAME;
         $details = details($title, $description);
         return view(
             'backend.cases.cases-working-on',
