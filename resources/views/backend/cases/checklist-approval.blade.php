@@ -54,7 +54,7 @@
                         <div class="pull-button-right">
                             <button class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
                                 data-target="#Issue">
-                                Cart ({{ $checklistStatusCount->deficient }})
+                                Cart ({{ $checklistStatusCount->deficient ?? 0 }})
                             </button>
                             <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">
@@ -210,12 +210,14 @@
                             </button>
                         </div>
                     </h5>
-
-
-
-                    <br>
-                    <br>
-                    <br>
+                    <div class="row py-5">
+                        <div class="col-md-12">
+                            <p><b>Additional Information:</b></p>
+                            <p>
+                                @empty($document->additional_info) ... @else {{ $document->additional_info }} @endif
+                            </p>
+                        </div>
+                    </div>
                     <div class="row">
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
