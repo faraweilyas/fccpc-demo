@@ -89,7 +89,6 @@
                 data: {}, 
                 success: function(response){
                     var result = JSON.parse(response);
-                    console.log(result);
                     $(".checklist-deficient-count").html(result.response.deficient);
                 }
             });
@@ -119,13 +118,14 @@
         });
 
         $('#viewDeficiencyModal').on('shown.bs.modal', function (event) {
-            var thisModal      = $(this),
-                case_id        = $('.case_id').html();
-                applicant_firm = thisModal.find('#applicant_firm'),
-                applicant_name = thisModal.find('#applicant_name'),
-                applicant_email = thisModal.find('#applicant_email'),
-                applicant_phone_number = thisModal.find('#applicant_phone_number'),
-                applicant_address = thisModal.find('#applicant_address');
+            var thisModal               = $(this),
+                case_id                 = $('.case_id').html();
+                applicant_firm          = thisModal.find('#applicant_firm'),
+                applicant_name          = thisModal.find('#applicant_name'),
+                applicant_email         = thisModal.find('#applicant_email'),
+                applicant_phone_number  = thisModal.find('#applicant_phone_number'),
+                applicant_address       = thisModal.find('#applicant_address');
+                issue_deficiency_button = thisModal.find('#issue-deficiency');
 
             // Get Case Deficiencies Asynchronously
             $.ajax({
@@ -144,11 +144,29 @@
                 },
             });
 
+            issue_deficiency_button.attr('data-case-id', case_id);
             applicant_firm.html($('.firm').html());
             applicant_name.html($('.name').html());
             applicant_email.html($('.email').html());
             applicant_phone_number.html($('.phone_number').html());
             applicant_address.html($('.address').html());
             return;
+        });
+
+        $('#issue-deficiency').on('click', function (event) {
+            $("#saving-deficiency").removeClass('hide');
+            $('#issue-deficiency').addClass('hide');
+            $.ajax({
+                url: '/cases/issue-deficiency/'+$(this).attr('data-case-id'),
+                type: 'POST',
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                data: {additional_info: $("#additional_info").val()}, 
+                success: function(response){
+                    var result          = JSON.parse(response);
+                    $("#saving-deficiency").addClass('hide');
+                    $('#issue-deficiency').removeClass('hide');
+                    toastr.success("Email sent to applicant");
+                }
+            });
         });
     });

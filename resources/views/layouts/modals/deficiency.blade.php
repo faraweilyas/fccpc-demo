@@ -60,7 +60,14 @@
 
                             {{-- Checklist --}}
                             <div class="tab-pane fade" id="deficiency_tab" role="tabpanel">
-                                <div id="deficiency_items" class="d-flex flex-column font-size-sm font-weight-bold">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-1">
+                                            <textarea class="form-control" id="additional_info" rows="3" name="additional_info" placeholder="Additional Information..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="deficiency_items" class="d-flex flex-column font-size-sm font-weight-bold mt-3">
                                 ...
                                 </div>
                             </div>
@@ -69,7 +76,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="analyze-case" type="button" class="btn btn-light-primary font-weight-bold">Issue Deficiency</button>
+                <button id="saving-deficiency" type="button" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Issue Deficiency...</button>
+                <button id="issue-deficiency" type="button" class="btn btn-light-primary font-weight-bold">Issue Deficiency</button>
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
