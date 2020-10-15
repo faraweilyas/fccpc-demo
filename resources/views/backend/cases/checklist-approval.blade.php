@@ -54,7 +54,7 @@
                         <div class="pull-button-right">
                             <button id="deficient-basket" class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
                                 data-target="#Issue" data-case-id="{{ $case->id }}">
-                                Deficiencies (<span id="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>)
+                                Deficiencies (<span class="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>)
                             </button>
                             <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">

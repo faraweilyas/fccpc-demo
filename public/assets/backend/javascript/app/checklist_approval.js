@@ -87,7 +87,8 @@
                 data: {}, 
                 success: function(response){
                     var result = JSON.parse(response);
-                    $("#checklist-deficient-count").html(result.response.deficient);
+                    console.log(result);
+                    $(".checklist-deficient-count").html(result.response.deficient);
                 }
             });
         });
