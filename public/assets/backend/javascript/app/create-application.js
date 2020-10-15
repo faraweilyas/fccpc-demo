@@ -523,50 +523,6 @@ function saveChecklistDocument(action, currentForm)
         checklist_doc_name = currentForm.find("#checklist_doc_name").val();
         doc_id             = currentForm.find("#doc_id").val();
 
-    if(currentForm.find("#uploaded_doc").val() != '') {
-        if (file) {
-            swal.fire({
-                title: "Are you sure?",
-                text: "You want to override previously uploaded document for "+checklist_doc_name+"!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, override it!"
-            }).then(function(result)
-            {
-                if (result.value) {
-                    $(currentForm).find(':checkbox:checked').each(function(i)
-                    {
-                       checklists[i] = $(this).val();
-                    });
-
-                    formData.append('_token', $("#token").val());
-                    formData.append('file', file);
-                    formData.append('additional_info', additional_info);
-                    formData.append('checklists', checklists);
-                    formData.append('override', true);
-                    formData.append('document_id', doc_id);
-
-                    sendRequest(
-                        '/application/create/'+tracking_id+'/'+action,
-                        formData,
-                        false,
-                        false,
-                        function(data, status)
-                        {
-                            result = JSON.parse(data);
-                            currentForm.find("#doc_id").val(result.response.id);
-                            notify(result.responseType, result.message);
-                        }
-                    );
-                    return;
-                } else {
-                    return;
-                }
-            });
-        } else {
-            return;
-        }
-    } else {
         $(currentForm).find(':checkbox:checked').each(function(i)
         {
            checklists[i] = $(this).val();
@@ -576,6 +532,7 @@ function saveChecklistDocument(action, currentForm)
         formData.append('file', file);
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
+        formData.append('document_id', doc_id);
         sendRequest(
             '/application/create/'+tracking_id+'/'+action,
             formData,
@@ -583,13 +540,12 @@ function saveChecklistDocument(action, currentForm)
             false,
             function(data, status)
             {
-                console.log(data);
                 result = JSON.parse(data);
+                currentForm.find("#doc_id").val(result.response.id);
                 notify(result.responseType, result.message);
             }
         );
         return;
-    }
 }
 
 function submitCase()
