@@ -223,11 +223,11 @@
                         @php
                         $checklist_document = $document->checklists->where('id', $checklist->id)->first()->checklist_document ?? NULL;
                         $checklist_document_status = $checklist_document->status ?? NULL;
-                        $checked = (in_array($checklist->id, $checklistIds)) ? "consent-card-active" : '';
+                        $checked = (in_array($checklist->id, $checklistIds) && !is_null($checklist_document->selected_at)) ? "consent-card-active" : '';
                         @endphp
                         <div class="col-lg-6">
                             <div class="consent-card {{ $checked }}">
-                                <div class="d-flex  @empty($checked) justify-content-flex-end @endif">
+                                <div class="d-flex">
                                     <div class="form-check" style="padding: 0px">
                                         <div class="radio-inline">
                                             @empty($checked)
@@ -239,6 +239,7 @@
                                                     data-checklist-id="{{ $checklist->id }}">
                                                     <span></span>
                                                 </label>
+                                                Deficient
                                             </span>
                                             @else
                                             <label class="radio">
