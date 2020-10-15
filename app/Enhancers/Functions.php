@@ -330,3 +330,21 @@ function mockFilesData() : array
         ]
     ];
 }
+
+/**
+ * Transform checklist IDs
+ *
+ * @param string $checklistIds
+ * @param mixed $value
+ * @return array
+ */
+function transformChecklistIds(string $checklistIds=NULL, $value=NULL) : array
+{
+    $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
+    $newArrayOfChecklistIds = [];
+    foreach ($arrayOfChecklistIds as $checklistId)
+    {
+        $newArrayOfChecklistIds[$checklistId] = $value;
+    }
+    return $newArrayOfChecklistIds;
+}

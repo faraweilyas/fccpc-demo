@@ -181,9 +181,9 @@ class ApplicationController extends Controller
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);
-        
-        $checklistIds = request('checklists');
-        $arrayOfChecklistIds = (array) explode(',', $checklistIds);
+
+        $checklistIds           = request('checklists');
+        $arrayOfChecklistIds    = transformChecklistIds($checklistIds, ["selected_at" => now()]);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
     }

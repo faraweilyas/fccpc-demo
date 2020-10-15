@@ -86,7 +86,7 @@ class ApplicationController extends Controller
      * @return json
      */
     public function getCalculatedFee()
-    {   
+    {
         $amount            = (int) request('combined_turnover');
         $transaction_type  = request('transaction_type');
         $fillingFee        = 0;
@@ -185,7 +185,7 @@ class ApplicationController extends Controller
                 'guest' => $guest,
             ]);
     }
-    
+
     /**
      * Get case application.
      *
@@ -297,11 +297,11 @@ class ApplicationController extends Controller
         ]);
 
         $checklistIds           = request('checklists');
-        $arrayOfChecklistIds    = (array) explode(',', $checklistIds);
+        $arrayOfChecklistIds    = transformChecklistIds($checklistIds, ["selected_at" => now()]);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         return $this->sendResponse(201, 'success', 'Document has been saved.', [
-                'document' => $document,
-            ]);
+            'document' => $document,
+        ]);
     }
 
     /**
