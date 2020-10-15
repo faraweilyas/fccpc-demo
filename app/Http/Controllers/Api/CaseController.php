@@ -81,7 +81,7 @@ class CaseController extends Controller
 
         $handler->notify(
             new CaseAssigned()
-        );   
+        );
 
         return $this->sendResponse(200, "Case assigned.", "success", [
             'case'      => $case,
@@ -119,8 +119,8 @@ class CaseController extends Controller
 
         $new_handler->notify(
             new CaseAssigned()
-        );   
-        
+        );
+
     	return $this->sendResponse(200, "Case reassigned.", "success", [
             'case'                   => $case,
             'previous_case_handler'  => $previous_handler,
@@ -135,11 +135,9 @@ class CaseController extends Controller
      */
     public function updateDocumentChecklistStatus(Document $document)
     {
-        $case                   = Cases::find($document->case_id);
-        $checklistIds           = request('checklists');
-        $arrayOfChecklistIds    = (array) $checklistIds;
-
-        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
+        $case       = $document->case;
+        $checklist  = request('checklist');
+        $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status')]]);
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);
@@ -231,7 +229,7 @@ class CaseController extends Controller
             'workingon'   => $handler->active_cases_assigned_to()->count(),
         ]);
     }
-    
+
     /**
      * Get generated report.
      *
