@@ -518,10 +518,10 @@ function saveChecklistDocument(action, currentForm)
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
         checklists         = [],
-        additional_info    = $(currentForm).find('#additional_info').val(),
-        file               = $(currentForm).find('#checklist_doc')[0].files[0],
-        checklist_doc_name = $("#checklist_doc_name").val();
-        doc_id             = $("#doc_id").val();
+        additional_info    = currentForm.find('#additional_info').val(),
+        file               = currentForm.find('#checklist_doc')[0].files[0],
+        checklist_doc_name = currentForm.find("#checklist_doc_name").val();
+        doc_id             = currentForm.find("#doc_id").val();
 
     if(currentForm.find("#uploaded_doc").val() != '') {
         if (file) {
@@ -554,6 +554,7 @@ function saveChecklistDocument(action, currentForm)
                         function(data, status)
                         {
                             result = JSON.parse(data);
+                            currentForm.find("#doc_id").val(result.response.id);
                             notify(result.responseType, result.message);
                         }
                     );
@@ -582,6 +583,7 @@ function saveChecklistDocument(action, currentForm)
             false,
             function(data, status)
             {
+                console.log(data);
                 result = JSON.parse(data);
                 notify(result.responseType, result.message);
             }

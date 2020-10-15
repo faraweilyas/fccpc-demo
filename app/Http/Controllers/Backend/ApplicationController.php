@@ -168,14 +168,13 @@ class ApplicationController extends Controller
         $newFileName = \SerialNumber::randomFileName($extension);
         $path = $file->storeAs('public/documents', $newFileName);
 
-        if (request('override')):
-            $previous_document = Document::find(request('document_id'));
+        $previous_document = Document::find(request('document_id'));
+        if($previous_document):
             unlink(
                 storage_path('app/public/documents/' . $previous_document->file)
             );
             Document::destroy($previous_document->id);
         endif;
-
         $document = Document::create([
             'case_id' => $guest->case->id,
             'file' => $newFileName,

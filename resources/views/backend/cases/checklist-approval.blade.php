@@ -54,7 +54,7 @@
                         <div class="pull-button-right">
                             <button id="deficient-basket" class="btn btn-warning no-border mx-lg-5 px-10 py-4" data-toggle="modal"
                                 data-target="#Issue" data-case-id="{{ $case->id }}">
-                                Deficient Basket (<span id="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>)
+                                Deficiencies (<span id="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>)
                             </button>
                             <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">
@@ -236,7 +236,7 @@
                                                     <input type="checkbox" class="save_approval" name="select" @if($checklist_document_status=='deficient' ) checked="checked" @endif value="deficient"
                                                     @if($checklist_document_status=='deficient' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}" data-switch-box="true">
                                                     <span></span>
                                                 </label>
                                                 Deficient
@@ -247,7 +247,7 @@
                                                     name="exampleRadios{{ $checklist->id }}" value="approved"
                                                     @if($checklist_document_status=='approved' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}" data-switch-box="false">
                                                 <span></span>
                                                 Approve
                                             </label>
@@ -256,7 +256,7 @@
                                                     name="exampleRadios{{ $checklist->id }}" value="deficient"
                                                     @if($checklist_document_status=='deficient' ) checked="checked"
                                                     @endif data-document-id="{{ $document->id }}"
-                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}">
+                                                    data-checklist-id="{{ $checklist->id }}" data-case-id="{{ $case->id }}" data-switch-box="false">
                                                 <span></span>
                                                 Deficient
                                             </label>

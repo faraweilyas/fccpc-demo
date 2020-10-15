@@ -225,7 +225,11 @@ class CasesController extends Controller
     {
         $case       = $document->case;
         $checklist  = request('checklist');
-        $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status')]]);
+        if (request('remove_checklist') == 'yes'):
+            $document->checklists()->detach([$checklist]);
+        else:
+            $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status')]]);
+        endif;
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);

@@ -52,16 +52,29 @@
         });
 
         $(".save_approval").on('change', function(){
-            var formData      = new FormData(),
-                case_id       = $(this).attr('data-case-id'),
-                doc_id        = $(this).attr('data-document-id'),
-                checklist_id  = $(this).attr('data-checklist-id'),
-                status        = $(this).val();
+            var formData         = new FormData(),
+                case_id          = $(this).attr('data-case-id'),
+                doc_id           = $(this).attr('data-document-id'),
+                checklist_id     = $(this).attr('data-checklist-id'),
+                switch_box       = $(this).attr('data-switch-box');
+                var remove_checklist;
+                var status;
+                if($(this).is(":checked") && switch_box === "true") {
+                    remove_checklist = 'no';
+                    status           = $(this).val();
+                } else if(!$(this).is(":checked") && switch_box === "true") {
+                    remove_checklist = 'yes';
+                    status           = '';
+                } else {
+                    remove_checklist = 'no';
+                    status           = $(this).val();
+                };
+
             $.ajax({
                 url: '/cases/checklist-approval/'+doc_id,
                 type: 'POST',
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                data: {checklist: checklist_id, status: status}, 
+                data: {checklist: checklist_id, status: status, remove_checklist: remove_checklist}, 
                 success: function(response){
                   // console.log(response);
                 }
@@ -74,7 +87,7 @@
                 data: {}, 
                 success: function(response){
                     var result = JSON.parse(response);
-                    $("#checklist-deficient-count").html(result.response.deficient)
+                    $("#checklist-deficient-count").html(result.response.deficient);
                 }
             });
         });
