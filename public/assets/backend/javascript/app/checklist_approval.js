@@ -9,6 +9,7 @@
             if (counter > 1) {
                 $('#next').show();
                 $('#approve').hide();
+                $('#deficiency').hide();
                 counter--;
                 $('[id^=step]').hide();
                 $(`#step-${counter}`).show();
@@ -46,6 +47,7 @@
             if (parseInt(counter) === parseInt(arr_lenght)) {
                 $('#next').hide();
                 $('#approve').show();
+                $('#deficiency').show();
             }
 
 
@@ -114,5 +116,39 @@
                     });
                 }
             });
+        });
+
+        $('#viewDeficiencyModal').on('shown.bs.modal', function (event) {
+            var thisModal      = $(this),
+                case_id        = $('.case_id').html();
+                applicant_firm = thisModal.find('#applicant_firm'),
+                applicant_name = thisModal.find('#applicant_name'),
+                applicant_email = thisModal.find('#applicant_email'),
+                applicant_phone_number = thisModal.find('#applicant_phone_number'),
+                applicant_address = thisModal.find('#applicant_address');
+
+            // Get Case Deficiencies Asynchronously
+            $.ajax({
+                url: '/cases/checklist-by-status/'+case_id,
+                type: "GET",
+                success: function (response) {
+                    var result = JSON.parse(response);
+                    $("#deficiency_items").empty();
+                    $.each(result.response.deficent_cases, function (index, value) {
+                        $("#deficiency_items").append('<div class="d-flex align-items-center justify-content-start mb-2">' +
+                            '<span class="icon-1x mr-2"><b>' +
+                            (index + 1) + '.</b> ' + value.name +
+                            '</span>' +
+                            '</div>');
+                    });
+                },
+            });
+
+            applicant_firm.html($('.firm').html());
+            applicant_name.html($('.name').html());
+            applicant_email.html($('.email').html());
+            applicant_phone_number.html($('.phone_number').html());
+            applicant_address.html($('.address').html());
+            return;
         });
     });
