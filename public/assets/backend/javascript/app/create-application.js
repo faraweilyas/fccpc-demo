@@ -363,8 +363,8 @@ $(document).ready(function()
             sendForm    = 'save'+currentForm.attr('data-form');
 
         window[sendForm](sendForm, currentForm);
-        _wizard.goNext();
-        KTUtil.scrollTop();
+        // _wizard.goNext();
+        // KTUtil.scrollTop();
         return;
     });
 
@@ -461,6 +461,8 @@ function sendRequest(
     {
         result = JSON.parse(data);
         notify(result.responseType, result.message);
+         _wizard.goNext();
+        KTUtil.scrollTop();
     },
     onError = function(xhr, desc, err)
     {
@@ -549,6 +551,8 @@ function saveChecklistDocument(action, currentForm)
                 result = JSON.parse(data);
                 currentForm.find("#doc_id").val(result.response.id);
                 notify(result.responseType, result.message);
+                _wizard.goNext();
+                KTUtil.scrollTop();
             }
         );
         return;
