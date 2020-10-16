@@ -67,15 +67,12 @@
                                             <path d="M3.5,9 L20.5,9 C21.0522847,9 21.5,9.44771525 21.5,10 C21.5,10.132026 21.4738562,10.2627452 21.4230769,10.3846154 L17.7692308,19.1538462 C17.3034221,20.271787 16.2111026,21 15,21 L9,21 C7.78889745,21 6.6965779,20.271787 6.23076923,19.1538462 L2.57692308,10.3846154 C2.36450587,9.87481408 2.60558331,9.28934029 3.11538462,9.07692308 C3.23725479,9.02614384 3.36797398,9 3.5,9 Z M12,17 C13.1045695,17 14,16.1045695 14,15 C14,13.8954305 13.1045695,13 12,13 C10.8954305,13 10,13.8954305 10,15 C10,16.1045695 10.8954305,17 12,17 Z" fill="#fff"></path>
                                         </g>
                                     </svg>
-                                        
+
                                     <!--end::Svg Icon-->
                                     <span class="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>
-                                </span> 
-                                
-
-                            
-
-                              
+                                    {{-- Deficiencies --}}
+                                    {{-- <span class="checklist-deficient-text">Deficiencies</span> --}}
+                                </span>
                             </button>
                             {{-- <button class="btn btn-success no-border mx-lg-5 px-10 " id="cart">
                                 <span class="svg-icon svg-icon-xl">
@@ -223,22 +220,14 @@
                                     </div>
                                     <!--end::Summary-->
                                 </form>
-                              </div>
+                            </div>
 
-                          
-                          
-                          
-                              <button class="btn btn-success no-border px-10 py-4"
+                            <button class="btn btn-success no-border px-10 py-4"
                                 onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
                                 Download Checklist Document
                             </button>
                         </div>
                     </h5>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
                     <div class="row py-5">
                         <div class="col-md-12">
                             <p><b>Additional Information:</b></p>
@@ -315,7 +304,7 @@
                     {{-- @if($deficient_count > 0)
                     <button class="btn btn-warning no-border mx-5 px-10 py-4 hide" id="deficiency" data-toggle="modal"
                                 data-target="#viewDeficiencyModal">
-                        Issue Deficiency 
+                        Issue Deficiency
                     </button>
                     @else
                     <button class="btn btn-success no-border px-10 py-4 hide" id="approve">
@@ -324,7 +313,7 @@
                     @endif --}}
                     <button class="btn btn-warning no-border mx-5 px-10 py-4 hide" id="deficiency" data-toggle="modal"
                                 data-target="#viewDeficiencyModal">
-                        Issue Deficiency 
+                        Issue Deficiency
                     </button>
                     <button class="btn btn-success no-border px-10 py-4 hide" id="approve">
                         Approve Complete Documents in the Checklist

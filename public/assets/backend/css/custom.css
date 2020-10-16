@@ -523,10 +523,11 @@ section#orderWizard {
 
 .autoComplete>a {
     display: block;
-    padding: 1rem;
+    padding: 10px;
     font-size: 16px;
-    color: #000;
-    border-top: 1px solid rgba(106, 127, 130, 0.09);
+    font-weight: 300;
+    color: #272525;
+    border-top: 1px solid rgb(6 24 27 / 9%);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
@@ -534,12 +535,41 @@ section#orderWizard {
 .autoComplete>a:nth-child(1) {
     padding: 10px;
     font-size: 16px;
-    color: #000;
+    font-weight: 300;
+    color: #272525;
     border-top: 1px solid #fff;
     cursor: pointer;
 }
 
 .autoComplete>a:hover {
-    background-color: #135c40;
+    background-color: #48a764;
     color: #fff;
+}
+
+#deficient-basket
+{
+    padding: 6px 13px !important;
+}
+
+#deficient-basket .svg-icon.svg-icon-xl svg
+{
+    height: 2.5rem !important;
+    width: 2.5rem !important;
+}
+
+#deficient-basket .checklist-deficient-count
+{
+    padding: .3rem .7rem;
+    background: rgb(168, 60, 60);
+    border-radius: 1rem;
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 800;
+}
+
+#deficient-basket .checklist-deficient-text
+{
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-left: 8px;
 }
