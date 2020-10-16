@@ -89,7 +89,12 @@
                 data: {}, 
                 success: function(response){
                     var result = JSON.parse(response);
-                    $(".checklist-deficient-count").html(result.response.deficient);
+                    if (result.response.deficient === undefined)
+                    {
+                        $(".checklist-deficient-count").html('0');
+                    } else {
+                        $(".checklist-deficient-count").html(result.response.deficient);
+                    }
                 }
             });
         });
