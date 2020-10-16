@@ -25,6 +25,21 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler issues deficiency
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function issueDeficiency(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'defficiency_issued_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler updates working on
      *
      * @param  User $caseHandler

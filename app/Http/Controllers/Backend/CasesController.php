@@ -7,6 +7,8 @@ use App\Models\Cases;
 use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Notifications\CaseAssigned;
+use App\Mail\IssueDeficiencyEmail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Session;
 
@@ -233,6 +235,34 @@ class CasesController extends Controller
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);
+    }
+
+    /**
+     * Handles issuing of deficiency
+     *
+     * @return json
+     */
+    public function issueDeficiency(Cases $case)
+    {
+        if ($case->guest->email == $case->applicant_email):
+            $emails = array($case->applicant_email);
+        else:
+            $emails = array($case->applicant_email, $case->guest->email);
+        endif;
+        
+        Mail::to($emails)->send(
+            new IssueDeficiencyEmail([
+                'fullname'        => $case->applicant_fullname,
+                'ref_no'          => $case->reference_no,
+                'case'            => $case,
+                'additional_info' => request('additional_info'),
+                'deficent_cases'  => $case->getCaseSubmittedChecklistByStatus('deficient')
+            ])
+        );
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->issueDeficiency($handler);
+
+        return $this->sendResponse(200, "Deficieny sent", "success");
     }
 
     /**

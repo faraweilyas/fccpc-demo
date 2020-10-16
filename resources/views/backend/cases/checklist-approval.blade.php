@@ -39,8 +39,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card-custom">
+            <div class="card-custom-approval">
                 @php $x = 1 @endphp
+                @php
+                $deficient_count = $checklistStatusCount->deficient ?? 0;
+                @endphp
                 @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                 @php
                 $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
@@ -304,18 +307,37 @@
                     <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">
                         Next
                     </button>
-
-                    <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">
+                    {{-- @if($deficient_count > 0)
+                    <button class="btn btn-warning no-border mx-5 px-10 py-4 hide" id="deficiency" data-toggle="modal"
+                                data-target="#viewDeficiencyModal">
+                        Issue Deficiency 
+                    </button>
+                    @else
+                    <button class="btn btn-success no-border px-10 py-4 hide" id="approve">
+                        Approve Complete Documents in the Checklist
+                    </button>
+                    @endif --}}
+                    <button class="btn btn-warning no-border mx-5 px-10 py-4 hide" id="deficiency" data-toggle="modal"
+                                data-target="#viewDeficiencyModal">
+                        Issue Deficiency 
+                    </button>
+                    <button class="btn btn-success no-border px-10 py-4 hide" id="approve">
                         Approve Complete Documents in the Checklist
                     </button>
                 </div>
-
-
             </div>
         </div>
     </div>
 </div>
-
+<div class="hide">
+    <span class="case_id">{{ $case->id }}</span>
+    {{-- Applicant --}}
+    <span class="firm">{!! $case->applicant_firm !!}</span>
+    <span class="name">{!! $case->getApplicantName() !!}</span>
+    <span class="email">{!! $case->applicant_email !!}</span>
+    <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
+    <span class="address">{!! $case->applicant_address !!}</span>
+</div>
 <div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
@@ -326,27 +348,27 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-        <div class="modal-body">
-            <div id="deficient_cases_list" class="py-5">
-                @foreach($case->getCaseSubmittedChecklistByStatus('deficient') as $checklist)
-                <div>
-                    <p class="alert-custom ">
-                        {{ $checklist->name }}
-                    </p>
+            <div class="modal-body">
+                <div id="deficient_cases_list" class="py-5">
+                    @foreach($case->getCaseSubmittedChecklistByStatus('deficient') as $checklist)
+                    <div>
+                        <p class="alert-custom ">
+                            {{ $checklist->name }}
+                        </p>
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
-        <div class="modal-footer">
-            <input type="hidden" id="caseID">
-            <button type="button" class="btn btn-light-danger font-weight-bold"
-                data-dismiss="modal">Close</button>
+            <div class="modal-footer">
+                <input type="hidden" id="caseID">
+                <button type="button" class="btn btn-light-danger font-weight-bold"
+                    data-dismiss="modal">Close</button>
 
-        </div>
+            </div>
         </div>
     </div>
 </div>
-
+@include("layouts.modals.deficiency")
 @endsection
 
 @section('custom.css')

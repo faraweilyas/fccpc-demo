@@ -172,6 +172,8 @@ Route::prefix('cases')
 
         Route::post('checklist-approval/{document}', 'CasesController@saveChecklistApproval')->name('checklist-approval');
 
+        Route::post('issue-deficiency/{case}', 'CasesController@issueDeficiency')->name('issue-deficiency');
+
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
         );

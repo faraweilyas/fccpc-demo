@@ -16,6 +16,13 @@ body {
     font-size: 1.5rem;
 }
 
+.btn.btn-warning {
+    color: #ffffff;
+    background-color: #FFA800;
+    border-color: #FFA800;
+    margin: 1rem;
+}
+
 .justify-content-flex-end {
     justify-content: flex-end;
 }
