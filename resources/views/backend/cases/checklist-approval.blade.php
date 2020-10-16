@@ -234,6 +234,11 @@
                             </button>
                         </div>
                     </h5>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                     <div class="row py-5">
                         <div class="col-md-12">
                             <p><b>Additional Information:</b></p>
