@@ -69,6 +69,7 @@
                                             </div>
                                         </td>
                                         <td nowrap="nowrap">
+                                            @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a
                                                 href="#"
                                                 class="btn btn-sm btn-light-warning mr-3"
@@ -78,6 +79,15 @@
                                             >
                                                 <i class="flaticon-eye"></i> View
                                             </a>
+                                            @else
+                                             <a
+                                                href="{{ route('cases.analyze', ['case' => $case->id]) }}"
+                                                class="btn btn-sm btn-light-warning mr-3"
+                                                title="Analyse Case"
+                                            >
+                                                <i class="flaticon-eye"></i> View
+                                            </a>
+                                            @endif
                                             @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a
                                                 href="#"
