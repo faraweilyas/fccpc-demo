@@ -16,6 +16,14 @@ body {
     font-size: 1.5rem;
 }
 
+.flatpickr-day.selected
+{
+    background: #135c40;
+    box-shadow: none;
+    color: #fff;
+    border-color: #135c40;
+}
+
 .btn.btn-warning {
     color: #ffffff;
     background-color: #FFA800;

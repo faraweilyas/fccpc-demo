@@ -41,11 +41,11 @@
                     <div class="card__box__large-content">
                         <div class="form-group">
                             <label>Start Date</label>
-                            <input id="start_date" class="form-control" name="start_date"  placeholder="2020-01-01" />
+                            <input type="text" id="start_date" class="form-control" name="start_date"  />
                         </div>
                         <div class="form-group">
                             <label>End Date</label>
-                            <input id="end_date" class="form-control" type="date" name="end_date" placeholder="2020-01-01" />
+                            <input type="text" id="end_date" class="form-control" name="end_date" />
                         </div>
 
                         @if (in_array(\Auth::user()->account_type, ['CH']))
@@ -63,6 +63,15 @@
                                 </div>
                             </div>
                         @endif
+                        <div class="row">
+                            <div class="col-md-4 mt-4">
+                                <div class="checkbox-inline">
+                                    <label class="checkbox checkbox-primary">
+                                    <input id="custom-filter-check" type="checkbox" name="custom-filter-check">
+                                    <span></span></label>Custom Filter
+                                </div>
+                            </div>
+                        </div>
                         <div id="custom-filter" class="row mt-4 hide">
                             <div class="col-md-12">
                                 <label>Transaction Type</label>
@@ -82,13 +91,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-4 mt-4">
-                                <div class="checkbox-inline">
-                                    <label class="checkbox checkbox-primary">
-                                    <input id="custom-filter-check" type="checkbox" name="custom-filter-check">
-                                    <span></span></label>Custom Filter
-                                </div>
-                            </div>
                             <div class="col-md-12">
                                 <button class="btn btn-success btn-block">
                                     Submit Request
@@ -120,10 +122,22 @@
 
 <script>
     $(document).ready(function () {
-        //flatpickr
-            $("#start_date").flatpickr();
-            $("#end_date").flatpickr();
-        //flatpickr
+        $('#start_date').flatpickr
+        ({
+            altInput: true,
+            enableTime: false,
+            dateFormat: "Y-m-d",
+            defaultDate: new Date,
+        });
+
+        $('#end_date').flatpickr
+        ({
+            altInput: true,
+            enableTime: false,
+            dateFormat: "Y-m-d",
+            defaultDate: new Date,
+        });
+
         $('#get_handler').select2();
         $('#custom-filter-check').on('click', function(){
             if($(this).prop("checked") == true){
