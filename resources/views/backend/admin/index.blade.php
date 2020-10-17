@@ -58,7 +58,11 @@
                 <div class="col-lg-3 my-5">
                     <div class="dashboard-card redish-orange">
                         <p>Deficiencies</p>
-                        <span>53</span>
+                        @if(in_array(\Auth::user()->account_type, ['SP']))
+                         <span>{{ \AUth::user()->deficientCasesForSupervisor()->count() }}</span>
+                        @else
+                         <span>{{ \AUth::user()->deficientCasesForCaseHandler()->count() }}</span>
+                        @endif
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>

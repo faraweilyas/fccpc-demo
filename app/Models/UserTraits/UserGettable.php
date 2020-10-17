@@ -106,6 +106,26 @@ trait UserGettable
     }
 
     /**
+     * Gets deficient cases for supervisor
+     *
+     * @return Collection
+     */
+    public function deficientCasesForSupervisor()
+    {
+        return $this->cases_assigned_by()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
+    }
+
+    /**
+     * Gets deficient cases for case handler
+     *
+     * @return Collection
+     */
+    public function deficientCasesForCaseHandler()
+    {
+        return $this->cases_assigned_to()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
+    }
+
+    /**
      * Defines a many to many relationship for case and dropped case handlers
      *
      * @return HasRelationships

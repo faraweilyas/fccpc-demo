@@ -39,7 +39,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card-custom-approval">
+            <div class="card-custom">
                 @php $x = 1 @endphp
                 @php
                 $deficient_count = $checklistStatusCount->deficient ?? 0;
