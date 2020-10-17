@@ -156,6 +156,10 @@ Route::prefix('cases')
             'approved'
         );
 
+        Route::get('on-hold', 'CasesController@onholdCases')->name(
+            'on-hold'
+        );
+
         Route::get('/archived', 'CasesController@archivedCases')->name(
             'archived'
         );

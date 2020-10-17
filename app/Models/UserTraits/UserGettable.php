@@ -37,7 +37,7 @@ trait UserGettable
     {
         return $this->belongsToMany(Cases::class, 'case_handler', 'supervisor_id', 'case_id')
             ->as('case_handler')
-            ->withPivot('handler_id', 'dropped_at', 'archived_at')
+            ->withPivot('handler_id', 'defficiency_issued_at', 'dropped_at', 'archived_at')
             ->withTimestamps();
     }
 
@@ -71,7 +71,7 @@ trait UserGettable
     {
         return $this->belongsToMany(Cases::class, 'case_handler', 'handler_id', 'case_id')
             ->as('case_handler')
-            ->withPivot('supervisor_id', 'dropped_at', 'archived_at')
+            ->withPivot('supervisor_id', 'defficiency_issued_at', 'dropped_at', 'archived_at')
             ->withTimestamps();
     }
 
@@ -82,7 +82,10 @@ trait UserGettable
      */
     public function active_cases_assigned_to()
     {
-        return $this->cases_assigned_to()->where('dropped_at', null)->where('workingon_at', null);
+        return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', null)
+                ->where('defficiency_issued_at', null);
     } 
 
     /**
@@ -102,27 +105,25 @@ trait UserGettable
      */
     public function cases_working_on()
     {
-        return $this->cases_assigned_to()->where('dropped_at', null)->where('workingon_at', '!=', null);
+        return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', '!=', null)
+                ->where('defficiency_issued_at', null);
     }
 
     /**
-     * Gets deficient cases for supervisor
+     * Gets deficient cases
      *
      * @return Collection
      */
-    public function deficientCasesForSupervisor()
+    public function deficientCases()
     {
-        return $this->cases_assigned_by()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
-    }
-
-    /**
-     * Gets deficient cases for case handler
-     *
-     * @return Collection
-     */
-    public function deficientCasesForCaseHandler()
-    {
-        return $this->cases_assigned_to()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
+        if (in_array(\Auth::user()->account_type, ['SP'])):
+            return $this->cases_assigned_by()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
+        else:
+            return $this->cases_assigned_to()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
+        endif;
+        
     }
 
     /**

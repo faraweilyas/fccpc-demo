@@ -160,6 +160,23 @@ trait CaseGettable
             });
     }
 
+     /**
+     * Gets deficient cases with active handlers
+     *
+     * @return Collection
+     */
+    public function deficientCases()
+    {
+        return static::where('submitted_at', '!=', null)
+            ->with('active_handlers')
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->handlers->where('defficiency_issued_at', '!=', null) ? true : false;
+            });
+    }
+
     /**
      * Gets assigned cases with dropped handlers
      *

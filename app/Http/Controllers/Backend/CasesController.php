@@ -137,6 +137,25 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles cases on hold page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function onholdCases()
+    {
+        $cases = \Auth::user()->deficientCases()->get();
+        $caseHandlers = (new User())->caseHandlers();
+
+        $title = 'Cases On hold| ' . APP_NAME;
+        $description = 'Cases On hold| ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.cases.cases-on-hold',
+            compact('details', 'cases', 'caseHandlers')
+        );
+    }
+
+    /**
      * Handles archived cases page.
      *
      * @return \Illuminate\Contracts\View\Factory
