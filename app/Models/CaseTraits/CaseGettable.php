@@ -161,6 +161,24 @@ trait CaseGettable
     }
 
     /**
+     * Gets search assigned cases with active handlers
+     *
+     * @return Collection
+     */
+    public function searchAssignedCases($search)
+    {
+        return static::where('submitted_at', '!=', null)
+            ->where('subject', 'LIKE', '%'.$search.'%')
+            ->with('active_handlers')
+            ->latest()
+            ->get()
+            ->reject(function($case)
+            {
+                return $case->active_handlers->isEmpty() ? true : false;
+            });
+    }
+
+    /**
      * Gets assigned cases with dropped handlers
      *
      * @return Collection

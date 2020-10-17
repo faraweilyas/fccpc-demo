@@ -509,19 +509,10 @@
         <div class="map mr-20 mb-3">
             <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
                 <div class="input-group rounded bg-light">
-
-               
-
                     <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
-
-
-
                 </div>
-
                 <div class="autoComplete">
                 </div>
-
-
             </div>
         </div>
         <div class="topbar">
@@ -630,15 +621,5 @@
 
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#kt-search').click(function () {
-            $(this).toggleClass('show');
-            $('#show_search').toggleClass('show');
-        });
 
-
-    })
-
-</script>
 @endsection

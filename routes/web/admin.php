@@ -135,6 +135,10 @@ Route::prefix('cases')
     ->name('cases.')
     ->namespace('Backend')
     ->group(function () {
+        Route::get('search', 'CasesController@searchCases')->name(
+            'search'
+        );
+
         Route::get('/new', 'CasesController@unassignedCases')->name(
             'unassigned'
         );

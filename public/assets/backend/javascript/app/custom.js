@@ -25,4 +25,32 @@ $(document).ready(function() {
             }
         });
 	});
+
+	$('#kt-search').click(function () {
+        $(this).toggleClass('show');
+        $('#show_search').toggleClass('show');
+
+    });
+
+    let cases = [];
+    let searchInput = document.querySelector('.search-input');
+    let suggestionsPanel = document.querySelector('.autoComplete');
+
+    searchInput.addEventListener('keyup', function () {
+        let input = searchInput.value;
+        if (input !== '') {
+        	 $.ajax({
+            url: '/cases/search',
+            type: 'GET',
+            data: {'search': input}, 
+            success: function(response){
+            	$(".autoComplete").css("display", "block");
+            	$('.autoComplete').html(response);
+        	  }
+            });
+
+        } else {
+			$('.autoComplete').hide();
+        }
+    });
 });

@@ -24,6 +24,20 @@ body {
     border-color: #135c40;
 }
 
+.header-mobile .burger-icon:hover span {
+    background-color: #fff;
+}
+
+.autoComplete > p {
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #272525;
+    text-align: center;
+    border-top: 1px solid #fff;
+}
+
 .btn.btn-warning {
     color: #ffffff;
     background-color: #FFA800;

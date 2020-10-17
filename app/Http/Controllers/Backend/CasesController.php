@@ -23,6 +23,31 @@ class CasesController extends Controller
     {
         $this->middleware('auth');
     }
+    
+    /**
+     * Handles search cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function searchCases()
+    {
+        $search = $_GET['search'] ?? '';
+        if (auth()->user()->account_type == 'CH'):
+            $cases = auth()->user()->search_active_cases_assigned_to($search);
+        else:
+            $cases = (new Cases())->searchAssignedCases($search);
+        endif;
+        $output = '';
+        if ($cases->count() <= 0):
+            $output .= '<p>No transaction found!</p>';
+        else:
+            foreach ($cases as $case):
+                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'" target="_blank">'.shortenContent($case->subject, 40).'</a>';
+            endforeach;
+        endif;
+
+        echo $output;
+    }
 
     /**
      * Handles unassigned cases page.
@@ -281,7 +306,7 @@ class CasesController extends Controller
         $handler = User::find($case->active_handlers->first()->id);
         $case->issueDeficiency($handler);
 
-        return $this->sendResponse(200, "Deficieny sent", "success");
+        return $this->sendResponse('Deficieny sent.', 'success');
     }
 
     /**

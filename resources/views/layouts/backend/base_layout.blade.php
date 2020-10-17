@@ -132,52 +132,6 @@
             toastr.error("{{ Session::get('error') }}");
             @endif
         });
-
-
-
-
-        const countries = [{
-                name: 'Faq'
-            },
-            {
-                name: 'Local'
-            },
-            {
-                name: 'Foreign'
-            },
-            {
-                name: 'Merger'
-            }
-        ];
-
-        const searchInput = document.querySelector('.search-input');
-        const suggestionsPanel = document.querySelector('.autoComplete');
-
-        searchInput.addEventListener('keyup', function () {
-            const input = searchInput.value;
-            $('.autoComplete').show();
-
-            console.log(input)
-            suggestionsPanel.innerHTML = '';
-            const suggestions = countries.filter(function (country) {
-                return country.name.toLowerCase().startsWith(input);
-            });
-            suggestions.forEach(function (suggested) {
-                const div = document.createElement('a');
-                div.setAttribute('href', '#')
-
-                div.innerHTML = suggested.name;
-                suggestionsPanel.appendChild(div);
-            });
-            if (input === '') {
-                $('.autoComplete').hide();
-
-                suggestionsPanel.innerHTML = '';
-            }
-
-
-        })
-
     </script>
 
     @yield('custom.javascript')

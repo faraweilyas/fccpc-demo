@@ -93,6 +93,18 @@ trait UserGettable
      *
      * @return HasRelationships
      */
+    public function search_active_cases_assigned_to($search)
+    {
+        return $this->cases_assigned_to()
+                ->where('subject', 'LIKE', '%'.$search.'%')
+                ->get();
+    } 
+
+    /**
+     * Defines a many to many relationship for case and active case handlers
+     *
+     * @return HasRelationships
+     */
     public function active_cases_assigned_to_all()
     {
         return $this->cases_assigned_to()->where('dropped_at', null);

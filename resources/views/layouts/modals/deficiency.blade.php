@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
-                    <div class="card-header card-header-tabs-line" style="justify-content: center;">
+                    <div class="card-header card-header-tabs-line" style="justify-content: center;border-bottom: none;">
                         <div class="card-toolbar">
                             <ul class="nav nav-tabs nav-bold nav-tabs-line">
                                 <li class="nav-item">
