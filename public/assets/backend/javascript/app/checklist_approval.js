@@ -2,6 +2,8 @@
     var counter    = 1;
     var arr_lenght = $(".checklist_group_count").val();
 
+    console.log(arr_lenght);
+
     $(document).ready(function () {
         $('#step-1').show();
         $('#prev').hide();

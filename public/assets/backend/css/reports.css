@@ -532,6 +532,19 @@
         width: 100% !important;
         /* display: flex; */
     }
+
+    .btn-group{
+        display: block !important;
+    }
+
+    .btn-group button{
+        width: 100% !important;
+        margin: 1rem 0rem !important ;
+    }
+
+    .margin-top{
+        margin-top: 50px !important;
+    }
 }
 
 

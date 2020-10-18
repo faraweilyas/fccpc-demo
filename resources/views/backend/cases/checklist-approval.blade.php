@@ -228,7 +228,8 @@
                             </button>
                         </div>
                     </h5>
-                    <div class="row py-5">
+
+                    <div class="row py-5 margin-top">
                         <div class="col-md-12">
                             <p><b>Additional Information:</b></p>
                             <p>
@@ -236,6 +237,7 @@
                             </p>
                         </div>
                     </div>
+
                     <div class="row">
                         @foreach($checklistGroup->checklists as $checklist)
                         @php
