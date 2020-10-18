@@ -132,7 +132,7 @@
                                     <span class="menu-text">Assigned Cases</span>
                                 </a>
                             </li>
-                            @if(in_array(\Auth::user()->account_type, ['CH']))
+                            @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.working_on') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
