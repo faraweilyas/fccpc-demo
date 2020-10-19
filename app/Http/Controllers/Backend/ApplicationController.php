@@ -146,11 +146,11 @@ class ApplicationController extends Controller
     {
         $guest->case->saveContactInfo(
             (object) [
-                'applicant_firm'         => request('applicant_firm'),
-                'applicant_fullname'     => request('applicant_fullname'),
-                'applicant_email'        => request('applicant_email'),
+                'applicant_firm' => request('applicant_firm'),
+                'applicant_fullname' => request('applicant_fullname'),
+                'applicant_email' => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
-                'applicant_address'      => request('applicant_address'),
+                'applicant_address' => request('applicant_address'),
             ]
         );
 
@@ -169,7 +169,7 @@ class ApplicationController extends Controller
         $path = $file->storeAs('public/documents', $newFileName);
 
         $previous_document = Document::find(request('document_id'));
-        if($previous_document):
+        if ($previous_document):
             unlink(
                 storage_path('app/public/documents/' . $previous_document->file)
             );
@@ -181,8 +181,10 @@ class ApplicationController extends Controller
             'additional_info' => trim(request('additional_info')),
         ]);
 
-        $checklistIds           = request('checklists');
-        $arrayOfChecklistIds    = transformChecklistIds($checklistIds, ["selected_at" => now()]);
+        $checklistIds = request('checklists');
+        $arrayOfChecklistIds = transformChecklistIds($checklistIds, [
+            'selected_at' => now(),
+        ]);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
@@ -241,9 +243,9 @@ class ApplicationController extends Controller
             return redirect($guest->applicationPath());
         }
 
-        $title       = 'Application Submitted | ' . APP_NAME;
+        $title = 'Application Submitted | ' . APP_NAME;
         $description = 'Application Submitted | ' . APP_NAME;
-        $details     = details($title, $description);
+        $details = details($title, $description);
         return view('backend.applicant.submitted', compact('details', 'guest'));
     }
 
@@ -259,16 +261,23 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
-        $isDeficient                = $guest->case->isDeficient();
-        $case                       = $guest->case;
-        $checklistIds               = $case->getChecklistIds();
-        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
-        $title       = 'Upload Documents | ' . APP_NAME;
+        $isDeficient = $guest->case->isDeficient();
+        $case = $guest->case;
+        $checklistIds = $case->getChecklistIds();
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
+        $title = 'Upload Documents | ' . APP_NAME;
         $description = 'Upload Documents | ' . APP_NAME;
-        $details     = details($title, $description);
+        $details = details($title, $description);
         return view(
             'backend.applicant.upload-documents',
-            compact('details', 'guest', 'isDeficient', 'case', 'checklistIds', 'checklistGroupDocuments')
+            compact(
+                'details',
+                'guest',
+                'isDeficient',
+                'case',
+                'checklistIds',
+                'checklistGroupDocuments'
+            )
         );
     }
 
@@ -279,13 +288,31 @@ class ApplicationController extends Controller
      */
     public function review(Guest $guest)
     {
-        $case                    = $guest->case;
-        $checklistIds            = $case->getChecklistIds();
+        $case = $guest->case;
+        $checklistIds = $case->getChecklistIds();
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        $documents               = Document::where('case_id', $guest->case->id)->get();
-        $title                   = 'Review Application | ' . APP_NAME;
-        $description             = 'Review Application | ' . APP_NAME;
-        $details                 = details($title, $description);
-        return view('backend.applicant.review', compact('details', 'guest', 'case', 'documents', 'checklistIds', 'checklistGroupDocuments'));
+        $documents = Document::where('case_id', $guest->case->id)->get();
+        $title = 'Review Application | ' . APP_NAME;
+        $description = 'Review Application | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.applicant.review',
+            compact(
+                'details',
+                'guest',
+                'case',
+                'documents',
+                'checklistIds',
+                'checklistGroupDocuments'
+            )
+        );
+    }
+    public function checklist(Guest $guest)
+    {
+        $title = 'Checklist Application | ' . APP_NAME;
+        $description = 'Checklist Application | ' . APP_NAME;
+
+        $details = details($title, $description);
+        return view('backend.applicant.checklist', compact('details', 'guest'));
     }
 }

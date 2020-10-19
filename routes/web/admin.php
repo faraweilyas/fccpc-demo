@@ -7,7 +7,6 @@ Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
     ->group(function () {
-
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
@@ -42,6 +41,10 @@ Route::prefix('application')
             '/applicant/{guest:tracking_id}/review',
             'ApplicationController@review'
         )->name('review');
+
+        Route::get('/checklist', 'ApplicationController@checklist')->name(
+            'checklist'
+        );
     });
 
 // Enquiries
@@ -135,9 +138,7 @@ Route::prefix('cases')
     ->name('cases.')
     ->namespace('Backend')
     ->group(function () {
-        Route::get('search', 'CasesController@searchCases')->name(
-            'search'
-        );
+        Route::get('search', 'CasesController@searchCases')->name('search');
 
         Route::get('/new', 'CasesController@unassignedCases')->name(
             'unassigned'
@@ -152,43 +153,63 @@ Route::prefix('cases')
             'dropped'
         );
 
-        Route::get('/ongoing/{handler?}', 'CasesController@workingonCases')->name(
-            'working_on'
-        );
+        Route::get(
+            '/ongoing/{handler?}',
+            'CasesController@workingonCases'
+        )->name('working_on');
 
         Route::get('/approved', 'CasesController@approvedCases')->name(
             'approved'
         );
 
-        Route::get('on-hold', 'CasesController@onholdCases')->name(
-            'on-hold'
-        );
+        Route::get('on-hold', 'CasesController@onholdCases')->name('on-hold');
 
         Route::get('/archived', 'CasesController@archivedCases')->name(
             'archived'
         );
 
-        Route::get('analyze/{case}', 'CasesController@analyzeCase')->name('analyze');
+        Route::get('analyze/{case}', 'CasesController@analyzeCase')->name(
+            'analyze'
+        );
 
-        Route::get('analyze-documents/{case}', 'CasesController@analyzeCaseDocuments')->name('analyze-documents');
+        Route::get(
+            'analyze-documents/{case}',
+            'CasesController@analyzeCaseDocuments'
+        )->name('analyze-documents');
 
-        Route::get('checklist-approval/{case}', 'CasesController@checklistApproval')->name('checklist-approval');
+        Route::get(
+            'checklist-approval/{case}',
+            'CasesController@checklistApproval'
+        )->name('checklist-approval');
 
-        Route::get('checklist-status-count/{case}', 'CasesController@getChecklistCount')->name('checklist-status-count');
+        Route::get(
+            'checklist-status-count/{case}',
+            'CasesController@getChecklistCount'
+        )->name('checklist-status-count');
 
-        Route::get('checklist-by-status/{case}', 'CasesController@getChecklistByStatus')->name('checklist-by-status');
+        Route::get(
+            'checklist-by-status/{case}',
+            'CasesController@getChecklistByStatus'
+        )->name('checklist-by-status');
 
-        Route::post('checklist-approval/{document}', 'CasesController@saveChecklistApproval')->name('checklist-approval');
+        Route::post(
+            'checklist-approval/{document}',
+            'CasesController@saveChecklistApproval'
+        )->name('checklist-approval');
 
-        Route::post('issue-deficiency/{case}', 'CasesController@issueDeficiency')->name('issue-deficiency');
+        Route::post(
+            'issue-deficiency/{case}',
+            'CasesController@issueDeficiency'
+        )->name('issue-deficiency');
 
         Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
             'assign'
         );
 
-        Route::post('update-working-on/{case}/{user}', 'CasesController@updateWorkingOn')->name(
-            'update_working_on'
-        );
+        Route::post(
+            'update-working-on/{case}/{user}',
+            'CasesController@updateWorkingOn'
+        )->name('update_working_on');
 
         Route::get('checklists/{case}', 'CasesController@caseChecklists')->name(
             'checklists'

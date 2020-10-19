@@ -445,6 +445,10 @@
 }
 
 
+.row-top{
+    margin-top: 80px;
+}
+
 @media only screen and (min-width: 280px) and (max-width: 565px) {
 
     .card__box__large {
@@ -452,7 +456,7 @@
     }
 
     .card__box__large .card__box__large-content {
-        padding: 0rem;
+        padding: 1rem;
     }
 
     .card__box__large .card__box__large-content .card__box__large-content--intro {
@@ -490,6 +494,10 @@
         -ms-flex: 0 0 66.666667%;
         flex: 0 0 100%;
         max-width: 100%;
+    }
+
+    .row-top{
+        margin-top: 50px;
     }
 }
 

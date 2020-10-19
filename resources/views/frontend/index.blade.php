@@ -33,7 +33,7 @@
             />
             <div class="card__box--content">
               <p>Submit Application</p>
-              <span>Submit a Merger Application</span>
+
             </div>
           </div>
           <div class="card__box card__box-stack shadow" id="control-3" onclick="window.location.href = '{{ route('enquiries.index') }}';">
@@ -44,9 +44,7 @@
             />
             <div class="card__box--content">
               <p>Enquiry</p>
-              <span>
-                Get Relevant information on application cases
-              </span>
+
             </div>
           </div>
           <div class="card__box card__box-stack shadow" id="control-2" onclick="window.location.href = '{{ route('home.fee.calculator') }}';">
@@ -57,7 +55,7 @@
             />
             <div class="card__box--content">
               <p>Fee Calculator</p>
-              <span>Fees Guideline for Regular Merger</span>
+
             </div>
           </div>
           <div class="card__box card__box-stack shadow" id="control-4" onclick="window.location.href = '{{ route('home.faqs') }}';">
@@ -70,7 +68,7 @@
             </div>
             <div class="card__box--content">
               <p>Frequently Asked Questions</p>
-              <span>M&A Related Questions</span>
+
             </div>
           </div>
         </div>
