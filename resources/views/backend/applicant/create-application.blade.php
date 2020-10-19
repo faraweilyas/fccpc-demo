@@ -61,8 +61,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title">Transaction Information</h3>
-                                            <div class="wizard-desc">Provide your case details</div>
+                                            <h3 class="wizard-title mt-3">Transaction Information</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -80,8 +79,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title">Contact Information</h3>
-                                            <div class="wizard-desc">Provide your contact details</div>
+                                            <h3 class="wizard-title mt-3">Contact Information</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +104,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title">{{ $group->name }}</h3>
-                                            <div class="wizard-desc">Provide relevant documents</div>
+                                            <h3 class="wizard-title mt-3">{{ $group->name }}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -127,8 +124,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title">Submit Application</h3>
-                                            <div class="wizard-desc">Finalize application submission</div>
+                                            <h3 class="wizard-title mt-3">Submit Application</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +203,7 @@
                                             </div>
                                         </div>
                                         <div class="pb-5" data-wizard-type="step-content" data-form='ContactInfo'>
-                                            <h4 class="mb-10 font-weight-bold text-dark">Provide your contact details</h4>
+                                            <h4 class="mb-10 font-weight-bold text-dark">Contact Information</h4>
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="form-group fv-plugins-icon-container">
@@ -260,7 +256,7 @@
                                                 <div class="col-md-12">
                                                     <div class="card card-custom gutter-b example example-compact">
                                                         <div class="card-header">
-                                                            <h3 class="card-title">Submit {{ strtolower($checklistGroup->name) }}</h3>
+                                                            <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                         </div>
                                                         <div class="card-body">
                                                             <p>
@@ -278,7 +274,7 @@
                                                                     <label class="checkbox mb-4">
                                                                         <input type="checkbox" value="{{ $checklist->id }}" {{ $checked }} id="checklist_id" />
                                                                         <span></span>
-                                                                        <small>{{ ucfirst($checklist->name) }}</small>
+                                                                        <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
                                                                     </label>
                                                                 </div>
                                                                 @endforeach
@@ -293,8 +289,8 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4">
-                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
-                                                                        <span class="btn btn--small btn--brand checklist_doc_name">Upload File</span>
+                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                        <span class="btn btn--small btn--brand checklist_doc_name_{{ $checklistGroup->id}}">Upload File</span>
                                                                     </div>
                                                                 </div>
                                                                 @if(!empty($document))
@@ -348,15 +344,4 @@
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
-    <script type="text/javascript">
-        $(document).ready(function($)
-        {
-            $('input[type="file"]').on('change', function(event)
-            {
-                var fileName = event.target.files[0].name;
-
-                $('.img-info').html(fileName);
-            });
-        });
-    </script>
 @endsection

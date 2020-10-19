@@ -259,12 +259,16 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
+        $isDeficient                = $guest->case->isDeficient();
+        $case                       = $guest->case;
+        $checklistIds               = $case->getChecklistIds();
+        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
         $title       = 'Upload Documents | ' . APP_NAME;
         $description = 'Upload Documents | ' . APP_NAME;
         $details     = details($title, $description);
         return view(
             'backend.applicant.upload-documents',
-            compact('details', 'guest')
+            compact('details', 'guest', 'isDeficient', 'case', 'checklistIds', 'checklistGroupDocuments')
         );
     }
 
@@ -275,10 +279,13 @@ class ApplicationController extends Controller
      */
     public function review(Guest $guest)
     {
-        $documents   = Document::where('case_id', $guest->case->id)->get();
-        $title       = 'Review Application | ' . APP_NAME;
-        $description = 'Review Application | ' . APP_NAME;
-        $details     = details($title, $description);
-        return view('backend.applicant.review', compact('details', 'guest', 'documents'));
+        $case                    = $guest->case;
+        $checklistIds            = $case->getChecklistIds();
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
+        $documents               = Document::where('case_id', $guest->case->id)->get();
+        $title                   = 'Review Application | ' . APP_NAME;
+        $description             = 'Review Application | ' . APP_NAME;
+        $details                 = details($title, $description);
+        return view('backend.applicant.review', compact('details', 'guest', 'case', 'documents', 'checklistIds', 'checklistGroupDocuments'));
     }
 }

@@ -53,6 +53,16 @@ body {
     cursor: pointer;
 }
 
+.fs--100
+{
+    font-size: 100%;
+}
+
+.mw-10
+{
+    max-width: 10%;
+}
+
 .text-black-sm {
     color: #242424;
     font-size: 1.2rem;

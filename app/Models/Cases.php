@@ -51,6 +51,11 @@ class Cases extends Model
         return empty($this->submitted_at) ? false : true;
     }
 
+    public function isDeficient() 
+    {
+        return is_null($this->active_handlers[0]->case_handler->defficiency_issued_at) ? false : true;
+    }
+
     public function selectedCategoryStyle($case_category='reg') : \stdClass
     {
         $case_category = strtoupper($case_category);

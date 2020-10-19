@@ -76,7 +76,7 @@
                         </div>
                         <div class="row mt-6">
                             <div class="col-md-12 text-center">
-                                <p><strong>No transaction documents found.</strong></p>
+                                <p><strong>No document was submitted.</strong></p>
 
                                 <a href="#" class="btn btn-danger font-weight-bold text-uppercase mr-5 px-9 py-4">
                                     Issue a deficiency

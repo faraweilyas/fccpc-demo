@@ -169,6 +169,7 @@ trait CaseGettable
     {
         return static::where('submitted_at', '!=', null)
             ->where('subject', 'LIKE', '%'.$search.'%')
+            ->orWhere('parties', 'LIKE', '%'.$search.'%')
             ->with('active_handlers')
             ->latest()
             ->get()
