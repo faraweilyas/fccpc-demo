@@ -13,7 +13,7 @@
                         {{-- <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a> --}}
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="#" class="text-muted">Checklist Application</a>
+                        <a href="#" class="text-muted">Checklist Documents</a>
                     </li>
                 </ul>
             </div>

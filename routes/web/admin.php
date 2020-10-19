@@ -42,8 +42,8 @@ Route::prefix('application')
             'ApplicationController@review'
         )->name('review');
 
-        Route::get('/checklist', 'ApplicationController@checklist')->name(
-            'checklist'
+        Route::get('checklist', 'ApplicationController@checklistDocuments')->name(
+            'checklist-documents'
         );
     });
 
