@@ -174,7 +174,7 @@ trait CaseGettable
             ->get()
             ->reject(function($case)
             {
-                return $case->active_handlers->isEmpty() ? true : false;
+                return $case->active_handlers->isEmpty() ? false : true;
             });
     }
 
