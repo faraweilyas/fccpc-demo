@@ -307,6 +307,12 @@ class ApplicationController extends Controller
             )
         );
     }
+
+    /**
+     * Handles Checklist page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
     public function checklist(Guest $guest)
     {
         $title = 'Checklist Application | ' . APP_NAME;
