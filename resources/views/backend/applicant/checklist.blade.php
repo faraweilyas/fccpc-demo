@@ -31,90 +31,18 @@
 
                 <div class="card__box__large-content">
                     <h3 class="checklist-header">
-                        FFM Document Checklist
+                        Document Checklist
                     </h3>
-
+                    @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                     <li class="checklist-list">
-                        Letter of intent to merge
+                        {{ ucfirst($checklistGroup->name) }}
                     </li>
-                    <li class="checklist-list">
-                        Information Memorandum
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
-                    <li class="checklist-list-sub">
-                        Background of the transaction, including any
-                        preliminary and final studies (if available)
-                        regarding the subject of consideration.
-                    </li>
+                        @foreach($checklistGroup->checklists as $checklist)
+                        <li class="checklist-list-sub">
+                            {{ ucfirst($checklist->name) }}
+                        </li>
+                        @endforeach
+                    @endforeach
                 </div>
             </div>
         </div>
