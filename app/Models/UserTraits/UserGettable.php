@@ -83,24 +83,10 @@ trait UserGettable
     public function active_cases_assigned_to()
     {
         return $this->cases_assigned_to()
-                ->where('dropped_at', null)
-                ->where('workingon_at', null)
-                ->where('defficiency_issued_at', null);
-    } 
-
-    /**
-     * Defines a many to many relationship for case and active case handlers
-     *
-     * @return HasRelationships
-     */
-    public function search_active_cases_assigned_to($search)
-    {
-        return $this->active_cases_assigned_to_all()
-                ->where('subject', 'LIKE', '%'.$search.'%')
-                ->orWhere('parties', 'LIKE', '%'.$search.'%')
-                ->where('handler_id', auth()->user()->id)
-                ->get();
-    } 
+            ->where('dropped_at', null)
+            ->where('workingon_at', null)
+            ->where('defficiency_issued_at', null);
+    }
 
     /**
      * Defines a many to many relationship for case and active case handlers
@@ -110,6 +96,20 @@ trait UserGettable
     public function active_cases_assigned_to_all()
     {
         return $this->cases_assigned_to()->where('dropped_at', null);
+    }
+
+    /**
+     * Defines a many to many relationship for case and active case handlers
+     *
+     * @return HasRelationships
+     */
+    public function search_active_cases_assigned_to($search)
+    {
+        return $this->active_cases_assigned_to_all()
+            ->where('handler_id', $this->id)
+            ->where('subject', 'LIKE', '%'.$search.'%')
+            ->orWhere('parties', 'LIKE', '%'.$search.'%')
+            ->get();
     }
 
     /**
@@ -144,7 +144,7 @@ trait UserGettable
         else:
             return $this->cases_assigned_to()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
         endif;
-        
+
     }
 
     /**

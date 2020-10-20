@@ -17,6 +17,19 @@ class ApplicationController extends Controller
         'saveChecklistDocument' => 'saveChecklistDocument',
     ];
 
+    public function tester()
+    {
+        $user = auth()->user();
+
+        return [
+            $user->active_cases_assigned_to_all,
+            $user->active_cases_assigned_to_all->pluck('subject'),
+            $user->active_cases_assigned_to_all->pluck('parties'),
+            $user->search_active_cases_assigned_to($_GET['s'] ?? 'name')->pluck('subject'),
+            $user->search_active_cases_assigned_to($_GET['s'] ?? 'name')->pluck('parties'),
+        ];
+    }
+
     /**
      * Handles select application page.
      *
@@ -315,7 +328,7 @@ class ApplicationController extends Controller
      * @return \Illuminate\Contracts\View\Factory
      */
     public function checklistDocuments()
-    {   
+    {
         $guest = Guest::where('tracking_id', $_GET['guest'])->first();
         $title = 'Checklist Documents | ' . APP_NAME;
         $description = 'Checklist Documents | ' . APP_NAME;

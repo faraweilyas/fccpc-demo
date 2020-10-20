@@ -6,7 +6,13 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
-    ->group(function () {
+    ->group(function()
+    {
+        Route::get(
+            'tester',
+            'ApplicationController@tester'
+        )->name('tester');
+
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
@@ -51,7 +57,8 @@ Route::prefix('application')
 Route::prefix('enquiries')
     ->name('enquiries.')
     ->namespace('Backend')
-    ->group(function () {
+    ->group(function()
+    {
         Route::get('select', 'EnquiriesController@index')->name('index');
 
         Route::get('all', 'EnquiriesController@logs')
@@ -80,7 +87,8 @@ Route::prefix('faq')
     ->name('faq.')
     ->namespace('Backend')
     ->middleware('auth')
-    ->group(function () {
+    ->group(function()
+    {
         Route::get('create', 'FaqController@create')->name('create');
 
         Route::post('create', 'FaqController@store')->name('create');
@@ -98,7 +106,8 @@ Route::prefix('faq')
 Route::prefix('/')
     ->name('dashboard.')
     ->namespace('Backend')
-    ->group(function () {
+    ->group(function()
+    {
         Route::get('dashboard', 'DashboardController@index')->name('index');
 
         Route::get('user/create', 'DashboardController@createUser')->name(
@@ -137,7 +146,8 @@ Route::prefix('/')
 Route::prefix('cases')
     ->name('cases.')
     ->namespace('Backend')
-    ->group(function () {
+    ->group(function()
+    {
         Route::get('search', 'CasesController@searchCases')->name('search');
 
         Route::get('/new', 'CasesController@unassignedCases')->name(
@@ -244,7 +254,8 @@ Route::prefix('cases')
 Route::prefix('handlers')
     ->name('handlers.')
     ->namespace('Backend')
-    ->group(function () {
+    ->group(function()
+    {
         Route::get('/', 'CaseHandlersController@index')->name('index');
 
         Route::get('create', 'CaseHandlersController@create')->name('create');
