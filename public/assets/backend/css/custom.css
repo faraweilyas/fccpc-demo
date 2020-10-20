@@ -269,13 +269,13 @@ section#orderWizard {
 }
 
 .card__with__bg {
-    background-image: url('../images/svg/linesx2.png');
+    /* background-image: url('../images/svg/linesx2.png'); */
     /* background-size: 22rem; */
     background-position: center right;
     background-repeat: no-repeat;
     backface-visibility: hidden;
     transition: all .8s ease-in-out;
-    height: 35vh !important;
+    height: 35vh !important ;
     padding: 1.5rem 0 !important;
 }
 
