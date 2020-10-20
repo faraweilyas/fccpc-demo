@@ -37,6 +37,7 @@ class CasesController extends Controller
         else:
             $cases = (new Cases())->searchAssignedCases($search);
         endif;
+
         $output = '';
         if ($cases->count() <= 0):
             $output .= '<p>No transaction found!</p>';

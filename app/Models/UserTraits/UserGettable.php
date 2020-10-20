@@ -98,6 +98,7 @@ trait UserGettable
         return $this->active_cases_assigned_to_all()
                 ->where('subject', 'LIKE', '%'.$search.'%')
                 ->orWhere('parties', 'LIKE', '%'.$search.'%')
+                ->where('handler_id', auth()->user()->id)
                 ->get();
     } 
 
