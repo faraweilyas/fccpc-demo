@@ -51,7 +51,7 @@ class Cases extends Model
         return empty($this->submitted_at) ? false : true;
     }
 
-    public function isDeficient() 
+    public function isDeficient()
     {
         return is_null($this->active_handlers[0]->case_handler->defficiency_issued_at) ? false : true;
     }
@@ -81,6 +81,11 @@ class Cases extends Model
     public function getCategory($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories', $this->case_category, $textStyle) ?? "";
+    }
+
+    public function getCategoryText($textStyle=NULL) : string
+    {
+        return \AppHelper::value('case_categories_text', $this->case_category, $textStyle) ?? "";
     }
 
     public function getCategoryHtml($textStyle=NULL) : string
