@@ -118,7 +118,7 @@
                             <h4 class="info-title info-title-margin">
                                 Additional Information:
                             </h4>
-                            <h4>{{ $document->additional_info ?? '...' }}</h4>
+                            <h4 class="info-title-description">{{ $document->additional_info ?? '...' }}</h4>
                         </div>  
                          
                     </div>
