@@ -9,11 +9,6 @@ Route::prefix('application')
     ->group(function()
     {
         Route::get(
-            'tester',
-            'ApplicationController@tester'
-        )->name('tester');
-
-        Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
         )->name('index');
