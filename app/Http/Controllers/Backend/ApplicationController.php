@@ -64,7 +64,7 @@ class ApplicationController extends Controller
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        $case_category = $case->getCategory();
+        $case_category = $case->getCategoryText();
         $case_parties = $case->getCaseParties(false);
         $checklistIds = $case->getChecklistIds();
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();

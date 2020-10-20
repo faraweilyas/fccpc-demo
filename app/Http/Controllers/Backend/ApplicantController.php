@@ -150,6 +150,4 @@ class ApplicantController extends Controller
             "{$groupName}.{$extension}"
         );
     }
-
-
 }
