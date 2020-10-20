@@ -106,11 +106,11 @@
                         <div class="col-md-6 my-5" key={item[0]}>
                          <div class="d-flex py-3 px-3">
                             @if(!empty($document))
-                            <img class="mw-10" src="{{ $document->getIconText() }}" alt="pdf" height="60px" />
-                            <h4 class="py-5 mx-5 cr-pointer w-75" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"> {{ $checklistGroup->name }}</h4>
+                            <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf" height="60px" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"/>
+                            <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"> {{ $checklistGroup->name }}</h4>
                             @else
                                 <img src="{{ pc_asset(BE_IMAGE.'pdf.png') }}" alt="pdf" height="60px" />
-                                <h4 class="py-5 mx-5 text-danger w-75"> {{ $checklistGroup->name }}</h4>
+                                <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted"> {{ $checklistGroup->name }}</h4>
                             @endif
                          </div>
                         </div>
@@ -118,7 +118,7 @@
                             <h4 class="info-title info-title-margin">
                                 Additional Information:
                             </h4>
-                            <h4 class="info-title-description">{{ $document->additional_info ?? '...' }}</h4>
+                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {{ $document->additional_info }} @else ... @endif</h4>
                         </div>  
                          
                     </div>

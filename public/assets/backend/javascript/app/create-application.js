@@ -582,6 +582,12 @@ function saveChecklistDocument(action, currentForm)
         return;
 }
 
+function saveapplicationDocumentation(action, currentForm)
+{
+     _wizard.goNext();
+    KTUtil.scrollTop();
+}
+
 function submitCase()
 {
     var tracking_id = $("#tracking_id").val();
