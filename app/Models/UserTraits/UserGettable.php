@@ -95,9 +95,9 @@ trait UserGettable
      */
     public function search_active_cases_assigned_to($search)
     {
-        return $this->cases_assigned_to()
-                ->where('dropped_at', null)
+        return $this->active_cases_assigned_to_all()
                 ->where('subject', 'LIKE', '%'.$search.'%')
+                ->orWhere('parties', 'LIKE', '%'.$search.'%')
                 ->get();
     } 
 
