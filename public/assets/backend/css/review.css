@@ -381,6 +381,11 @@
 }
 
 .info-title {
+
+    color: #484b74;
+}
+.info-title-margin {
+    margin: 3rem 0;
     color: #484b74;
 }
 
