@@ -41,12 +41,15 @@
 }
 
 .checklist-list {
-    font-size: 1rem;
+    font-size: 1.5rem;
     margin: 1.5rem 0;
 }
 
 .checklist-list-sub {
-    font-size: 1.5rem;
+    font-size: 1rem;
+
+    list-style-type: upper-roman;
+    padding: .5rem 2rem;
     margin: 1.5rem 1rem;
 }
 
