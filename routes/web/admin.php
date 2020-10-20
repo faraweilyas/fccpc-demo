@@ -7,6 +7,9 @@ Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
     ->group(function () {
+        Route::get('checklist/{guest:tracking_id}/{case_category}', 'ApplicationController@checklistDocuments')->name(
+            'checklist-documents'
+        );
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
@@ -42,9 +45,7 @@ Route::prefix('application')
             'ApplicationController@review'
         )->name('review');
 
-        Route::get('checklist', 'ApplicationController@checklistDocuments')->name(
-            'checklist-documents'
-        );
+        
     });
 
 // Enquiries

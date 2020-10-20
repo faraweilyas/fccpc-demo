@@ -314,12 +314,11 @@ class ApplicationController extends Controller
      * @param Guest $guest
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function checklistDocuments()
+    public function checklistDocuments(Guest $guest, $case_category)
     {   
-        $guest = Guest::where('tracking_id', $_GET['guest'])->first();
         $title = 'Checklist Documents | ' . APP_NAME;
         $description = 'Checklist Documents | ' . APP_NAME;
         $details = details($title, $description);
-        return view('backend.applicant.checklist-documents', compact('details', 'guest'));
+        return view('backend.applicant.checklist-documents', compact('details', 'guest', 'case_category'));
     }
 }

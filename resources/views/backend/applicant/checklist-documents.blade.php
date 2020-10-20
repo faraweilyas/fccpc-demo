@@ -13,7 +13,7 @@
                         <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="#" class="text-muted">Checklist Documents</a>
+                        <a href="#" class="text-muted">{{ \AppHelper::value('case_categories', $case_category) }} Checklists</a>
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
 
                 <div class="card__box__large-content">
                     <h3 class="checklist-header">
-                        Document Checklist
+                        {{ \AppHelper::value('case_categories', $case_category) }} Checklists
                     </h3>
                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                     <li class="checklist-list">

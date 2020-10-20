@@ -86,7 +86,7 @@
                             </div>
                         </a>
 
-                          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id]) }}" class="checklist-list">View Local Merger Document Checklist</a>
+                          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'REG']) }}" class="checklist-list">View Local Merger Document Checklist</a>
 
                     </div>
                     <div class="col-md-4">
@@ -120,7 +120,7 @@
                                 </div>
                             </div>
                         </a>
-          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id]) }}" class="checklist-list">View Foreign to Foreign Merger Document Checklist</a>
+          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'FFM']) }}" class="checklist-list">View Foreign to Foreign Merger Document Checklist</a>
 
                     </div>
                     <div class="col-md-4">
@@ -154,7 +154,7 @@
                                 </div>
                             </div>
                         </a>
-          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id]) }}" class="checklist-list">View Expedited to Expedited Document Checklist</a>
+          <a href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'FFX']) }}" class="checklist-list">View Expedited to Expedited Document Checklist</a>
 
                     </div>
                 </div>
