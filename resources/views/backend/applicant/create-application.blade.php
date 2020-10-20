@@ -35,7 +35,7 @@
     </div>
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="container">
-            
+
             <div class="card card-custom">
                 <div class="card-body p-0">
                     <div class="row">
@@ -61,7 +61,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title mt-3">Transaction Information</h3>
+                                            <h3 class="wizard-title">Transaction Information</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title mt-3">Contact Information</h3>
+                                            <h3 class="wizard-title">Contact Information</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title mt-3">{{ $group->name }}</h3>
+                                            <h3 class="wizard-title">{{ $group->name }}</h3>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title mt-3">Submit Application</h3>
+                                            <h3 class="wizard-title">Submit Application</h3>
                                         </div>
                                     </div>
                                 </div>
