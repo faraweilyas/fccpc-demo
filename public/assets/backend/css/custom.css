@@ -268,16 +268,15 @@ section#orderWizard {
     color: #fff !important;
 }
 
-.card__with__bg {
-    /* background-image: url('../images/svg/linesx2.png'); */
-    /* background-size: 22rem; */
+/* .card__with__bg {
+   
     background-position: center right;
     background-repeat: no-repeat;
     backface-visibility: hidden;
     transition: all .8s ease-in-out;
     height: 35vh !important ;
     padding: 1.5rem 0 !important;
-}
+} */
 
 .box-scroll {
     padding: 20px 50px 0px 30px;
@@ -363,6 +362,11 @@ section#orderWizard {
 
 .checklist-list {
     margin: 1rem .2rem;
+}
+
+a.checklist-list {
+    font-size: 1rem;
+    text-decoration: underline;
 }
 
 .card__with__bg:hover, .card__with__bg:focus, .card__with__bg:visited {
