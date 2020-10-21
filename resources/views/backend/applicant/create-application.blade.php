@@ -128,7 +128,7 @@
                                             </span>
                                         </div>
                                         <div class="wizard-label">
-                                            <h3 class="wizard-title">{{ $group->name }}</h3>
+                                            <h3 class="wizard-title">{{ ucfirst($group->name) }}</h3>
                                         </div>
                                     </div>
                                 </div>

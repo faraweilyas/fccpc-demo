@@ -122,13 +122,11 @@ trait UserGettable
         if (in_array(\Auth::user()->account_type, ['SP'])):
             return $this->cases_assigned_by()
                 ->where('dropped_at', null)
-                ->where('workingon_at', '!=', null)
-                ->where('defficiency_issued_at', null);
+                ->where('workingon_at', '!=', null);
         else:
             return $this->cases_assigned_to()
                 ->where('dropped_at', null)
-                ->where('workingon_at', '!=', null)
-                ->where('defficiency_issued_at', null);
+                ->where('workingon_at', '!=', null);
         endif;
     }
 

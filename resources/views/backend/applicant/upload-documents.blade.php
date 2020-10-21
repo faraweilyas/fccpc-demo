@@ -4,7 +4,7 @@
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
     	<div class="d-flex flex-column-fluid">
     		<div class="container">
-                @if($isDeficient)
+                @if(!$isDeficient)
                 <div class="row mt-40">
                     <div class="col-md-6 mx-auto">
                         <div class="card card-custom gutter-b example example-compact">
@@ -39,7 +39,7 @@
     							<h3 class="card-title">Upload Case Document (PDF/DOCX)</h3>
     						</div>
     						<div class="card-body p-0">
-                                <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="false">
+                                <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                                     <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                                         <div class="wizard-steps">
                                             @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
@@ -67,8 +67,7 @@
                                                         </span>
                                                     </div>
                                                     <div class="wizard-label">
-                                                        <h3 class="wizard-title">{{ $checklistGroup->name }}</h3>
-                                                        <div class="wizard-desc">Provide relevant documents</div>
+                                                        <h3 class="wizard-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -90,7 +89,6 @@
                                                     </div>
                                                     <div class="wizard-label">
                                                         <h3 class="wizard-title">Submit Application</h3>
-                                                        <div class="wizard-desc">Finalize application submission</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,7 +111,7 @@
                                                                 <div class="col-md-12">
                                                                     <div class="card card-custom gutter-b example example-compact">
                                                                         <div class="card-header">
-                                                                            <h3 class="card-title">Submit {{ strtolower($checklistGroup->name) }}</h3>
+                                                                            <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                                         </div>
                                                                         <div class="card-body">
                                                                             <p>

@@ -12,7 +12,7 @@ $(document).ready(function()
                             // initial active step number
                             startStep: 1,
                             // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
-                            clickableSteps: false
+                            clickableSteps: true,
                         });
     // var initValidation = function () {
     //     // Step 1
