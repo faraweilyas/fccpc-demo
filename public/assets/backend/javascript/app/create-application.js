@@ -471,8 +471,8 @@ function sendRequest(
         notify(result.responseType, result.message);
         $("#previous-btn").removeAttr('disabled');
         $("#save-info").toggle();
-        $("#saving-img").toggle();
-         _wizard.goNext();
+        $("#saving-img").addClass('hide');
+        _wizard.goNext();
         KTUtil.scrollTop();
     },
     onError = function(xhr, desc, err)
@@ -498,9 +498,9 @@ function saveCaseInfo(action, currentForm)
     var tracking_id = $("#tracking_id").val(),
         case_type   = $("input[name='case_type']:checked").val();
 
-    $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
+
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
         {
@@ -522,7 +522,7 @@ function saveContactInfo(action, currentForm)
     var tracking_id = $("#tracking_id").val();
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
-    $("#saving-img").toggle();
+    $("#saving-img").removeClass('hide');
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -550,7 +550,7 @@ function saveChecklistDocument(action, currentForm)
 
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-info").toggle();
-        $("#saving-img").toggle();
+        $("#saving-img").removeClass('hide');
 
         $(currentForm).find(':checkbox:checked').each(function(i)
         {
@@ -574,7 +574,7 @@ function saveChecklistDocument(action, currentForm)
                 notify(result.responseType, result.message);
                 $("#previous-btn").removeAttr('disabled');
                 $("#save-info").toggle();
-                $("#saving-img").toggle();
+                $("#saving-img").addClass('hide');
                 _wizard.goNext();
                 KTUtil.scrollTop();
             }
