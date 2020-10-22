@@ -147,6 +147,8 @@
                                                 </svg>
                                             </span>
                                         </div>
+
+                                        
                                         <div class="wizard-label">
                                             <h3 class="wizard-title">Submit Application</h3>
                                         </div>
@@ -339,6 +341,108 @@
                                         @endforeach
                                         <div class="pb-5" data-wizard-type="step-content" data-form='ContactInfo'>
                                             <h6 class="mb-10 font-weight-bold text-dark">Please review all the information you provided before submitting application.</h6>
+                                          
+                                                <div id="applications">
+                                                    <div class="card__box__large-content">
+                                                        <h3 class="checklist-header">
+                                                            Summary of Application
+                                                        </h3>
+                                    
+                                                        <p class="review-description">
+                                                            Review your entries for any kind of error. Kindly
+                                                            note that you cannot edit information once it has
+                                                            been submitted.
+                                                        </p>
+                                    
+                                                        <p class="section-header">
+                                                            Application Case Information
+                                                        </p>
+                                    
+                                                        <div class="grid-col-2">
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Subject</h4>
+                                                                <h4>{{ $case->subject }}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                {{-- <h4 class="info-title">Filling Fees</h4>
+                                                                <h4>Paid</h4> --}}
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Parties:</h4>
+                                                                <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                {{-- <h4 class="info-title">Processing Fees:</h4>
+                                                                <h4>Not Paid</h4> --}}
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">
+                                                                    Transaction Type:
+                                                                </h4>
+                                                                <h4>{{ $case->getType() }}</h4>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <p class="section-header">
+                                                            Contact Information
+                                                        </p>
+                                                        <div class="grid-col-2">
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">
+                                                                    Applicant/Representing Firm
+                                                                </h4>
+                                                                <h4>{{ $case->applicant_firm }}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Contact Person</h4>
+                                                                <h4>{{ $case->getApplicantName() }}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Email address:</h4>
+                                                                <h4>{{ $case->applicant_email }}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Phone number:</h4>
+                                                                <h4>{{ $case->applicant_phone_number }}</h4>
+                                                            </div>
+                                                            <div class="grid-row-2">
+                                                                <h4 class="info-title">Address:</h4>
+                                                                <h4>{{ $case->applicant_address }}</h4>
+                                                            </div>
+                                                        </div>
+                                    
+                                                        <p class="section-header">Relevant Documents</p>
+                                                        {{-- @foreach($documents as $document) --}}
+                                                        @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
+                                                        @php
+                                                            $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                                                        @endphp
+                                                        <div class="row">
+                                                            <div class="col-md-6 my-5" key={item[0]}>
+                                                             <div class="d-flex py-3 px-3">
+                                                                @if(!empty($document))
+                                                                <img class="mw-10" src="{{ $document->getIconText() }}" alt="pdf" height="60px" />
+                                                                <h4 class="py-5 mx-5 cr-pointer w-75" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"> {{ $checklistGroup->name }}</h4>
+                                                                @else
+                                                                    <img src="{{ pc_asset(BE_IMAGE.'pdf.png') }}" alt="pdf" height="60px" />
+                                                                    <h4 class="py-5 mx-5 text-danger w-75"> {{ $checklistGroup->name }}</h4>
+                                                                @endif
+                                                             </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <h4 class="info-title info-title-margin">
+                                                                    Additional Information:
+                                                                </h4>
+                                                                <h4 class="info-title-description">{{ $document->additional_info ?? '...' }}</h4>
+                                                            </div>  
+                                                             
+                                                        </div>
+                                                      
+                                                        @endforeach
+                                                      
+                                                    </div>
+                                                </div>
+
                                         </div>
                                         <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                             <div id="upload-img" class="hide">
