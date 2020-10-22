@@ -171,7 +171,6 @@ class CasesController extends Controller
     {
         $cases = \Auth::user()->deficientCases()->get();
         $caseHandlers = (new User())->caseHandlers();
-
         $title = 'Cases On hold| ' . APP_NAME;
         $description = 'Cases On hold| ' . APP_NAME;
         $details = details($title, $description);
