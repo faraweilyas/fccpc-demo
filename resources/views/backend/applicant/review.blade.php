@@ -129,8 +129,7 @@
                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
                       
                         <div class="grid-col-2-btn my-20">
-                            
-                            <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ url('/application')}}/{{$guest->tracking_id }}/{{ $guest->case->case_category }}'">Go back to edit</button>
+                            <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go back to edit</button>
                             <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" data-wizard-type="action-submit">Submit</button>
                             <button id="upload-img" class="btn btn-success hide" disabled>
                                 <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...

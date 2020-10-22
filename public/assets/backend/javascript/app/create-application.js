@@ -10,7 +10,7 @@ $(document).ready(function()
         _validations    = [];
         _wizard         = new KTWizard(_wizardEl, {
                             // initial active step number
-                            startStep: 1,
+                            startStep: $("#current-step").val(),
                             // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
                             clickableSteps: true,
                         });
@@ -344,12 +344,31 @@ $(document).ready(function()
         //     }
         // });
 
-        _wizard.stop();  // Don't go to the next step
+        // _wizard.stop();  
+        // Don't go to the next step
     });
 
     // Change event
     _wizard.on('change', function (wizard) {
+        if($("#application-documentation-section").is(":visible")){
+            $("#save-info").html('Next');
+        } else {
+            $("#save-info").html('Save & Continue');
+        }
+        $("#current-step").val(wizard.currentStep);
         KTUtil.scrollTop();
+    });
+
+
+    if($("#application-documentation-section").is(":visible")){
+        $("#save-info").html('Next');
+    } else {
+        $("#save-info").html('Save & Continue');
+    }
+    
+    $("#review-application").on('click', function (event) {
+        
+        window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review/"+$("#current-step").val();
     });
 
     $("#save-info").on('click', function(event)

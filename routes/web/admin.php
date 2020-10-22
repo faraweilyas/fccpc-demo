@@ -44,7 +44,7 @@ Route::prefix('application')
         )->name('show');
 
         Route::get(
-            '/applicant/{guest:tracking_id}/review',
+            '/applicant/{guest:tracking_id}/review/{step}',
             'ApplicationController@review'
         )->name('review');
     });

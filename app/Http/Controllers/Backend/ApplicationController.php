@@ -286,7 +286,7 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function review(Guest $guest)
+    public function review(Guest $guest, $step)
     {
         $case = $guest->case;
         $checklistIds = $case->getChecklistIds();
@@ -300,6 +300,7 @@ class ApplicationController extends Controller
             compact(
                 'details',
                 'guest',
+                'step',
                 'case',
                 'documents',
                 'checklistIds',
