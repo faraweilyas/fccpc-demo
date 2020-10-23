@@ -42,10 +42,10 @@
                         <div class="col-md-4"></div>
                         <div class="col-md-4"></div>
                         <div class="col-md-4 mt-4">
-                            <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 float-right mr__10" onclick="window.location.href = '{{ url('/application/applicant')}}/{{$guest->tracking_id }}/{{'review'}}'">Review Application</button>
+                            <button id="review-application" data-id="{{ $guest->tracking_id }}" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 float-right mr__10">Review Application</button>
                         </div>
                     </div>
-                    <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="false">
+                    <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                         <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                             <div class="wizard-steps">
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
@@ -147,6 +147,8 @@
                                                 </svg>
                                             </span>
                                         </div>
+
+                                        
                                         <div class="wizard-label">
                                             <h3 class="wizard-title">Submit Application</h3>
                                         </div>
@@ -271,7 +273,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="pb-5" data-wizard-type="step-content" data-form='applicationDocumentation'>
+                                        <div id="application-documentation-section" class="pb-5" data-wizard-type="step-content" data-form='applicationDocumentation'>
                                             <h6 class="mb-10 font-weight-bold text-dark">You are about to enter the application documentation section.</h6>
                                         </div>
                                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
@@ -352,6 +354,7 @@
                                                 <button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
                                                 <button id="saving-img" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Saving...</button>
                                             </div>
+                                            <input type="hidden" id="current-step" value="{{ $_GET['step'] ?? 1 }}">
                                         </div>
                                     </form>
                                 </div>

@@ -36,17 +36,14 @@
     				<div class="col-md-12">
     					<div class="card card-custom gutter-b example example-compact">
     						<div class="card-header">
-    							<h3 class="card-title">Upload Case Document (PDF/DOCX)</h3>
+    							<h3 class="card-title">Upload Deficient Document (PDF/DOCX)</h3>
     						</div>
     						<div class="card-body p-0">
                                 <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                                     <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                                         <div class="wizard-steps">
-                                            @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                                            @php
-                                            $document_check = $checklistGroupDocuments[$checklistGroup->id] ?? '';
-                                            @endphp
-                                            @if($document_check !== '')
+                                            @foreach(\App\Models\ChecklistGroup::all() as $checklistGroup)
+                                            @if((in_array($checklistGroup->id, $newDeficientGroupIds)))
                                             <div class="wizard-step" data-wizard-type="step">
                                                 <div class="wizard-wrapper">
                                                     <div class="wizard-icon">
@@ -86,7 +83,7 @@
                                                     @php
                                                         $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
                                                     @endphp
-                                                    @if($document !== '')
+                                                    @if((in_array($checklistGroup->id, $newDeficientGroupIds)))
                                                         <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
@@ -112,7 +109,7 @@
                                                                                     
                                                                                     <div class="col-md-12 @if($checklist_document_status !== 'deficient') hide @endif">
                                                                                         <label class="checkbox mb-4">
-                                                                                            <input type="checkbox" value="{{ $checklist->id }}" id="checklist_id" {{ $checked }}/>
+                                                                                            <input type="checkbox" value="{{ $checklist->id }}" id="checklist_id" {{ $checked }} />
                                                                                             <span></span>
                                                                                             <small>{{ ucfirst($checklist->name) }} </small>
                                                                                         </label>
@@ -123,8 +120,8 @@
                                                                             <div class="row mt-4">
                                                                                 <div class="col-md-3">
                                                                                     <div class="uploadButton tw-mb-4">
-                                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc">
-                                                                                        <span class="btn btn--small btn--brand checklist_doc_name">Upload File</span>
+                                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                                        <span class="btn btn--small btn--brand checklist_doc_name_{{ $checklistGroup->id}}">Upload File</span>
                                                                                     </div>
                                                                                 </div>
                                                                                 @if(!empty($document))
@@ -154,7 +151,7 @@
                                                         </div>
                                                         <div id="save-btns">
                                                             <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-submit">Save & Upload Case Documents</button>
-                                                            <button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save & Continue</button>
+                                                            <button id="save-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-next">Save</button>
                                                             <button id="saving-img" class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Saving...</button>
                                                         </div>
                                                     </div>

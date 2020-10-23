@@ -10,7 +10,7 @@ $(document).ready(function()
         _validations    = [];
         _wizard         = new KTWizard(_wizardEl, {
                             // initial active step number
-                            startStep: 1,
+                            startStep: $("#current-step").val(),
                             // to make steps clickable this set value true and add data-wizard-clickable="true" in HTML for class="wizard" element
                             clickableSteps: true,
                         });
@@ -343,18 +343,40 @@ $(document).ready(function()
         //         });
         //     }
         // });
-
-        _wizard.stop();  // Don't go to the next step
+        
+        // _wizard.stop();  
+        // Don't go to the next step
     });
 
     // Change event
     _wizard.on('change', function (wizard) {
+        if($("#application-documentation-section").is(":visible")){
+            $("#save-info").html('Next');
+        } else {
+            $("#save-info").html('Save & Continue');
+        }
+        $("#current-step").val(wizard.currentStep);
         KTUtil.scrollTop();
+    });
+
+
+    if($("#application-documentation-section").is(":visible")){
+        $("#save-info").html('Next');
+    } else {
+        $("#save-info").html('Save & Continue');
+    }
+
+    $("#review-application").on('click', function (event) {
+        
+        window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review/"+$("#current-step").val();
     });
 
     $("#save-info").on('click', function(event)
     {
         event.preventDefault();
+
+        var currentStep = _wizard.getStep();
+        _wizard.goTo(currentStep - 1);
 
         var sections    = $('.pb-5'),
             currentForm = sections.filter(function(index, element) {
@@ -471,8 +493,8 @@ function sendRequest(
         notify(result.responseType, result.message);
         $("#previous-btn").removeAttr('disabled');
         $("#save-info").toggle();
-        $("#saving-img").toggle();
-         _wizard.goNext();
+        $("#saving-img").addClass('hide');
+        _wizard.goNext();
         KTUtil.scrollTop();
     },
     onError = function(xhr, desc, err)
@@ -498,9 +520,9 @@ function saveCaseInfo(action, currentForm)
     var tracking_id = $("#tracking_id").val(),
         case_type   = $("input[name='case_type']:checked").val();
 
-    $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
+
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
         {
@@ -522,7 +544,7 @@ function saveContactInfo(action, currentForm)
     var tracking_id = $("#tracking_id").val();
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
-    $("#saving-img").toggle();
+    $("#saving-img").removeClass('hide');
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -550,12 +572,13 @@ function saveChecklistDocument(action, currentForm)
 
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-info").toggle();
-        $("#saving-img").toggle();
+        $("#saving-img").removeClass('hide');
 
         $(currentForm).find(':checkbox:checked').each(function(i)
         {
            checklists[i] = $(this).val();
         });
+
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
@@ -574,7 +597,7 @@ function saveChecklistDocument(action, currentForm)
                 notify(result.responseType, result.message);
                 $("#previous-btn").removeAttr('disabled');
                 $("#save-info").toggle();
-                $("#saving-img").toggle();
+                $("#saving-img").addClass('hide');
                 _wizard.goNext();
                 KTUtil.scrollTop();
             }
