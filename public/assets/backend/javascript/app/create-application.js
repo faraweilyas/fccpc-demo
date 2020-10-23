@@ -343,7 +343,8 @@ $(document).ready(function()
         //         });
         //     }
         // });
-        _wizard.stop();  
+        
+        // _wizard.stop();  
         // Don't go to the next step
     });
 
@@ -373,6 +374,9 @@ $(document).ready(function()
     $("#save-info").on('click', function(event)
     {
         event.preventDefault();
+
+        var currentStep = _wizard.getStep();
+        _wizard.goTo(currentStep - 1);
 
         var sections    = $('.pb-5'),
             currentForm = sections.filter(function(index, element) {
