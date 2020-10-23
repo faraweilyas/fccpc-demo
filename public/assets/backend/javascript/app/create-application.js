@@ -343,8 +343,7 @@ $(document).ready(function()
         //         });
         //     }
         // });
-
-        // _wizard.stop();  
+        _wizard.stop();  
         // Don't go to the next step
     });
 
@@ -365,7 +364,7 @@ $(document).ready(function()
     } else {
         $("#save-info").html('Save & Continue');
     }
-    
+
     $("#review-application").on('click', function (event) {
         
         window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review/"+$("#current-step").val();
@@ -576,28 +575,29 @@ function saveChecklistDocument(action, currentForm)
            checklists[i] = $(this).val();
         });
 
-        formData.append('_token', $("#token").val());
-        formData.append('file', file);
-        formData.append('additional_info', additional_info);
-        formData.append('checklists', checklists);
-        formData.append('document_id', doc_id);
-        sendRequest(
-            '/application/create/'+tracking_id+'/'+action,
-            formData,
-            false,
-            false,
-            function(data, status)
-            {
-                result = JSON.parse(data);
-                currentForm.find("#doc_id").val(result.response.id);
-                notify(result.responseType, result.message);
-                $("#previous-btn").removeAttr('disabled');
-                $("#save-info").toggle();
-                $("#saving-img").addClass('hide');
-                _wizard.goNext();
-                KTUtil.scrollTop();
-            }
-        );
+        console.log(checklists);
+        // formData.append('_token', $("#token").val());
+        // formData.append('file', file);
+        // formData.append('additional_info', additional_info);
+        // formData.append('checklists', checklists);
+        // formData.append('document_id', doc_id);
+        // sendRequest(
+        //     '/application/create/'+tracking_id+'/'+action,
+        //     formData,
+        //     false,
+        //     false,
+        //     function(data, status)
+        //     {
+        //         result = JSON.parse(data);
+        //         currentForm.find("#doc_id").val(result.response.id);
+        //         notify(result.responseType, result.message);
+        //         $("#previous-btn").removeAttr('disabled');
+        //         $("#save-info").toggle();
+        //         $("#saving-img").addClass('hide');
+        //         _wizard.goNext();
+        //         KTUtil.scrollTop();
+        //     }
+        // );
         return;
 }
 

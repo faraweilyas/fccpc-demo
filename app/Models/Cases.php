@@ -172,6 +172,16 @@ class Cases extends Model
             ->toArray();
     }
 
+    public function getDeficientGroupIds() : array
+    {
+        $newDeficientGroupIds = [];
+        foreach ($this->getCaseSubmittedChecklistByStatus('deficient') as $key => $value) {
+           $newDeficientGroupIds[$key] = $value->group_id;
+        }
+
+        return $newDeficientGroupIds;
+    }
+
     public function getChecklistName() : array
     {
         return $this
