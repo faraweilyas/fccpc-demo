@@ -62,9 +62,7 @@
                                             </a>
                                         </td>
                                         <td>
-                                            <span class="label label-lg font-weight-bold label-light-{{ $handler->getStatusHtml() }} label-inline">
-                                                {{ ucfirst($handler->status) }}
-                                            </span>
+                                            {!! $handler->getStatusHtml() !!}
                                         </td>
                                         <td class="text-center" nowrap="nowrap">
                                             @if($handler->status === "active")

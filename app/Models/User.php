@@ -133,23 +133,16 @@ class User extends Authenticatable implements JWTSubject
         return \AppHelper::value('account_types_html', strtoupper($this->account_type), NULL);
     }
 
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus() : string
+    public function getStatus($textStyle='ucfirst') : string
     {
-        return \AppHelper::value('status', $this->status, NULL);
+        return \AppHelper::value('status', $this->status, $textStyle) ?? "";
     }
 
-    /**
-     * Get status html
-     *
-     * @return string
-     */
-    public function getStatusHtml() : string
+    public function getStatusHtml($textStyle='ucfirst') : string
     {
-        return \AppHelper::value('status_html', $this->status, NULL);
+        $status       = $this->getStatus($textStyle);
+        $statusHtml   = \AppHelper::value('status_html', $this->status, NULL) ?? "";
+        return "<span class='label label-{$statusHtml} label-dot mr-2'></span>
+                <span class='font-weight-bold text-{$statusHtml}'>{$status}</span>";
     }
 }

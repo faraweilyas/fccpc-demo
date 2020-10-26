@@ -49,9 +49,7 @@
                                         </span>
     								</td>
     								<td class="text-center">
-    									<span class="label label-lg font-weight-bold label-light-{{ $item->getStatusHtml() }} label-inline">
-                                            {{ $item->getStatus() }}
-                                        </span>
+                                        {!! $item->getStatusHtml() !!}
     								</td>
     								<td class="text-center">
     									@if($item->status == 'active')

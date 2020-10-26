@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 // Application
 Route::prefix('application')
     ->name('application.')
