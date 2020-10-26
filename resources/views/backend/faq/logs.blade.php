@@ -31,7 +31,6 @@
                         <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
                                     <th>Creator</th>
                                     <th>Category</th>
                                     <th>Question</th>
@@ -40,16 +39,14 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php $x = 1 @endphp
                                 @foreach(\App\Models\Faq::all() as $item)
                                 <tr>
-                                    <td>{{ $x }}</td>
                                     <td>{{ $item->getCreator() }}</td>
                                     <td>{!! $item->getCategoryHtml() !!}</td>
                                     <td>{{ $item->getQuestion() }}</td>
                                     <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                     <td nowrap="nowrap" class="text-center">
-                                        <a
+                                        <span
                                             href="#"
                                             class="btn btn-sm btn-light-warning"
                                             title="View Faq Info"
@@ -57,25 +54,25 @@
                                             data-target="#viewFaqModal"
                                         >
                                             <i class="flaticon-eye"></i>
-                                        </a>
-                                        <a
+                                        </span>
+                                        <span
                                             href="#"
-                                            class="btn btn-sm btn-light-primary"
+                                            class="btn btn-sm btn-light-primary crus"
                                             title="Edit Faq"
-                                            onclick="window.location.href = '{{ route('faq.edit', ['faq' => $item->id]) }}';"
+                                            {{-- onclick="window.location.href = '{{ route('faq.edit', ['faq' => $item->id]) }}';" --}}
                                         >
                                             <i class="flaticon-edit"></i>
-                                        </a>
-                                        <a
+                                        </span>
+                                        <span
                                             href="#"
-                                            class="btn btn-sm btn-light-danger"
+                                            class="btn btn-sm btn-light-danger delete_faq"
                                             title="Delete Faq"
-                                            onclick="window.location.href = '{{ route('faq.delete', ['faq' => $item->id]) }}';"
+                                            data-route="{{ route('faq.delete', ['faq' => $item->id]) }}"
                                         >
                                             <i class="flaticon-delete"></i>
-                                        </a>
+                                        </span>
                                         <div class="hide">
-                                            {{-- Case --}}
+                                            {{-- Logs --}}
                                             <span class="creator">{{ $item->getCreator() }}</span>
                                             <span class="category">{!! $item->getCategoryHtml() !!}</span>
                                             <span class="question">{{ $item->question }}</span>
@@ -84,7 +81,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @php $x++ @endphp
                                 @endforeach
                             </tbody>
                         </table>

@@ -31,7 +31,6 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    <th class="text-center">#</th>
                                     <th>Reference NO</th>
                                     <th>Subject</th>
                                     <th class="text-center">Category</th>
@@ -41,11 +40,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                @php
-                                    $id = 1;
-                                @endphp
-
                                 @foreach($cases as $case)
                                     <tr>
                                         <td class="text-center">{{ $id }}</td>
@@ -121,9 +115,6 @@
                                             </div>
                                         </td>
                                     </tr>
-
-                                    @php $id++; @endphp
-
                                 @endforeach
                             </tbody>
                         </table>

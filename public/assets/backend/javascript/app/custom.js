@@ -1,4 +1,9 @@
 $(document).ready(function() {
+    toastr.options = {
+        "progressBar": true,
+        "positionClass": "toast-bottom-right",
+    };
+
     $('#get_categories').select2();
     $('#get_account_types').select2();
     
@@ -55,5 +60,42 @@ $(document).ready(function() {
         } else {
 			$('.autoComplete').hide();
         }
+    });
+
+    $(".crus").on('click', function (argument) {
+        // body...
+        console.lgo(true);
+    })
+
+    $(".delete_faq").on('click', function (e) {
+        var faq_delete_route  = $(this).attr('data-route'); 
+         swal.fire({
+            title: "Are you sure?",
+            text: "You want to delete this FAQ!",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete FAQ!"
+        }).then(function(result)
+        {
+            if (result.value) {
+                $.ajax({
+                    url: faq_delete_route,
+                    type: 'GET',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {}, 
+                    success: function(response){
+                      if(response)
+                      {
+                        toastr.success("Faq created successfully!");
+                        location.reload();
+                      } else {
+                        toastr.error("Faq not created successfully!");
+                      }
+                    }
+                });
+                
+            } else {
+                return false;
+            }
+        });
     });
 });

@@ -71,7 +71,7 @@
                                             <span></span>
                                         @endif
                                         <div class="hide">
-                                            {{-- Case --}}
+                                            {{-- Logs --}}
                                             <span class="email">{{ $item->email }}</span>
                                             <span class="message">{{ $item->message }}</span>
                                         </div>
