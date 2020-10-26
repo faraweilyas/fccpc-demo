@@ -68,7 +68,7 @@
                                                 {!! $case->getSubmittedAt() !!}
                                             </div>
                                         </td>
-                                        <td nowrap="nowrap">
+                                        <td nowrap="nowrap" class="text-center">
                                             @if(in_array(\Auth::user()->account_type, ['SP']))
                                             <a
                                                 href="#"

@@ -101,7 +101,7 @@ class DashboardController extends Controller
         $check_status = User::findOrFail($id);
 
         User::whereId($id)->update([
-            'status' => !$check_status->status
+            'status' => ($check_status->status == 'active') ? 'inactive' : 'active'
         ]);
 
         return redirect()->back()->with("success", "User's status updated");

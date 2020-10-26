@@ -33,9 +33,9 @@
     							<tr>
     								<th>Name</th>
     								<th>Email</th>
-    								<th>Account Type</th>
-    								<th>Status</th>
-    								<th>Actions</th>
+    								<th class="text-center">Account Type</th>
+    								<th class="text-center">Status</th>
+    								<th class="text-center">Actions</th>
     							</tr>
     						</thead>
     						<tbody>
@@ -43,25 +43,33 @@
     							<tr>
     								<td>{{ $item->getFullName() }}</td>
     								<td>{{ $item->email }}</td>
-    								<td>
+    								<td class="text-center">
     									<span class="label label-lg font-weight-bold label-light-{{ $item->getAccountTypeHtml() }} label-inline">
                                             {{ $item->getAccountType() }}
                                         </span>
     								</td>
-    								<td>
+    								<td class="text-center">
     									<span class="label label-lg font-weight-bold label-light-{{ $item->getStatusHtml() }} label-inline">
                                             {{ $item->getStatus() }}
                                         </span>
     								</td>
-    								<td>
+    								<td class="text-center">
     									@if($item->status == 'active')
-    										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-danger" title="Deactivate User">
-    											<i class="la la-times-circle"></i>&nbsp;&nbsp;Deactivate
-    										</a>
+                                            <a
+                                                href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}"
+                                                class="btn btn-sm btn-light-danger mr-3"
+                                                title="Deactivate User"
+                                            >
+                                                <i class="flaticon-user-settings"></i> Deactivate
+                                            </a>
     									@else
-    										<a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}" class="btn btn-sm btn-icon text-hover-primary" title="View Case">
-    											<i class="la la-check"></i>&nbsp;&nbsp;Activate
-    										</a>
+                                            <a
+                                                href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}"
+                                                class="btn btn-sm btn-light-success mr-3"
+                                                title="Activate User"
+                                            >
+                                                <i class="flaticon-user-add"></i> Activate
+                                            </a>
     									@endif
     								</td>
     							</tr>

@@ -68,7 +68,7 @@
                                                 {!! $case->getSubmittedAt('customdate') !!}
                                             </div>
                                         </td>
-                                        <td nowrap="nowrap">
+                                        <td nowrap="nowrap" class="text-center">
                                             <a
                                                 href="#"
                                                 class="btn btn-sm btn-light-warning mr-3"

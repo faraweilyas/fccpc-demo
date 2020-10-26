@@ -5,13 +5,13 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">All FAQs</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">FAQs</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">All FAQs</a>
+                            <a href="" class="text-muted">FAQs</a>
                         </li>
                     </ul>
                 </div>
@@ -24,56 +24,67 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
-                            <h3 class="card-label">All FAQs</h3>
+                            <h3 class="card-label">FAQs</h3>
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable" id="kt_datatable">
+                        <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
+                                    <th>Id</th>
                                     <th>Creator</th>
+                                    <th>Category</th>
                                     <th>Question</th>
-                                    <th class="text-center">Answer</th>
-                                    <th class="text-center">Category</th>
                                     <th>Created</th>
-                                    <th>Actions</th>
+                                    <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php $x = 1 @endphp
                                 @foreach(\App\Models\Faq::all() as $item)
                                 <tr>
-                                    <td><b>{{ $item->getCreator() }}</b></td>
-                                    <td>{{ $item->question }}</td>
-                                    <td class="text-center" data-toggle="tooltip" title="{{ $item->answer }}">
-                                        {{ $item->getAnswer() }}
-                                    </td>
-                                    <td class="text-center">
-                                        {{ $item->getCategory() }}
-                                    </td>
+                                    <td>{{ $x }}</td>
+                                    <td>{{ $item->getCreator() }}</td>
+                                    <td>{!! $item->getCategoryHtml() !!}</td>
+                                    <td>{{ $item->getQuestion() }}</td>
                                     <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
-                                    <td nowrap="nowrap">
-                                        <div class="dropdown dropdown-inline">
-                                            <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="dropdown">
-                                                <i class="fas fa-ellipsis-h"></i>
-                                            </a>
-                                            <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
-                                                <ul class="nav nav-hoverable flex-column">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link text-hover-primary" href="{{ route('faq.edit', ['faq' => $item->id]) }}">
-                                                            <i class="nav-icon la la-edit"></i>
-                                                            <span class="nav-text">Edit</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a href="{{ route('faq.delete', ['faq' => $item->id]) }}" class="nav-link text-hover-danger" title="Remove Faq">
-                                                            <i class="la la-times-circle"></i>&nbsp;&nbsp;Remove
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                    <td nowrap="nowrap" class="text-center">
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-light-warning"
+                                            title="View Faq Info"
+                                            data-toggle="modal"
+                                            data-target="#viewFaqModal"
+                                        >
+                                            <i class="flaticon-eye"></i>
+                                        </a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-light-primary"
+                                            title="Edit Faq"
+                                            onclick="window.location.href = '{{ route('faq.edit', ['faq' => $item->id]) }}';"
+                                        >
+                                            <i class="flaticon-edit"></i>
+                                        </a>
+                                        <a
+                                            href="#"
+                                            class="btn btn-sm btn-light-danger"
+                                            title="Delete Faq"
+                                            onclick="window.location.href = '{{ route('faq.delete', ['faq' => $item->id]) }}';"
+                                        >
+                                            <i class="flaticon-delete"></i>
+                                        </a>
+                                        <div class="hide">
+                                            {{-- Case --}}
+                                            <span class="creator">{{ $item->getCreator() }}</span>
+                                            <span class="category">{!! $item->getCategoryHtml() !!}</span>
+                                            <span class="question">{{ $item->question }}</span>
+                                            <span class="answer">{!! nl2br($item->answer) !!}</span>
+                                            <span class="created">{{ datetimeToText($item->created_at, 'customd') }}</span>
                                         </div>
                                     </td>
                                 </tr>
+                                @php $x++ @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -82,7 +93,10 @@
             </div>
         </div>
     </div>
+    <!-- Modals -->
+    @include("layouts.modals.faq")
 @endsection
+
 @section('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
 @endsection

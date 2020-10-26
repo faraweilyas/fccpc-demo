@@ -236,6 +236,24 @@ $(document).ready(function () {
         return;
     });
 
+   $('#viewFaqModal').on('shown.bs.modal', function (event) {
+        var viewButton = $(event.relatedTarget);
+            caseContainer = viewButton.parent('td').parent('tr'),
+            thisModal = $(this),
+            creator  = thisModal.find('#creator');
+            category = thisModal.find('#category');
+            question = thisModal.find('#question');
+            answer   = thisModal.find('#answer');
+            created  = thisModal.find('#created');
+
+            creator.html(caseContainer.find('.creator').html());
+            category.html(caseContainer.find('.category').html());
+            question.html(caseContainer.find('.question').html());
+            answer.html(caseContainer.find('.answer').html());
+            created.html(caseContainer.find('.created').html());
+        return;
+    });
+
     $('#assignCaseModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
         caseContainer = assignButton.parent('td').parent('tr'),

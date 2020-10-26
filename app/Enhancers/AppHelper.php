@@ -50,12 +50,12 @@ class AppHelper
 
     protected $status = [
         'inactive' => 'Inactive',
-        'active' => 'Active',
+        'active'   => 'Active',
     ];
 
     protected $status_html = [
         'inactive' => 'danger',
-        'active' => 'success',
+        'active'   => 'success',
     ];
 
 	protected $case_categories = [
@@ -124,6 +124,12 @@ class AppHelper
         "GEN" => "General",
         "ENQ" => "Enquiry",
         "GES" => "Getting Started"
+    ];
+
+    protected $faq_categories_html = [
+        "GEN" => "primary",
+        "ENQ" => "secondary",
+        "GES" => "warning"
     ];
 
     protected $faq_categories_description = [

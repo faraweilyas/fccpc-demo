@@ -75,14 +75,24 @@ class Faq extends Model
         return textTransformer(shortenContent($this->answer, $length), $textStyle);
     }
 
+    public function getCategory($textStyle='ucfirst') : string
+    {
+        return \AppHelper::value('faq_categories', $this->category, $textStyle) ?? "";
+    }
+
     /**
      * Get category
      *
      * @param string $textStyle
      * @return string
      */
-    public function getCategory($textStyle='strtoupper') : string
+    public function getCategoryHtml($textStyle='strtoupper') : string
     {
-        return textTransformer(AppHelper::$faq_categories[$this->category] ?? "", $textStyle);
+        $category       = $this->getCategory();
+        $categoryHtml   = \AppHelper::value('faq_categories_html', $this->category, NULL) ?? "";
+        return "<span class='label label-lg font-weight-bold label-light-{$categoryHtml} text-dark label-inline'>
+                                            <b>{$category}</b>
+                                        </span>";
+        // return textTransformer(\AppHelper::value('faq_categories', $this->category) ?? "", $textStyle);
     }
 }

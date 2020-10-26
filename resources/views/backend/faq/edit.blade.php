@@ -57,7 +57,7 @@
                                     <div class="row">
                                         <div class="col-md-8 mx-auto">
                                             <label>Question Category</label> <span class="text-danger">*</span>
-                                            <select class="form-control selectpicker" name="category">
+                                            <select class="form-control select2" name="category" id="get_categories">
                                                 @foreach(\AppHelper::get('faq_categories') as $key => $value)
                                                 <option value="{{ $key }}" {{ $key == $faq->category ? 'selected' : '' }}>{{ $value }}</option>
                                                 @endforeach

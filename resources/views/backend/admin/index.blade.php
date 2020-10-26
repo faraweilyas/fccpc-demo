@@ -27,7 +27,22 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
-
+                @if(in_array(\Auth::user()->account_type, ['AD']))
+                <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('dashboard.users') }}';">
+                    <div class="dashboard-card purple">
+                        <p>Users</p>
+                        <span>{{ \App\Models\User::where('status', 'active')->count() }}</span>
+                        <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                    </div>
+                </div>
+                <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('faq.faqs') }}';">
+                    <div class="dashboard-card blue">
+                        <p>FAQs</p>
+                        <span>{{ \App\Models\Faq::all()->count() }}</span>
+                        <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                    </div>
+                </div>
+                @endif
                 @if(in_array(\Auth::user()->account_type, ['SP']))
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
                     <div class="dashboard-card purple">
