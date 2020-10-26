@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    $('#get_categories').select2();
+    
 	$("#start_doc_approval").on('click', function (e) {
 		var approval_link  = $(this).attr('data-link'); 
 		var workingon_link = $(this).attr('data-workingon-link'); 

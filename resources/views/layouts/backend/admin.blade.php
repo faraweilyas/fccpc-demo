@@ -84,7 +84,7 @@
                         <span class="menu-text">Dashboard</span>
                     </a>
                 </li>
-
+                @if(!in_array(\Auth::user()->account_type, ['AD']))
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -250,21 +250,40 @@
                         <span class="menu-text">Generate Report</span>
                     </a>
                 </li>
+                @endif
                 @if(in_array(\Auth::user()->account_type, ['AD']))
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="svg-icon menu-icon">
+                       <span class="svg-icon menu-icon">
                             <!--begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg-->
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <rect x="0" y="0" width="24" height="24" />
-                                    <rect fill="#000000" x="4" y="4" width="7" height="7" rx="1.5" />
-                                    <path
-                                        d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z"
-                                        fill="#000000" opacity="0.3" />
-                                </g>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path opacity="0.3" fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M8 3V3.5C8 4.32843 8.67157 5 9.5 5H14.5C15.3284 5 16 4.32843 16 3.5V3H18C19.1046 3 20 3.89543 20 5V21C20 22.1046 19.1046 23 18 23H6C4.89543 23 4 22.1046 4 21V5C4 3.89543 4.89543 3 6 3H8Z"
+                                    fill="#A9B3BE" />
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M11 2C11 1.44772 11.4477 1 12 1C12.5523 1 13 1.44772 13 2H14.5C14.7761 2 15 2.22386 15 2.5V3.5C15 3.77614 14.7761 4 14.5 4H9.5C9.22386 4 9 3.77614 9 3.5V2.5C9 2.22386 9.22386 2 9.5 2H11Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M16 9H11C10.4477 9 10 9.44772 10 10C10 10.5523 10.4477 11 11 11H16C16.5523 11 17 10.5523 17 10C17 9.44772 16.5523 9 16 9Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M9 10C9 9.44772 8.55228 9 8 9C7.44772 9 7 9.44772 7 10C7 10.5523 7.44772 11 8 11C8.55228 11 9 10.5523 9 10Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M9 14C9 13.4477 8.55228 13 8 13C7.44772 13 7 13.4477 7 14C7 14.5523 7.44772 15 8 15C8.55228 15 9 14.5523 9 14Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M16 13H11C10.4477 13 10 13.4477 10 14C10 14.5523 10.4477 15 11 15H16C16.5523 15 17 14.5523 17 14C17 13.4477 16.5523 13 16 13Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M9 18C9 17.4477 8.55228 17 8 17C7.44772 17 7 17.4477 7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18Z"
+                                    fill="#A9B3BE" />
+                                <path opacity="0.3"
+                                    d="M16 17H11C10.4477 17 10 17.4477 10 18C10 18.5523 10.4477 19 11 19H16C16.5523 19 17 18.5523 17 18C17 17.4477 16.5523 17 16 17Z"
+                                    fill="#A9B3BE" />
                             </svg>
+
                             <!--end::Svg Icon-->
                         </span>
                         <span class="menu-text">FAQ</span>
@@ -273,11 +292,6 @@
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">Enquiries</span>
-                                </span>
-                            </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('faq.create') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">

@@ -86,6 +86,7 @@ class FaqController extends Controller
 
         $result = Faq::create([
             'user_id'   => Auth::user()->id,
+            'slug'      => Str::slug(request('question')),
             'question'  => trim(request('question')),
             'answer'    => trim(request('answer')),
             'category'  => trim(request('category')),
