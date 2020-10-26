@@ -67,14 +67,22 @@
                 <div class="col-lg-3 my-5"  onclick="window.location.href = '{{ route('cases.working_on') }}';">
                     <div class="dashboard-card orange">
                         <p>Ongoing</p>
-                        <span>{{ \Auth::user()->cases_working_on()->count() }}</span>
+                        @if(in_array(\Auth::user()->account_type, ['SP']))
+                        <span>{{ \Auth::user()->cases_working_on_by()->count() }}</span>
+                        @else
+                        <span>{{ \Auth::user()->cases_working_on_to()->count() }}</span>
+                        @endif
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.on-hold') }}';">
                     <div class="dashboard-card redish-orange">
                         <p>On Hold</p>
-                         <span>{{ \Auth::user()->deficientCases()->count() }}</span>
+                         @if(in_array(\Auth::user()->account_type, ['SP']))
+                        <span>{{ \Auth::user()->deficient_cases_by()->count() }}</span>
+                        @else
+                        <span>{{ \Auth::user()->deficient_cases_to()->count() }}</span>
+                        @endif
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>

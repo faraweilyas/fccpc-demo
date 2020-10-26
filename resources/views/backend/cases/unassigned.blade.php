@@ -42,7 +42,6 @@
                             <tbody>
                                 @foreach($cases as $case)
                                     <tr>
-                                        <td class="text-center">{{ $id }}</td>
                                         <td>
                                             <div class="font-weight-bolder text-dark mb-0">
                                                 {!! $case->getRefNO() !!}

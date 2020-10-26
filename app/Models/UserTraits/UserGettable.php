@@ -113,35 +113,52 @@ trait UserGettable
     }
 
     /**
+     * Defines a relationship for case being worked by all handlers for supervisor
+     *
+     * @return HasRelationships
+     */
+    public function cases_working_on_by()
+    {
+        return $this->cases_assigned_by()
+            ->where('dropped_at', null)
+            ->where('workingon_at', '!=', null);
+    }
+
+    /**
      * Defines a relationship for case being worked on by case handler
      *
      * @return HasRelationships
      */
-    public function cases_working_on()
+    public function cases_working_on_to()
     {
-        if (in_array(\Auth::user()->account_type, ['SP'])):
-            return $this->cases_assigned_by()
-                ->where('dropped_at', null)
-                ->where('workingon_at', '!=', null);
-        else:
-            return $this->cases_assigned_to()
-                ->where('dropped_at', null)
-                ->where('workingon_at', '!=', null);
-        endif;
+        return $this->cases_assigned_to()
+            ->where('dropped_at', null)
+            ->where('workingon_at', '!=', null);
     }
 
     /**
-     * Gets deficient cases
+     * Gets deficient cases by supervisor
      *
      * @return Collection
      */
-    public function deficientCases()
+    public function deficient_cases_by()
     {
-        if (in_array(\Auth::user()->account_type, ['SP'])):
-            return $this->cases_assigned_by()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
-        else:
-            return $this->cases_assigned_to()->where('dropped_at', null)->where('defficiency_issued_at', '!=', null);
-        endif;
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('defficiency_issued_at', '!=', null);
+
+    }
+
+    /**
+     * Gets deficient cases for case handler
+     *
+     * @return Collection
+     */
+    public function deficient_cases_to()
+    {
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('defficiency_issued_at', '!=', null);
 
     }
 

@@ -128,9 +128,17 @@ class CasesController extends Controller
     public function workingonCases(User $handler)
     {
         if ($handler->status):
-            $cases = $handler->cases_working_on()->get();
+            if(in_array(\Auth::user()->account_type, ['SP'])):
+                $cases = $handler->cases_working_on_by()->get();
+            else:
+                $cases = $handler->cases_working_on_to()->get();
+            endif;
         else:
-            $cases = \Auth::user()->cases_working_on()->get();
+            if(in_array(\Auth::user()->account_type, ['SP'])):
+                $cases = \Auth::user()->cases_working_on_by()->get();
+            else:
+                $cases = \Auth::user()->cases_working_on_to()->get();
+            endif;
         endif;
 
         $caseHandlers = (new User())->caseHandlers();
@@ -167,9 +175,22 @@ class CasesController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function onholdCases()
+    public function onholdCases(User $handler)
     {
-        $cases = \Auth::user()->deficientCases()->get();
+        if ($handler->status):
+            if(in_array(\Auth::user()->account_type, ['SP'])):
+                $cases = $handler->deficient_cases_by()->get();
+            else:
+                $cases = $handler->deficient_cases_to()->get();
+            endif;
+        else:
+            if(in_array(\Auth::user()->account_type, ['SP'])):
+                $cases = \Auth::user()->deficient_cases_by()->get();
+            else:
+                $cases = \Auth::user()->deficient_cases_to()->get();
+            endif;
+        endif;
+
         $caseHandlers = (new User())->caseHandlers();
         $title = 'Cases On hold| ' . APP_NAME;
         $description = 'Cases On hold| ' . APP_NAME;

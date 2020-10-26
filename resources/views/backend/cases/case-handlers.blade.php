@@ -34,7 +34,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th class="text-center">Assigned Cases</th>
-                                        <th class="text-center">Dropped Cases</th>
+                                        <th class="text-center">Cases On Hold</th>
                                         <th class="text-center">Ongoing Cases</th>
                                         <th>Status</th>
                                         <th class="text-center">Actions</th>
@@ -52,13 +52,13 @@
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                             <a href="@if($handler->dropped_cases_assigned_to()->count() > 0) {{ route('cases.dropped', ['handler' => $handler->id]) }} @else # @endif">
-                                                <span class="badge badge-secondary"><b>{{ $handler->dropped_cases_assigned_to()->count() }}</b></span>
+                                             <a href="@if($handler-> deficient_cases_to()->count() > 0) {{ route('cases.on-hold', ['handler' => $handler->id]) }} @else # @endif">
+                                                <span class="badge badge-secondary"><b>{{ $handler->deficient_cases_to()->count() }}</b></span>
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                             <a href="@if($handler->cases_working_on()->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
-                                                <span class="badge badge-secondary"><b>{{ $handler->cases_working_on()->count() }}</b></span>
+                                             <a href="@if($handler->cases_working_on_to()->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
+                                                <span class="badge badge-secondary"><b>{{ $handler->cases_working_on_to()->count() }}</b></span>
                                             </a>
                                         </td>
                                         <td>

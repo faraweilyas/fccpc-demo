@@ -35,7 +35,17 @@
 
     <div class="card-custom relative">
         <h5 class="text-bold">Submitted Documents</h5>
-        @if(\Auth::user()->cases_working_on()->where('case_id', $case->id)->count() > 0)
+        @if(in_array(\Auth::user()->account_type, ['SP']))
+            @php 
+                $cases = \Auth::user()->cases_working_on_by()->where('case_id', $case->id);
+            @endphp
+        @else
+            @php 
+                $cases = \Auth::user()->cases_working_on_to()->where('case_id', $case->id);
+            @endphp
+        @endif
+        
+        @if($cases->count() > 0)
             <a href="{{ route('cases.checklist-approval',[$case->id]) }}" class="btn btn-success-transparent-download">
                 Continue Document Approval
             </a>

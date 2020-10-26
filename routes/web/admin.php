@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+auth()->loginUsingId(6);
 // Application
 Route::prefix('application')
     ->name('application.')
@@ -167,7 +168,7 @@ Route::prefix('cases')
             'approved'
         );
 
-        Route::get('on-hold', 'CasesController@onholdCases')->name('on-hold');
+        Route::get('on-hold/{handler?}', 'CasesController@onholdCases')->name('on-hold');
 
         Route::get('/archived', 'CasesController@archivedCases')->name(
             'archived'

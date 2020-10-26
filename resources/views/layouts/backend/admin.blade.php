@@ -405,8 +405,16 @@
         <!--end::Header-->
         <!--begin::Content-->
         <div class="offcanvas-content pr-5 mr-n5">
-
-            @foreach(\Auth::user()->cases_working_on()->get() as $case)
+            @if(in_array(\Auth::user()->account_type, ['SP']))
+                @php 
+                    $cases = \Auth::user()->cases_working_on_by()->get();
+                @endphp
+            @else
+                @php 
+                    $cases = \Auth::user()->cases_working_on_to()->get();
+                @endphp
+            @endif
+            @foreach($cases as $case)
             <!-- case-handler -->
             <div class="notifications-cards cr-pointer"
                 onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
