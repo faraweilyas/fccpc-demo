@@ -27,7 +27,7 @@
               {{ $faq->question }}
             </div>
             <div class="faq-answer-content">
-              {{ nl2br($faq->answer) }}
+              {!! nl2br($faq->answer) !!}}
             </div>
 
             <div class="faq-answer-header">
