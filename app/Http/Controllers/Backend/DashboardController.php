@@ -8,6 +8,7 @@ use App\Models\Cases;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\NewUser;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -67,6 +68,10 @@ class DashboardController extends Controller
             'password'      => Hash::make(config('app.default_password')),
             'account_type'   => $request->accountType,
         ]);
+
+        $user->notify(
+                new NewUser($request->email, config('app.default_password'))
+            );   
 
         return redirect()->back()->with("success", "User created sucessfully");
     }
