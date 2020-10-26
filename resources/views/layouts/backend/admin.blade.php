@@ -537,7 +537,7 @@
             <!--begin::Toggle-->
 
 
-
+            @if(!in_array(\Auth::user()->account_type, ['AD']))
             <div class="topbar-item mx-2" id="kt_quick_panel_toggle">
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                     <span class="symbol symbol-35 mx-2">
@@ -562,6 +562,7 @@
                     </a>
                 </div>
             </div>
+            @endif
             <div class="topbar-item">
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                     <a href="{{ route('dashboard.profile') }}">

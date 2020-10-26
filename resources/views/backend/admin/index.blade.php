@@ -37,6 +37,7 @@
                     </div>
                 </div>
                 @endif
+                @if(!in_array(\Auth::user()->account_type, ['AD']))
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
                         <p>Assigned Cases</p>
@@ -62,6 +63,7 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
+                @endif
 			</div>	
 			<div class="row mt-10">
 				<div class="col-lg-6">
