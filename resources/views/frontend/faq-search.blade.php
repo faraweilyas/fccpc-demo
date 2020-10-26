@@ -30,7 +30,7 @@
               {{ $faq->answer }}
             </div>
 
-            <div class="faq-answer-header">
+            <div class="faq-sub-header">
               Was this article Helpful?
             </div>
             <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
