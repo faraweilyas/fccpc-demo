@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#get_categories').select2();
+    $('#get_account_types').select2();
     
 	$("#start_doc_approval").on('click', function (e) {
 		var approval_link  = $(this).attr('data-link'); 

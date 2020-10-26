@@ -61,11 +61,11 @@ class DashboardController extends Controller
         ]);
 
         User::create([
-            'firstName'     => trim(ucfirst($request->firstName)),
-            'lastName'      => trim(ucfirst($request->lastName)),
+            'first_name'     => trim(ucfirst($request->firstName)),
+            'last_name'      => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
             'password'      => Hash::make(config('app.default_password')),
-            'accountType'   => $request->accountType,
+            'account_type'   => $request->accountType,
         ]);
 
         return redirect()->back()->with("success", "User created sucessfully");

@@ -16,6 +16,16 @@ body {
     font-size: 1.5rem;
 }
 
+.menu-item > .menu-link .menu_icon_custom
+{
+    flex: 0 0 35px;
+    font-size: 1.3rem;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    line-height: 0;
+}
+
 .flatpickr-day.selected
 {
     background: #135c40;

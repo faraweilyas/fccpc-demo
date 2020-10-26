@@ -34,7 +34,7 @@
     									<div class="col-md-6">
     										<div class="form-group">
     											<label>Account Type</label> <span class="text-danger">*</span>
-    											<select class="form-control selectpicker" name="accountType">
+    											<select class="form-control select2" name="accountType" id="get_account_types">
                                                     <option value="">Select account type</option>
                                                     @foreach(\AppHelper::values('account_types') as $key => $value)
                                                         <option value="{{ $key }}">{{ $value }}</option>
@@ -92,4 +92,7 @@
     		</div>
     	</div>
     </div>
+@endsection
+@section('custom.javascript')
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
 @endsection
