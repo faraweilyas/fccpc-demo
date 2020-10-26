@@ -148,7 +148,7 @@
                                             </span>
                                         </div>
 
-                                        
+
                                         <div class="wizard-label">
                                             <h3 class="wizard-title">Submit Application</h3>
                                         </div>
@@ -218,12 +218,12 @@
                                                     <label class="radio">
                                                         <input type="radio" name="case_type" {{ ($case->case_type == "SM") ? 'checked="checked"' : '' }} value="SM" />
                                                         Small<span></span> &nbsp;&nbsp;
-                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction below 1 Million Naira"></i>
+                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A small merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria is Five Hundred Million Naira and below. "></i>
                                                     </label>
                                                     <label class="radio">
                                                         <input type="radio" name="case_type" {{ ($case->case_type == "LG") ? 'checked="checked"' : '' }} value="LG" />
                                                         Large<span></span> &nbsp;&nbsp;
-                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="Transaction above 1 Million Naira"></i>
+                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A large merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria equals or exceeds One Billion Naira OR the annual turnover of the target undertaking in, into or from Nigeria equals or exceeds Five Hundred Million Naira. "></i>
                                                     </label>
                                                 </div>
                                             </div>
