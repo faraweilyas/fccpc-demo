@@ -31,7 +31,7 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 mx-auto">
                                             <div class="form-group">
                                                 <label>Question</label> <span class="text-danger">*</span>
                                                 <input type="text" class="form-control" placeholder="Enter question" name="question" value="{{ $faq->question ?? '' }}">
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 mx-auto">
                                             <div class="form-group">
                                                 <label>Answer</label> <span class="text-danger">*</span>
                                                 <textarea type="text" class="form-control" cols="4" rows="4" name="answer" value="{{ $faq->answer ?? '' }}">{{ $faq->answer ?? '' }}</textarea>
@@ -55,10 +55,10 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-8">
+                                        <div class="col-md-8 mx-auto">
                                             <label>Question Category</label> <span class="text-danger">*</span>
                                             <select class="form-control selectpicker" name="category">
-                                                @foreach(\AppHelper::values('faq_categories') as $key => $value)
+                                                @foreach(\AppHelper::get('faq_categories') as $key => $value)
                                                 <option value="{{ $key }}" {{ $key == $faq->category ? 'selected' : '' }}>{{ $value }}</option>
                                                 @endforeach
                                             </select>
@@ -80,4 +80,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('custom.javascript')
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
 @endsection

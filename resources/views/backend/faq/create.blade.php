@@ -58,7 +58,7 @@
                                         <div class="col-md-8 mx-auto">
                                             <label>Question Category</label> <span class="text-danger">*</span>
                                             <select class="form-control select2" name="category" id="get_categories">
-                                                @foreach(\AppHelper::values('faq_categories') as $key => $value)
+                                                @foreach(\AppHelper::get('faq_categories') as $key => $value)
                                                 <option value="{{ $key }}">{{ $value }}</option>
                                                 @endforeach
                                             </select>
