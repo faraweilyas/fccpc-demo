@@ -500,6 +500,9 @@ function sendRequest(
     onError = function(xhr, desc, err)
     {
         notify(desc, err);
+        $("#previous-btn").removeAttr('disabled');
+        $("#save-info").toggle();
+        $("#saving-img").addClass('hide');
     },
     method = 'POST'
 ) {
