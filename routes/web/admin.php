@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-auth()->loginUsingId(6);
+
 // Application
 Route::prefix('application')
     ->name('application.')
