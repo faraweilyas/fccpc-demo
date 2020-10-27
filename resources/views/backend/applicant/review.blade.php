@@ -13,6 +13,9 @@
                         <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
+                        <a href="{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category]) }}" class="text-muted">Create Application</a>
+                    </li>
+                    <li class="breadcrumb-item">
                         <a href="#" class="text-muted">Review Application</a>
                     </li>
                 </ul>

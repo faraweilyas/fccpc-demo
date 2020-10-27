@@ -390,6 +390,60 @@ $(document).ready(function()
         return;
     });
 
+    $("#save-transaction-info").on('click', function(event)
+    {
+        event.preventDefault();
+
+        var sections    = $('.pb-5'),
+            currentForm = sections.filter(function(index, element) {
+                            return (typeof ($(element).attr('data-wizard-state')) !== "undefined")
+                        }),
+            sendForm    = 'save'+currentForm.attr('data-form');
+        
+        var tracking_id        = $("#tracking_id").val(),
+            formData           = new FormData(),
+            checklists         = [],
+            additional_info    = currentForm.find('#additional_info').val(),
+            file               = currentForm.find('#checklist_doc')[0].files[0],
+            checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
+            review_route       = $(this).attr('data-review-route'),
+            doc_id             = currentForm.find("#doc_id").val();
+
+        $("#previous-btn").attr('disabled', 'disabled');
+        $("#save-transaction-info").toggle();
+        $("#saving-img").removeClass('hide');
+
+        $(currentForm).find(':checkbox:checked').each(function(i)
+        {
+           checklists[i] = $(this).val();
+        });
+
+        formData.append('_token', $("#token").val());
+        formData.append('file', file);
+        formData.append('additional_info', additional_info);
+        formData.append('checklists', checklists);
+        formData.append('document_id', doc_id);
+        sendRequest(
+            '/application/create/'+tracking_id+'/'+sendForm,
+            formData,
+            false,
+            false,
+            function(data, status)
+            {
+                result = JSON.parse(data);
+                currentForm.find("#doc_id").val(result.response.id);
+                notify(result.responseType, result.message);
+                $("#previous-btn").removeAttr('disabled');
+                $("#save-transaction-info").toggle();
+                $("#saving-img").addClass('hide');
+                if (result.responseType !== 'error'){
+                    window.location.replace(review_route); 
+                }
+            }
+        );
+        return;
+    });
+
     $('input[type="file"]').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
@@ -502,6 +556,7 @@ function sendRequest(
         notify(desc, err);
         $("#previous-btn").removeAttr('disabled');
         $("#save-info").toggle();
+        $("#save-transaction-info").removeClass('hide');
         $("#saving-img").addClass('hide');
     },
     method = 'POST'
@@ -570,7 +625,7 @@ function saveChecklistDocument(action, currentForm)
         checklists         = [],
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
-        checklist_doc_name = currentForm.find("#checklist_doc_name").val();
+        checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
         $("#previous-btn").attr('disabled', 'disabled');
@@ -581,7 +636,6 @@ function saveChecklistDocument(action, currentForm)
         {
            checklists[i] = $(this).val();
         });
-
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
