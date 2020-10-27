@@ -14,7 +14,7 @@
         <div class="form-group ">
           <label>Type of Transaction</label>
             <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                <option value="local" selected="">Regular</option>
+                <option value="local" selected="">Local</option>
                 <option value="ffm">Foreign to Foreign</option>
                 <option value="ffx">Foreign to Foreign Expedited</option>
             </select>

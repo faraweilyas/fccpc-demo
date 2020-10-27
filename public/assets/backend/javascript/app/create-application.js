@@ -447,9 +447,9 @@ $(document).ready(function()
     $('input[type="file"]').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
-        var extension = fileName.substr((fileName. lastIndexOf('.')+1)); 
+        // var extension = fileName.substr((fileName. lastIndexOf('.')+1)); 
         var doc_name = $(this).attr('data-doc-name');
-        $('.'+doc_name).html("file."+extension);
+        $('.'+doc_name).html(fileName);
     });
 
     $("#upload-info").on('click', function(event)

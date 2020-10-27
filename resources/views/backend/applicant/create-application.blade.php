@@ -298,7 +298,7 @@
                                                                 <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4 ">
                                                                        <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
-                                                                        <span class="btn btn--small btn--brand checklist_doc_name_{{ $checklistGroup->id}}">Upload File</span>
+                                                                        <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
 
                                                                 </div>
@@ -315,9 +315,7 @@
                                                                 <input type="hidden" id="checklist_doc_name" value="{{ strtolower($checklist->name) }}">
                                                                 <input type="hidden" id="doc_id" value="{{ !empty($document) ? $document->id : '' }}">
                                                             </div>
-
-                                                                <p class="document-uploaded">Letter Of Intent.docx</p>
-
+                                                            <p class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}"></p>
                                                         </div>
                                                     </div>
                                                 </div>

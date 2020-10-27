@@ -61,7 +61,7 @@ class AppHelper
 	protected $case_categories = [
 		"REG" => "Local",
 		"FFM" => "FFM",
-		"FFX" => "FFM - Expediated",
+		"FFX" => "FFM - Expedited",
 	];
 
     protected $case_categories_text = [
