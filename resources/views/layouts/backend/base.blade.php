@@ -47,6 +47,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     
     <script type="text/javascript" defer>
         $(document).ready(function($)

@@ -106,9 +106,9 @@ trait UserGettable
     public function search_active_cases_assigned_to($search)
     {
         return $this->active_cases_assigned_to_all()
-            ->where('handler_id', $this->id)
             ->where('subject', 'LIKE', '%'.$search.'%')
             ->orWhere('parties', 'LIKE', '%'.$search.'%')
+            ->where('handler_id', $this->id)
             ->get();
     }
 
@@ -143,7 +143,7 @@ trait UserGettable
      */
     public function deficient_cases_by()
     {
-            return $this->cases_assigned_to()
+            return $this->cases_assigned_by()
                     ->where('dropped_at', null)
                     ->where('defficiency_issued_at', '!=', null);
 

@@ -43,7 +43,7 @@ class CasesController extends Controller
             $output .= '<p>No transaction found!</p>';
         else:
             foreach ($cases as $case):
-                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).'</a>';
+                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).$case->case_handler->handler_id.'</a>';
             endforeach;
         endif;
 
@@ -128,11 +128,7 @@ class CasesController extends Controller
     public function workingonCases(User $handler)
     {
         if ($handler->status):
-            if(in_array(\Auth::user()->account_type, ['SP'])):
-                $cases = $handler->cases_working_on_by()->get();
-            else:
-                $cases = $handler->cases_working_on_to()->get();
-            endif;
+            $cases = $handler->cases_working_on_to()->get();
         else:
             if(in_array(\Auth::user()->account_type, ['SP'])):
                 $cases = \Auth::user()->cases_working_on_by()->get();
@@ -178,11 +174,7 @@ class CasesController extends Controller
     public function onholdCases(User $handler)
     {
         if ($handler->status):
-            if(in_array(\Auth::user()->account_type, ['SP'])):
-                $cases = $handler->deficient_cases_by()->get();
-            else:
-                $cases = $handler->deficient_cases_to()->get();
-            endif;
+            $cases = $handler->deficient_cases_to()->get();
         else:
             if(in_array(\Auth::user()->account_type, ['SP'])):
                 $cases = \Auth::user()->deficient_cases_by()->get();
