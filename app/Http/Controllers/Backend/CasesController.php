@@ -43,7 +43,7 @@ class CasesController extends Controller
             $output .= '<p>No transaction found!</p>';
         else:
             foreach ($cases as $case):
-                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).$case->case_handler->handler_id.'</a>';
+                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).'</a>';
             endforeach;
         endif;
 
