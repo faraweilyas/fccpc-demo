@@ -7,6 +7,12 @@ $(document).ready(function() {
     $('#get_categories').select2();
     $('#get_account_types').select2();
     
+    $('input[type="file"]').on('change', function(event)
+    {
+        var fileName = event.target.files[0].name;
+        $('.doc_name').html(fileName);
+    });
+
 	$("#start_doc_approval").on('click', function (e) {
 		var approval_link  = $(this).attr('data-link'); 
 		var workingon_link = $(this).attr('data-workingon-link'); 

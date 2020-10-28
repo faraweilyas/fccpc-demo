@@ -109,6 +109,7 @@
                                                 <input type="file" name="file" id="file" class="js-file-upload-input ember-view" />
                                                 <span class="btn btn--small btn--brand img-info">Attach Document</span>
                                             </div>
+                                            <p class="document-uploaded doc_name"></p>
                                         </div>
                                     </div>
                                     <div class="row">
