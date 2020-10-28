@@ -109,10 +109,10 @@
                         <div class="col-md-6 my-5" key={item[0]}>
                          <div class="d-flex py-3 px-3">
                             @if(!empty($document))
-                            <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf" height="60px" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"/>
+                            <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf" height="50px" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"/>
                             <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"> {{ $checklistGroup->name }}</h4>
                             @else
-                                <span class="svg-icon svg-icon-danger svg-icon-5x">
+                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
