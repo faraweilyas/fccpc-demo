@@ -406,11 +406,11 @@
         <!--begin::Content-->
         <div class="offcanvas-content pr-5 mr-n5">
             @if(in_array(\Auth::user()->account_type, ['SP']))
-                @php 
+                @php
                     $cases = \Auth::user()->cases_working_on_by()->get();
                 @endphp
             @else
-                @php 
+                @php
                     $cases = \Auth::user()->cases_working_on_to()->get();
                 @endphp
             @endif
@@ -481,12 +481,12 @@
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
                             </div>
                         </div>
 
@@ -499,30 +499,12 @@
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="notifications-cards">
-                        <span class="label">New Case Assinged</span>
-                        <p class="subject my-1">Access Bank Merger</p>
-
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-
-                                <span class="description">FFM Expediated</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
                             </div>
                         </div>
 
@@ -535,12 +517,30 @@
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
 
-                                <span class="description">FFM Expediated</span>
+                                <span class="description">FFM Expedited</span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="notifications-cards">
+                        <span class="label">New Case Assinged</span>
+                        <p class="subject my-1">Access Bank Merger</p>
+
+                        <div class="d-flex">
+                            <div class="notifications-card-col">
+                                <p class="title">CATEGORY:</p>
+
+                                <span class="description">FFM Expedited</span>
+                            </div>
+                            <div class="notifications-card-col">
+                                <p class="title">CATEGORY:</p>
+
+                                <span class="description">FFM Expedited</span>
                             </div>
                         </div>
 

@@ -6,7 +6,7 @@
       <h2 class="fee-calc-header">Fee Calculator</h2>
 
       <p class="fee-calc-subh py-5">
-        Fees Guideline for Regular Merger
+        Fees Guideline for Local Merger
       </p>
     </div>
     <div class="row fee-calc-container">
