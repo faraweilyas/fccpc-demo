@@ -1,6 +1,5 @@
 @extends('layouts.backend.user')
 
-
 @section('aside_bar')
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
 
@@ -664,21 +663,13 @@
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('custom.css')
-
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
-
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
 @endsection
 
 @section('custom.javascript')
-
-
-<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
-
-
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @endsection
