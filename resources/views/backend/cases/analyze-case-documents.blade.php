@@ -1,4 +1,6 @@
-@extends('layouts.backend.admin') @section('content')
+@extends('layouts.backend.admin') 
+
+@section('content')
 <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
@@ -102,7 +104,8 @@
         </div>
     </div>
     @endif
-    @endsection
-    @section('custom.css')
+@endsection
+
+@section('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
-    @endsection
+@endsection
