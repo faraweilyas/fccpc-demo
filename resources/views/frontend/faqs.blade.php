@@ -19,12 +19,17 @@
 
 
         <div class="row row-top" >
+         <div class="col-md-1"></div>
+         <div class="col-md-6">
           <h2 class="publications-header">
             Frequently Asked Questions
           </h2>
+         </div>
+         <div class="col-md-2"></div>
         </div>
 
         <div class="row publication-container">
+          <div class="col-md-1"></div>
             @foreach($faq_categories as $key => $value)
               <div class="col-md-3">
                 <a href="{{ route('home.faqs.category', ['category' => $key]) }}">
