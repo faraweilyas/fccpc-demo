@@ -3,15 +3,46 @@
 @section('content')
 <div class="page-content  my-5">
       <div class="container container-sm row-top  ">
-        <div class="row home-content-header">
-          <h2 class=" publications-header">
-            TNP Takes Its Services To Abuja, Sets Up New
+        <div class="row row-top home-content-header">
+          <h2 class=" publications-header faq-content-header mx-4">
+            <a href={{url('/publications')}} style="color: #999">Publications /</a> TNP Takes its services to Abuja, Sets Up New
           </h2>
         </div>
+        
         <div class="row publication-container ">
-          <div class="col-md-9 read-more-main-img">
-            <img src="{{ FE_IMAGE.'png/cityview.png' }}" alt="img" />
+          <div class="col-md-3 read-more-img-sm">
+           
+            <div class="publication-header">
+              <h3>TNP Takes Its Services To Abuja...</h3>
+            </div>
+            <div class="publication-content">
+              <p>
+                TNP, Nigeria’s “Glocal” and commercially oriented
+                law firm and a collaborating firm of Andersen Global
+                has made yet another...
+              </p>
+            </div>
+            <div class="read-more-link">
+              <a href="{{ route('home.publications.view', ['publication' => 2]) }}">Read More</a>
+            </div>
 
+           
+            <div class="publication-header">
+              <h3>TNP Takes Its Services To Abuja...</h3>
+            </div>
+            <div class="publication-content">
+              <p>
+                TNP, Nigeria’s “Glocal” and commercially oriented
+                law firm and a collaborating firm of Andersen Global
+                has made yet another...
+              </p>
+            </div>
+            <div class="read-more-link">
+              <a href="{{ route('home.publications.view', ['publication' => 2]) }}">Read More</a>
+            </div>
+          </div>
+          <div class="col-md-9 read-more-main-img">
+           
             <div class="publication-content read-more-content">
               <p>
                 NP, Nigeria’s “Glocal” and commercially oriented law
@@ -59,37 +90,7 @@
               </p>
             </div>
           </div>
-          <div class="col-md-3 read-more-img-sm">
-            <img src="{{ FE_IMAGE.'png/publictest3.png' }}" alt="img" />
-            <div class="publication-header">
-              <h3>TNP Takes Its Services To Abuja...</h3>
-            </div>
-            <div class="publication-content">
-              <p>
-                TNP, Nigeria’s “Glocal” and commercially oriented
-                law firm and a collaborating firm of Andersen Global
-                has made yet another...
-              </p>
-            </div>
-            <div class="read-more-link">
-              <a href="{{ route('home.publications.view', ['publication' => 2]) }}">Read More</a>
-            </div>
-
-            <img src="{{ FE_IMAGE.'png/publictest3.png' }}" alt="img" />
-            <div class="publication-header">
-              <h3>TNP Takes Its Services To Abuja...</h3>
-            </div>
-            <div class="publication-content">
-              <p>
-                TNP, Nigeria’s “Glocal” and commercially oriented
-                law firm and a collaborating firm of Andersen Global
-                has made yet another...
-              </p>
-            </div>
-            <div class="read-more-link">
-              <a href="{{ route('home.publications.view', ['publication' => 2]) }}">Read More</a>
-            </div>
-          </div>
+        
         </div>
       </div>
 

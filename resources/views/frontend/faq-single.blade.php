@@ -5,12 +5,12 @@
       <div class="container container-sm  ">
         <div class="row row-top home-content-header">
           <h2 class=" publications-header faq-content-header">
-            <span>Frequently Asked Questions/</span> {{ $faq->question }}
+            <a href={{url('/faqs')}} style="color: #999">Frequently Asked Questions/</a> {{ $faq->question }}
           </h2>
         </div>
 
         <div class="row publication-container">
-          <div class="col-md-5 ">
+          <div class="col-md-3 ">
             <ul class="faq-questions__ul">
               <li class="faq-questions__li"><a href="{{ $faq->path() }}" class="faq-questions__a faq-questions__a__active">{{ $faq->question }}</a>
               </li>
@@ -22,7 +22,7 @@
             </ul>
           </div>
 
-          <div class="col-md-7">
+          <div class="col-md-9">
             <div class="faq-answer-header">
               {{ $faq->question }}
             </div>
