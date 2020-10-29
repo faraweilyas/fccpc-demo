@@ -34,7 +34,7 @@
                 <div class="card__box__large-content">
                     <div class="row">
                         <div class="col-md-12 text-right">
-                            <span class="svg-icon svg-icon-primary svg-icon-3x cr-pointer" title="Print Transaction Summary">
+                            <span class="svg-icon svg-icon-primary svg-icon-3x cr-pointer" onclick="window.print()" title="Print Transaction Summary">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                         <rect x="0" y="0" width="24" height="24"/>
@@ -125,7 +125,7 @@
                             <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf" height="50px" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"/>
                             <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer" onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"> {{ $checklistGroup->name }}</h4>
                             @else
-                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1">
+                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
                                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                             <rect x="0" y="0" width="24" height="24"/>
