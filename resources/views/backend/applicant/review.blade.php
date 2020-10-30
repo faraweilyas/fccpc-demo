@@ -33,7 +33,7 @@
             <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
                 <div class="card__box__large-content">
                     <div class="row">
-                        <div class="col-md-12 text-right">
+                        <div class="col-md-12 text-right pull__right__position">
                             <span class="svg-icon svg-icon-primary svg-icon-3x cr-pointer" onclick="window.print()" title="Print Transaction Summary">
                                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">

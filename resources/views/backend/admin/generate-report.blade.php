@@ -128,6 +128,7 @@
             enableTime: false,
             dateFormat: "Y-m-d",
             defaultDate: new Date,
+            minDate: "today"
         });
 
         $('#end_date').flatpickr
@@ -136,6 +137,7 @@
             enableTime: false,
             dateFormat: "Y-m-d",
             defaultDate: new Date,
+            minDate: "today"
         });
 
         $('#get_handler').select2();
