@@ -24,6 +24,9 @@
             <div class="col-md-8">
                 <div class="card__box card__box__large ">
                     <div class="card__box__large-content">
+                        <br>
+                        <br>
+                        <br>
                         <h3 class="checklist-header">
                             {{ \AppHelper::value('case_categories_text', $case_category) }} Checklist
                         </h3>
