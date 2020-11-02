@@ -32,10 +32,10 @@
                             <thead>
                                 <tr>
                                     <th>Submitted On</th>
+                                    <th>Reference NO</th>
                                     <th>Subject</th>
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Type</th>
-                                    
                                     <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>
@@ -45,6 +45,11 @@
                                         <td>
                                             <div class="font-weight-bold text-dark mb-0">
                                                 {!! $case->getSubmittedAt('customdate') !!}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="font-weight-bolder mb-0">
+                                                {!! $case->getRefNO() !!}
                                             </div>
                                         </td>
                                         <td class="case-subject">
