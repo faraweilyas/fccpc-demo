@@ -24,7 +24,7 @@ function assignCaseHandler(caseID, caseHandlerID) {
         error: function (xhr, desc, err) {
             $(".assignCaseButton" + caseID).removeClass('hide');
             $(".assigningCaseButton" + caseID).addClass('hide');
-            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
+            $('select[name="caseHandler"]').removeAttr('disabled');
         }
     });
 }
@@ -42,7 +42,7 @@ function unassignCaseHandler(caseID, caseHandlerID) {
             $(".assignCaseButton" + caseID).removeClass('hide');
             $(".unassignCaseButton" + caseID).addClass('hide');
             $(".unassigningCaseButton" + caseID).addClass('hide');
-            $('select[name="caseHandler"]').removeAttr('disabled', 'disabled');
+            $('select[name="caseHandler"]').removeAttr('disabled');
 
             if (result.responseType == "success") {
                 toastr.success(result.message);
@@ -70,7 +70,7 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID) {
 
             $("#re-unassigning-handler").removeClass('hide');
             $("#re-assigning-handler").addClass('hide');
-            $('select[name="newCaseHandler"]').removeAttr('disabled', 'disabled');
+            $('select[name="newCaseHandler"]').removeAttr('disabled');
 
             if (result.responseType == "success") {
                 toastr.success(result.message);
@@ -86,7 +86,7 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID) {
         error: function (xhr, desc, err) {
             $("#re-unassigning-handler").removeClass('hide');
             $("#re-assigning-handler").addClass('hide');
-            $('select[name="newCaseHandler"]').removeAttr('disabled', 'disabled');
+            $('select[name="newCaseHandler"]').removeAttr('disabled');
         }
     });
 }
@@ -146,23 +146,23 @@ $(document).ready(function () {
     });
 
     $('#viewCaseModal').on('shown.bs.modal', function (event) {
-        var viewButton = $(event.relatedTarget);
-        caseContainer               = viewButton.parent('td').parent('tr'),
+        var viewButton              = $(event.relatedTarget);
+            caseContainer           = viewButton.parent('td').parent('tr'),
             thisModal               = $(this),
             caseID                  = caseContainer.find('.case_id').html(),
             analyzeCase             = thisModal.find('#analyze-case'),
-            caseHandler = thisModal.find('#case_handler'),
-            refrenceNo = thisModal.find('#refrenceNo'),
-            subject = thisModal.find('#subject'),
-            category = thisModal.find('#category'),
-            type = thisModal.find('#type'),
-            parties = thisModal.find('#parties'),
-            applicant_firm = thisModal.find('#applicant_firm'),
-            applicant_name = thisModal.find('#applicant_name'),
-            applicant_email = thisModal.find('#applicant_email'),
-            applicant_phone_number = thisModal.find('#applicant_phone_number'),
-            applicant_address = thisModal.find('#applicant_address'),
-            submittedAt = thisModal.find('#submittedAt');
+            caseHandler             = thisModal.find('#case_handler'),
+            refrenceNo              = thisModal.find('#refrenceNo'),
+            subject                 = thisModal.find('#subject'),
+            category                = thisModal.find('#category'),
+            type                    = thisModal.find('#type'),
+            parties                 = thisModal.find('#parties'),
+            applicant_firm          = thisModal.find('#applicant_firm'),
+            applicant_name          = thisModal.find('#applicant_name'),
+            applicant_email         = thisModal.find('#applicant_email'),
+            applicant_phone_number  = thisModal.find('#applicant_phone_number'),
+            applicant_address       = thisModal.find('#applicant_address'),
+            submittedAt             = thisModal.find('#submittedAt');
 
         // Get Case Checklists Asynchronously
         $.ajax({

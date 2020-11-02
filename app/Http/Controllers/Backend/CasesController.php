@@ -86,7 +86,7 @@ class CasesController extends Controller
                     ->active_cases_assigned_to()
                     ->get();
             else:
-                $cases = (new Cases())->assignedCases();
+                $cases = \Auth::user()->active_cases_assigned_by()->get();
             endif;
         endif;
 

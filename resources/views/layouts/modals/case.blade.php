@@ -56,7 +56,7 @@
                                     <span class="text-muted text-hover-primary" id="refrenceNo">#</span>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Submitted At:</span>
+                                    <span class="font-weight-bold mr-2">Submitted On:</span>
                                     <span class="text-dark" id="submittedAt">...</span>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">

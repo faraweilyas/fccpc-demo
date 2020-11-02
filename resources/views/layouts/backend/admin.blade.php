@@ -100,7 +100,7 @@
 
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">My Cases</span>
+                        <span class="menu-text">@if(!in_array(\Auth::user()->account_type, ['SP'])) My @endif Cases</span>
 
                         <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
 
@@ -128,7 +128,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Assigned Cases</span>
+                                    <span class="menu-text"> @if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</span>
                                 </a>
                             </li>
                             @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))

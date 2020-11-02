@@ -484,10 +484,6 @@ $(document).ready(function()
                                             '<input type="text" class="form-control" placeholder="Enter party name" name="party[]">'+
                                             '<div class="d-md-none mb-2"></div>'+
                                         '</div>'+
-                                        '<div class="col-lg-5">'+
-                                            '<input type="text" class="form-control" placeholder="Enter party name" name="party[]">'+
-                                            '<div class="d-md-none mb-2"></div>'+
-                                        '</div>'+
                                         '<div class="col-lg-2">'+
                                             '<a href="#" class="remove">'+
                                                 '<span class="svg-icon svg-icon-danger svg-icon-2s">'+
