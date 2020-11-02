@@ -197,12 +197,12 @@
                                                     <label class="radio">
                                                         <input type="radio" name="case_type" {{ ($case->case_type == "SM") ? 'checked="checked"' : '' }} value="SM" />
                                                         Small<span></span> &nbsp;&nbsp;
-                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A small merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria is Five Hundred Million Naira and below. "></i>
+                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A small merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria is Five Hundred Million Naira (&#8358;500,000,000) and below. "></i>
                                                     </label>
                                                     <label class="radio">
                                                         <input type="radio" name="case_type" {{ ($case->case_type == "LG") ? 'checked="checked"' : '' }} value="LG" />
                                                         Large<span></span> &nbsp;&nbsp;
-                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A large merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria equals or exceeds One Billion Naira OR the annual turnover of the target undertaking in, into or from Nigeria equals or exceeds Five Hundred Million Naira. "></i>
+                                                        <i class="la la-info-circle text-hover-primary" data-toggle="tooltip" title="A large merger is a merger where the combined annual turnover of the acquirer and target in, into or from Nigeria equals or exceeds One Billion Naira (&#8358;1,000,000,000) OR the annual turnover of the target undertaking in, into or from Nigeria equals or exceeds Five Hundred Million Naira (&#8358;500,000,000). "></i>
                                                     </label>
                                                 </div>
                                             </div>
@@ -303,7 +303,7 @@
 
                                                                 </div>
                                                                 <br>
-                                                               
+
                                                                 @if(!empty($document))
                                                                 <div class="col-md-3 my-1">
                                                                     <span>
