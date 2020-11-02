@@ -268,10 +268,10 @@
                                                         </div>
                                                         <div class="card-body">
                                                             <p>
-                                                                Kindly upload {{ strtolower($checklistGroup->name) }}. Kindly check boxes of documents being submitted and in cases where document is not available, please state in additional information section.
+                                                                Upload the {{ strtolower($checklistGroup->name) }} as a single PDF file containing the relevant information listed below. 
                                                             </p>
                                                             <p>
-                                                                Upload a single pdf file containing the letter of intent to merge.
+                                                                Check all applicable boxes and use the additional information section to explain reasons for any unavailable information.
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
