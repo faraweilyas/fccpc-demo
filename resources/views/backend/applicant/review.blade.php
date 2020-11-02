@@ -64,23 +64,17 @@
                     </p>
 
                     <div class="grid-col-2">
-                        <div class="grid-row-2">
-                            <h4 class="info-title">Subject</h4>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Subject: </h4>
                             <h4>{{ $case->subject }}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            {{-- <h4 class="info-title">Filling Fees</h4>
-                            <h4>Paid</h4> --}}
-                        </div>
-                        <div class="grid-row-2">
+                     
+                        <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Parties:</h4>
                             <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            {{-- <h4 class="info-title">Processing Fees:</h4>
-                            <h4>Not Paid</h4> --}}
-                        </div>
-                        <div class="grid-row-2">
+                  
+                        <div class="grid-row-2 d-flex">
                             <h4 class="info-title">
                                 Transaction Type:
                             </h4>
@@ -92,26 +86,26 @@
                         Contact Information
                     </p>
                     <div class="grid-col-2">
-                        <div class="grid-row-2">
+                        <div class="grid-row-2 d-flex">
                             <h4 class="info-title">
-                                Applicant/Representing Firm
+                                Applicant/Representing Firm :
                             </h4>
                             <h4>{{ $case->applicant_firm }}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            <h4 class="info-title">Contact Person</h4>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Contact Person :</h4>
                             <h4>{{ $case->getApplicantName() }}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            <h4 class="info-title">Email address:</h4>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Email address :</h4>
                             <h4>{{ $case->applicant_email }}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            <h4 class="info-title">Phone number:</h4>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Phone number :</h4>
                             <h4>{{ $case->applicant_phone_number }}</h4>
                         </div>
-                        <div class="grid-row-2">
-                            <h4 class="info-title">Address:</h4>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Address :</h4>
                             <h4>{{ $case->applicant_address }}</h4>
                         </div>
                     </div>
