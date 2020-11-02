@@ -287,7 +287,7 @@
                                                                 </div>
                                                                 @if(!empty($checklist->input_field))
                                                                 <div class="col-md-6 mb-4 ml-8">
-                                                                    <input id="{{ strtolower($checklist->input_field) }}" type="text" name="{{ strtolower($checklist->input_field) }}" class="form-control combined_fees" placeholder="{{ str_replace('_', ' ', ucwords($checklist->input_field, '_')) }} Amount:" />
+                                                                    <input id="{{ strtolower($checklist->input_field) }}" type="text" name="{{ strtolower($checklist->input_field) }}" class="form-control combined_fees" placeholder="{{ str_replace('_', ' ', ucwords($checklist->input_field, '_')) }} Amount:" value="@if($checklist->input_field == 'combined_turnover' && !is_null($case->combined_turnover)) {{ $case->combined_turnover }} @elseif($checklist->input_field == 'filling_fee' && !is_null($case->filling_fee)) {{ $case->filling_fee }} @endif" />
                                                                 </div>
                                                                 @endif
                                                                 @endforeach
