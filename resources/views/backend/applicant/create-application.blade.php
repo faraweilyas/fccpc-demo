@@ -280,11 +280,16 @@
                                                                 @endphp
                                                                 <div class="col-md-12">
                                                                     <label class="checkbox mb-4">
-                                                                        <input type="checkbox" value="{{ $checklist->id }}" {{ $checked }} id="checklist_id" />
+                                                                        <input type="checkbox" value="{{ $checklist->id }}" {{ $checked }} class="checklist_id" />
                                                                         <span></span>
                                                                         <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
                                                                     </label>
                                                                 </div>
+                                                                @if(!empty($checklist->input_field))
+                                                                <div class="col-md-6 mb-4 ml-8">
+                                                                    <input id="{{ strtolower($checklist->input_field) }}" type="text" name="{{ strtolower($checklist->input_field) }}" class="form-control combined_fees" placeholder="{{ str_replace('_', ' ', ucwords($checklist->input_field, '_')) }} Amount:" />
+                                                                </div>
+                                                                @endif
                                                                 @endforeach
                                                             </div>
                                                             <div class="row mt-4">
@@ -353,5 +358,6 @@
 
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
 @endsection

@@ -14,7 +14,7 @@ class AddInputFieldColumnToChecklistsTable extends Migration
     public function up()
     {
         Schema::table('checklists', function (Blueprint $table) {
-            $table->boolean('input_field')->default(false)->after('label');
+            $table->string('input_field')->nullable()->after('label');
         });
     }
 

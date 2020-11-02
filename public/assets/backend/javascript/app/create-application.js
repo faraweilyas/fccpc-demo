@@ -390,6 +390,16 @@ $(document).ready(function()
         return;
     });
 
+    // Validate combined turn over to be digits
+    $(document).on("keyup change", ".combined_fees", function()
+    {
+        let validatedAmount = Number(allowNumbers($(this).val())),
+            formatter       = new Intl.NumberFormat('en-US');
+
+        $(this).val(formatter.format(validatedAmount));
+        // generateFee($(this));
+    });
+
     $("#save-transaction-info").on('click', function(event)
     {
         event.preventDefault();
@@ -442,6 +452,22 @@ $(document).ready(function()
             }
         );
         return;
+    });
+
+    $(".checklist_id").on('click', function(event){
+        if ($(this).is(':checked')) 
+        {
+            let child_input = $(this).next().children('input');
+            isWithTwo = child_input.is(function() {
+              return $( "strong", this).length === 2;
+            });
+
+            if(child_input.is('.combined_fees')) {
+                alert("Exists");
+            } else {
+                alert("Not Exists");
+            }
+        }
     });
 
     $('input[type="file"]').on('change', function(event)
