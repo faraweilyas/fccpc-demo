@@ -100,7 +100,7 @@
 
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-text">My Cases</span>
+                        <span class="menu-text">@if(!in_array(\Auth::user()->account_type, ['SP'])) My @endif Cases</span>
 
                         <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
 
