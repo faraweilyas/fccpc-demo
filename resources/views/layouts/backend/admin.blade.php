@@ -128,7 +128,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Assigned Cases</span>
+                                    <span class="menu-text"> @if(in_array(\Auth::user()->account_type, ['CH'])) My @else Assigned @endif Cases</span>
                                 </a>
                             </li>
                             @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))

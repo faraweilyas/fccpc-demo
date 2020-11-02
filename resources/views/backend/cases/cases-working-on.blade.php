@@ -31,7 +31,7 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    <th>Date Submitted</th>
+                                    <th>Submitted On</th>
                                     <th>Parties</th>
                                     <th>Subject</th>
                                     <th class="text-center">Category</th>
@@ -46,9 +46,6 @@
                                             <div class="font-weight-bold text-dark mb-0">
                                                 {!! $case->getSubmittedAt() !!}
                                             </div>
-                                        </td>
-                                        <td>
-                                            {!! $case->generateCasePartiesRadio('mr_10 mb-2') !!}
                                         </td>
                                         <td class="case-subject">
                                             {{ $case->getSubject() }}

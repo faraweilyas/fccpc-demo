@@ -55,7 +55,7 @@
                 @if(!in_array(\Auth::user()->account_type, ['AD']))
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
-                        <p>Assigned Cases</p>
+                        <p>@if(in_array(\Auth::user()->account_type, ['CH'])) My @else Assigned @endif Cases</p>
                         @if(in_array(\Auth::user()->account_type, ['CH']))
                          <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
                         @else
