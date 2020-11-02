@@ -124,6 +124,17 @@ class Cases extends Model
         })->join(" ");
     }
 
+    public function generateCasePartiesRadio($extraStyles='mr_10') : string
+    {
+        $styles = ['success', 'danger', 'warning', 'info', 'primary'];
+        return $this->getCaseParties()->map(function($party) use ($styles, $extraStyles)
+        {
+            $style = $styles[rand(0, count($styles) - 1)];
+            return "<span class='label label-{$style} label-dot mr-2'></span>
+                <span class='font-weight-bold text-{$style} {$extraStyles}'>{$party}</span>";
+        })->join(" ");
+    }
+
     public function getApplicantName() : string
     {
         return trim($this->applicant_fullname);
