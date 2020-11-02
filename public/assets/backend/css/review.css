@@ -383,14 +383,16 @@
 .info-title {
 
     color: #484b74;
+    font-weight: bold;
 }
+
 .info-title-margin {
     padding: 0 2rem;
     margin: 3rem 0;
     color: #484b74;
 }
 
-.info-title-description{
+.info-title-description {
     padding: 0 2rem;
 
 }
@@ -418,6 +420,13 @@
 
 .justify-center {
     justify-content: center;
+}
+
+.btn-light-primary:hover{
+    background: #D7F9EF !important;
+    /* font-size: 1.5rem; */
+    color: #006535 !important;
+transform: translateY(-6px);
 }
 
 @-webkit-keyframes slideInRight {
@@ -459,7 +468,7 @@
 }
 
 
-.row-top{
+.row-top {
     margin-top: 80px;
 }
 
@@ -510,7 +519,7 @@
         max-width: 100%;
     }
 
-    .row-top{
+    .row-top {
         margin-top: 50px;
     }
 }
