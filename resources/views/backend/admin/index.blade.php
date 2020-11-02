@@ -19,14 +19,6 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="row">
-
-                <div class="col-lg-3 my-5">
-                    <div class="dashboard-card">
-                        <p>All Cases</p>
-                        <span>{{ $cases->submittedCases()->count() }}</span>
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
-                    </div>
-                </div>
                 @if(in_array(\Auth::user()->account_type, ['AD']))
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('dashboard.users') }}';">
                     <div class="dashboard-card purple">
@@ -55,7 +47,7 @@
                 @if(!in_array(\Auth::user()->account_type, ['AD']))
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                     <div class="dashboard-card blue">
-                        <p>@if(in_array(\Auth::user()->account_type, ['CH'])) My @else Assigned @endif Cases</p>
+                        <p>@if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</p>
                         @if(in_array(\Auth::user()->account_type, ['CH']))
                          <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
                         @else
@@ -87,6 +79,13 @@
                     </div>
                 </div>
                 @endif
+                <div class="col-lg-3 my-5">
+                    <div class="dashboard-card">
+                        <p>All Cases</p>
+                        <span>{{ $cases->submittedCases()->count() }}</span>
+                        <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                    </div>
+                </div>
 			</div>	
 			<div class="row mt-10">
 				<div class="col-lg-6">

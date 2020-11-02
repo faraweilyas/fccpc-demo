@@ -115,7 +115,7 @@
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                      
                                         <br>
-                                        <small class="text-black">A transaction between 2 Foreign entities but have a local effect in Nigeria. Application takes 60 days</small>
+                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. Application takes 60 days</small>
                                     </span>
                                 </div>
                             </div>
@@ -145,11 +145,11 @@
                                             </g>
                                         </svg>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Foreign to Foreign Merger Expedited</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Expedited - Foreign to Foreign Merger</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         
                                         <br>
-                                        <small class="text-black">A transaction between 2 Foreign entities but have a local effect in Nigeria. Application takes 15 days</small>
+                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. Application takes 15 days</small>
                                     </span>
                                 </div>
                             </div>
