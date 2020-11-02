@@ -169,6 +169,17 @@ class ApplicationController extends Controller
         $path = $file->storeAs('public/documents', $newFileName);
 
         $previous_document = Document::find(request('document_id'));
+
+        if(!empty(request('combined_turnover')) || !empty(request('filling_fee')))
+        $new_combined_turnover = str_replace(',', '', request('combined_turnover'));
+        $new_filling_fee       = str_replace(',', '', request('filling_fee'));
+
+        $guest->case->saveFeeInfo(
+            (object) [
+                'combined_turnover' => $new_combined_turnover,
+                'filling_fee'       => $new_filling_fee,
+            ]
+        );
         if ($previous_document):
             unlink(
                 storage_path('app/public/documents/' . $previous_document->file)

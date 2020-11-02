@@ -417,8 +417,10 @@ $(document).ready(function()
             file               = currentForm.find('#checklist_doc')[0].files[0],
             checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
+            combined_turnover  = currentForm.find("#combined_turnover").val(),
+            filling_fee        = currentForm.find("#filling_fee").val(),
             doc_id             = currentForm.find("#doc_id").val();
-
+            
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-transaction-info").toggle();
         $("#saving-img").removeClass('hide');
@@ -433,6 +435,8 @@ $(document).ready(function()
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
+        formData.append('combined_turnover', combined_turnover);
+        formData.append('filling_fee', filling_fee);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
             formData,
