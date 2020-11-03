@@ -71,45 +71,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
-                <h5>Case Information</h5>
+                <h5 class="text_dark_blue">Case Information</h5>
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>REF NO:</b></p>
+                        <p><b>Subject:</b></p>
                         <span>
-                            {!! $case->getRefNO() !!}
-                        </span>
-                    </div>
-                    <div class="col-md-3">
-                        <p><b>TRANSACTION TYPE:</b></p>
-                        <span>
-                            {!! $case->getTypeHtml() !!}
-                        </span>
-                    </div>
-                    <div class="col-md-3">
-                        <p><b>TRANSACTION REP:</b></p>
-                        <span>
-                            {!! $case->applicant_firm !!}
-                        </span>
-                    </div>
-                   {{--  <div class="col-md-3">
-                        <p>STATUS:</p>
-                        <span class="label-custom-warning">IN-PROGRESS
-                        </span>
-                    </div> --}}
-                    <div class="col-md-3">
-                        <p><b>Address:</b></p>
-                        <span>
-                            {!! $case->applicant_address !!}
-                        </span>
-                    </div>
-                </div>
-
-                <div class="row py-5">
-                    <div class="col-md-3">
-                        <p><b>MATTER NAME:</b></p>
-                        <span>
-                            {{ $case->getSubject() }}
+                            {{ $case->subject }}
                         </span>
                     </div>
                     <div class="col-md-3">
@@ -119,21 +87,51 @@
                         </span>
                     </div>
                     <div class="col-md-3">
+                        <p><b>TRANSACTION TYPE:</b></p>
+                        <span>
+                            {!! $case->getTypeHtml() !!}
+                        </span>
+                    </div>
+                    <div class="col-md-3">
                         <p><b>CATEGORY:</b></p>
                         <span>
                             {!! $case->getCategoryHtml() !!}
                         </span>
                     </div>
-                   {{--  <div class="col-md-3">
-                        <p>PAID/NOT PAID::</p>
-                        <span class="label-custom-danger">NOT PAID
-                        </span>
-                    </div> --}}
                 </div>
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>CONTACT REP INFO:</b></p>
+                        <p><b>REF NO:</b></p>
+                        <span>
+                            {!! $case->getRefNO() !!}
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>Fees:</b></p>
+                        <p class="info-title">
+                            <b>Combined Turnover:</b>&nbsp;{!! $case->getCombinedTurnover() !!}
+                        </p>
+                        <p class="info-title">
+                            <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
+                        </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>TRANSACTION REP:</b></p>
+                        <span>
+                            {!! $case->applicant_firm !!}
+                        </span>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>Address:</b></p>
+                        <span>
+                            {!! $case->applicant_address !!}
+                        </span>
+                    </div>
+                </div>
+                <div class="row py-5">
+                    <div class="col-md-3">
+                        <p class="text_dark_blue"><b>CONTACT REP INFO:</b></p>
                         <span>{!! $case->getApplicantName() !!}<br/>
                             {!! $case->applicant_email !!}<br/>
                             {!! $case->applicant_phone_number !!}

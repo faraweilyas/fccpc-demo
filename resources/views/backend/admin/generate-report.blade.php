@@ -40,12 +40,8 @@
                 <div class="card__box card__box__large  rmv-height add-mgbottom " id="applications">
                     <div class="card__box__large-content">
                         <div class="form-group">
-                            <label>Start Date</label>
-                            <input type="text" id="start_date" class="form-control" name="start_date"  />
-                        </div>
-                        <div class="form-group">
-                            <label>End Date</label>
-                            <input type="text" id="end_date" class="form-control" name="end_date" />
+                            <label>Select Start Date To End Date:</label>
+                            <input type="text" id="start_date_end_date" class="form-control" name="start_date_end_date"  />
                         </div>
 
                         @if (in_array(\Auth::user()->account_type, ['CH']))
@@ -122,22 +118,14 @@
 
 <script>
     $(document).ready(function () {
-        $('#start_date').flatpickr
+        $('#start_date_end_date').flatpickr
         ({
             altInput: true,
             enableTime: false,
             dateFormat: "Y-m-d",
             defaultDate: new Date,
-            minDate: "today"
-        });
-
-        $('#end_date').flatpickr
-        ({
-            altInput: true,
-            enableTime: false,
-            dateFormat: "Y-m-d",
-            defaultDate: new Date,
-            minDate: "today"
+            maxDate: new Date,
+            mode: "range"
         });
 
         $('#get_handler').select2();

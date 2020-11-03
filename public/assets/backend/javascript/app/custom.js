@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     $(".crus").on('click', function (argument) {
         // body...
-        console.lgo(true);
+        console.log(true);
     })
 
     $(".delete_faq").on('click', function (e) {

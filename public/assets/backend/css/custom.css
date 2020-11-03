@@ -2,6 +2,28 @@ body {
     background: #f2f2f2;
 }
 
+.text_dark_blue
+{
+    color: #484b74;
+}
+
+.flatpickr-day.selected:hover,
+day.endRange:hover,
+{
+    background: #227a4e !important;
+    box-shadow: none;
+    color: #fff;
+    border-color: #227a4e !important;
+}
+
+.flatpickr-day.startRange,
+{
+    background: #227a4e !important;
+    box-shadow: none;
+    color: #fff;
+    border-color: #227a4e !important;
+}
+
 .greyed-out {
     background: #f2f2f2 !important;
 }
