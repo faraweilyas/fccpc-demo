@@ -31,7 +31,9 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    <th>Submitted On</th>
+                                    @if(!in_array(\Auth::user()->account_type, ['CH']))
+                                    <th>Handler</th>
+                                    @endif
                                     <th>Reference NO</th>
                                     <th>Subject</th>
                                     <th class="text-center">Category</th>
@@ -42,11 +44,11 @@
                             <tbody>
                                 @foreach($cases as $case)
                                     <tr>
+                                        @if(!in_array(\Auth::user()->account_type, ['CH']))
                                         <td>
-                                            <div class="font-weight-bold text-dark mb-0">
-                                                {!! $case->getSubmittedAt() !!}
-                                            </div>
+                                            {{ $case->active_handlers->first()->getFullName() }}
                                         </td>
+                                        @endif
                                         <td>
                                             <div class="font-weight-bolder mb-0">
                                                 {!! $case->getRefNO() !!}

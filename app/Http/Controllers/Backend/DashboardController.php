@@ -164,8 +164,9 @@ class DashboardController extends Controller
      */
     public function exportReportCSV()
     {
-        $start_date    = request('start_date');
-        $end_date      = request('end_date');
+        $date_array    = explode(' to ', request('start_date_end_date')) ;
+        $start_date    = $date_array[0];
+        $end_date      = $date_array[1];
         $handler_id    = request('handler_id');
         $category      = request('category');
         $type          = request('type');

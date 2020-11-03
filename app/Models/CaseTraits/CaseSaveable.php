@@ -49,6 +49,19 @@ trait CaseSaveable
     }
 
     /**
+     * Saves fees information
+     *
+     * @param  \stdClass $feeInfo
+     * @return bool
+     */
+    public function saveFeeInfo(\stdClass $feeInfo) : bool
+    {
+        $this->combined_turnover        = $feeInfo->combined_turnover;
+        $this->filling_fee              = $feeInfo->filling_fee;
+        return $this->save();
+    }
+
+    /**
      * Submits case
      *
      * @return bool

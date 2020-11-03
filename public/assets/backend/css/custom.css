@@ -2,6 +2,64 @@ body {
     background: #f2f2f2;
 }
 
+.form-control-declaration,
+.form-control-declaration:focus, 
+.form-control-declaration:active
+{
+    display: inline-block;
+    height: calc(1.5em + 1.3rem + 2px);
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #464E5F;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #E5EAEE;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
+
+.w--50
+{
+    width: 50%;
+}
+
+.w--30
+{
+    width: 30%;
+}
+
+.text_dark_blue
+{
+    color: #484b74;
+}
+
+.flatpickr-day.selected:hover,
+day.endRange:hover,
+{
+    background: #227a4e !important;
+    box-shadow: none;
+    color: #fff;
+    border-color: #227a4e !important;
+}
+
+.flatpickr-day.startRange,
+{
+    background: #227a4e !important;
+    box-shadow: none;
+    color: #fff;
+    border-color: #227a4e !important;
+}
+
 .greyed-out {
     background: #f2f2f2 !important;
 }

@@ -68,12 +68,12 @@
                             <h4 class="info-title">Subject: </h4>
                             <h4>{{ $case->subject }}</h4>
                         </div>
-                     
+
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Parties:</h4>
                             <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
-                  
+
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">
                                 Transaction Type:
@@ -81,7 +81,23 @@
                             <h4>{{ $case->getType() }}</h4>
                         </div>
                     </div>
-
+                    <p class="section-header">
+                        Fees
+                    </p>
+                    <div class="grid-col-2">
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">
+                                Combined Turnover:
+                            </h4>
+                            <h4>{!! $case->getCombinedTurnover() !!}</h4>
+                        </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">
+                                Filling Fee:
+                            </h4>
+                            <h4>{!! $case->getFillingFee() !!}</h4>
+                        </div>
+                    </div>
                     <p class="section-header">
                         Contact Information
                     </p>
@@ -139,25 +155,56 @@
                             <h4 class="info-title info-title-margin">
                                 Additional Information:
                             </h4>
-                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {{ $document->additional_info }} @else ... @endif</h4>
-                        </div>  
-                         
+                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {!! nl2br($document->additional_info) !!} @else ... @endif</h4>
+                        </div>
+
                     </div>
-                  
+
                     @endforeach
                     <form class="form" id="kt_form">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
-                      
+
                         <div class="grid-col-2-btn my-20">
                             <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go back to edit</button>
-                            <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" data-wizard-type="action-submit">Submit</button>
-                            <button id="upload-img" class="btn btn-success hide" disabled>
-                                <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
-                            </button>
+                            <button type="button" id="fill-declaration" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" 
+                                title="View Declaration"
+                                data-toggle="modal"
+                                data-target="#viewDeclarationModal"
+                            >Submit</button>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Declaration Modal --}}
+<div class="modal fade" id="viewDeclarationModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="viewDeclarationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewCaseModalLabel">Declaration</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
+                    <div class="card-body">
+                        <p>
+                            I, <span><input type="text" class="form-control-declaration w--30" name="declaration_name" placeholder="John Doe" /></span> the appointed representative of <span><input type="text" class="form-control-declaration w--50" name="declaration_rep" placeholder="C & A Legal" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit">Submit Case</button
+                    ><button id="upload-img" type="button" class="btn btn-light-primary font-weight-bold hide" disabled>
+                        <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                    </button>
+                <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
