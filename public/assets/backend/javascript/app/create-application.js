@@ -553,19 +553,22 @@ function formatInputAmount(inputAmount)
 
 function toggleInput(inputField)
 {
-    let child_input = $(inputField).parent().parent().next().children('input');
-
-    if ($(inputField).is(':checked'))
+    $(inputField).each(function(index)
     {
-        if (child_input.is('.combined_fees'))
-            child_input.removeClass('hide');
-    } else {
-        if (child_input.is('.combined_fees'))
+        let child_input = $(this).parent().parent().next().children('input');
+
+        if ($(this).is(':checked'))
         {
-            child_input.val('');
-            child_input.addClass('hide');
+            if (child_input.is('.combined_fees'))
+                child_input.removeClass('hide');
+        } else {
+            if (child_input.is('.combined_fees'))
+            {
+                child_input.val('');
+                child_input.addClass('hide');
+            }
         }
-    }
+    });
 }
 
 function notify(messageType, message)
