@@ -62,6 +62,19 @@ trait CaseSaveable
     }
 
     /**
+     * Saves Declaration
+     *
+     * @param  \stdClass $declarationInfo
+     * @return bool
+     */
+    public function saveDeclaration(\stdClass $declarationInfo) : bool
+    {
+        $this->declaration_name        = $declarationInfo->declaration_name;
+        $this->declaration_rep             = $declarationInfo->declaration_rep;
+        return $this->save();
+    }
+
+    /**
      * Submits case
      *
      * @return bool

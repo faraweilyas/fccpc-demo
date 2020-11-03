@@ -200,7 +200,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit">Submit Case</button
+                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit" disabled>Submit Case</button
                     ><button id="upload-img" type="button" class="btn btn-light-primary font-weight-bold hide" disabled>
                         <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
                     </button>

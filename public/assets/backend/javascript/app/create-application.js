@@ -390,6 +390,18 @@ $(document).ready(function()
         return;
     });
 
+    $("#declaration_name, #declaration_rep").on("keyup change", function()
+    {
+        var declaration_name = $("#declaration_name").val(),
+            declaration_rep  = $("#declaration_rep").val();
+
+        if(declaration_name !== '' && declaration_rep !== '') {
+            $("#upload-info").removeAttr('disabled');
+        } else {
+            $("#upload-info").attr('disabled', 'disabled');
+        }
+    });
+
     // Validate combined turn over to be digits
     formatInputAmount($(".combined_fees"));
 
@@ -672,6 +684,8 @@ function saveChecklistDocument(action, currentForm)
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
         checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
+        combined_turnover  = currentForm.find("#combined_turnover").val(),
+        filling_fee        = currentForm.find("#filling_fee").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
         $("#previous-btn").attr('disabled', 'disabled');
@@ -688,6 +702,8 @@ function saveChecklistDocument(action, currentForm)
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
+        formData.append('combined_turnover', combined_turnover);
+        formData.append('filling_fee', filling_fee);
         sendRequest(
             '/application/create/'+tracking_id+'/'+action,
             formData,
@@ -716,7 +732,9 @@ function saveapplicationDocumentation(action, currentForm)
 
 function submitCase()
 {
-    var tracking_id = $("#tracking_id").val();
+    var tracking_id      = $("#tracking_id").val(),
+        declaration_name = $("#declaration_name").val(),
+        declaration_rep  = $("#declaration_rep").val();
 
     $("#goback-btn").addClass('hide');
     $("#upload-info").addClass('hide');
@@ -728,6 +746,8 @@ function submitCase()
         '/application/submit/'+tracking_id,
         {
             _token: $("#token").val(),
+            declaration_name: declaration_name,
+            declaration_rep: declaration_rep,
         },
         'application/x-www-form-urlencoded; charset=UTF-8',
         true,
