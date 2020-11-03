@@ -33,6 +33,19 @@ body {
     color: #fff;
     border-color: #135c40;
 }
+.flatpickr-day.selected:hover
+{
+    background: #135c40;
+    box-shadow: none;
+    color: #fff;
+    border-color: #135c40;
+}
+
+.flatpickr-day:hover{
+    background: #135c40;
+    color: #fff;
+
+}
 
 .header-mobile .burger-icon:hover span {
     background-color: #fff;
