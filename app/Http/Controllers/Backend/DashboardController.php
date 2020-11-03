@@ -29,11 +29,19 @@ class DashboardController extends Controller
 	 */
     public function index()
     {
+        if(in_array(\Auth::user()->account_type, ['SP'])):
+            $new_cases = (new Cases())->unassignedCases()->take(5);
+        else:
+            $new_cases = auth()
+                    ->user()
+                    ->active_cases_assigned_to()
+                    ->get()->take(5);
+        endif;
         $cases            = new Cases();
     	$title            = APP_NAME;
         $description      = "FCCPC Dashboard";
     	$details          = details($title, $description);
-    	return view('backend.admin.index', compact('details', 'cases'));
+    	return view('backend.admin.index', compact('details', 'cases', 'new_cases'));
     }
 
     /**

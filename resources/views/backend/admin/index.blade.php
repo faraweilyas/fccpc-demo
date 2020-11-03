@@ -121,6 +121,58 @@
 						</div>
 					</div>
 				</div>
+                <div class="col-lg-6">
+                    <div class="card card-custom card-stretch gutter-b">
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label font-weight-bolder text-dark">New Cases</span>
+                            </h3>
+                            <div class="card-toolbar">
+                            </div>
+                        </div>
+                        <div class="card-body pt-2 pb-0 mt-n3">
+                            <div class="tab-content mt-5" id="myTabTables11">
+                                <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel" aria-labelledby="kt_tab_pane_11_3">
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless table-vertical-center">
+                                            <thead>
+                                                <tr>
+                                                    <th class="p-0 min-w-200px"></th>
+                                                    <th class="p-0 min-w-100px"></th>
+                                                    <th class="p-0 min-w-125px"></th>
+                                                    <th class="p-0 min-w-110px"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($new_cases as $case)
+                                                <tr>
+                                                    <td class="pl-0">
+                                                        <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $case->getSubject() }}</a>
+                                                        <div>
+                                                            <span class="font-weight-bolder">Email:</span>
+                                                            <a class="text-muted font-weight-bold text-hover-primary" href="#">{!! $case->applicant_email !!}</a>
+                                                        </div>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{!! $case->getTotalFees() !!}</span>
+                                                        <span class="text-muted font-weight-bold">Paid</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        <span class="text-muted font-weight-500">{{ implode(',', $case->getCaseParties(false)) }}</span>
+                                                    </td>
+                                                    <td class="text-right">
+                                                        {!! $case->getCategoryHtml() !!}
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 			</div>
         </div>
     </div>
