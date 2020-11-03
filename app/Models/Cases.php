@@ -155,6 +155,11 @@ class Cases extends Model
         return datetimeToText($this->submitted_at, $format);
     }
 
+    public function getDefficiencyIssuedAt(string $format='customdate') : string
+    {
+        return datetimeToText($this->case_handler->defficiency_issued_at , $format);
+    }
+
     public function getCaseSubmittedChecklist()
     {
         $checklistDocuments = [];

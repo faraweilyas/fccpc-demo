@@ -102,12 +102,6 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>REF NO:</b></p>
-                        <span>
-                            {!! $case->getRefNO() !!}
-                        </span>
-                    </div>
-                    <div class="col-md-3">
                         <p><b>Fees:</b></p>
                         <p class="info-title">
                             <b>Combined Turnover:</b>&nbsp;{!! $case->getCombinedTurnover() !!}
@@ -115,6 +109,12 @@
                         <p class="info-title">
                             <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
                         </p>
+                    </div>
+                    <div class="col-md-3">
+                        <p><b>REF NO:</b></p>
+                        <span>
+                            {!! $case->getRefNO() !!}
+                        </span>
                     </div>
                     <div class="col-md-3">
                         <p><b>TRANSACTION REP:</b></p>

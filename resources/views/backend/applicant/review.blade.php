@@ -167,13 +167,44 @@
 
                         <div class="grid-col-2-btn my-20">
                             <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go back to edit</button>
-                            <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" data-wizard-type="action-submit">Submit</button>
-                            <button id="upload-img" class="btn btn-success hide" disabled>
-                                <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
-                            </button>
+                            <button type="button" id="fill-declaration" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" 
+                                title="View Declaration"
+                                data-toggle="modal"
+                                data-target="#viewDeclarationModal"
+                            >Submit</button>
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- Declaration Modal --}}
+<div class="modal fade" id="viewDeclarationModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="viewDeclarationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="viewCaseModalLabel">Declaration</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
+                    <div class="card-body">
+                        <p>
+                            I, <span><input type="text" class="form-control-declaration w--30" name="" placeholder="Full Name" /></span> the appointed representative of <span><input type="text" class="form-control-declaration w--50" name="" placeholder="Full Name" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit">Submit Case</button
+                    ><button id="upload-img" type="button" class="btn btn-light-primary font-weight-bold hide" disabled>
+                        <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                    </button>
+                <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
