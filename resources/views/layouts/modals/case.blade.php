@@ -107,8 +107,8 @@
                             {{-- Checklist --}}
                             <div class="tab-pane fade" id="fees_tab" role="tabpanel">
                                 <table class="table">
-                                    <th>SERVICE</th>
-                                    <th>PRICE</th>
+                                    <th class='fees_tab__head'>SERVICE</th>
+                                    <th class='fees_tab__head'>PRICE</th>
                                     <tr>
                                         <td>Combined Turnover</td>
                                         <td id="combined_turnover">...</td>
@@ -119,7 +119,11 @@
                                     </tr>
                                     <tr>
                                         <td>Expedited Fee</td>
-                                        <td>...</td>
+                                        <td id="expedited_fee">...</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total:</td>
+                                        <td id="total_fee">...</td>
                                     </tr>
                                 </table>
                             </div>
