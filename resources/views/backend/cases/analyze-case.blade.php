@@ -29,13 +29,9 @@
     </div>
 </div>
 
-
-
-
 <div class="conatiner px-5 py-5 relative">
 
     <button class="btn btn-success-transparent">Request Extension</button>
-
 
     <div class="row px-3">
         <div class="tab-custom">
@@ -72,8 +68,8 @@
         <div class="col-md-12">
             <div class="card-custom">
                 @if(!empty($case->getDefficiencyDate()))
-                <div class="ribbon ribbon-clip ribbon-right">
-                    <div class="ribbon-target" style="top: 12px;">
+                <div class="ribbon ribbon-clip ribbon-left">
+                    <div class="ribbon-target" style="top: 15px;">
                     <span class="ribbon-inner bg-warning"></span>On Hold</div>
                 </div>
                 @endif
@@ -153,8 +149,6 @@
                         <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Document Checklist</button>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
@@ -179,7 +173,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 my-5">
-                        <textarea class="form-control form-control-teaxtarea" name="" id="" cols="30" rows="10">State your recommendation</textarea>
+                        <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:" name="" id="" cols="30" rows="10"></textarea>
 
                         <br>
 
