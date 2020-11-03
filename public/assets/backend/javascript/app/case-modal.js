@@ -111,7 +111,7 @@ $(document).ready(function () {
         paging: true,
         order: [
             [1, "asc"]
-        ], //or asc 
+        ], //or asc
         columnDefs: [{
             "targets": 1,
             "type": "date"
@@ -171,6 +171,7 @@ $(document).ready(function () {
             applicant_address = thisModal.find('#applicant_address'),
             combined_turnover = thisModal.find('#combined_turnover'),
             filling_fee = thisModal.find('#filling_fee'),
+            total_fee = thisModal.find('#total_fee'),
             submittedAt = thisModal.find('#submittedAt');
 
         // Get Case Checklists Asynchronously
@@ -230,6 +231,7 @@ $(document).ready(function () {
         applicant_address.html(caseContainer.find('.address').html());
         combined_turnover.html(caseContainer.find('.combined_turnover').html());
         filling_fee.html(caseContainer.find('.filling_fee').html());
+        total_fee.html(caseContainer.find('.total_fee').html());
         submittedAt.html(caseContainer.find('.submitted_at').html());
         return;
     });
