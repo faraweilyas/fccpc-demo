@@ -307,11 +307,16 @@ class ApplicationController extends Controller
      */
     public function review(Guest $guest, $step)
     {
-        $case = $guest->case;
-        $checklistIds = $case->getChecklistIds();
+        if ($guest->case->isSubmitted()) {
+            return redirect($guest->submittedApplicationPath());
+        }
+
+        $case                    = $guest->case;
+        $checklistIds            = $case->getChecklistIds();
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        $documents = Document::where('case_id', $guest->case->id)->get();
-        $title = 'Review Application | ' . APP_NAME;
+        $documents               = Document::where('case_id', $guest->case->id)->get();
+
+        $title       = 'Review Application | ' . APP_NAME;
         $description = 'Review Application | ' . APP_NAME;
         $details = details($title, $description);
         return view(

@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="card card-custom" style="margin: -1.75rem; margin-bottom: -23px;">
-                    <div class="card-header card-header-tabs-line">
+                    <div class="card-header card-header-tabs-line justify-content-centre">
                         <div class="card-title">
                             <h3 class="card-label">&nbsp;&nbsp;</h3>
                         </div>
@@ -28,9 +28,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#checklist_tab">
+                                    <a class="nav-link" data-toggle="tab" href="#fees_tab">
                                         <span class="nav-icon"><i class="flaticon-list-2"></i></span>
-                                        <span class="nav-text">Checklist</span>
+                                        <span class="nav-text">Fees</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -105,10 +105,23 @@
                             </div>
 
                             {{-- Checklist --}}
-                            <div class="tab-pane fade" id="checklist_tab" role="tabpanel">
-                                <div id="checklist_items" class="d-flex flex-column font-size-sm font-weight-bold">
-                                ...
-                                </div>
+                            <div class="tab-pane fade" id="fees_tab" role="tabpanel">
+                                <table class="table">
+                                    <th>SERVICE</th>
+                                    <th>PRICE</th>
+                                    <tr>
+                                        <td>Combined Turnover</td>
+                                        <td id="combined_turnover">...</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filling Fee</td>
+                                        <td id="filling_fee">...</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expedited Fee</td>
+                                        <td>...</td>
+                                    </tr>
+                                </table>
                             </div>
 
                             {{-- Documents --}}

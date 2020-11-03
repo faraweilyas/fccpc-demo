@@ -98,7 +98,9 @@
                                                 <span class="email">{!! $case->applicant_email !!}</span>
                                                 <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
                                                 <span class="address">{!! $case->applicant_address !!}</span>
-                                                {{-- Checklist --}}
+                                                {{-- Fees --}}
+                                                <span class="combined_turnover">{!! $case->getCombinedTurnover() !!}</span>
+                                                <span class="filling_fee">{!! $case->getFillingFee() !!}</span>
                                                 {{-- Documents --}}
                                             </div>
                                         </td>

@@ -2,6 +2,11 @@ body {
     background: #f2f2f2;
 }
 
+.justify-content-centre
+{
+    justify-content: center !important;
+}
+
 .form-control-declaration,
 .form-control-declaration:focus,
 .form-control-declaration:active {

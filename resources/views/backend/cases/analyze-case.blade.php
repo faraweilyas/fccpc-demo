@@ -39,9 +39,9 @@
 
     <div class="row px-3">
         <div class="tab-custom">
-            <div class="tab-link active">
+            <div class="tab-link @if(!empty($case->getDefficiencyDate())) bg-warning @else active @endif">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
-                <a class="nav-link active" href="#">Documentation
+                <a class="nav-link @if(!empty($case->getDefficiencyDate())) text-white @else active @endif" href="#">Documentation
                     <span>Duration: 10 days</span>
                 </a>
             </div>
@@ -71,6 +71,12 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
+                @if(!empty($case->getDefficiencyDate()))
+                <div class="ribbon ribbon-clip ribbon-right">
+                    <div class="ribbon-target" style="top: 12px;">
+                    <span class="ribbon-inner bg-warning"></span>On Hold</div>
+                </div>
+                @endif
                 <h5 class="text_dark_blue">Case Information</h5>
 
                 <div class="row py-5">
