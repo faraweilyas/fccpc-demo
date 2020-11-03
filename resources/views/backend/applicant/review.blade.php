@@ -194,7 +194,7 @@
                 <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                     <div class="card-body">
                         <p>
-                            I, <span><input type="text" class="form-control-declaration w--30" name="" placeholder="Full Name" /></span> the appointed representative of <span><input type="text" class="form-control-declaration w--50" name="" placeholder="Full Name" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
+                            I, <span><input type="text" class="form-control-declaration w--30" name="declaration_name" placeholder="John Doe" /></span> the appointed representative of <span><input type="text" class="form-control-declaration w--50" name="declaration_rep" placeholder="C & A Legal" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
                         </p>
                     </div>
                 </div>
