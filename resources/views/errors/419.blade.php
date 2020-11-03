@@ -2,6 +2,6 @@
 
 @section('title', __('Page Expired'))
 
-@section('code', '419')
+@section('code', '400')
 
 @section('message', __('Page Expired'))
