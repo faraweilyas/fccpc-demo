@@ -343,8 +343,8 @@ $(document).ready(function()
         //         });
         //     }
         // });
-        
-        // _wizard.stop();  
+
+        // _wizard.stop();
         // Don't go to the next step
     });
 
@@ -367,7 +367,7 @@ $(document).ready(function()
     }
 
     $("#review-application").on('click', function (event) {
-        
+
         window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review/"+$("#current-step").val();
     });
 
@@ -391,13 +391,18 @@ $(document).ready(function()
     });
 
     // Validate combined turn over to be digits
-    $(document).on("keyup change", ".combined_fees", function()
-    {
-        let validatedAmount = Number(allowNumbers($(this).val())),
-            formatter       = new Intl.NumberFormat('en-US');
+    formatInputAmount($(".combined_fees"));
 
-        $(this).val(formatter.format(validatedAmount));
-        // generateFee($(this));
+    $(document).on("focus keyup change", ".combined_fees", function()
+    {
+        formatInputAmount(this);
+    });
+
+    toggleInput($(".checklist_id"));
+
+    $(".checklist_id").on('click', function(event)
+    {
+        toggleInput(this);
     });
 
     $("#save-transaction-info").on('click', function(event)
@@ -409,7 +414,7 @@ $(document).ready(function()
                             return (typeof ($(element).attr('data-wizard-state')) !== "undefined")
                         }),
             sendForm    = 'save'+currentForm.attr('data-form');
-        
+
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
             checklists         = [],
@@ -420,7 +425,7 @@ $(document).ready(function()
             combined_turnover  = currentForm.find("#combined_turnover").val(),
             filling_fee        = currentForm.find("#filling_fee").val(),
             doc_id             = currentForm.find("#doc_id").val();
-            
+
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-transaction-info").toggle();
         $("#saving-img").removeClass('hide');
@@ -451,33 +456,17 @@ $(document).ready(function()
                 $("#save-transaction-info").toggle();
                 $("#saving-img").addClass('hide');
                 if (result.responseType !== 'error'){
-                    window.location.replace(review_route); 
+                    window.location.replace(review_route);
                 }
             }
         );
         return;
     });
 
-    $(".checklist_id").on('click', function(event){
-        if ($(this).is(':checked')) 
-        {
-            let child_input = $(this).next().children('input');
-            isWithTwo = child_input.is(function() {
-              return $( "strong", this).length === 2;
-            });
-
-            if(child_input.is('.combined_fees')) {
-                alert("Exists");
-            } else {
-                alert("Not Exists");
-            }
-        }
-    });
-
     $('input[type="file"]').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
-        // var extension = fileName.substr((fileName. lastIndexOf('.')+1)); 
+        // var extension = fileName.substr((fileName. lastIndexOf('.')+1));
         var doc_name = $(this).attr('data-doc-name');
         $('.'+doc_name).html(fileName);
     });
@@ -544,12 +533,40 @@ $(document).ready(function()
         return false;
     });
 
-    // $('#checklist_doc').change(function(e){ 
-    //     var fileName = e.target.files[0].name; 
+    // $('#checklist_doc').change(function(e){
+    //     var fileName = e.target.files[0].name;
     //     var new_file = fileName.split('.').pop();
     //     $('.checklist_doc_name').html('file.'+new_file);
-    // });  
+    // });
 });
+
+function formatInputAmount(inputAmount)
+{
+    $(inputAmount).each(function(index)
+    {
+        let validatedAmount = Number(allowNumbers($(this).val())),
+            formatter       = new Intl.NumberFormat('en-US');
+
+        $(this).val(formatter.format(validatedAmount));
+    });
+}
+
+function toggleInput(inputField)
+{
+    let child_input = $(inputField).parent().parent().next().children('input');
+
+    if ($(inputField).is(':checked'))
+    {
+        if (child_input.is('.combined_fees'))
+            child_input.removeClass('hide');
+    } else {
+        if (child_input.is('.combined_fees'))
+        {
+            child_input.val('');
+            child_input.addClass('hide');
+        }
+    }
+}
 
 function notify(messageType, message)
 {
