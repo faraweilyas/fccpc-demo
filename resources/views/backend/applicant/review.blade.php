@@ -68,12 +68,12 @@
                             <h4 class="info-title">Subject: </h4>
                             <h4>{{ $case->subject }}</h4>
                         </div>
-                     
+
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Parties:</h4>
                             <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
-                  
+
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">
                                 Transaction Type:
@@ -139,16 +139,16 @@
                             <h4 class="info-title info-title-margin">
                                 Additional Information:
                             </h4>
-                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {{ $document->additional_info }} @else ... @endif</h4>
-                        </div>  
-                         
+                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {!! nl2br($document->additional_info) !!} @else ... @endif</h4>
+                        </div>
+
                     </div>
-                  
+
                     @endforeach
                     <form class="form" id="kt_form">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
-                      
+
                         <div class="grid-col-2-btn my-20">
                             <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go back to edit</button>
                             <button id="upload-info" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" data-wizard-type="action-submit">Submit</button>
