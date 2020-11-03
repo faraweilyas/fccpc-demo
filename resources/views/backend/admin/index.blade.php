@@ -158,7 +158,7 @@
                                                         <span class="text-muted font-weight-bold">Paid</span>
                                                     </td>
                                                     <td class="text-right">
-                                                        <span class="text-muted font-weight-500">{{ implode(',', $case->getCaseParties(false)) }}</span>
+                                                        <span class="text-muted font-weight-500">{{ implode(', ', $case->getCaseParties(false)) }}</span>
                                                     </td>
                                                     <td class="text-right">
                                                         {!! $case->getCategoryHtml() !!}
