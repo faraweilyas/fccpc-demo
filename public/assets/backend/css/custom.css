@@ -51,7 +51,7 @@ body {
 .flatpickr-day:hover {
     background: #227a4e !important;
     box-shadow: none;
-    color: #fff;
+    color: #fff !important;
     border-color: #227a4e !important;
 }
 
