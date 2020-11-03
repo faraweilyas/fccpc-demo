@@ -37,13 +37,13 @@ class Checklist extends Model
      */
     public function getValue(Cases $case)
     {
-        if ($this->input_field == 'combined_turnover' && !is_null($case->combined_turnover))
+        if ($this->input_field == 'combined_turnover' && !empty($case->combined_turnover))
             return $case->combined_turnover;
 
-        if ($this->input_field == 'filling_fee' && !is_null($case->filling_fee))
+        if ($this->input_field == 'filling_fee' && !empty($case->filling_fee))
             return $case->filling_fee;
 
-        return NULL;
+        return '';
     }
 
     public function getInputPlaceHolder()

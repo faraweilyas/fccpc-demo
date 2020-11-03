@@ -547,7 +547,7 @@ function formatInputAmount(inputAmount)
         let validatedAmount = Number(allowNumbers($(this).val())),
             formatter       = new Intl.NumberFormat('en-US');
 
-        $(this).val(formatter.format(validatedAmount));
+        $(this).val((validatedAmount < 1) ? '' : formatter.format(validatedAmount));
     });
 }
 

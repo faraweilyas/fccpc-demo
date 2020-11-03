@@ -56,6 +56,16 @@ class Cases extends Model
         return is_null($this->active_handlers[0]->case_handler->defficiency_issued_at) ? false : true;
     }
 
+    public function getCombinedTurnover()
+    {
+        return !empty($this->combined_turnover) ? formatDigit($this->combined_turnover) : '...';
+    } 
+
+    public function getFillingFee()
+    {
+        return !empty($this->filling_fee) ? formatDigit($this->filling_fee) : '...';
+    }
+
     public function selectedCategoryStyle($case_category='reg') : \stdClass
     {
         $case_category = strtoupper($case_category);

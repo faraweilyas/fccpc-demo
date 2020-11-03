@@ -81,7 +81,23 @@
                             <h4>{{ $case->getType() }}</h4>
                         </div>
                     </div>
-
+                    <p class="section-header">
+                        Fees
+                    </p>
+                    <div class="grid-col-2">
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">
+                                Combined Turnover:
+                            </h4>
+                            <h4>{!! $case->getCombinedTurnover() !!}</h4>
+                        </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">
+                                Filling Fee:
+                            </h4>
+                            <h4>{!! $case->getFillingFee() !!}</h4>
+                        </div>
+                    </div>
                     <p class="section-header">
                         Contact Information
                     </p>
