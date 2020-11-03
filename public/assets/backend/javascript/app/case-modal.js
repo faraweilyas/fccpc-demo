@@ -109,6 +109,13 @@ $(document).ready(function () {
     $('#unassigned_cases_datatable').DataTable({
         responsive: true,
         paging: true,
+        order: [
+            [1, "asc"]
+        ], //or asc 
+        columnDefs: [{
+            "targets": 1,
+            "type": "date"
+        }],
     });
 
     $('#assigned_cases_datatable').DataTable({
@@ -146,23 +153,23 @@ $(document).ready(function () {
     });
 
     $('#viewCaseModal').on('shown.bs.modal', function (event) {
-        var viewButton              = $(event.relatedTarget);
-            caseContainer           = viewButton.parent('td').parent('tr'),
-            thisModal               = $(this),
-            caseID                  = caseContainer.find('.case_id').html(),
-            analyzeCase             = thisModal.find('#analyze-case'),
-            caseHandler             = thisModal.find('#case_handler'),
-            refrenceNo              = thisModal.find('#refrenceNo'),
-            subject                 = thisModal.find('#subject'),
-            category                = thisModal.find('#category'),
-            type                    = thisModal.find('#type'),
-            parties                 = thisModal.find('#parties'),
-            applicant_firm          = thisModal.find('#applicant_firm'),
-            applicant_name          = thisModal.find('#applicant_name'),
-            applicant_email         = thisModal.find('#applicant_email'),
-            applicant_phone_number  = thisModal.find('#applicant_phone_number'),
-            applicant_address       = thisModal.find('#applicant_address'),
-            submittedAt             = thisModal.find('#submittedAt');
+        var viewButton = $(event.relatedTarget);
+        caseContainer = viewButton.parent('td').parent('tr'),
+            thisModal = $(this),
+            caseID = caseContainer.find('.case_id').html(),
+            analyzeCase = thisModal.find('#analyze-case'),
+            caseHandler = thisModal.find('#case_handler'),
+            refrenceNo = thisModal.find('#refrenceNo'),
+            subject = thisModal.find('#subject'),
+            category = thisModal.find('#category'),
+            type = thisModal.find('#type'),
+            parties = thisModal.find('#parties'),
+            applicant_firm = thisModal.find('#applicant_firm'),
+            applicant_name = thisModal.find('#applicant_name'),
+            applicant_email = thisModal.find('#applicant_email'),
+            applicant_phone_number = thisModal.find('#applicant_phone_number'),
+            applicant_address = thisModal.find('#applicant_address'),
+            submittedAt = thisModal.find('#submittedAt');
 
         // Get Case Checklists Asynchronously
         $.ajax({
@@ -224,33 +231,33 @@ $(document).ready(function () {
     });
 
 
-   $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
+    $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-            caseContainer = viewButton.parent('td').parent('tr'),
+        caseContainer = viewButton.parent('td').parent('tr'),
             thisModal = $(this),
             email = thisModal.find('#email');
-            message = thisModal.find('#message');
+        message = thisModal.find('#message');
 
-            email.html(caseContainer.find('.email').html());
-            message.html(caseContainer.find('.message').html());
+        email.html(caseContainer.find('.email').html());
+        message.html(caseContainer.find('.message').html());
         return;
     });
 
-   $('#viewFaqModal').on('shown.bs.modal', function (event) {
+    $('#viewFaqModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-            caseContainer = viewButton.parent('td').parent('tr'),
+        caseContainer = viewButton.parent('td').parent('tr'),
             thisModal = $(this),
-            creator  = thisModal.find('#creator');
-            category = thisModal.find('#category');
-            question = thisModal.find('#question');
-            answer   = thisModal.find('#answer');
-            created  = thisModal.find('#created');
+            creator = thisModal.find('#creator');
+        category = thisModal.find('#category');
+        question = thisModal.find('#question');
+        answer = thisModal.find('#answer');
+        created = thisModal.find('#created');
 
-            creator.html(caseContainer.find('.creator').html());
-            category.html(caseContainer.find('.category').html());
-            question.html(caseContainer.find('.question').html());
-            answer.html(caseContainer.find('.answer').html());
-            created.html(caseContainer.find('.created').html());
+        creator.html(caseContainer.find('.creator').html());
+        category.html(caseContainer.find('.category').html());
+        question.html(caseContainer.find('.question').html());
+        answer.html(caseContainer.find('.answer').html());
+        created.html(caseContainer.find('.created').html());
         return;
     });
 
@@ -398,6 +405,6 @@ $(document).ready(function () {
     });
 
     $("#analyze-case").on('click', function (event) {
-       window.location.replace('/cases/analyze/'+$(this).attr('case_id'));
+        window.location.replace('/cases/analyze/' + $(this).attr('case_id'));
     });
 });
