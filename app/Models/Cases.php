@@ -109,10 +109,10 @@ class Cases extends Model
         return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
     }
 
-    public function getTotalFees() 
+    public function getTotalFees()
     {
-        $combined_turnover = (!empty($this->combined_turnover)) ? $this->combined_turnover : 0; 
-        $filling_fee       = (!empty($this->filling_fee)) ? $this->filling_fee : 0; 
+        $combined_turnover = (!empty($this->combined_turnover)) ? $this->combined_turnover : 0;
+        $filling_fee       = (!empty($this->filling_fee)) ? $this->filling_fee : 0;
         $total             = $combined_turnover + $filling_fee;
 
         return formatDigit($total);
@@ -165,12 +165,13 @@ class Cases extends Model
 
     public function getSubmittedAt(string $format='customdate') : string
     {
-        return datetimeToText($this->submitted_at, $format);
+        return !empty($this->submitted_at) ? datetimeToText($this->submitted_at, $format) : "";
     }
 
     public function getDefficiencyIssuedAt(string $format='customdate') : string
     {
-        return datetimeToText($this->case_handler->defficiency_issued_at , $format);
+        $defficiency_issued_at = $this->case_handler->defficiency_issued_at;
+        return !empty($defficiency_issued_at) ? datetimeToText($defficiency_issued_at, $format) : "";
     }
 
     public function getCaseSubmittedChecklist()
