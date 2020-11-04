@@ -576,7 +576,8 @@ function toggleInput(inputField)
         } else {
             if (child_input.is('.combined_fees'))
             {
-                child_input.val('');
+                if (child_input.attr('id') != 'filling_fee')
+                    child_input.val('');
                 child_input.addClass('hide');
             }
         }
