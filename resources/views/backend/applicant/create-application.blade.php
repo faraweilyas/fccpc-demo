@@ -275,32 +275,35 @@
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
-                                                                    @php
-                                                                        $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
-                                                                    @endphp
-                                                                    <div class="col-md-12">
-                                                                        <label class="checkbox mb-4">
-                                                                            <input
-                                                                                type="checkbox"
-                                                                                class="checklist_id"
-                                                                                value="{{ $checklist->id }}"
-                                                                                {{ $checked }}
-                                                                            />
-                                                                            <span></span>
-                                                                            <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
-                                                                        </label>
-                                                                    </div>
-                                                                    @if($checklist->hasInputField())
-                                                                        <div class="col-md-6 mb-4 ml-8">
-                                                                            <input
-                                                                                type="text"
-                                                                                class="form-control combined_fees hide"
-                                                                                name="{{ $checklist->getInput() }}"
-                                                                                value="{{ $checklist->getValue($case) }}"
-                                                                                placeholder="{{ $checklist->getInputPlaceHolder() }}"
-                                                                                id="{{ $checklist->getInput() }}"
-                                                                            />
+                                                                    @if($checklist->isCaseCategoryFFX($case))
+                                                                        @php
+                                                                            $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
+                                                                        @endphp
+                                                                        <div class="col-md-12">
+                                                                            <label class="checkbox mb-4">
+                                                                                <input
+                                                                                    type="checkbox"
+                                                                                    class="checklist_id"
+                                                                                    value="{{ $checklist->id }}"
+                                                                                    {{ $checked }}
+                                                                                />
+                                                                                <span></span>
+                                                                                <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
+                                                                            </label>
                                                                         </div>
+                                                                        @if($checklist->hasInputField())
+                                                                            <div class="col-md-6 mb-4 ml-8">
+                                                                                <input
+                                                                                    type="text"
+                                                                                    class="form-control combined_fees hide"
+                                                                                    name="{{ $checklist->getInput() }}"
+                                                                                    value="{{ $checklist->getValue($case) }}"
+                                                                                    placeholder="{{ $checklist->getInputPlaceHolder() }}"
+                                                                                    id="{{ $checklist->getInput() }}"
+                                                                                    {{ ($checklist->isInputFieldFillingFee()) ? " disabled" : "" }}
+                                                                                />
+                                                                            </div>
+                                                                        @endif
                                                                     @endif
                                                                 @endforeach
                                                             </div>
