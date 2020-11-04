@@ -162,6 +162,7 @@ $(document).ready(function () {
             refrenceNo = thisModal.find('#refrenceNo'),
             subject = thisModal.find('#subject'),
             category = thisModal.find('#category'),
+            category_fee = thisModal.find('#category_fee'),
             type = thisModal.find('#type'),
             parties = thisModal.find('#parties'),
             applicant_firm = thisModal.find('#applicant_firm'),
@@ -222,6 +223,7 @@ $(document).ready(function () {
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
         category.html(caseContainer.find('.category').html());
+        category_fee.html(caseContainer.find('.category').html());
         type.html(caseContainer.find('.type').html());
         parties.html(caseContainer.find('.parties').html());
         applicant_firm.html(caseContainer.find('.firm').html());

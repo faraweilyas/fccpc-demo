@@ -106,24 +106,32 @@
 
                             {{-- Checklist --}}
                             <div class="tab-pane fade" id="fees_tab" role="tabpanel">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Combined Turnover:</span>
+                                    <span class="text-body text-hover-info" id="combined_turnover">...</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Category:</span>
+                                    <span class="text-muted" id="category_fee">...</span>
+                                </div>
                                 <table class="table">
                                     <th class='fees_tab__head'>SERVICE</th>
                                     <th class='fees_tab__head'>PRICE</th>
                                     <tr>
-                                        <td>Combined Turnover</td>
-                                        <td id="combined_turnover">...</td>
+                                        <td>Filling Fee</td>
+                                        <td id="filling_fee">₦0.00</td>
                                     </tr>
                                     <tr>
-                                        <td>Filling Fee</td>
-                                        <td id="filling_fee">...</td>
+                                        <td>Processing Fee</td>
+                                        <td id="processing_fee">₦0.00</td>
                                     </tr>
                                     <tr>
                                         <td>Expedited Fee</td>
-                                        <td id="expedited_fee">...</td>
+                                        <td id="expedited_fee">₦0.00</td>
                                     </tr>
                                     <tr>
                                         <td>Total:</td>
-                                        <td id="total_fee">...</td>
+                                        <td id="total_fee">₦0.00</td>
                                     </tr>
                                 </table>
                             </div>
