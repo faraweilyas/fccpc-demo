@@ -109,6 +109,15 @@ class Cases extends Model
         return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
     }
 
+    public function getTotalFees() 
+    {
+        $combined_turnover = (!empty($this->combined_turnover)) ? $this->combined_turnover : 0; 
+        $filling_fee       = (!empty($this->filling_fee)) ? $this->filling_fee : 0; 
+        $total             = $combined_turnover + $filling_fee;
+
+        return formatDigit($total);
+    }
+
     public function getType($textStyle='ucfirst') : string
     {
         return \AppHelper::value('case_types', $this->case_type, $textStyle) ?? "";
