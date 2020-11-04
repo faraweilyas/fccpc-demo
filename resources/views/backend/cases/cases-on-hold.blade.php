@@ -31,9 +31,9 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    <th>Defficieny Issued On</th>
+                                    <th>Deficiency</th>
                                     @if(!in_array(\Auth::user()->account_type, ['CH']))
-                                    <th>Handler</th>
+                                    <th>Case Handler</th>
                                     @endif
                                     <th>Reference NO</th>
                                     <th>Subject</th>

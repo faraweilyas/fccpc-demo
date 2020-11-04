@@ -36,7 +36,7 @@
                                     <th>Subject</th>
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Type</th>
-                                    <th >Action(s)</th>
+                                    <th>Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>

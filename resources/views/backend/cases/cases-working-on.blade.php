@@ -31,13 +31,14 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    @if(!in_array(\Auth::user()->account_type, ['CH']))
-                                    <th>Handler</th>
-                                    @else
-                                    <th>Submitted On</th>
+                                    @if (in_array(\Auth::user()->account_type, ['CH']))
+                                        <th>Submitted On</th>
                                     @endif
                                     <th>Reference NO</th>
                                     <th>Subject</th>
+                                    @if (in_array(\Auth::user()->account_type, ['SP']))
+                                        <th>Case Handler</th>
+                                    @endif
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Type</th>
                                     <th class="text-center">Action(s)</th>
@@ -46,14 +47,10 @@
                             <tbody>
                                 @foreach($cases as $case)
                                     <tr>
-                                        @if(!in_array(\Auth::user()->account_type, ['CH']))
-                                        <td>
-                                            {{ $case->active_handlers->first()->getFullName() }}
-                                        </td>
-                                        @else
-                                        <td>
-                                            {!! $case->getSubmittedAt() !!}
-                                        </td>
+                                        @if (in_array(\Auth::user()->account_type, ['CH']))
+                                            <td>
+                                                {!! $case->getSubmittedAt() !!}
+                                            </td>
                                         @endif
                                         <td>
                                             <div class="font-weight-bolder mb-0">
@@ -63,6 +60,11 @@
                                         <td class="case-subject">
                                             {{ $case->getSubject() }}
                                         </td>
+                                        @if (in_array(\Auth::user()->account_type, ['SP']))
+                                            <td>
+                                                {{ $case->active_handlers->first()->getFullName() }}
+                                            </td>
+                                        @endif
                                         <td class="text-center">
                                             {!! $case->getCategoryHtml() !!}
                                         </td>
