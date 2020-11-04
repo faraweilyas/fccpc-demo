@@ -427,6 +427,24 @@ $(document).ready(function()
             expedited_fee      = currentForm.find("#expedited_fee").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
+            if (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')){
+                combined_turnover = combined_turnover
+            } else {
+                combined_turnover = 0;
+            }
+
+            if (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')){
+                filling_fee = filling_fee
+            } else {
+                filling_fee = 0;
+            }
+
+            if (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')){
+                expedited_fee = expedited_fee
+            } else {
+                expedited_fee = 0;
+            }
+
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-transaction-info").toggle();
         $("#saving-img").removeClass('hide');
@@ -435,6 +453,15 @@ $(document).ready(function()
         {
            checklists[i] = $(this).val();
         });
+
+        if(!file){
+            toastr.warning("No file selected!");
+            $("#previous-btn").removeAttr('disabled');
+            $("#save-transaction-info").toggle();
+            $("#saving-img").addClass('hide');
+            window.location.replace(review_route);
+            return;
+        }
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
@@ -686,6 +713,24 @@ function saveChecklistDocument(action, currentForm)
         filling_fee        = currentForm.find("#filling_fee").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
+        if (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')){
+                combined_turnover = combined_turnover
+        } else {
+            combined_turnover = 0;
+        }
+
+        if (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')){
+            filling_fee = filling_fee
+        } else {
+            filling_fee = 0;
+        }
+
+        if (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')){
+            expedited_fee = expedited_fee
+        } else {
+            expedited_fee = 0;
+        }
+
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-info").toggle();
         $("#saving-img").removeClass('hide');
@@ -695,6 +740,15 @@ function saveChecklistDocument(action, currentForm)
            checklists[i] = $(this).val();
         });
 
+        if(!file){
+            toastr.warning("No file selected!");
+            $("#previous-btn").removeAttr('disabled');
+            $("#save-info").toggle();
+            $("#saving-img").addClass('hide');
+            _wizard.goNext();
+            KTUtil.scrollTop();
+            return;
+        }
         formData.append('_token', $("#token").val());
         formData.append('file', file);
         formData.append('additional_info', additional_info);
