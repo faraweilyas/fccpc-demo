@@ -167,7 +167,7 @@
 
                         <div class="grid-col-2-btn my-20">
                             <button type="button" id="goback-btn" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go back to edit</button>
-                            <button type="button" id="fill-declaration" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6" 
+                            <button type="button" id="fill-declaration" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
                                 title="View Declaration"
                                 data-toggle="modal"
                                 data-target="#viewDeclarationModal"
@@ -194,7 +194,7 @@
                 <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                     <div class="card-body">
                         <p>
-                            I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30" name="declaration_name" placeholder="John Doe" /></span> the appointed representative of <span><input id="declaration_rep" type="text" class="form-control-declaration w--50" name="declaration_rep" placeholder="C & A Legal" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
+                            I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30" name="declaration_name" /></span> the appointed representative of <span><input id="declaration_rep" type="text" class="form-control-declaration w--50" name="declaration_rep" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
                         </p>
                     </div>
                 </div>
