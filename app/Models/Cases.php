@@ -53,13 +53,17 @@ class Cases extends Model
 
     public function isDeficient()
     {
-        return is_null($this->active_handlers[0]->case_handler->defficiency_issued_at) ? false : true;
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
     }
 
     public function getCombinedTurnover()
     {
         return !empty($this->combined_turnover) ? formatDigit($this->combined_turnover) : '...';
-    } 
+    }
 
     public function getFillingFee()
     {
