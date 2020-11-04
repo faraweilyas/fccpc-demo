@@ -70,6 +70,11 @@ class Cases extends Model
         return !empty($this->filling_fee) ? formatDigit($this->filling_fee) : '...';
     }
 
+    public function getExpeditedFee()
+    {
+        return !empty($this->expedited_fee) ? formatDigit($this->expedited_fee) : '...';
+    }
+
     public function selectedCategoryStyle($case_category='reg') : \stdClass
     {
         $case_category = strtoupper($case_category);

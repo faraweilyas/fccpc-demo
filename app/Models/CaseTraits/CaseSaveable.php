@@ -58,6 +58,7 @@ trait CaseSaveable
     {
         $this->combined_turnover        = $feeInfo->combined_turnover;
         $this->filling_fee              = $feeInfo->filling_fee;
+        $this->expedited_fee              = $feeInfo->expedited_fee;
         return $this->save();
     }
 

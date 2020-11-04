@@ -97,6 +97,12 @@
                             </h4>
                             <h4>{!! $case->getFillingFee() !!}</h4>
                         </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">
+                                Expedited Fee:
+                            </h4>
+                            <h4>{!! $case->getExpeditedFee() !!}</h4>
+                        </div>
                     </div>
                     <p class="section-header">
                         Contact Information
@@ -114,11 +120,11 @@
                         </div>
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Email address :</h4>
-                            <h4>{{ $case->applicant_email }}</h4>
+                            <a href="mailto:{{ $case->applicant_email }}" class="text-black-custom"><h4>{{ $case->applicant_email }}</h4></a>
                         </div>
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Phone number :</h4>
-                            <h4>{{ $case->applicant_phone_number }}</h4>
+                            <a href="tel:{{ $case->applicant_phone_number }}" class="text-black-custom"><h4>{{ $case->applicant_phone_number }}</h4></a>
                         </div>
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Address :</h4>
@@ -194,13 +200,13 @@
                 <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                     <div class="card-body">
                         <p>
-                            I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30" name="declaration_name" /></span> the appointed representative of <span><input id="declaration_rep" type="text" class="form-control-declaration w--50" name="declaration_rep" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
+                            I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30" name="declaration_name" /></span> the appointed representative of <span><input id="declaration_rep" type="text" class="form-control-declaration w--30" name="declaration_rep" />, hereby declare that all the information submitted by me in the application form is correct, true and valid.
                         </p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit" disabled>Submit Case</button
+                <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold" data-wizard-type="action-submit">Submit Case</button
                     ><button id="upload-img" type="button" class="btn btn-light-primary font-weight-bold hide" disabled>
                         <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
                     </button>

@@ -111,6 +111,9 @@
                         <p class="info-title">
                             <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
                         </p>
+                        <p class="info-title">
+                            <b>Expedited Fee:</b>&nbsp;{!! $case->getExpeditedFee() !!}
+                        </p>
                     </div>
                     <div class="col-md-3">
                         <p><b>REF NO:</b></p>

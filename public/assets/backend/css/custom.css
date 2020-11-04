@@ -7,6 +7,11 @@ body {
     justify-content: center !important;
 }
 
+.text-black-custom
+{
+    color: #464E5F;
+}
+
 .form-control-declaration,
 .form-control-declaration:focus,
 .form-control-declaration:active {

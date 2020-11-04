@@ -65,6 +65,9 @@ class Checklist extends Model
         if ($this->isInputFieldFillingFee())
             return 50000;
 
+        if ($this->input_field == 'expedited_fee' && !empty($case->expedited_fee))
+            return $case->expedited_fee;
+
         return '';
     }
 

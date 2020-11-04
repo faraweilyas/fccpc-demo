@@ -390,18 +390,6 @@ $(document).ready(function()
         return;
     });
 
-    $("#declaration_name, #declaration_rep").on("keyup change", function()
-    {
-        var declaration_name = $("#declaration_name").val(),
-            declaration_rep  = $("#declaration_rep").val();
-
-        if(declaration_name !== '' && declaration_rep !== '') {
-            $("#upload-info").removeAttr('disabled');
-        } else {
-            $("#upload-info").attr('disabled', 'disabled');
-        }
-    });
-
     // Validate combined turn over to be digits
     formatInputAmount($(".combined_fees"));
 
@@ -436,6 +424,7 @@ $(document).ready(function()
             review_route       = $(this).attr('data-review-route'),
             combined_turnover  = currentForm.find("#combined_turnover").val(),
             filling_fee        = currentForm.find("#filling_fee").val(),
+            expedited_fee      = currentForm.find("#expedited_fee").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
         $("#previous-btn").attr('disabled', 'disabled');
@@ -454,6 +443,7 @@ $(document).ready(function()
         formData.append('document_id', doc_id);
         formData.append('combined_turnover', combined_turnover);
         formData.append('filling_fee', filling_fee);
+        formData.append('expedited_fee', expedited_fee);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
             formData,
@@ -486,20 +476,27 @@ $(document).ready(function()
     $("#upload-info").on('click', function(event)
     {
         event.preventDefault();
+        var declaration_name = $("#declaration_name").val(),
+            declaration_rep  = $("#declaration_rep").val();
 
-        swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonText: "Yes, submit it!"
-        }).then(function(result)
-        {
-            if (result.value)
-                submitCase();
-            else
-                return false;
-        });
+        if(declaration_name !== '' && declaration_rep !== '') {
+           swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, submit it!"
+            }).then(function(result)
+            {
+                if (result.value)
+                    submitCase();
+                else
+                    return false;
+            });
+        } else {
+            toastr.error("Provide declaration fields!");
+        }
+
     });
 
     var InputsWrapper   = $(".fields"),
