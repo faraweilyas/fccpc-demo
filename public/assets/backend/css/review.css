@@ -423,11 +423,11 @@
     justify-content: center;
 }
 
-.btn-light-primary:hover{
+.btn-light-primary:hover {
     background: #D7F9EF !important;
     /* font-size: 1.5rem; */
     color: #006535 !important;
-transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 @-webkit-keyframes slideInRight {
