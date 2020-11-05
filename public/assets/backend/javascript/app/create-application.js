@@ -506,24 +506,25 @@ $(document).ready(function()
         var declaration_name = $("#declaration_name").val(),
             declaration_rep  = $("#declaration_rep").val();
 
-        if(declaration_name !== '' && declaration_rep !== '') {
-           swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, submit it!"
-            }).then(function(result)
-            {
-                if (result.value)
-                    submitCase();
-                else
-                    return false;
-            });
-        } else {
-            toastr.error("Provide declaration fields!");
+        if (declaration_name == '' && declaration_rep == '')
+        {
+            toastr.error("Please provide your name and representing firm");
+            return;
         }
 
+        swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, submit it!"
+        }).then(function(result)
+        {
+            if (result.value)
+                submitCase();
+            else
+                return false;
+        });
     });
 
     var InputsWrapper   = $(".fields"),
@@ -669,9 +670,11 @@ function saveCaseInfo(action, currentForm)
         {
             _token:         $("#token").val(),
             subject:        $("#subject").val(),
-            parties:        $("input[name='party[]']").map(function() {
+            parties:        $("input[name='party[]']").map(function()
+                            {
                                 return $(this).val();
-                            }).get().filter(function(party) {
+                            }).get().filter(function(party)
+                            {
                                 return party != "";
                             }),
             case_type:      (typeof (case_type) === "undefined") ? '' : case_type,
@@ -713,72 +716,59 @@ function saveChecklistDocument(action, currentForm)
         filling_fee        = currentForm.find("#filling_fee").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-        if (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')){
-                combined_turnover = combined_turnover
-        } else {
-            combined_turnover = 0;
-        }
+    combined_turnover   = (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')) ? combined_turnover : 0;
+    filling_fee         = (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')) ? filling_fee : 0;
+    expedited_fee       = (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')) ? expedited_fee : 0;
 
-        if (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')){
-            filling_fee = filling_fee
-        } else {
-            filling_fee = 0;
-        }
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
 
-        if (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')){
-            expedited_fee = expedited_fee
-        } else {
-            expedited_fee = 0;
-        }
+    $(currentForm).find(':checkbox:checked').each(function(i)
+    {
+       checklists[i] = $(this).val();
+    });
 
-        $("#previous-btn").attr('disabled', 'disabled');
+    if (!file) {
+        toastr.warning("No file selected!");
+        $("#previous-btn").removeAttr('disabled');
         $("#save-info").toggle();
-        $("#saving-img").removeClass('hide');
+        $("#saving-img").addClass('hide');
+        _wizard.goNext();
+        // KTUtil.scrollTop();
+        return;
+    }
 
-        $(currentForm).find(':checkbox:checked').each(function(i)
+    formData.append('_token', $("#token").val());
+    formData.append('file', file);
+    formData.append('additional_info', additional_info);
+    formData.append('checklists', checklists);
+    formData.append('document_id', doc_id);
+    formData.append('combined_turnover', combined_turnover);
+    formData.append('filling_fee', filling_fee);
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
         {
-           checklists[i] = $(this).val();
-        });
-
-        if(!file){
-            toastr.warning("No file selected!");
+            result = JSON.parse(data);
+            currentForm.find("#doc_id").val(result.response.id);
+            notify(result.responseType, result.message);
             $("#previous-btn").removeAttr('disabled');
             $("#save-info").toggle();
             $("#saving-img").addClass('hide');
             _wizard.goNext();
             KTUtil.scrollTop();
-            return;
         }
-        formData.append('_token', $("#token").val());
-        formData.append('file', file);
-        formData.append('additional_info', additional_info);
-        formData.append('checklists', checklists);
-        formData.append('document_id', doc_id);
-        formData.append('combined_turnover', combined_turnover);
-        formData.append('filling_fee', filling_fee);
-        sendRequest(
-            '/application/create/'+tracking_id+'/'+action,
-            formData,
-            false,
-            false,
-            function(data, status)
-            {
-                result = JSON.parse(data);
-                currentForm.find("#doc_id").val(result.response.id);
-                notify(result.responseType, result.message);
-                $("#previous-btn").removeAttr('disabled');
-                $("#save-info").toggle();
-                $("#saving-img").addClass('hide');
-                _wizard.goNext();
-                KTUtil.scrollTop();
-            }
-        );
-        return;
+    );
+    return;
 }
 
 function saveapplicationDocumentation(action, currentForm)
 {
-     _wizard.goNext();
+    _wizard.goNext();
     KTUtil.scrollTop();
 }
 
