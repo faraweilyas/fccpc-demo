@@ -92,6 +92,16 @@ class Cases extends Model
         return textTransformer($refrenceNo, $textStyle);
     }
 
+    public function getLetterOfAppointmentIconText()
+    {
+        $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
+        $path           = "/assets/backend/media/svg/";
+        $fileExtension  = pathinfo($this->letter_of_appointment)['extension'] ?? '';
+        $extension      = $extensions[$fileExtension] ?? '';
+        $file           = (in_array($fileExtension, array_keys($extensions))) ? "files/{$extension}.svg" : 'icons/Files/File.svg';
+        return "{$path}{$file}";
+    }
+
     public function getSubject($textStyle=NULL) : string
     {
         return textTransformer(shortenContent($this->subject, 35), $textStyle);

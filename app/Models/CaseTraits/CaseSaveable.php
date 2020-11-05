@@ -45,6 +45,7 @@ trait CaseSaveable
         $this->applicant_email          = $contactInfo->applicant_email;
         $this->applicant_phone_number   = $contactInfo->applicant_phone_number;
         $this->applicant_address        = $contactInfo->applicant_address;
+        $this->letter_of_appointment    = $contactInfo->letter_of_appointment;
         return $this->save();
     }
 

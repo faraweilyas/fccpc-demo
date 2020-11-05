@@ -150,4 +150,19 @@ class ApplicantController extends Controller
             "{$groupName}.{$extension}"
         );
     }
+
+    /**
+     * Handles download document page for letter of appointment.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function letterOfAppointmenDownload($document)
+    {
+        $groupName = \Str::slug($document);
+        $extension = pathinfo($document)['extension'];
+        return response()->download(
+            storage_path("app/public/documents/{$document}"),
+            "{$groupName}.{$extension}"
+        );
+    }
 }

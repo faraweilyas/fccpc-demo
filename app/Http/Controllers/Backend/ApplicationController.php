@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
+use App\Models\Cases;
 use App\Models\Document;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
@@ -144,6 +145,21 @@ class ApplicationController extends Controller
 
     public function saveContactInfo(Guest $guest)
     {
+        $fileName = request('previous_document_name') ?? '';
+        if (request()->hasFile('file')):
+            $file = request('file');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = \SerialNumber::randomFileName($extension);
+            $path = $file->storeAs('public/documents', $fileName);
+
+            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', request('previous_document_name'))->first();
+            if ($previous_document):
+                unlink(
+                    storage_path('app/public/documents/'.$previous_document->letter_of_appointment)
+                );
+            endif;
+        endif;
+
         $guest->case->saveContactInfo(
             (object) [
                 'applicant_firm' => request('applicant_firm'),
@@ -151,6 +167,7 @@ class ApplicationController extends Controller
                 'applicant_email' => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
                 'applicant_address' => request('applicant_address'),
+                'letter_of_appointment' => $fileName,
             ]
         );
 
