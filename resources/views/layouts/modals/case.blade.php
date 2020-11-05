@@ -107,12 +107,12 @@
                             {{-- Checklist --}}
                             <div class="tab-pane fade" id="fees_tab" role="tabpanel">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Combined Turnover:</span>
-                                    <span class="text-body text-hover-info" id="combined_turnover">...</span>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="font-weight-bold mr-2">Category:</span>
                                     <span class="text-muted" id="category_fee">...</span>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Combined Turnover:</span>
+                                    <span class="text-body text-hover-info" id="combined_turnover">...</span>
                                 </div>
                                 <table class="table">
                                     <th class='fees_tab__head'>SERVICE</th>
