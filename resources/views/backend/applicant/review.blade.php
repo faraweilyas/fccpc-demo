@@ -50,9 +50,7 @@
                         </h3>
 
                         <p class="review-description">
-                            Review your entries for any kind of error. Kindly
-                            note that you cannot edit information once it has
-                            been submitted.
+                            Review your entries for any kind of error. Kindly note that you cannot edit information once it has been submitted.
                         </p>
 
                         <p class="section-header">
