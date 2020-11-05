@@ -77,7 +77,7 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>Subject:</b></p>
+                        <p><b>SUBJECT:</b></p>
                         <span>
                             {{ $case->subject }}
                         </span>
@@ -104,16 +104,18 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>Fees:</b></p>
+                        <p><b>FEES:</b></p>
                         <p class="info-title">
                             <b>Combined Turnover:</b>&nbsp;{!! $case->getCombinedTurnover() !!}
                         </p>
                         <p class="info-title">
                             <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
                         </p>
-                        <p class="info-title">
-                            <b>Expedited Fee:</b>&nbsp;{!! $case->getExpeditedFee() !!}
-                        </p>
+                        @if ($case->case_category == "FFX")
+                            <p class="info-title">
+                                <b>Expedited Fee:</b>&nbsp;{!! $case->getExpeditedFee() !!}
+                            </p>
+                        @endif
                     </div>
                     <div class="col-md-3">
                         <p><b>REF NO:</b></p>
@@ -128,7 +130,7 @@
                         </span>
                     </div>
                     <div class="col-md-3">
-                        <p><b>Address:</b></p>
+                        <p><b>ADDRESS:</b></p>
                         <span>
                             {!! $case->applicant_address !!}
                         </span>
