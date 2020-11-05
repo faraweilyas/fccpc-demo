@@ -123,16 +123,16 @@ class DashboardController extends Controller
     public function updateProfile(Request $request)
     {
         $this->validate($request, [
-            'firstName'    => 'required',
-            'lastName'     => 'required'
+            'first_name'    => 'required',
+            'last_name'     => 'required'
         ]);
 
         if (isset($request->password) && $request->change_pass == 'yes') {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
                     User::whereId(Auth::user()->id)->update([
-                            'first_name' => $request->firstName,
-                            'last_name'  => $request->lastName,
+                            'first_name' => $request->first_name,
+                            'last_name'  => $request->last_name,
                             'password'  => Hash::make($request->new_password)
                      ]);
 
@@ -146,8 +146,8 @@ class DashboardController extends Controller
         }
 
         User::whereId(Auth::user()->id)->update([
-                'first_name' => $request->firstName,
-                'last_name'  => $request->lastName
+                'first_name' => $request->first_name,
+                'last_name'  => $request->last_name
          ]);
 
         return redirect()->back()->with("success", "Profile updated");
