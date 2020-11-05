@@ -275,7 +275,7 @@
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
-                                                                    @if($checklist->isCaseCategoryFFX($case))
+                                                                    @if ($checklist->isCaseCategoryFFX($case))
                                                                         @php
                                                                             $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
                                                                         @endphp
@@ -291,7 +291,7 @@
                                                                                 <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
                                                                             </label>
                                                                         </div>
-                                                                        @if($checklist->hasInputField())
+                                                                        @if ($checklist->hasInputField())
                                                                             <div class="col-md-6 mb-4 ml-8">
                                                                                 <input
                                                                                     type="text"
