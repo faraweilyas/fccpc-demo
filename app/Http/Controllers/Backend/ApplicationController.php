@@ -176,17 +176,6 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
-        if (!request()->hasFile('file')) {
-            $this->sendResponse('No file has been uploaded.', 'error', []);
-        }
-
-        $file = request('file');
-        $extension = $file->getClientOriginalExtension();
-        $newFileName = \SerialNumber::randomFileName($extension);
-        $path = $file->storeAs('public/documents', $newFileName);
-
-        $previous_document = Document::find(request('document_id'));
-
         $combined_turnover  = str_replace(',', '', request('combined_turnover'));
         $filling_fee        = str_replace(',', '', request('filling_fee'));
         $expedited_fee      = str_replace(',', '', request('expedited_fee'));
@@ -198,6 +187,18 @@ class ApplicationController extends Controller
                 'expedited_fee'     => $expedited_fee,
             ]
         );
+
+        if (!request()->hasFile('file')) {
+            $this->sendResponse('No file has been uploaded.', 'warning', []);
+        }
+
+        $file = request('file');
+        $extension = $file->getClientOriginalExtension();
+        $newFileName = \SerialNumber::randomFileName($extension);
+        $path = $file->storeAs('public/documents', $newFileName);
+
+        $previous_document = Document::find(request('document_id'));
+
         if ($previous_document):
             unlink(
                 storage_path('app/public/documents/' . $previous_document->file)

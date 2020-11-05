@@ -454,15 +454,6 @@ $(document).ready(function()
            checklists[i] = $(this).val();
         });
 
-        if(!file){
-            toastr.warning("No file selected!");
-            $("#previous-btn").removeAttr('disabled');
-            $("#save-transaction-info").toggle();
-            $("#saving-img").addClass('hide');
-            window.location.replace(review_route);
-            return;
-        }
-
         formData.append('_token', $("#token").val());
         formData.append('file', file);
         formData.append('additional_info', additional_info);
@@ -484,9 +475,7 @@ $(document).ready(function()
                 $("#previous-btn").removeAttr('disabled');
                 $("#save-transaction-info").toggle();
                 $("#saving-img").addClass('hide');
-                if (result.responseType !== 'error'){
-                    window.location.replace(review_route);
-                }
+                window.location.replace(review_route);
             }
         );
         return;
@@ -617,6 +606,9 @@ function notify(messageType, message)
     if (messageType == "error")
         toastr.error(message);
 
+    if (messageType == "warning")
+        toastr.warning(message);
+
     return;
 }
 
@@ -736,16 +728,6 @@ function saveChecklistDocument(action, currentForm)
     {
        checklists[i] = $(this).val();
     });
-
-    if (!file) {
-        toastr.warning("No file selected!");
-        $("#previous-btn").removeAttr('disabled');
-        $("#save-info").toggle();
-        $("#saving-img").addClass('hide');
-        _wizard.goNext();
-        // KTUtil.scrollTop();
-        return;
-    }
 
     formData.append('_token', $("#token").val());
     formData.append('file', file);
