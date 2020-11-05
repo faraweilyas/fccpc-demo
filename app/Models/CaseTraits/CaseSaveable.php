@@ -45,6 +45,7 @@ trait CaseSaveable
         $this->applicant_email          = $contactInfo->applicant_email;
         $this->applicant_phone_number   = $contactInfo->applicant_phone_number;
         $this->applicant_address        = $contactInfo->applicant_address;
+        $this->letter_of_appointment    = $contactInfo->letter_of_appointment;
         return $this->save();
     }
 
@@ -58,6 +59,20 @@ trait CaseSaveable
     {
         $this->combined_turnover        = $feeInfo->combined_turnover;
         $this->filling_fee              = $feeInfo->filling_fee;
+        $this->expedited_fee              = $feeInfo->expedited_fee;
+        return $this->save();
+    }
+
+    /**
+     * Saves Declaration
+     *
+     * @param  \stdClass $declarationInfo
+     * @return bool
+     */
+    public function saveDeclaration(\stdClass $declarationInfo) : bool
+    {
+        $this->declaration_name        = $declarationInfo->declaration_name;
+        $this->declaration_rep             = $declarationInfo->declaration_rep;
         return $this->save();
     }
 

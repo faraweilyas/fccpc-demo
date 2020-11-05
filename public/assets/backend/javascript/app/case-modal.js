@@ -111,7 +111,7 @@ $(document).ready(function () {
         paging: true,
         order: [
             [1, "asc"]
-        ], //or asc 
+        ], //or asc
         columnDefs: [{
             "targets": 1,
             "type": "date"
@@ -162,6 +162,7 @@ $(document).ready(function () {
             refrenceNo = thisModal.find('#refrenceNo'),
             subject = thisModal.find('#subject'),
             category = thisModal.find('#category'),
+            category_fee = thisModal.find('#category_fee'),
             type = thisModal.find('#type'),
             parties = thisModal.find('#parties'),
             applicant_firm = thisModal.find('#applicant_firm'),
@@ -169,6 +170,9 @@ $(document).ready(function () {
             applicant_email = thisModal.find('#applicant_email'),
             applicant_phone_number = thisModal.find('#applicant_phone_number'),
             applicant_address = thisModal.find('#applicant_address'),
+            combined_turnover = thisModal.find('#combined_turnover'),
+            filling_fee = thisModal.find('#filling_fee'),
+            total_fee = thisModal.find('#total_fee'),
             submittedAt = thisModal.find('#submittedAt');
 
         // Get Case Checklists Asynchronously
@@ -219,6 +223,7 @@ $(document).ready(function () {
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
         category.html(caseContainer.find('.category').html());
+        category_fee.html(caseContainer.find('.category').html());
         type.html(caseContainer.find('.type').html());
         parties.html(caseContainer.find('.parties').html());
         applicant_firm.html(caseContainer.find('.firm').html());
@@ -226,6 +231,9 @@ $(document).ready(function () {
         applicant_email.html(caseContainer.find('.email').html());
         applicant_phone_number.html(caseContainer.find('.phone_number').html());
         applicant_address.html(caseContainer.find('.address').html());
+        combined_turnover.html(caseContainer.find('.combined_turnover').html());
+        filling_fee.html(caseContainer.find('.filling_fee').html());
+        total_fee.html(caseContainer.find('.total_fee').html());
         submittedAt.html(caseContainer.find('.submitted_at').html());
         return;
     });

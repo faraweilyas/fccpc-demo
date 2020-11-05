@@ -424,7 +424,26 @@ $(document).ready(function()
             review_route       = $(this).attr('data-review-route'),
             combined_turnover  = currentForm.find("#combined_turnover").val(),
             filling_fee        = currentForm.find("#filling_fee").val(),
+            expedited_fee      = currentForm.find("#expedited_fee").val(),
             doc_id             = currentForm.find("#doc_id").val();
+
+            if (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')){
+                combined_turnover = combined_turnover
+            } else {
+                combined_turnover = 0;
+            }
+
+            if (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')){
+                filling_fee = filling_fee
+            } else {
+                filling_fee = 0;
+            }
+
+            if (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')){
+                expedited_fee = expedited_fee
+            } else {
+                expedited_fee = 0;
+            }
 
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-transaction-info").toggle();
@@ -442,6 +461,7 @@ $(document).ready(function()
         formData.append('document_id', doc_id);
         formData.append('combined_turnover', combined_turnover);
         formData.append('filling_fee', filling_fee);
+        formData.append('expedited_fee', expedited_fee);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
             formData,
@@ -455,9 +475,7 @@ $(document).ready(function()
                 $("#previous-btn").removeAttr('disabled');
                 $("#save-transaction-info").toggle();
                 $("#saving-img").addClass('hide');
-                if (result.responseType !== 'error'){
-                    window.location.replace(review_route);
-                }
+                window.location.replace(review_route);
             }
         );
         return;
@@ -474,6 +492,14 @@ $(document).ready(function()
     $("#upload-info").on('click', function(event)
     {
         event.preventDefault();
+        var declaration_name = $("#declaration_name").val(),
+            declaration_rep  = $("#declaration_rep").val();
+
+        if (declaration_name == '' && declaration_rep == '')
+        {
+            toastr.error("Please provide your name and representing firm");
+            return;
+        }
 
         swal.fire({
             title: "Are you sure?",
@@ -564,7 +590,8 @@ function toggleInput(inputField)
         } else {
             if (child_input.is('.combined_fees'))
             {
-                child_input.val('');
+                if (child_input.attr('id') != 'filling_fee')
+                    child_input.val('');
                 child_input.addClass('hide');
             }
         }
@@ -578,6 +605,9 @@ function notify(messageType, message)
 
     if (messageType == "error")
         toastr.error(message);
+
+    if (messageType == "warning")
+        toastr.warning(message);
 
     return;
 }
@@ -632,9 +662,11 @@ function saveCaseInfo(action, currentForm)
         {
             _token:         $("#token").val(),
             subject:        $("#subject").val(),
-            parties:        $("input[name='party[]']").map(function() {
+            parties:        $("input[name='party[]']").map(function()
+                            {
                                 return $(this).val();
-                            }).get().filter(function(party) {
+                            }).get().filter(function(party)
+                            {
                                 return party != "";
                             }),
             case_type:      (typeof (case_type) === "undefined") ? '' : case_type,
@@ -645,21 +677,29 @@ function saveCaseInfo(action, currentForm)
 
 function saveContactInfo(action, currentForm)
 {
-    var tracking_id = $("#tracking_id").val();
+    var tracking_id            = $("#tracking_id").val(),
+        formData               = new FormData(),
+        file                   = $('#letter_of_appointment_doc')[0].files[0],
+        previous_document_name = $("#previous_letter_of_appointment_doc_name").val();
+
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
 
+    formData.append('_token',                 $("#token").val());
+    formData.append('applicant_firm',         $("input[name='applicant_firm']").val());
+    formData.append('applicant_fullname',     $("input[name='applicant_fullname']").val());
+    formData.append('applicant_email',        $("input[name='applicant_email']").val());
+    formData.append('applicant_phone_number', $("input[name='applicant_phone_number']").val());
+    formData.append('applicant_address',      $("input[name='applicant_address']").val());
+    formData.append('file',                   file);
+    formData.append('previous_document_name', previous_document_name);
+
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
-        {
-            _token:                     $("#token").val(),
-            applicant_firm:             $("input[name='applicant_firm']").val(),
-            applicant_fullname:         $("input[name='applicant_fullname']").val(),
-            applicant_email:            $("input[name='applicant_email']").val(),
-            applicant_phone_number:     $("input[name='applicant_phone_number']").val(),
-            applicant_address:          $("input[name='applicant_address']").val(),
-        }
+        formData,
+        false,
+        false
     );
     return;
 }
@@ -672,51 +712,61 @@ function saveChecklistDocument(action, currentForm)
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
         checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
+        combined_turnover  = currentForm.find("#combined_turnover").val(),
+        filling_fee        = currentForm.find("#filling_fee").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-        $("#previous-btn").attr('disabled', 'disabled');
-        $("#save-info").toggle();
-        $("#saving-img").removeClass('hide');
+    combined_turnover   = (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')) ? combined_turnover : 0;
+    filling_fee         = (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')) ? filling_fee : 0;
+    expedited_fee       = (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')) ? expedited_fee : 0;
 
-        $(currentForm).find(':checkbox:checked').each(function(i)
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
+
+    $(currentForm).find(':checkbox:checked').each(function(i)
+    {
+       checklists[i] = $(this).val();
+    });
+
+    formData.append('_token', $("#token").val());
+    formData.append('file', file);
+    formData.append('additional_info', additional_info);
+    formData.append('checklists', checklists);
+    formData.append('document_id', doc_id);
+    formData.append('combined_turnover', combined_turnover);
+    formData.append('filling_fee', filling_fee);
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
         {
-           checklists[i] = $(this).val();
-        });
-
-        formData.append('_token', $("#token").val());
-        formData.append('file', file);
-        formData.append('additional_info', additional_info);
-        formData.append('checklists', checklists);
-        formData.append('document_id', doc_id);
-        sendRequest(
-            '/application/create/'+tracking_id+'/'+action,
-            formData,
-            false,
-            false,
-            function(data, status)
-            {
-                result = JSON.parse(data);
-                currentForm.find("#doc_id").val(result.response.id);
-                notify(result.responseType, result.message);
-                $("#previous-btn").removeAttr('disabled');
-                $("#save-info").toggle();
-                $("#saving-img").addClass('hide');
-                _wizard.goNext();
-                KTUtil.scrollTop();
-            }
-        );
-        return;
+            result = JSON.parse(data);
+            currentForm.find("#doc_id").val(result.response.id);
+            notify(result.responseType, result.message);
+            $("#previous-btn").removeAttr('disabled');
+            $("#save-info").toggle();
+            $("#saving-img").addClass('hide');
+            _wizard.goNext();
+            KTUtil.scrollTop();
+        }
+    );
+    return;
 }
 
 function saveapplicationDocumentation(action, currentForm)
 {
-     _wizard.goNext();
+    _wizard.goNext();
     KTUtil.scrollTop();
 }
 
 function submitCase()
 {
-    var tracking_id = $("#tracking_id").val();
+    var tracking_id      = $("#tracking_id").val(),
+        declaration_name = $("#declaration_name").val(),
+        declaration_rep  = $("#declaration_rep").val();
 
     $("#goback-btn").addClass('hide');
     $("#upload-info").addClass('hide');
@@ -728,6 +778,8 @@ function submitCase()
         '/application/submit/'+tracking_id,
         {
             _token: $("#token").val(),
+            declaration_name: declaration_name,
+            declaration_rep: declaration_rep,
         },
         'application/x-www-form-urlencoded; charset=UTF-8',
         true,

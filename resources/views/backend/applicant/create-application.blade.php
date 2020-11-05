@@ -249,6 +249,30 @@
                                                         <span class="form-text text-muted">Please enter your address.</span>
                                                         <div class="fv-plugins-message-container"></div>
                                                     </div>
+                                                    <div class="row mt-4">
+                                                        <div class="col-md-12">
+                                                            <p>
+                                                                <label>Letter Of Appointment</label>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-n2">
+                                                        <div class="col-md-3">
+                                                            <div class="uploadButton tw-mb-4 ">
+                                                               <input accept=".doc, .docx, .pdf" id="letter_of_appointment_doc" class="js-file-upload-input ember-view" type="file" name="letter_of_appointment_doc">
+                                                                <span class="btn btn--small btn--brand">Upload File</span>
+                                                            </div>
+                                                        </div>
+                                                        @if(!empty($case->letter_of_appointment))
+                                                        <div class="col-md-3 my-1">
+                                                            <span>
+                                                                <img onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';" class="max-h-30px mr-3 doc-cursor-pointer" src="{{ $case->getLetterOfAppointmentIconText() }}" title="Download Document" />
+                                                            </span>
+                                                        </div>
+                                                        @endif
+                                                    </div>
+                                                    <p class="document-uploaded doc_name"></p>
+                                                    <input id="previous_letter_of_appointment_doc_name" type="hidden" value="{{ $case->letter_of_appointment }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -275,32 +299,35 @@
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
-                                                                    @php
-                                                                        $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
-                                                                    @endphp
-                                                                    <div class="col-md-12">
-                                                                        <label class="checkbox mb-4">
-                                                                            <input
-                                                                                type="checkbox"
-                                                                                class="checklist_id"
-                                                                                value="{{ $checklist->id }}"
-                                                                                {{ $checked }}
-                                                                            />
-                                                                            <span></span>
-                                                                            <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
-                                                                        </label>
-                                                                    </div>
-                                                                    @if($checklist->hasInputField())
-                                                                        <div class="col-md-6 mb-4 ml-8">
-                                                                            <input
-                                                                                type="text"
-                                                                                class="form-control combined_fees hide"
-                                                                                name="{{ $checklist->getInput() }}"
-                                                                                value="{{ $checklist->getValue($case) }}"
-                                                                                placeholder="{{ $checklist->getInputPlaceHolder() }}"
-                                                                                id="{{ $checklist->getInput() }}"
-                                                                            />
+                                                                    @if ($checklist->isCaseCategoryFFX($case))
+                                                                        @php
+                                                                            $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
+                                                                        @endphp
+                                                                        <div class="col-md-12">
+                                                                            <label class="checkbox mb-4">
+                                                                                <input
+                                                                                    type="checkbox"
+                                                                                    class="checklist_id"
+                                                                                    value="{{ $checklist->id }}"
+                                                                                    {{ $checked }}
+                                                                                />
+                                                                                <span></span>
+                                                                                <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
+                                                                            </label>
                                                                         </div>
+                                                                        @if ($checklist->hasInputField())
+                                                                            <div class="col-md-6 mb-4 ml-8">
+                                                                                <input
+                                                                                    type="text"
+                                                                                    class="form-control combined_fees hide"
+                                                                                    name="{{ $checklist->getInput() }}"
+                                                                                    value="{{ $checklist->getValue($case) }}"
+                                                                                    placeholder="{{ $checklist->getInputPlaceHolder() }}"
+                                                                                    id="{{ $checklist->getInput() }}"
+                                                                                    {{ ($checklist->isInputFieldFillingFee()) ? " disabled" : "" }}
+                                                                                />
+                                                                            </div>
+                                                                        @endif
                                                                     @endif
                                                                 @endforeach
                                                             </div>

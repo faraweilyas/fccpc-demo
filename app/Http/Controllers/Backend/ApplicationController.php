@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
+use App\Models\Cases;
 use App\Models\Document;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
@@ -144,6 +145,21 @@ class ApplicationController extends Controller
 
     public function saveContactInfo(Guest $guest)
     {
+        $fileName = request('previous_document_name') ?? '';
+        if (request()->hasFile('file')):
+            $file = request('file');
+            $extension = $file->getClientOriginalExtension();
+            $fileName = \SerialNumber::randomFileName($extension);
+            $path = $file->storeAs('public/documents', $fileName);
+
+            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', request('previous_document_name'))->first();
+            if ($previous_document):
+                unlink(
+                    storage_path('app/public/documents/'.$previous_document->letter_of_appointment)
+                );
+            endif;
+        endif;
+
         $guest->case->saveContactInfo(
             (object) [
                 'applicant_firm' => request('applicant_firm'),
@@ -151,6 +167,7 @@ class ApplicationController extends Controller
                 'applicant_email' => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
                 'applicant_address' => request('applicant_address'),
+                'letter_of_appointment' => $fileName,
             ]
         );
 
@@ -159,8 +176,20 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
+        $combined_turnover  = str_replace(',', '', request('combined_turnover'));
+        $filling_fee        = str_replace(',', '', request('filling_fee'));
+        $expedited_fee      = str_replace(',', '', request('expedited_fee'));
+
+        $guest->case->saveFeeInfo(
+            (object) [
+                'combined_turnover' => $combined_turnover,
+                'filling_fee'       => $filling_fee,
+                'expedited_fee'     => $expedited_fee,
+            ]
+        );
+
         if (!request()->hasFile('file')) {
-            $this->sendResponse('No file has been uploaded.', 'error', []);
+            $this->sendResponse('No file has been uploaded.', 'warning', []);
         }
 
         $file = request('file');
@@ -170,16 +199,6 @@ class ApplicationController extends Controller
 
         $previous_document = Document::find(request('document_id'));
 
-        if(!empty(request('combined_turnover')) || !empty(request('filling_fee')))
-        $new_combined_turnover = str_replace(',', '', request('combined_turnover'));
-        $new_filling_fee       = str_replace(',', '', request('filling_fee'));
-
-        $guest->case->saveFeeInfo(
-            (object) [
-                'combined_turnover' => $new_combined_turnover,
-                'filling_fee'       => $new_filling_fee,
-            ]
-        );
         if ($previous_document):
             unlink(
                 storage_path('app/public/documents/' . $previous_document->file)
@@ -224,6 +243,11 @@ class ApplicationController extends Controller
             $this->sendResponse('Provide required fields.', 'error');
         endif;
 
+        $guest->case->saveDeclaration(
+         (object) [
+            'declaration_name' => request('declaration_name'),
+            'declaration_rep'  => request('declaration_rep'),
+         ]);
         $guest->case->submit();
 
         $case = $guest->case;
@@ -302,11 +326,16 @@ class ApplicationController extends Controller
      */
     public function review(Guest $guest, $step)
     {
-        $case = $guest->case;
-        $checklistIds = $case->getChecklistIds();
+        if ($guest->case->isSubmitted()) {
+            return redirect($guest->submittedApplicationPath());
+        }
+
+        $case                    = $guest->case;
+        $checklistIds            = $case->getChecklistIds();
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        $documents = Document::where('case_id', $guest->case->id)->get();
-        $title = 'Review Application | ' . APP_NAME;
+        $documents               = Document::where('case_id', $guest->case->id)->get();
+
+        $title       = 'Review Application | ' . APP_NAME;
         $description = 'Review Application | ' . APP_NAME;
         $details = details($title, $description);
         return view(

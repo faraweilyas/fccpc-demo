@@ -31,8 +31,8 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    @if(!in_array(\Auth::user()->account_type, ['CH']))
-                                    <th>Handler</th>
+                                    @if (!in_array(\Auth::user()->account_type, ['CH']))
+                                    <th>Case Handler</th>
                                     @endif
                                     <th>Reference NO</th>
                                     <th>Subject</th>
@@ -111,7 +111,9 @@
                                                 <span class="email">{!! $case->applicant_email !!}</span>
                                                 <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
                                                 <span class="address">{!! $case->applicant_address !!}</span>
-                                                {{-- Checklist --}}
+                                                {{-- Fees --}}
+                                                <span class="combined_turnover">{!! $case->getCombinedTurnover() !!}</span>
+                                                <span class="filling_fee">{!! $case->getFillingFee() !!}</span>
                                                 {{-- Documents --}}
                                             </div>
                                         </td>

@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="card card-custom" style="margin: -1.75rem; margin-bottom: -23px;">
-                    <div class="card-header card-header-tabs-line">
+                    <div class="card-header card-header-tabs-line justify-content-centre">
                         <div class="card-title">
                             <h3 class="card-label">&nbsp;&nbsp;</h3>
                         </div>
@@ -28,9 +28,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#checklist_tab">
+                                    <a class="nav-link" data-toggle="tab" href="#fees_tab">
                                         <span class="nav-icon"><i class="flaticon-list-2"></i></span>
-                                        <span class="nav-text">Checklist</span>
+                                        <span class="nav-text">Fees</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -105,10 +105,35 @@
                             </div>
 
                             {{-- Checklist --}}
-                            <div class="tab-pane fade" id="checklist_tab" role="tabpanel">
-                                <div id="checklist_items" class="d-flex flex-column font-size-sm font-weight-bold">
-                                ...
+                            <div class="tab-pane fade" id="fees_tab" role="tabpanel">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Category:</span>
+                                    <span class="text-muted" id="category_fee">...</span>
                                 </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Combined Turnover:</span>
+                                    <span class="text-body text-hover-info" id="combined_turnover">...</span>
+                                </div>
+                                <table class="table">
+                                    <th class='fees_tab__head'>SERVICE</th>
+                                    <th class='fees_tab__head'>PRICE</th>
+                                    <tr>
+                                        <td>Filling Fee</td>
+                                        <td id="filling_fee">₦0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Processing Fee</td>
+                                        <td id="processing_fee">₦0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Expedited Fee</td>
+                                        <td id="expedited_fee">₦0.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total:</td>
+                                        <td id="total_fee">₦0.00</td>
+                                    </tr>
+                                </table>
                             </div>
 
                             {{-- Documents --}}

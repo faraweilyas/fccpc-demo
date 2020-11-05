@@ -18,6 +18,28 @@ class Checklist extends Model
         return !empty($this->input_field) ? TRUE : FALSE;
     }
 
+    public function isInputFieldFillingFee() : bool
+    {
+        return ($this->input_field == 'filling_fee') ? TRUE : FALSE;
+    }
+
+    /**
+     * Checks if case category is FFM Expedited to show expedited fee option
+     *
+     * @param Cases $case
+     * @return bool
+     */
+    public function isCaseCategoryFFX(Cases $case) : bool
+    {
+        if ($this->hasInputField() && $this->input_field == 'expedited_fee')
+        {
+
+            return ($case->case_category == "FFX") ? TRUE : FALSE;
+        }
+
+        return TRUE;
+    }
+
     /**
      * Get input
      *
@@ -40,8 +62,11 @@ class Checklist extends Model
         if ($this->input_field == 'combined_turnover' && !empty($case->combined_turnover))
             return $case->combined_turnover;
 
-        if ($this->input_field == 'filling_fee' && !empty($case->filling_fee))
-            return $case->filling_fee;
+        if ($this->isInputFieldFillingFee())
+            return 50000;
+
+        if ($this->input_field == 'expedited_fee' && !empty($case->expedited_fee))
+            return $case->expedited_fee;
 
         return '';
     }

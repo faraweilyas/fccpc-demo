@@ -2,6 +2,16 @@ body {
     background: #f2f2f2;
 }
 
+.justify-content-centre
+{
+    justify-content: center !important;
+}
+
+.text-black-custom
+{
+    color: #464E5F;
+}
+
 .form-control-declaration,
 .form-control-declaration:focus,
 .form-control-declaration:active {
@@ -379,7 +389,7 @@ section#orderWizard {
 }
 
 /* .card__with__bg {
-   
+
     background-position: center right;
     background-repeat: no-repeat;
     backface-visibility: hidden;
@@ -720,10 +730,6 @@ a.checklist-list {
     margin-left: 8px;
 }
 
-
-
-
-
 .document-uploaded {
     margin: 5px 0;
     font-size: 1rem;
@@ -736,6 +742,14 @@ a.checklist-list {
     right: 0px;
 }
 
+.ribbon.ribbon-clip.ribbon-left .ribbon-target {
+    left: -75px;
+}
+
+th.fees_tab__head
+{
+    border-top: none !important;
+}
 
 @media only screen and (min-width: 280px) and (max-width: 565px) {
 

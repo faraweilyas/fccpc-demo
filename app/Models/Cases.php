@@ -53,17 +53,26 @@ class Cases extends Model
 
     public function isDeficient()
     {
-        return is_null($this->active_handlers[0]->case_handler->defficiency_issued_at) ? false : true;
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
     }
 
     public function getCombinedTurnover()
     {
         return !empty($this->combined_turnover) ? formatDigit($this->combined_turnover) : '...';
-    } 
+    }
 
     public function getFillingFee()
     {
         return !empty($this->filling_fee) ? formatDigit($this->filling_fee) : '...';
+    }
+
+    public function getExpeditedFee()
+    {
+        return !empty($this->expedited_fee) ? formatDigit($this->expedited_fee) : '...';
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass
@@ -81,6 +90,16 @@ class Cases extends Model
     {
         $refrenceNo = !empty($this->reference_number) ? "{$this->reference_number}" : '';
         return textTransformer($refrenceNo, $textStyle);
+    }
+
+    public function getLetterOfAppointmentIconText()
+    {
+        $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
+        $path           = "/assets/backend/media/svg/";
+        $fileExtension  = pathinfo($this->letter_of_appointment)['extension'] ?? '';
+        $extension      = $extensions[$fileExtension] ?? '';
+        $file           = (in_array($fileExtension, array_keys($extensions))) ? "files/{$extension}.svg" : 'icons/Files/File.svg';
+        return "{$path}{$file}";
     }
 
     public function getSubject($textStyle=NULL) : string
@@ -103,6 +122,15 @@ class Cases extends Model
         $category       = $this->getCategory($textStyle);
         $categoryHtml   = \AppHelper::value('case_categories_html', $this->case_category, NULL) ?? "";
         return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
+    }
+
+    public function getTotalFees()
+    {
+        $combined_turnover = (!empty($this->combined_turnover)) ? $this->combined_turnover : 0;
+        $filling_fee       = (!empty($this->filling_fee)) ? $this->filling_fee : 0;
+        $total             = $combined_turnover + $filling_fee;
+
+        return formatDigit($total);
     }
 
     public function getType($textStyle='ucfirst') : string
@@ -152,12 +180,13 @@ class Cases extends Model
 
     public function getSubmittedAt(string $format='customdate') : string
     {
-        return datetimeToText($this->submitted_at, $format);
+        return !empty($this->submitted_at) ? datetimeToText($this->submitted_at, $format) : "";
     }
 
     public function getDefficiencyIssuedAt(string $format='customdate') : string
     {
-        return datetimeToText($this->case_handler->defficiency_issued_at , $format);
+        $defficiency_issued_at = $this->case_handler->defficiency_issued_at;
+        return !empty($defficiency_issued_at) ? datetimeToText($defficiency_issued_at, $format) : "";
     }
 
     public function getCaseSubmittedChecklist()
