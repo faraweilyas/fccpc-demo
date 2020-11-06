@@ -3,6 +3,7 @@
 namespace App\Models\UserTraits;
 
 use App\Models\Cases;
+use App\Models\Enquiry;
 
 trait UserGettable
 {
@@ -25,6 +26,17 @@ trait UserGettable
     public function cases()
     {
         return $this->hasMany(Cases::class);
+    }
+
+    /**
+     * Defines a one to many relationship for user that has been assigned enquiries
+     * The user is expected to be a case handler
+     *
+     * @return HasRelationships
+     */
+    public function enquiries()
+    {
+        return $this->hasMany(Enquiry::class);
     }
 
     /**
