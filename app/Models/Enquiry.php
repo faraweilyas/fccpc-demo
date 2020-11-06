@@ -9,6 +9,11 @@ class Enquiry extends Model
 {
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'handler_id');
+    }
+
     public function getFullName($textStyle='strtoupper') : string
     {
         return textTransformer($this->first_name.' '.$this->last_name, $textStyle);

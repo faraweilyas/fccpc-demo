@@ -118,9 +118,11 @@ $(document).ready(function () {
     $("#unassigned_cases_datatable").DataTable({
         responsive: true,
         paging: true,
-        order: [[1, "desc"]], //or asc
-        columnDefs: [{ type: "numeric-comma", targets: 1 }],
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
+
+    $("#case_handler").select2();
 
     $("#assigned_cases_datatable").DataTable({
         responsive: true,
@@ -175,12 +177,18 @@ $(document).ready(function () {
             (applicant_phone_number = thisModal.find(
                 "#applicant_phone_number"
             )),
+            (letter_of_appointment = thisModal.find("#letter_of_appointment")),
             (applicant_address = thisModal.find("#applicant_address")),
             (combined_turnover = thisModal.find("#combined_turnover")),
             (filling_fee = thisModal.find("#filling_fee")),
             (total_fee = thisModal.find("#total_fee")),
             (submittedAt = thisModal.find("#submittedAt"));
 
+        var letter_of_appointment_link =
+            caseContainer.find(".letter_of_appointment").attr("data-param") ===
+            "nil"
+                ? "#"
+                : caseContainer.find(".letter_of_appointment").html();
         // Get Case Checklists Asynchronously
         $.ajax({
             url: "/cases/checklists/" + caseID,
@@ -247,6 +255,7 @@ $(document).ready(function () {
         applicant_name.html(caseContainer.find(".name").html());
         applicant_email.html(caseContainer.find(".email").html());
         applicant_phone_number.html(caseContainer.find(".phone_number").html());
+        letter_of_appointment.attr("href", letter_of_appointment_link);
         applicant_address.html(caseContainer.find(".address").html());
         combined_turnover.html(caseContainer.find(".combined_turnover").html());
         filling_fee.html(caseContainer.find(".filling_fee").html());
@@ -322,6 +331,15 @@ $(document).ready(function () {
         refrenceNo.html(caseContainer.find(".reference_no").html());
         subject.html(caseContainer.find(".subject").html());
         submittedAt.html(caseContainer.find(".submitted_at").html());
+        return;
+    });
+
+    $("#assignEnquiryModal").on("shown.bs.modal", function (event) {
+        var assignButton = $(event.relatedTarget);
+        (caseContainer = assignButton.parent("td").parent("tr")),
+            (thisModal = $(this));
+        // caseID = thisModal.find('#caseID');
+
         return;
     });
 
