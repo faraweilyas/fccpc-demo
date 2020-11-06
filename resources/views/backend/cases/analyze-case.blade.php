@@ -28,11 +28,8 @@
         </div>
     </div>
 </div>
-
 <div class="conatiner px-5 py-5 relative">
-
     <button class="btn btn-success-transparent">Request Extension</button>
-
     <div class="row px-3">
         <div class="tab-custom">
             <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif">
@@ -60,10 +57,8 @@
                 </a>
             </div>
         </div>
-
         <span class="duration pull-right">Total Duration: 60 days</span>
     </div>
-
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
@@ -137,25 +132,20 @@
                         </span>
                     </div>
                     <div class="col-md-3">
-
                     </div>
                     <div class="col-md-3">
-
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Document Checklist</button>
+                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Submitted Documents</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--  -->
-    <div class="row">
+    <div class="row hide">
         <div class="col-md-12">
             <div class="card-custom">
                 <h5>Analysis Document & Recommendation</h5>
-
                 <div class="row py-5">
                     <div class="col-md-6 my-5">
 
@@ -171,31 +161,19 @@
                     </div>
                     <div class="col-md-6 my-5">
                         <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:" name="" id="" cols="30" rows="10"></textarea>
-
                         <br>
-
                         <button class="btn btn-success-sm my-5 pull-right">Issue Recommendation</button>
-
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    <!--  -->
-
-    <!--  -->
-    <div class="row">
+    <div class="row hide">
         <div class="col-md-12">
             <div class="card-custom">
                 <h5>Analysis Document & Recommendation</h5>
-
                 <div class="row py-5">
                     <div class="col-md-6 my-5">
-
                         <div class="doc-card">
                             <div class="row">
                                 <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
@@ -222,24 +200,14 @@
                             <br>
                             <br>
                             It has survived not only five centuries.</p>
-
-
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    <!--  -->
 </div>
-
 @endsection
 
-
-
 @section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
 @endsection

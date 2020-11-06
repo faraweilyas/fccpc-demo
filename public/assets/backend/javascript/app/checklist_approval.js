@@ -143,14 +143,16 @@ $(document).ready(function ()
             success: function (response) {
                 var result = JSON.parse(response);
                 $("#deficiency_items").empty();
+                $("#deficiency_items").append('<ul>');
                 $.each(result.response.deficent_cases, function(index, value)
                 {
                     $("#deficiency_items").append('<div class="d-flex align-items-center justify-content-start mb-2">' +
-                        '<span class="icon-1x mr-2"><b>' +
-                        (index + 1) + '.</b> ' + value.name +
-                        '</span>' +
+                        '<li class="icon-1x mr-2">'
+                        + value.name +
+                        '</li>' +
                         '</div>');
                 });
+                $("#deficiency_items").append('</ul>');
             },
         });
 

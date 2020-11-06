@@ -446,7 +446,9 @@ $(document).ready(function()
                 $("#previous-btn").removeAttr('disabled');
                 $("#save-transaction-info").toggle();
                 $("#saving-img").addClass('hide');
-                window.location.replace(review_route);
+                if (result.responseType !== 'error'){
+                    window.location.replace(review_route);
+                }   
             }
         );
         return;
@@ -574,8 +576,14 @@ function sendRequest(
         $("#previous-btn").removeAttr('disabled');
         $("#save-info").toggle();
         $("#saving-img").addClass('hide');
-        _wizard.goNext();
-        KTUtil.scrollTop();
+        if (result.responseType === 'error'){
+            $("#save-info").html('Save & Continue');
+        }
+
+        if (result.responseType !== 'error'){
+             _wizard.goNext();
+            KTUtil.scrollTop();
+        }
     },
     onError = function(xhr, desc, err)
     {
@@ -693,8 +701,10 @@ function saveChecklistDocument(action, currentForm)
             $("#previous-btn").removeAttr('disabled');
             $("#save-info").toggle();
             $("#saving-img").addClass('hide');
-            _wizard.goNext();
-            KTUtil.scrollTop();
+            if (result.responseType !== 'error'){
+                 _wizard.goNext();
+                KTUtil.scrollTop();
+            }
         }
     );
     return;
