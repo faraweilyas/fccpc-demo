@@ -495,7 +495,7 @@ $(document).ready(function()
         var declaration_name = $("#declaration_name").val(),
             declaration_rep  = $("#declaration_rep").val();
 
-        if (declaration_name == '' && declaration_rep == '')
+        if (declaration_name == '' || declaration_rep == '')
         {
             toastr.error("Please provide your name and representing firm");
             return;
