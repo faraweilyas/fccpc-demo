@@ -156,7 +156,7 @@ $(document).ready(function () {
 
     $('#viewCaseModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent('td').parent('tr'),
+        caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
             caseID = caseContainer.find('.case_id').html(),
             analyzeCase = thisModal.find('#analyze-case'),
@@ -246,11 +246,10 @@ $(document).ready(function () {
 
     $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent('td').parent('tr'),
+        caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
-            email = thisModal.find('#email');
+            email = thisModal.find('#email'),
         message = thisModal.find('#message');
-
         email.html(caseContainer.find('.email').html());
         message.html(caseContainer.find('.message').html());
         return;
@@ -258,7 +257,7 @@ $(document).ready(function () {
 
     $('#viewFaqModal').on('shown.bs.modal', function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent('td').parent('tr'),
+        caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
             creator = thisModal.find('#creator');
         category = thisModal.find('#category');
@@ -276,7 +275,7 @@ $(document).ready(function () {
 
     $('#assignCaseModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
-        caseContainer = assignButton.parent('td').parent('tr'),
+        caseContainer = assignButton.parent().children('div'),
             thisModal = $(this),
             caseID = thisModal.find('#caseID'),
             assignCaseButton = thisModal.find('#assignCaseButton'),
@@ -302,7 +301,7 @@ $(document).ready(function () {
 
     $('#assignEnquiryModal').on('shown.bs.modal', function (event) {
         var assignButton = $(event.relatedTarget);
-            caseContainer = assignButton.parent('td').parent('tr'),
+            caseContainer = assignButton.parent().children('div'),
             thisModal = $(this);
             // caseID = thisModal.find('#caseID');
 
@@ -316,7 +315,7 @@ $(document).ready(function () {
 
     $('#reassignCaseModal').on('shown.bs.modal', function (event) {
         var reassignButton = $(event.relatedTarget);
-        caseContainer = reassignButton.parent('td').parent('tr'),
+        caseContainer = reassignButton.parent().children('div'),
             thisModal = $(this),
             caseID = thisModal.find('#reassigncaseID'),
             oldcaseHandlerID = thisModal.find('#oldCaseHandlerID'),
