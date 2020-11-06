@@ -29,28 +29,29 @@
             <div class="faq-answer-content">
               {!! nl2br($faq->answer) !!}
             </div>
-
-            <div class="faq-sub-header">
-              Was this article Helpful?
-            </div>
-            <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
-                @csrf
-                <input type="hidden" id="feedback" name="feedback" value="yes" required />
-                <div class=" like-article">
-                  <a href="#" class="like-article-section">
-                    <img src="{{ FE_IMAGE.'png/thumbs-up.png' }}" alt="thumbs up" />
-                    <span  class="like-article-yes">
-                      Yes
-                    </span>
-                  </a>
-                  <a href="#" class="unlike-article-section" onclick="document.getElementById('feedback').value = 'no';">
-                    <img src="{{ FE_IMAGE.'png/thumbs-down.png' }}" alt="thumbs down" />
-                    <span  class="like-article-no"> &nbsp; No</span>
-                  </a>
-                </div>
-            </form>
-            <div class="sub-title">
-                {{ $faq->countPositiveFeedbacks() }} out of {{ $faq->countFeedbacks() }} found this helpful
+            <div class="text-center">
+              <div class="faq-sub-header">
+                Was this article Helpful?
+              </div>
+              <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
+                  @csrf
+                  <input type="hidden" id="feedback" name="feedback" value="yes" required />
+                  <div class=" like-article">
+                    <a href="#" class="like-article-section">
+                      <img src="{{ FE_IMAGE.'png/thumbs-up.png' }}" alt="thumbs up" />
+                      <span  class="like-article-yes">
+                        Yes
+                      </span>
+                    </a>
+                    <a href="#" class="unlike-article-section" onclick="document.getElementById('feedback').value = 'no';">
+                      <img src="{{ FE_IMAGE.'png/thumbs-down.png' }}" alt="thumbs down" />
+                      <span  class="like-article-no"> &nbsp; No</span>
+                    </a>
+                  </div>
+              </form>
+              <div class="sub-title">
+                  {{ $faq->countPositiveFeedbacks() }} out of {{ $faq->countFeedbacks() }} found this helpful
+              </div>
             </div>
           </div>
         </div>
