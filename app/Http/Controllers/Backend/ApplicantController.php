@@ -124,6 +124,9 @@ class ApplicantController extends Controller
             request('tracking_id')
         )->firstOrFail();
 
+        if (is_null($guest->case))
+            return redirect()->back()->with('error', 'Invalid Application ID');
+
         // Check if case has been submitted
         if ($guest->case->isSubmitted()) {
             return redirect($guest->uploadDocumentsPath());
