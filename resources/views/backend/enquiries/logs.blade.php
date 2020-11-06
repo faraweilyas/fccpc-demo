@@ -32,24 +32,24 @@
                             <thead>
                                 <tr>
                                     <th>Date Submitted</th>
-                                    <th>Type</th>
+                                    <th class="text-center">Type</th>
                                     <th>Subject</th>
-                                    <th>Name</th>
-                                    <th>Action(s)</th>
+                                    <th class="text-center">Name</th>
+                                    <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach(\App\Models\Enquiry::orderBy('id', 'DESC')->get() as $item)
                                 <tr>
                                     <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
                                             <b>{{ $item->getEnquiryType('strtoupper') }}</b>
                                         </span>
                                     </td>
                                     <td>{{ $item->subject }}</td>
-                                    <td><b>{{ $item->getFullName() }}</b></td>
-                                    <td nowrap="nowrap">
+                                    <td class="text-center"><b>{{ $item->getFullName() }}</b></td>
+                                    <td class="text-center" nowrap="nowrap">
                                         <a
                                             href="#"
                                             class="btn btn-sm btn-light-warning mr-3"
@@ -57,7 +57,7 @@
                                             data-toggle="modal"
                                             data-target="#viewEnqiryModal"
                                         >
-                                            <i class="flaticon-eye"></i> View
+                                            <i class="flaticon-eye"></i>
                                         </a>
                                         @if ($item->file != '')
                                         <a
@@ -65,11 +65,20 @@
                                             class="btn btn-sm btn-light-primary mr-3"
                                             title="Download enquiry document"
                                         >
-                                            <i class="la la-download"></i> Download
+                                            <i class="la la-download"></i>
                                         </a>
                                         @else
                                             <span></span>
                                         @endif
+                                        <a
+                                            href="#"
+                                            class="assignCaseButton btn btn-sm btn-light-info mr-3"
+                                            title="Assign Case Handler"
+                                            data-toggle="modal"
+                                            data-target="#assignCaseModal"
+                                        >
+                                            <i class="flaticon-user-add"></i>
+                                        </a>
                                         <div class="hide">
                                             {{-- Logs --}}
                                             <span class="email">{{ $item->email }}</span>
