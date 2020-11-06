@@ -2,6 +2,24 @@
     margin-top: 80px;
 }
 
+.card-report.card-custom-report {
+    box-shadow: 0px 0px 30px 0px rgba(82, 63, 105, 0.05);
+    border: 0;
+}
+
+.card-report {
+    position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border-radius: 0.42rem;
+}
+
 .card__box {
     width: 100% !important;
     height: 12rem;

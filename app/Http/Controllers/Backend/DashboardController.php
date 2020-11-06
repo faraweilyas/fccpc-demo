@@ -159,11 +159,54 @@ class DashboardController extends Controller
      */
     public function generateReport()
     {
-        $handlers         = User::where('account_type', 'CH')->where('status', 'active')->get();
+        $caseHandlers     = (new User())->caseHandlers();
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard Generate Report";
         $details          = details($title, $description);
-        return view('backend.admin.generate-report', compact('details', 'handlers'));
+        return view('backend.admin.generate-report', compact('details', 'caseHandlers'));
+    }
+
+    /**
+     * Handles the generate report table page route.
+     * @return void
+     */
+    public function generateReportTable($show)
+    {
+        $date_array    = explode(' to ', request('start_date_end_date'));
+        $start_date    = trim($date_array[0] ?? "");
+        $end_date      = trim($date_array[1] ?? $start_date);
+
+        if (empty($end_date))
+            return redirect()->back()->with('error', 'Invalid date range selected');
+
+        $start_ate     = $start_date.' 00:00:00';
+        $end_date      = $end_date.' 23:59:59';
+        $handler_id    = request('handler_id');
+        $category      = request('category');
+        $type          = request('type');
+        $custom_filter = request('custom-filter-check');
+
+        $cases       = (new Cases)->submittedCases();
+        if (is_null($handler_id)):
+            if (isset($custom_filter)):
+                $cases   = (new Cases)->getCaseByDateRangeTypeAndCategory($start_date, $end_date, $category, $type);
+            else:
+                $cases   = (new Cases)->getCaseByDateRange($start_date, $end_date);
+            endif;
+        else:
+            if (isset($custom_filter)):
+                $cases   = (new Cases)->getCaseByDateRangeTypeCategoryAndHandler($start_date, $end_date, $handler_id, $category, $type);
+            else:
+                $cases   = (new Cases)->getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id);
+            endif;
+        endif;
+
+        $caseHandlers = (new User())->caseHandlers();
+
+        $title            = APP_NAME;
+        $description      = "FCCPC Dashboard Generate Report";
+        $details          = details($title, $description);
+        return view('backend.admin.generate-report', compact('details', 'cases', 'caseHandlers', 'show'));
     }
 
     /**

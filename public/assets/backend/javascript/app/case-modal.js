@@ -120,6 +120,11 @@ $(document).ready(function () {
 
     $('#case_handler_dropdown').select2();
 
+    $('#generated_cases_datatable').DataTable({
+        responsive: true,
+        paging: true,
+    });
+
     $('#assigned_cases_datatable').DataTable({
         responsive: true,
         paging: true,
