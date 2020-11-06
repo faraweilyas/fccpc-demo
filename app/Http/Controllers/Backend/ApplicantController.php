@@ -124,6 +124,9 @@ class ApplicantController extends Controller
             request('tracking_id')
         )->firstOrFail();
 
+        if (is_null($guest->case))
+            return redirect()->back()->with('error', 'Invalid Application ID');
+
         // Check if case has been submitted
         if ($guest->case->isSubmitted()) {
             return redirect($guest->uploadDocumentsPath());
@@ -145,8 +148,13 @@ class ApplicantController extends Controller
     {
         $groupName = \Str::slug($document->checklists[0]->group->name);
         $extension = pathinfo($document->file)['extension'];
+        $file      = storage_path("app/public/documents/{$document->file}");
+
+        if (!is_file($file) && !file_exists($file))
+            return redirect()->back()->with('error', 'File was not found!');
+        
         return response()->download(
-            storage_path("app/public/documents/{$document->file}"),
+            $file,
             "{$groupName}.{$extension}"
         );
     }
@@ -160,8 +168,13 @@ class ApplicantController extends Controller
     {
         $groupName = \Str::slug($document);
         $extension = pathinfo($document)['extension'];
+        $file      = storage_path("app/public/documents/{$document->file}");
+
+        if (!is_file($file) && !file_exists($file))
+            return redirect()->back()->with('error', 'File was not found!');
+
         return response()->download(
-            storage_path("app/public/documents/{$document}"),
+            $file,
             "{$groupName}.{$extension}"
         );
     }

@@ -28,16 +28,13 @@
         </div>
     </div>
 </div>
-
 <div class="conatiner px-5 py-5 relative">
-
     <button class="btn btn-success-transparent">Request Extension</button>
-
     <div class="row px-3">
         <div class="tab-custom">
-            <div class="tab-link @if(!empty($case->getDefficiencyDate())) bg-warning @else active @endif">
+            <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
-                <a class="nav-link @if(!empty($case->getDefficiencyDate())) text-white @else active @endif" href="#">Documentation
+                <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif" href="#">Documentation
                     <span>Duration: 10 days</span>
                 </a>
             </div>
@@ -60,14 +57,12 @@
                 </a>
             </div>
         </div>
-
         <span class="duration pull-right">Total Duration: 60 days</span>
     </div>
-
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
-                @if(!empty($case->getDefficiencyDate()))
+                @if($case->isCaseOnHold())
                 <div class="ribbon ribbon-clip ribbon-left">
                     <div class="ribbon-target" style="top: 15px;">
                     <span class="ribbon-inner bg-warning"></span>On Hold</div>
@@ -104,18 +99,10 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>FEES:</b></p>
+                        <p><b>AMOUNT PAID:</b></p>
                         <p class="info-title">
-                            <b>Combined Turnover:</b>&nbsp;{!! $case->getCombinedTurnover() !!}
+                            {!! $case->getAmountPaid() !!}
                         </p>
-                        <p class="info-title">
-                            <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
-                        </p>
-                        @if ($case->case_category == "FFX")
-                            <p class="info-title">
-                                <b>Expedited Fee:</b>&nbsp;{!! $case->getExpeditedFee() !!}
-                            </p>
-                        @endif
                     </div>
                     <div class="col-md-3">
                         <p><b>REF NO:</b></p>
@@ -145,25 +132,20 @@
                         </span>
                     </div>
                     <div class="col-md-3">
-
                     </div>
                     <div class="col-md-3">
-
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Document Checklist</button>
+                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Submitted Documents</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!--  -->
-    <div class="row">
+    <div class="row hide">
         <div class="col-md-12">
             <div class="card-custom">
                 <h5>Analysis Document & Recommendation</h5>
-
                 <div class="row py-5">
                     <div class="col-md-6 my-5">
 
@@ -179,31 +161,19 @@
                     </div>
                     <div class="col-md-6 my-5">
                         <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:" name="" id="" cols="30" rows="10"></textarea>
-
                         <br>
-
                         <button class="btn btn-success-sm my-5 pull-right">Issue Recommendation</button>
-
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    <!--  -->
-
-    <!--  -->
-    <div class="row">
+    <div class="row hide">
         <div class="col-md-12">
             <div class="card-custom">
                 <h5>Analysis Document & Recommendation</h5>
-
                 <div class="row py-5">
                     <div class="col-md-6 my-5">
-
                         <div class="doc-card">
                             <div class="row">
                                 <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
@@ -230,24 +200,14 @@
                             <br>
                             <br>
                             It has survived not only five centuries.</p>
-
-
                     </div>
-
                 </div>
-
-
-
             </div>
         </div>
     </div>
-    <!--  -->
 </div>
-
 @endsection
 
-
-
 @section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
 @endsection

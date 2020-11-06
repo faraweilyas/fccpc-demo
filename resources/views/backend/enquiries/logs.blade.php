@@ -31,7 +31,6 @@
                         <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Date Submitted</th>
                                     <th class="text-center">Type</th>
                                     <th>Subject</th>
@@ -40,12 +39,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @php 
-                                    $x = 1;
-                                @endphp
                                 @foreach($enquiries as $item)
                                 <tr>
-                                    <td>{{ $x }}</td>
                                     <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                     <td class="text-center">
                                         <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
@@ -62,7 +57,7 @@
                                             data-toggle="modal"
                                             data-target="#viewEnqiryModal"
                                         >
-                                            <i class="flaticon-eye"></i>
+                                            <i class="flaticon-eye"></i>View
                                         </a>
                                         @if ($item->file != '')
                                         <a
@@ -70,12 +65,12 @@
                                             class="btn btn-sm btn-light-primary mr-3"
                                             title="Download enquiry document"
                                         >
-                                            <i class="la la-download"></i>
+                                            <i class="la la-download"></i>Download
                                         </a>
                                         @else
                                             <span></span>
                                         @endif
-                                        <a
+                                        {{-- <a
                                             href="#"
                                             class="assignEnquiryButton btn btn-sm btn-light-info mr-3"
                                             title="Assign Enquiry to Handler"
@@ -83,7 +78,7 @@
                                             data-target="#assignEnquiryModal"
                                         >
                                             <i class="flaticon-user-add"></i>
-                                        </a>
+                                        </a> --}}
                                         <div class="hide">
                                             {{-- Logs --}}
                                             <span class="email">{{ $item->email }}</span>
@@ -91,9 +86,6 @@
                                         </div>
                                     </td>
                                 </tr>
-                                @php
-                                    $x++;
-                                @endphp
                                 @endforeach
                             </tbody>
                         </table>

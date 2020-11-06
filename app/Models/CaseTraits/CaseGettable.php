@@ -34,8 +34,6 @@ trait CaseGettable
         return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->get() : [];
     }
 
-
-
     /**
      * Gets defficeincy issued at date
      *
@@ -43,6 +41,9 @@ trait CaseGettable
      */
     public function getDefficiencyDate(string $format='customdate')
     {
+        if (!$this->active_handlers->first())
+            return '';
+
         $defficiency_date = $this->active_handlers->first()->case_handler->defficiency_issued_at;
         if(!empty($defficiency_date)):
            return datetimeToText($this->active_handlers->first()->case_handler->defficiency_issued_at, $format);

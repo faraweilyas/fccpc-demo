@@ -9,6 +9,7 @@ use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class ApplicationController extends Controller
 {
@@ -147,6 +148,13 @@ class ApplicationController extends Controller
     {
         $fileName = request('previous_document_name') ?? '';
         if (request()->hasFile('file')):
+            $validator = Validator::make(request()->all(), [
+            'file' => 'mimes:pdf',
+            ]);
+
+            if ($validator->fails())
+                $this->sendResponse('Only PDF file format is supported.', 'error', []);
+            
             $file = request('file');
             $extension = $file->getClientOriginalExtension();
             $fileName = \SerialNumber::randomFileName($extension);
@@ -176,21 +184,24 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
-        $combined_turnover  = str_replace(',', '', request('combined_turnover'));
-        $filling_fee        = str_replace(',', '', request('filling_fee'));
-        $expedited_fee      = str_replace(',', '', request('expedited_fee'));
+        $amount_paid  = str_replace(',', '', request('amount_paid'));
 
         $guest->case->saveFeeInfo(
             (object) [
-                'combined_turnover' => $combined_turnover,
-                'filling_fee'       => $filling_fee,
-                'expedited_fee'     => $expedited_fee,
+                'amount_paid' => $amount_paid,
             ]
         );
 
         if (!request()->hasFile('file')) {
             $this->sendResponse('No file has been uploaded.', 'warning', []);
         }
+
+        $validator = Validator::make(request()->all(), [
+            'file' => 'mimes:pdf',
+        ]);
+
+        if ($validator->fails())
+            $this->sendResponse('Only PDF file format is supported.', 'error', []);
 
         $file = request('file');
         $extension = $file->getClientOriginalExtension();

@@ -259,7 +259,7 @@
                                                     <div class="row mt-n2">
                                                         <div class="col-md-3">
                                                             <div class="uploadButton tw-mb-4 ">
-                                                               <input accept=".doc, .docx, .pdf" id="letter_of_appointment_doc" class="js-file-upload-input ember-view" type="file" name="letter_of_appointment_doc">
+                                                               <input accept=".pdf" id="letter_of_appointment_doc" class="js-file-upload-input ember-view" type="file" name="letter_of_appointment_doc">
                                                                 <span class="btn btn--small btn--brand">Upload File</span>
                                                             </div>
                                                         </div>
@@ -276,8 +276,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div id="application-documentation-section" class="pb-5" data-wizard-type="step-content" data-form='applicationDocumentation'>
-                                            <h6 class="mb-10 font-weight-bold text-dark">You are about to enter the application documentation section.</h6>
+                                        <div id="application-documentation-section" class="pb-5 my-40" data-wizard-type="step-content" data-form='applicationDocumentation'>
+                                            <h6 class="mb-10 font-weight-bold text-dark text-center">This section requires you to upload all relevant application document in a searchable PDF format.</h6>
                                         </div>
                                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                                         @php
@@ -299,37 +299,36 @@
                                                             </p>
                                                             <div class="row mt-4">
                                                                 @foreach($checklistGroup->checklists as $checklist)
-                                                                    @if ($checklist->isCaseCategoryFFX($case))
-                                                                        @php
-                                                                            $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
-                                                                        @endphp
-                                                                        <div class="col-md-12">
-                                                                            <label class="checkbox mb-4">
-                                                                                <input
-                                                                                    type="checkbox"
-                                                                                    class="checklist_id"
-                                                                                    value="{{ $checklist->id }}"
-                                                                                    {{ $checked }}
-                                                                                />
-                                                                                <span></span>
-                                                                                <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
-                                                                            </label>
-                                                                        </div>
-                                                                        @if ($checklist->hasInputField())
-                                                                            <div class="col-md-6 mb-4 ml-8">
-                                                                                <input
-                                                                                    type="text"
-                                                                                    class="form-control combined_fees hide"
-                                                                                    name="{{ $checklist->getInput() }}"
-                                                                                    value="{{ $checklist->getValue($case) }}"
-                                                                                    placeholder="{{ $checklist->getInputPlaceHolder() }}"
-                                                                                    id="{{ $checklist->getInput() }}"
-                                                                                    {{ ($checklist->isInputFieldFillingFee()) ? " disabled" : "" }}
-                                                                                />
-                                                                            </div>
-                                                                        @endif
-                                                                    @endif
+                                                                    @php
+                                                                        $checked = (in_array($checklist->id, $checklistIds)) ? "checked='checked'" : '';
+                                                                    @endphp
+                                                                    <div class="col-md-12">
+                                                                        <label class="checkbox mb-4">
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                class="checklist_id"
+                                                                                value="{{ $checklist->id }}"
+                                                                                {{ $checked }}
+                                                                            />
+                                                                            <span></span>
+                                                                            <small class="fs--100">{{ ucfirst($checklist->name) }}</small>
+                                                                        </label>
+                                                                    </div>
                                                                 @endforeach
+                                                            </div>
+                                                            <div class="row">
+                                                                @if ($checklistGroup->isGroupFees())
+                                                                    <div class="col-md-6 mb-4 ml-8">
+                                                                        <input
+                                                                            type="text"
+                                                                            class="form-control amount_paid"
+                                                                            name="amount_paid"
+                                                                            value="{{ $case->amount_paid }}"
+                                                                            placeholder="Enter Amount Paid:"
+                                                                            id="amount_paid"
+                                                                        />
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                             <div class="row mt-4">
                                                                 <div class="col-md-12">
@@ -341,7 +340,7 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4 ">
-                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                       <input accept=".pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
 

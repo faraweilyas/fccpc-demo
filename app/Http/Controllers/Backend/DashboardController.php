@@ -172,9 +172,15 @@ class DashboardController extends Controller
      */
     public function exportReportCSV()
     {
-        $date_array    = explode(' to ', request('start_date_end_date')) ;
-        $start_date    = $date_array[0];
-        $end_date      = $date_array[1];
+        $date_array    = explode(' to ', request('start_date_end_date'));
+        $start_date    = trim($date_array[0] ?? "");
+        $end_date      = trim($date_array[1] ?? $start_date);
+
+        if (empty($end_date))
+            return redirect()->back()->with('error', 'Invalid date range selected');
+
+        $start_ate     = $start_date.' 00:00:00';
+        $end_date      = $end_date.' 23:59:59';
         $handler_id    = request('handler_id');
         $category      = request('category');
         $type          = request('type');

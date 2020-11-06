@@ -46,6 +46,11 @@ class Cases extends Model
         return empty($this->case_category) ? false : true;
     }
 
+    public function isCaseOnHold() : bool
+    {
+        return empty($this->getDefficiencyDate()) ? false : true;
+    }
+
     public function isSubmitted() : bool
     {
         return empty($this->submitted_at) ? false : true;
@@ -60,19 +65,9 @@ class Cases extends Model
         return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
     }
 
-    public function getCombinedTurnover()
+    public function getAmountPaid()
     {
-        return !empty($this->combined_turnover) ? formatDigit($this->combined_turnover) : '...';
-    }
-
-    public function getFillingFee()
-    {
-        return !empty($this->filling_fee) ? formatDigit($this->filling_fee) : '...';
-    }
-
-    public function getExpeditedFee()
-    {
-        return !empty($this->expedited_fee) ? formatDigit($this->expedited_fee) : '...';
+        return !empty($this->amount_paid) ? formatDigit($this->amount_paid) : '...';
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass
