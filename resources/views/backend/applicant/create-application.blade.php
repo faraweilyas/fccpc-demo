@@ -277,7 +277,7 @@
                                             </div>
                                         </div>
                                         <div id="application-documentation-section" class="pb-5 my-40" data-wizard-type="step-content" data-form='applicationDocumentation'>
-                                            <h6 class="mb-10 font-weight-bold text-dark text-center">This section requires you to upload all relevant application document in a searchable PDF format.</h6>
+                                            <h6 class="font-weight-bold text-dark text-center section__breaker">This section requires you to upload all relevant application document in a searchable PDF format.</h6>
                                         </div>
                                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                                         @php

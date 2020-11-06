@@ -751,6 +751,14 @@ th.fees_tab__head
     border-top: none !important;
 }
 
+.section__breaker
+{
+    font-size: 28px !important;
+    line-height: inherit;
+    margin-bottom: -25px;
+    margin-top: -50px;
+}
+
 @media only screen and (min-width: 280px) and (max-width: 565px) {
 
     .pull__right__position {
