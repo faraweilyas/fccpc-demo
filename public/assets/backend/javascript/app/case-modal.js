@@ -118,6 +118,8 @@ $(document).ready(function () {
         }],
     });
 
+    $('#case_handler').select2();
+
     $('#assigned_cases_datatable').DataTable({
         responsive: true,
         paging: true,
@@ -295,6 +297,15 @@ $(document).ready(function () {
         refrenceNo.html(caseContainer.find('.reference_no').html());
         subject.html(caseContainer.find('.subject').html());
         submittedAt.html(caseContainer.find('.submitted_at').html());
+        return;
+    });
+
+    $('#assignEnquiryModal').on('shown.bs.modal', function (event) {
+        var assignButton = $(event.relatedTarget);
+            caseContainer = assignButton.parent('td').parent('tr'),
+            thisModal = $(this);
+            // caseID = thisModal.find('#caseID');
+
         return;
     });
 

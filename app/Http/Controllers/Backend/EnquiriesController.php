@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
 use App\Models\Enquiry;
+use App\Models\User;
 use App\Mail\EnquiryMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -92,10 +93,12 @@ class EnquiriesController extends Controller
      */
     public function logs()
     {
+        $caseHandlers     = User::where('status', 'active')->where('account_type', 'CH')->get();
+        $enquiries        = Enquiry::orderBy('id', 'DESC')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Logs Dashboard";
         $details          = details($title, $description);
-        return view('backend.enquiries.logs', compact('details'));
+        return view('backend.enquiries.logs', compact('details', 'enquiries', 'caseHandlers'));
     }
 
     /**

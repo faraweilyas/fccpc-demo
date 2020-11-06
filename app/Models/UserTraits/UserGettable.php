@@ -36,7 +36,7 @@ trait UserGettable
      */
     public function enquiries()
     {
-        return $this->hasMany(Enquiry::class);
+        return $this->hasMany(Enquiry::class, 'handler_id');
     }
 
     /**

@@ -31,6 +31,7 @@
                         <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
                             <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Date Submitted</th>
                                     <th class="text-center">Type</th>
                                     <th>Subject</th>
@@ -39,8 +40,12 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach(\App\Models\Enquiry::orderBy('id', 'DESC')->get() as $item)
+                                @php 
+                                    $x = 1;
+                                @endphp
+                                @foreach($enquiries as $item)
                                 <tr>
+                                    <td>{{ $x }}</td>
                                     <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
                                     <td class="text-center">
                                         <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
@@ -72,10 +77,10 @@
                                         @endif
                                         <a
                                             href="#"
-                                            class="assignCaseButton btn btn-sm btn-light-info mr-3"
-                                            title="Assign Case Handler"
+                                            class="assignEnquiryButton btn btn-sm btn-light-info mr-3"
+                                            title="Assign Enquiry to Handler"
                                             data-toggle="modal"
-                                            data-target="#assignCaseModal"
+                                            data-target="#assignEnquiryModal"
                                         >
                                             <i class="flaticon-user-add"></i>
                                         </a>
@@ -86,6 +91,9 @@
                                         </div>
                                     </td>
                                 </tr>
+                                @php
+                                    $x++;
+                                @endphp
                                 @endforeach
                             </tbody>
                         </table>
@@ -94,44 +102,12 @@
             </div>
         </div>
     </div>
-    @php $x = 1; @endphp
-    @foreach(\App\Models\Enquiry::all() as $item)
-    <div class="modal fade" id="assignEnquiryModal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Assign case handler to enquiry</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i aria-hidden="true" class="ki ki-close"></i>
-                    </button>
-                </div>
-                <form method="POST" action="{{ route('enquiries.assign', ['id' => $item->id]) }}">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="row mt-5">
-                            <div class="col-md-12">
-                                <label>Select case handler</label><br>
-                                <select class="form-control" id="case_handler{{ $x }}" name="case_handler" style="width: 100%;">
-                                    @foreach(User::where('status', 1)->where('account_type', 'CH')->get() as $handler)
-                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary font-weight-bold">Assign</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    @php $x++; @endphp
-    @endforeach
 
     <!-- Modals -->
     @include("layouts.modals.enquiry")
+    @include("layouts.modals.enquiry-handler", [
+        'caseHandlers' =>  $caseHandlers   
+    ])
 @endsection
 
 @section('custom.css')
