@@ -13,7 +13,7 @@
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <label>Select case handler</label><br>
-                            <select class="form-control select2" id="case_handler" name="case_handler" style="width: 100%;">
+                            <select class="form-control select2" id="case_handler_dropdown" name="case_handler" style="width: 100%;">
                                 @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach

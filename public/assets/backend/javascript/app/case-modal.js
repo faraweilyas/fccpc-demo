@@ -118,7 +118,7 @@ $(document).ready(function () {
         }],
     });
 
-    $('#case_handler').select2();
+    $('#case_handler_dropdown').select2();
 
     $('#assigned_cases_datatable').DataTable({
         responsive: true,
