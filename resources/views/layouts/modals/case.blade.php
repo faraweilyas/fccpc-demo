@@ -97,6 +97,14 @@
                                     <span class="font-weight-bold mr-2">Phone Number:</span>
                                     <span class="text-body text-hover-info" id="applicant_phone_number">...</span>
                                 </div>
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <span class="font-weight-bold mr-2">Letter Of Appointment:</span>
+                                    <span class="text-body text-hover-info">
+                                        <a id="letter_of_appointment" href="#" class="text-muted text-hover-success mr-2">
+                                            <span class="flaticon2-download icon-1x"></span> Download
+                                        </a>
+                                    </span>
+                                </div>
                                 <div class="">
                                     <span class="font-weight-bold mr-2">Address:</span>
                                     <br />

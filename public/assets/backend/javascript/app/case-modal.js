@@ -169,12 +169,14 @@ $(document).ready(function () {
             applicant_name = thisModal.find('#applicant_name'),
             applicant_email = thisModal.find('#applicant_email'),
             applicant_phone_number = thisModal.find('#applicant_phone_number'),
+            letter_of_appointment = thisModal.find('#letter_of_appointment'),
             applicant_address = thisModal.find('#applicant_address'),
             combined_turnover = thisModal.find('#combined_turnover'),
             filling_fee = thisModal.find('#filling_fee'),
             total_fee = thisModal.find('#total_fee'),
             submittedAt = thisModal.find('#submittedAt');
 
+        var letter_of_appointment_link = caseContainer.find('.letter_of_appointment').attr('data-param') === "nil" ? "#" : caseContainer.find('.letter_of_appointment').html();
         // Get Case Checklists Asynchronously
         $.ajax({
             url: "/cases/checklists/" + caseID,
@@ -230,6 +232,7 @@ $(document).ready(function () {
         applicant_name.html(caseContainer.find('.name').html());
         applicant_email.html(caseContainer.find('.email').html());
         applicant_phone_number.html(caseContainer.find('.phone_number').html());
+        letter_of_appointment.attr('href', letter_of_appointment_link);
         applicant_address.html(caseContainer.find('.address').html());
         combined_turnover.html(caseContainer.find('.combined_turnover').html());
         filling_fee.html(caseContainer.find('.filling_fee').html());
