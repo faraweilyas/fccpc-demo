@@ -35,9 +35,9 @@
 
     <div class="row px-3">
         <div class="tab-custom">
-            <div class="tab-link @if(!empty($case->getDefficiencyDate())) bg-warning @else active @endif">
+            <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
-                <a class="nav-link @if(!empty($case->getDefficiencyDate())) text-white @else active @endif" href="#">Documentation
+                <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif" href="#">Documentation
                     <span>Duration: 10 days</span>
                 </a>
             </div>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card-custom">
-                @if(!empty($case->getDefficiencyDate()))
+                @if($case->isCaseOnHold())
                 <div class="ribbon ribbon-clip ribbon-left">
                     <div class="ribbon-target" style="top: 15px;">
                     <span class="ribbon-inner bg-warning"></span>On Hold</div>
@@ -104,18 +104,10 @@
 
                 <div class="row py-5">
                     <div class="col-md-3">
-                        <p><b>FEES:</b></p>
+                        <p><b>AMOUNT PAID:</b></p>
                         <p class="info-title">
-                            <b>Combined Turnover:</b>&nbsp;{!! $case->getCombinedTurnover() !!}
+                            {!! $case->getAmountPaid() !!}
                         </p>
-                        <p class="info-title">
-                            <b>Filling Fee:</b>&nbsp;{!! $case->getFillingFee() !!}
-                        </p>
-                        @if ($case->case_category == "FFX")
-                            <p class="info-title">
-                                <b>Expedited Fee:</b>&nbsp;{!! $case->getExpeditedFee() !!}
-                            </p>
-                        @endif
                     </div>
                     <div class="col-md-3">
                         <p><b>REF NO:</b></p>

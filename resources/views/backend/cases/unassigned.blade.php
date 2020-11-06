@@ -103,6 +103,7 @@
                                                 <span class="subject">{{ $case->subject }}</span>
                                                 <span class="category">{!! $case->getCategoryHtml() !!}</span>
                                                 <span class="type">{!! $case->getTypeHtml() !!}</span>
+                                                <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
                                                 <span class="parties">{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</span>
                                                 <span class="submitted_at">{!! $case->getSubmittedAt() !!}</span>
                                                 {{-- Applicant --}}
@@ -113,9 +114,6 @@
                                                 <span class="letter_of_appointment" data-param={{ $case->letter_of_appointment ?? 'nil'}}>{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment ?? 'nil']) }}</span>
                                                 <span class="address">{!! $case->applicant_address !!}</span>
                                                 {{-- Checklist --}}
-                                                {{-- Fees --}}
-                                                <span class="combined_turnover">{!! $case->getCombinedTurnover() !!}</span>
-                                                <span class="filling_fee">{!! $case->getFillingFee() !!}</span>
                                                 {{-- Documents --}}
                                             </div>
                                         </td>

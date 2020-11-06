@@ -12,4 +12,9 @@ class ChecklistGroup extends Model
     {
         return $this->hasMany(Checklist::class, 'group_id');
     }
+
+    public function isGroupFees()
+    {
+    	return (strtolower($this->name) == 'fees') ? true : false;
+    }
 }

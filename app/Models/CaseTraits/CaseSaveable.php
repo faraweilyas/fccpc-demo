@@ -57,9 +57,7 @@ trait CaseSaveable
      */
     public function saveFeeInfo(\stdClass $feeInfo) : bool
     {
-        $this->combined_turnover        = $feeInfo->combined_turnover;
-        $this->filling_fee              = $feeInfo->filling_fee;
-        $this->expedited_fee              = $feeInfo->expedited_fee;
+        $this->amount_paid        = $feeInfo->amount_paid;
         return $this->save();
     }
 
@@ -72,7 +70,7 @@ trait CaseSaveable
     public function saveDeclaration(\stdClass $declarationInfo) : bool
     {
         $this->declaration_name        = $declarationInfo->declaration_name;
-        $this->declaration_rep             = $declarationInfo->declaration_rep;
+        $this->declaration_rep         = $declarationInfo->declaration_rep;
         return $this->save();
     }
 

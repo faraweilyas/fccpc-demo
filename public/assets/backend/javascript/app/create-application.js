@@ -390,19 +390,12 @@ $(document).ready(function()
         return;
     });
 
-    // Validate combined turn over to be digits
-    formatInputAmount($(".combined_fees"));
+    // Validate amount paid to be digits
+    formatInputAmount($(".amount_paid"));
 
-    $(document).on("focus keyup change", ".combined_fees", function()
+    $(document).on("focus keyup change", ".amount_paid", function()
     {
         formatInputAmount(this);
-    });
-
-    toggleInput($(".checklist_id"));
-
-    $(".checklist_id").on('click', function(event)
-    {
-        toggleInput(this);
     });
 
     $("#save-transaction-info").on('click', function(event)
@@ -422,28 +415,8 @@ $(document).ready(function()
             file               = currentForm.find('#checklist_doc')[0].files[0],
             checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
-            combined_turnover  = currentForm.find("#combined_turnover").val(),
-            filling_fee        = currentForm.find("#filling_fee").val(),
-            expedited_fee      = currentForm.find("#expedited_fee").val(),
+            amount_paid        = currentForm.find("#amount_paid").val(),
             doc_id             = currentForm.find("#doc_id").val();
-
-            if (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')){
-                combined_turnover = combined_turnover
-            } else {
-                combined_turnover = 0;
-            }
-
-            if (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')){
-                filling_fee = filling_fee
-            } else {
-                filling_fee = 0;
-            }
-
-            if (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')){
-                expedited_fee = expedited_fee
-            } else {
-                expedited_fee = 0;
-            }
 
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-transaction-info").toggle();
@@ -459,9 +432,7 @@ $(document).ready(function()
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
-        formData.append('combined_turnover', combined_turnover);
-        formData.append('filling_fee', filling_fee);
-        formData.append('expedited_fee', expedited_fee);
+        formData.append('amount_paid', amount_paid);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
             formData,
@@ -574,27 +545,6 @@ function formatInputAmount(inputAmount)
             formatter       = new Intl.NumberFormat('en-US');
 
         $(this).val((validatedAmount < 1) ? '' : formatter.format(validatedAmount));
-    });
-}
-
-function toggleInput(inputField)
-{
-    $(inputField).each(function(index)
-    {
-        let child_input = $(this).parent().parent().next().children('input');
-
-        if ($(this).is(':checked'))
-        {
-            if (child_input.is('.combined_fees'))
-                child_input.removeClass('hide');
-        } else {
-            if (child_input.is('.combined_fees'))
-            {
-                if (child_input.attr('id') != 'filling_fee')
-                    child_input.val('');
-                child_input.addClass('hide');
-            }
-        }
     });
 }
 
@@ -712,13 +662,8 @@ function saveChecklistDocument(action, currentForm)
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
         checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
-        combined_turnover  = currentForm.find("#combined_turnover").val(),
-        filling_fee        = currentForm.find("#filling_fee").val(),
+        amount_paid        = currentForm.find("#amount_paid").val(),
         doc_id             = currentForm.find("#doc_id").val();
-
-    combined_turnover   = (currentForm.find("#combined_turnover").parent().prev().children().children('input').is(':checked')) ? combined_turnover : 0;
-    filling_fee         = (currentForm.find("#filling_fee").parent().prev().children().children('input').is(':checked')) ? filling_fee : 0;
-    expedited_fee       = (currentForm.find("#expedited_fee").parent().prev().children().children('input').is(':checked')) ? expedited_fee : 0;
 
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
@@ -734,8 +679,7 @@ function saveChecklistDocument(action, currentForm)
     formData.append('additional_info', additional_info);
     formData.append('checklists', checklists);
     formData.append('document_id', doc_id);
-    formData.append('combined_turnover', combined_turnover);
-    formData.append('filling_fee', filling_fee);
+    formData.append('amount_paid', amount_paid);
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
         formData,

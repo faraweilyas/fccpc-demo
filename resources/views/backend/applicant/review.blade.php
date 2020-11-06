@@ -88,24 +88,10 @@
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
                                 <h4 class="info-title">
-                                    Combined Turnover:
+                                    Amount Paid:
                                 </h4>
-                                <h4>{!! $case->getCombinedTurnover() !!}</h4>
+                                <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>
-                            <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">
-                                    Filling Fee:
-                                </h4>
-                                <h4>{!! $case->getFillingFee() !!}</h4>
-                            </div>
-                            @if ($case->case_category == "FFX")
-                                <div class="grid-row-2 d-flex">
-                                    <h4 class="info-title">
-                                        Expedited Fee:
-                                    </h4>
-                                    <h4>{!! $case->getExpeditedFee() !!}</h4>
-                                </div>
-                            @endif
                         </div>
                         <p class="section-header">
                             Contact Information

@@ -176,15 +176,11 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
-        $combined_turnover  = str_replace(',', '', request('combined_turnover'));
-        $filling_fee        = str_replace(',', '', request('filling_fee'));
-        $expedited_fee      = str_replace(',', '', request('expedited_fee'));
+        $amount_paid  = str_replace(',', '', request('amount_paid'));
 
         $guest->case->saveFeeInfo(
             (object) [
-                'combined_turnover' => $combined_turnover,
-                'filling_fee'       => $filling_fee,
-                'expedited_fee'     => $expedited_fee,
+                'amount_paid' => $amount_paid,
             ]
         );
 
