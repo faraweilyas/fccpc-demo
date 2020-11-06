@@ -259,7 +259,7 @@
                                                     <div class="row mt-n2">
                                                         <div class="col-md-3">
                                                             <div class="uploadButton tw-mb-4 ">
-                                                               <input accept=".doc, .docx, .pdf" id="letter_of_appointment_doc" class="js-file-upload-input ember-view" type="file" name="letter_of_appointment_doc">
+                                                               <input accept=".pdf" id="letter_of_appointment_doc" class="js-file-upload-input ember-view" type="file" name="letter_of_appointment_doc">
                                                                 <span class="btn btn--small btn--brand">Upload File</span>
                                                             </div>
                                                         </div>
@@ -341,7 +341,7 @@
                                                             <div class="row mt-4">
                                                                 <div class="col-md-3">
                                                                     <div class="uploadButton tw-mb-4 ">
-                                                                       <input accept=".doc, .docx, .pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                       <input accept=".pdf" id="checklist_doc" class="js-file-upload-input ember-view" type="file" name="{{ Str::camel($checklistGroup->label) }}_doc" data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                     </div>
 
