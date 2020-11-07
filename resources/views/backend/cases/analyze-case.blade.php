@@ -135,7 +135,7 @@
                     </div>
                     
                     <div class="col-md-3 text-right">
-                        @if (!$case->isAssigned())
+                        @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
                         <button class="btn btn-info-sm my-5" data-toggle="modal" data-target="#assignAnalyzeCaseModal">Assign</button>
                         @endif
                     </div>
@@ -252,8 +252,9 @@
                 <div class="modal-footer">
                     <input type="hidden" id="caseID">
                     <button type="button" id="assignAnalyzeCaseButton" class="btn btn-light-primary font-weight-bold" data-case-id="{{ $case->id }}">Assign</button>
-                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
-                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button> 
+                     
+                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
