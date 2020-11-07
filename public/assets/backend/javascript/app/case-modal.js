@@ -1,18 +1,21 @@
-var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+var CSRF_TOKEN = $('meta[name="csrf-token"]').attr("content");
 
 function assignCaseHandler(caseID, caseHandlerID) {
     $.ajax({
         url: "/cases/assign/" + caseID + "/" + caseHandlerID,
         type: "post",
         data: {
-            _token: CSRF_TOKEN
+            _token: CSRF_TOKEN,
         },
         success: function (response) {
             var result = JSON.parse(response);
-            $(".assigningCaseButton" + caseID).addClass('hide');
-            $(".unassignCaseButton" + caseID).removeClass('hide');
-            $(".assignCaseButton" + caseID).addClass('hide');
-            $(".unassignCaseButton" + caseID).attr('data-assigned-handler-id', caseHandlerID);
+            $(".assigningCaseButton" + caseID).addClass("hide");
+            $(".unassignCaseButton" + caseID).removeClass("hide");
+            $(".assignCaseButton" + caseID).addClass("hide");
+            $(".unassignCaseButton" + caseID).attr(
+                "data-assigned-handler-id",
+                caseHandlerID
+            );
             $(".assigned_handler_id").html(caseHandlerID);
 
             if (result.responseType == "success") {
@@ -22,10 +25,10 @@ function assignCaseHandler(caseID, caseHandlerID) {
             }
         },
         error: function (xhr, desc, err) {
-            $(".assignCaseButton" + caseID).removeClass('hide');
-            $(".assigningCaseButton" + caseID).addClass('hide');
-            $('select[name="caseHandler"]').removeAttr('disabled');
-        }
+            $(".assignCaseButton" + caseID).removeClass("hide");
+            $(".assigningCaseButton" + caseID).addClass("hide");
+            $('select[name="caseHandler"]').removeAttr("disabled");
+        },
     });
 }
 
@@ -34,15 +37,15 @@ function unassignCaseHandler(caseID, caseHandlerID) {
         url: "/cases/unassign/" + caseID + "/" + caseHandlerID,
         type: "post",
         data: {
-            _token: CSRF_TOKEN
+            _token: CSRF_TOKEN,
         },
         success: function (response) {
             var result = JSON.parse(response);
 
-            $(".assignCaseButton" + caseID).removeClass('hide');
-            $(".unassignCaseButton" + caseID).addClass('hide');
-            $(".unassigningCaseButton" + caseID).addClass('hide');
-            $('select[name="caseHandler"]').removeAttr('disabled');
+            $(".assignCaseButton" + caseID).removeClass("hide");
+            $(".unassignCaseButton" + caseID).addClass("hide");
+            $(".unassigningCaseButton" + caseID).addClass("hide");
+            $('select[name="caseHandler"]').removeAttr("disabled");
 
             if (result.responseType == "success") {
                 toastr.success(result.message);
@@ -51,26 +54,32 @@ function unassignCaseHandler(caseID, caseHandlerID) {
             }
         },
         error: function (xhr, desc, err) {
-            $(".assignCaseButton" + caseID).addClass('hide');
-            $(".unassigningCaseButton" + caseID).removeClass('hide');
-            $(".unassignCaseButton" + caseID).addClass('hide');
-        }
+            $(".assignCaseButton" + caseID).addClass("hide");
+            $(".unassigningCaseButton" + caseID).removeClass("hide");
+            $(".unassignCaseButton" + caseID).addClass("hide");
+        },
     });
 }
 
 function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID) {
     $.ajax({
-        url: "/cases/reassign/" + caseID + "/" + oldCaseHandlerID + "/" + newcaseHandlerID,
+        url:
+            "/cases/reassign/" +
+            caseID +
+            "/" +
+            oldCaseHandlerID +
+            "/" +
+            newcaseHandlerID,
         type: "post",
         data: {
-            _token: CSRF_TOKEN
+            _token: CSRF_TOKEN,
         },
         success: function (response) {
             var result = JSON.parse(response);
 
-            $("#re-unassigning-handler").removeClass('hide');
-            $("#re-assigning-handler").addClass('hide');
-            $('select[name="newCaseHandler"]').removeAttr('disabled');
+            $("#re-unassigning-handler").removeClass("hide");
+            $("#re-assigning-handler").addClass("hide");
+            $('select[name="newCaseHandler"]').removeAttr("disabled");
 
             if (result.responseType == "success") {
                 toastr.success(result.message);
@@ -84,38 +93,33 @@ function reassignCaseHandler(caseID, oldCaseHandlerID, newcaseHandlerID) {
             }
         },
         error: function (xhr, desc, err) {
-            $("#re-unassigning-handler").removeClass('hide');
-            $("#re-assigning-handler").addClass('hide');
-            $('select[name="newCaseHandler"]').removeAttr('disabled');
-        }
+            $("#re-unassigning-handler").removeClass("hide");
+            $("#re-assigning-handler").addClass("hide");
+            $('select[name="newCaseHandler"]').removeAttr("disabled");
+        },
     });
 }
 
 function getIconText(documentID) {
-    var icon = '/assets/backend/media/svg/files/pdf.svg';
+    var icon = "/assets/backend/media/svg/files/pdf.svg";
     $.ajax({
         url: "/cases/document/icon/" + documentID,
         type: "get",
         success: function (response) {
             var result = JSON.parse(response);
             icon = result.response.icon;
-        }
+        },
     });
 
     return icon;
 }
 
 $(document).ready(function () {
-    $('#unassigned_cases_datatable').DataTable({
+    $("#unassigned_cases_datatable").DataTable({
         responsive: true,
         paging: true,
-        order: [
-            [1, "asc"]
-        ], //or asc
-        columnDefs: [{
-            "targets": 1,
-            "type": "date"
-        }],
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
 
     $('#case_handler_dropdown').select2();
@@ -125,27 +129,27 @@ $(document).ready(function () {
         paging: true,
     });
 
-    $('#assigned_cases_datatable').DataTable({
+    $("#assigned_cases_datatable").DataTable({
         responsive: true,
         paging: true,
     });
 
-    $('#case_handlers_datatable').DataTable({
+    $("#case_handlers_datatable").DataTable({
         responsive: true,
         paging: true,
     });
 
-    $('#kt_datatable').DataTable({
+    $("#kt_datatable").DataTable({
         responsive: true,
         paging: true,
     });
 
-    $('#enquiries_log_datatable').DataTable({
+    $("#enquiries_log_datatable").DataTable({
         responsive: true,
         paging: true,
     });
 
-    $('#caseHandler').select2({
+    $("#caseHandler").select2({
         placeholder: "Select a case handler",
         dropdownParent: $("#assignCaseModal"),
         // maximumSelectionLength: 2
@@ -154,12 +158,12 @@ $(document).ready(function () {
         // allowClear: true
     });
 
-    $('#newCaseHandler').select2({
+    $("#newCaseHandler").select2({
         placeholder: "Select a case handler",
         dropdownParent: $("#reassignCaseModal"),
     });
 
-    $('#viewCaseModal').on('shown.bs.modal', function (event) {
+    $("#viewCaseModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
         caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
@@ -190,11 +194,15 @@ $(document).ready(function () {
                 var result = JSON.parse(response);
                 $("#checklist_items").empty();
                 $.each(result.response.checklists, function (index, value) {
-                    $("#checklist_items").append('<div class="d-flex align-items-center justify-content-start mb-2">' +
-                        '<span class="icon-1x mr-2"><b>' +
-                        (index + 1) + '.</b> ' + value +
-                        '</span>' +
-                        '</div>');
+                    $("#checklist_items").append(
+                        '<div class="d-flex align-items-center justify-content-start mb-2">' +
+                            '<span class="icon-1x mr-2"><b>' +
+                            (index + 1) +
+                            ".</b> " +
+                            value +
+                            "</span>" +
+                            "</div>"
+                    );
                 });
             },
         });
@@ -207,22 +215,29 @@ $(document).ready(function () {
                 var result = JSON.parse(response);
                 $("#document_items").empty();
                 $.each(result.response.documents, function (index, value) {
-                    $("#document_items").append('<div class="d-flex align-items-center justify-content-between mb-2">' +
-                        '<span class="font-weight-bold mr-2">' +
-                        '<a href="#" class="d-flex align-items-center text-muted text-hover-success py-1">' +
-                        '<img class="max-h-30px mr-3" src="' + getIconText(value.id) + '" />' +
-                        '<span class="icon-1x mr-2">' + result.response.group[index] + '</span>' +
-                        '</a>' +
-                        '</span>' +
-                        '<span class="text-body text-hover-info" id="applicant_phone_number">' +
-                        '<a href="/applicant/document/download/' + value.id + '" class="text-muted text-hover-success mr-2">' +
-                        '<span class="flaticon2-download icon-1x"></span> Download' +
-                        '</a>' +
-                        '</span>' +
-                        '</div>'
+                    $("#document_items").append(
+                        '<div class="d-flex align-items-center justify-content-between mb-2">' +
+                            '<span class="font-weight-bold mr-2">' +
+                            '<a href="#" class="d-flex align-items-center text-muted text-hover-success py-1">' +
+                            '<img class="max-h-30px mr-3" src="' +
+                            getIconText(value.id) +
+                            '" />' +
+                            '<span class="icon-1x mr-2">' +
+                            result.response.group[index] +
+                            "</span>" +
+                            "</a>" +
+                            "</span>" +
+                            '<span class="text-body text-hover-info" id="applicant_phone_number">' +
+                            '<a href="/applicant/document/download/' +
+                            value.id +
+                            '" class="text-muted text-hover-success mr-2">' +
+                            '<span class="flaticon2-download icon-1x"></span> Download' +
+                            "</a>" +
+                            "</span>" +
+                            "</div>"
                     );
                 });
-            }
+            },
         });
 
         analyzeCase.attr('case_id', caseID);
@@ -244,8 +259,7 @@ $(document).ready(function () {
         return;
     });
 
-
-    $('#viewEnqiryModal').on('shown.bs.modal', function (event) {
+    $("#viewEnqiryModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
         caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
@@ -256,7 +270,7 @@ $(document).ready(function () {
         return;
     });
 
-    $('#viewFaqModal').on('shown.bs.modal', function (event) {
+    $("#viewFaqModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
         caseContainer = viewButton.parent().children('div'),
             thisModal = $(this),
@@ -274,7 +288,7 @@ $(document).ready(function () {
         return;
     });
 
-    $('#assignCaseModal').on('shown.bs.modal', function (event) {
+    $("#assignCaseModal").on("shown.bs.modal", function (event) {
         var assignButton = $(event.relatedTarget);
         caseContainer = assignButton.parent().children('div'),
             thisModal = $(this),
@@ -300,7 +314,7 @@ $(document).ready(function () {
         return;
     });
 
-    $('#assignEnquiryModal').on('shown.bs.modal', function (event) {
+    $("#assignEnquiryModal").on("shown.bs.modal", function (event) {
         var assignButton = $(event.relatedTarget);
             caseContainer = assignButton.parent().children('div'),
             thisModal = $(this);
@@ -309,12 +323,12 @@ $(document).ready(function () {
         return;
     });
 
-    $('#assignCaseModal').on('hidden.bs.modal', function () {
-        $("#assignCaseButton").removeClass('hide');
-        $("#unassignCaseButton").addClass('hide');
+    $("#assignCaseModal").on("hidden.bs.modal", function () {
+        $("#assignCaseButton").removeClass("hide");
+        $("#unassignCaseButton").addClass("hide");
     });
 
-    $('#reassignCaseModal').on('shown.bs.modal', function (event) {
+    $("#reassignCaseModal").on("shown.bs.modal", function (event) {
         var reassignButton = $(event.relatedTarget);
         caseContainer = reassignButton.parent().children('div'),
             thisModal = $(this),
@@ -350,9 +364,9 @@ $(document).ready(function () {
             return false;
         }
 
-        $(".assignCaseButton" + caseID).addClass('hide');
-        $(".assigningButton" + caseID).removeClass('hide');
-        $('select[name="caseHandler"]').attr('disabled', 'disabled');
+        $(".assignCaseButton" + caseID).addClass("hide");
+        $(".assigningButton" + caseID).removeClass("hide");
+        $('select[name="caseHandler"]').attr("disabled", "disabled");
         assignCaseHandler(caseID, caseHandler);
         return;
     });
@@ -360,8 +374,8 @@ $(document).ready(function () {
     $(".unassignCaseButton").on("click", function (event) {
         event.preventDefault();
 
-        var caseID = $(this).attr('data-case-id'),
-            caseHandler = $(this).attr('data-assigned-handler-id');
+        var caseID = $(this).attr("data-case-id"),
+            caseHandler = $(this).attr("data-assigned-handler-id");
 
         if (isNaN(caseID)) {
             toastr.error("An error occured!");
@@ -373,9 +387,9 @@ $(document).ready(function () {
             return false;
         }
 
-        $(".assignCaseButton" + caseID).addClass('hide');
-        $(".unassignCaseButton" + caseID).addClass('hide');
-        $(".unassigningCaseButton" + caseID).removeClass('hide');
+        $(".assignCaseButton" + caseID).addClass("hide");
+        $(".unassignCaseButton" + caseID).addClass("hide");
+        $(".unassigningCaseButton" + caseID).removeClass("hide");
         unassignCaseHandler(caseID, caseHandler);
         return;
     });
@@ -383,8 +397,8 @@ $(document).ready(function () {
     $("#unassignCaseButton").on("click", function (event) {
         event.preventDefault();
 
-        var caseID = $(this).attr('data-case-id'),
-            caseHandler = $(this).attr('data-assigned-handler-id');
+        var caseID = $(this).attr("data-case-id"),
+            caseHandler = $(this).attr("data-assigned-handler-id");
 
         if (isNaN(caseID)) {
             toastr.error("An error occured!");
@@ -396,9 +410,9 @@ $(document).ready(function () {
             return false;
         }
 
-        $(".assignCaseButton" + caseID).addClass('hide');
-        $(".unassignCaseButton" + caseID).addClass('hide');
-        $(".unassigningCaseButton" + caseID).removeClass('hide');
+        $(".assignCaseButton" + caseID).addClass("hide");
+        $(".unassignCaseButton" + caseID).addClass("hide");
+        $(".unassigningCaseButton" + caseID).removeClass("hide");
         unassignCaseHandler(caseID, caseHandler);
         return;
     });
@@ -414,19 +428,22 @@ $(document).ready(function () {
             return false;
         }
 
-        if ((isNaN(newCaseHandler) || newCaseHandler <= 0) && (isNaN(oldCaseHandler) || oldCaseHandler <= 0)) {
+        if (
+            (isNaN(newCaseHandler) || newCaseHandler <= 0) &&
+            (isNaN(oldCaseHandler) || oldCaseHandler <= 0)
+        ) {
             toastr.error("Please select a case handler!");
             return false;
         }
 
-        $("#re-unassigning-handler").addClass('hide');
-        $("#re-assigning-handler").removeClass('hide');
-        $('select[name="newCaseHandler"]').attr('disabled', 'disabled');
+        $("#re-unassigning-handler").addClass("hide");
+        $("#re-assigning-handler").removeClass("hide");
+        $('select[name="newCaseHandler"]').attr("disabled", "disabled");
         reassignCaseHandler(caseID, oldCaseHandler, newCaseHandler);
         return;
     });
 
-    $("#analyze-case").on('click', function (event) {
-        window.location.replace('/cases/analyze/' + $(this).attr('case_id'));
+    $("#analyze-case").on("click", function (event) {
+        window.location.replace("/cases/analyze/" + $(this).attr("case_id"));
     });
 });
