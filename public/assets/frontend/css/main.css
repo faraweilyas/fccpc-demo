@@ -420,8 +420,17 @@ textarea {
 }
 
 .card__box-stack .card__box--content p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: #242424;
+}
+
+.home__content{
+    font-size: 1.3rem !important;
+}
+.home__headers{
+    font-size: 2rem !important;
+    margin: 2rem 0;
+    font-weight: bold;
 }
 
 .card__box-stack .card__box--content span {
