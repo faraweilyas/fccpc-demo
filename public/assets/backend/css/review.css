@@ -5,16 +5,10 @@
     padding: 2rem 0;
 }
 
-
-
 .btn-info-green {
     background: #227a4e !important;
     border-color: #227a4e !important;
-
-
 }
-
-
 
 .rmv-top {
     top: -15rem !important;
@@ -37,7 +31,6 @@
     font-size: 2rem;
     font-weight: bold;
     color: #484b74;
-    /* margin: 1.5rem 0; */
     margin-top: -70px;
 }
 
@@ -48,7 +41,6 @@
 
 .checklist-list-sub {
     font-size: 1rem;
-
     list-style-type: upper-roman;
     padding: .5rem 2rem;
     margin: 1.5rem 1rem;
@@ -423,11 +415,11 @@
     justify-content: center;
 }
 
-.btn-light-primary:hover{
+.btn-light-primary:hover {
     background: #D7F9EF !important;
     /* font-size: 1.5rem; */
     color: #006535 !important;
-transform: translateY(-6px);
+    transform: translateY(-6px);
 }
 
 @-webkit-keyframes slideInRight {

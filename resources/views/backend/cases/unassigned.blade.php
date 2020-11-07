@@ -42,8 +42,8 @@
                             <tbody>
                                 @foreach($cases as $case)
                                     <tr>
-                                        <td>
-                                            <div class="font-weight-bold text-dark mb-0">
+                                        <td data-sort='YYYYMMDD'>
+                                            <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD' data-order=<fmt:formatDate pattern = "yyyy-MM-dd" value ={!! $case->getSubmittedAt('customdate') !!} />
                                                 {!! $case->getSubmittedAt('customdate') !!}
                                             </div>
                                         </td>
@@ -141,4 +141,5 @@
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
+
 @endsection

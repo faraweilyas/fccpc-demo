@@ -129,12 +129,16 @@ Route::prefix('/')
             'update_user'
         );
 
+        Route::get('report/{show}', 'DashboardController@generateReportTable')->name(
+            'report.show'
+        );
+
         Route::get('report', 'DashboardController@generateReport')->name(
             'report'
         );
 
-        Route::post('report', 'DashboardController@exportReportCSV')->name(
-            'report'
+        Route::get('report/{start_date_end_date}/{category}/{type}', 'DashboardController@exportReportCSV')->name(
+            'report.export'
         );
     });
 

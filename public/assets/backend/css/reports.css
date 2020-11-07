@@ -2,6 +2,44 @@
     margin-top: 80px;
 }
 
+.btn-info-sm
+{
+    background: #8950FC !important;
+    border-color: #8950FC !important;
+    font-size: 1rem;
+    padding: 1rem;
+    color: #fff;
+}
+
+.card-report.card-custom-report {
+    box-shadow: 0px 0px 30px 0px rgba(82, 63, 105, 0.05);
+    border: 0;
+}
+
+.create-report-link
+{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.create-report-link:hover
+{
+    opacity: .8;
+}
+
+.card-report {
+    position: relative;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff;
+    background-clip: border-box;
+    border-radius: 0.42rem;
+}
+
 .card__box {
     width: 100% !important;
     height: 12rem;
