@@ -70,7 +70,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('enquiries.index') }}">Enquiry</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item hide">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
             </li>
             <li class="nav-item">
@@ -301,7 +301,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-8">
-                    <span style="font-size: 1.3rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC) 
+                    <span style="font-size: 1.3rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC)
                       <br>Copyright © 2020 Federal Competition and Consumer Protection Commission</span>
                   </div>
                   <div class="col-md-4">
