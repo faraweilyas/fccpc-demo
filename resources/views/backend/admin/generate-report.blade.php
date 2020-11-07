@@ -28,7 +28,7 @@
 
                 <div class="gr-header-content">
                     <p>New Report</p>
-                    <span id="toggle-report">Create your new report</span>
+                    <span id="toggle-report" class="create-report-link">Create your new report</span>
                 </div>
             </div>
             <form method="GET" action="{{ route('dashboard.report.show', ['show' => 'show']) }}">

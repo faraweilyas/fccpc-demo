@@ -32,6 +32,31 @@ function assignCaseHandler(caseID, caseHandlerID) {
     });
 }
 
+function assignAnalyzeCaseHandler(caseID, caseHandlerID) {
+    $.ajax({
+        url: "/cases/assign/" + caseID + "/" + caseHandlerID,
+        type: "post",
+        data: {
+            _token: CSRF_TOKEN,
+        },
+        success: function (response) {
+            var result = JSON.parse(response);
+
+            if (result.responseType == "success") {
+                toastr.success(result.message);
+            } else {
+                toastr.error(result.message);
+            }
+            location.reload();
+        },
+        error: function (xhr, desc, err) {
+            $("#assignAnalyzeCaseButton").removeClass("hide");
+            $("#assigningCaseButton").addClass("hide");
+            $('select[name="caseHandler"]').removeAttr("disabled");
+        },
+    });
+}
+
 function unassignCaseHandler(caseID, caseHandlerID) {
     $.ajax({
         url: "/cases/unassign/" + caseID + "/" + caseHandlerID,
@@ -368,6 +393,28 @@ $(document).ready(function () {
         $(".assigningButton" + caseID).removeClass("hide");
         $('select[name="caseHandler"]').attr("disabled", "disabled");
         assignCaseHandler(caseID, caseHandler);
+        return;
+    });
+
+    $("#assignAnalyzeCaseButton").on("click", function (event) {
+        event.preventDefault();
+        var caseID = $(this).attr('data-case-id'),
+            caseHandler = $("#case_handler_dropdown").val();
+
+        if (isNaN(caseID)) {
+            toastr.error("An error occured!");
+            return false;
+        }
+
+        if (isNaN(caseHandler) || caseHandler <= 0) {
+            toastr.error("Please select a case handler!");
+            return false;
+        }
+
+        $('select[name="caseHandler"]').attr("disabled", "disabled");
+        $("#assignAnalyzeCaseButton").addClass("hide");
+        $("#assigningCaseButton").removeClass("hide");
+        assignAnalyzeCaseHandler(caseID, caseHandler);
         return;
     });
 

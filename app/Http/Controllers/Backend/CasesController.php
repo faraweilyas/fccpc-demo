@@ -219,10 +219,11 @@ class CasesController extends Controller
      */
     public function analyzeCase(Cases $case)
     {
+        $caseHandlers = (new User())->caseHandlers();
         $title = APP_NAME;
         $description = 'FCCPC Case Analysis Dashboard';
         $details = details($title, $description);
-        return view('backend.cases.analyze-case', compact('details', 'case'));
+        return view('backend.cases.analyze-case', compact('details', 'case', 'caseHandlers'));
     }
 
     /*

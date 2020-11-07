@@ -133,7 +133,11 @@
                     </div>
                     <div class="col-md-3">
                     </div>
-                    <div class="col-md-3">
+                    
+                    <div class="col-md-3 text-right">
+                        @if (!$case->isAssigned())
+                        <button class="btn btn-info-sm my-5" data-toggle="modal" data-target="#assignAnalyzeCaseModal">Assign</button>
+                        @endif
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Submitted Documents</button>
@@ -206,8 +210,62 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Assign Case Handler</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i aria-hidden="true" class="ki ki-close"></i>
+                </button>
+            </div>
+            <form method="POST" action="#">
+                @csrf
+                <div class="modal-body">
+                    <div class="py-9">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="font-weight-bold mr-2">Reference NO:</span>
+                            <span class="text-muted text-hover-primary">{!! $case->getRefNO() !!}</span>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="font-weight-bold mr-2">Submitted On:</span>
+                            <span class="text-muted">{!! $case->getSubmittedAt() !!}</span>
+                        </div>
+                        <div>
+                            <span class="font-weight-bold mr-2">Subject:</span>
+                            <br />
+                            <span>{{ $case->subject }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Select case handler:</label>
+                            <br />
+                            <select class="form-control select2" id="case_handler_dropdown" name="caseHandler" style="width: 100%;">
+                                @foreach($caseHandlers as $handler)
+                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="hidden" id="caseID">
+                    <button type="button" id="assignAnalyzeCaseButton" class="btn btn-light-primary font-weight-bold" data-case-id="{{ $case->id }}">Assign</button>
+                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
+                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button> 
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+@endsection
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection

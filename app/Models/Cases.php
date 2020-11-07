@@ -51,6 +51,11 @@ class Cases extends Model
         return empty($this->getDefficiencyDate()) ? false : true;
     }
 
+    public function isAssigned() : bool
+    {
+        return !empty($this->active_handlers->first()) ? true : false;
+    }
+
     public function isSubmitted() : bool
     {
         return empty($this->submitted_at) ? false : true;
