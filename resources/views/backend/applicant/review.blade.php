@@ -22,7 +22,6 @@
             </div>
         </div>
     </div>
-
     <div id="kt_wizard_v2" class="container py-5">
         <div class="row">
             <div class="col-md-12 ">
@@ -45,21 +44,17 @@
                                </button>
                             </div>
                         </div>
-                        <h3 class="checklist-header">
-                            Summary of Application
-                        </h3>
+                        <h3 class="checklist-header">APPLICATION SUMMARY</h3>
 
                         <p class="review-description">
                             Review your entries for any kind of error. Kindly note that you cannot edit information once it has been submitted.
                         </p>
 
-                        <p class="section-header">
-                            Application Transaction Information
-                        </p>
+                        <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
 
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Subject: </h4>
+                                <h4 class="info-title">Subject:</h4>
                                 <h4>{{ $case->subject }}</h4>
                             </div>
 
@@ -69,54 +64,42 @@
                             </div>
 
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">
-                                    Transaction Type:
-                                </h4>
+                                <h4 class="info-title">Transaction Type:</h4>
                                 <h4>{{ $case->getType() }}</h4>
                             </div>
 
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">
-                                    Transaction Category:
-                                </h4>
+                                <h4 class="info-title">Transaction Category:</h4>
                                 <h4>{{ $case->getCategoryText() }}</h4>
                             </div>
                         </div>
-                        <p class="section-header">
-                            Fees
-                        </p>
+                        <p class="section-header">FEES</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">
-                                    Amount Paid:
-                                </h4>
+                                <h4 class="info-title">Amount Paid:</h4>
                                 <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>
                         </div>
-                        <p class="section-header">
-                            Contact Information
-                        </p>
+                        <p class="section-header">CONTACT INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">
-                                    Applicant/Representing Firm :
-                                </h4>
+                                <h4 class="info-title">Applicant/Representing Firm:</h4>
                                 <h4>{{ $case->applicant_firm }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Contact Person :</h4>
+                                <h4 class="info-title">Contact Person:</h4>
                                 <h4>{{ $case->getApplicantName() }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Email address :</h4>
+                                <h4 class="info-title">Email address:</h4>
                                 <a href="mailto:{{ $case->applicant_email }}" class="text-black-custom"><h4>{{ $case->applicant_email }}</h4></a>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Phone number :</h4>
+                                <h4 class="info-title">Phone number:</h4>
                                 <a href="tel:{{ $case->applicant_phone_number }}" class="text-black-custom"><h4>{{ $case->applicant_phone_number }}</h4></a>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Address :</h4>
+                                <h4 class="info-title">Address:</h4>
                                 <h4>{{ $case->applicant_address }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
@@ -138,7 +121,7 @@
                                  </div>
                             </div>
                         </div>
-                        <p class="section-header">Relevant Documents</p>
+                        <p class="section-header">RELEVANT DOCUMENTS</p>
                         {{-- @foreach($documents as $document) --}}
                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                         @php
