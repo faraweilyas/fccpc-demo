@@ -793,13 +793,13 @@ textarea {
 }
 
 .footer-info-content {
-    padding: 2rem;
+    padding: 6rem;
     color: #fff;
 }
 
 .landing-footer-text {
     background-color: #fff;
-    padding: 3rem 0;
+    padding: 1rem 4rem;
 }
 
 .landing-footer-text span {

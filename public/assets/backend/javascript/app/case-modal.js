@@ -147,9 +147,9 @@ $(document).ready(function () {
         columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
 
-    $('#case_handler_dropdown').select2();
+    $("#case_handler_dropdown").select2();
 
-    $('#generated_cases_datatable').DataTable({
+    $("#generated_cases_datatable").DataTable({
         responsive: true,
         paging: true,
     });
@@ -190,27 +190,33 @@ $(document).ready(function () {
 
     $("#viewCaseModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent().children('div'),
-            thisModal = $(this),
-            caseID = caseContainer.find('.case_id').html(),
-            analyzeCase = thisModal.find('#analyze-case'),
-            caseHandler = thisModal.find('#case_handler'),
-            refrenceNo = thisModal.find('#refrenceNo'),
-            subject = thisModal.find('#subject'),
-            category = thisModal.find('#category'),
-            category_fee = thisModal.find('#category_fee'),
-            type = thisModal.find('#type'),
-            parties = thisModal.find('#parties'),
-            applicant_firm = thisModal.find('#applicant_firm'),
-            applicant_name = thisModal.find('#applicant_name'),
-            applicant_email = thisModal.find('#applicant_email'),
-            applicant_phone_number = thisModal.find('#applicant_phone_number'),
-            letter_of_appointment = thisModal.find('#letter_of_appointment'),
-            applicant_address = thisModal.find('#applicant_address'),
-            amount_paid = thisModal.find('#amount_paid'),
-            submittedAt = thisModal.find('#submittedAt');
+        (caseContainer = viewButton.parent().children("div")),
+            (thisModal = $(this)),
+            (caseID = caseContainer.find(".case_id").html()),
+            (analyzeCase = thisModal.find("#analyze-case")),
+            (caseHandler = thisModal.find("#case_handler")),
+            (refrenceNo = thisModal.find("#refrenceNo")),
+            (subject = thisModal.find("#subject")),
+            (category = thisModal.find("#category")),
+            (category_fee = thisModal.find("#category_fee")),
+            (type = thisModal.find("#type")),
+            (parties = thisModal.find("#parties")),
+            (applicant_firm = thisModal.find("#applicant_firm")),
+            (applicant_name = thisModal.find("#applicant_name")),
+            (applicant_email = thisModal.find("#applicant_email")),
+            (applicant_phone_number = thisModal.find(
+                "#applicant_phone_number"
+            )),
+            (letter_of_appointment = thisModal.find("#letter_of_appointment")),
+            (applicant_address = thisModal.find("#applicant_address")),
+            (amount_paid = thisModal.find("#amount_paid")),
+            (submittedAt = thisModal.find("#submittedAt"));
 
-        var letter_of_appointment_link = caseContainer.find('.letter_of_appointment').attr('data-param') === "nil" ? "#" : caseContainer.find('.letter_of_appointment').html();
+        var letter_of_appointment_link =
+            caseContainer.find(".letter_of_appointment").attr("data-param") ===
+            "nil"
+                ? "#"
+                : caseContainer.find(".letter_of_appointment").html();
         // Get Case Checklists Asynchronously
         $.ajax({
             url: "/cases/checklists/" + caseID,
@@ -265,85 +271,99 @@ $(document).ready(function () {
             },
         });
 
-        analyzeCase.attr('case_id', caseID);
-        caseHandler.html(caseContainer.find('.case_handler').html());
-        refrenceNo.html(caseContainer.find('.reference_no').html());
-        subject.html(caseContainer.find('.subject').html());
-        category.html(caseContainer.find('.category').html());
-        category_fee.html(caseContainer.find('.category').html());
-        type.html(caseContainer.find('.type').html());
-        parties.html(caseContainer.find('.parties').html());
-        applicant_firm.html(caseContainer.find('.firm').html());
-        applicant_name.html(caseContainer.find('.name').html());
-        applicant_email.html(caseContainer.find('.email').html());
-        applicant_phone_number.html(caseContainer.find('.phone_number').html());
-        letter_of_appointment.attr('href', letter_of_appointment_link);
-        applicant_address.html(caseContainer.find('.address').html());
-        amount_paid.html(caseContainer.find('.amount_paid').html());
-        submittedAt.html(caseContainer.find('.submitted_at').html());
+        analyzeCase.attr("case_id", caseID);
+        caseHandler.html(caseContainer.find(".case_handler").html());
+        refrenceNo.html(caseContainer.find(".reference_no").html());
+        subject.html(caseContainer.find(".subject").html());
+        category.html(caseContainer.find(".category").html());
+        category_fee.html(caseContainer.find(".category").html());
+        type.html(caseContainer.find(".type").html());
+        parties.html(caseContainer.find(".parties").html());
+        applicant_firm.html(caseContainer.find(".firm").html());
+        applicant_name.html(caseContainer.find(".name").html());
+        applicant_email.html(caseContainer.find(".email").html());
+        applicant_phone_number.html(caseContainer.find(".phone_number").html());
+        letter_of_appointment.attr("href", letter_of_appointment_link);
+        applicant_address.html(caseContainer.find(".address").html());
+        amount_paid.html(caseContainer.find(".amount_paid").html());
+        submittedAt.html(caseContainer.find(".submitted_at").html());
         return;
     });
 
     $("#viewEnqiryModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent().children('div'),
-            thisModal = $(this),
-            email = thisModal.find('#email'),
-        message = thisModal.find('#message');
-        email.html(caseContainer.find('.email').html());
-        message.html(caseContainer.find('.message').html());
+        (caseContainer = viewButton.parent().children("div")),
+            (thisModal = $(this)),
+            (email = thisModal.find("#email")),
+            (message = thisModal.find("#message"));
+        email.html(caseContainer.find(".email").html());
+        message.html(caseContainer.find(".message").html());
         return;
     });
 
     $("#viewFaqModal").on("shown.bs.modal", function (event) {
         var viewButton = $(event.relatedTarget);
-        caseContainer = viewButton.parent().children('div'),
-            thisModal = $(this),
-            creator = thisModal.find('#creator');
-        category = thisModal.find('#category');
-        question = thisModal.find('#question');
-        answer = thisModal.find('#answer');
-        created = thisModal.find('#created');
+        (caseContainer = viewButton.parent().children("div")),
+            (thisModal = $(this)),
+            (creator = thisModal.find("#creator"));
+        category = thisModal.find("#category");
+        question = thisModal.find("#question");
+        answer = thisModal.find("#answer");
+        created = thisModal.find("#created");
 
-        creator.html(caseContainer.find('.creator').html());
-        category.html(caseContainer.find('.category').html());
-        question.html(caseContainer.find('.question').html());
-        answer.html(caseContainer.find('.answer').html());
-        created.html(caseContainer.find('.created').html());
+        creator.html(caseContainer.find(".creator").html());
+        category.html(caseContainer.find(".category").html());
+        question.html(caseContainer.find(".question").html());
+        answer.html(caseContainer.find(".answer").html());
+        created.html(caseContainer.find(".created").html());
         return;
     });
 
     $("#assignCaseModal").on("shown.bs.modal", function (event) {
         var assignButton = $(event.relatedTarget);
-        caseContainer = assignButton.parent().children('div'),
-            thisModal = $(this),
-            caseID = thisModal.find('#caseID'),
-            assignCaseButton = thisModal.find('#assignCaseButton'),
-            unassignCaseButton = thisModal.find('#unassignCaseButton'),
-            assigningCaseButton = thisModal.find('#assigningCaseButton'),
-            unassigningCaseButton = thisModal.find('#unassigningCaseButton'),
-            refrenceNo = thisModal.find('#refrenceNo'),
-            subject = thisModal.find('#subject'),
-            submittedAt = thisModal.find('#submittedAt');
+        (caseContainer = assignButton.parent().children("div")),
+            (thisModal = $(this)),
+            (caseID = thisModal.find("#caseID")),
+            (assignCaseButton = thisModal.find("#assignCaseButton")),
+            (unassignCaseButton = thisModal.find("#unassignCaseButton")),
+            (assigningCaseButton = thisModal.find("#assigningCaseButton")),
+            (unassigningCaseButton = thisModal.find("#unassigningCaseButton")),
+            (refrenceNo = thisModal.find("#refrenceNo")),
+            (subject = thisModal.find("#subject")),
+            (submittedAt = thisModal.find("#submittedAt"));
 
-        caseID.val(caseContainer.find('.case_id').html());
-        assignCaseButton.addClass("assignCaseButton" + caseContainer.find('.case_id').html());
-        unassignCaseButton.addClass("unassignCaseButton" + caseContainer.find('.case_id').html());
-        assigningCaseButton.addClass("assigningCaseButton" + caseContainer.find('.case_id').html());
-        unassigningCaseButton.addClass("unassigningCaseButton" + caseContainer.find('.case_id').html());
-        unassignCaseButton.attr("data-case-id", caseContainer.find('.case_id').html());
-        unassignCaseButton.attr("data-assigned-handler-id", caseContainer.find('.assigned_handler_id').html());
-        refrenceNo.html(caseContainer.find('.reference_no').html());
-        subject.html(caseContainer.find('.subject').html());
-        submittedAt.html(caseContainer.find('.submitted_at').html());
+        caseID.val(caseContainer.find(".case_id").html());
+        assignCaseButton.addClass(
+            "assignCaseButton" + caseContainer.find(".case_id").html()
+        );
+        unassignCaseButton.addClass(
+            "unassignCaseButton" + caseContainer.find(".case_id").html()
+        );
+        assigningCaseButton.addClass(
+            "assigningCaseButton" + caseContainer.find(".case_id").html()
+        );
+        unassigningCaseButton.addClass(
+            "unassigningCaseButton" + caseContainer.find(".case_id").html()
+        );
+        unassignCaseButton.attr(
+            "data-case-id",
+            caseContainer.find(".case_id").html()
+        );
+        unassignCaseButton.attr(
+            "data-assigned-handler-id",
+            caseContainer.find(".assigned_handler_id").html()
+        );
+        refrenceNo.html(caseContainer.find(".reference_no").html());
+        subject.html(caseContainer.find(".subject").html());
+        submittedAt.html(caseContainer.find(".submitted_at").html());
         return;
     });
 
     $("#assignEnquiryModal").on("shown.bs.modal", function (event) {
         var assignButton = $(event.relatedTarget);
-            caseContainer = assignButton.parent().children('div'),
-            thisModal = $(this);
-            // caseID = thisModal.find('#caseID');
+        (caseContainer = assignButton.parent().children("div")),
+            (thisModal = $(this));
+        // caseID = thisModal.find('#caseID');
 
         return;
     });
@@ -355,21 +375,21 @@ $(document).ready(function () {
 
     $("#reassignCaseModal").on("shown.bs.modal", function (event) {
         var reassignButton = $(event.relatedTarget);
-        caseContainer = reassignButton.parent().children('div'),
-            thisModal = $(this),
-            caseID = thisModal.find('#reassigncaseID'),
-            oldcaseHandlerID = thisModal.find('#oldCaseHandlerID'),
-            caseHandler = thisModal.find('#case_handler'),
-            refrenceNo = thisModal.find('#refrenceNo'),
-            subject = thisModal.find('#subject'),
-            submittedAt = thisModal.find('#submittedAt');
+        (caseContainer = reassignButton.parent().children("div")),
+            (thisModal = $(this)),
+            (caseID = thisModal.find("#reassigncaseID")),
+            (oldcaseHandlerID = thisModal.find("#oldCaseHandlerID")),
+            (caseHandler = thisModal.find("#case_handler")),
+            (refrenceNo = thisModal.find("#refrenceNo")),
+            (subject = thisModal.find("#subject")),
+            (submittedAt = thisModal.find("#submittedAt"));
 
-        caseID.val(caseContainer.find('.case_id').html());
-        oldcaseHandlerID.val(caseContainer.find('.case_handler_id').html());
-        caseHandler.html(caseContainer.find('.case_handler').html());
-        refrenceNo.html(caseContainer.find('.reference_no').html());
-        subject.html(caseContainer.find('.subject').html());
-        submittedAt.html(caseContainer.find('.submitted_at').html());
+        caseID.val(caseContainer.find(".case_id").html());
+        oldcaseHandlerID.val(caseContainer.find(".case_handler_id").html());
+        caseHandler.html(caseContainer.find(".case_handler").html());
+        refrenceNo.html(caseContainer.find(".reference_no").html());
+        subject.html(caseContainer.find(".subject").html());
+        submittedAt.html(caseContainer.find(".submitted_at").html());
         return;
     });
 
@@ -398,7 +418,7 @@ $(document).ready(function () {
 
     $("#assignAnalyzeCaseButton").on("click", function (event) {
         event.preventDefault();
-        var caseID = $(this).attr('data-case-id'),
+        var caseID = $(this).attr("data-case-id"),
             caseHandler = $("#case_handler_dropdown").val();
 
         if (isNaN(caseID)) {

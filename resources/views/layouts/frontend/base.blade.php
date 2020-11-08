@@ -104,7 +104,7 @@
         @yield('content')
         <div class="landing-footer">
             <div class="landing-footer-info">
-              <div class="container">
+              <div class="container-fluid">
                 <div class="footer-info-content">
                   <div class="row">
                     <div class="col-md-5">
@@ -298,7 +298,7 @@
               </div>
             </div>
             <div class="landing-footer-text">
-              <div class="container">
+              <div class="container-fluid">
                 <div class="row">
                   <div class="col-md-8">
                     <span style="font-size: 1.3rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC)

@@ -566,7 +566,7 @@
     <div id="kt_quick_cart" class="offcanvas offcanvas-right p-10">
         <!--begin::Header-->
         <div class="offcanvas-header d-flex align-items-center justify-content-between pb-7">
-            <h4 class="font-weight-bold m-0">Fee Calculator</h4>
+            <h4 class="font-weight-bold m-0" style="font-weight: 700 !important">Fee Calculator</h4>
             <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
                 <i class="ki ki-close icon-xs text-muted"></i>
             </a>
@@ -575,65 +575,61 @@
         <!--begin::Content-->
         <div class="offcanvas-content">
             <!--begin::Wrapper-->
-            <div class="row">
-               
-                <p class="fee-calc-sub mx-4 text-black text-bold ">
-                  Fees Guideline for Regular Merger
-                </p>
-              </div>
-    
-            <div class="row fee-calc-container my-20">
+          
+
+            <div class="row fee-calc-container my-10">
                 <div class="col-md-12">
-                  <div class="form-group fee-calc-form-group">
-                    <label>Type of Transaction</label>
-                    <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                        <option value="local" selected="">Local</option>
-                        <option value="ffm">Foreign to Foreign</option>
-                        <option value="ffx">Foreign to Foreign Expedited</option>
-                    </select>
-                  </div>
-                
-                  <div class="form-group fee-calc-form-group">
-                    <label>Combined Turnover</label>
-                    <input type="text" id="combinedTurnover" name="combinedTurnover" class="form-control custom-input fee-calc-form form-no-bg" />
-                  </div>
+                    <div class="form-group fee-calc-form-group">
+                        <label>Type of Transaction</label>
+                        <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
+                            <option value="local" selected="">Local</option>
+                            <option value="ffm">Foreign to Foreign</option>
+                            <option value="ffx">Foreign to Foreign Expedited</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group fee-calc-form-group">
+                        <label>Combined Turnover</label>
+                        <input type="text" id="combinedTurnover" name="combinedTurnover"
+                            class="form-control custom-input fee-calc-form form-no-bg" />
+                    </div>
                 </div>
-                
+
                 <div class="col-md-12 fee-table-container">
-                  <div class="fee__calculator--table">
-                    <table class="table fee-calc-table">
-                      <thead class="thead-light">
-                        <tr>
-                          <th scope="col">SERVICE</th>
-                          <th scope="col">PRICE</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Filling fee</td>
-                          <td class="fillingFee">₦0.00</td>
-                        </tr>
-                
-                        <tr>
-                          <td>Processing fee</td>
-                          <td class="processingFee">₦0.00</td>
-                        </tr>
-                
-                        <tr>
-                          <td>Expedited fee</td>
-                          <td class="expeditedFee">-</td>
-                        </tr>
-                        <tr class="fee__calculator-total">
-                          <td>
-                            <b>Total</b>
-                          </td>
-                          <td class="totalAmount">₦0.00</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
+                    <div class="fee__calculator--table">
+                        <table class="table fee-calc-table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">SERVICE</th>
+                                    <th scope="col">PRICE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Filling fee</td>
+                                    <td class="fillingFee">₦0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Processing fee</td>
+                                    <td class="processingFee">₦0.00</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Expedited fee</td>
+                                    <td class="expeditedFee">-</td>
+                                </tr>
+                                <tr class="fee__calculator-total">
+                                    <td>
+                                        <b>Total</b>
+                                    </td>
+                                    <td class="totalAmount">₦0.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                </div>
+            </div>
         </div>
         <!--end::Content-->
     </div>

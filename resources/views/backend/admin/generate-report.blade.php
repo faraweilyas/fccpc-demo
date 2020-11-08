@@ -19,6 +19,7 @@
     </div>
 </div>
 <div class="container py-5">
+
     <div class="row ">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -37,30 +38,31 @@
                     <div class="card__box__large-content">
                         <div class="form-group">
                             <label>Select Start Date To End Date:</label>
-                            <input type="text" id="start_date_end_date" class="form-control" name="start_date_end_date"  />
+                            <input type="text" id="start_date_end_date" class="form-control"
+                                name="start_date_end_date" />
                         </div>
 
                         @if (in_array(\Auth::user()->account_type, ['CH']))
-                            <input type="hidden" name="handler_id[]" value="{{ \Auth::user()->id }}">
+                        <input type="hidden" name="handler_id[]" value="{{ \Auth::user()->id }}">
                         @else
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label>Select Case Handler</label>
-                                    <select class="form-control form-control-table select2" id="get_handler"
-                                        name="handler_id[]" style="width: 100%;" multiple="multiple">
-                                        @foreach($caseHandlers as $handler)
-                                        <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Select Case Handler</label>
+                                <select class="form-control form-control-table select2" id="get_handler"
+                                    name="handler_id[]" style="width: 100%;" multiple="multiple">
+                                    @foreach($caseHandlers as $handler)
+                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                        </div>
                         @endif
                         <div class="row">
                             <div class="col-md-4 mt-4">
                                 <div class="checkbox-inline">
                                     <label class="checkbox checkbox-primary">
-                                    <input id="custom-filter-check" type="checkbox" name="custom-filter-check">
-                                    <span></span></label>Custom Filter
+                                        <input id="custom-filter-check" type="checkbox" name="custom-filter-check">
+                                        <span></span></label>Custom Filter
                                 </div>
                             </div>
                         </div>
@@ -109,13 +111,16 @@
                                 <h3 class="card-label">New Cases</h3>
                             </div>
                             <div class="col-md-4 text-right">
-                                <span class="float-right"><button class="btn btn-success-ts no-border mx-5" onclick="window.location.href = '{{ route('dashboard.report.export', ['start_date_end_date' => $_GET['start_date_end_date'], 'category' => $_GET['category'], 'type' => $_GET['type']]) }}';">Export CSV</button></span>
+                                <span class="float-right"><button class="btn btn-success-ts no-border mx-5"
+                                        onclick="window.location.href = '{{ route('dashboard.report.export', ['start_date_end_date' => $_GET['start_date_end_date'], 'category' => $_GET['category'], 'type' => $_GET['type']]) }}';">Export
+                                        CSV</button></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-separate table-head-custom table-checkable" id="generated_cases_datatable">
+                    <table class="table table-separate table-head-custom table-checkable"
+                        id="generated_cases_datatable">
                         <thead>
                             <tr>
                                 <th>Submitted On</th>
@@ -128,59 +133,56 @@
                         </thead>
                         <tbody>
                             @foreach($cases as $case)
-                                <tr>
-                                    <td>
-                                        <div class="font-weight-bold text-dark mb-0">
-                                            {!! $case->getSubmittedAt('customdate') !!}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="font-weight-bolder mb-0">
-                                            {!! $case->getRefNO() !!}
-                                        </div>
-                                    </td>
-                                    <td class="case-subject">
-                                        {{ $case->getSubject() }}
-                                    </td>
-                                    <td class="text-center">
-                                        {!! $case->getCategoryHtml() !!}
-                                    </td>
-                                    <td class="text-center">
-                                        {!! $case->getTypeHtml() !!}
-                                    </td>
-                                    <td nowrap="nowrap" class="text-center">
-                                        <a
-                                            href="#"
-                                            class="btn btn-sm btn-light-warning mr-3"
-                                            title="View Case Info"
-                                            data-toggle="modal"
-                                            data-target="#viewCaseModal"
-                                        >
-                                            <i class="flaticon-eye"></i> View
-                                        </a>
-                                        <div class="hide">
-                                            {{-- Case --}}
-                                            <span class="case_id">{{ $case->id }}</span>
-                                            <span class="assigned_handler_id"></span>
-                                            <span class="reference_no">{{ $case->getRefNO() }}</span>
-                                            <span class="subject">{{ $case->subject }}</span>
-                                            <span class="category">{!! $case->getCategoryHtml() !!}</span>
-                                            <span class="type">{!! $case->getTypeHtml() !!}</span>
-                                            <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
-                                            <span class="parties">{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</span>
-                                            <span class="submitted_at">{!! $case->getSubmittedAt() !!}</span>
-                                            {{-- Applicant --}}
-                                            <span class="firm">{!! $case->applicant_firm !!}</span>
-                                            <span class="name">{!! $case->getApplicantName() !!}</span>
-                                            <span class="email">{!! $case->applicant_email !!}</span>
-                                            <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
-                                            <span class="letter_of_appointment" data-param={{ $case->letter_of_appointment ?? 'nil'}}>{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment ?? 'nil']) }}</span>
-                                            <span class="address">{!! $case->applicant_address !!}</span>
-                                            {{-- Checklist --}}
-                                            {{-- Documents --}}
-                                        </div>
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    <div class="font-weight-bold text-dark mb-0">
+                                        {!! $case->getSubmittedAt('customdate') !!}
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="font-weight-bolder mb-0">
+                                        {!! $case->getRefNO() !!}
+                                    </div>
+                                </td>
+                                <td class="case-subject">
+                                    {{ $case->getSubject() }}
+                                </td>
+                                <td class="text-center">
+                                    {!! $case->getCategoryHtml() !!}
+                                </td>
+                                <td class="text-center">
+                                    {!! $case->getTypeHtml() !!}
+                                </td>
+                                <td nowrap="nowrap" class="text-center">
+                                    <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Case Info"
+                                        data-toggle="modal" data-target="#viewCaseModal">
+                                        <i class="flaticon-eye"></i> View
+                                    </a>
+                                    <div class="hide">
+                                        {{-- Case --}}
+                                        <span class="case_id">{{ $case->id }}</span>
+                                        <span class="assigned_handler_id"></span>
+                                        <span class="reference_no">{{ $case->getRefNO() }}</span>
+                                        <span class="subject">{{ $case->subject }}</span>
+                                        <span class="category">{!! $case->getCategoryHtml() !!}</span>
+                                        <span class="type">{!! $case->getTypeHtml() !!}</span>
+                                        <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
+                                        <span class="parties">{!! $case->generateCasePartiesBadge('mr_10 mb-2')
+                                            !!}</span>
+                                        <span class="submitted_at">{!! $case->getSubmittedAt() !!}</span>
+                                        {{-- Applicant --}}
+                                        <span class="firm">{!! $case->applicant_firm !!}</span>
+                                        <span class="name">{!! $case->getApplicantName() !!}</span>
+                                        <span class="email">{!! $case->applicant_email !!}</span>
+                                        <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
+                                        <span class="letter_of_appointment"
+                                            data-param={{ $case->letter_of_appointment ?? 'nil'}}>{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment ?? 'nil']) }}</span>
+                                        <span class="address">{!! $case->applicant_address !!}</span>
+                                        {{-- Checklist --}}
+                                        {{-- Documents --}}
+                                    </div>
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -195,8 +197,8 @@
 @endsection
 
 @section('custom.css')
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/flatpickr/flatpickr.min.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/flatpickr/flatpickr.min.css') }}" />
 @endsection
 
 @section('custom.javascript')
