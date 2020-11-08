@@ -575,10 +575,6 @@
         <!--begin::Content-->
         <div class="offcanvas-content">
             <!--begin::Wrapper-->
-  
-
-            {{--  --}}
-
             <div class="row">
                
                 <p class="fee-calc-sub mx-4 text-black text-bold ">
@@ -590,18 +586,16 @@
                 <div class="col-md-12">
                   <div class="form-group fee-calc-form-group">
                     <label>Type of Transaction</label>
-                    <select class="form-control fee-calc-form">
-                      <option>Regular</option>
+                    <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
+                        <option value="local" selected="">Local</option>
+                        <option value="ffm">Foreign to Foreign</option>
+                        <option value="ffx">Foreign to Foreign Expedited</option>
                     </select>
                   </div>
                 
                   <div class="form-group fee-calc-form-group">
                     <label>Combined Turnover</label>
-                    <input
-                      type="text"
-                      class="form-control custom-input fee-calc-form form-no-bg"
-                      defaultValue="1,000,000,000"
-                    />
+                    <input type="text" id="combinedTurnover" name="combinedTurnover" class="form-control custom-input fee-calc-form form-no-bg" />
                   </div>
                 </div>
                 
@@ -617,34 +611,29 @@
                       <tbody>
                         <tr>
                           <td>Filling fee</td>
-                          <td>₦50,000.00</td>
+                          <td class="fillingFee">₦0.00</td>
                         </tr>
                 
                         <tr>
                           <td>Processing fee</td>
-                          <td>₦2,625,000.00</td>
+                          <td class="processingFee">₦0.00</td>
                         </tr>
                 
                         <tr>
                           <td>Expedited fee</td>
-                          <td>-</td>
+                          <td class="expeditedFee">-</td>
                         </tr>
                         <tr class="fee__calculator-total">
                           <td>
                             <b>Total</b>
                           </td>
-                          <td>₦2,675,000.00</td>
+                          <td class="totalAmount">₦0.00</td>
                         </tr>
                       </tbody>
                     </table>
                   </div>
                 </div>
                 </div>
-                
-                
-            {{--  --}}
-
-
         </div>
         <!--end::Content-->
     </div>
