@@ -31,7 +31,7 @@ html {
 }
 
 body {
-    font-family: "body",serif !important; 
+    font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 400;
     line-height: 1.7;
     color: #777;
@@ -425,7 +425,7 @@ textarea {
 }
 
 .home__content{
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
 }
 .home__headers{
     font-size: 2rem !important;
@@ -928,12 +928,12 @@ textarea {
 
 .faq-header {
     color: #4f4f4f;
-    font-size: 14px;
+    font-size: 2rem;
     margin-bottom: 1rem;
 }
 
 .faq-content {
-    font-size: 12px;
+    font-size: 1.4rem;
     color: #4f4f4f;
 }
 
