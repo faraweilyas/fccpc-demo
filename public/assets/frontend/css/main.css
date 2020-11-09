@@ -42,7 +42,7 @@ body {
 .faq-search {
     /* width: 100%; */
     height: 50vh;
-    background: #227a4e;
+    background: #006535;
     padding: 10rem 3rem;
 }
 
@@ -100,7 +100,7 @@ body {
 .anchor {
     font-size: 1.5rem;
     text-align: center;
-    color: #227a4e;
+    color: #006535;
     text-decoration: underline;
 }
 
@@ -119,7 +119,7 @@ a:active {
 .btn-success-pale {
     width: 20rem;
     background: #58fab6;
-    color: #227a4e;
+    color: #006535;
     font-size: 2rem;
     padding: 1.5rem 2rem;
     margin: 0 1rem;
@@ -135,13 +135,13 @@ a:active {
 }
 
 .btn-success {
-    background: #227a4e;
+    background: #006535;
     font-size: 2rem;
     padding: 1.5rem 2rem;
 }
 
 .btn-success {
-    background: #227a4e;
+    background: #006535;
     font-size: 2rem;
     padding: 1.5rem 2rem;
 }
@@ -228,7 +228,7 @@ textarea {
 
 .header .header__content .header__title {
     font-size: 2rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 .fee__calculator {
@@ -383,7 +383,7 @@ textarea {
     text-align: left;
     font-size: 1.7rem;
     font-weight: 600;
-    color: #227a4e;
+    color: #006535;
 }
 
 .card__box {
@@ -425,7 +425,7 @@ textarea {
 }
 
 .home__content{
-    font-size: 1.3rem !important;
+    font-size: 1.8rem !important;
 }
 .home__headers{
     font-size: 2rem !important;
@@ -435,7 +435,7 @@ textarea {
 
 .card__box-stack .card__box--content span {
     font-size: 1.2rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 .card__box-stack:hover,
@@ -446,7 +446,7 @@ textarea {
 }
 
 .card__box-stack-active {
-    border: 2px solid #227a4e;
+    border: 2px solid #006535;
 }
 
 .card__box--white {
@@ -463,12 +463,12 @@ textarea {
 .card__box--white .card__box-text-intro {
     font-weight: bold;
     font-size: 2rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 .card__box--white .card__box-text-span {
     font-size: 1.5rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 .card__box--white .card__box-icon {
@@ -517,7 +517,7 @@ textarea {
 
 .card__box__large .card__box__large-content .card__box__large-content--intro a {
     font-size: 2rem;
-    color: #227a4e;
+    color: #006535;
     text-decoration: underline;
 }
 
@@ -528,7 +528,7 @@ textarea {
 
 .card__box__large .card__box__large-content--success p {
     font-size: 3rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 .card__box__large .card__box__large-content--success p:nth-child(3) {
@@ -593,7 +593,7 @@ textarea {
 }
 
 #drop-area {
-    border: 0.2rem dashed #227a4e;
+    border: 0.2rem dashed #006535;
     border-radius: 1rem;
     height: 15rem;
     margin: 3rem auto;
@@ -611,7 +611,7 @@ textarea {
     width: 20rem;
     font-weight: bold;
     font-size: 2rem;
-    color: #227a4e;
+    color: #006535;
 }
 
 #gallery {
@@ -720,13 +720,13 @@ textarea {
 .bg-dark {
     width: 100%;
     height: 8rem;
-    background: #227a4e !important;
+    background: #006535 !important;
 }
 
 .navbar .navbar-collapse,
 .bg-dark .navbar-collapse {
     width: 100%;
-    background: #227a4e;
+    background: #006535;
     z-index: 2;
 }
 
@@ -785,7 +785,7 @@ textarea {
 }
 
 .landing-footer-info {
-    background-color: #227a4e;
+    background-color: #006535;
     height: -webkit-fit-content;
     height: -moz-fit-content;
     height: fit-content;
@@ -895,7 +895,7 @@ textarea {
 }
 
 .read-more-link {
-    color: #227a4e;
+    color: #006535;
     text-decoration: underline;
     font-size: 1.2rem;
     padding-bottom: 2rem;
@@ -968,7 +968,7 @@ textarea {
 
 .faq-questions__ul .faq-questions__li .faq-questions__a:hover {
     color: #fff;
-    background: #227a4e;
+    background: #006535;
     border-radius: 0.6rem;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
@@ -977,7 +977,7 @@ textarea {
 .faq-questions__ul .faq-questions__li .faq-questions__a__active {
 
     color: #fff;
-    background: #227a4e;
+    background: #006535;
     border-radius: 0.6rem;
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
