@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="row publication-container">
-                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
                 @foreach($faq_categories as $key => $value)
                     <div class="col-md-3">
                         <a href="{{ route('home.faqs.category', ['category' => $key]) }}">
