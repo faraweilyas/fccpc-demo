@@ -330,7 +330,7 @@ class CasesController extends Controller
      */
     public function analyzeCaseDocuments(Cases $case)
     {
-        if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0)
+        if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
