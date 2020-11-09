@@ -5,7 +5,7 @@
       <div class="container container-sm  ">
         <div class="row row-top home-content-header">
           <h2 class=" publications-header faq-content-header">
-            <a href={{url('/faqs')}} style="color: #999">Frequently Asked Questions/</a> {{ $faq->question }}
+            <a href={{url('/faqs')}} style="color: #999">Frequently Asked Questions/</a>
           </h2>
         </div>
 

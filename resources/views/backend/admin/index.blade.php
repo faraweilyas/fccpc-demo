@@ -154,7 +154,7 @@
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
-                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{!! $case->getTotalFees() !!}</span>
+                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{!! $case->getAmountPaid() !!}</span>
                                                         <span class="text-muted font-weight-bold">Paid</span>
                                                     </td>
                                                     <td class="text-right">

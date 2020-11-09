@@ -222,12 +222,13 @@ class DashboardController extends Controller
         if (empty($end_date))
             return redirect()->back()->with('error', 'Invalid date range selected');
 
-        $start_ate     = $start_date.' 00:00:00';
+        $start_date     = $start_date.' 00:00:00';
         $end_date      = $end_date.' 23:59:59';
         $handler_id    = request('handler_id');
         $category      = request('category');
         $type          = request('type');
         $custom_filter = request('custom-filter-check');
+        $full_date     = $date_array[0].'_'.$date_array[1];
 
         $cases       = (new Cases)->submittedCases();
         if (is_null($handler_id)):
@@ -249,8 +250,10 @@ class DashboardController extends Controller
         $csvExporter->beforeEach(function ($case) {
             $case->case_category = \AppHelper::value('case_categories', $case->case_category);
             $case->case_type     = \AppHelper::value('case_types', $case->case_type);
+            $case->submitted_on  = $case->getSubmittedAt();
+            $case->case_handler  = $case->getHandlerFullName();
         });
 
-        $csvExporter->build($cases, ['subject', 'parties', 'case_category', 'case_type', 'applicant_firm', 'applicant_fullname', 'applicant_email', 'applicant_phone_number', 'applicant_address', 'submitted_at'])->download('case_report.csv');
+        $csvExporter->build($cases, ['submitted_on', 'subject', 'amount_paid', 'case_handler', 'case_category', 'case_type'])->download('case_report_'.$full_date.'.csv');
     }
 }

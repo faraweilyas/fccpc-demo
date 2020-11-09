@@ -19,7 +19,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#toggle-report").on('click', function (event) {
+    $(".toggle-report").on('click', function (event) {
           $("#applications").slideToggle("fast");
     });
 

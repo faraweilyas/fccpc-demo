@@ -29,7 +29,7 @@
 
                 <div class="gr-header-content">
                     <p>New Report</p>
-                    <span id="toggle-report" class="create-report-link">Create your new report</span>
+                    <span class="create-report-link toggle-report">Create your new report</span>
                 </div>
             </div>
             <form method="GET" action="{{ route('dashboard.report.show', ['show' => 'show']) }}">
@@ -108,9 +108,10 @@
                     <div class="card-title">
                         <div class="row">
                             <div class="col-md-8">
-                                <h3 class="card-label">New Cases</h3>
+                                <h3 class="card-label">Generated Cases</h3>
                             </div>
                             <div class="col-md-4 text-right">
+                                <span><button class="btn btn-success-ts no-border mx-5 toggle-report">New Report</button></span>
                                 <span class="float-right"><button class="btn btn-success-ts no-border mx-5"
                                         onclick="window.location.href = '{{ route('dashboard.report.export', ['start_date_end_date' => $_GET['start_date_end_date'], 'category' => $_GET['category'], 'type' => $_GET['type']]) }}';">Export
                                         CSV</button></span>
@@ -124,11 +125,11 @@
                         <thead>
                             <tr>
                                 <th>Submitted On</th>
-                                <th>Reference NO</th>
                                 <th>Subject</th>
+                                <th class="text-center">Amount Paid</th>
+                                <th>Case Handler</th>
                                 <th class="text-center">Category</th>
                                 <th class="text-center">Type</th>
-                                <th class="text-center">Action(s)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -139,48 +140,20 @@
                                         {!! $case->getSubmittedAt('customdate') !!}
                                     </div>
                                 </td>
-                                <td>
-                                    <div class="font-weight-bolder mb-0">
-                                        {!! $case->getRefNO() !!}
-                                    </div>
-                                </td>
                                 <td class="case-subject">
                                     {{ $case->getSubject() }}
+                                </td>
+                                <td class="text-center">
+                                    {!! $case->getAmountPaid() !!}
+                                </td>
+                                <td>
+                                    {{ $case->getHandlerFullName()  }}
                                 </td>
                                 <td class="text-center">
                                     {!! $case->getCategoryHtml() !!}
                                 </td>
                                 <td class="text-center">
                                     {!! $case->getTypeHtml() !!}
-                                </td>
-                                <td nowrap="nowrap" class="text-center">
-                                    <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Case Info"
-                                        data-toggle="modal" data-target="#viewCaseModal">
-                                        <i class="flaticon-eye"></i> View
-                                    </a>
-                                    <div class="hide">
-                                        {{-- Case --}}
-                                        <span class="case_id">{{ $case->id }}</span>
-                                        <span class="assigned_handler_id"></span>
-                                        <span class="reference_no">{{ $case->getRefNO() }}</span>
-                                        <span class="subject">{{ $case->subject }}</span>
-                                        <span class="category">{!! $case->getCategoryHtml() !!}</span>
-                                        <span class="type">{!! $case->getTypeHtml() !!}</span>
-                                        <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
-                                        <span class="parties">{!! $case->generateCasePartiesBadge('mr_10 mb-2')
-                                            !!}</span>
-                                        <span class="submitted_at">{!! $case->getSubmittedAt() !!}</span>
-                                        {{-- Applicant --}}
-                                        <span class="firm">{!! $case->applicant_firm !!}</span>
-                                        <span class="name">{!! $case->getApplicantName() !!}</span>
-                                        <span class="email">{!! $case->applicant_email !!}</span>
-                                        <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
-                                        <span class="letter_of_appointment"
-                                            data-param={{ $case->letter_of_appointment ?? 'nil'}}>{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment ?? 'nil']) }}</span>
-                                        <span class="address">{!! $case->applicant_address !!}</span>
-                                        {{-- Checklist --}}
-                                        {{-- Documents --}}
-                                    </div>
                                 </td>
                             </tr>
                             @endforeach
@@ -192,8 +165,6 @@
     </div>
 </div>
 @endif
-<!-- Modals -->
-@include("layouts.modals.case")
 @endsection
 
 @section('custom.css')

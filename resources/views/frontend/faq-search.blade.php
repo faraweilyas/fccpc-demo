@@ -5,7 +5,7 @@
       <div class="container container-sm  ">
         <div class="row row-top home-content-header">
           <h2 class=" publications-header faq-content-header">
-            <span>Frequently Asked Questions/</span> {{ $faq->question }}
+            <span>Frequently Asked Questions/</span> 
           </h2>
         </div>
 
