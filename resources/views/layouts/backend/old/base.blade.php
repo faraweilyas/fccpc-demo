@@ -114,6 +114,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script> --}}
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'main.js') }}" defer></script>
 
     <script type="text/javascript" defer>
         $(document).ready(function ($) {
@@ -128,22 +129,6 @@
             toastr.error("{{ Session::get('error') }}");
             @endif
         });
-
-    </script>
-
-    <script>
-        $(document).ready(function () {
-
-            $('#kt_quick_cart_toggle').click(function () {
-
-                $('#kt_quick_cart').toggleClass('offcanvas-on');
-            })
-            $('#kt_quick_cart_close').click(function () {
-
-                $('#kt_quick_cart').toggleClass('offcanvas-on');
-            })
-
-        })
 
     </script>
 

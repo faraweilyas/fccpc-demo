@@ -52,7 +52,7 @@
 @section('navigation')
 
     <!-- Top navigation -->
-    <div class="header-top">
+    <div class="header-top hide-small-md">
         <div class="container">
             <div class="d-none d-lg-flex align-items-center mr-3">
                 <a data-turbolinks="false" href="/" class="mr-20">
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <!-- Bottom navigation -->
+
     <div class="header-bottom">
         <div class="container">
             <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">

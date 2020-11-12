@@ -778,6 +778,10 @@ textarea {
     }
 }
 
+.hide-small-md{
+    display: none !important;
+}
+
 .landing-footer {
     height: -webkit-fit-content;
     height: -moz-fit-content;

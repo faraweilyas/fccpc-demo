@@ -29,7 +29,7 @@
                     <div class="mb_30">
                         <h3>Merger & Acquisition Application
                         </h3>
-                        <div class="font-weight-bold text-black-sm" >Enter your email to begin your application:</div>
+                        <div class="font-weight-bold text-black-sm">Enter your email to begin your application:</div>
                     </div>
                     <form class="form" method="POST" action="{{ route('applicant.store') }}">
                         @csrf
