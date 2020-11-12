@@ -658,6 +658,10 @@ a.checklist-list {
     .header-mobile {
         background-color: #227a4e !important;
     }
+
+    .hide-small-md{
+        display: none !important;
+    }
 }
 
 .search-input {
@@ -767,6 +771,10 @@ th.fees_tab__head {
     .checklist-header {
         margin-top: 30px !important;
         font-size: 1.5rem;
+    }
+
+    .hide-small-md{
+        display: none !important;
     }
 
 }

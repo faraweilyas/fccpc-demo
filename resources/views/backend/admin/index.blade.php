@@ -49,14 +49,14 @@
                     <div class="dashboard-card blue">
                         <p>@if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</p>
                         @if(in_array(\Auth::user()->account_type, ['CH']))
-                         <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
+                        <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
                         @else
-                            <span>{{ \Auth::user()->active_cases_assigned_by()->count() }}</span>
+                        <span>{{ \Auth::user()->active_cases_assigned_by()->count() }}</span>
                         @endif
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
-                <div class="col-lg-3 my-5"  onclick="window.location.href = '{{ route('cases.working_on') }}';">
+                <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.working_on') }}';">
                     <div class="dashboard-card orange">
                         <p>Ongoing</p>
                         @if(in_array(\Auth::user()->account_type, ['SP']))
@@ -70,7 +70,7 @@
                 <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.on-hold') }}';">
                     <div class="dashboard-card redish-orange">
                         <p>On Hold</p>
-                         @if(in_array(\Auth::user()->account_type, ['SP']))
+                        @if(in_array(\Auth::user()->account_type, ['SP']))
                         <span>{{ \Auth::user()->deficient_cases_by()->count() }}</span>
                         @else
                         <span>{{ \Auth::user()->deficient_cases_to()->count() }}</span>
@@ -86,41 +86,44 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
-			</div>	
-			<div class="row mt-10">
-				<div class="col-lg-6">
-					<div class="card card-custom bg-gray-100 card-stretch gutter-b">
-						<div class="card-header h-auto border-0">
-							<div class="card-title py-5">
-								<h3 class="card-label">
-									<span class="d-block text-dark font-weight-bolder">Transactions Over Time</span>
-								</h3>
-							</div>
-							<div class="card-toolbar">
-								<ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link py-2 px-4 active" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_1">
-											<span class="nav-text font-size-sm">Local</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_2">
-											<span class="nav-text font-size-sm">FFM</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link py-2 px-4" data-toggle="tab" href="#kt_charts_widget_2_chart_tab_3">
-											<span class="nav-text font-size-sm">FFM Exp</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div class="card-body">
-							<div id="kt_charts_widget_2_chart"></div>
-						</div>
-					</div>
-				</div>
+            </div>
+            <div class="row mt-10">
+                <div class="col-lg-6">
+                    <div class="card card-custom bg-gray-100 card-stretch gutter-b">
+                        <div class="card-header h-auto border-0">
+                            <div class="card-title py-5">
+                                <h3 class="card-label">
+                                    <span class="d-block text-dark font-weight-bolder">Transactions Over Time</span>
+                                </h3>
+                            </div>
+                            <div class="card-toolbar">
+                                <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link py-2 px-4 active" data-toggle="tab"
+                                            href="#kt_charts_widget_2_chart_tab_1">
+                                            <span class="nav-text font-size-sm">Local</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-2 px-4" data-toggle="tab"
+                                            href="#kt_charts_widget_2_chart_tab_2">
+                                            <span class="nav-text font-size-sm">FFM</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link py-2 px-4" data-toggle="tab"
+                                            href="#kt_charts_widget_2_chart_tab_3">
+                                            <span class="nav-text font-size-sm">FFM Exp</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div id="kt_charts_widget_2_chart"></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6">
                     <div class="card card-custom card-stretch gutter-b">
                         <div class="card-header border-0 pt-5">
@@ -132,7 +135,8 @@
                         </div>
                         <div class="card-body pt-2 pb-0 mt-n3">
                             <div class="tab-content mt-5" id="myTabTables11">
-                                <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel" aria-labelledby="kt_tab_pane_11_3">
+                                <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
+                                    aria-labelledby="kt_tab_pane_11_3">
                                     <div class="table-responsive">
                                         <table class="table table-borderless table-vertical-center">
                                             <thead>
@@ -147,18 +151,23 @@
                                                 @foreach($new_cases as $case)
                                                 <tr>
                                                     <td class="pl-0">
-                                                        <a href="#" class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $case->getSubject() }}</a>
+                                                        <a href="#"
+                                                            class="text-dark-75 font-weight-bolder text-hover-primary mb-1 font-size-lg">{{ $case->getSubject() }}</a>
                                                         <div>
                                                             <span class="font-weight-bolder">Email:</span>
-                                                            <a class="text-muted font-weight-bold text-hover-primary" href="#">{!! $case->applicant_email !!}</a>
+                                                            <a class="text-muted font-weight-bold text-hover-primary"
+                                                                href="#">{!! $case->applicant_email !!}</a>
                                                         </div>
                                                     </td>
                                                     <td class="text-right">
-                                                        <span class="text-dark-75 font-weight-bolder d-block font-size-lg">{!! $case->getAmountPaid() !!}</span>
+                                                        <span
+                                                            class="text-dark-75 font-weight-bolder d-block font-size-lg">{!!
+                                                            $case->getAmountPaid() !!}</span>
                                                         <span class="text-muted font-weight-bold">Paid</span>
                                                     </td>
                                                     <td class="text-right">
-                                                        <span class="text-muted font-weight-500">{{ implode(', ', $case->getCaseParties(false)) }}</span>
+                                                        <span
+                                                            class="text-muted font-weight-500">{{ implode(', ', $case->getCaseParties(false)) }}</span>
                                                     </td>
                                                     <td class="text-right">
                                                         {!! $case->getCategoryHtml() !!}
@@ -173,7 +182,7 @@
                         </div>
                     </div>
                 </div>
-			</div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,113 +1,97 @@
 @extends('layouts.backend.admin')
 
 @section('content')
-    <div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
-        <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-            <div class="d-flex align-items-center flex-wrap mr-1">
-                <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Enquiries</h5>
-                    <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="" class="text-muted">Enquiries</a>
-                        </li>
-                    </ul>
-                </div>
+<div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline mr-5">
+                <h5 class="text-dark font-weight-bold my-2 mr-5">Enquiries</h5>
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="" class="text-muted">Enquiries</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <div class="d-flex flex-column-fluid">
-            <div class="container">
-                <div class="card card-custom">
-                    <div class="card-header flex-wrap py-5">
-                        <div class="card-title">
-                            <h3 class="card-label">All Enquiries</h3>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
-                            <thead>
-                                <tr>
-                                    <th>Date Submitted</th>
-                                    <th class="text-center">Type</th>
-                                    <th>Subject</th>
-                                    <th class="text-center">Name</th>
-                                    <th class="text-center">Action(s)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($enquiries as $item)
-                                <tr>
-                                    <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
-                                    <td class="text-center">
-                                        <span class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
-                                            <b>{{ $item->getEnquiryType('strtoupper') }}</b>
-                                        </span>
-                                    </td>
-                                    <td>{{ $item->subject }}</td>
-                                    <td class="text-center"><b>{{ $item->getFullName() }}</b></td>
-                                    <td class="text-center" nowrap="nowrap">
-                                        <a
-                                            href="#"
-                                            class="btn btn-sm btn-light-warning mr-3"
-                                            title="View Enquiry Info"
-                                            data-toggle="modal"
-                                            data-target="#viewEnqiryModal"
-                                        >
-                                            <i class="flaticon-eye"></i>View
-                                        </a>
-                                        @if ($item->file != '')
-                                        <a
-                                           href="{{ route('enquiries.download', ['file' => $item->file]) }}"
-                                            class="btn btn-sm btn-light-primary mr-3"
-                                            title="Download enquiry document"
-                                        >
-                                            <i class="la la-download"></i>Download
-                                        </a>
-                                        @else
-                                            <span></span>
-                                        @endif
-                                        {{-- <a
-                                            href="#"
-                                            class="assignEnquiryButton btn btn-sm btn-light-info mr-3"
-                                            title="Assign Enquiry to Handler"
-                                            data-toggle="modal"
-                                            data-target="#assignEnquiryModal"
-                                        >
-                                            <i class="flaticon-user-add"></i>
-                                        </a> --}}
-                                        <div class="hide">
-                                            {{-- Logs --}}
-                                            <span class="email">{{ $item->email }}</span>
-                                            <span class="message">{{ $item->message }}</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+</div>
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="d-flex flex-column-fluid">
+        <div class="container">
+            <div class="card card-custom">
+                <div class="card-header flex-wrap py-5">
+                    <div class="card-title">
+                        <h3 class="card-label">All Enquiries</h3>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="card-body">
+                    <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
+                        <thead>
+                            <tr>
+                                <th>Date Submitted</th>
+                                <th class="text-center">Type</th>
+                                <th>Subject</th>
+                                <th class="text-center">Name</th>
+                                <th class="text-center">Action(s)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($enquiries as $item)
+                            <tr>
+                                <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
+                                <td class="text-center">
+                                    <span
+                                        class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
+                                        <b>{{ $item->getEnquiryType('strtoupper') }}</b>
+                                    </span>
+                                </td>
+                                <td>{{ $item->subject }}</td>
+                                <td class="text-center"><b>{{ $item->getFullName() }}</b></td>
+                                <td class="text-center" nowrap="nowrap">
+                                    <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Enquiry Info"
+                                        data-toggle="modal" data-target="#viewEnqiryModal">
+                                        <i class="flaticon-eye"></i>View
+                                    </a>
+                                    @if ($item->file != '')
+                                    <a href="{{ route('enquiries.download', ['file' => $item->file]) }}"
+                                        class="btn btn-sm btn-light-primary mr-3" title="Download enquiry document">
+                                        <i class="la la-download"></i>Download
+                                    </a>
+                                    @else
+                                    <span></span>
+                                    @endif
 
-    <!-- Modals -->
-    @include("layouts.modals.enquiry")
-    @include("layouts.modals.enquiry-handler", [
-        'caseHandlers' =>  $caseHandlers   
-    ])
+                                    <div class="hide">
+                                        <span class="email">{{ $item->email }}</span>
+                                        <span class="message">{{ $item->message }}</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@include("layouts.modals.enquiry")
+@include("layouts.modals.enquiry-handler", [
+'caseHandlers' => $caseHandlers
+])
 @endsection
 
 @section('custom.css')
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.css') }}" />
 @endsection
 
 @section('custom.javascript')
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection

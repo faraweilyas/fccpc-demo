@@ -58,4 +58,8 @@
     #sidebarCollapse span {
         display: none;
     }
+
+    .hide-small-md{
+        display: none !important;
+    }
 }

@@ -104,14 +104,15 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="card-report card-custom-report">
-             
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-8">
                             <h3 class="card-label">Generated Cases</h3>
                         </div>
                         <div class="col-md-4 text-right">
-                            <span><button class="btn btn-success-ts no-border mx-5 toggle-report">New Report</button></span>
+                            <span><button class="btn btn-success-ts no-border mx-5 toggle-report">New
+                                    Report</button></span>
                             <span class="float-right"><button class="btn btn-success-ts no-border mx-5"
                                     onclick="window.location.href = '{{ route('dashboard.report.export', ['start_date_end_date' => $_GET['start_date_end_date'], 'category' => $_GET['category'], 'type' => $_GET['type']]) }}';">Export
                                     CSV</button></span>
