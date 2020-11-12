@@ -1,7 +1,7 @@
 @extends('layouts.backend.old.guest')
 
 @section('content')
-<div class="subheader py-2 py-lg-4 subheader-transparent" id="kt_subheader">
+<div class="subheader py-2 py-lg-4 subheader-transparent mt-xs-20 mt-sm-18 mt-md-20 mt-lg-0" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
             <div class="d-flex align-items-baseline mr-5">

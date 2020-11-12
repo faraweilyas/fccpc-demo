@@ -12,13 +12,11 @@
                     </li>
                     @if(in_array(\Auth::user()->account_type, ['SP']))
                     <li class="breadcrumb-item">
-                        <a href="{{ route('cases.unassigned') }}"
-                            class="text-muted">New Cases</a>
+                        <a href="{{ route('cases.unassigned') }}" class="text-muted">New Cases</a>
                     </li>
                     @endif
                     <li class="breadcrumb-item">
-                        <a href="{{ route('cases.assigned') }}"
-                            class="text-muted">Assigned Cases</a>
+                        <a href="{{ route('cases.assigned') }}" class="text-muted">Assigned Cases</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="" class="text-muted">Analyze Case</a>
@@ -65,7 +63,7 @@
                 @if($case->isCaseOnHold())
                 <div class="ribbon ribbon-clip ribbon-left">
                     <div class="ribbon-target" style="top: 15px;">
-                    <span class="ribbon-inner bg-warning"></span>On Hold</div>
+                        <span class="ribbon-inner bg-warning"></span>On Hold</div>
                 </div>
                 @endif
                 <h5 class="text_dark_blue">Case Information</h5>
@@ -126,21 +124,24 @@
                 <div class="row py-5">
                     <div class="col-md-3">
                         <p class="text_dark_blue"><b>CONTACT REP INFO:</b></p>
-                        <span>{!! $case->getApplicantName() !!}<br/>
-                            {!! $case->applicant_email !!}<br/>
+                        <span>{!! $case->getApplicantName() !!}<br />
+                            {!! $case->applicant_email !!}<br />
                             {!! $case->applicant_phone_number !!}
                         </span>
                     </div>
                     <div class="col-md-3">
                     </div>
-                    
+
                     <div class="col-md-3 text-right">
                         @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
-                        <button class="btn btn-info-sm my-5" data-toggle="modal" data-target="#assignAnalyzeCaseModal">Assign</button>
+                        <button class="btn btn-info-sm my-5" data-toggle="modal"
+                            data-target="#assignAnalyzeCaseModal">Assign</button>
                         @endif
                     </div>
                     <div class="col-md-3">
-                        <button class="btn btn-success-sm my-5" onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Submitted Documents</button>
+                        <button class="btn btn-success-sm my-5"
+                            onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View
+                            Submitted Documents</button>
                     </div>
                 </div>
             </div>
@@ -164,7 +165,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 my-5">
-                        <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:" name="" id="" cols="30" rows="10"></textarea>
+                        <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:"
+                            name="" id="" cols="30" rows="10"></textarea>
                         <br>
                         <button class="btn btn-success-sm my-5 pull-right">Issue Recommendation</button>
                     </div>
@@ -210,7 +212,8 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -241,9 +244,10 @@
                         <div class="col-md-12">
                             <label>Select case handler:</label>
                             <br />
-                            <select class="form-control select2" id="case_handler_dropdown" name="caseHandler" style="width: 100%;">
+                            <select class="form-control select2" id="case_handler_dropdown" name="caseHandler"
+                                style="width: 100%;">
                                 @foreach($caseHandlers as $handler)
-                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -251,10 +255,13 @@
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" id="caseID">
-                    <button type="button" id="assignAnalyzeCaseButton" class="btn btn-light-primary font-weight-bold" data-case-id="{{ $case->id }}">Assign</button>
-                     
-                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
+                    <button type="button" id="assignAnalyzeCaseButton" class="btn btn-light-primary font-weight-bold"
+                        data-case-id="{{ $case->id }}">Assign</button>
+
+                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i
+                            class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold"
+                        data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
@@ -263,10 +270,10 @@
 @endsection
 
 @section('custom.css')
-    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
 @endsection
 @section('custom.javascript')
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection
