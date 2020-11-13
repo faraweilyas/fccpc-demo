@@ -1,6 +1,6 @@
  var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content'),
     counter     = 1,
-    arr_lenght  = $(".checklist_group_count").val();
+    arr_length  = $(".checklist_group_count").val();
 
 $(document).ready(function ()
 {
@@ -33,7 +33,7 @@ $(document).ready(function ()
     {
         event.preventDefault();
         // toastr.success("cool");
-        if (counter < arr_lenght) {
+        if (counter < arr_length) {
             $('#prev').show();
 
             counter++;
@@ -42,7 +42,7 @@ $(document).ready(function ()
             $(window).scrollTop(0);
         }
 
-        if (parseInt(counter) === parseInt(arr_lenght))
+        if (parseInt(counter) === parseInt(arr_length))
         {
             $('#next').hide();
             $('#approve').show();
