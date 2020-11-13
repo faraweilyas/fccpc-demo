@@ -164,7 +164,7 @@
                         Issue Deficiency
                     </button>
                     <button class="btn btn-success no-border px-10 py-4 hide" id="approve">
-                        Approve Complete Documents in the Checklist
+                        Approve Checklist
                     </button>
                 </div>
             </div>
