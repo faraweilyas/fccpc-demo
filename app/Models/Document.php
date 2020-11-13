@@ -30,4 +30,33 @@ class Document extends Model
         $file           = (in_array($fileExtension, array_keys($extensions))) ? "files/{$extension}.svg" : 'icons/Files/File.svg';
         return "{$path}{$file}";
     }
+
+    public function getAdditionalInfo() : string
+    {
+        return empty($this->additional_info) ? "..." : $this->additional_info;
+    }
+
+    public function getChecklistDocument($checklist)
+    {
+        $checklist_document = $this
+                                ->checklists
+                                ->where('id', $checklist->id)
+                                ->first();
+
+        return $checklist_document->checklist_document ?? NULL;
+    }
+
+    public function getChecklistDocumentStatus($checklist)
+    {
+        return $this->getChecklistDocument($checklist)->status ?? NULL;
+    }
+
+    public function getCheckedChecklistDocument($checklist, $checklistIds)
+    {
+        $checklist_document = $this->getChecklistDocument($checklist);
+
+        return (in_array($checklist->id, $checklistIds) && !is_null($checklist_document->selected_at ?? NULL))
+            ? "consent-card-active"
+            : '';
+    }
 }
