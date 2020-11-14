@@ -47,6 +47,7 @@ trait CaseAssignable
      */
     public function update_working_on(User $caseHandler)
     {
+
         return $this->handlers()->syncWithoutDetaching([
             $caseHandler->id    => [
                 'workingon_at' => now()

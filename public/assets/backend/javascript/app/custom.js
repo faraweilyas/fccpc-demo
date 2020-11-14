@@ -30,7 +30,8 @@ $(document).ready(function() {
 	                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 	                data: {}, 
 	                success: function(response){
-	                  window.location.replace(approval_link);
+                       console.log(response);
+	                  // window.location.replace(approval_link);
 	                }
 	            });
                 
