@@ -105,7 +105,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <img class="mw-40" src="{{ pc_asset(BE_IMG.'/png/close.png') }}">
+                                <img class="mw-40" src="{{ pc_asset(BE_IMAGE.'/png/close.png') }}">
                             </div>
                         </div>
                         <div class="row mt-6">
