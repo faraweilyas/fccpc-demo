@@ -103,6 +103,16 @@ trait UserGettable
             ->where('defficiency_issued_at', null);
     }
 
+     /**
+     * Defines a many to many relationship for active case assigned to handler
+     *
+     * @return HasRelationships
+     */
+    public function active_cases_assigned_to_all()
+    {
+        return $this->cases_assigned_to()->where('dropped_at', null);
+    }
+
     /**
      * Defines a many to many relationship for case and active case handlers
      *
