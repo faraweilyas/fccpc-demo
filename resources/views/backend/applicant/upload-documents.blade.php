@@ -113,50 +113,51 @@
                                                             <div
                                                                 class="card card-custom gutter-b example example-compact">
                                                                 <div class="card-header">
-                                                                    <h3 class="card-title">
-                                                                        {{ ucfirst($checklistGroup->name) }}</h3>
+                                                                    <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                                 </div>
                                                                 <div class="card-body">
                                                                     <p>
-                                                                        Kindly upload
-                                                                        {{ strtolower($checklistGroup->name) }}. Kindly
-                                                                        check boxes of documents being submitted and in
-                                                                        cases where document is not available, please
-                                                                        state in additional information section.
-                                                                    </p>
-                                                                    <p>
-                                                                        Upload a single pdf file containing the letter
-                                                                        of intent to merge.
+                                                                        Upload the {{ strtolower($checklistGroup->name) }} as a
+                                                                        single PDF file containing the relevant information listed
+                                                                        below.
                                                                     </p>
                                                                     <div class="row mt-4">
                                                                         @foreach($checklistGroup->checklists as
                                                                         $checklist)
-                                                                        @php
-                                                                        $checklist_document =
-                                                                        $document->checklists->where('id',
-                                                                        $checklist->id)->first()->checklist_document ??
-                                                                        NULL;
-                                                                        $checklist_document_status =
-                                                                        $checklist_document->status ?? NULL;
-                                                                        $checked = (in_array($checklist->id,
-                                                                        $checklistIds) && $checklist_document_status !==
-                                                                        'deficient') ? "checked='true'" : '';
-                                                                        @endphp
-                                                                        @if((in_array($checklist->id, $checklistIds)))
-
-                                                                        <div
-                                                                            class="col-md-12 @if($checklist_document_status !== 'deficient') hide @endif">
-                                                                            <label class="checkbox mb-4">
-                                                                                <input type="checkbox"
-                                                                                    value="{{ $checklist->id }}"
-                                                                                    id="checklist_id" {{ $checked }} />
-                                                                                <span></span>
-                                                                                <small>{{ ucfirst($checklist->name) }}
-                                                                                </small>
-                                                                            </label>
+                                                                            @php
+                                                                                $checklist_document =
+                                                                                $document->checklists->where('id',
+                                                                                $checklist->id)->first()->checklist_document ??
+                                                                                NULL;
+                                                                                $checklist_document_status =
+                                                                                $checklist_document->status ?? NULL;
+                                                                                $checked = (in_array($checklist->id,
+                                                                                $checklistIds) && $checklist_document_status !==
+                                                                                'deficient') ? "checked='true'" : '';
+                                                                            @endphp
+                                                                            @if((in_array($checklist->id, $checklistIds)))
+                                                                                <div
+                                                                                    class="col-md-12 @if($checklist_document_status !== 'deficient') hide @endif">
+                                                                                    <label class="checkbox mb-4">
+                                                                                        <input type="checkbox"
+                                                                                            value="{{ $checklist->id }}"
+                                                                                            id="checklist_id" {{ $checked }} />
+                                                                                        <span></span>
+                                                                                        <small>{{ ucfirst($checklist->name) }}
+                                                                                        </small>
+                                                                                    </label>
+                                                                                </div>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        @if ($checklistGroup->isGroupFees())
+                                                                        <div class="col-md-6 mb-4 ml-8">
+                                                                            <input type="text" class="form-control amount_paid"
+                                                                                name="amount_paid" value="{{ $case->amount_paid }}"
+                                                                                placeholder="Enter Amount Paid:" id="amount_paid" />
                                                                         </div>
                                                                         @endif
-                                                                        @endforeach
                                                                     </div>
                                                                     <div class="row mt-4">
                                                                         <div class="col-md-3">
@@ -168,7 +169,7 @@
                                                                                     name="{{ Str::camel($checklistGroup->label) }}_doc"
                                                                                     data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
                                                                                 <span
-                                                                                    class="btn btn--small btn--brand checklist_doc_name_{{ $checklistGroup->id}}">Upload
+                                                                                    class="btn btn--small btn--brand">Upload
                                                                                     File</span>
                                                                             </div>
                                                                         </div>
@@ -189,6 +190,9 @@
                                                                         <input type="hidden" id="doc_id"
                                                                             value="{{ !empty($document) ? $document->id : '' }}">
                                                                     </div>
+                                                                    <p
+                                                                        class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                    </p>
                                                                 </div>
                                                             </div>
                                                         </div>
