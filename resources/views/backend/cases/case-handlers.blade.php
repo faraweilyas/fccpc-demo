@@ -57,16 +57,16 @@
                                 </td>
                                 <td class="text-center">
                                     <a
-                                        href="@if($handler-> deficient_cases_to()->count() > 0) {{ route('cases.on-hold', ['handler' => $handler->id]) }} @else # @endif">
+                                        href="@if($handler->deficient_cases(TRUE)->count() > 0) {{ route('cases.on-hold', ['handler' => $handler->id]) }} @else # @endif">
                                         <span
-                                            class="badge badge-secondary"><b>{{ $handler->deficient_cases_to()->count() }}</b></span>
+                                            class="badge badge-secondary"><b>{{ $handler->deficient_cases(TRUE)->count() }}</b></span>
                                     </a>
                                 </td>
                                 <td class="text-center">
                                     <a
-                                        href="@if($handler->cases_working_on_to()->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
+                                        href="@if($handler->cases_working_on(TRUE)->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
                                         <span
-                                            class="badge badge-secondary"><b>{{ $handler->cases_working_on_to()->count() }}</b></span>
+                                            class="badge badge-secondary"><b>{{ $handler->cases_working_on(TRUE)->count() }}</b></span>
                                     </a>
                                 </td>
                                 <td>

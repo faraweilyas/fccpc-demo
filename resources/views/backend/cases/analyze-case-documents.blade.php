@@ -37,15 +37,9 @@
 
     <div class="card-custom relative">
         <h5 class="text-bold">Submitted Documents</h5>
-        @if(in_array(\Auth::user()->account_type, ['SP']))
         @php
-        $cases = \Auth::user()->cases_working_on_by()->where('case_id', $case->id)->get();
+        $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
         @endphp
-        @else
-        @php
-        $cases = \Auth::user()->cases_working_on_to()->where('case_id', $case->id)->get();
-        @endphp
-        @endif
 
         <hr >
 

@@ -108,16 +108,6 @@ trait UserGettable
      *
      * @return HasRelationships
      */
-    public function active_cases_assigned_to_all()
-    {
-        return $this->cases_assigned_to()->where('dropped_at', null);
-    }
-
-    /**
-     * Defines a many to many relationship for case and active case handlers
-     *
-     * @return HasRelationships
-     */
     public function search_active_cases_assigned_to($search)
     {
         return $this->active_cases_assigned_to_all()
@@ -128,57 +118,55 @@ trait UserGettable
     }
 
     /**
-     * Defines a relationship for case being worked by all handlers for supervisor
+     * Gets cases on going
      *
      * @return HasRelationships
      */
-    public function cases_working_on_by()
+    public function cases_working_on($handler = FALSE)
     {
-        return $this->cases_assigned_by()
-            ->where('dropped_at', null)
-            ->where('workingon_at', '!=', null)
-            ->where('defficiency_issued_at', null);
-    }
-
-    /**
-     * Defines a relationship for case being worked on by case handler
-     *
-     * @return HasRelationships
-     */
-    public function cases_working_on_to()
-    {
-        return $this->cases_assigned_to()
-            ->where('dropped_at', null)
-            ->where('workingon_at', '!=', null)
-            ->where('defficiency_issued_at', null);
-    }
-
-    /**
-     * Gets deficient cases by supervisor
-     *
-     * @return Collection
-     */
-    public function deficient_cases_by()
-    {
+        if ($handler):
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', '!=', null)
+                ->where('defficiency_issued_at', null);
+        endif;
+        if (in_array(auth()->user()->account_type, ['SP'])):
             return $this->cases_assigned_by()
-                    ->where('dropped_at', null)
-                    ->where('workingon_at', '!=', null)
-                    ->where('defficiency_issued_at', '!=', null);
-
+                ->where('dropped_at', null)
+                ->where('workingon_at', '!=', null)
+                ->where('defficiency_issued_at', null);
+        else:
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', '!=', null)
+                ->where('defficiency_issued_at', null);
+        endif;
     }
 
     /**
-     * Gets deficient cases for case handler
+     * Gets deficient cases 
      *
      * @return Collection
      */
-    public function deficient_cases_to()
+    public function deficient_cases($handler = FALSE)
     {
+        if ($handler):
             return $this->cases_assigned_to()
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
                     ->where('defficiency_issued_at', '!=', null);
-
+        endif;
+        if (in_array(auth()->user()->account_type, ['SP'])):
+            return $this->cases_assigned_by()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('defficiency_issued_at', '!=', null);
+        else:
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('defficiency_issued_at', '!=', null);
+        endif;
     }
 
     /**
