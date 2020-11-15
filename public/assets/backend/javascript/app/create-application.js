@@ -383,7 +383,6 @@ $(document).ready(function()
                             return (typeof ($(element).attr('data-wizard-state')) !== "undefined")
                         }),
             sendForm    = 'save'+currentForm.attr('data-form');
-
         window[sendForm](sendForm, currentForm);
         // _wizard.goNext();
         // KTUtil.scrollTop();
@@ -710,7 +709,55 @@ function saveChecklistDocument(action, currentForm)
     return;
 }
 
-function saveapplicationDocumentation(action, currentForm)
+function saveDeficientChecklistDocument(action, currentForm)
+{
+    var tracking_id        = $("#tracking_id").val(),
+        formData           = new FormData(),
+        checklists         = [],
+        additional_info    = currentForm.find('#additional_info').val(),
+        file               = currentForm.find('#checklist_doc')[0].files[0],
+        checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
+        amount_paid        = currentForm.find("#amount_paid").val(),
+        doc_id             = currentForm.find("#doc_id").val();
+
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
+
+    $(currentForm).find(':checkbox:checked').each(function(i)
+    {
+       checklists[i] = $(this).val();
+    });
+
+    formData.append('_token', $("#token").val());
+    formData.append('file', file);
+    formData.append('additional_info', additional_info);
+    formData.append('checklists', checklists);
+    formData.append('document_id', doc_id);
+    formData.append('amount_paid', amount_paid);
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            currentForm.find("#doc_id").val(result.response.id);
+            notify(result.responseType, result.message);
+            $("#previous-btn").removeAttr('disabled');
+            $("#save-info").toggle();
+            $("#saving-img").addClass('hide');
+            if (result.responseType !== 'error'){
+                 _wizard.goNext();
+                KTUtil.scrollTop();
+            }
+        }
+    );
+    return;
+}
+
+function saveApplicationDocumentation(action, currentForm)
 {
     _wizard.goNext();
     KTUtil.scrollTop();

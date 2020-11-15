@@ -107,7 +107,7 @@
                                                 @endphp
                                                 @if((in_array($checklistGroup->id, $newDeficientGroupIds)))
                                                 <div class="pb-5" data-wizard-type="step-content"
-                                                    data-form='ChecklistDocument'>
+                                                    data-form='DeficientChecklistDocument'>
                                                     <div class="row mt-4">
                                                         <div class="col-md-12">
                                                             <div
@@ -158,6 +158,16 @@
                                                                                 placeholder="Enter Amount Paid:" id="amount_paid" />
                                                                         </div>
                                                                         @endif
+                                                                    </div>
+                                                                    <div class="row mt-4">
+                                                                        <div class="col-md-12">
+                                                                            <div class="form-group mb-1">
+                                                                                <textarea class="form-control" id="additional_info"
+                                                                                    rows="6"
+                                                                                    name="{{ Str::camel($checklistGroup->label) }}_additional_info"
+                                                                                    placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="row mt-4">
                                                                         <div class="col-md-3">
@@ -246,5 +256,6 @@
 
 @section('custom.javascript')
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+<script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
 @endsection

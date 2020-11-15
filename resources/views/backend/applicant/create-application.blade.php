@@ -354,7 +354,7 @@
                                         </div>
                                     </div>
                                     <div id="application-documentation-section" class="pb-5 my-40"
-                                        data-wizard-type="step-content" data-form='applicationDocumentation'>
+                                        data-wizard-type="step-content" data-form='ApplicationDocumentation'>
                                         <h6 class="font-weight-bold text-dark text-center section__breaker">This section
                                             requires you to upload all relevant application document in a searchable PDF
                                             format.</h6>
