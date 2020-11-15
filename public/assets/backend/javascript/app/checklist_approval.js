@@ -130,6 +130,7 @@ $(document).ready(function ()
 
     $("#deficient-basket").on('click', function(event)
     {
+        console.log(true);
         var case_id = $(this).attr('data-case-id');
         $("#deficient_cases_list div").empty();
 
