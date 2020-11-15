@@ -53,7 +53,7 @@
                                 <h5 class="text-bold w-50">{{ $checklistGroup->name }}</h5>
 
                                 <div class="pull-button-right">
-                                    <button id="deficient-basket" class="btn btn-light-primary font-weight-bold mx-lg-5 py-3"
+                                    <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
                                         data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}">
                                         <span class="svg-icon svg-icon-xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"

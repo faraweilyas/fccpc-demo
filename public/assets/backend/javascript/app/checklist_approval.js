@@ -128,7 +128,7 @@ $(document).ready(function ()
         });
     });
 
-    $("#deficient-basket").on('click', function(event)
+    $(".deficient-basket").on('click', function(event)
     {
         console.log(true);
         var case_id = $(this).attr('data-case-id');
