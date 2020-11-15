@@ -141,7 +141,7 @@ class ApplicationController extends Controller
             request('case_type')
         );
 
-        $this->sendResponse('Case info saved.', 'success', $guest->case);
+        $this->sendResponse('Transaction info saved.', 'success', $guest->case);
     }
 
     public function saveContactInfo(Guest $guest)
@@ -259,9 +259,15 @@ class ApplicationController extends Controller
             'declaration_name' => request('declaration_name'),
             'declaration_rep'  => request('declaration_rep'),
          ]);
+
         $guest->case->submit();
 
         $case = $guest->case;
+
+        Document::where('case_id', $case->id)->update([
+            'date_case_submitted'          => $case->submitted_at,
+        ]);
+
         try {
             Mail::to($guest->email)->send(
                 new ApplicationRequest([

@@ -59,4 +59,16 @@ class Document extends Model
             ? "consent-card-active"
             : '';
     }
+
+    /**
+     * Saves date case submitted
+     *
+     * @param  \stdClass $feeInfo
+     * @return bool
+     */
+    public function saveDateCaseSubmitted(\stdClass $document) : bool
+    {
+        $this->date_case_submitted        = $document->date_case_submitted;
+        return $this->save();
+    }
 }

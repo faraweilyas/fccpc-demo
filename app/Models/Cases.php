@@ -72,7 +72,7 @@ class Cases extends Model
 
     public function getAmountPaid()
     {
-        return !empty($this->amount_paid) ? formatDigit($this->amount_paid) : '...';
+        return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '...';
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass

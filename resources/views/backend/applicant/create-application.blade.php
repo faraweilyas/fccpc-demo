@@ -211,11 +211,6 @@
                                                                 placeholder="Enter party name" name="party[]">
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
-                                                        <div class="col-lg-5">
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Enter party name" name="party[]">
-                                                            <div class="d-md-none mb-2"></div>
-                                                        </div>
                                                         @endforelse
                                                     </div>
                                                 </div>
@@ -508,4 +503,5 @@
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
 <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
 @endsection

@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    console.log(true);
     toastr.options = {
         "progressBar": true,
         "positionClass": "toast-bottom-right",
