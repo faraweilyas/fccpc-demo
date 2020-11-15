@@ -184,13 +184,15 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
-        $amount_paid  = str_replace(',', '', request('amount_paid'));
+        if (!empty(request('amount_paid'))):
+            $amount_paid  = str_replace(',', '', request('amount_paid'));
 
-        $guest->case->saveFeeInfo(
-            (object) [
-                'amount_paid' => $amount_paid,
-            ]
-        );
+            $guest->case->saveFeeInfo(
+                (object) [
+                    'amount_paid' => $amount_paid,
+                ]
+            );
+        endif;
 
         if (!request()->hasFile('file')) {
             $this->sendResponse('No file has been uploaded.', 'warning', []);
