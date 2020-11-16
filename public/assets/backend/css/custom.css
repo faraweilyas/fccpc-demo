@@ -779,8 +779,12 @@ th.fees_tab__head {
 
 }
 
-
-
+.doc_btn__spacing
+{
+    margin-top: -60px;
+    margin-bottom: 20px;
+    margin-right: -16px;
+}
 
 #generated_cases_datatable_filter {
     position: absolute;
@@ -789,7 +793,6 @@ th.fees_tab__head {
 }
 
 #generated_cases_datatable_filter label {
-
     width: 100% !important;
     display: inline-block;
     margin-bottom: 0.5rem;
