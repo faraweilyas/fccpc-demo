@@ -378,7 +378,7 @@ class ApplicationController extends Controller
             // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
 
             // $case->submittedDocuments(),
-            $case->unSubmittedDocuments(),
+            // $case->unSubmittedDocuments(),
             $case->getChecklistGroupUnSubmittedDocuments(),
             $case->getChecklistGroupUnSubmittedDocumentsName(),
 
