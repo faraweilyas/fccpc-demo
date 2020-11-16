@@ -158,7 +158,7 @@
                                                                                 <div class="col-md-3">
                                                                                     <div class="uploadButton tw-mb-4">
                                                                                         <input
-                                                                                            accept=".doc, .docx, .pdf"
+                                                                                            accept=".pdf"
                                                                                             id="checklist_doc"
                                                                                             class="js-file-upload-input ember-view"
                                                                                             type="file"
