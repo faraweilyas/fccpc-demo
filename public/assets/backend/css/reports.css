@@ -344,6 +344,26 @@
     transform: translateY(2px);
     box-shadow: 0px 5px 15px rgba(106, 127, 130, 0.09);
 }
+.btn-success-transparent-timestamp {
+    position: relative;
+    top: 0;
+    right: 0;
+    background: #fff !important;
+    border-color: #227a4e !important;
+    font-size: 1rem;
+    padding: 1rem;
+    color: #227a4e;
+    border-radius: 3px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-success-transparent-timestamp:hover {
+    background: #227a4e !important;
+    border-color: #227a4e !important;
+    color: #fff;
+    transform: translateY(2px);
+    box-shadow: 0px 5px 15px rgba(106, 127, 130, 0.09);
+}
 
 .form-control-teaxtarea {
     background: #f3f6f9;
