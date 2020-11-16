@@ -40,7 +40,7 @@
                 <div class="col-md-12">
                     <div class="card card-custom gutter-b example example-compact">
                         <div class="card-header">
-                            <h3 class="card-title">Upload Deficient Document (PDF/DOCX)</h3>
+                            <h3 class="card-title">Upload Deficient Document</h3>
                         </div>
                         <div class="card-body p-0">
                             <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first"
@@ -122,7 +122,7 @@
                                                                         below.
                                                                     </p>
                                                                     <div class="row mt-4">
-                                                                        @foreach($checklistGroup->checklists as
+                                                                        {{-- @foreach($checklistGroup->checklists as
                                                                         $checklist)
                                                                             @php
                                                                                 $checklist_document =
@@ -148,7 +148,7 @@
                                                                                     </label>
                                                                                 </div>
                                                                             @endif
-                                                                        @endforeach
+                                                                        @endforeach --}}
                                                                     </div>
                                                                     <div class="row">
                                                                         @if ($checklistGroup->isGroupFees())
@@ -195,8 +195,8 @@
                                                                         @endif
                                                                         <input type="hidden" id="uploaded_doc"
                                                                             value="{{ !empty($document) ? $document->file : '' }}">
-                                                                        <input type="hidden" id="checklist_doc_name"
-                                                                            value="{{ strtolower($checklist->name) }}">
+                                                                        {{-- <input type="hidden" id="checklist_doc_name"
+                                                                            value="{{ strtolower($checklist->name) }}"> --}}
                                                                         <input type="hidden" id="doc_id"
                                                                             value="{{ !empty($document) ? $document->id : '' }}">
                                                                     </div>
