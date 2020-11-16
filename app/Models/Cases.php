@@ -41,11 +41,6 @@ class Cases extends Model
         return $this->hasMany(Document::class, 'case_id');
     }
 
-    public function unSubmittedDocuments()
-    {
-        return $this->documents()->where('date_case_submitted', null)->get();
-    }
-
     public function isCategorySet() : bool
     {
         return empty($this->case_category) ? false : true;
@@ -254,7 +249,93 @@ class Cases extends Model
         return $checklistGroupDocuments;
     }
 
-    public function getChecklistGroupUnSubmittedDocuments() : array
+    public function getChecklistGroupName() : array
+    {
+        $checklistGroupName = [];
+        $this->documents->map(function($document) use (&$checklistGroupName)
+        {
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupName)
+            {
+                $checklistGroupName[$checklist->group->id] = $checklist->group->name;
+            });
+        });
+        return $checklistGroupName;
+    }
+
+    public function unSubmittedDocuments()
+    {
+        return $this->documents()->where('date_case_submitted', null)->get();
+    }
+
+    public function submittedDocuments()
+    {
+        return $this
+            ->documents()
+            ->where('date_case_submitted', '!=', null)
+            ->get()
+            ->groupBy('date_case_submitted')
+            ->sortKeysDesc();
+    }
+
+    public function latestSubmittedDocuments()
+    {
+        return $this->submittedDocuments()->first();
+    }
+
+    public function getLatestSubmittedDocumentChecklists()
+    {
+        $checklistDocuments = [];
+        $this->latestSubmittedDocuments()->map(function($document) use (&$checklistDocuments)
+        {
+            $checklistDocuments[] = $document->checklists;
+        });
+        return collect($checklistDocuments)->flatten();
+    }
+
+    public function getLatestSubmittedDocumentChecklistsByStatus(string $status="deficient")
+    {
+        $status = (in_array(strtolower($status), ['deficient', 'approved'])) ? $status : "deficient";
+        return $this->getLatestSubmittedDocumentChecklists()
+            ->filter(function($checklist, $key) use ($status)
+            {
+                return ($checklist->checklist_document->status == $status);
+            });
+    }
+
+    public function getLatestSubmittedDocumentChecklistsIDs(string $status="deficient")
+    {
+        return $this->getLatestSubmittedDocumentChecklistsByStatus($status)->pluck('id')->toArray();
+    }
+
+    public function getLatestSubmittedDocumentChecklistsGroupIDs(string $status="deficient")
+    {
+        return $this
+            ->getLatestSubmittedDocumentChecklistsByStatus($status)
+            ->pluck('group_id')
+            ->unique()
+            ->values()
+            ->toArray();
+    }
+
+    public function getLatestSubmittedDocumentChecklistsGroups(string $status="deficient")
+    {
+        $checklistGroups = [];
+        $this->getLatestSubmittedDocumentChecklistsByStatus($status)->map(function($checklist) use (&$checklistGroups)
+        {
+            $checklistGroups[$checklist->group_id] = $checklist->group;
+        });
+        return collect($checklistGroups);
+    }
+
+    public function getLatestSubmittedDocumentChecklistsGroupNames(string $status="deficient")
+    {
+        return $this
+            ->getLatestSubmittedDocumentChecklistsGroups($status)
+            ->pluck('name')
+            ->toArray();
+    }
+
+    public function getChecklistGroupUnSubmittedDocuments()
     {
         $checklistGroupDocuments = [];
         $this->unSubmittedDocuments()->map(function($document) use (&$checklistGroupDocuments)
@@ -271,19 +352,6 @@ class Cases extends Model
     {
         $checklistGroupName = [];
         $this->unSubmittedDocuments()->map(function($document) use (&$checklistGroupName)
-        {
-            $document->checklists->map(function($checklist) use ($document, &$checklistGroupName)
-            {
-                $checklistGroupName[$checklist->group->id] = $checklist->group->name;
-            });
-        });
-        return $checklistGroupName;
-    }
-
-    public function getChecklistGroupName() : array
-    {
-        $checklistGroupName = [];
-        $this->documents->map(function($document) use (&$checklistGroupName)
         {
             $document->checklists->map(function($checklist) use ($document, &$checklistGroupName)
             {
@@ -317,7 +385,7 @@ class Cases extends Model
     public function getFullName() : string
     {
         return trim($this->first_name.' '.$this->last_name);
-    } 
+    }
 
     /**
      * Get handlers full name
@@ -325,7 +393,7 @@ class Cases extends Model
      * @return string
      */
     public function getHandlerFullName() : string
-    {   
+    {
         if ($this->active_handlers->first())
             return $this->active_handlers->first()->getFullName();
 
