@@ -369,7 +369,7 @@ class ApplicationController extends Controller
         $isDeficient = $guest->case->isDeficient();
         $case = $guest->case;
         $checklistIds = $case->getChecklistIds();
-        $checklistGroupDocuments = $case->getChecklistGroupUnSubmittedDocuments();
+        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
         // $checklistGroupUnSubmittedDocuments = $case->getChecklistGroupUnSubmittedDocuments();
         
         $newDeficientGroupIds = $case->getDeficientGroupIds();

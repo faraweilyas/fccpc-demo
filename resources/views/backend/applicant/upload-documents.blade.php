@@ -121,7 +121,7 @@
                                                                         single PDF file containing the relevant information listed
                                                                         below.
                                                                     </p>
-                                                                    {{-- <div class="row mt-4">
+                                                                    <div class="row mt-4">
                                                                         @foreach($checklistGroup->checklists as
                                                                         $checklist)
                                                                             @php
@@ -149,16 +149,10 @@
                                                                                 </div>
                                                                             @endif
                                                                         @endforeach
-                                                                    </div> --}}
-                                                                    <div class="row mt-4">
+                                                                    </div>
+                                                                    {{-- <div class="row mt-4">
                                                                         @foreach($checklistGroup->checklists as $checklist)
                                                                         @php
-                                                                        // $checklist_document =
-                                                                        // $document->checklists->where('id',
-                                                                        // $checklist->id)->first()->checklist_document ??
-                                                                        // NULL;
-                                                                        // $checklist_document_status =
-                                                                        // $checklist_document->status ?? NULL;
                                                                         $checked = (in_array($checklist->id, $checklistIds)) ?
                                                                         "checked='checked'" : '';
                                                                         @endphp
@@ -172,7 +166,7 @@
                                                                             </label>
                                                                         </div>
                                                                         @endforeach
-                                                                    </div>
+                                                                    </div> --}}
                                                                     <div class="row">
                                                                         @if ($checklistGroup->isGroupFees())
                                                                         <div class="col-md-6 mb-4 ml-8">
