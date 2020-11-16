@@ -31,9 +31,9 @@ class Document extends Model
         return "{$path}{$file}";
     }
 
-    public function getAdditionalInfo() : string
+    public function getAdditionalInfo(string $replacement="...") : string
     {
-        return empty($this->additional_info) ? "..." : $this->additional_info;
+        return empty($this->additional_info) ? $replacement : $this->additional_info;
     }
 
     public function getChecklistDocument($checklist)
