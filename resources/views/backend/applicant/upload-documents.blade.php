@@ -121,8 +121,8 @@
                                                                         single PDF file containing the relevant information listed
                                                                         below.
                                                                     </p>
-                                                                    <div class="row mt-4">
-                                                                        {{-- @foreach($checklistGroup->checklists as
+                                                                    {{-- <div class="row mt-4">
+                                                                        @foreach($checklistGroup->checklists as
                                                                         $checklist)
                                                                             @php
                                                                                 $checklist_document =
@@ -148,7 +148,30 @@
                                                                                     </label>
                                                                                 </div>
                                                                             @endif
-                                                                        @endforeach --}}
+                                                                        @endforeach
+                                                                    </div> --}}
+                                                                    <div class="row mt-4">
+                                                                        @foreach($checklistGroup->checklists as $checklist)
+                                                                        @php
+                                                                        $checklist_document =
+                                                                        $document->checklists->where('id',
+                                                                        $checklist->id)->first()->checklist_document ??
+                                                                        NULL;
+                                                                        $checklist_document_status =
+                                                                        $checklist_document->status ?? NULL;
+                                                                        $checked = (in_array($checklist->id, $checklistIds)) ?
+                                                                        "checked='checked'" : '';
+                                                                        @endphp
+                                                                        <div class="col-md-12">
+                                                                            <label class="checkbox mb-4">
+                                                                                <input type="checkbox" class="checklist_id"
+                                                                                    value="{{ $checklist->id }}" {{ $checked }} />
+                                                                                <span></span>
+                                                                                <small
+                                                                                    class="fs--100">{{ ucfirst($checklist->name) }}</small>
+                                                                            </label>
+                                                                        </div>
+                                                                        @endforeach
                                                                     </div>
                                                                     <div class="row">
                                                                         @if ($checklistGroup->isGroupFees())
@@ -195,8 +218,8 @@
                                                                         @endif
                                                                         <input type="hidden" id="uploaded_doc"
                                                                             value="{{ !empty($document) ? $document->file : '' }}">
-                                                                        {{-- <input type="hidden" id="checklist_doc_name"
-                                                                            value="{{ strtolower($checklist->name) }}"> --}}
+                                                                        <input type="hidden" id="checklist_doc_name"
+                                                                            value="{{ strtolower($checklist->name) }}">
                                                                         <input type="hidden" id="doc_id"
                                                                             value="{{ !empty($document) ? $document->id : '' }}">
                                                                     </div>
