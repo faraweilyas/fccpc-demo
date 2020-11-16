@@ -92,7 +92,7 @@ class FaqController extends Controller
             'category'  => trim(request('category')),
         ]);
 
-        return true;
+        return redirect()->back()->with("success", "Faq created successfully!");
     }
 
     /**

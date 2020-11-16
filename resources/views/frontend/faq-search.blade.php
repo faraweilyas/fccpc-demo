@@ -4,8 +4,8 @@
 <div class="page-content my-5">
     <div class="container container-sm  ">
         <div class="row row-top home-content-header">
-            <h2 class=" publications-header faq-content-header">
-                <span>Frequently Asked Questions/</span>
+            <h2 class="publications-header faq-content-header">
+                <a href="{{ url('/faqs') }}" style="color: #999">Frequently Asked Questions</a>
             </h2>
         </div>
 

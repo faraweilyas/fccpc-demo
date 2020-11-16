@@ -5,10 +5,9 @@
     <div class="container container-sm  ">
         <div class="row row-top home-content-header">
             <h2 class=" publications-header faq-content-header">
-                <a href={{url('/faqs')}} style="color: #999">Frequently Asked Questions/</a>
+                <a href="{{ url('/faqs') }}" style="color: #999">Frequently Asked Questions</a>
             </h2>
         </div>
-
         <div class="row publication-container">
             <div class="col-md-3 ">
                 <ul class="faq-questions__ul">
@@ -59,7 +58,5 @@
             </div>
         </div>
     </div>
-
-
 </div>
 @endsection

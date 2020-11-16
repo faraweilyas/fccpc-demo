@@ -128,13 +128,9 @@ class CasesController extends Controller
     public function workingonCases(User $handler)
     {
         if ($handler->status):
-            $cases = $handler->cases_working_on_to()->get();
+            $cases = $handler->cases_working_on(TRUE)->get();
         else:
-            if(in_array(\Auth::user()->account_type, ['SP'])):
-                $cases = \Auth::user()->cases_working_on_by()->get();
-            else:
-                $cases = \Auth::user()->cases_working_on_to()->get();
-            endif;
+            $cases = \Auth::user()->cases_working_on()->get();
         endif;
 
         $caseHandlers = (new User())->caseHandlers();
@@ -174,13 +170,9 @@ class CasesController extends Controller
     public function onholdCases(User $handler)
     {
         if ($handler->status):
-            $cases = $handler->deficient_cases_to()->get();
+            $cases = $handler->deficient_cases(TRUE)->get();
         else:
-            if(in_array(\Auth::user()->account_type, ['SP'])):
-                $cases = \Auth::user()->deficient_cases_by()->get();
-            else:
-                $cases = \Auth::user()->deficient_cases_to()->get();
-            endif;
+            $cases = \Auth::user()->deficient_cases()->get();
         endif;
 
         $caseHandlers = (new User())->caseHandlers();
@@ -330,7 +322,7 @@ class CasesController extends Controller
      */
     public function analyzeCaseDocuments(Cases $case)
     {
-        if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0)
+        if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();

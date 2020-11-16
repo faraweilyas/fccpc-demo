@@ -1,30 +1,33 @@
- var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content'),
-    counter     = 1,
-    arr_lenght  = $(".checklist_group_count").val();
+ var CSRF_TOKEN         = $('meta[name="csrf-token"]').attr('content'),
+    counter             = 1,
+    arr_length          = $(".checklist_group_count").val(),
+    deficient_count     = $(".checklist_deficient_count").html();
 
 $(document).ready(function ()
 {
     $('#step-1').show();
+
     $('#prev').hide();
+
     $('#prev').click(function()
     {
         if (counter > 1) {
             $('#next').show();
-            $('#approve').hide();
-            $('#deficiency').hide();
             counter--;
             $('[id^=step]').hide();
             $(`#step-${counter}`).show();
             $(window).scrollTop(0);
         } else {
             $('#next').show();
-            $('#approve').hide();
             counter = 1;
             $('[id^=step]').hide();
             $(`#step-${counter}`).show();
             $(window).scrollTop(0);
             return false;
         }
+
+        $('#approve').hide();
+        $('#deficiency').hide();
 
         if (counter === 1) $('#prev').hide();
     });
@@ -33,20 +36,27 @@ $(document).ready(function ()
     {
         event.preventDefault();
         // toastr.success("cool");
-        if (counter < arr_lenght) {
+        if (counter < arr_length)
+        {
             $('#prev').show();
-
             counter++;
             $('[id^=step]').hide();
             $(`#step-${counter}`).show();
             $(window).scrollTop(0);
         }
 
-        if (parseInt(counter) === parseInt(arr_lenght))
+        if (parseInt(counter) === parseInt(arr_length))
         {
             $('#next').hide();
-            $('#approve').show();
-            $('#deficiency').show();
+
+            if (parseInt(deficient_count) > 0)
+            {
+                $('#approve').hide();
+                $('#deficiency').show();
+            } else {
+                $('#approve').show();
+                $('#deficiency').hide();
+            }
         }
     });
 
@@ -89,12 +99,28 @@ $(document).ready(function ()
                     data: {},
                     success: function(response)
                     {
-                        var result = JSON.parse(response);
+                        var result      = JSON.parse(response);
+
+                        deficient_count = result.response.deficient;
+                        deficient_count = (typeof (deficient_count) !== "undefined") ? deficient_count : 0;
+
                         if (result.response.deficient === undefined)
                         {
                             $(".checklist-deficient-count").html('0');
                         } else {
                             $(".checklist-deficient-count").html(result.response.deficient);
+                        }
+
+                        if (parseInt(counter) === parseInt(arr_length))
+                        {
+                            if (parseInt(deficient_count) > 0)
+                            {
+                                $('#approve').hide();
+                                $('#deficiency').show();
+                            } else {
+                                $('#approve').show();
+                                $('#deficiency').hide();
+                            }
                         }
                     }
                 });
@@ -102,8 +128,9 @@ $(document).ready(function ()
         });
     });
 
-    $("#deficient-basket").on('click', function(event)
+    $(".deficient-basket").on('click', function(event)
     {
+        console.log(true);
         var case_id = $(this).attr('data-case-id');
         $("#deficient_cases_list div").empty();
 

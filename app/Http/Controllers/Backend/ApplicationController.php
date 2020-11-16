@@ -17,6 +17,7 @@ class ApplicationController extends Controller
         'saveCaseInfo' => 'saveCaseInfo',
         'saveContactInfo' => 'saveContactInfo',
         'saveChecklistDocument' => 'saveChecklistDocument',
+        'saveDeficientChecklistDocument' => 'saveDeficientChecklistDocument',
     ];
 
     /**
@@ -141,7 +142,7 @@ class ApplicationController extends Controller
             request('case_type')
         );
 
-        $this->sendResponse('Case info saved.', 'success', $guest->case);
+        $this->sendResponse('Transaction info saved.', 'success', $guest->case);
     }
 
     public function saveContactInfo(Guest $guest)
@@ -184,13 +185,15 @@ class ApplicationController extends Controller
 
     public function saveChecklistDocument(Guest $guest)
     {
-        $amount_paid  = str_replace(',', '', request('amount_paid'));
+        if (!empty(request('amount_paid'))):
+            $amount_paid  = str_replace(',', '', request('amount_paid'));
 
-        $guest->case->saveFeeInfo(
-            (object) [
-                'amount_paid' => $amount_paid,
-            ]
-        );
+            $guest->case->saveFeeInfo(
+                (object) [
+                    'amount_paid' => $amount_paid,
+                ]
+            );
+        endif;
 
         if (!request()->hasFile('file')) {
             $this->sendResponse('No file has been uploaded.', 'warning', []);
@@ -209,6 +212,56 @@ class ApplicationController extends Controller
         $path = $file->storeAs('public/documents', $newFileName);
 
         $previous_document = Document::find(request('document_id'));
+
+        if ($previous_document):
+            unlink(
+                storage_path('app/public/documents/' . $previous_document->file)
+            );
+            Document::destroy($previous_document->id);
+        endif;
+        $document = Document::create([
+            'case_id' => $guest->case->id,
+            'file' => $newFileName,
+            'additional_info' => trim(request('additional_info')),
+        ]);
+
+        $checklistIds = request('checklists');
+        $arrayOfChecklistIds = transformChecklistIds($checklistIds, [
+            'selected_at' => now(),
+        ]);
+        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
+        $this->sendResponse('Document has been saved.', 'success', $document);
+    }
+
+    public function saveDeficientChecklistDocument(Guest $guest)
+    {
+        if (!empty(request('amount_paid'))):
+            $amount_paid  = str_replace(',', '', request('amount_paid'));
+
+            $guest->case->saveFeeInfo(
+                (object) [
+                    'amount_paid' => $amount_paid,
+                ]
+            );
+        endif;
+
+        if (!request()->hasFile('file')) {
+            $this->sendResponse('No file has been uploaded.', 'warning', []);
+        }
+
+        $validator = Validator::make(request()->all(), [
+            'file' => 'mimes:pdf',
+        ]);
+
+        if ($validator->fails())
+            $this->sendResponse('Only PDF file format is supported.', 'error', []);
+
+        $file = request('file');
+        $extension = $file->getClientOriginalExtension();
+        $newFileName = \SerialNumber::randomFileName($extension);
+        $path = $file->storeAs('public/documents', $newFileName);
+
+        $previous_document = Document::where('id', request('document_id'))->where('date_case_submitted', null)->first();
 
         if ($previous_document):
             unlink(
@@ -259,9 +312,15 @@ class ApplicationController extends Controller
             'declaration_name' => request('declaration_name'),
             'declaration_rep'  => request('declaration_rep'),
          ]);
+
         $guest->case->submit();
 
         $case = $guest->case;
+
+        Document::where('case_id', $case->id)->update([
+            'date_case_submitted'          => $case->submitted_at,
+        ]);
+
         try {
             Mail::to($guest->email)->send(
                 new ApplicationRequest([
@@ -312,7 +371,6 @@ class ApplicationController extends Controller
         $checklistIds = $case->getChecklistIds();
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
         $newDeficientGroupIds = $case->getDeficientGroupIds();
-
         $title = 'Upload Documents | ' . APP_NAME;
         $description = 'Upload Documents | ' . APP_NAME;
         $details = details($title, $description);

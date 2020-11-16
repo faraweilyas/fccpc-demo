@@ -37,15 +37,9 @@
 
     <div class="card-custom relative">
         <h5 class="text-bold">Submitted Documents</h5>
-        @if(in_array(\Auth::user()->account_type, ['SP']))
         @php
-        $cases = \Auth::user()->cases_working_on_by()->where('case_id', $case->id)->get();
+        $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
         @endphp
-        @else
-        @php
-        $cases = \Auth::user()->cases_working_on_to()->where('case_id', $case->id)->get();
-        @endphp
-        @endif
 
         <hr >
 
@@ -105,7 +99,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <img class="mw-40" src="{{ pc_asset(BE_IMG.'/png/close.png') }}">
+                                <img class="mw-40" src="{{ pc_asset(BE_IMAGE.'/png/close.png') }}">
                             </div>
                         </div>
                         <div class="row mt-6">
