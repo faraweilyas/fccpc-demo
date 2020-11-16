@@ -155,7 +155,7 @@ class ApplicationController extends Controller
 
             if ($validator->fails())
                 $this->sendResponse('Only PDF file format is supported.', 'error', []);
-            
+
             $file = request('file');
             $extension = $file->getClientOriginalExtension();
             $fileName = \SerialNumber::randomFileName($extension);
@@ -354,6 +354,39 @@ class ApplicationController extends Controller
         return view('backend.applicant.submitted', compact('details', 'guest'));
     }
 
+    public function test()
+    {
+        $case = Cases::find(31);
+
+        $newDeficientGroupIds = $case->getDeficientGroupIds();
+
+        return [
+            // $case->documents,
+            // $case->guest,
+            // $case->isDeficient(),
+            // Gets all latest submitted document checklist, either approved, deficient or null
+            // $case->getLatestSubmittedDocumentChecklists(),
+            // Gets all latest submitted document checklist by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsByStatus('deficient')->groupBy('group_id')->toArray(),
+            // Gets all latest submitted document checklist IDs by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsIDs('deficient'),
+            // Gets all latest submitted document checklist group IDs by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient'),
+            // Gets all latest submitted document checklist groups by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroups('deficient'),
+            // Gets all latest submitted document checklist group names by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
+
+            // $case->submittedDocuments(),
+            $case->unSubmittedDocuments(),
+            $case->getChecklistGroupUnSubmittedDocuments(),
+            $case->getChecklistGroupUnSubmittedDocumentsName(),
+
+        ];
+
+        return $case->getChecklistGroupUnSubmittedDocuments();
+    }
+
     /**
      * Handles upload documents page
      *
@@ -366,26 +399,25 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
-        $isDeficient = $guest->case->isDeficient();
-        $case = $guest->case;
-        $checklistIds = $case->getChecklistIds();
-        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        // $checklistGroupUnSubmittedDocuments = $case->getChecklistGroupUnSubmittedDocuments();
-        
-        $newDeficientGroupIds = $case->getDeficientGroupIds();
-        $title = 'Upload Documents | ' . APP_NAME;
-        $description = 'Upload Documents | ' . APP_NAME;
-        $details = details($title, $description);
+        $case                   = $guest->case;
+        $isDeficient            = $case->isDeficient();
+        $checklistIds           = $case->getLatestSubmittedDocumentChecklistsIDs('deficient');
+        $deficientGroupIds      = $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
+        $unSubmittedDocuments   = $case->getChecklistGroupUnSubmittedDocuments();
+
+        $title          = 'Upload Documents | ' . APP_NAME;
+        $description    = 'Upload Documents | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.applicant.upload-documents',
             compact(
                 'details',
                 'guest',
-                'isDeficient',
                 'case',
+                'isDeficient',
                 'checklistIds',
-                'checklistGroupDocuments',
-                'newDeficientGroupIds'
+                'deficientGroupIds',
+                'unSubmittedDocuments',
             )
         );
     }
