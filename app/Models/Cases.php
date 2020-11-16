@@ -41,6 +41,11 @@ class Cases extends Model
         return $this->hasMany(Document::class, 'case_id');
     }
 
+    public function unSubmittedDocuments()
+    {
+        return $this->documents()->where('date_case_submitted', null)->get();
+    }
+
     public function isCategorySet() : bool
     {
         return empty($this->case_category) ? false : true;
@@ -247,6 +252,32 @@ class Cases extends Model
             });
         });
         return $checklistGroupDocuments;
+    }
+
+    public function getChecklistGroupUnSubmittedDocuments() : array
+    {
+        $checklistGroupDocuments = [];
+        $this->unSubmittedDocuments()->map(function($document) use (&$checklistGroupDocuments)
+        {
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupDocuments)
+            {
+                $checklistGroupDocuments[$checklist->group->id] = $document;
+            });
+        });
+        return $checklistGroupDocuments;
+    }
+
+    public function getChecklistGroupUnSubmittedDocumentsName() : array
+    {
+        $checklistGroupName = [];
+        $this->unSubmittedDocuments()->map(function($document) use (&$checklistGroupName)
+        {
+            $document->checklists->map(function($checklist) use ($document, &$checklistGroupName)
+            {
+                $checklistGroupName[$checklist->group->id] = $checklist->group->name;
+            });
+        });
+        return $checklistGroupName;
     }
 
     public function getChecklistGroupName() : array

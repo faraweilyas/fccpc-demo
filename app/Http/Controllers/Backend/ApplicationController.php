@@ -369,7 +369,9 @@ class ApplicationController extends Controller
         $isDeficient = $guest->case->isDeficient();
         $case = $guest->case;
         $checklistIds = $case->getChecklistIds();
-        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
+        $checklistGroupDocuments = $case->getChecklistGroupUnSubmittedDocuments();
+        // $checklistGroupUnSubmittedDocuments = $case->getChecklistGroupUnSubmittedDocuments();
+        
         $newDeficientGroupIds = $case->getDeficientGroupIds();
         $title = 'Upload Documents | ' . APP_NAME;
         $description = 'Upload Documents | ' . APP_NAME;
