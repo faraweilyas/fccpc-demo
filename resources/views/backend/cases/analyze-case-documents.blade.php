@@ -66,10 +66,10 @@
             
             @endif
            <div class="d-flex justify-content-end">
-            <button  class="btn btn-success btn-sm px-3">
+            <button  class="btn btn-success-transparent-timestamp btn-sm px-3">
                 Start Document Approval
             </button>
-            <button  class="btn btn-success btn-sm px-3 mx-5">
+            <button  class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5">
                 Continue Document Approval
             </button>
            </div>
