@@ -356,6 +356,22 @@
     border-radius: 3px;
     transition: all 0.2s ease-in-out;
 }
+.btn-success-transparent-timestamp-date {
+    position: relative;
+    top: 0;
+    right: 0;
+    background: #fff !important;
+    border-color: #227a4e !important;
+    font-size: 1rem;
+    padding: 1rem;
+    color: #227a4e;
+    border-radius: 0px;
+    transition: all 0.2s ease-in-out;
+}
+.btn-success-transparent-timestamp-date:hover{
+    color: #227a4e !important;
+    font-weight: bold;
+}
 
 .btn-success-transparent-timestamp:hover {
     background: #227a4e !important;

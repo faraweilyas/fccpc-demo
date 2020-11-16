@@ -52,21 +52,22 @@
         
        
         <div class="mt-20">
-            <span id="start_doc_approval" class="btn btn-success-transparent-download"
+            <button id="start_doc_approval" class="btn btn-success-transparent-download"
                 data-link="{{ route('cases.checklist-approval',[$case->id]) }}"
                 data-workingon-link="{{ route('cases.update_working_on',[$case->id, \Auth::user()->id]) }}">
                 Start Document Approval
-            </span>
+        </button>
             
             @endif
-           <div class="d-flex justify-content-end">
-            <button  class="btn btn-success-transparent-timestamp btn-sm px-3">
-                Start Document Approval
+           <div class="d-flex justify-content-between">
+            <button  class="btn btn-success-transparent-timestamp-date btn-sm px-3">
+                Date: 12 Nov, 2020
             </button>
             <button  class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5">
-                Continue Document Approval
+                Start Document Approval
             </button>
            </div>
+           <br/>
             <div class="row">
             
                 
