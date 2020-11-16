@@ -9,6 +9,11 @@ Route::prefix('application')
     ->group(function()
     {
         Route::get(
+            'test',
+            'ApplicationController@test'
+        )->name('test');
+
+        Route::get(
             'checklist/{guest:tracking_id}/{case_category}',
             'ApplicationController@checklistDocuments'
         )->name('checklist-documents');
