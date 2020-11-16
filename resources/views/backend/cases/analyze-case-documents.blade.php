@@ -34,40 +34,30 @@
 </div>
 @if(count($checklistGroupDocuments) > 0)
 <div class="conatiner-fl px-5 py-5 ">
-
     <div class="card-custom relative">
         <h5 class="text-bold">Submitted Documents</h5>
         @php
-        $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
+            $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
         @endphp
-
-        <hr >
-
-        @if($cases->count() > 0)
-        <a href="{{ route('cases.checklist-approval',[$case->id]) }}" class="btn btn-success-transparent-download">
-            Continue Document Approval
-        </a>
-        @else
-
-        
-       
+        <hr/>
         <div class="mt-20">
-            <button id="start_doc_approval" class="btn btn-success-transparent-download"
-                data-link="{{ route('cases.checklist-approval',[$case->id]) }}"
-                data-workingon-link="{{ route('cases.update_working_on',[$case->id, \Auth::user()->id]) }}">
-                Start Document Approval
-        </button>
-            
-            @endif
-           <div class="d-flex justify-content-between">
-            <button  class="btn btn-success-transparent-timestamp-date btn-sm px-3">
-                Date: 12 Nov, 2020
-            </button>
-            <button  class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5">
-                Start Document Approval
-            </button>
-           </div>
-           <br/>
+            <div class="d-flex justify-content-between">
+                <button  class="btn btn-success-transparent-timestamp-date btn-sm px-3">
+                    Date: 12 Nov, 2020
+                </button>
+                @if($cases->count() > 0 || $case->isCaseOnHold())
+                    <button class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5" onclick="window.location.href = '{{ route('cases.checklist-approval',[$case->id]) }}';">
+                        Continue Document Approval
+                    </button>
+                @else
+                    <button class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval"
+                        data-link="{{ route('cases.checklist-approval',[$case->id]) }}"
+                        data-workingon-link="{{ route('cases.update_working_on',[$case->id, \Auth::user()->id]) }}">
+                        Start Document Approval
+                    </button>
+                @endif
+            </div>
+            <br/>
             <div class="row">
             
                 

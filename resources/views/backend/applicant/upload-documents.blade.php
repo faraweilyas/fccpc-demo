@@ -153,12 +153,12 @@
                                                                     <div class="row mt-4">
                                                                         @foreach($checklistGroup->checklists as $checklist)
                                                                         @php
-                                                                        $checklist_document =
-                                                                        $document->checklists->where('id',
-                                                                        $checklist->id)->first()->checklist_document ??
-                                                                        NULL;
-                                                                        $checklist_document_status =
-                                                                        $checklist_document->status ?? NULL;
+                                                                        // $checklist_document =
+                                                                        // $document->checklists->where('id',
+                                                                        // $checklist->id)->first()->checklist_document ??
+                                                                        // NULL;
+                                                                        // $checklist_document_status =
+                                                                        // $checklist_document->status ?? NULL;
                                                                         $checked = (in_array($checklist->id, $checklistIds)) ?
                                                                         "checked='checked'" : '';
                                                                         @endphp
