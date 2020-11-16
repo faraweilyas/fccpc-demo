@@ -104,8 +104,8 @@
                                                 @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                                                     @if ((in_array($checklistGroup->id, $deficientGroupIds)))
                                                         @php
-                                                            // $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
-                                                            $document = "";
+                                                            $document = $unSubmittedDocuments[$checklistGroup->id] ?? '';
+                                                            $documentChecklists = (!empty($document)) ? $document->checklists->pluck('id')->toArray() : [];
                                                         @endphp
                                                         <div class="pb-5" data-wizard-type="step-content" data-form='DeficientChecklistDocument'>
                                                             <div class="row mt-4">
@@ -122,21 +122,12 @@
                                                                             <div class="row mt-4">
                                                                                 @foreach($checklistGroup->checklists as $checklist)
                                                                                     @php
-                                                                                        // $checklist_document = $document
-                                                                                        //     ->checklists
-                                                                                        //     ->where('id', $checklist->id)
-                                                                                        //     ->first()
-                                                                                        //     ->checklist_document ?? NULL;
-
-                                                                                        // $checklist_document_status = $checklist_document->status ?? NULL;
-                                                                                        // $checked = (in_array($checklist->id, $checklistIds) && $checklist_document_status !== 'deficient') ? "checked='true'" : '';
-                                                                                        // @if($checklist_document_status !== 'deficient') hide @endif
-                                                                                        // {{ $checked }}
+                                                                                        $checked = (in_array($checklist->id, $documentChecklists)) ? "checked='checked'" : '';
                                                                                     @endphp
                                                                                     @if ((in_array($checklist->id, $checklistIds)))
                                                                                         <div class="col-md-12">
                                                                                             <label class="checkbox mb-4">
-                                                                                                <input type="checkbox"  value="{{ $checklist->id }}" id="checklist_id" />
+                                                                                                <input type="checkbox"  value="{{ $checklist->id }}" id="checklist_id" {{ $checked }} />
                                                                                                 <span></span>
                                                                                                 <small>{{ ucfirst($checklist->name) }}</small>
                                                                                             </label>
@@ -159,7 +150,7 @@
                                                                                             rows="6"
                                                                                             name="{{ Str::camel($checklistGroup->label) }}_additional_info"
                                                                                             placeholder="Additional Information..."
-                                                                                        ></textarea>
+                                                                                        >{{ $document->additional_info ?? '' }}</textarea>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -177,7 +168,7 @@
                                                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                                                     </div>
                                                                                 </div>
-                                                                                @if(!empty($document))
+                                                                                @if (!empty($document))
                                                                                     <div class="col-md-3 my-1">
                                                                                         <span>
                                                                                             <img onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
@@ -187,16 +178,23 @@
                                                                                         </span>
                                                                                     </div>
                                                                                 @endif
-                                                                                <input type="hidden" id="uploaded_doc"
-                                                                                    value="{{ !empty($document) ? $document->file : '' }}">
-                                                                                <input type="hidden" id="checklist_doc_name"
-                                                                                    value="{{ strtolower($checklist->name) }}">
-                                                                                <input type="hidden" id="doc_id"
-                                                                                    value="{{ !empty($document) ? $document->id : '' }}">
+                                                                                <input
+                                                                                    type="hidden"
+                                                                                    id="uploaded_doc"
+                                                                                    value="{{ !empty($document) ? $document->file : '' }}"
+                                                                                />
+                                                                                <input
+                                                                                    type="hidden"
+                                                                                    id="checklist_doc_name"
+                                                                                    value="{{ strtolower($checklist->name) }}"
+                                                                                />
+                                                                                <input
+                                                                                    type="hidden"
+                                                                                    id="doc_id"
+                                                                                    value="{{ !empty($document) ? $document->id : '' }}"
+                                                                                />
                                                                             </div>
-                                                                            <p
-                                                                                class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">
-                                                                            </p>
+                                                                            <p class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}"></p>
                                                                         </div>
                                                                     </div>
                                                                 </div>
