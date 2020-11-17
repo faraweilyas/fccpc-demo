@@ -393,25 +393,29 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case = Cases::find(86);
+        $case = Cases::find(31);
 
-        $submittedDocuments = $case->submittedDocuments();
+        // $submittedDocuments = $case->submittedDocuments();
 
-        foreach ($submittedDocuments as $date => $documents)
-        {
-            // dump($date, $documents);
-            foreach ($documents as $document)
-            {
-                $checklists = $document->checklists;
-                $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
-            }
-        }
+        // foreach ($submittedDocuments as $date => $documents)
+        // {
+        //     foreach ($documents as $document)
+        //     {
+        //         $checklists = $document->checklists;
+        //         $group      = $document->group;
+        //     }
+        // }
 
-        // return [
+        // $date = "2020-11-17 09:40:46";
+        // $submittedDocument = $case->getSubmittedDocumentByDate($date);
+
+        return [
+            $case,
             // $case->documents,
             // $case->guest,
             // $case->isDeficient(),
             // $case->getDeficientGroupIds(),
+            // $case->getCaseSubmittedChecklistByStatus('deficient'),
             // Gets all latest submitted document checklist, either approved, deficient or null
             // $case->getLatestSubmittedDocumentChecklists(),
             // Gets all latest submitted document checklist by specified status, default is deficient
@@ -425,12 +429,12 @@ class ApplicationController extends Controller
             // Gets all latest submitted document checklist group names by specified status, default is deficient
             // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
 
+            // $submittedDocuments,
+            // $submittedDocument,
             // $case->unSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocumentsName(),
-
-        // ];
-
+        ];
     }
 
     /**
