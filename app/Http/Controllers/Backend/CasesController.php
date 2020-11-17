@@ -226,9 +226,10 @@ class CasesController extends Controller
     public function checklistApproval(Cases $case, $date)
     {
         $checklistIds               = $case->getChecklistIds();
-        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
+        $submittedDocuments         = $case->submittedDocuments()[$date];
         $checklistStatusCount       = (object) $case->getChecklistStatusCount();
 
+        // return [$submittedDocuments->count()];
         // Checklist Objects
         // $case->getCaseSubmittedChecklistByStatus(); // NULL
         // $case->getCaseSubmittedChecklistByStatus('approval'); // approval
@@ -240,7 +241,7 @@ class CasesController extends Controller
 
         return view(
             'backend.cases.checklist-approval',
-            compact('details', 'case', 'checklistIds', 'checklistGroupDocuments', 'checklistStatusCount')
+            compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatusCount')
         );
     }
 

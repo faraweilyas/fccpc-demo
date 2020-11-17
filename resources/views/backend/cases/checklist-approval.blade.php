@@ -40,13 +40,12 @@
                 <div class="card-custom">
                     @php
                         $x                  = 1;
-                        $deficient_count    = $checklistStatusCount->deficient ?? 0;
+                        $deficient_count    = $submittedDocuments->count() ?? 0;
                     @endphp
-                    @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                        @php $document = $checklistGroupDocuments[$checklistGroup->id] ?? ''; @endphp
-                        @if ($document !== '')
+                    @foreach($submittedDocuments as $document)
+                        @if ($document->group_id)
                             <div class="row my-3 py-5 hide" id="step-{{ $x }}">
-                                <h5 class="text-bold w-50">{{ $checklistGroup->name }}</h5>
+                                <h5 class="text-bold w-50">{{ $document->group->name }}</h5>
                                 <div class="pull-button-right">
                                     <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
                                         data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}">
@@ -63,7 +62,7 @@
                                                         fill="#000000" />
                                                 </g>
                                             </svg>
-                                            <span class="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>
+                                            <span class="checklist-deficient-count">{{ $deficient_count }}</span>
                                         </span>
                                     </button>
                                     <button
@@ -80,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    @foreach($checklistGroup->checklists as $checklist)
+                                    @foreach($document->checklists as $checklist)
                                         @php
                                             $checklist_document_status  = $document->getChecklistDocumentStatus($checklist);
                                             $checked                    = $document->getCheckedChecklistDocument($checklist, $checklistIds);
@@ -137,16 +136,11 @@
                             </div>
                             @php $x++ @endphp
                         @endif
-
-                        <input class="checklist_group_count" type="hidden" value="{{ count($checklistGroupDocuments) }}" />
-
+                        <input class="checklist_group_count" type="hidden" value="{{ $deficient_count }}" />
                     @endforeach
-
                     <div class="btn-group">
                         <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="prev">Previous</button>
-
                         <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">Next</button>
-
                         <button
                             class="btn btn-warning no-border mx-5 px-10 py-4 hide"
                             id="deficiency"
@@ -155,7 +149,6 @@
                         >
                             Issue Deficiency
                         </button>
-
                         <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">Approve Checklist</button>
                     </div>
                 </div>
@@ -209,14 +202,4 @@
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'checklist_approval.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.min.js') }}"></script>
-    <script>
-        $(document).ready(function()
-        {
-            $('#cart').click(function()
-            {
-                $('#cart-dropdown').toggleClass('show');
-            });
-        });
-
-    </script>
 @endsection
