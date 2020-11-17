@@ -69,15 +69,11 @@
                                     </div>
                                     <div class="row">
                                         @foreach ($documents as $document)
-                                            @php
-                                                $checklists = $document->checklists;
-                                                $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
-                                            @endphp
-                                            @if (!empty($group))
+                                            @if (!empty($document->group_id))
                                                 <div class="col-md-4 ">
                                                     <div class="download-card">
                                                         <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-                                                        <p>{{ $group->name }}</p>
+                                                        <p>{{ $document->group->name }}</p>
                                                         <button
                                                             class="btn btn-success-sm"
                                                             onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"

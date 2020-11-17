@@ -393,7 +393,7 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case = Cases::find(31);
+        $case = Cases::find(86);
 
         $submittedDocuments = $case->submittedDocuments();
 
@@ -407,7 +407,7 @@ class ApplicationController extends Controller
             }
         }
 
-        return [
+        // return [
             // $case->documents,
             // $case->guest,
             // $case->isDeficient(),
@@ -425,14 +425,12 @@ class ApplicationController extends Controller
             // Gets all latest submitted document checklist group names by specified status, default is deficient
             // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
 
-            $submittedDocuments,
             // $case->unSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocumentsName(),
 
-        ];
+        // ];
 
-        return $case->getChecklistGroupUnSubmittedDocuments();
     }
 
     /**

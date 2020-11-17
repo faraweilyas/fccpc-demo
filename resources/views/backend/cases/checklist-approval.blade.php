@@ -42,16 +42,11 @@
                         $x                  = 1;
                         $deficient_count    = $checklistStatusCount->deficient ?? 0;
                     @endphp
-
                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-
                         @php $document = $checklistGroupDocuments[$checklistGroup->id] ?? ''; @endphp
-
                         @if ($document !== '')
                             <div class="row my-3 py-5 hide" id="step-{{ $x }}">
-
                                 <h5 class="text-bold w-50">{{ $checklistGroup->name }}</h5>
-
                                 <div class="pull-button-right">
                                     <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
                                         data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}">
@@ -71,7 +66,6 @@
                                             <span class="checklist-deficient-count">{{ $checklistStatusCount->deficient ?? 0 }}</span>
                                         </span>
                                     </button>
-
                                     <button
                                         class="btn btn-success no-border px-10 py-4"
                                         onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
@@ -79,14 +73,12 @@
                                         Download Document
                                     </button>
                                 </div>
-
                                 <div class="row py-5 margin-top">
                                     <div class="col-md-12">
                                         <p><b>Additional Information:</b></p>
                                         <p>{{ $document->getAdditionalInfo() }}</p>
                                     </div>
                                 </div>
-
                                 <div class="row">
                                     @foreach($checklistGroup->checklists as $checklist)
                                         @php
