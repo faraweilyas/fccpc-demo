@@ -55,16 +55,7 @@
                                 <div class="wizard-wrapper">
                                     <div class="wizard-icon">
                                         <span class="svg-icon svg-icon-2x">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path
-                                                        d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M14.1654881,7.35483745 L9.61055177,10.3622525 C9.47921741,10.4489666 9.39637436,10.592455 9.38694497,10.7495509 L9.05991526,16.197949 C9.04337012,16.4735952 9.25341309,16.7104632 9.52905936,16.7270083 C9.63705011,16.7334903 9.74423017,16.7047714 9.83451193,16.6451626 L14.3894482,13.6377475 C14.5207826,13.5510334 14.6036256,13.407545 14.613055,13.2504491 L14.9400847,7.80205104 C14.9566299,7.52640477 14.7465869,7.28953682 14.4709406,7.27299168 C14.3629499,7.26650974 14.2557698,7.29522855 14.1654881,7.35483745 Z"
-                                                        fill="#000000" />
-                                                </g>
-                                            </svg>
+                                            <x-icons.transaction></x-icons.transaction>
                                         </span>
                                     </div>
                                     <div class="wizard-label">
@@ -76,19 +67,7 @@
                                 <div class="wizard-wrapper">
                                     <div class="wizard-icon">
                                         <span class="svg-icon svg-icon-2x">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <polygon points="0 0 24 0 24 24 0 24" />
-                                                    <path
-                                                        d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z"
-                                                        fill="#000000" fill-rule="nonzero" opacity="0.3" />
-                                                    <path
-                                                        d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z"
-                                                        fill="#000000" fill-rule="nonzero" />
-                                                </g>
-                                            </svg>
+                                            <x-icons.contact></x-icons.contact>
                                         </span>
                                     </div>
                                     <div class="wizard-label">
@@ -100,31 +79,7 @@
                                 <div class="wizard-wrapper">
                                     <div class="wizard-icon">
                                         <span class="svg-icon svg-icon-2x">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path
-                                                        d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z"
-                                                        fill="#000000" opacity="0.3" />
-                                                    <path
-                                                        d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
-                                                        fill="#000000" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="13" width="7"
-                                                        height="2" rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="17" width="7"
-                                                        height="2" rx="1" />
-                                                </g>
-                                            </svg>
+                                            <x-icons.text-document></x-icons.text-document>
                                         </span>
                                     </div>
                                     <div class="wizard-label">
@@ -137,31 +92,7 @@
                                 <div class="wizard-wrapper">
                                     <div class="wizard-icon">
                                         <span class="svg-icon svg-icon-2x">
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
-                                                viewBox="0 0 24 24" version="1.1">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <rect x="0" y="0" width="24" height="24" />
-                                                    <path
-                                                        d="M8,3 L8,3.5 C8,4.32842712 8.67157288,5 9.5,5 L14.5,5 C15.3284271,5 16,4.32842712 16,3.5 L16,3 L18,3 C19.1045695,3 20,3.8954305 20,5 L20,21 C20,22.1045695 19.1045695,23 18,23 L6,23 C4.8954305,23 4,22.1045695 4,21 L4,5 C4,3.8954305 4.8954305,3 6,3 L8,3 Z"
-                                                        fill="#000000" opacity="0.3" />
-                                                    <path
-                                                        d="M11,2 C11,1.44771525 11.4477153,1 12,1 C12.5522847,1 13,1.44771525 13,2 L14.5,2 C14.7761424,2 15,2.22385763 15,2.5 L15,3.5 C15,3.77614237 14.7761424,4 14.5,4 L9.5,4 C9.22385763,4 9,3.77614237 9,3.5 L9,2.5 C9,2.22385763 9.22385763,2 9.5,2 L11,2 Z"
-                                                        fill="#000000" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="9" width="7" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="9" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="13" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="13" width="7"
-                                                        height="2" rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="7" y="17" width="2" height="2"
-                                                        rx="1" />
-                                                    <rect fill="#000000" opacity="0.3" x="10" y="17" width="7"
-                                                        height="2" rx="1" />
-                                                </g>
-                                            </svg>
+                                            <x-icons.text-document></x-icons.text-document>
                                         </span>
                                     </div>
                                     <div class="wizard-label">
@@ -219,19 +150,8 @@
                                                 <div class="col-lg-12">
                                                     <a href="javascript:;" id="add-party-fields">
                                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                                xmlns:xlink="http://www.w3.org/1999/xlink" width="24px"
-                                                                height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                <g stroke="none" stroke-width="1" fill="none"
-                                                                    fill-rule="evenodd">
-                                                                    <rect x="0" y="0" width="24" height="24" />
-                                                                    <circle fill="#000000" opacity="0.3" cx="12" cy="12"
-                                                                        r="10" />
-                                                                    <path
-                                                                        d="M11,11 L11,7 C11,6.44771525 11.4477153,6 12,6 C12.5522847,6 13,6.44771525 13,7 L13,11 L17,11 C17.5522847,11 18,11.4477153 18,12 C18,12.5522847 17.5522847,13 17,13 L13,13 L13,17 C13,17.5522847 12.5522847,18 12,18 C11.4477153,18 11,17.5522847 11,17 L11,13 L7,13 C6.44771525,13 6,12.5522847 6,12 C6,11.4477153 6.44771525,11 7,11 L11,11 Z"
-                                                                        fill="#000000" />
-                                                                </g>
-                                                            </svg>
+                                                            <x-icons.add-more></x-icons.add-more>
+                                                            
                                                         </span>
                                                         <span class="text-primary">&nbsp;&nbsp;Add More</span>
                                                     </a>
