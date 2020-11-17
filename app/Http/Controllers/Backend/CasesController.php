@@ -228,7 +228,6 @@ class CasesController extends Controller
         $checklistIds               = $case->getChecklistIds();
         $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
         $checklistStatusCount       = (object) $case->getChecklistStatusCount();
-        return [$checklistGroupDocuments];
 
         // Checklist Objects
         // $case->getCaseSubmittedChecklistByStatus(); // NULL

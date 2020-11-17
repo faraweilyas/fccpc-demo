@@ -17,4 +17,9 @@ class ChecklistGroup extends Model
     {
     	return (strtolower($this->name) == 'fees') ? true : false;
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'group_id');
+    }
 }

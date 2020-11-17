@@ -368,6 +368,7 @@
                                                                 value="{{ strtolower($checklist->name) }}">
                                                             <input type="hidden" id="doc_id"
                                                                 value="{{ !empty($document) ? $document->id : '' }}">
+                                                            <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}">
                                                         </div>
                                                         <p
                                                             class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">

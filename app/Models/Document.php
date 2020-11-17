@@ -13,6 +13,11 @@ class Document extends Model
         return $this->hasOne(Cases::class, 'id', 'case_id');
     }
 
+    public function group()
+    {
+        return $this->belongsTo(ChecklistGroup::class, 'group_id');
+    }
+
     public function checklists()
     {
         return $this->belongsToMany(Checklist::class, 'checklist_document', 'document_id', 'checklist_id')

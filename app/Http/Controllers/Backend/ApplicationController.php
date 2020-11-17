@@ -223,6 +223,7 @@ class ApplicationController extends Controller
         endif;
         $document = Document::create([
             'case_id' => $guest->case->id,
+            'group_id' => request('group_id'),
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);
@@ -273,6 +274,7 @@ class ApplicationController extends Controller
         endif;
         $document = Document::create([
             'case_id' => $guest->case->id,
+            'group_id' => request('group_id'),
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);

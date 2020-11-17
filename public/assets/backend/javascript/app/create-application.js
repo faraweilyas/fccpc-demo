@@ -420,6 +420,7 @@ $(document).ready(function()
             checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
             amount_paid        = currentForm.find("#amount_paid").val(),
+            group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
         $("#previous-btn").attr('disabled', 'disabled');
@@ -436,6 +437,7 @@ $(document).ready(function()
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
+        formData.append('group_id', group_id);
         formData.append('amount_paid', amount_paid);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
@@ -476,6 +478,7 @@ $(document).ready(function()
             checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
             amount_paid        = currentForm.find("#amount_paid").val(),
+            group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
         $("#previous-btn").attr('disabled', 'disabled');
@@ -492,6 +495,7 @@ $(document).ready(function()
         formData.append('additional_info', additional_info);
         formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
+        formData.append('group_id', group_id);
         formData.append('amount_paid', amount_paid);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
@@ -750,6 +754,7 @@ function saveChecklistDocument(action, currentForm)
         file               = currentForm.find('#checklist_doc')[0].files[0],
         checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
         amount_paid        = currentForm.find("#amount_paid").val(),
+        group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
     $("#previous-btn").attr('disabled', 'disabled');
@@ -766,6 +771,7 @@ function saveChecklistDocument(action, currentForm)
     formData.append('additional_info', additional_info);
     formData.append('checklists', checklists);
     formData.append('document_id', doc_id);
+    formData.append('group_id', group_id);
     formData.append('amount_paid', amount_paid);
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -798,6 +804,7 @@ function saveDeficientChecklistDocument(action, currentForm)
         file               = currentForm.find('#checklist_doc')[0].files[0],
         checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
         amount_paid        = currentForm.find("#amount_paid").val(),
+        group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
     $("#previous-btn").attr('disabled', 'disabled');
@@ -814,6 +821,7 @@ function saveDeficientChecklistDocument(action, currentForm)
     formData.append('additional_info', additional_info);
     formData.append('checklists', checklists);
     formData.append('document_id', doc_id);
+    formData.append('group_id', group_id);
     formData.append('amount_paid', amount_paid);
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
