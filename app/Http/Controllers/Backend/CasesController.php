@@ -252,8 +252,8 @@ class CasesController extends Controller
     public function getChecklistCount(Cases $case, $date)
     {
         $this->sendResponse('Case checklist status count.', 'success', [
-            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
-            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')
+            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient')->count(),
+            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')->count(),
         ]);
     }
 
@@ -266,7 +266,7 @@ class CasesController extends Controller
     {
         $this->sendResponse('Case checklist by status.', 'success', [
             'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
-            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')
+            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved'),
         ]);
     }
 

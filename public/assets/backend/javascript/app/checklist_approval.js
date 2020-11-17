@@ -102,7 +102,7 @@ $(document).ready(function ()
                     {
                         var result      = JSON.parse(response);
 
-                        deficient_count = result.response.deficient_cases.length;
+                        deficient_count = result.response.deficient_cases;
                         deficient_count = (typeof (deficient_count) !== "undefined" || deficient_count != 0) ? deficient_count : 0;
 
                         if (result.response.deficient_cases === undefined || deficient_count == 0)
