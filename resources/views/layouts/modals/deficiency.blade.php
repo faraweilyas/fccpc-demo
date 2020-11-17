@@ -11,7 +11,7 @@
                 <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                     <div class="card-header card-header-tabs-line" style="justify-content: center;border-bottom: none;">
                         <div class="card-toolbar">
-                            <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                            <ul class="nav nav-tabs nav-bold nav-tabs-line" style="justify-content: center;">
                                 <li class="nav-item">
                                     <a class="nav-link active" data-toggle="tab" href="#applicant_tab">
                                         <span class="nav-icon"><i class="flaticon2-user"></i></span>

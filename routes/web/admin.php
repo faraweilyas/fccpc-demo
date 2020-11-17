@@ -249,7 +249,7 @@ Route::prefix('cases')
         )->name('checklist-approval');
 
         Route::get(
-            'checklist-status-count/{case}',
+            'checklist-status-count/{case}/{date}',
             'CasesController@getChecklistCount'
         )->name('checklist-status-count');
 
@@ -264,7 +264,7 @@ Route::prefix('cases')
         )->name('checklist-approval-submit');
 
         Route::post(
-            'issue-deficiency/{case}',
+            'issue-deficiency/{case}/{date}',
             'CasesController@issueDeficiency'
         )->name('issue-deficiency');
 

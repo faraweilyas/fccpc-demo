@@ -40,7 +40,7 @@
                 <div class="card-custom">
                     @php
                         $x                  = 1;
-                        $deficient_count    = $checklistStatusCount->deficient ?? 0;
+                        $deficient_count    = $checklistStatus->count() ?? 0;
                     @endphp
                     @foreach($submittedDocuments as $document)
                         @if ($document->group_id)
@@ -98,7 +98,7 @@
                                                                             @if($checklist_document_status=='deficient' ) checked="checked"
                                                                             @endif data-document-id="{{ $document->id }}"
                                                                             data-checklist-id="{{ $checklist->id }}"
-                                                                            data-case-id="{{ $case->id }}" data-switch-box="true">
+                                                                            data-case-id="{{ $case->id }}" data-switch-box="true" data-date="{{ $date }}">
                                                                         <span></span>
                                                                     </label>
                                                                     Deficient
@@ -110,7 +110,7 @@
                                                                         @if($checklist_document_status=='approved' ) checked="checked"
                                                                         @endif data-document-id="{{ $document->id }}"
                                                                         data-checklist-id="{{ $checklist->id }}"
-                                                                        data-case-id="{{ $case->id }}" data-switch-box="false">
+                                                                        data-case-id="{{ $case->id }}" data-switch-box="false" data-date="{{ $date }}">
                                                                     <span></span>
                                                                     Approve
                                                                 </label>
@@ -120,7 +120,7 @@
                                                                         @if($checklist_document_status=='deficient' ) checked="checked"
                                                                         @endif data-document-id="{{ $document->id }}"
                                                                         data-checklist-id="{{ $checklist->id }}"
-                                                                        data-case-id="{{ $case->id }}" data-switch-box="false">
+                                                                        data-case-id="{{ $case->id }}" data-switch-box="false" data-date="{{ $date }}">
                                                                     <span></span>
                                                                     Deficient
                                                                 </label>
@@ -157,12 +157,13 @@
     </div>
     <div class="hide">
         <span class="case_id">{{ $case->id }}</span>
+        <span class="case_doc_date">{{ $date }}</span>
         <span class="firm">{!! $case->applicant_firm !!}</span>
         <span class="name">{!! $case->getApplicantName() !!}</span>
         <span class="email">{!! $case->applicant_email !!}</span>
         <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
         <span class="address">{!! $case->applicant_address !!}</span>
-        <span class="checklist_deficient_count">{{ $checklistStatusCount->deficient ?? 0 }}</span>
+        <span class="checklist_deficient_count">{{ $checklistStatus->count() ?? 0 }}</span>
     </div>
     <div class="modal fade" id="Issue" data-backdrop="static" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -176,7 +177,7 @@
                 </div>
                 <div class="modal-body">
                     <div id="deficient_cases_list" class="py-5">
-                        @foreach($case->getCaseSubmittedChecklistByStatus('deficient', $date) as $checklist)
+                        @foreach($checklistStatus as $checklist)
                         <div>
                             <p class="alert-custom ">
                                 {{ $checklist->name }}

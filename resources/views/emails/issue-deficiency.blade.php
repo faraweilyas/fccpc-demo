@@ -589,18 +589,11 @@
                                 <td valign="top" id="templateFooter"
                                     style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;">
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock">
-                                        style="min-width: 100%;border-collapse: collapse;mso-table-lspace:
-                                        0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust:
-                                        100%;">
                                         <tbody class="mcnTextBlockOuter">
                                             <tr>
                                                 <td valign="top" class="mcnTextBlockInner">
 
                                                     <table align="left" border="0" cellpadding="0" cellspacing="0">
-                                                        style="max-width: 100%;min-width: 100%;border-collapse:
-                                                        collapse;mso-table-lspace: 0pt;mso-table-rspace:
-                                                        0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;"
-                                                        width="100%" class="mcnTextContentContainer">
                                                         <tbody>
                                                             <tr>
 
