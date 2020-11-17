@@ -254,7 +254,7 @@ Route::prefix('cases')
         )->name('checklist-status-count');
 
         Route::get(
-            'checklist-by-status/{case}',
+            'checklist-by-status/{case}/{date}',
             'CasesController@getChecklistByStatus'
         )->name('checklist-by-status');
 
