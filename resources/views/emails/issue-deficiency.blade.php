@@ -538,17 +538,17 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}"
                                                                         paraid="1620294906"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Dear {{ $data['fullname'] }}</p>
+                                                                        Dear {{ $data['fullname'] }},</p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your application {{ $data['ref_no'] }} is now
-                                                                        under review, please provide the following;</p>
+                                                                        Your application <strong>{{ $data['ref_no'] }}</strong> is now
+                                                                        under review, please provide the following <a href="{{ route('applicant.track') }}">here</a>;</p>
                                                                     @foreach($data['deficent_cases'] as $checklist)
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
-                                                                        style="margin: 2px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         <b>{{ $checklist->group->name }}</b> -
                                                                         {{ $checklist->name }}</p>
                                                                     @endforeach

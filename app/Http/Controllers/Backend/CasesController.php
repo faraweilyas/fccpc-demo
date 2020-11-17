@@ -305,7 +305,7 @@ class CasesController extends Controller
         Mail::to($emails)->send(
             new IssueDeficiencyEmail([
                 'fullname'        => $case->applicant_fullname,
-                'ref_no'          => $case->reference_no,
+                'ref_no'          => $case->guest->tracking_id,
                 'case'            => $case,
                 'additional_info' => request('additional_info'),
                 'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),

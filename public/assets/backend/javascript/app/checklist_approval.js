@@ -210,7 +210,7 @@ $(document).ready(function ()
                 var result = JSON.parse(response);
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
-                toastr.success("Email sent to applicant");
+                toastr.success("Applicant has been notified!");
             }
         });
     });

@@ -45,7 +45,7 @@
                         <div class="card">
                             <div class="card-header" id="headingOne{{ $x }}">
                                 <div class="card-title @if($x !== 1) collapsed @endif" data-toggle="collapse" data-target="#collapseOne{{ $x }}">
-                                <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, 'customd') }}</div>
+                                <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, '%d %B. %Y at %I:%M %p') }}</div>
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">

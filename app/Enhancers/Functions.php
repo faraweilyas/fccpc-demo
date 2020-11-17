@@ -223,7 +223,7 @@ function datetimeToText(string $datetime, string $format="fulldate") : string
 			$dateFormat = "%a";
 			break;
 		default:
-			$dateFormat = "%B %d, %Y at %I:%M %p";
+			$dateFormat = $format;
 			break;
 	}
 	return strftime($dateFormat, $unixdatetime);
