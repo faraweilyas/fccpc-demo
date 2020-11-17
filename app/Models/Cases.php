@@ -190,11 +190,11 @@ class Cases extends Model
         return collect($checklistDocuments)->flatten();
     }
 
-    public function getCaseSubmittedChecklistByStatus(string $status=NULL)
+    public function getCaseSubmittedChecklistByStatus(string $status='deficient')
     {
-        $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status)
+        $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use ($status)
         {
-            return $checklistDocument->checklist_document->status == $status;
+            return ($checklistDocument->checklist_document->status == $status);
         });
 
         return $deficientChecklist;
@@ -275,6 +275,24 @@ class Cases extends Model
             ->get()
             ->groupBy('date_case_submitted')
             ->sortKeysDesc();
+    }
+
+    public function getSubmittedDocumentByDate(string $date=NULL)
+    {
+        $submittedDocuments = $this->submittedDocuments();
+
+        foreach ($submittedDocuments as $dateSubmitted => $documents)
+        {
+            foreach ($documents as $document)
+            {
+                $checklists = $document->checklists;
+                $group      = $document->group;
+            }
+        }
+
+        $submittedDocuments = $submittedDocuments->all();
+
+        return ($submittedDocuments[$date] ?? NULL);
     }
 
     public function latestSubmittedDocuments()
