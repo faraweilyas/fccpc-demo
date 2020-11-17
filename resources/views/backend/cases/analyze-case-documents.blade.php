@@ -44,7 +44,7 @@
                     <div class="mt-20">
                         <div class="d-flex justify-content-between">
                             <button  class="btn btn-success-transparent-timestamp-date btn-sm px-3">
-                                Date: {{ $date }}
+                                Date: {{ datetimeToText($date, 'customd') }}
                             </button>
                             @if ($cases->count() > 0 || $case->isCaseOnHold())
                                 <button
