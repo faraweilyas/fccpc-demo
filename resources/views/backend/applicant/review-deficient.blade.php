@@ -1,6 +1,5 @@
 @extends('layouts.backend.old.guest')
 
-
 @section('content')
 <div class="subheader py-2 py-lg-4 subheader-transparent mt-xs-20 mt-sm-18 mt-md-20 mt-lg-0" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -44,19 +43,35 @@
                                                 rx="1" />
                                         </g>
                                     </svg>
-
                                     Print
                                 </span>
                             </button>
                         </div>
                     </div>
                     <h3 class="checklist-header">APPLICATION SUMMARY</h3>
-
                     <p class="review-description">
                         Review your entries for any kind of error. Kindly note that you cannot edit information once it
                         has been submitted.
                     </p>
-                    
+                    <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
+                    <div class="grid-col-2">
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Subject:</h4>
+                            <h4>{{ $case->subject }}</h4>
+                        </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Parties:</h4>
+                            <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
+                        </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Transaction Type:</h4>
+                            <h4>{{ $case->getType() }}</h4>
+                        </div>
+                        <div class="grid-row-2 d-flex">
+                            <h4 class="info-title">Transaction Category:</h4>
+                            <h4>{{ $case->getCategoryText() }}</h4>
+                        </div>
+                    </div>
                     <p class="section-header">FEES</p>
                     <div class="grid-col-2">
                         <div class="grid-row-2 d-flex">
@@ -110,7 +125,6 @@
                     <form class="form" id="kt_form">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
-
                         <div class="grid-col-2-btn my-20">
                             <button type="button" id="goback-btn"
                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
@@ -129,7 +143,8 @@
         </div>
     </div>
 </div>
+@endsection
 
 @section('custom.javascript')
-<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
 @endsection
