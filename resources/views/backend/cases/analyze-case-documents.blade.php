@@ -33,61 +33,70 @@
     @if (count($checklistGroupDocuments) > 0)
         <div class="conatiner-fl px-5 py-5 ">
             <div class="card-custom relative">
-                <h5 class="text-bold">Submitted Documents</h5>
-                @php
-                    $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
-                    $submittedDocuments = $case->submittedDocuments();
-                @endphp
+                <h5 class="text-bold mb-10">Submitted Documents</h5>
+                <div class="accordion accordion-solid accordion-toggle-plus mt-10" id="accordionExample">
+                    @php
+                        $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
+                        $submittedDocuments = $case->submittedDocuments();
+                        $x = 1;
+                    @endphp
 
-                @foreach ($submittedDocuments as $date => $documents)
-                    <hr/>
-                    <div class="mt-20">
-                        <div class="d-flex justify-content-between">
-                            <button  class="btn btn-success-transparent-timestamp-date btn-sm px-3">
-                                Date: {{ datetimeToText($date, 'customd') }}
-                            </button>
-                            @if ($cases->count() > 0 || $case->isCaseOnHold())
-                                <button
-                                    class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5"
-                                    onclick="window.location.href = '{{ route('cases.checklist-approval', [$case->id]) }}';"
-                                >
-                                    Continue Document Approval
-                                </button>
-                            @else
-                                <button
-                                    class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval"
-                                    data-link="{{ route('cases.checklist-approval', [$case->id]) }}"
-                                    data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
-                                >
-                                    Start Document Approval
-                                </button>
-                            @endif
-                        </div>
-                        <br />
-                        <div class="row">
-                            @foreach ($documents as $document)
-                                @php
-                                    $checklists = $document->checklists;
-                                    $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
-                                @endphp
-                                @if (!empty($group))
-                                    <div class="col-md-4 ">
-                                        <div class="download-card">
-                                            <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-                                            <p>{{ $group->name }}</p>
+                    @foreach ($submittedDocuments as $date => $documents)
+                        <div class="card">
+                            <div class="card-header" id="headingOne{{ $x }}">
+                                <div class="card-title @if($x !== 1) collapsed @endif" data-toggle="collapse" data-target="#collapseOne{{ $x }}">
+                                <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, 'customd') }}</div>
+                            </div>
+                            <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <div class="row justify-content-end">
+                                        @if ($cases->count() > 0 || $case->isCaseOnHold())
                                             <button
-                                                class="btn btn-success-sm"
-                                                onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
+                                                class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
+                                                onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
                                             >
-                                                Download
+                                                Continue Document Approval
                                             </button>
-                                        </div>
+                                        @else
+                                            <button
+                                                class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
+                                                data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
+                                                data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
+                                            >
+                                                Start Document Approval
+                                            </button>
+                                        @endif
                                     </div>
-                                @endif
-                            @endforeach
+                                    <div class="row">
+                                        @foreach ($documents as $document)
+                                            @php
+                                                $checklists = $document->checklists;
+                                                $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
+                                            @endphp
+                                            @if (!empty($group))
+                                                <div class="col-md-4 ">
+                                                    <div class="download-card">
+                                                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
+                                                        <p>{{ $group->name }}</p>
+                                                        <button
+                                                            class="btn btn-success-sm"
+                                                            onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
+                                                        >
+                                                            Download
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                        @php
+                            $x++;
+                        @endphp
+                    @endforeach
+                </div>
             </div>
         </div>
     @else

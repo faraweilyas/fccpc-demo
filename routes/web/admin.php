@@ -244,7 +244,7 @@ Route::prefix('cases')
         )->name('analyze-documents');
 
         Route::get(
-            'checklist-approval/{case}',
+            'checklist-approval/{case}/{date}',
             'CasesController@checklistApproval'
         )->name('checklist-approval');
 
@@ -261,7 +261,7 @@ Route::prefix('cases')
         Route::post(
             'checklist-approval/{document}',
             'CasesController@saveChecklistApproval'
-        )->name('checklist-approval');
+        )->name('checklist-approval-submit');
 
         Route::post(
             'issue-deficiency/{case}',

@@ -223,11 +223,12 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function checklistApproval(Cases $case)
+    public function checklistApproval(Cases $case, $date)
     {
         $checklistIds               = $case->getChecklistIds();
         $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
         $checklistStatusCount       = (object) $case->getChecklistStatusCount();
+        return [$checklistGroupDocuments];
 
         // Checklist Objects
         // $case->getCaseSubmittedChecklistByStatus(); // NULL
