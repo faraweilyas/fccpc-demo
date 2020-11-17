@@ -11,57 +11,68 @@ Route::prefix('application')
         Route::get(
             'test',
             'ApplicationController@test'
-        )->name('test');
+        )
+        ->name('test');
 
         Route::get(
             'checklist/{guest:tracking_id}/{case_category}',
             'ApplicationController@checklistDocuments'
-        )->name('checklist-documents');
+        )
+        ->name('checklist-documents');
 
         Route::get(
             'select/{guest:tracking_id}',
             'ApplicationController@index'
-        )->name('index');
+        )
+        ->name('index');
 
         Route::post(
             'create/{guest:tracking_id}/{action}',
             'ApplicationController@create'
-        )->name('create');
+        )
+        ->name('create');
 
         Route::post(
             'submit/{guest:tracking_id}',
             'ApplicationController@submit'
-        )->name('submit');
+        )
+        ->name('submit');
 
         Route::post(
             'submit-deficient/{guest:tracking_id}',
             'ApplicationController@submitDeficient'
-        )->name('submit.deficient');
+        )
+        ->name('submit.deficient');
 
         Route::get(
             'submitted/{guest:tracking_id}',
             'ApplicationController@applicationSubmitted'
-        )->name('submitted');
+        )
+        ->name('submitted');
 
         Route::get(
             'upload/documents/{guest:tracking_id}',
             'ApplicationController@uploadDocuments'
-        )->name('upload');
+        )
+        ->name('upload');
 
         Route::get(
             '{guest:tracking_id}/{case_category}',
             'ApplicationController@show'
-        )->name('show');
+        )
+        ->name('show');
 
         Route::get(
             '/applicant/{guest:tracking_id}/review/{step}',
             'ApplicationController@review'
-        )->name('review');
+        )
+        ->name('review');
 
         Route::get(
             '/applicant/{guest:tracking_id}/review-deficient/{step}',
             'ApplicationController@reviewDeficient'
-        )->name('review.deficient');
+        )
+        ->name('review.deficient');
     });
 
 // Enquiries
@@ -70,27 +81,51 @@ Route::prefix('enquiries')
     ->namespace('Backend')
     ->group(function()
     {
-        Route::get('select', 'EnquiriesController@index')->name('index');
+        Route::get(
+            'select',
+            'EnquiriesController@index'
+        )
+        ->name('index');
 
-        Route::get('all', 'EnquiriesController@logs')
-            ->name('logs')
-            ->middleware('auth');
+        Route::get(
+            'all',
+            'EnquiriesController@logs'
+        )
+        ->name('logs')
+        ->middleware('auth');
 
-        Route::get('assigned/handler/logs', 'EnquiriesController@assignedLogs')
-            ->name('assigned-logs')
-            ->middleware('auth');
+        Route::get(
+            'assigned/handler/logs',
+            'EnquiriesController@assignedLogs'
+        )
+        ->name('assigned-logs')
+        ->middleware('auth');
 
-        Route::post('assign/{id}', 'EnquiriesController@assignLog')
-            ->name('assign')
-            ->middleware('auth');
+        Route::post(
+            'assign/{id}',
+            'EnquiriesController@assignLog'
+        )
+        ->name('assign')
+        ->middleware('auth');
 
-        Route::get('file/download/{file}', 'EnquiriesController@download')
-            ->name('download')
-            ->middleware('auth');
+        Route::get(
+            'file/download/{file}',
+            'EnquiriesController@download'
+        )
+        ->name('download')
+        ->middleware('auth');
 
-        Route::get('{type}', 'EnquiriesController@create')->name('create');
+        Route::get(
+            '{type}',
+            'EnquiriesController@create'
+        )
+        ->name('create');
 
-        Route::post('/', 'EnquiriesController@store')->name('store');
+        Route::post(
+            '/',
+            'EnquiriesController@store'
+        )
+        ->name('store');
     });
 
 // FAQ
@@ -183,19 +218,25 @@ Route::prefix('cases')
             'CasesController@workingonCases'
         )->name('working_on');
 
-        Route::get('/approved', 'CasesController@approvedCases')->name(
-            'approved'
-        );
+        Route::get(
+            '/approved',
+            'CasesController@approvedCases'
+        )->name('approved');
 
-        Route::get('on-hold/{handler?}', 'CasesController@onholdCases')->name('on-hold');
+        Route::get(
+            'on-hold/{handler?}',
+            'CasesController@onholdCases'
+        )->name('on-hold');
 
-        Route::get('/archived', 'CasesController@archivedCases')->name(
-            'archived'
-        );
+        Route::get(
+            '/archived',
+            'CasesController@archivedCases'
+        )->name('archived');
 
-        Route::get('analyze/{case}', 'CasesController@analyzeCase')->name(
-            'analyze'
-        );
+        Route::get(
+            'analyze/{case}',
+            'CasesController@analyzeCase'
+        )->name('analyze');
 
         Route::get(
             'analyze-documents/{case}',
@@ -227,18 +268,20 @@ Route::prefix('cases')
             'CasesController@issueDeficiency'
         )->name('issue-deficiency');
 
-        Route::post('assign/{case}/{user}', 'CasesController@assignCase')->name(
-            'assign'
-        );
+        Route::post(
+            'assign/{case}/{user}',
+            'CasesController@assignCase'
+        )->name('assign');
 
         Route::post(
             'update-working-on/{case}/{user}',
             'CasesController@updateWorkingOn'
         )->name('update_working_on');
 
-        Route::get('checklists/{case}', 'CasesController@caseChecklists')->name(
-            'checklists'
-        );
+        Route::get(
+            'checklists/{case}',
+            'CasesController@caseChecklists'
+        )->name('checklists');
 
         Route::get('documents/{case}', 'CasesController@caseDocuments')->name(
             'documents'

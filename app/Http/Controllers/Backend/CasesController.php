@@ -23,7 +23,7 @@ class CasesController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Handles search cases page.
      *
@@ -299,7 +299,7 @@ class CasesController extends Controller
         else:
             $emails = array($case->applicant_email, $case->guest->email);
         endif;
-        
+
         Mail::to($emails)->send(
             new IssueDeficiencyEmail([
                 'fullname'        => $case->applicant_fullname,

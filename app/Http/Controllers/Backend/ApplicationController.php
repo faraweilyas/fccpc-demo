@@ -354,7 +354,7 @@ class ApplicationController extends Controller
             'email' => $case_handler->email,
         ])->notify(
                 new NotifyHandlerForDeficientCaseSubmission($case->reference_number)
-            ); 
+            );
 
         $current_date = now();
         Document::where('case_id', $case->id)->where('date_case_submitted', null)->update([
@@ -364,7 +364,7 @@ class ApplicationController extends Controller
         $case->removeDeficiency($case_handler);
 
         try {
-            
+
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
         }
@@ -393,12 +393,23 @@ class ApplicationController extends Controller
     {
         $case = Cases::find(31);
 
-        $newDeficientGroupIds = $case->getDeficientGroupIds();
+        $submittedDocuments = $case->submittedDocuments();
+
+        foreach ($submittedDocuments as $date => $documents)
+        {
+            // dump($date, $documents);
+            foreach ($documents as $document)
+            {
+                $checklists = $document->checklists;
+                $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
+            }
+        }
 
         return [
             // $case->documents,
             // $case->guest,
             // $case->isDeficient(),
+            // $case->getDeficientGroupIds(),
             // Gets all latest submitted document checklist, either approved, deficient or null
             // $case->getLatestSubmittedDocumentChecklists(),
             // Gets all latest submitted document checklist by specified status, default is deficient
@@ -412,10 +423,10 @@ class ApplicationController extends Controller
             // Gets all latest submitted document checklist group names by specified status, default is deficient
             // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
 
-            // $case->submittedDocuments(),
+            $submittedDocuments,
             // $case->unSubmittedDocuments(),
-            $case->getChecklistGroupUnSubmittedDocuments(),
-            $case->getChecklistGroupUnSubmittedDocumentsName(),
+            // $case->getChecklistGroupUnSubmittedDocuments(),
+            // $case->getChecklistGroupUnSubmittedDocumentsName(),
 
         ];
 
