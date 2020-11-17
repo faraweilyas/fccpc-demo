@@ -295,6 +295,17 @@ class Cases extends Model
         return ($submittedDocuments[$date] ?? NULL);
     }
 
+    public function getSubmittedDocumentChecklistByDateAndStatus(string $date=NULL, string $status=NULL)
+    {
+        $submittedDocument = $this->getSubmittedDocumentByDate($date);
+
+        return $submittedDocument
+            ->pluck('checklists')
+            ->flatten()
+            ->filter()
+            ->where('checklist_document.status', $status);
+    }
+
     public function latestSubmittedDocuments()
     {
         return $this->submittedDocuments()->first();
