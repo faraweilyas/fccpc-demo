@@ -410,7 +410,7 @@ class ApplicationController extends Controller
         // $submittedDocument = $case->getSubmittedDocumentByDate($date);
 
         return [
-            $case,
+            // $case,
             // $case->documents,
             // $case->guest,
             // $case->isDeficient(),
@@ -431,6 +431,7 @@ class ApplicationController extends Controller
 
             // $submittedDocuments,
             // $submittedDocument,
+            // $case->getSubmittedDocumentChecklistByDateAndStatus($date),
             // $case->unSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocumentsName(),
