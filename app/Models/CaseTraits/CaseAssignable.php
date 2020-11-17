@@ -40,6 +40,21 @@ trait CaseAssignable
     }
 
     /**
+     * An applicant removes deficiency
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function removeDeficiency(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'defficiency_issued_at' => null
+            ]
+        ]);
+    }
+
+    /**
      * A case handler updates working on
      *
      * @param  User $caseHandler

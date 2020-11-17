@@ -44,6 +44,9 @@
                     <div class="card card-custom gutter-b example example-compact">
                         <div class="card-header">
                             <h3 class="card-title">Upload Deficient Document</h3>
+                             <button id="review-deficient" data-id="{{ $guest->tracking_id }}" class="btn btn-primary font-weight-bold text-uppercase px-9 my-3 float-right mr__10">
+                                Review Application
+                            </button>
                         </div>
                         <div class="card-body p-0">
                             <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first"
@@ -220,11 +223,12 @@
                                                         </button>
                                                     </div>
                                                     <div id="save-btns">
-                                                        <button id="upload-info"
+                                                        <button id="save-deficient-doc"
                                                             class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
                                                             data-wizard-type="action-submit"
+                                                            data-review-route="/application/applicant/{{ $guest->tracking_id }}/review-deficient/1"
                                                         >
-                                                            Save & Upload Case Documents
+                                                            Save & Review
                                                         </button>
                                                         <button id="save-info"
                                                             class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
@@ -239,6 +243,7 @@
                                                             <i class="fas fa-spinner fa-pulse"></i>&nbsp;Saving...
                                                         </button>
                                                     </div>
+                                                    <input type="hidden" id="current-step" value="{{ $_GET['step'] ?? 1 }}">
                                                 </div>
                                             </form>
                                         </div>

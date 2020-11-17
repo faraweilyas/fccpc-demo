@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
 use App\Models\Cases;
+use App\Models\User;
 use App\Models\Document;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\NotifyHandlerForDeficientCaseSubmission;
 
 class ApplicationController extends Controller
 {
@@ -337,6 +339,39 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Submit deficient case.
+     *
+     * @param Guest $guest
+     * @return void
+     */
+    public function submitDeficient(Guest $guest)
+    {
+        $case         = $guest->case;
+        $case_handler = $case->active_handlers()->first();
+
+        (new User)->forceFill([
+            'name'  => $case_handler->getFullName(),
+            'email' => $case_handler->email,
+        ])->notify(
+                new NotifyHandlerForDeficientCaseSubmission($case->reference_number)
+            ); 
+
+        $current_date = now();
+        Document::where('case_id', $case->id)->where('date_case_submitted', null)->update([
+            'date_case_submitted'          => $current_date,
+        ]);
+
+        $case->removeDeficiency($case_handler);
+
+        try {
+            
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+        }
+        $this->sendResponse('Application submitted.', 'success', $case);
+    }
+
+    /**
      * Handles application submitted page route.
      *
      * @param Guest $guest
@@ -395,10 +430,6 @@ class ApplicationController extends Controller
      */
     public function uploadDocuments(Guest $guest)
     {
-        if (!$guest->case->isSubmitted()) {
-            return redirect($guest->submittedApplicationPath());
-        }
-
         $case                   = $guest->case;
         $isDeficient            = $case->isDeficient();
         $checklistIds           = $case->getLatestSubmittedDocumentChecklistsIDs('deficient');
@@ -451,6 +482,37 @@ class ApplicationController extends Controller
                 'documents',
                 'checklistIds',
                 'checklistGroupDocuments'
+            )
+        );
+    }
+
+    /**
+     * Handles Review Deficient application page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function reviewDeficient(Guest $guest, $step)
+    {
+        if (!$guest->case->isDeficient()) {
+            return redirect($guest->submittedApplicationPath());
+        }
+
+        $case                    = $guest->case;
+        $deficientGroupIds       = $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
+        $unSubmittedDocuments    = $case->getChecklistGroupUnSubmittedDocuments();
+
+        $title       = 'Review Application | ' . APP_NAME;
+        $description = 'Review Application | ' . APP_NAME;
+        $details = details($title, $description);
+        return view(
+            'backend.applicant.review-deficient',
+            compact(
+                'details',
+                'guest',
+                'step',
+                'case',
+                'deficientGroupIds',
+                'unSubmittedDocuments'
             )
         );
     }

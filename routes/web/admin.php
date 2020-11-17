@@ -33,6 +33,11 @@ Route::prefix('application')
             'ApplicationController@submit'
         )->name('submit');
 
+        Route::post(
+            'submit-deficient/{guest:tracking_id}',
+            'ApplicationController@submitDeficient'
+        )->name('submit.deficient');
+
         Route::get(
             'submitted/{guest:tracking_id}',
             'ApplicationController@applicationSubmitted'
@@ -52,6 +57,11 @@ Route::prefix('application')
             '/applicant/{guest:tracking_id}/review/{step}',
             'ApplicationController@review'
         )->name('review');
+
+        Route::get(
+            '/applicant/{guest:tracking_id}/review-deficient/{step}',
+            'ApplicationController@reviewDeficient'
+        )->name('review.deficient');
     });
 
 // Enquiries

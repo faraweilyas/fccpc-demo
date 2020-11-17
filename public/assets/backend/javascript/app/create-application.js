@@ -371,6 +371,11 @@ $(document).ready(function()
         window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review/"+$("#current-step").val();
     });
 
+    $("#review-deficient").on('click', function (event) {
+
+        window.location.href = "/application/applicant/"+$(this).attr('data-id')+"/review-deficient/"+$("#current-step").val();
+    });
+
     $("#save-info").on('click', function(event)
     {
         event.preventDefault();
@@ -453,6 +458,62 @@ $(document).ready(function()
         return;
     });
 
+    $("#save-deficient-doc").on('click', function(event)
+    {
+        event.preventDefault();
+
+        var sections    = $('.pb-5'),
+            currentForm = sections.filter(function(index, element) {
+                            return (typeof ($(element).attr('data-wizard-state')) !== "undefined")
+                        }),
+            sendForm    = 'save'+currentForm.attr('data-form');
+
+        var tracking_id        = $("#tracking_id").val(),
+            formData           = new FormData(),
+            checklists         = [],
+            additional_info    = currentForm.find('#additional_info').val(),
+            file               = currentForm.find('#checklist_doc')[0].files[0],
+            checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
+            review_route       = $(this).attr('data-review-route'),
+            amount_paid        = currentForm.find("#amount_paid").val(),
+            doc_id             = currentForm.find("#doc_id").val();
+
+        $("#previous-btn").attr('disabled', 'disabled');
+        $("#save-deficient-doc").toggle();
+        $("#saving-img").removeClass('hide');
+
+        $(currentForm).find(':checkbox:checked').each(function(i)
+        {
+           checklists[i] = $(this).val();
+        });
+
+        formData.append('_token', $("#token").val());
+        formData.append('file', file);
+        formData.append('additional_info', additional_info);
+        formData.append('checklists', checklists);
+        formData.append('document_id', doc_id);
+        formData.append('amount_paid', amount_paid);
+        sendRequest(
+            '/application/create/'+tracking_id+'/'+sendForm,
+            formData,
+            false,
+            false,
+            function(data, status)
+            {
+                result = JSON.parse(data);
+                currentForm.find("#doc_id").val(result.response.id);
+                notify(result.responseType, result.message);
+                $("#previous-btn").removeAttr('disabled');
+                $("#save-deficient-doc").toggle();
+                $("#saving-img").addClass('hide');
+                if (result.responseType !== 'error'){
+                    window.location.replace(review_route);
+                }   
+            }
+        );
+        return;
+    });
+
     $('input[type="file"]').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
@@ -483,6 +544,25 @@ $(document).ready(function()
         {
             if (result.value)
                 submitCase();
+            else
+                return false;
+        });
+    });
+
+    $("#upload-deficient-info").on('click', function(event)
+    {
+        event.preventDefault();
+
+        swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, submit it!"
+        }).then(function(result)
+        {
+            if (result.value)
+                submitDeficientCase();
             else
                 return false;
         });
@@ -770,9 +850,7 @@ function submitCase()
         declaration_rep  = $("#declaration_rep").val();
 
     $("#goback-btn").addClass('hide');
-    $("#upload-info").addClass('hide');
-    $("#previous-btn").addClass('hide');
-    $("#save-btns").addClass('hide');
+    $("#upload-deficient-info").addClass('hide');
     $("#upload-img").toggle();
 
     sendRequest(
@@ -807,8 +885,56 @@ function submitCase()
         },
         function(xhr, desc, err)
         {
-            $("#previous-btn").removeClass('hide');
-            $("#save-btns").removeClass('hide');
+            $("#goback-btn").removeClass('hide');
+            $("#upload-deficient-info").removeClass('hide');
+            $("#upload-img").toggle();
+            notify(desc, err);
+        }
+    );
+    return;
+}
+
+
+function submitDeficientCase()
+{
+    var tracking_id      = $("#tracking_id").val();
+
+    $("#goback-btn").addClass('hide');
+    $("#upload-deficient-info").addClass('hide');
+    $("#upload-img").toggle();
+
+    sendRequest(
+        '/application/submit-deficient/'+tracking_id,
+        {
+            _token: $("#token").val(),
+        },
+        'application/x-www-form-urlencoded; charset=UTF-8',
+        true,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            if (result.responseType != "success")
+            {
+                notify(result.responseType, result.message);
+                setTimeout(() => {
+                    location.reload();
+                }, 1500);
+                return;
+            }
+
+            swal.fire(
+                "Submitted!",
+                "Your application has been submitted.",
+                "success"
+            ).then(function()
+            {
+                window.location.replace('/application/submitted/'+tracking_id);
+            });
+        },
+        function(xhr, desc, err)
+        {
+            $("#goback-btn").removeClass('hide');
+            $("#upload-deficient-info").removeClass('hide');
             $("#upload-img").toggle();
             notify(desc, err);
         }
