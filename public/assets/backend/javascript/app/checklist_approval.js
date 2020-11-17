@@ -130,12 +130,13 @@ $(document).ready(function ()
 
     $(".deficient-basket").on('click', function(event)
     {
-        console.log(true);
-        var case_id = $(this).attr('data-case-id');
+        var case_id = $(this).attr('data-case-id'),
+            date    = $(this).attr('data-date');
+
         $("#deficient_cases_list div").empty();
 
         $.ajax({
-            url: '/cases/checklist-by-status/'+case_id,
+            url: '/cases/checklist-by-status/'+case_id+'/'+date,
             type: 'GET',
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             data: {},

@@ -229,7 +229,7 @@ class CasesController extends Controller
         $submittedDocuments         = $case->submittedDocuments()[$date];
         $checklistStatusCount       = (object) $case->getChecklistStatusCount();
 
-        // return [$submittedDocuments->count()];
+        return [$case->getCaseSubmittedChecklistByStatus('deficient', $date)];
         // Checklist Objects
         // $case->getCaseSubmittedChecklistByStatus(); // NULL
         // $case->getCaseSubmittedChecklistByStatus('approval'); // approval
@@ -241,7 +241,7 @@ class CasesController extends Controller
 
         return view(
             'backend.cases.checklist-approval',
-            compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatusCount')
+            compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatusCount', 'date')
         );
     }
 
@@ -261,11 +261,11 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function getChecklistByStatus(Cases $case)
+    public function getChecklistByStatus(Cases $case, $date)
     {
         $this->sendResponse('Case checklist by status.', 'success', [
-            'deficent_cases' => $case->getCaseSubmittedChecklistByStatus('deficient'),
-            'approved_cases' => $case->getCaseSubmittedChecklistByStatus('approval')
+            'deficent_cases' => $case->getCaseSubmittedChecklistByStatus('deficient', $date),
+            'approved_cases' => $case->getCaseSubmittedChecklistByStatus('approval', $date)
         ]);
     }
 

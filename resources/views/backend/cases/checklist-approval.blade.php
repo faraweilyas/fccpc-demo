@@ -40,7 +40,7 @@
                 <div class="card-custom">
                     @php
                         $x                  = 1;
-                        $deficient_count    = $submittedDocuments->count() ?? 0;
+                        $deficient_count    = $checklistStatusCount->deficient ?? 0;
                     @endphp
                     @foreach($submittedDocuments as $document)
                         @if ($document->group_id)
@@ -48,7 +48,7 @@
                                 <h5 class="text-bold w-50">{{ $document->group->name }}</h5>
                                 <div class="pull-button-right">
                                     <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
-                                        data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}">
+                                        data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}" data-date="{{ $date }}">
                                         <span class="svg-icon svg-icon-xl">
                                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                                 width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -79,7 +79,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    @foreach($document->checklists as $checklist)
+                                    @foreach($document->group->checklists as $checklist)
                                         @php
                                             $checklist_document_status  = $document->getChecklistDocumentStatus($checklist);
                                             $checked                    = $document->getCheckedChecklistDocument($checklist, $checklistIds);
@@ -136,7 +136,7 @@
                             </div>
                             @php $x++ @endphp
                         @endif
-                        <input class="checklist_group_count" type="hidden" value="{{ $deficient_count }}" />
+                        <input class="checklist_group_count" type="hidden" value="{{ $submittedDocuments->count() }}" />
                     @endforeach
                     <div class="btn-group">
                         <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="prev">Previous</button>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="modal-body">
                     <div id="deficient_cases_list" class="py-5">
-                        @foreach($case->getCaseSubmittedChecklistByStatus('deficient') as $checklist)
+                        @foreach($case->getCaseSubmittedChecklistByStatus('deficient', $date) as $checklist)
                         <div>
                             <p class="alert-custom ">
                                 {{ $checklist->name }}

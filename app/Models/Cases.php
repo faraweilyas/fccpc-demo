@@ -190,11 +190,11 @@ class Cases extends Model
         return collect($checklistDocuments)->flatten();
     }
 
-    public function getCaseSubmittedChecklistByStatus(string $status=NULL)
+    public function getCaseSubmittedChecklistByStatus(string $status=NULL, $date)
     {
-        $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status)
+        $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status, &$date)
         {
-            return $checklistDocument->checklist_document->status == $status;
+            return $checklistDocument->checklist_document->status == $status && $checklistDocument->date_case_submitted == $date;
         });
 
         return $deficientChecklist;
