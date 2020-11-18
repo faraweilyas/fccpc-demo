@@ -163,7 +163,7 @@ trait CaseAssignable
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'handler_id')
             ->as('case_handler')
-            ->withPivot('supervisor_id', 'defficiency_issued_at', 'checklist_approval_issued_at', 'dropped_at', 'archived_at')
+            ->withPivot('supervisor_id', 'defficiency_issued_at', 'checklist_approval_issued_at', 'analysis_document', 'recommendation', 'recommendation_issued_at', 'dropped_at', 'archived_at')
             ->withTimestamps();
     }
 

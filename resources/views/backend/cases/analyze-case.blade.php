@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>
-    @if($case->isCaseChecklistsApproved())
+    @if ($case->isCaseChecklistsApproved())
         <div class="row">
             <div class="col-md-12">
                 <div class="card-custom">
@@ -178,43 +178,45 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card-custom">
-                    <h5>Analysis Document & Recommendation</h5>
-                    <div class="row py-5">
-                        <div class="col-md-6 my-5">
-                            <div class="doc-card">
-                                <div class="row">
-                                    <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
-                                    <div class="col-md-4">
-                                        <div class="doc-name">Analysis document</div>
-                                    </div>
-                                    <div class="col-md-6 align-center"><button class="btn btn-success-sm"
-                                            type="submit">Download</button>
-                                        <div class="view-doc-link"><a href="#">View</a></div>
+        @if ($case->isRecommendationIssued())
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-custom">
+                        <h5>Analysis Document & Recommendation</h5>
+                        <div class="row py-5">
+                            <div class="col-md-6 my-5">
+                                <div class="doc-card">
+                                    <div class="row">
+                                        <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
+                                        <div class="col-md-4">
+                                            <div class="doc-name">Analysis document</div>
+                                        </div>
+                                        <div class="col-md-6 align-center"><button class="btn btn-success-sm"
+                                                type="submit">Download</button>
+                                            <div class="view-doc-link"><a href="#">View</a></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 my-5">
-                            <span class="text-muted">REASON/RECOMMENDATION:</span>
+                            <div class="col-md-6 my-5">
+                                <span class="text-muted">REASON/RECOMMENDATION:</span>
 
-                            <br>
-                            <br>
-                            <br>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                                been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                galley of type and scrambled it to make a type specimen book.
                                 <br>
                                 <br>
                                 <br>
-                                It has survived not only five centuries.</p>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                                    been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                    galley of type and scrambled it to make a type specimen book.
+                                    <br>
+                                    <br>
+                                    <br>
+                                    It has survived not only five centuries.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     @endif
 </div>
 <div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog"

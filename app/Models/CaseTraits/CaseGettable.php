@@ -35,6 +35,24 @@ trait CaseGettable
     }
 
     /**
+     * Gets defficeincy issued at date
+     *
+     * @return string
+     */
+    public function getDefficiencyDate(string $format='customdate')
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        $defficiency_date = $this->active_handlers->first()->case_handler->defficiency_issued_at;
+        if(!empty($defficiency_date)):
+           return datetimeToText($this->active_handlers->first()->case_handler->defficiency_issued_at, $format);
+        else:
+           return '';
+       endif;
+    }
+
+    /**
      * Gets checklist approved at date
      *
      * @return string
@@ -53,21 +71,42 @@ trait CaseGettable
     }
 
     /**
-     * Gets defficeincy issued at date
+     * Gets recommendation issued date
      *
      * @return string
      */
-    public function getDefficiencyDate(string $format='customdate')
+    public function getRecommendationIssuedDate()
     {
         if (!$this->active_handlers->first())
             return '';
 
-        $defficiency_date = $this->active_handlers->first()->case_handler->defficiency_issued_at;
-        if(!empty($defficiency_date)):
-           return datetimeToText($this->active_handlers->first()->case_handler->defficiency_issued_at, $format);
-        else:
-           return '';
-       endif;
+        return $this->active_handlers->first()->case_handler->recommendation_issued_at;
+    }
+
+    /**
+     * Gets recommendation
+     *
+     * @return string
+     */
+    public function getRecommendation()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->recommendation;
+    }
+
+    /**
+     * Gets analysis document
+     *
+     * @return string
+     */
+    public function getAnalysisDocument()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->analysis_document;
     }
 
     /**

@@ -46,16 +46,6 @@ class Cases extends Model
         return empty($this->case_category) ? false : true;
     }
 
-    public function isCaseOnHold() : bool
-    {
-        return empty($this->getDefficiencyDate()) ? false : true;
-    }
-
-    public function isCaseChecklistsApproved() : bool
-    {
-        return empty($this->getChecklistApprovedDate()) ? false : true;
-    }
-
     public function isAssigned() : bool
     {
         return !empty($this->active_handlers->first()) ? true : false;
@@ -73,6 +63,30 @@ class Cases extends Model
         if (is_null($active_handler)) return false;
 
         return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
+    }
+
+    public function isCaseOnHold() : bool
+    {
+        return empty($this->getDefficiencyDate()) ? false : true;
+    }
+
+    public function isCaseChecklistsApproved() : bool
+    {
+        return empty($this->getChecklistApprovedDate()) ? false : true;
+    }
+
+    public function isRecommendationIssued() : bool
+    {
+        if (empty($this->getRecommendationIssuedDate())) 
+            return FALSE;
+
+        if (empty($this->getRecommendation())) 
+            return FALSE;
+
+        if (empty($this->getAnalysisDocument())) 
+            return FALSE;
+
+        return TRUE;
     }
 
     public function getAmountPaid()
