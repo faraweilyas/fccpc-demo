@@ -36,8 +36,11 @@
                     <span>Duration: 10 days</span>
                 </a>
             </div>
+            @php 
+                $approvedIcon = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
+            @endphp
             <div class="tab-link @if($case->isCaseChecklistsApproved()) active @endif">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-sqaure">
                 <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif" href="#">Case Analysis
                     <span>Duration: 10 days</span>
                 </a>
