@@ -26,7 +26,7 @@ $(document).ready(function ()
             return false;
         }
 
-        $('#approve').hide();
+        $('#approve-checklists').hide();
         $('#deficiency').hide();
 
         if (counter === 1) $('#prev').hide();
@@ -51,10 +51,10 @@ $(document).ready(function ()
 
             if (parseInt(deficient_count) > 0)
             {
-                $('#approve').hide();
+                $('#approve-checklists').hide();
                 $('#deficiency').show();
             } else {
-                $('#approve').show();
+                $('#approve-checklists').show();
                 $('#deficiency').hide();
             }
         }
@@ -116,10 +116,10 @@ $(document).ready(function ()
                         {
                             if (parseInt(deficient_count) > 0)
                             {
-                                $('#approve').hide();
+                                $('#approve-checklists').hide();
                                 $('#deficiency').show();
                             } else {
-                                $('#approve').show();
+                                $('#approve-checklists').show();
                                 $('#deficiency').hide();
                             }
                         }
@@ -212,6 +212,42 @@ $(document).ready(function ()
                 $('#issue-deficiency').removeClass('hide');
                 toastr.success("Applicant has been notified!");
             }
+        });
+    });
+
+    $('#approve-checklists').on('click', function(event)
+    {
+        swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, approve it!"
+        }).then(function(result)
+        {
+            if (result.value){
+                var case_id            = $("#approve-checklists").attr('data-case-id'),
+                    analyze_case_route = $("#approve-checklists").attr('data-analyze-case-route');
+                $('#approve-checklists').toggle();
+                $("#approving_checklists").removeClass('hide');
+                $("#prev").addClass('hide');
+                $.ajax({
+                    url: '/cases/approve-checklists/'+case_id,
+                    type: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {additional_info: $("#additional_info").val()},
+                    success: function(response)
+                    {
+                        var result = JSON.parse(response);
+                        $("#approving_checklists").addClass('hide');
+                        $('#approve-checklists').toggle();
+                        toastr.success("Checklists has been approved!");
+                        window.location.href = analyze_case_route;
+                    }
+                });
+            }
+            else
+                return false;
         });
     });
 });

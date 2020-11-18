@@ -264,6 +264,11 @@ Route::prefix('cases')
         )->name('checklist-approval-submit');
 
         Route::post(
+            'approve-checklists/{case}',
+            'CasesController@approveChecklists'
+        )->name('approve-checklists');
+
+        Route::post(
             'issue-deficiency/{case}/{date}',
             'CasesController@issueDeficiency'
         )->name('issue-deficiency');

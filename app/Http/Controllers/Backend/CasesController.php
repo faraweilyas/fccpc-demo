@@ -290,6 +290,20 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles approving of checklists
+     *
+     * @return json
+     */
+    public function approveChecklists(Cases $case)
+    {
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->removeDeficiency($handler);
+        $case->approveChecklists($handler);
+
+        return $this->sendResponse('Checklists approved.', 'success');
+    }
+
+    /**
      * Handles issuing of deficiency
      *
      * @return json

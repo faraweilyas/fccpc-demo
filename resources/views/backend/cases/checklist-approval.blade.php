@@ -149,7 +149,8 @@
                         >
                             Issue Deficiency
                         </button>
-                        <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve">Approve Checklist</button>
+                        <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve-checklists" data-case-id="{{ $case->id }}" data-analyze-case-route="{{ route('cases.analyze', ['case' => $case->id]) }}">Approve Checklist</button>
+                        <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approving_checklists" disabled><i class="fas fa-spinner fa-pulse"></i>Approving...</button>
                     </div>
                 </div>
             </div>

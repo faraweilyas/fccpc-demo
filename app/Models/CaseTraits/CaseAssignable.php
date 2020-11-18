@@ -25,6 +25,21 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler approves checklists
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function approveChecklists(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'checklist_approval_issued_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler issues deficiency
      *
      * @param  User $caseHandler
