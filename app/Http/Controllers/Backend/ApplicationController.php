@@ -481,7 +481,7 @@ class ApplicationController extends Controller
                 'isDeficient',
                 'checklistIds',
                 'deficientGroupIds',
-                'unSubmittedDocuments',
+                'unSubmittedDocuments'
             )
         );
     }
