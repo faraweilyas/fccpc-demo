@@ -858,7 +858,7 @@ function submitCase()
         declaration_rep  = $("#declaration_rep").val();
 
     $("#goback-btn").addClass('hide');
-    $("#upload-deficient-info").addClass('hide');
+    $("#upload-info").addClass('hide');
     $("#upload-img").toggle();
 
     sendRequest(
@@ -894,7 +894,7 @@ function submitCase()
         function(xhr, desc, err)
         {
             $("#goback-btn").removeClass('hide');
-            $("#upload-deficient-info").removeClass('hide');
+            $("#upload-info").removeClass('hide');
             $("#upload-img").toggle();
             notify(desc, err);
         }

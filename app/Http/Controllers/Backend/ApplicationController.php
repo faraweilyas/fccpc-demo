@@ -149,7 +149,8 @@ class ApplicationController extends Controller
 
     public function saveContactInfo(Guest $guest)
     {
-        $fileName = request('previous_document_name') ?? '';
+        $previous_document_name = request('previous_document_name') ?? '';
+
         if (request()->hasFile('file')):
             $validator = Validator::make(request()->all(), [
             'file' => 'mimes:pdf',
@@ -163,7 +164,7 @@ class ApplicationController extends Controller
             $fileName = \SerialNumber::randomFileName($extension);
             $path = $file->storeAs('public/documents', $fileName);
 
-            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', request('previous_document_name'))->first();
+            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', $previous_document_name)->first();
             if ($previous_document):
                 unlink(
                     storage_path('app/public/documents/'.$previous_document->letter_of_appointment)
