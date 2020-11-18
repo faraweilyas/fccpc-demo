@@ -36,23 +36,23 @@
                     <span>Duration: 10 days</span>
                 </a>
             </div>
-            @php 
+            @php
                 $approvedIcon = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
             @endphp
             <div class="tab-link @if($case->isCaseChecklistsApproved()) active @endif">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-sqaure">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-square">
                 <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif" href="#">Case Analysis
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-square.svg') }}" alt="Position-square">
                 <a class="nav-link active" href="#">Approval
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-square.svg') }}" alt="Position-square">
                 <a class="nav-link active" href="#">Publication
                     <span>Duration: 10 days</span>
                 </a>
@@ -210,7 +210,7 @@
                                         <div class="col-md-6 align-center">
                                             <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
                                                 Download
-                                            </button> 
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
