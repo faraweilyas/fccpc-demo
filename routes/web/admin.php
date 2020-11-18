@@ -264,14 +264,19 @@ Route::prefix('cases')
         )->name('checklist-approval-submit');
 
         Route::post(
+            'issue-deficiency/{case}/{date}',
+            'CasesController@issueDeficiency'
+        )->name('issue-deficiency');
+
+        Route::post(
             'approve-checklists/{case}',
             'CasesController@approveChecklists'
         )->name('approve-checklists');
 
         Route::post(
-            'issue-deficiency/{case}/{date}',
-            'CasesController@issueDeficiency'
-        )->name('issue-deficiency');
+            'issue-recommendation/{case}',
+            'CasesController@issueRecommendation'
+        )->name('issue-recommendation');
 
         Route::post(
             'assign/{case}/{user}',
@@ -311,6 +316,11 @@ Route::prefix('cases')
             'update/{status}/{id}',
             'CasesController@updateCaseStatus'
         )->name('update_status');
+
+        Route::get(
+            'download-analysis-document/{document}',
+            'CasesController@downloadAnalysisDocument'
+        )->name('download_analysis_document');
     });
 
 // Case Handler

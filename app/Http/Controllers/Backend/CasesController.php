@@ -290,20 +290,6 @@ class CasesController extends Controller
     }
 
     /**
-     * Handles approving of checklists
-     *
-     * @return json
-     */
-    public function approveChecklists(Cases $case)
-    {
-        $handler = User::find($case->active_handlers->first()->id);
-        $case->removeDeficiency($handler);
-        $case->approveChecklists($handler);
-
-        return $this->sendResponse('Checklists approved.', 'success');
-    }
-
-    /**
      * Handles issuing of deficiency
      *
      * @return json
@@ -329,6 +315,54 @@ class CasesController extends Controller
         $case->issueDeficiency($handler);
 
         return $this->sendResponse('Deficieny sent.', 'success');
+    }
+
+    /**
+     * Handles approving of checklists
+     *
+     * @return json
+     */
+    public function approveChecklists(Cases $case)
+    {
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->removeDeficiency($handler);
+        $case->approveChecklists($handler);
+
+        return $this->sendResponse('Checklists approved.', 'success');
+    }
+
+    /**
+     * Handles issuing of recommedation
+     *
+     * @return json
+     */
+    public function issueRecommendation(Cases $case)
+    {
+        $validator = $this->validate(request(), [
+            'file'                  => 'required',
+            'recommendation'        => 'required',
+        ]);
+
+        if (!$validator):
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        endif;
+
+        if (!empty($case->getAnalysisDocument())):
+            unlink(storage_path('app/public/analysis_documents/'.$case->getAnalysisDocument()));
+        endif;
+
+        $file           = request('file');
+        $recommendation = request('recommendation');
+        $extension      = $file->getClientOriginalExtension();
+        $newFileName    = \SerialNumber::randomFileName($extension);
+        $path           = $file->storeAs('public/analysis_documents', $newFileName);
+
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->issueReccomendation($handler, $newFileName, $recommendation);
+
+        return redirect()->back()->with('success', 'Recommendation has been uploaded!');
     }
 
     /**
@@ -464,6 +498,16 @@ class CasesController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Transaction status has been updated');
+    }
+
+    /**
+     * Handles the download analysis document route
+     *
+     * @return void
+     */
+    public function downloadAnalysisDocument($document)
+    {
+        return response()->download(storage_path("app/public/analysis_documents/{$document}"));
     }
 
     /**

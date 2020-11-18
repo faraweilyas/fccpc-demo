@@ -25,6 +25,21 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler issues deficiency
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function issueDeficiency(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'defficiency_issued_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler approves checklists
      *
      * @param  User $caseHandler
@@ -40,16 +55,18 @@ trait CaseAssignable
     }
 
     /**
-     * A case handler issues deficiency
+     * A case handler issues recommendation
      *
      * @param  User $caseHandler
      * @return array
      */
-    public function issueDeficiency(User $caseHandler)
+    public function issueReccomendation(User $caseHandler, $file_name, $recommendation)
     {
         return $this->handlers()->syncWithoutDetaching([
             $caseHandler->id    => [
-                'defficiency_issued_at' => now()
+                'analysis_document'        => $file_name,
+                'recommendation_issued_at' => now(),
+                'recommendation'           => $recommendation
             ]
         ]);
     }
