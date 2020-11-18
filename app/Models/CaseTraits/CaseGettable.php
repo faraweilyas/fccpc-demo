@@ -35,6 +35,24 @@ trait CaseGettable
     }
 
     /**
+     * Gets checklist approved at date
+     *
+     * @return string
+     */
+    public function getChecklistApprovedDate(string $format='customdate')
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        $approved_date = $this->active_handlers->first()->case_handler->checklist_approval_issued_at;
+        if(!empty($approved_date)):
+           return datetimeToText($this->active_handlers->first()->case_handler->checklist_approval_issued_at, $format);
+        else:
+           return '';
+       endif;
+    }
+
+    /**
      * Gets defficeincy issued at date
      *
      * @return string
@@ -51,6 +69,7 @@ trait CaseGettable
            return '';
        endif;
     }
+
     /**
      * Gets case by date range
      *

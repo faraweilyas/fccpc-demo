@@ -51,6 +51,11 @@ class Cases extends Model
         return empty($this->getDefficiencyDate()) ? false : true;
     }
 
+    public function isCaseChecklistsApproved() : bool
+    {
+        return empty($this->getChecklistApprovedDate()) ? false : true;
+    }
+
     public function isAssigned() : bool
     {
         return !empty($this->active_handlers->first()) ? true : false;
