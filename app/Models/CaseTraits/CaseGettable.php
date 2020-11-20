@@ -52,9 +52,9 @@ trait CaseGettable
      *
      * @return int
      */
-    public function getTotalAmountByMonthAndCategory($month, $category)
+    public function getTotalAmountByMonthAndCategory($month, $category, $case_type)
     {
-        $cases             = $this->whereMonth('submitted_at', $month)->where('case_category', $category)->get();
+        $cases             = $this->whereMonth('submitted_at', $month)->where('case_category', $category)->where('case_type', $case_type)->get();
         $total_amount_paid = collect($cases)->sum('amount_paid');
 
         return $total_amount_paid;

@@ -21,7 +21,11 @@ var KTWidgets = function () {
             success: function(response)
             {
                 var result = JSON.parse(response);
-                var result_array = $.map(result.response, function(value, index){
+                var result_small_array = $.map(result.response.small, function(value, index){
+                    return [value];
+                });
+
+                var result_large_array = $.map(result.response.large, function(value, index){
                     return [value];
                 });
 
@@ -34,25 +38,28 @@ var KTWidgets = function () {
 
                 var options = {
                     series: [{
-                        name: 'Fees',
-                        data: result_array
+                        name: 'Small Fees',
+                        data: result_small_array
+                    },{
+                        name: 'Large Fees',
+                        data: result_large_array
                     }],
                     chart: {
                         type: 'bar',
                         height: 350,
                         toolbar: {
-                            show: false
+                            show: true
                         }
                     },
                     plotOptions: {
                         bar: {
                             horizontal: false,
-                            columnWidth: ['30%'],
+                            columnWidth: ['50%'],
                             endingShape: 'rounded'
                         },
                     },
                     legend: {
-                        show: false
+                        show: true
                     },
                     dataLabels: {
                         enabled: false
@@ -122,7 +129,7 @@ var KTWidgets = function () {
                             }
                         }
                     },
-                    colors: [primary],
+                    colors: ['#F4A261', '#E76F51'],
                     grid: {
                         borderColor: KTApp.getSettings()['colors']['gray']['gray-200'],
                         strokeDashArray: 4,

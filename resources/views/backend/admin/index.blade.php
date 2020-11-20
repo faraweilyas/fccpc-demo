@@ -81,7 +81,7 @@
             </div>
             @if(!in_array(\Auth::user()->account_type, ['AD']))
             <div class="row mt-10">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                         <div class="card-header h-auto border-0">
                             <div class="card-title py-5">
@@ -120,17 +120,19 @@
                                     </span>
                                     <div id="local_chart" class="hide"></div>
                                 </div>
-                                <div class="tab-pane fade" id="ffm" role="tabpanel">
+                                <div class="tab-pane fade my-25" id="ffm" role="tabpanel">
                                     <div id="ffm_chart"></div>
                                 </div>
-                                <div class="tab-pane fade" id="ffx" role="tabpanel">
+                                <div class="tab-pane fade my-25" id="ffx" role="tabpanel">
                                     <div id="ffx_chart"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+            </div>
+            <div class="row mt-10">
+                <div class="col-lg-12">
                     <div class="card card-custom card-stretch gutter-b">
                         <div class="card-header border-0 pt-5">
                             <h3 class="card-title align-items-start flex-column">

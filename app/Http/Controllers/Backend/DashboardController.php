@@ -172,13 +172,18 @@ class DashboardController extends Controller
      */
     public function getGeneratedAmountPaidReport($category)
     {
-        $case_array = [];
+        $small_case_array = [];
+        $large_case_array = [];
 
         for ($index = 1; $index <= 12; $index++):
-            $case_array[$index] = (new Cases)->getTotalAmountByMonthAndCategory($index, $category);
+            $small_case_array[$index] = (new Cases)->getTotalAmountByMonthAndCategory($index, $category, 'SM');
+            $large_case_array[$index] = (new Cases)->getTotalAmountByMonthAndCategory($index, $category, 'LG');
         endfor;
 
-        return $this->sendResponse('Cases resolved.', 'success', $case_array);
+        return $this->sendResponse('Cases resolved.', 'success', [
+            'small' => $small_case_array,
+            'large' => $large_case_array
+        ]);
     }
 
     /**
