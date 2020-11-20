@@ -77,7 +77,10 @@ body {
     border-color: #227a4e !important;
 }
 
-
+.justify-content-end
+{
+    justify-content: end;
+}
 
 .flatpickr-day.selected.startRange+.endRange:not(:nth-child(7n+1)),
 .flatpickr-day.startRange.startRange+.endRange:not(:nth-child(7n+1)),

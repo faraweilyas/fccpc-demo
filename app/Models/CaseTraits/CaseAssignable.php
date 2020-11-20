@@ -40,6 +40,38 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler approves checklists
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function approveChecklists(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'checklist_approval_issued_at' => now()
+            ]
+        ]);
+    }
+
+    /**
+     * A case handler issues recommendation
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function issueReccomendation(User $caseHandler, $file_name, $recommendation)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'analysis_document'        => $file_name,
+                'recommendation_issued_at' => now(),
+                'recommendation'           => $recommendation
+            ]
+        ]);
+    }
+
+    /**
      * An applicant removes deficiency
      *
      * @param  User $caseHandler
@@ -148,7 +180,7 @@ trait CaseAssignable
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'handler_id')
             ->as('case_handler')
-            ->withPivot('supervisor_id', 'defficiency_issued_at', 'dropped_at', 'archived_at')
+            ->withPivot('supervisor_id', 'defficiency_issued_at', 'checklist_approval_issued_at', 'analysis_document', 'recommendation', 'recommendation_issued_at', 'dropped_at', 'archived_at')
             ->withTimestamps();
     }
 

@@ -51,6 +51,64 @@ trait CaseGettable
            return '';
        endif;
     }
+
+    /**
+     * Gets checklist approved at date
+     *
+     * @return string
+     */
+    public function getChecklistApprovedDate(string $format='customdate')
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        $approved_date = $this->active_handlers->first()->case_handler->checklist_approval_issued_at;
+        if(!empty($approved_date)):
+           return datetimeToText($this->active_handlers->first()->case_handler->checklist_approval_issued_at, $format);
+        else:
+           return '';
+       endif;
+    }
+
+    /**
+     * Gets recommendation issued date
+     *
+     * @return string
+     */
+    public function getRecommendationIssuedDate()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->recommendation_issued_at;
+    }
+
+    /**
+     * Gets recommendation
+     *
+     * @return string
+     */
+    public function getRecommendation()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->recommendation;
+    }
+
+    /**
+     * Gets analysis document
+     *
+     * @return string
+     */
+    public function getAnalysisDocument()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->analysis_document;
+    }
+
     /**
      * Gets case by date range
      *

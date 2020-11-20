@@ -13,15 +13,15 @@
                         <div class="card-toolbar">
                             <ul class="nav nav-tabs nav-bold nav-tabs-line">
                                 <li class="nav-item">
-                                    <a class="nav-link active" data-toggle="tab" href="#applicant_tab">
-                                        <span class="nav-icon"><i class="flaticon2-user"></i></span>
-                                        <span class="nav-text">Applicant</span>
+                                    <a class="nav-link active" data-toggle="tab" href="#deficiency_tab">
+                                        <span class="nav-icon"><i class="flaticon-list-2"></i></span>
+                                        <span class="nav-text">Deficiencies</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#deficiency_tab">
-                                        <span class="nav-icon"><i class="flaticon-list-2"></i></span>
-                                        <span class="nav-text">Deficiencies</span>
+                                    <a class="nav-link" data-toggle="tab" href="#applicant_tab">
+                                        <span class="nav-icon"><i class="flaticon2-user"></i></span>
+                                        <span class="nav-text">Applicant</span>
                                     </a>
                                 </li>
                             </ul>
@@ -30,8 +30,22 @@
                     <div class="card-body">
                         <div class="tab-content">
 
+                            {{-- Deficiencies --}}
+                            <div class="tab-pane fade show active" id="deficiency_tab" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group mb-1">
+                                            <textarea class="form-control" id="additional_info" rows="3" name="additional_info" placeholder="Additional Information..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="deficiency_items" class="d-flex flex-column font-size-sm font-weight-bold mt-3">
+                                ...
+                                </div>
+                            </div>
+
                             {{-- Applicant --}}
-                            <div class="tab-pane fade show active" id="applicant_tab" role="tabpanel">
+                            <div class="tab-pane fade" id="applicant_tab" role="tabpanel">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <span class="font-weight-bold mr-2">Firm:</span>
                                     <span class="text-dark" id="applicant_firm">...</span>
@@ -53,21 +67,7 @@
                                     <br />
                                     <span id="applicant_address">...</span>
                                 </div>
-                            </div>
-
-                            {{-- Checklist --}}
-                            <div class="tab-pane fade" id="deficiency_tab" role="tabpanel">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group mb-1">
-                                            <textarea class="form-control" id="additional_info" rows="3" name="additional_info" placeholder="Additional Information..."></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="deficiency_items" class="d-flex flex-column font-size-sm font-weight-bold mt-3">
-                                ...
-                                </div>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>

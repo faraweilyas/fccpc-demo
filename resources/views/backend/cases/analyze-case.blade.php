@@ -28,6 +28,10 @@
 </div>
 <div class="conatiner px-5 py-5 relative">
     <button class="btn btn-success-transparent">Request Extension</button>
+    @php
+        $approvedIcon       = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
+        $recommendationIcon = ($case->isRecommendationIssued())   ? 'Position-square-white.svg' : 'Position-square.svg';
+    @endphp
     <div class="row px-3">
         <div class="tab-custom">
             <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif">
@@ -36,20 +40,20 @@
                     <span>Duration: 10 days</span>
                 </a>
             </div>
-            <div class="tab-link">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
-                <a class="nav-link active" href="#">Case Analysis
+            <div class="tab-link @if($case->isCaseChecklistsApproved()) active @endif">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-square">
+                <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif" href="#">Case Analysis
+                    <span>Duration: 10 days</span>
+                </a>
+            </div> 
+            <div class="tab-link @if($case->isRecommendationIssued()) active @endif">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/'.$recommendationIcon) }}" alt="Position-square">
+                <a class="nav-link @if($case->isRecommendationIssued()) text-white @else active @endif" href="#">Approval
                     <span>Duration: 10 days</span>
                 </a>
             </div>
             <div class="tab-link">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
-                <a class="nav-link active" href="#">Approval
-                    <span>Duration: 10 days</span>
-                </a>
-            </div>
-            <div class="tab-link">
-                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-sqaure.svg') }}" alt="Position-sqaure">
+                <img src="{{ pc_asset(BE_IMAGE.'svg/Position-square.svg') }}" alt="Position-square">
                 <a class="nav-link active" href="#">Publication
                     <span>Duration: 10 days</span>
                 </a>
@@ -140,77 +144,89 @@
                     </div>
                     <div class="col-md-3">
                         <button class="btn btn-success-sm my-5"
-                            onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View
-                            Submitted Documents</button>
+                            onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Documents Submitted</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row hide">
-        <div class="col-md-12">
-            <div class="card-custom">
-                <h5>Analysis Document & Recommendation</h5>
-                <div class="row py-5">
-                    <div class="col-md-6 my-5">
-
-                        <div id="drop-area">
-                            <input type="file" id="fileElem">
-                            <label class="drop-label" for="fileElem">
-                                <img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
-                                <br>
-                                <br>Drop
-                                file here or click
-                                to upload.</label>
-                        </div>
-                    </div>
-                    <div class="col-md-6 my-5">
-                        <textarea class="form-control form-control-teaxtarea" placeholder="State your recommendation:"
-                            name="" id="" cols="30" rows="10"></textarea>
-                        <br>
-                        <button class="btn btn-success-sm my-5 pull-right">Issue Recommendation</button>
+    @if ($case->isCaseChecklistsApproved())
+        @if (!in_array(Auth::user()->account_type, ['SP']))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-custom">
+                        <h5>Analysis Document & Recommendation</h5>
+                        <form method="POST" action="{{ route('cases.issue-recommendation', ['case' => $case->id]) }}" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row py-5">
+                                <div class="col-md-6 my-5">
+                                    <div id="drop-area">
+                                        <input accept=".doc,.docx,.pdf" type="file" id="fileElem" name="file">
+                                        <label class="drop-label" for="fileElem">
+                                            <img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
+                                            <br />Drop file here or click to upload.
+                                        </label>
+                                    </div>
+                                    <p class="text-primary my-3 doc_name"></p>
+                                    <p class="text-danger mt-5">
+                                        @error('file')
+                                            {{ $message }}
+                                        @enderror
+                                    </p>
+                                </div>
+                                <div class="col-md-6 my-5">
+                                    <textarea class="form-control form-control-teaxtarea"
+                                        name="recommendation" id="" cols="30" rows="10" >{{ $case->getRecommendation() }}</textarea>
+                                    <p class="text-danger mt-5">
+                                        @error('recommendation')
+                                            {{ $message }}
+                                        @enderror
+                                    </p>
+                                    <br>
+                                    <button type="submit" class="btn btn-success-sm my-5 pull-right">Issue Recommendation</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row hide">
-        <div class="col-md-12">
-            <div class="card-custom">
-                <h5>Analysis Document & Recommendation</h5>
-                <div class="row py-5">
-                    <div class="col-md-6 my-5">
-                        <div class="doc-card">
-                            <div class="row">
-                                <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
-                                <div class="col-md-4">
-                                    <div class="doc-name">Analysis document</div>
+        @endif
+        @if ($case->isRecommendationIssued())
+            @php
+                $recommendation_data = $case->active_handlers->first()->case_handler;
+            @endphp
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-custom">
+                        <h5>Analysis Document & Recommendation</h5>
+                        <div class="row py-5">
+                            <div class="col-md-6 my-5">
+                                <div class="doc-card">
+                                    <div class="row">
+                                        <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
+                                        <div class="col-md-4">
+                                            <div class="doc-name">Analysis document</div>
+                                        </div>
+                                        <div class="col-md-6 align-center">
+                                            <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
+                                                Download
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-md-6 align-center"><button class="btn btn-success-sm"
-                                        type="submit">Download</button>
-                                    <div class="view-doc-link"><a href="#">View</a></div>
-                                </div>
+                            </div>
+                            <div class="col-md-6 my-5">
+                                <span><b>REASON/RECOMMENDATION:</b></span>
+                                <p>
+                                    {!! nl2br($case->getRecommendation() ) !!}
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 my-5">
-                        <span class="text-muted">REASON/RECOMMENDATION:</span>
-
-                        <br>
-                        <br>
-                        <br>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book.
-                            <br>
-                            <br>
-                            <br>
-                            It has survived not only five centuries.</p>
-                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        @endif
+    @endif
 </div>
 <div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">

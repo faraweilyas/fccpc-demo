@@ -34,7 +34,7 @@
 
     <div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
-            <x-icons.profile></x-icons.profile>
+            <x-icons.arrow-up></x-icons.arrow-up>
 
         </span>
     </div>

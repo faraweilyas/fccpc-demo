@@ -149,7 +149,8 @@ class ApplicationController extends Controller
 
     public function saveContactInfo(Guest $guest)
     {
-        $fileName = request('previous_document_name') ?? '';
+        $previous_document_name = request('previous_document_name') ?? '';
+
         if (request()->hasFile('file')):
             $validator = Validator::make(request()->all(), [
             'file' => 'mimes:pdf',
@@ -163,7 +164,7 @@ class ApplicationController extends Controller
             $fileName = \SerialNumber::randomFileName($extension);
             $path = $file->storeAs('public/documents', $fileName);
 
-            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', request('previous_document_name'))->first();
+            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', $previous_document_name)->first();
             if ($previous_document):
                 unlink(
                     storage_path('app/public/documents/'.$previous_document->letter_of_appointment)
@@ -223,6 +224,7 @@ class ApplicationController extends Controller
         endif;
         $document = Document::create([
             'case_id' => $guest->case->id,
+            'group_id' => request('group_id'),
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);
@@ -273,6 +275,7 @@ class ApplicationController extends Controller
         endif;
         $document = Document::create([
             'case_id' => $guest->case->id,
+            'group_id' => request('group_id'),
             'file' => $newFileName,
             'additional_info' => trim(request('additional_info')),
         ]);
@@ -393,23 +396,44 @@ class ApplicationController extends Controller
     {
         $case = Cases::find(31);
 
-        $submittedDocuments = $case->submittedDocuments();
-
-        foreach ($submittedDocuments as $date => $documents)
+        $documents = [];
+        foreach (Cases::all() as $case)
         {
-            // dump($date, $documents);
-            foreach ($documents as $document)
+            foreach ($case->documents as $document)
             {
-                $checklists = $document->checklists;
-                $group      = $checklists->isEmpty() ? [] : $checklists->first()->group;
+                $document->date_case_submitted = $case->submitted_at;
+                $document->group_id = (!$document->checklists->isEmpty())
+                    ? $document->checklists->first()->group->id
+                    : NULL;
+                $document->save();
+                $documents[] = $document;
+                // dump();
             }
         }
 
+        return $documents;
+
+        // $submittedDocuments = $case->submittedDocuments();
+
+        // foreach ($submittedDocuments as $date => $documents)
+        // {
+        //     foreach ($documents as $document)
+        //     {
+        //         $checklists = $document->checklists;
+        //         $group      = $document->group;
+        //     }
+        // }
+
+        // $date = "2020-11-17 09:40:46";
+        // $submittedDocument = $case->getSubmittedDocumentByDate($date);
+
         return [
+            // $case,
             // $case->documents,
             // $case->guest,
             // $case->isDeficient(),
             // $case->getDeficientGroupIds(),
+            // $case->getCaseSubmittedChecklistByStatus('deficient'),
             // Gets all latest submitted document checklist, either approved, deficient or null
             // $case->getLatestSubmittedDocumentChecklists(),
             // Gets all latest submitted document checklist by specified status, default is deficient
@@ -423,14 +447,13 @@ class ApplicationController extends Controller
             // Gets all latest submitted document checklist group names by specified status, default is deficient
             // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
 
-            $submittedDocuments,
+            // $submittedDocuments,
+            // $submittedDocument,
+            // $case->getSubmittedDocumentChecklistByDateAndStatus($date),
             // $case->unSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocuments(),
             // $case->getChecklistGroupUnSubmittedDocumentsName(),
-
         ];
-
-        return $case->getChecklistGroupUnSubmittedDocuments();
     }
 
     /**
@@ -459,7 +482,7 @@ class ApplicationController extends Controller
                 'isDeficient',
                 'checklistIds',
                 'deficientGroupIds',
-                'unSubmittedDocuments',
+                'unSubmittedDocuments'
             )
         );
     }

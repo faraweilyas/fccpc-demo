@@ -26,7 +26,7 @@ $(document).ready(function ()
             return false;
         }
 
-        $('#approve').hide();
+        $('#approve-checklists').hide();
         $('#deficiency').hide();
 
         if (counter === 1) $('#prev').hide();
@@ -51,10 +51,10 @@ $(document).ready(function ()
 
             if (parseInt(deficient_count) > 0)
             {
-                $('#approve').hide();
+                $('#approve-checklists').hide();
                 $('#deficiency').show();
             } else {
-                $('#approve').show();
+                $('#approve-checklists').show();
                 $('#deficiency').hide();
             }
         }
@@ -66,7 +66,8 @@ $(document).ready(function ()
             case_id             = $(this).attr('data-case-id'),
             doc_id              = $(this).attr('data-document-id'),
             checklist_id        = $(this).attr('data-checklist-id'),
-            switch_box          = $(this).attr('data-switch-box');
+            switch_box          = $(this).attr('data-switch-box'),
+            date                = $(this).attr('data-date'),
             remove_checklist    = '',
             status              = '';
 
@@ -93,7 +94,7 @@ $(document).ready(function ()
             success: function(response)
             {
                 $.ajax({
-                    url: '/cases/checklist-status-count/'+case_id,
+                    url: '/cases/checklist-status-count/'+case_id+'/'+date,
                     type: 'GET',
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
                     data: {},
@@ -101,24 +102,24 @@ $(document).ready(function ()
                     {
                         var result      = JSON.parse(response);
 
-                        deficient_count = result.response.deficient;
-                        deficient_count = (typeof (deficient_count) !== "undefined") ? deficient_count : 0;
+                        deficient_count = result.response.deficient_cases;
+                        deficient_count = (typeof (deficient_count) !== "undefined" || deficient_count != 0) ? deficient_count : 0;
 
-                        if (result.response.deficient === undefined)
+                        if (result.response.deficient_cases === undefined || deficient_count == 0)
                         {
                             $(".checklist-deficient-count").html('0');
                         } else {
-                            $(".checklist-deficient-count").html(result.response.deficient);
+                            $(".checklist-deficient-count").html(deficient_count);
                         }
 
                         if (parseInt(counter) === parseInt(arr_length))
                         {
                             if (parseInt(deficient_count) > 0)
                             {
-                                $('#approve').hide();
+                                $('#approve-checklists').hide();
                                 $('#deficiency').show();
                             } else {
-                                $('#approve').show();
+                                $('#approve-checklists').show();
                                 $('#deficiency').hide();
                             }
                         }
@@ -130,19 +131,20 @@ $(document).ready(function ()
 
     $(".deficient-basket").on('click', function(event)
     {
-        console.log(true);
-        var case_id = $(this).attr('data-case-id');
+        var case_id = $(this).attr('data-case-id'),
+            date    = $(this).attr('data-date');
+
         $("#deficient_cases_list div").empty();
 
         $.ajax({
-            url: '/cases/checklist-by-status/'+case_id,
+            url: '/cases/checklist-by-status/'+case_id+'/'+date,
             type: 'GET',
             headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
             data: {},
             success: function(response)
             {
                 var result          = JSON.parse(response),
-                    deficient_cases = result.response.deficent_cases;
+                    deficient_cases = result.response.deficient_cases;
 
                 $.each(deficient_cases, function(index, value)
                 {
@@ -156,6 +158,7 @@ $(document).ready(function ()
     {
         var thisModal               = $(this),
             case_id                 = $('.case_id').html();
+            case_doc_date           = $('.case_doc_date').html();
             applicant_firm          = thisModal.find('#applicant_firm'),
             applicant_name          = thisModal.find('#applicant_name'),
             applicant_email         = thisModal.find('#applicant_email'),
@@ -165,13 +168,13 @@ $(document).ready(function ()
 
         // Get Case Deficiencies Asynchronously
         $.ajax({
-            url: '/cases/checklist-by-status/'+case_id,
+            url: '/cases/checklist-by-status/'+case_id+'/'+case_doc_date,
             type: "GET",
             success: function (response) {
                 var result = JSON.parse(response);
                 $("#deficiency_items").empty();
                 $("#deficiency_items").append('<ul>');
-                $.each(result.response.deficent_cases, function(index, value)
+                $.each(result.response.deficient_cases, function(index, value)
                 {
                     $("#deficiency_items").append('<div class="d-flex align-items-center justify-content-start mb-2">' +
                         '<li class="icon-1x mr-2">'
@@ -184,6 +187,7 @@ $(document).ready(function ()
         });
 
         issue_deficiency_button.attr('data-case-id', case_id);
+        issue_deficiency_button.attr('data-date', case_doc_date);
         applicant_firm.html($('.firm').html());
         applicant_name.html($('.name').html());
         applicant_email.html($('.email').html());
@@ -197,7 +201,7 @@ $(document).ready(function ()
         $("#saving-deficiency").removeClass('hide');
         $('#issue-deficiency').addClass('hide');
         $.ajax({
-            url: '/cases/issue-deficiency/'+$(this).attr('data-case-id'),
+            url: '/cases/issue-deficiency/'+$(this).attr('data-case-id')+'/'+$(this).attr('data-date'),
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {additional_info: $("#additional_info").val()},
@@ -206,8 +210,44 @@ $(document).ready(function ()
                 var result = JSON.parse(response);
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
-                toastr.success("Email sent to applicant");
+                toastr.success("Applicant has been notified!");
             }
+        });
+    });
+
+    $('#approve-checklists').on('click', function(event)
+    {
+        swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, approve it!"
+        }).then(function(result)
+        {
+            if (result.value){
+                var case_id            = $("#approve-checklists").attr('data-case-id'),
+                    analyze_case_route = $("#approve-checklists").attr('data-analyze-case-route');
+                $('#approve-checklists').toggle();
+                $("#approving_checklists").removeClass('hide');
+                $("#prev").addClass('hide');
+                $.ajax({
+                    url: '/cases/approve-checklists/'+case_id,
+                    type: 'POST',
+                    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                    data: {additional_info: $("#additional_info").val()},
+                    success: function(response)
+                    {
+                        var result = JSON.parse(response);
+                        $("#approving_checklists").addClass('hide');
+                        $('#approve-checklists').toggle();
+                        toastr.success("Checklists has been approved!");
+                        window.location.href = analyze_case_route;
+                    }
+                });
+            }
+            else
+                return false;
         });
     });
 });

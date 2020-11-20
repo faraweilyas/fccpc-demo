@@ -46,11 +46,6 @@ class Cases extends Model
         return empty($this->case_category) ? false : true;
     }
 
-    public function isCaseOnHold() : bool
-    {
-        return empty($this->getDefficiencyDate()) ? false : true;
-    }
-
     public function isAssigned() : bool
     {
         return !empty($this->active_handlers->first()) ? true : false;
@@ -68,6 +63,30 @@ class Cases extends Model
         if (is_null($active_handler)) return false;
 
         return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
+    }
+
+    public function isCaseOnHold() : bool
+    {
+        return empty($this->getDefficiencyDate()) ? false : true;
+    }
+
+    public function isCaseChecklistsApproved() : bool
+    {
+        return empty($this->getChecklistApprovedDate()) ? false : true;
+    }
+
+    public function isRecommendationIssued() : bool
+    {
+        if (empty($this->getRecommendationIssuedDate())) 
+            return FALSE;
+
+        if (empty($this->getRecommendation())) 
+            return FALSE;
+
+        if (empty($this->getAnalysisDocument())) 
+            return FALSE;
+
+        return TRUE;
     }
 
     public function getAmountPaid()
@@ -190,11 +209,11 @@ class Cases extends Model
         return collect($checklistDocuments)->flatten();
     }
 
-    public function getCaseSubmittedChecklistByStatus(string $status=NULL)
+    public function getCaseSubmittedChecklistByStatus(string $status='deficient')
     {
         $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status)
         {
-            return $checklistDocument->checklist_document->status == $status;
+            return (($checklistDocument->checklist_document->status == $status));
         });
 
         return $deficientChecklist;
@@ -275,6 +294,35 @@ class Cases extends Model
             ->get()
             ->groupBy('date_case_submitted')
             ->sortKeysDesc();
+    }
+
+    public function getSubmittedDocumentByDate(string $date=NULL)
+    {
+        $submittedDocuments = $this->submittedDocuments();
+
+        foreach ($submittedDocuments as $dateSubmitted => $documents)
+        {
+            foreach ($documents as $document)
+            {
+                $checklists = $document->checklists;
+                $group      = $document->group;
+            }
+        }
+
+        $submittedDocuments = $submittedDocuments->all();
+
+        return ($submittedDocuments[$date] ?? NULL);
+    }
+
+    public function getSubmittedDocumentChecklistByDateAndStatus(string $date=NULL, string $status=NULL)
+    {
+        $submittedDocument = $this->getSubmittedDocumentByDate($date);
+
+        return $submittedDocument
+            ->pluck('checklists')
+            ->flatten()
+            ->filter()
+            ->where('checklist_document.status', $status);
     }
 
     public function latestSubmittedDocuments()

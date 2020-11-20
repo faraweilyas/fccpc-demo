@@ -223,15 +223,15 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function checklistApproval(Cases $case)
+    public function checklistApproval(Cases $case, $date)
     {
         $checklistIds               = $case->getChecklistIds();
-        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
-        $checklistStatusCount       = (object) $case->getChecklistStatusCount();
+        $submittedDocuments         = $case->submittedDocuments()[$date];
+        $checklistStatus            = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient');
 
         // Checklist Objects
         // $case->getCaseSubmittedChecklistByStatus(); // NULL
-        // $case->getCaseSubmittedChecklistByStatus('approval'); // approval
+        // $case->getCaseSubmittedChecklistByStatus('approved'); // approval
         // $case->getCaseSubmittedChecklistByStatus('deficient'); // deficient
 
         $title          = APP_NAME;
@@ -240,7 +240,7 @@ class CasesController extends Controller
 
         return view(
             'backend.cases.checklist-approval',
-            compact('details', 'case', 'checklistIds', 'checklistGroupDocuments', 'checklistStatusCount')
+            compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatus', 'date')
         );
     }
 
@@ -249,10 +249,12 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function getChecklistCount(Cases $case)
+    public function getChecklistCount(Cases $case, $date)
     {
-        $checklistStatusCount       = (object) $case->getChecklistStatusCount();
-        $this->sendResponse('Case checklist status count.', 'success', $checklistStatusCount);
+        $this->sendResponse('Case checklist status count.', 'success', [
+            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient')->count(),
+            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')->count(),
+        ]);
     }
 
     /*
@@ -260,11 +262,11 @@ class CasesController extends Controller
      *
      * @return void
      */
-    public function getChecklistByStatus(Cases $case)
+    public function getChecklistByStatus(Cases $case, $date)
     {
         $this->sendResponse('Case checklist by status.', 'success', [
-            'deficent_cases' => $case->getCaseSubmittedChecklistByStatus('deficient'),
-            'approved_cases' => $case->getCaseSubmittedChecklistByStatus('approval')
+            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
+            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved'),
         ]);
     }
 
@@ -292,7 +294,7 @@ class CasesController extends Controller
      *
      * @return json
      */
-    public function issueDeficiency(Cases $case)
+    public function issueDeficiency(Cases $case, $date)
     {
         if ($case->guest->email == $case->applicant_email):
             $emails = array($case->applicant_email);
@@ -303,16 +305,64 @@ class CasesController extends Controller
         Mail::to($emails)->send(
             new IssueDeficiencyEmail([
                 'fullname'        => $case->applicant_fullname,
-                'ref_no'          => $case->reference_no,
+                'ref_no'          => $case->guest->tracking_id,
                 'case'            => $case,
                 'additional_info' => request('additional_info'),
-                'deficent_cases'  => $case->getCaseSubmittedChecklistByStatus('deficient')
+                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
             ])
         );
         $handler = User::find($case->active_handlers->first()->id);
         $case->issueDeficiency($handler);
 
         return $this->sendResponse('Deficieny sent.', 'success');
+    }
+
+    /**
+     * Handles approving of checklists
+     *
+     * @return json
+     */
+    public function approveChecklists(Cases $case)
+    {
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->removeDeficiency($handler);
+        $case->approveChecklists($handler);
+
+        return $this->sendResponse('Checklists approved.', 'success');
+    }
+
+    /**
+     * Handles issuing of recommedation
+     *
+     * @return json
+     */
+    public function issueRecommendation(Cases $case)
+    {
+        $validator = $this->validate(request(), [
+            'file'                  => 'required',
+            'recommendation'        => 'required',
+        ]);
+
+        if (!$validator):
+            return redirect()->back()
+                    ->withErrors($validator)
+                    ->withInput();
+        endif;
+
+        if (!empty($case->getAnalysisDocument())):
+            unlink(storage_path('app/public/analysis_documents/'.$case->getAnalysisDocument()));
+        endif;
+
+        $file           = request('file');
+        $recommendation = request('recommendation');
+        $extension      = $file->getClientOriginalExtension();
+        $newFileName    = \SerialNumber::randomFileName($extension);
+        $path           = $file->storeAs('public/analysis_documents', $newFileName);
+
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->issueReccomendation($handler, $newFileName, $recommendation);
+
+        return redirect()->back()->with('success', 'Recommendation has been uploaded!');
     }
 
     /**
@@ -448,6 +498,16 @@ class CasesController extends Controller
         return redirect()
             ->back()
             ->with('success', 'Transaction status has been updated');
+    }
+
+    /**
+     * Handles the download analysis document route
+     *
+     * @return void
+     */
+    public function downloadAnalysisDocument($document)
+    {
+        return response()->download(storage_path("app/public/analysis_documents/{$document}"));
     }
 
     /**
