@@ -877,6 +877,17 @@ textarea {
     overflow-y: scroll !important;
 }
 
+
+.header-banner{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top:  100px;
+}
+.header-banner > .form-group{
+    margin-top:  -10px;
+}
+
 .publication-img img {
     width: 100% !important;
 }
