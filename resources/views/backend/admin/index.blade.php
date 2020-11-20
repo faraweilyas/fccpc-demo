@@ -93,19 +93,19 @@
                                 <ul class="nav nav-pills nav-pills-sm nav-dark-75" role="tablist">
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4 active" data-toggle="tab"
-                                            href="#kt_charts_widget_2_chart_tab_1">
+                                            href="#local">
                                             <span class="nav-text font-size-sm">Local</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4" data-toggle="tab"
-                                            href="#kt_charts_widget_2_chart_tab_2">
+                                            href="#ffm">
                                             <span class="nav-text font-size-sm">FFM</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4" data-toggle="tab"
-                                            href="#kt_charts_widget_2_chart_tab_3">
+                                            href="#ffx">
                                             <span class="nav-text font-size-sm">FFM Exp</span>
                                         </a>
                                     </li>
@@ -113,7 +113,17 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <div id="kt_charts_widget_2_chart"></div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="local" role="tabpanel">
+                                    <div id="local_chart"></div>
+                                </div>
+                                <div class="tab-pane fade" id="ffm" role="tabpanel">
+                                    <div id="ffm_chart"></div>
+                                </div>
+                                <div class="tab-pane fade" id="ffx" role="tabpanel">
+                                    <div id="ffx_chart"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -180,4 +190,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'chart-report.js') }}"></script>
 @endsection

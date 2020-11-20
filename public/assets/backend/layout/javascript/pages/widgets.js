@@ -979,7 +979,7 @@ var KTWidgets = function () {
 
         var options = {
             series: [{
-                name: 'Net Profit',
+                name: 'Nets Profit',
                 data: [44, 55, 57, 56, 61, 58]
             }, {
                 name: 'Revenue',
