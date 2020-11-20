@@ -2,14 +2,21 @@
 
 @section('content')
 <div class="page-content my-5">
-    <div class="container container-sm  ">
-        <div class="row row-top home-content-header">
+    <div class="container container-sm">
+        <div class="header-banner">
             <h2 class=" publications-header faq-content-header">
                 <a href="{{ url('/faqs') }}" style="color: #999">Frequently Asked Questions</a>
             </h2>
+
+            <div class="form-group">
+                <form id="faqSearchForm" method="GET" action="{{ route('home.faqs.search') }}">
+                    <input class="form-control faq-search-input" type="text" name="query" placeholder="Search" />
+                </form>
+            </div>
         </div>
         <div class="row publication-container">
-            <div class="col-md-3 publication-height">
+            
+            <div class="col-md-3 ">
                 <ul class="faq-questions__ul">
                     <li class="faq-questions__li"><a href="{{ $faq->path() }}"
                             class="faq-questions__a faq-questions__a__active">{{ $faq->question }}</a>
