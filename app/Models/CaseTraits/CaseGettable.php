@@ -35,6 +35,16 @@ trait CaseGettable
     }
 
     /**
+     * Gets cases by category
+     *
+     * @return Collection
+     */
+    public function getCasesByCategory($category = null)
+    {
+        return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->where('submitted_at', '!=', NULL)->get() : [];
+    }
+
+    /**
      * Gets defficeincy issued at date
      *
      * @return string
