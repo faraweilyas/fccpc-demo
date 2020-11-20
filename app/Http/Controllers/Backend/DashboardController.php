@@ -167,6 +167,21 @@ class DashboardController extends Controller
     }
 
     /**
+     * Handles the get generated amount paid report page route.
+     * @return void
+     */
+    public function getGeneratedAmountPaidReport($category)
+    {
+        $case_array = [];
+
+        for ($index = 1; $index <= 12; $index++):
+            $case_array[$index] = (new Cases)->getTotalAmountByMonthAndCategory($index, $category);
+        endfor;
+
+        return $this->sendResponse('Cases resolved.', 'success', $case_array);
+    }
+
+    /**
      * Handles the generate report table page route.
      * @return void
      */
@@ -255,5 +270,26 @@ class DashboardController extends Controller
         });
 
         $csvExporter->build($cases, ['submitted_on', 'subject', 'amount_paid', 'case_handler', 'case_category', 'case_type'])->download('case_report_'.$full_date.'.csv');
+    }
+
+    /**
+     * Send response.
+     *
+     * @param string $message
+     * @param string $responseType
+     * @param mixed $response
+     * @return void
+     */
+    public function sendResponse(
+        string $message,
+        string $responseType,
+        $response = null
+    ) {
+        echo json_encode([
+            'message' => $message,
+            'responseType' => $responseType,
+            'response' => $response,
+        ]);
+        exit();
     }
 }

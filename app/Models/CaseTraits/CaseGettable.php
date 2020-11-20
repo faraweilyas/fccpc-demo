@@ -42,6 +42,22 @@ trait CaseGettable
     public function getCasesByCategory($category = null)
     {
         return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->where('submitted_at', '!=', NULL)->get() : [];
+    } 
+
+    /**
+     * Gets total amount paid by month and category
+     *
+     * @param int $month
+     * @param String $category
+     *
+     * @return int
+     */
+    public function getTotalAmountByMonthAndCategory($month, $category)
+    {
+        $cases             = $this->whereMonth('submitted_at', $month)->where('case_category', $category)->get();
+        $total_amount_paid = collect($cases)->sum('amount_paid');
+
+        return $total_amount_paid;
     }
 
     /**

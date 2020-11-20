@@ -106,7 +106,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link py-2 px-4" data-toggle="tab"
                                             href="#ffx">
-                                            <span class="nav-text font-size-sm">FFM Exp</span>
+                                            <span class="nav-text font-size-sm">FFM Expedited</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -114,8 +114,11 @@
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane fade show active" id="local" role="tabpanel">
-                                    <div id="local_chart"></div>
+                                <div class="tab-pane fade show active text-center my-25" id="local" role="tabpanel">
+                                    <span id="report-loader">
+                                        <img src="{{ BE_IMAGE.'report_loading.gif' }}" />
+                                    </span>
+                                    <div id="local_chart" class="hide"></div>
                                 </div>
                                 <div class="tab-pane fade" id="ffm" role="tabpanel">
                                     <div id="ffm_chart"></div>

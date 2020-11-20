@@ -183,6 +183,10 @@ Route::prefix('/')
             'report.show'
         );
 
+        Route::get('report-amount-paid/{category}', 'DashboardController@getGeneratedAmountPaidReport')->name(
+            'report.amount_paid'
+        );
+
         Route::get('report', 'DashboardController@generateReport')->name(
             'report'
         );
