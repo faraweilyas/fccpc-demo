@@ -214,11 +214,18 @@
                     </div>
                 </li>
                 @endif
-
+                <li class="menu-item " aria-haspopup="true">
+                    <a href="{{ route('dashboard.profile') }}" class="menu-link">
+                        <span class="svg-icon menu_icon_custom">
+                            <x-icons.settings></x-icons.settings>
+                        </span>
+                        <span class="menu-text">Profile</span>
+                    </a>
+                </li>
                 <li class="menu-item" aria-haspopup="true">
                     <a href="#" class="menu-link">
                         <span class="svg-icon menu_icon_custom">
-                            <x-icons.sign-out-green></x-icons.sign-out-green>
+                            <x-icons.sign-out></x-icons.sign-out>
                         </span>
                         <span class="menu-text" href="{{ route('logout') }}" title="Logout"
                             onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign
@@ -228,15 +235,9 @@
                         </form>
                     </a>
                 </li>
-
-
-
             </ul>
-
         </div>
-
     </div>
-
     <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
         <!--begin::Header-->
         <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
