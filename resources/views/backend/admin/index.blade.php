@@ -70,7 +70,6 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
-                @endif
                 <div class="col-lg-3 my-5">
                     <div class="dashboard-card">
                         <p>All Cases</p>
@@ -78,7 +77,9 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                     </div>
                 </div>
+                @endif
             </div>
+            @if(!in_array(\Auth::user()->account_type, ['AD']))
             <div class="row mt-10">
                 <div class="col-lg-6">
                     <div class="card card-custom bg-gray-100 card-stretch gutter-b">
@@ -175,6 +176,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
 </div>
