@@ -16,13 +16,35 @@
         </div>
         <div class="row publication-container">
             
-            <div class="col-md-3 ">
+            <div class="col-md-3 publication-height">
                 <ul class="faq-questions__ul">
                     <li class="faq-questions__li"><a href="{{ $faq->path() }}"
                             class="faq-questions__a faq-questions__a__active">{{ $faq->question }}</a>
                     </li>
                     @foreach($related_faq as $related_faq)
                     @if($related_faq->id !== $faq->id)
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
+                    <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
+                            class="faq-questions__a">{{ $related_faq->question }}</a></li>
                     <li class="faq-questions__li"><a href="{{ $related_faq->path() }}"
                             class="faq-questions__a">{{ $related_faq->question }}</a></li>
                     @endif
