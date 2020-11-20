@@ -21,7 +21,7 @@ trait CaseGettable
      */
     public function filterCasesByType($type = null)
     {
-        return (\AppHelper::validateKey('case_types', $type)) ? static::where('case_type', $type)->get() : [];
+        return (\AppHelper::validateKey('case_types', $type)) ? static::where('case_type', $type)->where('submitted_at', '!=', NULL)->get() : [];
     }
 
     /**
@@ -31,7 +31,7 @@ trait CaseGettable
      */
     public function filterCasesByCategory($category = null)
     {
-        return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->get() : [];
+        return (\AppHelper::validateKey('case_categories', $category)) ? static::where('case_category', $category)->where('submitted_at', '!=', NULL)->get() : [];
     }
 
     /**
