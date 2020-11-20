@@ -2,6 +2,7 @@
 
 namespace App\Models\UserTraits;
 
+use App\Models\Faq;
 use App\Models\Cases;
 use App\Models\Enquiry;
 
@@ -114,7 +115,7 @@ trait UserGettable
     }
 
     /**
-     * Defines a many to many relationship for case and active case handlers
+     * Searches for active cases assigned
      *
      * @return HasRelationships
      */
@@ -125,6 +126,24 @@ trait UserGettable
             ->orWhere('parties', 'LIKE', '%'.$search.'%')
             ->where('handler_id', $this->id)
             ->get();
+    }
+
+    /**
+     * Searches for users and faqs by admin
+     *
+     * @param String $search
+     *
+     * @return array
+     */
+    public function search_users_and_faqs($search)
+    {
+        $users = $this->where('first_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+                ->get()->toArray();
+        $faq   = Faq::where('question', 'LIKE', '%'.$search.'%')
+                ->get()->toArray();
+        
+        return array_merge($users, $faq);
     }
 
     /**

@@ -35,18 +35,33 @@ class CasesController extends Controller
         if (auth()->user()->account_type == 'CH'):
             $cases = auth()->user()->search_active_cases_assigned_to($search);
         elseif (auth()->user()->account_type == 'AD'):
-            $cases = auth()->user()->search_active_cases_assigned_to($search);
+            $data = auth()->user()->search_users_and_faqs($search);
         else:
             $cases = (new Cases())->searchAssignedCases($search);
         endif;
 
         $output = '';
-        if ($cases->count() <= 0):
-            $output .= '<p>No transaction found!</p>';
+        if (auth()->user()->account_type == 'AD'):
+            if (count($data) <= 0):
+                $output .= '<p>No data found!</p>';
+            else:
+                foreach ($data as $key => $value):
+                    if (!empty($value['account_type'])):
+                        $output .= '<a href="#"><i class="la la-user-alt"></i>&nbsp;&nbsp;'.shortenContent($value['first_name'].' '.$value['last_name'], 40).'</a>';
+                    else:
+                        
+                        $output .= '<a href="#"><i class="la la-question-circle-o"></i>&nbsp;&nbsp;'.shortenContent($value['question'], 28).'</a>';
+                    endif;
+                endforeach;
+            endif;
         else:
-            foreach ($cases as $case):
-                $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).'</a>';
-            endforeach;
+            if ($cases->count() <= 0):
+                $output .= '<p>No transaction found!</p>';
+            else:
+                foreach ($cases as $case):
+                    $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).'</a>';
+                endforeach;
+            endif;
         endif;
 
         echo $output;
