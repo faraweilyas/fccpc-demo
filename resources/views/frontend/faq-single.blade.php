@@ -9,7 +9,7 @@
             </h2>
         </div>
         <div class="row publication-container">
-            <div class="col-md-3 ">
+            <div class="col-md-3 publication-height">
                 <ul class="faq-questions__ul">
                     <li class="faq-questions__li"><a href="{{ $faq->path() }}"
                             class="faq-questions__a faq-questions__a__active">{{ $faq->question }}</a>

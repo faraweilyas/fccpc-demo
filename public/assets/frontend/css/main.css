@@ -871,6 +871,11 @@ textarea {
     padding-top: 5rem;
     padding-bottom: 10rem;
 }
+.publication-height {
+
+    height: 600px !important;
+    overflow-y: scroll !important;
+}
 
 .publication-img img {
     width: 100% !important;
