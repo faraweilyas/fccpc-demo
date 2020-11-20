@@ -112,6 +112,16 @@ class User extends Authenticatable implements JWTSubject
         return ($this->status == "active") ? true : false;
     }
 
+     /**
+     * Get method for is active user admin.
+     *
+     * @return string
+     */
+    public function isAdmin() : bool
+    {
+        return ($this->account_type == "AD") ? true : false;
+    }
+
     /**
      * Get account type
      *

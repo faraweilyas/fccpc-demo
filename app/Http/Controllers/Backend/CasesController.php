@@ -34,6 +34,8 @@ class CasesController extends Controller
         $search = $_GET['search'] ?? '';
         if (auth()->user()->account_type == 'CH'):
             $cases = auth()->user()->search_active_cases_assigned_to($search);
+        elseif (auth()->user()->account_type == 'AD'):
+            $cases = auth()->user()->search_active_cases_assigned_to($search);
         else:
             $cases = (new Cases())->searchAssignedCases($search);
         endif;
@@ -57,6 +59,9 @@ class CasesController extends Controller
      */
     public function unassignedCases()
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $cases = (new Cases())->unassignedCases();
 
         $caseHandlers = (new User())->caseHandlers();
@@ -77,6 +82,9 @@ class CasesController extends Controller
      */
     public function assignedCases(User $handler)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         if (isset($handler->status)):
             $cases = $handler->active_cases_assigned_to()->get();
         else:
@@ -108,6 +116,9 @@ class CasesController extends Controller
      */
     public function droppedCases(User $handler)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $cases = $handler->dropped_cases_assigned_to()->get();
         $caseHandlers = (new User())->caseHandlers();
 
@@ -127,6 +138,9 @@ class CasesController extends Controller
      */
     public function workingonCases(User $handler)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         if ($handler->status):
             $cases = $handler->cases_working_on(TRUE)->get();
         else:
@@ -150,6 +164,9 @@ class CasesController extends Controller
      */
     public function approvedCases()
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $cases = (new Cases())->assignedCases();
         $caseHandlers = (new User())->caseHandlers();
 
@@ -169,6 +186,9 @@ class CasesController extends Controller
      */
     public function onholdCases(User $handler)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         if ($handler->status):
             $cases = $handler->deficient_cases(TRUE)->get();
         else:
@@ -192,6 +212,9 @@ class CasesController extends Controller
      */
     public function archivedCases()
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $cases = (new Cases())->archivedCases();
         $caseHandlers = (new User())->caseHandlers();
 
@@ -211,6 +234,9 @@ class CasesController extends Controller
      */
     public function analyzeCase(Cases $case)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $caseHandlers = (new User())->caseHandlers();
         $title = APP_NAME;
         $description = 'FCCPC Case Analysis Dashboard';
@@ -225,6 +251,9 @@ class CasesController extends Controller
      */
     public function checklistApproval(Cases $case, $date)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         $checklistIds               = $case->getChecklistIds();
         $submittedDocuments         = $case->submittedDocuments()[$date];
         $checklistStatus            = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient');
@@ -372,6 +401,9 @@ class CasesController extends Controller
      */
     public function analyzeCaseDocuments(Cases $case)
     {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
         if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
