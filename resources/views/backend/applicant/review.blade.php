@@ -208,9 +208,12 @@
             </div>
             <div class="modal-footer">
                 <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold"
-                    data-wizard-type="action-submit">Submit Case</button><button id="upload-img" type="button"
-                    class="btn btn-light-primary font-weight-bold hide" disabled>
-                    <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                    data-wizard-type="action-submit">Submit Case</button>
+                <button id="upload-img" type="button"
+                    class="btn btn-primary font-weight-bold py-2 px-10 hide" disabled>
+                    <div class="spinner-grow text-white" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
                 </button>
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>

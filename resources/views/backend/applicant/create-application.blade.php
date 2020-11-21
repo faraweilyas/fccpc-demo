@@ -399,9 +399,12 @@
                                             <button id="save-info"
                                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
                                                 data-wizard-type="action-next">Save & Continue</button>
-                                            <button id="saving-img"
-                                                class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 hide"
-                                                disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Saving...</button>
+                                            <button id="saving-img" class="btn btn-primary font-weight-bold text-uppercase px-15 py-3 hide"
+                                                disabled>
+                                                <div class="spinner-grow text-white" role="status">
+                                                  <span class="sr-only">Loading...</span>
+                                                </div>
+                                            </button>
                                         </div>
                                         <input type="hidden" id="current-step" value="{{ $_GET['step'] ?? 1 }}">
                                     </div>

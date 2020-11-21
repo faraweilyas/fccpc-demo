@@ -38,12 +38,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="caseID">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
+                    <input type="hidden" id="caseID" />
                     <button type="button" id="assignCaseButton" class="btn btn-light-primary font-weight-bold">Assign</button>
                     <button type="button" id="unassignCaseButton" class="btn btn-light-danger font-weight-bold hide">Unassign</button>
-                    <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button> 
-                    <button id="unassigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Unassigning...</button>
+                    <button id="assigningCaseButton" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
+                        <div class="spinner-grow text-white" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div> 
+                    <button id="unassigningCaseButton" class="btn btn-danger font-weight-bold py-2 px-8 hide" disabled>
+                        <div class="spinner-grow text-white" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div> 
+                    </button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
@@ -94,17 +101,19 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="hidden" id="reassigncaseID">
-                    <input type="hidden" id="oldCaseHandlerID">
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
+                    <input type="hidden" id="reassigncaseID" />
+                    <input type="hidden" id="oldCaseHandlerID" />
                     <div id="re-unassigning-handler">
                         <button type="submit" id="reassignCaseButton" class="btn btn-light-primary font-weight-bold">Re-Assign</button>
                     </div>
                     <div id="re-assigning-handler" class="hide">
-                        <button class="btn btn-light-primary font-weight-bold" disabled>
-                            <i class="fas fa-spinner fa-pulse"></i>&nbsp;Re-Assigning...
+                        <button class="btn btn-primary font-weight-bold py-2 px-8" disabled>
+                            <div class="spinner-grow text-white" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div> 
                         </button>
                     </div>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>

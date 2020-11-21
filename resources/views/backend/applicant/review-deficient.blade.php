@@ -117,7 +117,9 @@
                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
                                 title="Submit Application" data-wizard-type="action-submit">Submit</button>
                             <button id="upload-img" type="button" class="btn btn-primary font-weight-bold text-uppercase px-9 py-6 hide" disabled>
-                                <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                                <div class="spinner-grow text-white" role="status">
+                                  <span class="sr-only">Loading...</span>
+                                </div>
                             </button>
                         </div>
                     </form>

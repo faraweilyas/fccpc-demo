@@ -73,8 +73,12 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="saving-deficiency" type="button" class="btn btn-light-primary font-weight-bold hide" disabled><i class="fas fa-spinner fa-pulse"></i>&nbsp;Issue Deficiency...</button>
-                <button id="issue-deficiency" type="button" class="btn btn-light-primary font-weight-bold">Issue Deficiency</button>
+                <button id="saving-deficiency" type="button" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
+                    <div class="spinner-grow text-white" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div> 
+                </button>
+                <button id="issue-deficiency" type="button" class="btn btn-light-primary font-weight-bold hide">Issue Deficiency</button>
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
