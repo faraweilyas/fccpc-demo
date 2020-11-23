@@ -109,6 +109,18 @@ class DashboardController extends Controller
         return view('backend.user.profile', compact('details', 'user'));
     }
 
+    /**
+     * Handles the view user detail page route.
+     * @return void
+     */
+    public function viewUserDetail(User $user)
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Dashboard User Detail";
+        $details          = details($title, $description);
+        return view('backend.admin.user-detail', compact('details'));
+    }
+
     public function updateUserStatus($id)
     {
         $check_status = User::findOrFail($id);

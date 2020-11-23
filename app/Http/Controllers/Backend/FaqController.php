@@ -38,6 +38,18 @@ class FaqController extends Controller
     }
 
     /**
+     * Handles the view faq detail page route.
+     * @return void
+     */
+    public function viewFaqDetail(Faq $faq)
+    {
+        $title            = APP_NAME;
+        $description      = "FCCPC Faq Detail";
+        $details          = details($title, $description);
+        return view('backend.admin.faq-detail', compact('details'));
+    }
+
+    /**
      * Handles the faq edit page route.
      * @return void
      */

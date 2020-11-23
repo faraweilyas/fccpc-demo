@@ -145,6 +145,10 @@ Route::prefix('faq')
 
         Route::get('all', 'FaqController@index')->name('faqs');
 
+        Route::get('faq/detail/{faq}', 'FaqController@viewFaqDetail')->name(
+            'faq_detail'
+        );
+
         Route::get('faq/{faq}', 'FaqController@destroy')->name('delete');
     });
 
@@ -173,6 +177,10 @@ Route::prefix('/')
 
         Route::get('profile', 'DashboardController@viewProfile')->name(
             'profile'
+        );
+
+        Route::get('user/detail/{user}', 'DashboardController@viewUserDetail')->name(
+            'user_detail'
         );
 
         Route::post('profile', 'DashboardController@updateProfile')->name(

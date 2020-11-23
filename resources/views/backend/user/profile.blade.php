@@ -5,7 +5,7 @@
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
             <div class="d-flex align-items-baseline mr-5">
-                <h5 class="text-dark font-weight-bold my-2 mr-5">User Profile</h5>
+                <h5 class="text-dark font-weight-bold my-2 mr-5">Profile</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
@@ -25,7 +25,7 @@
                 <div class="col-md-8 mx-auto">
                     <div class="card card-custom gutter-b example example-compact">
                         <div class="card-header">
-                            <h3 class="card-title">Update User Profile</h3>
+                            <h3 class="card-title">Update Profile</h3>
                         </div>
                         <form method="POST" action="{{ route('dashboard.update_user') }}">
                             @csrf
@@ -144,5 +144,6 @@
 
 @section('custom.javascript')
 <script type="text/javascript" src="{{ pc_asset(BE_JS.'jquery.min.js') }}"></script>
+<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
 <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'update-profile.js') }}"></script>
 @endsection
