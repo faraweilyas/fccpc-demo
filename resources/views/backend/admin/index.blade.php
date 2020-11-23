@@ -138,7 +138,7 @@
                                <x-icons.regular></x-icons.regular>
                             </section>
                             <p class="mx-5">Regular</p>
-                            <span class="mx-5">72</span> 
+                            <span class="mx-5">{{ $cases->getCasesByCategory('REG')->count() }}</span> 
                         </div>
                      </div>
 
@@ -148,7 +148,7 @@
                                <x-icons.ffm></x-icons.ffm>
                             </section>
                             <p class="mx-5">FFM</p>
-                            <span class="mx-5">30</span> 
+                            <span class="mx-5">{{ $cases->getCasesByCategory('FFM')->count() }}</span> 
                         </div>
                      </div>
                      
@@ -160,7 +160,7 @@
                             <p class="mx-5">FFM
                                 <br>
                                 Expediated</p>
-                            <span class="mx-5" >43</span> 
+                            <span class="mx-5" >{{ $cases->getCasesByCategory('FFX')->count() }}</span> 
                         </div>
                      </div>
 
@@ -169,8 +169,8 @@
                             <section class="svg-hodler">
                                <x-icons.ffx></x-icons.ffx>
                             </section>
-                            <p class="mx-5">Large</p>
-                            <span class="mx-5">Small</span> 
+                            <p class="mx-5">Large {{ $cases->getCasesByType('LG')->count() }}</p>
+                            <span class="mx-5">Small {{ $cases->getCasesByType('SM')->count() }}</span> 
                         </div>
                      </div>
 

@@ -47,6 +47,18 @@ trait CaseGettable
     }
 
     /**
+     * Gets cases by type
+     *
+     * @return Collection
+     */
+    public function getCasesByType($type = null)
+    {
+        return (\AppHelper::validateKey('case_types', $type))
+            ? static::where('case_type', $type)->where('submitted_at', '!=', NULL)->get()
+            : [];
+    }
+
+    /**
      * Gets total amount paid by month and category
      *
      * @param int $month
