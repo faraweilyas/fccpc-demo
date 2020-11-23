@@ -94,7 +94,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4 active" data-toggle="tab"
                                                     href="#local">
-                                                    <span class="nav-text font-size-sm">Local</span>
+                                                    <span class="nav-text font-size-sm">Domestic</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -137,7 +137,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.regular></x-icons.regular>
                                         </section>
-                                        <p class="mx-5">Regular</p>
+                                        <p class="mx-5">Domestic</p>
                                         <span class="main mx-5">{{ $cases->getCasesByCategory('REG')->count() }}</span>
                                     </div>
                                 </div>

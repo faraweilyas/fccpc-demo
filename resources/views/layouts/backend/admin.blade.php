@@ -2,30 +2,23 @@
 
 @section('aside_bar')
 <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
-
     <div class="brand flex-column-auto" id="kt_brand">
-
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
-
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @elseif (\Auth::user()->account_type == 'CH')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
-
+                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
-
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
-
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
             <span class="svg-icon svg-icon svg-icon-xl">
                <x-icons.arrow-white-right></x-icons.arrow-white-right>
             </span>
         </button>
-
     </div>
 
     <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
@@ -423,7 +416,7 @@
                     <div class="form-group fee-calc-form-group">
                         <label>Type of Transaction</label>
                         <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                            <option value="local" selected="">Local</option>
+                            <option value="local" selected="">Domestic</option>
                             <option value="ffm">Foreign to Foreign</option>
                             <option value="ffx">Foreign to Foreign Expedited</option>
                         </select>
