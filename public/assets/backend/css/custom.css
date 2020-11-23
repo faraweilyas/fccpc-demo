@@ -851,14 +851,14 @@ th.fees_tab__head {
 .stats-card p {
     margin-top: 20px;
     font-style: normal;
-    font-weight: 600;
-    font-size: 20px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 24px;
     text-transform: capitalize;
     color: #1A514A;
 }
 
-.stats-card span {
+.stats-card span.main {
     margin-top: 50%;
     font-style: normal;
     font-weight: 600;
@@ -866,6 +866,25 @@ th.fees_tab__head {
     line-height: 32px;
     text-transform: capitalize;
     color: #1A514A;
+}
+
+.stats-card div.cat_container {
+    margin-top: 60px;
+}
+
+.stats-card span.sub {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: capitalize;
+    color: #1A514A;
+}
+
+.cat_container_divider
+{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: 80%;
+    background-color: #3f887b;
 }
 
 .stats__green {
