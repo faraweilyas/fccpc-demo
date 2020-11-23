@@ -396,22 +396,31 @@ class ApplicationController extends Controller
     {
         $case = Cases::find(31);
 
-        $documents = [];
-        foreach (Cases::all() as $case)
-        {
-            foreach ($case->documents as $document)
-            {
-                $document->date_case_submitted = $case->submitted_at;
-                $document->group_id = (!$document->checklists->isEmpty())
-                    ? $document->checklists->first()->group->id
-                    : NULL;
-                $document->save();
-                $documents[] = $document;
-                // dump();
-            }
-        }
+        // foreach (Cases::all() as $case)
+        // {
+        //     $case->amount_paid = rand(5000000, 10000000);
+        //     $case->save();
+        // }
+        // return Cases::all();
+        // return $case->getTotalAmountByMonthAndCategory(9, 'FFM', 'LG');
 
-        return $documents;
+        // $documents = [];
+
+        // foreach (Cases::all() as $case)
+        // {
+        //     foreach ($case->documents as $document)
+        //     {
+        //         $document->date_case_submitted = $case->submitted_at;
+        //         $document->group_id = (!$document->checklists->isEmpty())
+        //             ? $document->checklists->first()->group->id
+        //             : NULL;
+        //         $document->save();
+        //         $documents[] = $document;
+        //         // dump();
+        //     }
+        // }
+
+        // return $documents;
 
         // $submittedDocuments = $case->submittedDocuments();
 
