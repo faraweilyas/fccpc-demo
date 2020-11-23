@@ -124,8 +124,12 @@ var KTWidgets = function () {
                             fontFamily: KTApp.getSettings()['font-family']
                         },
                         y: {
-                            formatter: function (val) {
-                                return "₦" + val 
+                            formatter: function(val)
+                            {
+                                let validatedAmount = Number(val),
+                                    formatter       = new Intl.NumberFormat('en-US');
+
+                                return "₦" + formatter.format(validatedAmount);
                             }
                         }
                     },

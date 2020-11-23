@@ -198,5 +198,6 @@
 @endsection
 
 @section('custom.javascript')
+    <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'chart-report.js') }}"></script>
 @endsection
