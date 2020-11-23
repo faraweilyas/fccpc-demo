@@ -19,122 +19,71 @@
     </div>
 </div>
 <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-    <div class="d-flex flex-column-fluid">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 mx-auto">
-                    <div class="card card-custom gutter-b example example-compact">
-                        <div class="card-header">
-                            <h3 class="card-title">Update Profile</h3>
-                        </div>
-                        <form method="POST" action="{{ route('dashboard.update_user') }}">
-                            @csrf
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Account Type</label> <span class="text-danger">*</span>
-                                            <input type="text" class="form-control"
-                                                value="{{ $user->getAccountType() }}" disabled />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Email</label> <span class="text-danger">*</span>
-                                            <input type="email" class="form-control" placeholder="Enter email"
-                                                name="email" value="{{ $user->email ?? '' }}">
-                                            <span class="form-text text-muted">Please enter email.</span>
-                                            @error('email')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>First Name</label> <span class="text-danger">*</span>
-                                            <input type="text" class="form-control" placeholder="Enter first name"
-                                                name="first_name" value="{{ $user->getFirstName() }}">
-                                            <span class="form-text text-muted">Please enter first name.</span>
-                                            @error('first_name')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Last Name</label> <span class="text-danger">*</span>
-                                            <input type="text" class="form-control" placeholder="Enter last name"
-                                                name="last_name" value="{{ $user->getLastName() }}">
-                                            <span class="form-text text-muted">Please enter last name.</span>
-                                            @error('last_name')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Change Password?</label>
-                                            <div class="radio-inline">
-                                                <label class="radio">
-                                                    <input type="radio" name="change_pass" value="yes">Yes
-                                                    <span></span></label>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
 
-                                                <label class="radio">
-                                                    <input type="radio" name="change_pass" value="no"
-                                                        checked="checked">No
-                                                    <span></span></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="change-password" class="hide">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Old Password <span class="text-danger">*</span></label>
-                                                <input type="password" class="hide" />
-                                                <input type="password" class="form-control" placeholder="password"
-                                                    name="password" />
-                                                <span class="form-text text-muted">Provide password.</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>New Password <span class="text-danger">*</span></label>
-                                                <input type="password" class="form-control" placeholder="password"
-                                                    name="new_password" />
-                                                <span class="form-text text-muted">Provide password.</span>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Retype New Password <span class="text-danger">*</span></label>
-                                                <input type="password" class="form-control"
-                                                    placeholder="Confirm password" name="password_confirmation" />
-                                                <span class="form-text text-muted">Provide password.</span>
-                                            </div>
-                                            @error('password')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-7 text-right">
-                                        <button type="submit" class="btn btn-primary mr-2"><i
-                                                class="la la-cloud-upload"></i> Update User</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                <div class="card__box card__box-stack shadow card__box-stack-active" id="control-1">
+                    <section class="card__box-stack-img">
+                        <x-icons.user-profile></x-icons.user-profile>
+                    </section>
+                    <div class="card__box--content">
+                        <p>Personal Information</p>
+                        <span>Edit your personal details</span>
                     </div>
+                </div>
+
+                <div class="card__box card__box-stack shadow " id="control-1">
+                    <section class="card__box-stack-img">
+                        <x-icons.open-book></x-icons.open-book>
+                    </section>
+                    <div class="card__box--content">
+                        <p>Change Password</p>
+                        <span>Change your password</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-7 my-5">
+                <div class="card card__box__large">
+                    <div class="card__box__large-content">
+                        {{--  --}}
+                        <div class="form-group form-group-profile">
+                            <label for="">First Name</label>
+                            <input type="text" class="form-control-profile">
+                        </div>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">Last Name</label>
+                            <input type="text" class="form-control-profile">
+                        </div>
+
+                        <span class="form-subtitle my-5 py-5">CONTACT INFORMATION</span>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">Phone Number</label>
+                            <input type="text" class="form-control-profile">
+                        </div>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">Email Address</label>
+                            <input type="text" class="form-control-profile">
+                        </div>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">Home Address</label>
+                            <textarea class="form-control form-control-textarea" cols="50"></textarea>
+                        </div>
+
+                        <div class="d-flex">
+                            <button class="btn btn-success formBtn-success-light">Cancel</button>
+                            <button class="btn btn-success btn-block formBtn-success">Save Changes</button>
+                        </div>
+
+                        {{--  --}}
+                    </div>
+                    
                 </div>
             </div>
         </div>

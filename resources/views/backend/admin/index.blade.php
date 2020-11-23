@@ -81,7 +81,7 @@
             </div>
             @if(!in_array(\Auth::user()->account_type, ['AD']))
             <div class="row mt-10">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="card card-custom bg-gray-100 card-stretch gutter-b">
                         <div class="card-header h-auto border-0">
                             <div class="card-title py-5">
@@ -129,6 +129,54 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6">
+                 <div class="row">
+                     <div class="col-md-6">
+                        <div class="stats-card">
+                            <section class="svg-hodler">
+                               <x-icons.regular></x-icons.regular>
+                            </section>
+                            <p class="mx-5">Regular</p>
+                            <span class="mx-5">72</span> 
+                        </div>
+                     </div>
+
+                     <div class="col-md-6">
+                        <div class="stats-card stats__green">
+                            <section class="svg-hodler">
+                               <x-icons.ffm></x-icons.ffm>
+                            </section>
+                            <p class="mx-5">FFM</p>
+                            <span class="mx-5">30</span> 
+                        </div>
+                     </div>
+                     
+                     <div class="col-md-6 my-5">
+                        <div class="stats-card stats__lightgreen">
+                            <section class="svg-hodler">
+                               <x-icons.ffx></x-icons.ffx>
+                            </section>
+                            <p class="mx-5">FFM
+                                <br>
+                                Expediated</p>
+                            <span class="mx-5" >43</span> 
+                        </div>
+                     </div>
+
+                     <div class="col-md-6 my-5">
+                        <div class="stats-card ">
+                            <section class="svg-hodler">
+                               <x-icons.ffx></x-icons.ffx>
+                            </section>
+                            <p class="mx-5">Large</p>
+                            <span class="mx-5">Small</span> 
+                        </div>
+                     </div>
+
+                     
+                     
+                 </div>
                 </div>
             </div>
             <div class="row mt-10">
