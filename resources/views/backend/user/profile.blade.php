@@ -48,7 +48,6 @@
             <div class="col-md-7 my-5">
                 <div class="card card__box__large">
                     <div class="card__box__large-content">
-                        {{--  --}}
                         <div class="form-group form-group-profile">
                             <label for="">First Name</label>
                             <input type="text" class="form-control-profile">
@@ -84,6 +83,32 @@
                         {{--  --}}
                     </div>
                     
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 my-5">
+                <div class="card card__box__large">
+                    <div class="card__box__large-content">
+                        <div class="form-group form-group-profile">
+                            <label for="">Old Password</label>
+                            <input type="password" class="form-control-profile">
+                        </div>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">New Password</label>
+                            <input type="password" class="form-control-profile">
+                        </div>
+
+                        <div class="form-group form-group-profile">
+                            <label for="">Confirm New Password</label>
+                            <input type="password" class="form-control-profile">
+                        </div>
+                        <div class="d-flex">
+                            <button class="btn btn-success formBtn-success-light">Cancel</button>
+                            <button class="btn btn-success btn-block formBtn-success">Save Changes</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
