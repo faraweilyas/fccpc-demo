@@ -375,16 +375,8 @@ section#orderWizard {
         margin-bottom: -50px; */
     }
 
-    .stats-card span.main {
-        margin-top: 30%;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 48px;
-        line-height: 32px;
-        text-transform: capitalize;
-        color: #1A514A;
-    }
-    
+
+
     .sub-header-mobile {
         margin-right: 0.25rem !important;
         -webkit-box-align: center !important;
@@ -453,7 +445,7 @@ section#orderWizard {
 }
 
 .dashboard-card:hover {
-    transform: translateX(10px);
+    transform: translateY(-10px);
 }
 
 .dashboard-card p {
@@ -695,15 +687,7 @@ a.checklist-list {
         display: none !important;
     }
 
-    .stats-card span.main {
-        margin-top: 30%;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 48px;
-        line-height: 32px;
-        text-transform: capitalize;
-        color: #1A514A;
-    }
+
 }
 
 .search-input {
@@ -819,15 +803,7 @@ th.fees_tab__head {
         display: none !important;
     }
 
-    .stats-card span.main {
-        margin-top: 30%;
-        font-style: normal;
-        font-weight: 600;
-        font-size: 48px;
-        line-height: 32px;
-        text-transform: capitalize;
-        color: #1A514A;
-    }
+
 
 }
 
@@ -894,7 +870,7 @@ th.fees_tab__head {
 }
 
 .stats-card span.main {
-    margin-top: 50%;
+
     font-style: normal;
     font-weight: 600;
     font-size: 48px;
@@ -915,14 +891,22 @@ th.fees_tab__head {
     color: #1A514A;
 }
 
+.is-white{
+    color: #fff !important;
+}
+
 .cat_container_divider {
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     width: 80%;
-    background-color: #3f887b;
+    background-color: #fff;
 }
 
 .stats__green {
     background: #1F877A;
+    border-radius: 8px;
+}
+.stats__warining {
+    background: #E76F51;
     border-radius: 8px;
 }
 
@@ -1062,7 +1046,7 @@ th.fees_tab__head {
 .card__box__large {
     background: #fff;
     height: auto;
-    padding-bottom: 15rem;
+    /* padding-bottom: 15rem; */
 }
 
 .card__box__large .card__box__large-content {
@@ -1183,7 +1167,7 @@ th.fees_tab__head {
     font-size: 1.2rem;
 }
 
-.label-success {
+.label__success {
     width: 22%;
     background: #E5F9F5;
     color: #1F877A;
@@ -1193,7 +1177,7 @@ th.fees_tab__head {
     border-radius: 5px;
 }
 
-.label-danger {
+.label__danger {
     width: 25%;
     background: rgba(231, 40, 40, 0.15);
     color: #E72828;

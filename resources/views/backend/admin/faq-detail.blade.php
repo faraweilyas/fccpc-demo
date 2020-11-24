@@ -28,12 +28,18 @@
 
 
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-12 d-flex justify-content-between">
+                              <div>
                                 <span>Question:</span>
                                 <p class="faq-question-header">What is a meger?</p>
+                              </div>
+                               <div>
+                                <span>Created:</span>
+                                <p class="faq-question-header">26 October. 2020</p>
+                               </div>
                             </div>
 
-                            <div class="col-md-8 ">
+                            <div class="col-md-12">
 
                                 <span>Description:</span>
 
@@ -56,6 +62,19 @@
 
 
                             </div>
+
+                            <div class="col-md-12 d-flex justify-content-between my-5">
+                              <div>
+                                <span>Creator:</span>
+                                <p class="faq-question-header">AMALIA SMITH
+                                </p>
+                              </div>
+                               <div>
+                                <span>Category:</span>
+                                <p class="label__success w-100">General</p>
+                               </div>
+                            </div>
+
 
                         </div>
 

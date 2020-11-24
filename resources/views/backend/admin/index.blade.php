@@ -138,7 +138,7 @@
                                            <x-icons.regular></x-icons.regular>
                                         </section>
                                         <p class="mx-5">Domestic</p>
-                                        <span class="main mx-5">{{ $cases->getCasesByCategory('REG')->count() }}</span>
+                                        <span class="main mx-5 my-25">{{ $cases->getCasesByCategory('REG')->count() }}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 my-5">
@@ -147,7 +147,7 @@
                                            <x-icons.ffm></x-icons.ffm>
                                         </section>
                                         <p class="mx-5">FFM</p>
-                                        <span class="main mx-5">{{ $cases->getCasesByCategory('FFM')->count() }}</span>
+                                        <span class="main mx-5 my-25">{{ $cases->getCasesByCategory('FFM')->count() }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -158,21 +158,21 @@
                                            <x-icons.ffx></x-icons.ffx>
                                         </section>
                                         <p class="mx-5">FFM Expediated</p>
-                                        <span class="main mx-5" >{{ $cases->getCasesByCategory('FFX')->count() }}</span>
+                                        <span class="main mx-5 my-25" >{{ $cases->getCasesByCategory('FFX')->count() }}</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6 my-5">
-                                    <div class="stats-card">
+                                    <div class="stats-card stats__warining">
                                         <section class="svg-hodler">
-                                           <x-icons.ffx></x-icons.ffx>
+                                           <x-icons.regular></x-icons.regular>
                                         </section>
-                                        <p class="mx-5">Category</p>
+                                        <p class="mx-5 is-white">Category</p>
                                         <div class='cat_container'>
-                                            <span class="sub">Large</span>
-                                            <span class="sub float-right">{{ $cases->getCasesByType('LG')->count() }}</span>
-                                            <hr class='cat_container_divider' />
-                                            <span class="sub">Small</span>
-                                            <span class="sub float-right">{{ $cases->getCasesByType('SM')->count() }}</span>
+                                            <span class="sub is-white">Large</span>
+                                            <span class="sub float-right is-white">{{ $cases->getCasesByType('LG')->count() }}</span>
+                                            <hr class='cat_container_divider is-white' />
+                                            <span class="sub is-white">Small</span>
+                                            <span class="sub float-right is-white">{{ $cases->getCasesByType('SM')->count() }}</span>
                                         </div>
                                     </div>
                                 </div>

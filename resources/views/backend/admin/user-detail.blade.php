@@ -73,10 +73,10 @@
                                 </div>
                                 <div class="content-box ">
                                     <span>Status</span>
-                                    <p class="label-success my-5">
+                                    <p class="label__success my-5">
                                       Active
                                     </p>
-                                    <p class="label-danger my-5">
+                                    <p class="label__danger my-5">
                                       In-active
                                     </p>
                                 </div>
