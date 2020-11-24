@@ -61,7 +61,7 @@
                                         <div class="col-md-6">
                                             <div class="content-box">
                                                 <span>Phone Number:</span>
-                                                <p>+234 000 0000 000</p>
+                                                <p>{{ $user->phone_number ?? '...' }}</p>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -74,10 +74,7 @@
                                     <div class="content-box ">
                                         <span>Address</span>
                                         <p>
-                                            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                            Itaque fugiat qui expedita quidem, repudiandae placeat iure incidunt deleniti
-                                            praesentium dolorem recusandae.
-                                            Deserunt, nihil quas nemo maiores cupiditate perspiciatis dolore aspernatur.
+                                            {{ $user->address ?? '...' }}
                                         </p>
                                     </div>
                                 </div>

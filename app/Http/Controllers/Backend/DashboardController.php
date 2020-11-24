@@ -134,17 +134,11 @@ class DashboardController extends Controller
 
     public function updateProfile(Request $request)
     {
-        $this->validate($request, [
-            'first_name'    => 'required',
-            'last_name'     => 'required'
-        ]);
 
-        if (isset($request->password) && $request->change_pass == 'yes') {
+        if (isset($request->password)) {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
                     User::whereId(Auth::user()->id)->update([
-                            'first_name' => $request->first_name,
-                            'last_name'  => $request->last_name,
                             'password'  => Hash::make($request->new_password)
                      ]);
 
@@ -157,13 +151,21 @@ class DashboardController extends Controller
             }
         }
 
+        $this->validate($request, [
+            'first_name'    => 'required',
+            'last_name'     => 'required'
+        ]);
+
         User::whereId(Auth::user()->id)->update([
-                'first_name' => $request->first_name,
-                'last_name'  => $request->last_name
+                'first_name'    => $request->first_name,
+                'last_name'     => $request->last_name,
+                'phone_number'  => $request->phone_number ?? '',
+                'address'       => $request->address  ?? ''
          ]);
 
         return redirect()->back()->with("success", "Profile updated");
     }
+    
 
     /**
      * Handles the generate report page route.
