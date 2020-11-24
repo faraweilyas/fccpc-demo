@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="tab-content">
+                                    <div class="tab-content mt__n80">
                                         <div class="tab-pane fade show active text-center my-25" id="local" role="tabpanel">
                                             <span id="report-loader">
                                                 <img src="{{ BE_IMAGE.'report_loading.gif' }}" />

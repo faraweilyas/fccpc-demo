@@ -43,7 +43,7 @@
 
                                 </span>
 
-                                <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Local Merger
+                                <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Domestic Merger
                                 </div>
                                 <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
 
