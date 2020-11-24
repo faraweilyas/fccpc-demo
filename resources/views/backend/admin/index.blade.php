@@ -94,7 +94,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4 active" data-toggle="tab"
                                                     href="#local">
-                                                    <span class="nav-text font-size-sm">Local</span>
+                                                    <span class="nav-text font-size-sm">Domestic</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <div class="tab-content">
+                                    <div class="tab-content mt__n80">
                                         <div class="tab-pane fade show active text-center my-25" id="local" role="tabpanel">
                                             <span id="report-loader">
                                                 <img src="{{ BE_IMAGE.'report_loading.gif' }}" />
@@ -137,7 +137,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.regular></x-icons.regular>
                                         </section>
-                                        <p class="mx-5">Regular</p>
+                                        <p class="mx-5">Domestic</p>
                                         <span class="main mx-5">{{ $cases->getCasesByCategory('REG')->count() }}</span>
                                     </div>
                                 </div>

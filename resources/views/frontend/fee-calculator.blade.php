@@ -6,7 +6,7 @@
       <h2 class="fee-calc-header">Fee Calculator</h2>
 
       <p class="fee-calc-subh py-5">
-        Fees Guideline for Local Merger
+        Fees Guideline for Domestic Merger
       </p>
     </div>
     <div class="row fee-calc-container">
@@ -14,7 +14,7 @@
         <div class="form-group ">
           <label>Type of Transaction</label>
             <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                <option value="local" selected="">Local</option>
+                <option value="local" selected="">Domestic</option>
                 <option value="ffm">Foreign to Foreign</option>
                 <option value="ffx">Foreign to Foreign Expedited</option>
             </select>
