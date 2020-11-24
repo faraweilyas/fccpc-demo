@@ -30,7 +30,7 @@
                         <div class="row">
                             <div class="col-md-4">
                               <div class="profile-image">
-                                OI
+                                {{ $user->getInitials() }}
                               </div>
                             </div>
 
@@ -38,23 +38,23 @@
 
                                 <div class="content-box">
                                     <span>Account Type</span>
-                                    <p>Administrator</p>
+                                    <p>{{ $user->getAccountType() }}</p>
                                 </div>
 
                                 <div class="content-box">
                                     <span>First Name</span>
-                                    <p>Osamudiamen Imaseun</p>
+                                    <p>{{ $user->first_name }}</p>
                                 </div>
 
 
                                 <div class="content-box ">
                                     <span>Last Name</span>
-                                    <p>Osamudiamen Imaseun</p>
+                                    <p>{{ $user->last_name }}</p>
                                 </div>
 
                                 <div class="content-box ">
                                     <span>Email Address</span>
-                                    <p>Osamudiamen@gmail.com</p>
+                                    <p>{{ $user->email }}</p>
                                 </div>
 
                                 <div class="content-box ">
@@ -72,13 +72,8 @@
                                     </p>
                                 </div>
                                 <div class="content-box ">
-                                    <span>Status</span>
-                                    <p class="label__success my-5">
-                                      Active
-                                    </p>
-                                    <p class="label__danger my-5">
-                                      In-active
-                                    </p>
+                                    <p>Status</p>
+                                    <p class="mt-n3">{!! $user->getStatusHtml() !!}</p>
                                 </div>
 
                             </div>

@@ -51,6 +51,17 @@ class Faq extends Model
         return textTransformer($this->user->getFullName(), $textStyle);
     }
 
+    /**
+     * Get date created
+     *
+     * @param string $format
+     * @return string
+     */
+    public function getCreatedAt(string $format='customdate') : string
+    {
+        return !empty($this->created_at) ? datetimeToText($this->created_at, $format) : "";
+    }
+
      /**
      * Get Question
      *

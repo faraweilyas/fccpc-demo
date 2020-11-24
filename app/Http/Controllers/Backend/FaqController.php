@@ -46,7 +46,7 @@ class FaqController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Faq Detail";
         $details          = details($title, $description);
-        return view('backend.admin.faq-detail', compact('details'));
+        return view('backend.admin.faq-detail', compact('details', 'faq'));
     }
 
     /**

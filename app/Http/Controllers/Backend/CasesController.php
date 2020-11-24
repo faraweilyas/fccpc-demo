@@ -47,10 +47,10 @@ class CasesController extends Controller
             else:
                 foreach ($data as $key => $value):
                     if (!empty($value['account_type'])):
-                        $output .= '<a href="#"><i class="la la-user-alt"></i>&nbsp;&nbsp;'.shortenContent($value['first_name'].' '.$value['last_name'], 40).'</a>';
+                        $output .= '<a href='.route('dashboard.user_detail', ['user' => $value['id']]).'><i class="la la-user-alt"></i>&nbsp;&nbsp;'.shortenContent($value['first_name'].' '.$value['last_name'], 40).'</a>';
                     else:
                         
-                        $output .= '<a href="#"><i class="la la-question-circle-o"></i>&nbsp;&nbsp;'.shortenContent($value['question'], 28).'</a>';
+                        $output .= '<a href='.route('faq.faq_detail', ['faq' => $value['id']]).'><i class="la la-question-circle-o"></i>&nbsp;&nbsp;'.shortenContent($value['question'], 28).'</a>';
                     endif;
                 endforeach;
             endif;

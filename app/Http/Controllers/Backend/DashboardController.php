@@ -118,7 +118,7 @@ class DashboardController extends Controller
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard User Detail";
         $details          = details($title, $description);
-        return view('backend.admin.user-detail', compact('details'));
+        return view('backend.admin.user-detail', compact('details', 'user'));
     }
 
     public function updateUserStatus($id)

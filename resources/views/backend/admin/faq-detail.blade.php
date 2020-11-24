@@ -31,58 +31,37 @@
                             <div class="col-md-12 d-flex justify-content-between">
                               <div>
                                 <span>Question:</span>
-                                <p class="faq-question-header">What is a meger?</p>
+                                <p class="faq-question-header">{{ $faq->question }}</p>
                               </div>
                                <div>
                                 <span>Created:</span>
-                                <p class="faq-question-header">26 October. 2020</p>
+                                <p class="faq-question-header">{{ $faq->getCreatedAt() }}</p>
                                </div>
                             </div>
-
                             <div class="col-md-12">
 
-                                <span>Description:</span>
+                                <span>Answer:</span>
 
                               <br/>
                               <br/>
-
                                 <p class="faq-question-answer">
-
-                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe autem aliquam,
-                                    voluptate, architecto itaque at, dicta soluta consectetur laboriosam facere
-                                    veritatis ut eius beatae minus. Necessitatibus cum magnam magni adipisci.
-                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe autem aliquam,
-                                    voluptate, architecto itaque at, dicta soluta consectetur laboriosam facere
-                                    veritatis ut eius beatae minus. Necessitatibus cum magnam magni adipisci.
-                                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe autem aliquam,
-                                    voluptate, architecto itaque at, dicta soluta consectetur laboriosam facere
-                                    veritatis ut eius beatae minus. Necessitatibus cum magnam magni adipisci.
-                                  
+                                  {!! nl2br($faq->answer) !!}
                                 </p>
-
-
                             </div>
 
                             <div class="col-md-12 d-flex justify-content-between my-5">
                               <div>
                                 <span>Creator:</span>
-                                <p class="faq-question-header">AMALIA SMITH
+                                <p class="faq-question-header mt-5">{{ $faq->getCreator() }}
                                 </p>
                               </div>
                                <div>
                                 <span>Category:</span>
-                                <p class="label__success w-100">General</p>
+                                <p class="w-100 mt-5">{!! $faq->getCategoryHtml() !!}</p>
                                </div>
                             </div>
-
-
                         </div>
-
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>
