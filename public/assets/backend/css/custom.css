@@ -838,7 +838,7 @@ th.fees_tab__head {
 .stats-card {
     position: relative;
     display: flex;
-    height: 18rem;
+    height: 20rem;
     padding: 10px;
     flex-direction: column;
     background: #E9C46A;

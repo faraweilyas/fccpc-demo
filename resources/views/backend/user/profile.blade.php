@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-5">
 
-                <div class="card__box card__box-stack shadow card__box-stack-active" id="control-1">
+                <div class="card__box card__box-stack shadow card__box-stack-active" id="edit-profile-control">
                     <section class="card__box-stack-img">
                         <x-icons.user-profile></x-icons.user-profile>
                     </section>
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="card__box card__box-stack shadow " id="control-1">
+                <div class="card__box card__box-stack shadow " id="change-password-control">
                     <section class="card__box-stack-img">
                         <x-icons.open-book></x-icons.open-book>
                     </section>
@@ -45,7 +45,7 @@
 
             </div>
 
-            <div class="col-md-7 my-5">
+            <div id="edit-profile-card" class="col-md-7 my-5">
                 <div class="card card__box__large">
                     <div class="card__box__large-content">
                         <div class="form-group form-group-profile">
@@ -85,9 +85,8 @@
                     
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-7 my-5">
+
+            <div id="change-password-card" class="col-md-7 my-5 hide">
                 <div class="card card__box__large">
                     <div class="card__box__large-content">
                         <div class="form-group form-group-profile">
@@ -112,6 +111,7 @@
                 </div>
             </div>
         </div>
+       
     </div>
 </div>
 @endsection

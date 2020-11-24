@@ -29,36 +29,37 @@
 
                         <div class="row">
                             <div class="col-md-12 d-flex justify-content-between">
-                              <div>
-                                <span>Question:</span>
-                                <p class="faq-question-header">{{ $faq->question }}</p>
-                              </div>
-                               <div>
-                                <span>Created:</span>
-                                <p class="faq-question-header">{{ $faq->getCreatedAt() }}</p>
-                               </div>
+                                <div>
+                                    <span>Question:</span>
+                                    <p class="faq-question-header">{{ $faq->question }}</p>
+                                </div>
+
                             </div>
                             <div class="col-md-12">
 
                                 <span>Answer:</span>
 
-                              <br/>
-                              <br/>
+                                <br />
+                                <br />
                                 <p class="faq-question-answer">
-                                  {!! nl2br($faq->answer) !!}
+                                    {!! nl2br($faq->answer) !!}
                                 </p>
                             </div>
 
                             <div class="col-md-12 d-flex justify-content-between my-5">
-                              <div>
-                                <span>Creator:</span>
-                                <p class="faq-question-header mt-5">{{ $faq->getCreator() }}
-                                </p>
-                              </div>
-                               <div>
-                                <span>Category:</span>
-                                <p class="w-100 mt-5">{!! $faq->getCategoryHtml() !!}</p>
-                               </div>
+                                <div>
+                                    <span>Creator:</span>
+                                    <p class="faq-question-header mt-5">{{ $faq->getCreator() }}
+                                    </p>
+                                </div>
+                                <div>
+                                    <span>Category:</span>
+                                    <p class="w-100 mt-5">{!! $faq->getCategoryHtml() !!}</p>
+                                </div>
+                                <div>
+                                    <span>Created:</span>
+                                    <p class="faq-question-header">{{ $faq->getCreatedAt() }}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
