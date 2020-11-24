@@ -7,22 +7,19 @@
 
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
-
+                <x-icons.map-admin></x-icons.map-admin>
             @elseif (\Auth::user()->account_type == 'CH')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
-
+                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
-
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
 
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
             <span class="svg-icon svg-icon svg-icon-xl">
-               <x-icons.arrow-white-right></x-icons.arrow-white-right>
+                <x-icons.arrow-white-right></x-icons.arrow-white-right>
             </span>
         </button>
 
@@ -38,7 +35,7 @@
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('dashboard.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
-                                 <x-icons.dashboard></x-icons.dashboard>
+                            <x-icons.dashboard></x-icons.dashboard>
                         </span>
                         <span class="menu-text">Dashboard</span>
                     </a>
@@ -416,7 +413,7 @@
         <!--begin::Content-->
         <div class="offcanvas-content">
             <!--begin::Wrapper-->
-          
+
 
             <div class="row fee-calc-container my-10">
                 <div class="col-md-12">
