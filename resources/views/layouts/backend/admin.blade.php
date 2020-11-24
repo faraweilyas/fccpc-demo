@@ -210,7 +210,7 @@
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('dashboard.profile') }}" class="menu-link">
                         <span class="svg-icon menu_icon_custom">
-                            <x-icons.settings></x-icons.settings>
+                            <x-icons.user-profile-shield></x-icons.user-profile-shield>
                         </span>
                         <span class="menu-text">Profile</span>
                     </a>

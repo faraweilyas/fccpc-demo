@@ -3,6 +3,11 @@ body {
     background-color: rgb(251 246 241)
 }
 
+.align__center
+{
+    align-items: center;
+}
+
 .mt__n80 {
     margin-top: -80px;
 }
