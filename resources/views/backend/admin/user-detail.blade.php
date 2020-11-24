@@ -29,10 +29,17 @@
 
                         <div class="row">
                             <div class="col-md-4">
-                              
+                              <div class="profile-image">
+                                OI
+                              </div>
                             </div>
 
                             <div class="col-md-8 ">
+
+                                <div class="content-box">
+                                    <span>Account Type</span>
+                                    <p>Administrator</p>
+                                </div>
 
                                 <div class="content-box">
                                     <span>First Name</span>
@@ -43,6 +50,11 @@
                                 <div class="content-box ">
                                     <span>Last Name</span>
                                     <p>Osamudiamen Imaseun</p>
+                                </div>
+
+                                <div class="content-box ">
+                                    <span>Email Address</span>
+                                    <p>Osamudiamen@gmail.com</p>
                                 </div>
 
                                 <div class="content-box ">
@@ -57,6 +69,15 @@
                                         Itaque fugiat qui expedita quidem, repudiandae placeat iure incidunt deleniti
                                         praesentium dolorem recusandae.
                                         Deserunt, nihil quas nemo maiores cupiditate perspiciatis dolore aspernatur.
+                                    </p>
+                                </div>
+                                <div class="content-box ">
+                                    <span>Status</span>
+                                    <p class="label-success my-5">
+                                      Active
+                                    </p>
+                                    <p class="label-danger my-5">
+                                      In-active
                                     </p>
                                 </div>
 
