@@ -145,7 +145,7 @@ Route::prefix('faq')
 
         Route::get('all', 'FaqController@index')->name('faqs');
 
-        Route::get('faq/detail/{faq}', 'FaqController@viewFaqDetail')->name(
+        Route::get('detail/{faq}', 'FaqController@viewFaqDetail')->name(
             'faq_detail'
         );
 
