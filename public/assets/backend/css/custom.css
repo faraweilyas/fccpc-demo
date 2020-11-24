@@ -375,6 +375,16 @@ section#orderWizard {
         margin-bottom: -50px; */
     }
 
+    .stats-card span.main {
+        margin-top: 30%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 32px;
+        text-transform: capitalize;
+        color: #1A514A;
+    }
+    
     .sub-header-mobile {
         margin-right: 0.25rem !important;
         -webkit-box-align: center !important;
@@ -684,6 +694,16 @@ a.checklist-list {
     .hide-small-md {
         display: none !important;
     }
+
+    .stats-card span.main {
+        margin-top: 30%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 32px;
+        text-transform: capitalize;
+        color: #1A514A;
+    }
 }
 
 .search-input {
@@ -797,6 +817,16 @@ th.fees_tab__head {
 
     .hide-small-md {
         display: none !important;
+    }
+
+    .stats-card span.main {
+        margin-top: 30%;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 32px;
+        text-transform: capitalize;
+        color: #1A514A;
     }
 
 }
@@ -1188,4 +1218,15 @@ th.fees_tab__head {
 .profile-image:hover {
     transform: translateY(-5px);
     box-shadow: 0px 0px 15px rgba(85, 85, 85, 0.09);
+}
+
+
+.faq-question-header{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.faq-question-answer{
+    font-weight: 500;
+    font-size: 1.2rem;
 }

@@ -132,7 +132,7 @@
                         </div>
                         <div class="col-md-5">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-6 my-5">
                                     <div class="stats-card">
                                         <section class="svg-hodler">
                                            <x-icons.regular></x-icons.regular>
@@ -141,7 +141,7 @@
                                         <span class="main mx-5">{{ $cases->getCasesByCategory('REG')->count() }}</span>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 my-5">
                                     <div class="stats-card stats__green">
                                         <section class="svg-hodler">
                                            <x-icons.ffm></x-icons.ffm>
