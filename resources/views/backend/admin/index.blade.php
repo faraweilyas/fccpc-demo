@@ -157,7 +157,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.ffx></x-icons.ffx>
                                         </section>
-                                        <p class="mx-5">FFM Expediated</p>
+                                        <p class="mx-5">FFM Expedited</p>
                                         <span class="main mx-5 my-25" >{{ $cases->getCasesByCategory('FFX')->count() }}</span>
                                     </div>
                                 </div>
