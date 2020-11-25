@@ -5,7 +5,8 @@
     <title>{{ $details->title }}</title>
     <meta name="author" content="{{ author() }}">
     <meta name="description" content="{{ $details->description }}" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
 
@@ -126,8 +127,32 @@
             @if(Session::has('error'))
             toastr.error("{{ Session::get('error') }}");
             @endif
+
+
+            $("[id^=toggle_notification]").click(function () {
+                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
+                $("#kt_quick_panel").toggleClass("offcanvas-on");
+                $("#kt_quick_cart").removeClass("offcanvas-on");
+                $("#kt_quick_user").removeClass("offcanvas-on");
+            });
+            $("[id^=toggle_ongoing_case]").click(function () {
+                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
+
+                $("#kt_quick_panel").removeClass("offcanvas-on");
+                $("#kt_quick_cart").removeClass("offcanvas-on");
+                $("#kt_quick_user").toggleClass("offcanvas-on");
+            });
+            $("[id^=toggle_fee]").click(function () {
+                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
+
+                $("#kt_quick_panel").removeClass("offcanvas-on");
+                $("#kt_quick_cart").toggleClass("offcanvas-on");
+                $("#kt_quick_user").removeClass("offcanvas-on");
+            });
         });
+
     </script>
+
 
     @yield('custom.javascript')
 

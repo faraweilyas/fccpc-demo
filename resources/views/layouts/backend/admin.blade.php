@@ -238,8 +238,15 @@
                 role="tablist">
 
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#kt_quick_user_panel">Ongoing Cases</a>
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_ongoing_case">OnGoing Cases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_fee">Fee </a>
+                </li>
+
 
             </ul>
             <div class="offcanvas-close mt-n1 pr-5">
@@ -291,7 +298,13 @@
                 role="tablist">
 
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#kt_quick_panel_notifications">Notifications</a>
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_ongoing_case">OnGoing Cases</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_fee">Fee </a>
                 </li>
 
             </ul>
@@ -582,4 +595,6 @@
 @section('custom.javascript')
 <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
 @endsection
