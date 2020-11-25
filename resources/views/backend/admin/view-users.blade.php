@@ -53,6 +53,9 @@
                                     {!! $item->getStatusHtml() !!}
                                 </td>
                                 <td class="text-center">
+                                    <a href="{{ route('dashboard.user_detail', ['user' => $item->id]) }}" class="btn btn-sm btn-light-warning mr-3" title="View User">
+                                        <i class="flaticon-eye"></i> View
+                                    </a>
                                     @if($item->status == 'active')
                                     <a href="{{ route('dashboard.update_users_status', ['id' => $item->id]) }}"
                                         class="btn btn-sm btn-light-danger mr-3" title="Deactivate User">
