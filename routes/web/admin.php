@@ -184,7 +184,7 @@ Route::prefix('/')
         );
 
         Route::post('profile', 'DashboardController@updateProfile')->name(
-            'update_user'
+            'update_user_profile'
         );
 
         Route::get('report/{show}', 'DashboardController@generateReportTable')->name(

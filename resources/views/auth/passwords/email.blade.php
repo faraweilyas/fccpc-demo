@@ -19,7 +19,7 @@
             </div>
             <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}">
                 <div class="login-form text-center p-7 position-relative overflow-hidden">
-                    <div class="d-flex flex-center mb_15">
+                    <div class="d-flex flex-center mb_15 mt-20">
                         <a data-turbolinks="false" href="{{ route('home.index') }}">
                             <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" class="maxh_130" />
                         </a>
