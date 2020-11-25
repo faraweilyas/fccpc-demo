@@ -1219,3 +1219,11 @@ th.fees_tab__head {
     font-weight: 500;
     font-size: 1.2rem;
 }
+
+.height-75{
+    margin: 2rem 0;
+    height: 50%;
+    background: #fff;
+    padding: 2rem;
+    overflow-y: scroll;
+}
