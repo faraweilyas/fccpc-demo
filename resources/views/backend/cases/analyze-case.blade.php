@@ -19,7 +19,7 @@
                         <a href="{{ route('cases.assigned') }}" class="text-muted">Assigned Cases</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Analyze Case</a>
+                        <a href="" class="text-muted">Analyse Case</a>
                     </li>
                 </ul>
             </div>
@@ -45,7 +45,7 @@
                 <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif" href="#">Case Analysis
                     <span>Duration: 10 days</span>
                 </a>
-            </div> 
+            </div>
             <div class="tab-link @if($case->isRecommendationIssued()) active @endif">
                 <img src="{{ pc_asset(BE_IMAGE.'svg/'.$recommendationIcon) }}" alt="Position-square">
                 <a class="nav-link @if($case->isRecommendationIssued()) text-white @else active @endif" href="#">Approval
