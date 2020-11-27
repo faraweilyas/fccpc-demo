@@ -5,13 +5,13 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">User Profile</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Profile</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">User Profile</a>
+                            <a href="" class="text-muted">Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -73,9 +73,7 @@
                                     </div>
                                     <div class="content-box ">
                                         <span>Address</span>
-                                        <p>
-                                            {{ $user->address ?? '...' }}
-                                        </p>
+                                        <p>{{ $user->address ?? '...' }}</p>
                                     </div>
                                 </div>
                             </div>
