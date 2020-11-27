@@ -2,10 +2,11 @@
 
 namespace App\Notifications;
 
+use App\Models\Cases;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class CaseAssigned extends Notification
 {
@@ -20,10 +21,11 @@ class CaseAssigned extends Notification
      *
      * @return void
      */
-    public function __construct($action, $case)
+    public function __construct(string $action, string $message, Cases $case)
     {
-        $this->action = $action;
-        $this->case   = $case;
+        $this->action   = $action;
+        $this->message  = $message;
+        $this->case     = $case;
     }
 
     /**
@@ -61,6 +63,7 @@ class CaseAssigned extends Notification
     {
         return [
             'action'    => $this->action,
+            'message'   => $this->message,
             'case'      => $this->case,
         ];
     }
