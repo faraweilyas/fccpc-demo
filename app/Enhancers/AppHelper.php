@@ -140,6 +140,24 @@ class AppHelper
 
     protected $feedbacks = ["Yes", "No"];
 
+    protected $notification_types = [
+        "NEWUSER"       => "New User",
+        "ASSIGN"        => "New Case Assigned",
+        "REASSIGN"      => "Case Reassigned",
+        "UNASSIGN"      => "Case Unassigned",
+        "ONHOLD"        => "Case on Hold",
+        "DEFRESPONSE"   => "Response to Defincency",
+    ];
+
+    protected $notification_types_styles = [
+        "NEWUSER"       => "success",
+        "ASSIGN"        => "secondary",
+        "REASSIGN"      => "primary",
+        "UNASSIGN"      => "danger",
+        "ONHOLD"        => "warning",
+        "DEFRESPONSE"   => "success",
+    ];
+
 	/**
 	 * Validates array key
      *
