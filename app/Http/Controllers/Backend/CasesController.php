@@ -442,7 +442,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
-        $user->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case));
+        $user->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case->id));
         $this->sendResponse('Case assigned.', 'success', [
             'case' => $case,
             'handler' => $user,
@@ -515,7 +515,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $result = $case->disolve($user);
-        $oldUser->notify(new CaseAssigned('unassign', 'Your case has been unassigned', $case));
+        $oldUser->notify(new CaseAssigned('unassign', 'Your case has been unassigned', $case->id));
         $this->sendResponse('Case unassigned.', 'error');
     }
 
@@ -528,8 +528,8 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->reAssign($oldUser, $newUser);
-        $oldUser->notify(new CaseAssigned('reassign', 'Your case has been reassigned', $case));
-        $newUser->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case));
+        $oldUser->notify(new CaseAssigned('reassign', 'Your case has been reassigned', $case->id));
+        $newUser->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case->id));
         $this->sendResponse('Case reassigned.', 'success');
     }
 

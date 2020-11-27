@@ -14,18 +14,20 @@ class CaseAssigned extends Notification
 
     public $action;
 
-    public $case;
+    public $message;
+
+    public $case_id;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(string $action, string $message, Cases $case)
+    public function __construct(string $action, string $message, int $case_id)
     {
         $this->action   = $action;
         $this->message  = $message;
-        $this->case     = $case;
+        $this->case_id  = $case_id;
     }
 
     /**
@@ -64,7 +66,7 @@ class CaseAssigned extends Notification
         return [
             'action'    => $this->action,
             'message'   => $this->message,
-            'case'      => $this->case,
+            'case_id'   => $this->case_id,
         ];
     }
 }
