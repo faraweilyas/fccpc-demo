@@ -639,20 +639,19 @@ a.checklist-list {
     width: auto;
     margin: 1rem 0;
     padding: 1rem;
-    color: #1F877A;
-    background: #E5F9F5;
     border-radius: 4px;
     font-weight: bold;
     text-align: left;
 }
 
+.notifications-cards .label-success {
+    color: #1F877A;
+    background: #E5F9F5;
+}
+
 .notifications-cards .label-warning {
-    width: auto;
-    padding: 1rem;
     color: #F4A261;
     background: #FAF3DD;
-    border-radius: 4px;
-    text-align: left;
 }
 
 .notifications-cards .subject {
@@ -674,6 +673,12 @@ a.checklist-list {
     font-size: 12px;
     color: #829496;
     text-transform: uppercase;
+}
+
+.notifications-cards .message {
+    font-weight: 500;
+    font-size: 12px;
+    color: #4F4F4F;
 }
 
 .notifications-card-col .description {
@@ -1248,4 +1253,12 @@ th.fees_tab__head {
     color: #fff;
     border-radius: 20px;
     margin-right: .3rem;
+}
+
+.notification_divider
+{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    border-top: 5px solid #E0DAD8;
 }
