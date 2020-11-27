@@ -20,7 +20,7 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
      */
     public function __construct($application_no)
     {
-        $this->application_no            = $application_no;
+        $this->application_no = $application_no;
     }
 
     /**

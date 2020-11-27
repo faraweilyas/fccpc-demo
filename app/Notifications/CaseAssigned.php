@@ -11,14 +11,19 @@ class CaseAssigned extends Notification
 {
     use Queueable;
 
+    public $action;
+
+    public $case;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($action, $case)
     {
-        //
+        $this->action = $action;
+        $this->case   = $case;
     }
 
     /**
@@ -29,7 +34,7 @@ class CaseAssigned extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -55,7 +60,8 @@ class CaseAssigned extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'action'    => $this->action,
+            'case'      => $this->case,
         ];
     }
 }

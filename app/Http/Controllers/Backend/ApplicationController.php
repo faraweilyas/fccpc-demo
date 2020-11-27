@@ -22,6 +22,83 @@ class ApplicationController extends Controller
         'saveDeficientChecklistDocument' => 'saveDeficientChecklistDocument',
     ];
 
+    public function test()
+    {
+        $case = Cases::find(31);
+        return [
+            'readNotifications'     => auth()->user()->readNotifications,
+            'unreadNotifications'   => auth()->user()->unreadNotifications,
+        ];
+
+        // foreach (Cases::all() as $case)
+        // {
+        //     $case->amount_paid = rand(5000000, 10000000);
+        //     $case->save();
+        // }
+        // return Cases::all();
+        // return $case->getTotalAmountByMonthAndCategory(9, 'FFM', 'LG');
+
+        // $documents = [];
+
+        // foreach (Cases::all() as $case)
+        // {
+        //     foreach ($case->documents as $document)
+        //     {
+        //         $document->date_case_submitted = $case->submitted_at;
+        //         $document->group_id = (!$document->checklists->isEmpty())
+        //             ? $document->checklists->first()->group->id
+        //             : NULL;
+        //         $document->save();
+        //         $documents[] = $document;
+        //         // dump();
+        //     }
+        // }
+
+        // return $documents;
+
+        // $submittedDocuments = $case->submittedDocuments();
+
+        // foreach ($submittedDocuments as $date => $documents)
+        // {
+        //     foreach ($documents as $document)
+        //     {
+        //         $checklists = $document->checklists;
+        //         $group      = $document->group;
+        //     }
+        // }
+
+        // $date = "2020-11-17 09:40:46";
+        // $submittedDocument = $case->getSubmittedDocumentByDate($date);
+
+        return [
+            // $case,
+            // $case->documents,
+            // $case->guest,
+            // $case->isDeficient(),
+            // $case->getDeficientGroupIds(),
+            // $case->getCaseSubmittedChecklistByStatus('deficient'),
+            // Gets all latest submitted document checklist, either approved, deficient or null
+            // $case->getLatestSubmittedDocumentChecklists(),
+            // Gets all latest submitted document checklist by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsByStatus('deficient')->groupBy('group_id')->toArray(),
+            // Gets all latest submitted document checklist IDs by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsIDs('deficient'),
+            // Gets all latest submitted document checklist group IDs by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient'),
+            // Gets all latest submitted document checklist groups by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroups('deficient'),
+            // Gets all latest submitted document checklist group names by specified status, default is deficient
+            // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
+
+            // $submittedDocuments,
+            // $submittedDocument,
+            // $case->getSubmittedDocumentChecklistByDateAndStatus($date),
+            // $case->unSubmittedDocuments(),
+            // $case->getChecklistGroupUnSubmittedDocuments(),
+            // $case->getChecklistGroupUnSubmittedDocumentsName(),
+        ];
+    }
+
     /**
      * Handles select application page.
      *
@@ -390,79 +467,6 @@ class ApplicationController extends Controller
         $description = 'Application Submitted | ' . APP_NAME;
         $details = details($title, $description);
         return view('backend.applicant.submitted', compact('details', 'guest'));
-    }
-
-    public function test()
-    {
-        $case = Cases::find(31);
-
-        // foreach (Cases::all() as $case)
-        // {
-        //     $case->amount_paid = rand(5000000, 10000000);
-        //     $case->save();
-        // }
-        // return Cases::all();
-        // return $case->getTotalAmountByMonthAndCategory(9, 'FFM', 'LG');
-
-        // $documents = [];
-
-        // foreach (Cases::all() as $case)
-        // {
-        //     foreach ($case->documents as $document)
-        //     {
-        //         $document->date_case_submitted = $case->submitted_at;
-        //         $document->group_id = (!$document->checklists->isEmpty())
-        //             ? $document->checklists->first()->group->id
-        //             : NULL;
-        //         $document->save();
-        //         $documents[] = $document;
-        //         // dump();
-        //     }
-        // }
-
-        // return $documents;
-
-        // $submittedDocuments = $case->submittedDocuments();
-
-        // foreach ($submittedDocuments as $date => $documents)
-        // {
-        //     foreach ($documents as $document)
-        //     {
-        //         $checklists = $document->checklists;
-        //         $group      = $document->group;
-        //     }
-        // }
-
-        // $date = "2020-11-17 09:40:46";
-        // $submittedDocument = $case->getSubmittedDocumentByDate($date);
-
-        return [
-            // $case,
-            // $case->documents,
-            // $case->guest,
-            // $case->isDeficient(),
-            // $case->getDeficientGroupIds(),
-            // $case->getCaseSubmittedChecklistByStatus('deficient'),
-            // Gets all latest submitted document checklist, either approved, deficient or null
-            // $case->getLatestSubmittedDocumentChecklists(),
-            // Gets all latest submitted document checklist by specified status, default is deficient
-            // $case->getLatestSubmittedDocumentChecklistsByStatus('deficient')->groupBy('group_id')->toArray(),
-            // Gets all latest submitted document checklist IDs by specified status, default is deficient
-            // $case->getLatestSubmittedDocumentChecklistsIDs('deficient'),
-            // Gets all latest submitted document checklist group IDs by specified status, default is deficient
-            // $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient'),
-            // Gets all latest submitted document checklist groups by specified status, default is deficient
-            // $case->getLatestSubmittedDocumentChecklistsGroups('deficient'),
-            // Gets all latest submitted document checklist group names by specified status, default is deficient
-            // $case->getLatestSubmittedDocumentChecklistsGroupNames('deficient'),
-
-            // $submittedDocuments,
-            // $submittedDocument,
-            // $case->getSubmittedDocumentChecklistByDateAndStatus($date),
-            // $case->unSubmittedDocuments(),
-            // $case->getChecklistGroupUnSubmittedDocuments(),
-            // $case->getChecklistGroupUnSubmittedDocumentsName(),
-        ];
     }
 
     /**

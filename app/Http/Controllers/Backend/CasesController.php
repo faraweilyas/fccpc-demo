@@ -49,7 +49,7 @@ class CasesController extends Controller
                     if (!empty($value['account_type'])):
                         $output .= '<a href='.route('dashboard.user_detail', ['user' => $value['id']]).'><i class="la la-user-alt"></i>&nbsp;&nbsp;'.shortenContent($value['first_name'].' '.$value['last_name'], 40).'</a>';
                     else:
-                        
+
                         $output .= '<a href='.route('faq.faq_detail', ['faq' => $value['id']]).'><i class="la la-question-circle-o"></i>&nbsp;&nbsp;'.shortenContent($value['question'], 28).'</a>';
                     endif;
                 endforeach;
@@ -442,7 +442,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
-        $user->notify(new CaseAssigned());
+        $user->notify(new CaseAssigned('assign', $case));
         $this->sendResponse('Case assigned.', 'success', [
             'case' => $case,
             'handler' => $user,
@@ -527,7 +527,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->reAssign($oldUser, $newUser);
-        $newUser->notify(new CaseAssigned());
+        $newUser->notify(new CaseAssigned('reassign', $case));
         $this->sendResponse('Case reassigned.', 'success');
     }
 
