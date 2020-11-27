@@ -5,13 +5,13 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-            <x-icons.map-admin></x-icons.map-admin>
+                <x-icons.map-admin></x-icons.map-admin>
             @elseif (\Auth::user()->account_type == 'CH')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -242,113 +242,46 @@
         </div>
         <div class="offcanvas-content px-10">
             <div class="tab-content">
-
-       
-                <div class="no-notification">
-                    <div class="mr-10">
-                        <svg width="250" height="250" viewBox="0 0 790 513" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M720.563 510.693L698 442.602C698 442.602 722.818 467.421 722.818 487.784L718.364 440.693C718.364 440.693 731.091 457.875 729.818 483.966C728.545 510.057 720.563 510.693 720.563 510.693Z"
-                                fill="#E6E6E6" />
-                            <path
-                                d="M236.021 448.693L214 382.239C214 382.239 238.222 406.461 238.222 426.335L233.874 380.376C233.874 380.376 246.295 397.145 245.053 422.608C243.811 448.072 236.021 448.693 236.021 448.693Z"
-                                fill="#E6E6E6" />
-                            <path
-                                d="M579.725 479.359C579.763 523.074 493.06 509.627 386.916 509.719C280.772 509.81 195.381 523.405 195.343 479.691C195.305 435.976 281.976 426.394 388.12 426.302C494.265 426.21 579.688 435.644 579.725 479.359Z"
-                                fill="#E6E6E6" />
-                            <path
-                                d="M361.722 466.494C396.51 466.494 424.711 438.292 424.711 403.504C424.711 368.716 396.51 340.515 361.722 340.515C326.934 340.515 298.732 368.716 298.732 403.504C298.732 438.292 326.934 466.494 361.722 466.494Z"
-                                fill="#135C40" />
-                            <path
-                                d="M319.656 336.04C310.926 336.04 302.383 333.51 295.061 328.756C287.74 324.002 281.953 317.228 278.401 309.253L178.449 84.1616C175.138 76.7054 173.387 68.6509 173.303 60.4931C173.219 52.3353 174.805 44.2465 177.962 36.724C181.12 29.2016 185.782 22.4043 191.664 16.7501C197.545 11.0958 204.52 6.70404 212.161 3.8447C219.801 0.985359 227.946 -0.281149 236.094 0.123036C244.243 0.527222 252.222 2.59356 259.542 6.19503C266.863 9.7965 273.369 14.857 278.662 21.0655C283.954 27.274 287.921 34.4993 290.319 42.2974L362.696 277.709C364.768 284.448 365.231 291.578 364.048 298.528C362.864 305.477 360.067 312.053 355.882 317.725C351.696 323.398 346.238 328.01 339.947 331.19C333.656 334.371 326.706 336.032 319.656 336.04H319.656Z"
-                                fill="#135C40" />
-                        </svg>
-
-                    </div>
-                    <span class="mx-5">
-                        You are all caught up
-                    </span>
-                </div>
-                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications"
-                    role="tabpanel">
+                <div
+                    class="tab-pane fade show pt-3 pr-5 mr-n5 active"
+                    id="kt_quick_panel_notifications"
+                    role="tabpanel"
+                >
                     @php
-                    $unreadNotifications = auth()->user()->unreadNotifications;
-                    $readNotifications = auth()->user()->readNotifications;
+                        $unreadNotifications    = auth()->user()->unreadNotifications;
+                        $readNotifications      = auth()->user()->readNotifications;
                     @endphp
-                    @foreach($unreadNotifications as $notification)
-                    @php
-                    $data = (object) $notification->data;
-                    $action = getNotificationAction($data->action);
-                    $action_style = getNotificationActionStyle($data->action);
-                    $message = $data->message;
-                    $case = \App\Models\Cases::find($data->case_id);
-                    @endphp
-                    <div class="notifications-cards">
-                        <p class="message my-1">{{ $message }}</p>
-                        <span class="label label-{{ $action_style }}">{{ $action }}</span>
-                        <p class="subject my-1">{{ $case->subject }}</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">Category:</p>
-                                <span class="description">{!! $case->getCategory('ucwords') !!}</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">Parties:</p>
-                                <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-                    <div class="hide">
-                        <hr class='notification_divider' />
+                    @forelse ($unreadNotifications as $notification)
+                        @php
+                            $data           = (object) $notification->data;
+                            $action         = getNotificationAction($data->action);
+                            $action_style   = getNotificationActionStyle($data->action);
+                            $message        = $data->message;
+                            $case           = \App\Models\Cases::find($data->case_id);
+                        @endphp
                         <div class="notifications-cards">
-                            <span class="label label-warning">Response to Defincency</span>
-                            <p class="subject my-1">Access Bank Merger</p>
+                            <p class="message my-1">{{ $message }}</p>
+                            <span class="label label-{{ $action_style }}">{{ $action }}</span>
+                            <p class="subject my-1">{{ $case->subject }}</p>
                             <div class="d-flex">
                                 <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
+                                    <p class="title">Category:</p>
+                                    <span class="description">{!! $case->getCategory('ucwords') !!}</span>
                                 </div>
                                 <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
+                                    <p class="title">Parties:</p>
+                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="notifications-cards">
-                            <span class="label label-secondary">New Case Assinged</span>
-                            <p class="subject my-1">Access Bank Merger</p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
-                                </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
-                                </div>
-                            </div>
+                    @empty
+                        <div class="no-notification">
+                            <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
+                            <span class="mx-5">You're All Caught Up!</span>
                         </div>
-                        <div class="notifications-cards">
-                            <span class="label label-success">New Case Assinged</span>
-                            <p class="subject my-1">Access Bank Merger</p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
-                                </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">CATEGORY:</p>
-                                    <span class="description">FFM Expedited</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforelse
+                    <hr class='notification_divider' />
                 </div>
-
-
-
             </div>
         </div>
     </div>
@@ -369,29 +302,47 @@
         </div>
         <div class="offcanvas-content px-10">
             @php
-            $cases_working_on = \Auth::user()->cases_working_on()->get();
-            $count_cases_working_on = count($cases_working_on);
+                $cases_working_on       = \Auth::user()->cases_working_on()->get();
+                $count_cases_working_on = count($cases_working_on);
             @endphp
             <div class="tab-content">
-                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications"
-                    role="tabpanel">
-                    @foreach($cases_working_on as $case)
-                    <div class="notifications-cards cr-pointer"
-                        onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
-                        <p class="firm my-1">{{ $case->applicant_firm }} </p>
-                        <p class="subject my-1">{{ $case->subject }}</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">Category:</p>
-                                <span class="description">{!! $case->getCategory('ucwords') !!}</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">Parties:</p>
-                                <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                <div
+                    class="tab-pane fade show pt-3 pr-5 mr-n5 active"
+                    id="kt_quick_panel_notifications"
+                    role="tabpanel"
+                >
+                    @forelse ($cases_working_on as $case)
+                        <div
+                            class="notifications-cards cr-pointer"
+                            onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';"
+                        >
+                            <p class="firm my-1">{{ $case->applicant_firm }} </p>
+                            <p class="subject my-1">{{ $case->subject }}</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">Category:</p>
+                                    <span class="description">{{ $case->getCategory('ucwords') }}</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">Parties:</p>
+                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @endforeach
+                    @empty
+                        <div class="no-notification">
+                            <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
+                            <span class="mx-5">You don't have cases you're working on!</span>
+                            <br />
+                            <a
+                                class="btn btn-transparent mt-10"
+                                style="margin-top: 3.5rem"
+                                href="{{ route('cases.assigned') }}"
+                            >
+                                New Cases
+                            </a>
+                        </div>
+                    @endforelse
                 </div>
             </div>
         </div>
@@ -469,113 +420,112 @@
 @endsection
 
 @section('top_navigation')
-<!-- Top navigation -->
-<div class="header-top header-top-custom">
-    <div class="container">
-        <div class="map mr-20 mb-3">
-            <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
-                <div class="input-group rounded bg-light">
-                    <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
-                </div>
-                <div class="autoComplete"></div>
-            </div>
-        </div>
-        <div class="topbar">
-            @if (!in_array(\Auth::user()->account_type, ['AD']))
-            @php
-            $countUnreadNotifications = auth()->user()->countUnreadNotifications();
-            @endphp
-            <div class="topbar-item" id="kt_quick_panel_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
-                    </span>
-                    <a href="#">
-                        @empty (!$countUnreadNotifications)
-                        <span class="badge">{{ $countUnreadNotifications }}</span>
-                        @endempty
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Notifications
-                        </span>
-                    </a>
+    <div class="header-top header-top-custom">
+        <div class="container">
+            <div class="map mr-20 mb-3">
+                <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
+                    <div class="input-group rounded bg-light">
+                        <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
+                    </div>
+                    <div class="autoComplete"></div>
                 </div>
             </div>
-            <div class="topbar-item" id="kt_quick_user_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        @empty (!$count_cases_working_on)
-                        <span class="badge">{{ $count_cases_working_on }}</span>
-                        @endempty
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Ongoing Cases
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="topbar-item" id="kt_quick_cart_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Fee
-                        </span>
-                    </a>
-                </div>
-            </div>
-            @endif
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <a href="{{ route('dashboard.profile') }}">
-                        <div class="d-flex flex-column text-right pr-3">
-                            <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getAccountType() }}
+            <div class="topbar">
+                @if (!in_array(\Auth::user()->account_type, ['AD']))
+                    @php
+                        $countUnreadNotifications = auth()->user()->countUnreadNotifications();
+                    @endphp
+                    <div class="topbar-item" id="kt_quick_panel_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
                             </span>
-                            <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getFullName() }}
-                            </span>
-                        </div>
-                    </a>
-                    <span class="symbol symbol-35">
-                        <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
-                            {{ Auth::user()->getInitials() }}
-                        </span>
-                    </span>
-                </div>
-            </div>
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <div class="d-flex flex-column text-right pr-3">
-                        <a href="{{ route('logout') }}" title="Logout"
-                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
-                            <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
-                                <span class="svg-icon svg-icon-xl svg-icon-white">
-                                    <x-icons.sign-out></x-icons.sign-out>
+                            <a href="#">
+                                @empty (!$countUnreadNotifications)
+                                    <span class="badge">{{ $countUnreadNotifications }}</span>
+                                @endempty
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Notifications
                                 </span>
-                                <form id="form-logout" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                Sign Out
+                            </a>
+                        </div>
+                    </div>
+                    <div class="topbar-item" id="kt_quick_user_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
                             </span>
+                            <a href="#">
+                                @empty (!$count_cases_working_on)
+                                <span class="badge">{{ $count_cases_working_on }}</span>
+                                @endempty
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Ongoing Cases
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="topbar-item" id="kt_quick_cart_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
+                            </span>
+                            <a href="#">
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Fee
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <a href="{{ route('dashboard.profile') }}">
+                            <div class="d-flex flex-column text-right pr-3">
+                                <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getAccountType() }}
+                                </span>
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getFullName() }}
+                                </span>
+                            </div>
                         </a>
+                        <span class="symbol symbol-35">
+                            <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
+                                {{ Auth::user()->getInitials() }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <div class="d-flex flex-column text-right pr-3">
+                            <a href="{{ route('logout') }}" title="Logout"
+                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+                                <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
+                                    <span class="svg-icon svg-icon-xl svg-icon-white">
+                                        <x-icons.sign-out></x-icons.sign-out>
+                                    </span>
+                                    <form id="form-logout" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                    Sign Out
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
 @endsection
 
 @section('custom.javascript')
-<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @endsection
