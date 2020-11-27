@@ -20,9 +20,7 @@
             </span>
         </button>
     </div>
-
     <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
-
         <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
             data-menu-dropdown-timeout="500">
 
@@ -231,72 +229,14 @@
             </ul>
         </div>
     </div>
-    <div id="kt_quick_user" class="offcanvas offcanvas-right p-10">
-        <!--begin::Header-->
-        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
-            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
-                role="tablist">
-
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_ongoing_case">OnGoing Cases</a>
-                </li>
-
-
-            </ul>
-            <div class="offcanvas-close mt-n1 pr-5">
-                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
-                    <i class="ki ki-close icon-xs text-muted"></i>
-                </a>
-            </div>
-        </div>
-        <!--end::Header-->
-        <!--begin::Content-->
-        <div class="offcanvas-content pr-5 mr-n5">
-            @php
-            $cases = \Auth::user()->cases_working_on()->get();
-            @endphp
-            @foreach($cases as $case)
-            <!-- case-handler -->
-            <div class="notifications-cards cr-pointer"
-                onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
-                <div class="d-flex">
-                    <div class="notifications-card-col w-100">
-                        <p class="subject my-1">{{ $case->subject }}</p>
-                    </div>
-                </div>
-                <div class="d-flex">
-                    <div class="notifications-card-col w-75">
-                        <p class="subject my-1">{{ $case->applicant_firm }}</p>
-                        <p class="title">CATEGORY:</p>
-
-                        <span class="description">{!! $case->getCategoryHtml() !!}</span>
-                    </div>
-                    <div class="notifications-card-col">
-                        <p class="title">PARTIES:</p>
-
-                        <span class="description">{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</span>
-                    </div>
-                </div>
-            </div>
-            <!-- case-handler -->
-            @endforeach
-        </div>
-        <!--end::Content-->
-    </div>
-
-
+    {{-- Notifications --}}
     <div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
-        <!--begin::Header-->
         <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
             <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
                 role="tablist">
-
                 <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
+                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
                 </li>
-
-
-
             </ul>
             <div class="offcanvas-close mt-n1 pr-5">
                 <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
@@ -304,26 +244,15 @@
                 </a>
             </div>
         </div>
-        <!--end::Header-->
-        <!--begin::Content-->
         <div class="offcanvas-content px-10">
             <div class="tab-content">
-
-                <!--begin::Tabpane-->
-                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications"
-                    role="tabpanel">
-
-
-                    <!--begin::Nav-->
-                    <!-- <div class="navi navi-icon-circle navi-spacer-x-0"> -->
+                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications" role="tabpanel">
                     <div class="notifications-cards">
                         <span class="label">New Case Assinged</span>
                         <p class="subject my-1">Access Bank Merger</p>
-
                         <div class="d-flex">
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
-
                                 <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
@@ -332,34 +261,27 @@
                                 <span class="description">FFM Expedited</span>
                             </div>
                         </div>
-
                     </div>
                     <div class="notifications-cards">
                         <span class="label label-warning">Response to Defincency</span>
                         <p class="subject my-1">Access Bank Merger</p>
-
                         <div class="d-flex">
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
-
                                 <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
-
                                 <span class="description">FFM Expedited</span>
                             </div>
                         </div>
-
                     </div>
                     <div class="notifications-cards">
                         <span class="label">New Case Assinged</span>
                         <p class="subject my-1">Access Bank Merger</p>
-
                         <div class="d-flex">
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
-
                                 <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
@@ -368,16 +290,13 @@
                                 <span class="description">FFM Expedited</span>
                             </div>
                         </div>
-
                     </div>
                     <div class="notifications-cards">
                         <span class="label">New Case Assinged</span>
                         <p class="subject my-1">Access Bank Merger</p>
-
                         <div class="d-flex">
                             <div class="notifications-card-col">
                                 <p class="title">CATEGORY:</p>
-
                                 <span class="description">FFM Expedited</span>
                             </div>
                             <div class="notifications-card-col">
@@ -386,34 +305,71 @@
                                 <span class="description">FFM Expedited</span>
                             </div>
                         </div>
-
                     </div>
-                    <!-- </div> -->
-                    <!--end::Nav-->
                 </div>
-                <!--end::Tabpane-->
-
             </div>
         </div>
-        <!--end::Content-->
     </div>
-
-
-
-    <div id="kt_quick_cart" class="offcanvas offcanvas-right p-10">
-        <!--begin::Header-->
-        <div class="offcanvas-header d-flex align-items-center justify-content-between pb-7">
-            <h4 class="font-weight-bold m-0" style="font-weight: 700 !important">Fee Calculator</h4>
-            <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
-                <i class="ki ki-close icon-xs text-muted"></i>
-            </a>
+    {{-- Ongoing Cases --}}
+    <div id="kt_quick_user" class="offcanvas offcanvas-right pt-5 pb-10">
+        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_ongoing_case">Ongoing Cases</a>
+                </li>
+            </ul>
+            <div class="offcanvas-close mt-n1 pr-5">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
         </div>
-        <!--end::Header-->
-        <!--begin::Content-->
-        <div class="offcanvas-content">
-            <!--begin::Wrapper-->
-
-
+        <div class="offcanvas-content px-10">
+            @php
+                $cases_working_on       = \Auth::user()->cases_working_on()->get();
+                $count_cases_working_on = count($cases_working_on);
+            @endphp
+            <div class="tab-content">
+                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications" role="tabpanel">
+                    @foreach($cases_working_on as $case)
+                        <div
+                            class="notifications-cards cr-pointer"
+                            onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';"
+                        >
+                            <p class="firm my-1">{{ $case->applicant_firm }} </p>
+                            <p class="subject my-1">{{ $case->subject }}</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">Category:</p>
+                                    <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">Parties:</p>
+                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Fee Calculator --}}
+    <div id="kt_quick_cart" class="offcanvas offcanvas-right pt-5 pb-10">
+        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Fee Calculator</a>
+                </li>
+            </ul>
+            <div class="offcanvas-close mt-n1 pr-5">
+                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
+                    <i class="ki ki-close icon-xs text-muted"></i>
+                </a>
+            </div>
+        </div>
+        <div class="offcanvas-content px-10">
             <div class="row fee-calc-container my-10">
                 <div class="col-md-12">
                     <div class="form-group fee-calc-form-group">
@@ -424,14 +380,12 @@
                             <option value="ffx">Foreign to Foreign Expedited</option>
                         </select>
                     </div>
-
                     <div class="form-group fee-calc-form-group">
                         <label>Combined Turnover</label>
                         <input type="text" id="combinedTurnover" name="combinedTurnover"
                             class="form-control custom-input fee-calc-form form-no-bg" />
                     </div>
                 </div>
-
                 <div class="col-md-12 fee-table-container">
                     <div class="fee__calculator--table">
                         <table class="table fee-calc-table">
@@ -468,130 +422,117 @@
                 </div>
             </div>
         </div>
-        <!--end::Content-->
     </div>
 </div>
-
 @endsection
 
 @section('top_navigation')
-
-<!-- Top navigation -->
-<div class="header-top header-top-custom">
-    <div class="container">
-
-        <div class="map mr-20 mb-3">
-            <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
-                <div class="input-group rounded bg-light">
-                    <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
-                </div>
-                <div class="autoComplete">
+    <!-- Top navigation -->
+    <div class="header-top header-top-custom">
+        <div class="container">
+            <div class="map mr-20 mb-3">
+                <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
+                    <div class="input-group rounded bg-light">
+                        <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
+                    </div>
+                    <div class="autoComplete"></div>
                 </div>
             </div>
-        </div>
-        <div class="topbar">
-
-
-            <!--begin::Toggle-->
-
-            <!--begin::Toggle-->
-
-
-            @if(!in_array(\Auth::user()->account_type, ['AD']))
-            <div class="topbar-item mx-2" id="kt_quick_panel_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
-                    </span>
-                    <a href="#">
-
-                        <span class="badge">04</span>
-
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Notifications
-                        </span>
-
-
-                    </a>
-                </div>
-            </div>
-            <div class="topbar-item mx-2" id="kt_quick_user_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        <span class="badge">04</span>
-
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Ongoing Cases
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="topbar-item mx-2" id="kt_quick_cart_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Fee
-                        </span>
-                    </a>
-                </div>
-            </div>
-            @endif
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <a href="{{ route('dashboard.profile') }}">
-                        <div class="d-flex flex-column text-right pr-3">
-                            <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getAccountType() }}
+            <div class="topbar">
+                @if (!in_array(\Auth::user()->account_type, ['AD']))
+                    @php
+                        $countUnreadNotifications = auth()->user()->countUnreadNotifications();
+                    @endphp
+                    <div class="topbar-item" id="kt_quick_panel_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
                             </span>
-                            <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getFullName() }}
-                            </span>
-                        </div>
-                    </a>
-                    <span class="symbol symbol-35">
-                        <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
-                            {{ Auth::user()->getInitials() }}
-                        </span>
-                    </span>
-                </div>
-            </div>
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <div class="d-flex flex-column text-right pr-3">
-                        <a href="{{ route('logout') }}" title="Logout"
-                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
-                            <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
-                                <span class="svg-icon svg-icon-xl svg-icon-white">
-                                    <x-icons.sign-out></x-icons.sign-out>
+                            <a href="#">
+                                @empty (!$countUnreadNotifications)
+                                    <span class="badge">{{ $countUnreadNotifications }}</span>
+                                @endempty
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Notifications
                                 </span>
-                                <form id="form-logout" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                Sign Out
+                            </a>
+                        </div>
+                    </div>
+                    <div class="topbar-item" id="kt_quick_user_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
                             </span>
+                            <a href="#">
+                                @empty (!$count_cases_working_on)
+                                    <span class="badge">{{ $count_cases_working_on }}</span>
+                                @endempty
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Ongoing Cases
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="topbar-item" id="kt_quick_cart_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
+                            </span>
+                            <a href="#">
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Fee
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <a href="{{ route('dashboard.profile') }}">
+                            <div class="d-flex flex-column text-right pr-3">
+                                <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getAccountType() }}
+                                </span>
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getFullName() }}
+                                </span>
+                            </div>
                         </a>
+                        <span class="symbol symbol-35">
+                            <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
+                                {{ Auth::user()->getInitials() }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <div class="d-flex flex-column text-right pr-3">
+                            <a href="{{ route('logout') }}" title="Logout"
+                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+                                <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
+                                    <span class="svg-icon svg-icon-xl svg-icon-white">
+                                        <x-icons.sign-out></x-icons.sign-out>
+                                    </span>
+                                    <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                    Sign Out
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
 @endsection
 
 @section('custom.javascript')
-<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @endsection
