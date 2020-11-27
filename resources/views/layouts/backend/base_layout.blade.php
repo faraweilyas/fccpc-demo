@@ -129,26 +129,7 @@
             @endif
 
 
-            $("[id^=toggle_notification]").click(function () {
-                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
-                $("#kt_quick_panel").toggleClass("offcanvas-on");
-                $("#kt_quick_cart").removeClass("offcanvas-on");
-                $("#kt_quick_user").removeClass("offcanvas-on");
-            });
-            $("[id^=toggle_ongoing_case]").click(function () {
-                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
 
-                $("#kt_quick_panel").removeClass("offcanvas-on");
-                $("#kt_quick_cart").removeClass("offcanvas-on");
-                $("#kt_quick_user").toggleClass("offcanvas-on");
-            });
-            $("[id^=toggle_fee]").click(function () {
-                // $(".offcanvas-overlay").removeClass("offcanvas-overlay");
-
-                $("#kt_quick_panel").removeClass("offcanvas-on");
-                $("#kt_quick_cart").toggleClass("offcanvas-on");
-                $("#kt_quick_user").removeClass("offcanvas-on");
-            });
         });
 
     </script>

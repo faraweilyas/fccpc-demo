@@ -3,8 +3,7 @@ body {
     background-color: rgb(251 246 241)
 }
 
-.align__center
-{
+.align__center {
     align-items: center;
 }
 
@@ -896,7 +895,7 @@ th.fees_tab__head {
     color: #1A514A;
 }
 
-.is-white{
+.is-white {
     color: #fff !important;
 }
 
@@ -910,6 +909,7 @@ th.fees_tab__head {
     background: #1F877A;
     border-radius: 8px;
 }
+
 .stats__warining {
     background: #E76F51;
     border-radius: 8px;
@@ -1204,26 +1204,47 @@ th.fees_tab__head {
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
+
 .profile-image:hover {
     transform: translateY(-5px);
     box-shadow: 0px 0px 15px rgba(85, 85, 85, 0.09);
 }
 
 
-.faq-question-header{
+.faq-question-header {
     font-weight: bold;
     font-size: 1.5rem;
 }
 
-.faq-question-answer{
+.faq-question-answer {
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-.height-75{
+.height-75 {
     margin: 2rem 0;
     height: 50%;
     background: #fff;
     padding: 2rem;
     overflow-y: scroll;
+}
+
+.badge {
+    position: relative;
+    left: 0;
+    font-size: 1.2rem;
+    width: 4rem;
+    padding: .6rem 0;
+    background: #e76f51;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    color: #fff;
+    border-radius: 20px;
+    margin-right: .5rem;
 }
