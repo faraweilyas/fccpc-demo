@@ -25,6 +25,7 @@ class ApplicationController extends Controller
     public function test()
     {
         $case = Cases::find(31);
+
         return [
             'readNotifications'     => auth()->user()->readNotifications,
             'unreadNotifications'   => auth()->user()->unreadNotifications,
@@ -32,6 +33,7 @@ class ApplicationController extends Controller
 
         // foreach (Cases::all() as $case)
         // {
+        //     $case->subject = str_split($case->subject, 50)[0];
         //     $case->amount_paid = rand(5000000, 10000000);
         //     $case->save();
         // }
