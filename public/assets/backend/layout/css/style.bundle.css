@@ -4667,8 +4667,9 @@ input[type="button"].btn-block {
     display: none; }
 
 .btn .badge {
-  position: relative;
-  top: -1px; }
+    position: relative;
+    /*top: -1px;*/
+}
 
 .badge-pill {
   padding-right: 0.6em;

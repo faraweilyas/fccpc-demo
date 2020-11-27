@@ -669,10 +669,11 @@ a.checklist-list {
     margin-left: 0px;
 }
 
-.notifications-card-col .title {
+.notifications-card-col .title, .notifications-cards .firm {
     font-weight: 600;
     font-size: 12px;
     color: #829496;
+    text-transform: uppercase;
 }
 
 .notifications-card-col .description {
@@ -1232,9 +1233,9 @@ th.fees_tab__head {
 .badge {
     position: relative;
     left: 0;
-    font-size: 1.2rem;
-    width: 4rem;
-    padding: .6rem 0;
+    font-size: .9rem;
+    width: 2.7rem;
+    padding: .4rem 0;
     background: #e76f51;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -1246,5 +1247,5 @@ th.fees_tab__head {
     align-content: center;
     color: #fff;
     border-radius: 20px;
-    margin-right: .5rem;
+    margin-right: .3rem;
 }
