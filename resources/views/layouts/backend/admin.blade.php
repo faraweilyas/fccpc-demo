@@ -5,13 +5,13 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-            <x-icons.map-admin></x-icons.map-admin>
+                <x-icons.map-admin></x-icons.map-admin>
             @elseif (\Auth::user()->account_type == 'CH')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -21,11 +21,14 @@
         </button>
     </div>
     <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
-        <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
-            data-menu-dropdown-timeout="500">
-
+        <div
+            id="kt_aside_menu"
+            class="aside-menu my-4"
+            data-menu-vertical="1"
+            data-menu-scroll="1"
+            data-menu-dropdown-timeout="500"
+        >
             <ul class="menu-nav">
-
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('dashboard.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
@@ -40,11 +43,8 @@
                         <span class="svg-icon menu-icon">
                             <x-icons.mycases></x-icons.mycases>
                         </span>
-                        <span class="menu-text">@if(!in_array(\Auth::user()->account_type, ['SP'])) My @endif
-                            Cases</span>
-
+                        <span class="menu-text">@if (!in_array(\Auth::user()->account_type, ['SP'])) My @endif Cases</span>
                         <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
-
                     </a>
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
@@ -247,62 +247,76 @@
         <div class="offcanvas-content px-10">
             <div class="tab-content">
                 <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications" role="tabpanel">
-                    <div class="notifications-cards">
-                        <span class="label">New Case Assinged</span>
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-                                <span class="description">FFM Expedited</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-
-                                <span class="description">FFM Expedited</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notifications-cards">
-                        <span class="label label-warning">Response to Defincency</span>
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-                                <span class="description">FFM Expedited</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-                                <span class="description">FFM Expedited</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notifications-cards">
-                        <span class="label">New Case Assinged</span>
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-                                <span class="description">FFM Expedited</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-
-                                <span class="description">FFM Expedited</span>
+                    @php
+                        $unreadNotifications    = auth()->user()->unreadNotifications;
+                        $readNotifications      = auth()->user()->readNotifications;
+                    @endphp
+                    @foreach($unreadNotifications as $notification)
+                        @php
+                            $data           = (object) $notification->data;
+                            $action         = getNotificationAction($data->action);
+                            $action_style   = getNotificationActionStyle($data->action);
+                            $message        = $data->message;
+                            $case           = \App\Models\Cases::find($data->case_id);
+                        @endphp
+                        <div class="notifications-cards">
+                            <p class="message my-1">{{ $message }}</p>
+                            <span class="label label-{{ $action_style }}">{{ $action }}</span>
+                            <p class="subject my-1">{{ $case->subject }}</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">Category:</p>
+                                    <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">Parties:</p>
+                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="notifications-cards">
-                        <span class="label">New Case Assinged</span>
-                        <p class="subject my-1">Access Bank Merger</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-                                <span class="description">FFM Expedited</span>
+                    @endforeach
+                    <div class="hide">
+                        <hr class='notification_divider' />
+                        <div class="notifications-cards">
+                            <span class="label label-warning">Response to Defincency</span>
+                            <p class="subject my-1">Access Bank Merger</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
                             </div>
-                            <div class="notifications-card-col">
-                                <p class="title">CATEGORY:</p>
-
-                                <span class="description">FFM Expedited</span>
+                        </div>
+                        <div class="notifications-cards">
+                            <span class="label label-secondary">New Case Assinged</span>
+                            <p class="subject my-1">Access Bank Merger</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notifications-cards">
+                            <span class="label label-success">New Case Assinged</span>
+                            <p class="subject my-1">Access Bank Merger</p>
+                            <div class="d-flex">
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
+                                <div class="notifications-card-col">
+                                    <p class="title">CATEGORY:</p>
+                                    <span class="description">FFM Expedited</span>
+                                </div>
                             </div>
                         </div>
                     </div>
