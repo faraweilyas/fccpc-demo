@@ -77,13 +77,13 @@ class Cases extends Model
 
     public function isRecommendationIssued() : bool
     {
-        if (empty($this->getRecommendationIssuedDate())) 
+        if (empty($this->getRecommendationIssuedDate()))
             return FALSE;
 
-        if (empty($this->getRecommendation())) 
+        if (empty($this->getRecommendation()))
             return FALSE;
 
-        if (empty($this->getAnalysisDocument())) 
+        if (empty($this->getAnalysisDocument()))
             return FALSE;
 
         return TRUE;
@@ -160,6 +160,11 @@ class Cases extends Model
     {
         $parties = (empty($this->parties)) ? [] : explode(':', $this->parties);
         return ($collect) ? collect($parties) : $parties;
+    }
+
+    public function getCasePartiesText()
+    {
+        return implode(', ', $this->getCaseParties(false));
     }
 
     public function generateCasePartiesBadge($extraStyles='mr_10') : string
