@@ -348,3 +348,13 @@ function transformChecklistIds(string $checklistIds=NULL, $value=NULL) : array
     }
     return $newArrayOfChecklistIds;
 }
+
+function getNotificationAction(string $action) : string
+{
+    return \AppHelper::value('notification_types', strtoupper($action), 'ucwords');
+}
+
+function getNotificationActionStyle(string $action) : string
+{
+    return \AppHelper::value('notification_types_styles', strtoupper($action), 'strtolower');
+}
