@@ -60,6 +60,16 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function countUnreadNotifications()
+    {
+        return $this->unreadNotifications->count();
+    }
+
+    public function countReadNotifications()
+    {
+        return $this->readNotifications->count();
+    }
+
     /**
      * Get users first name
      *
