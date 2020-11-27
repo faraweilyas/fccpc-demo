@@ -5,13 +5,13 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-                <x-icons.map-admin></x-icons.map-admin>
+            <x-icons.map-admin></x-icons.map-admin>
             @elseif (\Auth::user()->account_type == 'CH')
-                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
+            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
@@ -238,13 +238,7 @@
                 role="tablist">
 
                 <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link " data-toggle="tab" href="#" id="toggle_ongoing_case">OnGoing Cases</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_fee">Fee </a>
                 </li>
 
 
@@ -300,12 +294,8 @@
                 <li class="nav-item">
                     <a class="nav-link " data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_ongoing_case">OnGoing Cases</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " data-toggle="tab" href="#" id="toggle_fee">Fee </a>
-                </li>
+
+
 
             </ul>
             <div class="offcanvas-close mt-n1 pr-5">
@@ -514,9 +504,14 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
                     </span>
                     <a href="#">
+
+                        <span class="badge">04</span>
+
                         <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                             Notifications
                         </span>
+
+
                     </a>
                 </div>
             </div>
@@ -526,6 +521,8 @@
                         <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
                     </span>
                     <a href="#">
+                        <span class="badge">04</span>
+
                         <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                             Ongoing Cases
                         </span>
