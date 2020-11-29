@@ -1,422 +1,450 @@
 @extends('layouts.backend.user')
 
 @section('aside_bar')
-<div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
-    <div class="brand flex-column-auto" id="kt_brand">
-        <a href="/dashboard" class="brand-logo">
-            @if (\Auth::user()->account_type == 'SP')
-                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
-            @elseif (\Auth::user()->account_type == 'AD')
-                <x-icons.map-admin></x-icons.map-admin>
-            @elseif (\Auth::user()->account_type == 'CH')
-                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
-            @else
-                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
-            @endif
-        </a>
-        <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
-            <span class="svg-icon svg-icon svg-icon-xl">
-                <x-icons.arrow-white-right></x-icons.arrow-white-right>
-            </span>
-        </button>
-    </div>
-    <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
-        <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
-            data-menu-dropdown-timeout="500">
-            <ul class="menu-nav">
-                <li class="menu-item " aria-haspopup="true">
-                    <a href="{{ route('dashboard.index') }}" class="menu-link">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.dashboard></x-icons.dashboard>
-                        </span>
-                        <span class="menu-text">Dashboard</span>
-                    </a>
-                </li>
-                @if(!in_array(\Auth::user()->account_type, ['AD']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.mycases></x-icons.mycases>
-                        </span>
-                        <span class="menu-text">@if (!in_array(\Auth::user()->account_type, ['SP'])) My @endif
-                            Cases</span>
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">My Cases</span>
-                                </span>
-                            </li>
-                            @if(in_array(\Auth::user()->account_type, ['SP']))
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('cases.unassigned') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">New Cases</span>
-                                </a>
-                            </li>
-                            @endif
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('cases.assigned') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text"> @if(in_array(\Auth::user()->account_type, ['CH'])) New
-                                        @else Assigned @endif Cases</span>
-                                </a>
-                            </li>
-                            @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('cases.working_on') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Ongoing Cases</span>
-                                </a>
-                            </li>
-                            @endif
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('cases.on-hold') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Cases On Hold</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                @if(in_array(\Auth::user()->account_type,['SP']))
-                <li class="menu-item " aria-haspopup="true">
-                    <a href="{{ route('handlers.index') }}" class="menu-link">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.case-handler></x-icons.case-handler>
-                        </span>
-                        <span class="menu-text">Case Handlers</span>
-                    </a>
-                </li>
+    <div class="aside aside-left aside-fixed d-flex flex-column flex-row-auto" id="kt_aside">
+        <div class="brand flex-column-auto" id="kt_brand">
+            <a href="/dashboard" class="brand-logo">
+                @if (\Auth::user()->account_type == 'SP')
+                    <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                @elseif (\Auth::user()->account_type == 'AD')
+                    <x-icons.map-admin></x-icons.map-admin>
+                @elseif (\Auth::user()->account_type == 'CH')
+                    <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+                @else
+                    <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
                 @endif
-                @if(in_array(\Auth::user()->account_type, ['SP', 'AD']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.enquire></x-icons.enquire>
-                        </span>
-                        <span class="menu-text">Enquiries</span>
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-parent" aria-haspopup="true">
-                                <span class="menu-link">
-                                    <span class="menu-text">Enquiries</span>
-                                </span>
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ in_array(\Auth::user()->account_type, ['SP', 'AD']) ? route('enquiries.logs') : route('enquiries.assigned-logs') }}"
-                                    class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Enquiry log</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                @endif
-                <li class="menu-item " aria-haspopup="true">
-                    <a href="{{ route('dashboard.report') }}" class="menu-link">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.generate-report></x-icons.generate-report>
-                        </span>
-                        <span class="menu-text">Generate Report</span>
-                    </a>
-                </li>
-                @endif
-                @if(in_array(\Auth::user()->account_type, ['AD']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="svg-icon menu_icon_custom">
-                            <x-icons.users></x-icons.users>
-                        </span>
-                        <span class="menu-text">Users</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('dashboard.create_user') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Create User</span>
-                                </a>
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('dashboard.users') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Users</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                    <a href="javascript:;" class="menu-link menu-toggle">
-                        <span class="svg-icon menu-icon">
-                            <x-icons.faq></x-icons.faq>
-                        </span>
-                        <span class="menu-text">FAQ</span>
-                        <i class="menu-arrow"></i>
-                    </a>
-                    <div class="menu-submenu">
-                        <i class="menu-arrow"></i>
-                        <ul class="menu-subnav">
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('faq.create') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Create FAQ</span>
-                                </a>
-                            </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('faq.faqs') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">FAQs</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                @endif
-                <li class="menu-item " aria-haspopup="true">
-                    <a href="{{ route('dashboard.profile') }}" class="menu-link">
-                        <span class="svg-icon menu_icon_custom">
-                            <x-icons.user-profile-shield></x-icons.user-profile-shield>
-                        </span>
-                        <span class="menu-text">Profile</span>
-                    </a>
-                </li>
-                <li class="menu-item" aria-haspopup="true">
-                    <a href="#" class="menu-link">
-                        <span class="svg-icon menu_icon_custom">
-                            <x-icons.sign-out></x-icons.sign-out>
-                        </span>
-                        <span class="menu-text" href="{{ route('logout') }}" title="Logout"
-                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign
-                            Out</span>
-                        <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </a>
-                </li>
-            </ul>
+            </a>
+            <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
+                <span class="svg-icon svg-icon svg-icon-xl">
+                    <x-icons.arrow-white-right></x-icons.arrow-white-right>
+                </span>
+            </button>
         </div>
-    </div>
-    {{-- Notifications --}}
-    <div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
-        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
-            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
-                role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
-                </li>
-            </ul>
-            <div class="offcanvas-close mt-n1 pr-5">
-                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
-                    <i class="ki ki-close icon-xs text-muted"></i>
-                </a>
+        <div class="aside-menu-wrapper flex-column-fluid" id="kt_aside_menu_wrapper">
+            <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
+                data-menu-dropdown-timeout="500">
+                <ul class="menu-nav">
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('dashboard.index') }}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.dashboard></x-icons.dashboard>
+                            </span>
+                            <span class="menu-text">Dashboard</span>
+                        </a>
+                    </li>
+                    @if(!in_array(\Auth::user()->account_type, ['AD']))
+                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.mycases></x-icons.mycases>
+                            </span>
+                            <span class="menu-text">@if (!in_array(\Auth::user()->account_type, ['SP'])) My @endif
+                                Cases</span>
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <span class="menu-link">
+                                        <span class="menu-text">My Cases</span>
+                                    </span>
+                                </li>
+                                @if(in_array(\Auth::user()->account_type, ['SP']))
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('cases.unassigned') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">New Cases</span>
+                                    </a>
+                                </li>
+                                @endif
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('cases.assigned') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text"> @if(in_array(\Auth::user()->account_type, ['CH'])) New
+                                            @else Assigned @endif Cases</span>
+                                    </a>
+                                </li>
+                                @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('cases.working_on') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Ongoing Cases</span>
+                                    </a>
+                                </li>
+                                @endif
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('cases.on-hold') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Cases On Hold</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @if(in_array(\Auth::user()->account_type,['SP']))
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('handlers.index') }}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.case-handler></x-icons.case-handler>
+                            </span>
+                            <span class="menu-text">Case Handlers</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if(in_array(\Auth::user()->account_type, ['SP', 'AD']))
+                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.enquire></x-icons.enquire>
+                            </span>
+                            <span class="menu-text">Enquiries</span>
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-parent" aria-haspopup="true">
+                                    <span class="menu-link">
+                                        <span class="menu-text">Enquiries</span>
+                                    </span>
+                                </li>
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ in_array(\Auth::user()->account_type, ['SP', 'AD']) ? route('enquiries.logs') : route('enquiries.assigned-logs') }}"
+                                        class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Enquiry log</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('dashboard.report') }}" class="menu-link">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.generate-report></x-icons.generate-report>
+                            </span>
+                            <span class="menu-text">Generate Report</span>
+                        </a>
+                    </li>
+                    @endif
+                    @if(in_array(\Auth::user()->account_type, ['AD']))
+                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="svg-icon menu_icon_custom">
+                                <x-icons.users></x-icons.users>
+                            </span>
+                            <span class="menu-text">Users</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('dashboard.create_user') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Create User</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('dashboard.users') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Users</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                        <a href="javascript:;" class="menu-link menu-toggle">
+                            <span class="svg-icon menu-icon">
+                                <x-icons.faq></x-icons.faq>
+                            </span>
+                            <span class="menu-text">FAQ</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="menu-submenu">
+                            <i class="menu-arrow"></i>
+                            <ul class="menu-subnav">
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('faq.create') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">Create FAQ</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                    <a href="{{ route('faq.faqs') }}" class="menu-link menu-toggle">
+                                        <i class="menu-bullet menu-bullet-line">
+                                            <span></span>
+                                        </i>
+                                        <span class="menu-text">FAQs</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @endif
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('dashboard.profile') }}" class="menu-link">
+                            <span class="svg-icon menu_icon_custom">
+                                <x-icons.user-profile-shield></x-icons.user-profile-shield>
+                            </span>
+                            <span class="menu-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="menu-item" aria-haspopup="true">
+                        <a href="#" class="menu-link">
+                            <span class="svg-icon menu_icon_custom">
+                                <x-icons.sign-out></x-icons.sign-out>
+                            </span>
+                            <span class="menu-text" href="{{ route('logout') }}" title="Logout"
+                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign
+                                Out</span>
+                            <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="offcanvas-content px-10">
-            <div class="tab-content">
-                <div
-                    class="tab-pane fade show pt-3 pr-5 mr-n5 active"
-                    id="kt_quick_panel_notifications"
-                    role="tabpanel"
-                >
-                    @php
-                        $unreadNotifications    = auth()->user()->unreadNotifications;
-                        $readNotifications      = auth()->user()->readNotifications;
-                    @endphp
-                    @forelse ($unreadNotifications as $notification)
+        {{-- Notifications --}}
+        <div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
+            <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+                <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                    role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
+                    </li>
+                </ul>
+                <div class="offcanvas-close mt-n1 pr-5">
+                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
+                        <i class="ki ki-close icon-xs text-muted"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="offcanvas-content px-10">
+                <div class="tab-content">
+                    <div
+                        class="tab-pane fade show pt-3 pr-5 mr-n5 active"
+                        id="kt_quick_panel_notifications"
+                        role="tabpanel"
+                    >
                         @php
-                            $data           = (object) $notification->data;
-                            $action         = getNotificationAction($data->action);
-                            $action_style   = getNotificationActionStyle($data->action);
-                            $message        = $data->message;
-                            $case           = \App\Models\Cases::find($data->case_id);
+                            $unreadNotifications    = auth()->user()->unreadNotifications;
+                            $readNotifications      = auth()->user()->readNotifications;
                         @endphp
-                        <div class="notifications-cards">
-                            <p class="message my-1">{{ $message }}</p>
-                            <span class="label label-{{ $action_style }}">{{ $action }}</span>
-                            <p class="subject my-1">{{ $case->subject }}</p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">Category:</p>
-                                    <span class="description">{!! $case->getCategory('ucwords') !!}</span>
-                                </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">Parties:</p>
-                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                        @forelse ($unreadNotifications as $notification)
+                            @php
+                                $data           = (object) $notification->data;
+                                $action         = getNotificationAction($data->action);
+                                $action_style   = getNotificationActionStyle($data->action);
+                                $message        = $data->message;
+                                $case           = \App\Models\Cases::find($data->case_id);
+                            @endphp
+                            <div class="notifications-cards">
+                                <p class="message my-1">{!! $message !!}</p>
+                                <span class="label label-{{ $action_style }}">{{ $action }}</span>
+                                <p class="subject my-1">{{ $case->subject }}</p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Category:</p>
+                                        <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                    </div>
+                                    <div class="notifications-card-col">
+                                        <p class="title">Parties:</p>
+                                        <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @empty
-                        <div class="no-notification">
-                            <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
-                            <span class="mx-5">You're All Caught Up!</span>
-                        </div>
-                    @endforelse
-                    <hr class='notification_divider' />
+                        @empty
+                            <div class="no-notification">
+                                <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
+                                <span class="mx-5">You're All Caught Up!</span>
+                            </div>
+                        @endforelse
+                        <hr class='notification_divider' />
+                        {{-- <p class="my-10">
+                            <span class='float-left'>Read</span>
+                            <span class='float-right'>Clear</span>
+                        </p> --}}
+                        @foreach ($readNotifications as $notification)
+                            @php
+                                $data           = (object) $notification->data;
+                                $action         = getNotificationAction($data->action);
+                                $action_style   = getNotificationActionStyle($data->action);
+                                $message        = $data->message;
+                                $case           = \App\Models\Cases::find($data->case_id);
+                            @endphp
+                            <div class="notifications-cards">
+                                <p class="message my-1">{{ $message }}</p>
+                                <span class="label label-{{ $action_style }}">{{ $action }}</span>
+                                <p class="subject my-1">{{ $case->subject }}</p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Category:</p>
+                                        <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                    </div>
+                                    <div class="notifications-card-col">
+                                        <p class="title">Parties:</p>
+                                        <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- Ongoing Cases --}}
-    <div id="kt_quick_user" class="offcanvas offcanvas-right pt-5 pb-10">
-        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
-            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
-                role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_ongoing_case">Ongoing Cases</a>
-                </li>
-            </ul>
-            <div class="offcanvas-close mt-n1 pr-5">
-                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
-                    <i class="ki ki-close icon-xs text-muted"></i>
-                </a>
+        {{-- Ongoing Cases --}}
+        <div id="kt_quick_user" class="offcanvas offcanvas-right pt-5 pb-10">
+            <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+                <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                    role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#" id="toggle_ongoing_case">Ongoing Cases</a>
+                    </li>
+                </ul>
+                <div class="offcanvas-close mt-n1 pr-5">
+                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_user_close">
+                        <i class="ki ki-close icon-xs text-muted"></i>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="offcanvas-content px-10">
-            @php
-                $cases_working_on       = \Auth::user()->cases_working_on()->get();
-                $count_cases_working_on = count($cases_working_on);
-            @endphp
-            <div class="tab-content">
-                <div
-                    class="tab-pane fade show pt-3 pr-5 mr-n5 active"
-                    id="kt_quick_panel_notifications"
-                    role="tabpanel"
-                >
-                    @forelse ($cases_working_on as $case)
-                        <div
-                            class="notifications-cards cr-pointer"
-                            onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';"
-                        >
-                            <p class="firm my-1">{{ $case->applicant_firm }} </p>
-                            <p class="subject my-1">{{ $case->subject }}</p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">Category:</p>
-                                    <span class="description">{{ $case->getCategory('ucwords') }}</span>
-                                </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">Parties:</p>
-                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="no-notification">
-                            <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
-                            <span class="mx-5">You don't have cases you're working on!</span>
-                            <br />
-                            <a
-                                class="btn btn-transparent mt-10"
-                                style="margin-top: 3.5rem"
-                                href="{{ route('cases.assigned') }}"
+            <div class="offcanvas-content px-10">
+                @php
+                    $cases_working_on       = \Auth::user()->cases_working_on()->get();
+                    $count_cases_working_on = count($cases_working_on);
+                @endphp
+                <div class="tab-content">
+                    <div
+                        class="tab-pane fade show pt-3 pr-5 mr-n5 active"
+                        id="kt_quick_panel_notifications"
+                        role="tabpanel"
+                    >
+                        @forelse ($cases_working_on as $case)
+                            <div
+                                class="notifications-cards cr-pointer"
+                                onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';"
                             >
-                                New Cases
-                            </a>
+                                <p class="firm my-1">{{ $case->applicant_firm }} </p>
+                                <p class="subject my-1">{{ $case->subject }}</p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Category:</p>
+                                        <span class="description">{{ $case->getCategory('ucwords') }}</span>
+                                    </div>
+                                    <div class="notifications-card-col">
+                                        <p class="title">Parties:</p>
+                                        <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <div class="no-notification">
+                                <div class="mr-10"><x-icons.caught-up></x-icons.caught-up></div>
+                                <span class="mx-5">You don't have cases you're working on!</span>
+                                <br />
+                                <a
+                                    class="btn btn-transparent mt-10"
+                                    style="margin-top: 3.5rem"
+                                    href="{{ route('cases.assigned') }}"
+                                >
+                                    New Cases
+                                </a>
+                            </div>
+                        @endforelse
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- Fee Calculator --}}
+        <div id="kt_quick_cart" class="offcanvas offcanvas-right pt-5 pb-10">
+            <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+                <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                    role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Fee Calculator</a>
+                    </li>
+                </ul>
+                <div class="offcanvas-close mt-n1 pr-5">
+                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
+                        <i class="ki ki-close icon-xs text-muted"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="offcanvas-content px-10">
+                <div class="row fee-calc-container my-10">
+                    <div class="col-md-12">
+                        <div class="form-group fee-calc-form-group">
+                            <label>Type of Transaction</label>
+                            <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
+                                <option value="local" selected="">Domestic</option>
+                                <option value="ffm">Foreign to Foreign</option>
+                                <option value="ffx">Foreign to Foreign Expedited</option>
+                            </select>
                         </div>
-                    @endforelse
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Fee Calculator --}}
-    <div id="kt_quick_cart" class="offcanvas offcanvas-right pt-5 pb-10">
-        <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
-            <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
-                role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Fee Calculator</a>
-                </li>
-            </ul>
-            <div class="offcanvas-close mt-n1 pr-5">
-                <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
-                    <i class="ki ki-close icon-xs text-muted"></i>
-                </a>
-            </div>
-        </div>
-        <div class="offcanvas-content px-10">
-            <div class="row fee-calc-container my-10">
-                <div class="col-md-12">
-                    <div class="form-group fee-calc-form-group">
-                        <label>Type of Transaction</label>
-                        <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                            <option value="local" selected="">Domestic</option>
-                            <option value="ffm">Foreign to Foreign</option>
-                            <option value="ffx">Foreign to Foreign Expedited</option>
-                        </select>
+                        <div class="form-group fee-calc-form-group">
+                            <label>Combined Turnover</label>
+                            <input type="text" id="combinedTurnover" name="combinedTurnover"
+                                class="form-control custom-input fee-calc-form form-no-bg" />
+                        </div>
                     </div>
-                    <div class="form-group fee-calc-form-group">
-                        <label>Combined Turnover</label>
-                        <input type="text" id="combinedTurnover" name="combinedTurnover"
-                            class="form-control custom-input fee-calc-form form-no-bg" />
-                    </div>
-                </div>
-                <div class="col-md-12 fee-table-container">
-                    <div class="fee__calculator--table">
-                        <table class="table fee-calc-table">
-                            <thead class="thead-light">
-                                <tr>
-                                    <th scope="col">SERVICE</th>
-                                    <th scope="col">PRICE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Filling fee</td>
-                                    <td class="fillingFee">₦0.00</td>
-                                </tr>
+                    <div class="col-md-12 fee-table-container">
+                        <div class="fee__calculator--table">
+                            <table class="table fee-calc-table">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th scope="col">SERVICE</th>
+                                        <th scope="col">PRICE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Filling fee</td>
+                                        <td class="fillingFee">₦0.00</td>
+                                    </tr>
 
-                                <tr>
-                                    <td>Processing fee</td>
-                                    <td class="processingFee">₦0.00</td>
-                                </tr>
+                                    <tr>
+                                        <td>Processing fee</td>
+                                        <td class="processingFee">₦0.00</td>
+                                    </tr>
 
-                                <tr>
-                                    <td>Expedited fee</td>
-                                    <td class="expeditedFee">-</td>
-                                </tr>
-                                <tr class="fee__calculator-total">
-                                    <td>
-                                        <b>Total</b>
-                                    </td>
-                                    <td class="totalAmount">₦0.00</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                    <tr>
+                                        <td>Expedited fee</td>
+                                        <td class="expeditedFee">-</td>
+                                    </tr>
+                                    <tr class="fee__calculator-total">
+                                        <td>
+                                            <b>Total</b>
+                                        </td>
+                                        <td class="totalAmount">₦0.00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('top_navigation')
