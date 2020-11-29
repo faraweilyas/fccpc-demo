@@ -57,7 +57,7 @@ class Faq extends Model
      * @param string $format
      * @return string
      */
-    public function getCreatedAt(string $format='customdate') : string
+    public function getSubmittedAt(string $format='customdate') : string
     {
         return !empty($this->created_at) ? datetimeToText($this->created_at, $format) : "";
     }

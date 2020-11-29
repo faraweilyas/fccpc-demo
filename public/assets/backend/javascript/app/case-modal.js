@@ -172,6 +172,15 @@ $(document).ready(function () {
     $("#enquiries_log_datatable").DataTable({
         responsive: true,
         paging: true,
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
+    });
+
+    $("#faq_log_datatable").DataTable({
+        responsive: true,
+        paging: true,
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
 
     $("#caseHandler").select2({

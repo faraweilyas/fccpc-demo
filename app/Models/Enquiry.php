@@ -45,4 +45,9 @@ class Enquiry extends Model
 
         return textTransformer('unassigned', $textStyle);
     }
+
+    public function getSubmittedAt(string $format='customdate') : string
+    {
+        return !empty($this->created_at) ? datetimeToText($this->created_at, $format) : "";
+    }
 }

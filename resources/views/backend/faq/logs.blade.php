@@ -28,7 +28,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table class="table table-separate table-head-custom table-checkable" id="enquiries_log_datatable">
+                    <table class="table table-separate table-head-custom table-checkable" id="faq_log_datatable">
                         <thead>
                             <tr>
                                 <th>Creator</th>
@@ -44,15 +44,21 @@
                                 <td>{{ $item->getCreator() }}</td>
                                 <td>{!! $item->getCategoryHtml() !!}</td>
                                 <td>{{ $item->getQuestion() }}</td>
-                                <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
+                                <td data-sort='YYYYMMDD'>
+                                    <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                        data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $item->
+                                        getSubmittedAt('customdate') !!} />
+                                        {!! $item->getSubmittedAt('customdate') !!}
+                                    </div>
+                                </td>
                                 <td nowrap="nowrap" class="text-center">
                                     <span href="#" class="btn btn-sm btn-light-warning" title="View Faq Info"
                                         data-toggle="modal" data-target="#viewFaqModal">
                                         <i class="flaticon-eye"></i>
                                     </span>
                                     <span href="#" class="btn btn-sm btn-light-primary crus" title="Edit Faq"
-                                        {{-- onclick="window.location.href = '{{ route('faq.edit', ['faq' => $item->id]) }}';"
-                                        --}}>
+                                        onclick="window.location.href = '{{ route('faq.edit', ['faq' => $item->id]) }}';"
+                                       >
                                         <i class="flaticon-edit"></i>
                                     </span>
                                     <span href="#" class="btn btn-sm btn-light-danger delete_faq" title="Delete Faq"
