@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class CaseAssigned extends Notification
+class CaseActionNotifier extends Notification
 {
     use Queueable;
 
@@ -50,7 +50,8 @@ class CaseAssigned extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('A new case has been assigned to you.')
+                    ->subject($this->message)
+                    ->line($this->message)
                     ->line('For more information, check your dashboard.')
                     ->line('Thank you for using our application!');
     }
