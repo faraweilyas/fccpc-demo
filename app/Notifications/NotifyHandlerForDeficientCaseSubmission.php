@@ -2,25 +2,35 @@
 
 namespace App\Notifications;
 
+use App\Models\Cases;
 use Illuminate\Bus\Queueable;
+use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
 
 class NotifyHandlerForDeficientCaseSubmission extends Notification
 {
     use Queueable;
 
-    protected $application_no;
+    public $action;
+
+    public $message;
+
+    public $case_id;
+
+    public $application_no;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($application_no)
+    public function __construct(string $action, string $message, Cases $case)
     {
-        $this->application_no = $application_no;
+        $this->action           = $action;
+        $this->message          = $message;
+        $this->case_id          = $case->id;
+        $this->application_no   = $case->reference_number;
     }
 
     /**
@@ -31,7 +41,7 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -57,7 +67,9 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'action'    => $this->action,
+            'message'   => $this->message,
+            'case_id'   => $this->case_id,
         ];
     }
 }
