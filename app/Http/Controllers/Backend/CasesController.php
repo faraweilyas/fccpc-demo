@@ -6,11 +6,12 @@ use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
 use Illuminate\Http\Request;
-use App\Notifications\CaseAssigned;
 use App\Mail\IssueDeficiencyEmail;
-use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\CaseActionNotifier;
+use App\Notifications\IssueCaseDeficiency;
 
 class CasesController extends Controller
 {
@@ -358,6 +359,13 @@ class CasesController extends Controller
         $handler = User::find($case->active_handlers->first()->id);
         $case->issueDeficiency($handler);
 
+        // Notify case handler and supervisor
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+        $case_handler->notify(new IssueCaseDeficiency('onhold', "Deficiency has been issued.", $case->id));
+        $supervisor->notify(new IssueCaseDeficiency('onhold', "Deficiency has been issued by <b>{$case_handler->getFullName()}</b>.", $case->id));
+
         return $this->sendResponse('Deficieny sent.', 'success');
     }
 
@@ -442,11 +450,41 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
-        $user->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case->id));
+        $user->notify(new CaseActionNotifier('assign', 'A new case has been assigned to you.', $case->id));
+        auth()->user()->notify(new CaseActionNotifier('assign', "Case has been assigned to <b>{$user->getFullName()}</b>.", $case->id));
         $this->sendResponse('Case assigned.', 'success', [
             'case' => $case,
             'handler' => $user,
         ]);
+    }
+
+    /**
+     * Handles the case unassign page route.
+     *
+     * @return void
+     */
+    public function unassignCase(Cases $case, User $user)
+    {
+        abort_if(!auth()->user(), 404);
+        $result = $case->disolve($user);
+        $user->notify(new CaseActionNotifier('unassign', 'Your case has been unassigned', $case->id));
+        auth()->user()->notify(new CaseActionNotifier('unassign', "Case has been unassigned from <b>{$user->getFullName()}</b>.", $case->id));
+        $this->sendResponse('Case unassigned.', 'error');
+    }
+
+    /**
+     * Handles the case reassign page route.
+     *
+     * @return void
+     */
+    public function reassignCase(Cases $case, User $oldUser, User $newUser)
+    {
+        abort_if(!auth()->user(), 404);
+        $case->reAssign($oldUser, $newUser);
+        $oldUser->notify(new CaseActionNotifier('reassign', 'Your case has been reassigned', $case->id));
+        $newUser->notify(new CaseActionNotifier('assign', 'A new case has been assigned to you.', $case->id));
+        auth()->user()->notify(new CaseActionNotifier('reassign', "Case has been reassigned to <b>{$newUser->getFullName()}</b>.", $case->id));
+        $this->sendResponse('Case reassigned.', 'success');
     }
 
     /**
@@ -504,33 +542,6 @@ class CasesController extends Controller
         $this->sendResponse('Document Icon received.', 'success', [
             'icon' => $document->getIconText(),
         ]);
-    }
-
-    /**
-     * Handles the case unassign page route.
-     *
-     * @return void
-     */
-    public function unassignCase(Cases $case, User $user)
-    {
-        abort_if(!auth()->user(), 404);
-        $result = $case->disolve($user);
-        $user->notify(new CaseAssigned('unassign', 'Your case has been unassigned', $case->id));
-        $this->sendResponse('Case unassigned.', 'error');
-    }
-
-    /**
-     * Handles the case reassign page route.
-     *
-     * @return void
-     */
-    public function reassignCase(Cases $case, User $oldUser, User $newUser)
-    {
-        abort_if(!auth()->user(), 404);
-        $case->reAssign($oldUser, $newUser);
-        $oldUser->notify(new CaseAssigned('reassign', 'Your case has been reassigned', $case->id));
-        $newUser->notify(new CaseAssigned('assign', 'A new case has been assigned to you.', $case->id));
-        $this->sendResponse('Case reassigned.', 'success');
     }
 
     /**
