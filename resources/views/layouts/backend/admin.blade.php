@@ -424,9 +424,23 @@
         <div class="container">
             <div class="map mr-20 mb-3">
                 <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
-                    <div class="input-group rounded bg-light">
-                        <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" />
-                    </div>
+                    <form method="get" class="quick-search-form">
+                        <div class="input-group rounded bg-light">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <span class="svg-icon svg-icon-lg">
+                                        <x-icons.search></x-icons.search>
+                                    </span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" autocomplete="off" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="quick-search-close ki ki-close icon-sm" style="display: none;"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
                     <div class="autoComplete"></div>
                 </div>
             </div>
