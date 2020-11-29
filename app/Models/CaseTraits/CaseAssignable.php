@@ -109,8 +109,6 @@ trait CaseAssignable
             ];
         endif;
 
-     
-
         return $this->handlers()->syncWithoutDetaching($data);
     }
 
