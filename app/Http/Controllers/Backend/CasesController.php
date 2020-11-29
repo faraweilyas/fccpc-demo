@@ -515,7 +515,7 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $result = $case->disolve($user);
-        $oldUser->notify(new CaseAssigned('unassign', 'Your case has been unassigned', $case->id));
+        $user->notify(new CaseAssigned('unassign', 'Your case has been unassigned', $case->id));
         $this->sendResponse('Case unassigned.', 'error');
     }
 

@@ -90,7 +90,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label>Select case handler:</label>
+                            <label>Select new case handler:</label>
                             <br />
                             <select class="form-control select2" id="newCaseHandler" name="newCaseHandler" style="width: 100%;">
                                 @foreach($caseHandlers as $handler)
