@@ -165,4 +165,9 @@ class User extends Authenticatable implements JWTSubject
         return "<span class='label label-{$statusHtml} label-dot mr-2'></span>
                 <span class='font-weight-bold text-{$statusHtml}'>{$status}</span>";
     }
+
+    public function getCreatedAt(string $format='customdate') : string
+    {
+        return !empty($this->created_at) ? datetimeToText($this->created_at, $format) : "";
+    }
 }
