@@ -432,6 +432,11 @@ $(document).ready(function()
            checklists[i] = $(this).val();
         });
 
+        if (amount_paid == null)
+        {
+            amount_paid = '';
+        } 
+
         formData.append('_token', $("#token").val());
         formData.append('file', file);
         formData.append('additional_info', additional_info);
@@ -489,6 +494,11 @@ $(document).ready(function()
         {
            checklists[i] = $(this).val();
         });
+
+        if (amount_paid == null)
+        {
+            amount_paid = '';
+        } 
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
@@ -766,6 +776,11 @@ function saveChecklistDocument(action, currentForm)
        checklists[i] = $(this).val();
     });
 
+    if (amount_paid == null)
+    {
+        amount_paid = '';
+    } 
+
     formData.append('_token', $("#token").val());
     formData.append('file', file);
     formData.append('additional_info', additional_info);
@@ -815,6 +830,11 @@ function saveDeficientChecklistDocument(action, currentForm)
     {
        checklists[i] = $(this).val();
     });
+
+    if (amount_paid == null)
+    {
+        amount_paid = '';
+    } 
 
     formData.append('_token', $("#token").val());
     formData.append('file', file);
