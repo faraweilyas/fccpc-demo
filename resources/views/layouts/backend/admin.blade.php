@@ -358,7 +358,58 @@
                                 </div>
                             </div>
                         </div>
+<<<<<<< HEAD
                         @else
+=======
+                    </li>
+                    @endif
+                    <li class="menu-item " aria-haspopup="true">
+                        <a href="{{ route('dashboard.user_detail') }}" class="menu-link">
+                            <span class="svg-icon menu_icon_custom">
+                                <x-icons.user-profile-shield></x-icons.user-profile-shield>
+                            </span>
+                            <span class="menu-text">Profile</span>
+                        </a>
+                    </li>
+                    <li class="menu-item" aria-haspopup="true">
+                        <a href="#" class="menu-link">
+                            <span class="svg-icon menu_icon_custom">
+                                <x-icons.sign-out></x-icons.sign-out>
+                            </span>
+                            <span class="menu-text" href="{{ route('logout') }}" title="Logout"
+                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign
+                                Out</span>
+                            <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        {{-- Notifications --}}
+        <div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
+            <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
+                <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
+                    role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
+                    </li>
+                </ul>
+                <div class="offcanvas-close mt-n1 pr-5">
+                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
+                        <i class="ki ki-close icon-xs text-muted"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="offcanvas-content px-10">
+                <div class="tab-content">
+                    <div
+                        class="tab-pane fade show pt-3 pr-5 mr-n5 active"
+                        id="kt_quick_panel_notifications"
+                        role="tabpanel"
+                    >
+>>>>>>> workingon-kamsi
                         @php
                         $case = \App\Models\Cases::find($data->case_id);
                         @endphp
@@ -527,7 +578,18 @@
                                 <span class="svg-icon svg-icon-lg">
                                     <x-icons.search></x-icons.search>
                                 </span>
+<<<<<<< HEAD
                             </span>
+=======
+                            </div>
+                            <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" autocomplete="off" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="spin-loader fa fa-spinner fa-spin" style="display: none;"></i>
+                                    <i class="quick-search-close ki ki-close icon-sm" style="display: none;"></i>
+                                </span>
+                            </div>
+>>>>>>> workingon-kamsi
                         </div>
                         <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search"
                             autocomplete="off" />
@@ -588,6 +650,7 @@
                         </span>
                     </a>
                 </div>
+<<<<<<< HEAD
             </div>
             <div class="topbar-item">
                 <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
@@ -595,6 +658,23 @@
                         <div class="d-flex flex-column text-right pr-3">
                             <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
                                 {{ Auth::user()->getAccountType() }}
+=======
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <a href="{{ route('dashboard.user_detail') }}">
+                            <div class="d-flex flex-column text-right pr-3">
+                                <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getAccountType() }}
+                                </span>
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getFullName() }}
+                                </span>
+                            </div>
+                        </a>
+                        <span class="symbol symbol-35">
+                            <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
+                                {{ Auth::user()->getInitials() }}
+>>>>>>> workingon-kamsi
                             </span>
                             <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                                 {{ Auth::user()->getFullName() }}

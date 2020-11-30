@@ -53,7 +53,8 @@ $(document).ready(function() {
     searchInput.addEventListener('keyup', function () {
         let input = searchInput.value;
         if (input !== '') {
-            $(".quick-search-close").css("display", "flex");
+            $(".quick-search-close").css("display", "none");
+            $(".spin-loader").css("display", "flex");
 
         	$.ajax({
                 url: '/cases/search',
@@ -61,12 +62,15 @@ $(document).ready(function() {
                 data: {'search': input}, 
                 success: function(response){
                 	$(".autoComplete").css("display", "block");
+                    $(".spin-loader").css("display", "none");
+                    $(".quick-search-close").css("display", "flex");
                 	$('.autoComplete').html(response);
             	  }
             });
 
         } else {
 			$('.autoComplete').hide();
+            $(".spin-loader").css("display", "none");
             $(".quick-search-close").css("display", "none");
         }
     });
