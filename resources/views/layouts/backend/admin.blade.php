@@ -527,6 +527,7 @@
                             <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" autocomplete="off" />
                             <div class="input-group-append">
                                 <span class="input-group-text">
+                                    <i class="spin-loader fa fa-spinner fa-spin" style="display: none;"></i>
                                     <i class="quick-search-close ki ki-close icon-sm" style="display: none;"></i>
                                 </span>
                             </div>
