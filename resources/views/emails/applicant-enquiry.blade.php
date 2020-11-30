@@ -38,7 +38,7 @@
                         style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;padding-left:40px;padding-right:40px">
                         Email: {{ $enquiry->email }}<br />
                         Phone Number: {{ $enquiry->phone_number }}<br />
-                        Message: {{ $enquiry->message }}
+                        Message: {!! nl2br($enquiry->message) !!}
                     </p>
                     <p
                         style="font-weight:normal;padding:0;font-family:&quot;Helvetica Neue&quot;,&quot;Helvetica&quot;,Helvetica,Arial,sans-serif;line-height:1.7;margin-bottom:1.3em;font-size:15px;color:#47505e;padding-left:40px;padding-right:40px;margin-bottom:0;padding-bottom:0">

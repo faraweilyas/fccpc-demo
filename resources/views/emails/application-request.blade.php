@@ -511,10 +511,6 @@
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
                 style="background:#FFFFFF none no-repeat center/cover;border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
                 <tr>
-                    <td align="left" valign="top" id="bodyCell" <table border="0" cellpadding="0" cellspacing="0"
-                        width="100%" class="templateContainer"
-                        style="border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border: 0;max-width: 600px !important;">
-                <tr>
                     <td valign="top" id="templateBody"
                         style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;border-top: 0;border-bottom: 0;">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnTextBlock"
@@ -618,10 +614,6 @@
                         </table>
                     </td>
                 </tr>
-            </table>
-
-            </td>
-            </tr>
             </table>
         </center>
     </body>

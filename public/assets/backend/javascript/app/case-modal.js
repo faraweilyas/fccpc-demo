@@ -137,7 +137,8 @@ function getIconText(documentID) {
     return icon;
 }
 
-$(document).ready(function () {
+$(document).ready(function()
+{
     $("#unassigned_cases_datatable").DataTable({
         responsive: true,
         paging: true,
