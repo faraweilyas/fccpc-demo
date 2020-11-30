@@ -12,11 +12,9 @@ function assignCaseHandler(caseID, caseHandlerID) {
             $(".assigningCaseButton" + caseID).addClass("hide");
             $(".unassignCaseButton" + caseID).removeClass("hide");
             $(".assignCaseButton" + caseID).addClass("hide");
-            $(".unassignCaseButton" + caseID).attr(
-                "data-assigned-handler-id",
-                caseHandlerID
-            );
+            $(".unassignCaseButton" + caseID).attr("data-assigned-handler-id", caseHandlerID);
             $(".assigned_handler_id").html(caseHandlerID);
+            $('select[name="caseHandler"]').removeAttr("disabled");
 
             if (result.responseType == "success") {
                 toastr.success(result.message);
@@ -172,6 +170,15 @@ $(document).ready(function () {
     $("#enquiries_log_datatable").DataTable({
         responsive: true,
         paging: true,
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
+    });
+
+    $("#faq_log_datatable").DataTable({
+        responsive: true,
+        paging: true,
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
 
     $("#caseHandler").select2({
@@ -411,6 +418,7 @@ $(document).ready(function () {
 
         $(".assignCaseButton" + caseID).addClass("hide");
         $(".assigningButton" + caseID).removeClass("hide");
+        $(".assigningCaseButton" + caseID).removeClass("hide");
         $('select[name="caseHandler"]').attr("disabled", "disabled");
         assignCaseHandler(caseID, caseHandler);
         return;

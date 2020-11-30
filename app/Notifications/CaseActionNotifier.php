@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class NotifyHandlerForDeficientCaseSubmission extends Notification
+class CaseActionNotifier extends Notification
 {
     use Queueable;
 
@@ -18,19 +18,16 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
 
     public $case_id;
 
-    public $application_no;
-
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(string $action, string $message, Cases $case)
+    public function __construct(string $action, string $message, int $case_id)
     {
-        $this->action           = $action;
-        $this->message          = $message;
-        $this->case_id          = $case->id;
-        $this->application_no   = $case->reference_number;
+        $this->action   = $action;
+        $this->message  = $message;
+        $this->case_id  = $case_id;
     }
 
     /**
@@ -53,8 +50,9 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The applicant with this application reference number '.$this->application_no.', has uploaded and submitted requested deficient documents')
-                    ->action('Login', url('/'))
+                    ->subject($this->message)
+                    ->line($this->message)
+                    ->line('For more information, check your dashboard.')
                     ->line('Thank you for using our application!');
     }
 

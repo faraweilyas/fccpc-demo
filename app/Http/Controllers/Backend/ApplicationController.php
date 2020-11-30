@@ -26,9 +26,16 @@ class ApplicationController extends Controller
     {
         $case = Cases::find(31);
 
+        $user = auth()->user();
+        // $user->notifications[0]->markAsRead();
+        // $user->notifications->where('id', "fca8faa8-1557-490c-ba6b-9e48c339caba")->markAsRead();
+
         return [
-            'readNotifications'     => auth()->user()->readNotifications,
-            'unreadNotifications'   => auth()->user()->unreadNotifications,
+            $case_handler,
+            $supervisor,
+            'notifications'         => $user->notifications,
+            'unreadNotifications'   => $user->unreadNotifications,
+            'readNotifications'     => $user->readNotifications,
         ];
 
         // foreach (Cases::all() as $case)
@@ -428,28 +435,30 @@ class ApplicationController extends Controller
      */
     public function submitDeficient(Guest $guest)
     {
-        $case         = $guest->case;
-        $case_handler = $case->active_handlers()->first();
+        $case                   = $guest->case;
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
 
-        (new User)->forceFill([
-            'name'  => $case_handler->getFullName(),
-            'email' => $case_handler->email,
-        ])->notify(
-                new NotifyHandlerForDeficientCaseSubmission($case->reference_number)
-            );
+        $case_handler->notify(new NotifyHandlerForDeficientCaseSubmission(
+            'defresponse',
+            'Applicant has responded to deficient documents',
+            $case
+        ));
 
-        $current_date = now();
-        Document::where('case_id', $case->id)->where('date_case_submitted', null)->update([
-            'date_case_submitted'          => $current_date,
-        ]);
+        $supervisor->notify(new NotifyHandlerForDeficientCaseSubmission(
+            'defresponse',
+            'Applicant has responded to deficient documents',
+            $case
+        ));
+
+        Document::where('case_id', $case->id)
+            ->where('date_case_submitted', null)
+            ->update([
+                'date_case_submitted' => now(),
+            ]);
 
         $case->removeDeficiency($case_handler);
-
-        try {
-
-        } catch (\Exception $exception) {
-            $message = $exception->getMessage();
-        }
         $this->sendResponse('Application submitted.', 'success', $case);
     }
 

@@ -41,7 +41,13 @@
                         <tbody>
                             @foreach($enquiries as $item)
                             <tr>
-                                <td>{{ datetimeToText($item->created_at, 'customd') }}</td>
+                                <td data-sort='YYYYMMDD'>
+                                    <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                        data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $item->
+                                        getSubmittedAt('customdate') !!} />
+                                        {!! $item->getSubmittedAt('customdate') !!}
+                                    </div>
+                                </td>
                                 <td class="text-center">
                                     <span
                                         class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">

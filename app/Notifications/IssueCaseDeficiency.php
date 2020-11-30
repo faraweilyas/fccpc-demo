@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class CaseAssigned extends Notification
+class IssueCaseDeficiency extends Notification
 {
     use Queueable;
 
@@ -38,7 +38,7 @@ class CaseAssigned extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
+        return ['database'];
     }
 
     /**
@@ -49,10 +49,7 @@ class CaseAssigned extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-                    ->line('A new case has been assigned to you.')
-                    ->line('For more information, check your dashboard.')
-                    ->line('Thank you for using our application!');
+        //
     }
 
     /**

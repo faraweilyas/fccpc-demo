@@ -67,7 +67,7 @@
                                     <br />
                                     <span id="applicant_address">...</span>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -76,9 +76,9 @@
                 <button id="saving-deficiency" type="button" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
                     <div class="spinner-grow text-white" role="status">
                       <span class="sr-only">Loading...</span>
-                    </div> 
+                    </div>
                 </button>
-                <button id="issue-deficiency" type="button" class="btn btn-light-primary font-weight-bold hide">Issue Deficiency</button>
+                <button id="issue-deficiency" type="button" class="btn btn-light-primary font-weight-bold">Issue Deficiency</button>
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>

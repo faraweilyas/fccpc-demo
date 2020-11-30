@@ -53,24 +53,28 @@ $(document).ready(function() {
     searchInput.addEventListener('keyup', function () {
         let input = searchInput.value;
         if (input !== '') {
-        	 $.ajax({
-            url: '/cases/search',
-            type: 'GET',
-            data: {'search': input}, 
-            success: function(response){
-            	$(".autoComplete").css("display", "block");
-            	$('.autoComplete').html(response);
-        	  }
+            $(".quick-search-close").css("display", "flex");
+
+        	$.ajax({
+                url: '/cases/search',
+                type: 'GET',
+                data: {'search': input}, 
+                success: function(response){
+                	$(".autoComplete").css("display", "block");
+                	$('.autoComplete').html(response);
+            	  }
             });
 
         } else {
 			$('.autoComplete').hide();
+            $(".quick-search-close").css("display", "none");
         }
     });
 
-    $(".crus").on('click', function (argument) {
-        // body...
-        console.log(true);
+    $(".quick-search-close").on('click', function (event) {
+        $("#search").val('');
+        $(".autoComplete").hide();
+        $(this).css("display", "none");
     })
 
     $(".delete_faq").on('click', function (e) {
