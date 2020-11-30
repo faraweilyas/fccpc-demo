@@ -50,8 +50,8 @@ class CaseActionNotifier extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject($this->message)
-                    ->line($this->message)
+                    ->subject(strip_tags(($this->message)))
+                    ->line(strip_tags(($this->message)))
                     ->line('For more information, check your dashboard.')
                     ->line('Thank you for using our application!');
     }

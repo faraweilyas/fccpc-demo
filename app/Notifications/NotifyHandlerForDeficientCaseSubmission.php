@@ -53,6 +53,7 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->subject(strip_tags($this->message))
                     ->line('The applicant with this application reference number '.$this->application_no.', has uploaded and submitted requested deficient documents')
                     ->action('Login', url('/'))
                     ->line('Thank you for using our application!');

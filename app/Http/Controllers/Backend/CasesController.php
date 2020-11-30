@@ -78,13 +78,12 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $cases = (new Cases())->unassignedCases();
+        $cases          = (new Cases())->unassignedCases();
+        $caseHandlers   = (new User())->caseHandlers();
 
-        $caseHandlers = (new User())->caseHandlers();
-
-        $title = 'New Cases | ' . APP_NAME;
-        $description = 'New Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'New Cases | ' . APP_NAME;
+        $description    = 'New Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.unassigned',
             compact('details', 'cases', 'caseHandlers')
@@ -116,9 +115,9 @@ class CasesController extends Controller
 
         $caseHandlers = (new User())->caseHandlers();
 
-        $title = 'Assigned Cases | ' . APP_NAME;
-        $description = 'Assigned Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Assigned Cases | ' . APP_NAME;
+        $description    = 'Assigned Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-assigned',
             compact('details', 'cases', 'caseHandlers')
@@ -135,12 +134,12 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $cases = $handler->dropped_cases_assigned_to()->get();
-        $caseHandlers = (new User())->caseHandlers();
+        $cases          = $handler->dropped_cases_assigned_to()->get();
+        $caseHandlers   = (new User())->caseHandlers();
 
-        $title = 'Dropped Cases | ' . APP_NAME;
-        $description = 'Dropped Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Dropped Cases | ' . APP_NAME;
+        $description    = 'Dropped Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-dropped',
             compact('details', 'cases', 'caseHandlers')
@@ -163,10 +162,10 @@ class CasesController extends Controller
             $cases = \Auth::user()->cases_working_on()->get();
         endif;
 
-        $caseHandlers = (new User())->caseHandlers();
-        $title = 'Ongoing Cases | ' . APP_NAME;
-        $description = 'Ongoing Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $caseHandlers   = (new User())->caseHandlers();
+        $title          = 'Ongoing Cases | ' . APP_NAME;
+        $description    = 'Ongoing Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-working-on',
             compact('details', 'caseHandlers', 'cases')
@@ -183,12 +182,12 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $cases = (new Cases())->assignedCases();
-        $caseHandlers = (new User())->caseHandlers();
+        $cases          = (new Cases())->assignedCases();
+        $caseHandlers   = (new User())->caseHandlers();
 
-        $title = 'Approved Cases | ' . APP_NAME;
-        $description = 'Approved Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Approved Cases | ' . APP_NAME;
+        $description    = 'Approved Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-approved',
             compact('details', 'cases', 'caseHandlers')
@@ -211,10 +210,10 @@ class CasesController extends Controller
             $cases = \Auth::user()->deficient_cases()->get();
         endif;
 
-        $caseHandlers = (new User())->caseHandlers();
-        $title = 'Cases On hold| ' . APP_NAME;
-        $description = 'Cases On hold| ' . APP_NAME;
-        $details = details($title, $description);
+        $caseHandlers   = (new User())->caseHandlers();
+        $title          = 'Cases On hold| ' . APP_NAME;
+        $description    = 'Cases On hold| ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-on-hold',
             compact('details', 'cases', 'caseHandlers')
@@ -231,12 +230,12 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $cases = (new Cases())->archivedCases();
-        $caseHandlers = (new User())->caseHandlers();
+        $cases          = (new Cases())->archivedCases();
+        $caseHandlers   = (new User())->caseHandlers();
 
-        $title = 'Archived Cases | ' . APP_NAME;
-        $description = 'Archived Cases | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Archived Cases | ' . APP_NAME;
+        $description    = 'Archived Cases | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.cases.cases-archived',
             compact('details', 'cases', 'caseHandlers')
@@ -253,10 +252,10 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $caseHandlers = (new User())->caseHandlers();
-        $title = APP_NAME;
-        $description = 'FCCPC Case Analysis Dashboard';
-        $details = details($title, $description);
+        $caseHandlers   = (new User())->caseHandlers();
+        $title          = APP_NAME;
+        $description    = 'FCCPC Case Analysis Dashboard';
+        $details        = details($title, $description);
         return view('backend.cases.analyze-case', compact('details', 'case', 'caseHandlers'));
     }
 
@@ -270,19 +269,13 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $checklistIds               = $case->getChecklistIds();
-        $submittedDocuments         = $case->submittedDocuments()[$date];
-        $checklistStatus            = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient');
-
-        // Checklist Objects
-        // $case->getCaseSubmittedChecklistByStatus(); // NULL
-        // $case->getCaseSubmittedChecklistByStatus('approved'); // approval
-        // $case->getCaseSubmittedChecklistByStatus('deficient'); // deficient
+        $checklistIds           = $case->getChecklistIds();
+        $submittedDocuments     = $case->submittedDocuments()[$date];
+        $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient');
 
         $title          = APP_NAME;
         $description    = 'FCCPC Checklist Approval Dashboard';
         $details        = details($title, $description);
-
         return view(
             'backend.cases.checklist-approval',
             compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatus', 'date')
@@ -297,8 +290,8 @@ class CasesController extends Controller
     public function getChecklistCount(Cases $case, $date)
     {
         $this->sendResponse('Case checklist status count.', 'success', [
-            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient')->count(),
-            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')->count(),
+            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient')->count(),
+            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')->count(),
         ]);
     }
 
@@ -310,8 +303,8 @@ class CasesController extends Controller
     public function getChecklistByStatus(Cases $case, $date)
     {
         $this->sendResponse('Case checklist by status.', 'success', [
-            'deficient_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
-            'approved_cases' => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved'),
+            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
+            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved'),
         ]);
     }
 
@@ -341,31 +334,32 @@ class CasesController extends Controller
      */
     public function issueDeficiency(Cases $case, $date)
     {
-        if ($case->guest->email == $case->applicant_email):
-            $emails = array($case->applicant_email);
-        else:
-            $emails = array($case->applicant_email, $case->guest->email);
-        endif;
-
-        Mail::to($emails)->send(
-            new IssueDeficiencyEmail([
-                'fullname'        => $case->applicant_fullname,
-                'ref_no'          => $case->guest->tracking_id,
-                'case'            => $case,
-                'additional_info' => request('additional_info'),
-                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
-            ])
-        );
-        $handler = User::find($case->active_handlers->first()->id);
-        $case->issueDeficiency($handler);
-
-        // Notify case handler and supervisor
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-        $case_handler->notify(new IssueCaseDeficiency('onhold', "Deficiency has been issued.", $case->id));
-        $supervisor->notify(new IssueCaseDeficiency('onhold', "Deficiency has been issued by <b>{$case_handler->getFullName()}</b>.", $case->id));
+        $emails                 = ($case->guest->email == $case->applicant_email)
+                                ? [$case->applicant_email]
+                                : [$case->applicant_email, $case->guest->email];
 
+        // Issue deficiency
+        $case->issueDeficiency($case_handler);
+        // Notify case handler
+        Mail::to($emails)
+            ->send(new IssueDeficiencyEmail([
+                'fullname'        => $case->applicant_fullname,
+                'ref_no'          => $case->guest->tracking_id,
+                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
+                'additional_info' => request('additional_info'),
+            ]));
+        $case_handler->notify(new IssueCaseDeficiency(
+            'onhold',
+            "Deficiency has been issued.", $case->id
+        ));
+        // Notify supervisor
+        $supervisor->notify(new IssueCaseDeficiency(
+            'onhold',
+            "Deficiency has been issued by <b>{$case_handler->getFullName()}</b>.", $case->id
+        ));
         return $this->sendResponse('Deficieny sent.', 'success');
     }
 
@@ -390,15 +384,16 @@ class CasesController extends Controller
      */
     public function issueRecommendation(Cases $case)
     {
-        $validator = $this->validate(request(), [
-            'file'                  => 'required',
-            'recommendation'        => 'required',
+        $validator              = $this->validate(request(), [
+            'file'              => 'required',
+            'recommendation'    => 'required',
         ]);
 
         if (!$validator):
-            return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput();
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
         endif;
 
         if (!empty($case->getAnalysisDocument())):
@@ -430,11 +425,10 @@ class CasesController extends Controller
         if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
-        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
-        $title = APP_NAME;
-        $description = 'FCCPC Case Documents Analysis Dashboard';
-        $details = details($title, $description);
-
+        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
+        $title                      = APP_NAME;
+        $description                = 'FCCPC Case Documents Analysis Dashboard';
+        $details                    = details($title, $description);
         return view(
             'backend.cases.analyze-case-documents',
             compact('details', 'case', 'checklistGroupDocuments')
@@ -450,11 +444,21 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->assign($user);
-        $user->notify(new CaseActionNotifier('assign', 'A new case has been assigned to you.', $case->id));
-        auth()->user()->notify(new CaseActionNotifier('assign', "Case has been assigned to <b>{$user->getFullName()}</b>.", $case->id));
+        // Notify case handler
+        $user->notify(new CaseActionNotifier(
+            'assign',
+            'A new case has been assigned to you.',
+            $case->id
+        ));
+        // Notify supervisor
+        auth()->user()->notify(new CaseActionNotifier(
+            'assign',
+            "Case has been assigned to <b>{$user->getFullName()}</b>.",
+            $case->id
+        ));
         $this->sendResponse('Case assigned.', 'success', [
-            'case' => $case,
-            'handler' => $user,
+            'case'      => $case,
+            'handler'   => $user,
         ]);
     }
 
@@ -466,9 +470,22 @@ class CasesController extends Controller
     public function unassignCase(Cases $case, User $user)
     {
         abort_if(!auth()->user(), 404);
-        $result = $case->disolve($user);
-        $user->notify(new CaseActionNotifier('unassign', 'Your case has been unassigned', $case->id));
-        auth()->user()->notify(new CaseActionNotifier('unassign', "Case has been unassigned from <b>{$user->getFullName()}</b>.", $case->id));
+        $case->disolve($user);
+
+        // Notify case handler
+        $user->notify(new CaseActionNotifier(
+            'unassign',
+            'Your case has been unassigned',
+            $case->id
+        ));
+        // Notify supervisor
+        auth()
+            ->user()
+            ->notify(new CaseActionNotifier(
+                'unassign',
+                "Case has been unassigned from <b>{$user->getFullName()}</b>.",
+                $case->id
+            ));
         $this->sendResponse('Case unassigned.', 'error');
     }
 
@@ -481,9 +498,27 @@ class CasesController extends Controller
     {
         abort_if(!auth()->user(), 404);
         $case->reAssign($oldUser, $newUser);
-        $oldUser->notify(new CaseActionNotifier('reassign', 'Your case has been reassigned', $case->id));
-        $newUser->notify(new CaseActionNotifier('assign', 'A new case has been assigned to you.', $case->id));
-        auth()->user()->notify(new CaseActionNotifier('reassign', "Case has been reassigned to <b>{$newUser->getFullName()}</b>.", $case->id));
+
+        // Notify old case handler
+        $oldUser->notify(new CaseActionNotifier(
+            'reassign',
+            'Your case has been reassigned',
+            $case->id
+        ));
+        // Notify new case handler
+        $newUser->notify(new CaseActionNotifier(
+            'assign',
+            'A new case has been assigned to you.',
+            $case->id
+        ));
+        // Notify supervisor
+        auth()
+            ->user()
+            ->notify(new CaseActionNotifier(
+                'reassign',
+                "Case has been reassigned to <b>{$newUser->getFullName()}</b>.",
+                $case->id
+            ));
         $this->sendResponse('Case reassigned.', 'success');
     }
 
@@ -526,7 +561,7 @@ class CasesController extends Controller
 
         $this->sendResponse('Case documents received.', 'success', [
             'documents' => $documents,
-            'group' => $case->getChecklistGroupName(),
+            'group'     => $case->getChecklistGroupName(),
         ]);
     }
 

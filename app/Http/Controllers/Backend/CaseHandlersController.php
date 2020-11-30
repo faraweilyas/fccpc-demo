@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
-use App\Notifications\NewCaseHandler;
+use App\Notifications\NewUser;
 
 class CaseHandlersController extends Controller
 {
@@ -24,10 +24,11 @@ class CaseHandlersController extends Controller
 
     /**
      * Handles the Case handlers display page route.
+     *
      * @return void
      */
     public function index()
-    {   
+    {
         $handlers         = (new User)->where('account_type', 'CH')->get();
         $title            = APP_NAME;
         $description      = "FCCPC Case Handlers Dashboard";
@@ -37,6 +38,7 @@ class CaseHandlersController extends Controller
 
 	/**
 	 * Handles the create case handlers page route.
+     *
 	 * @return void
 	 */
     public function create()
@@ -49,6 +51,7 @@ class CaseHandlersController extends Controller
 
     /**
      * Handles the store handler page route.
+     *
      * @return void
      */
     public function storeHandler(Request $request)
@@ -67,14 +70,18 @@ class CaseHandlersController extends Controller
             'password'      => Hash::make(config('app.default_password'))
         ]);
 
-        $user->notify(
-                new NewCaseHandler($user->email, config('app.default_password'))
-            );   
+        $user->notify(new NewUser(
+            "newuser",
+            "Hi {$user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.",
+            $user,
+            config('app.default_password')
+        ));
         return redirect()->back()->with("success", "Case handler has been registered sucessfully");
     }
 
     /**
      * Handles the view case handlers page route.
+     *
      * @return void
      */
     public function show($id)
@@ -88,13 +95,14 @@ class CaseHandlersController extends Controller
 
     /**
      * Handles the update case handler status page route.
+     *
      * @return void
      */
     public function updateHandlerStatus(User $handler)
     {
         $status    = $handler->status;
-        $type      = ($status == 'active') ? 'error' : 'success'; 
-        $message   = ($status == 'active') ? 'Case handler deactivated' : 'Case handler activated'; 
+        $type      = ($status == 'active') ? 'error' : 'success';
+        $message   = ($status == 'active') ? 'Case handler deactivated' : 'Case handler activated';
         User::whereId($handler->id)->update([
             'status' => ($status == 'active') ? 'inactive' : 'active',
         ]);

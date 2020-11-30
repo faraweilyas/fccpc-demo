@@ -62,7 +62,8 @@ trait CaseGettable
      * Gets total amount paid by month and category
      *
      * @param int $month
-     * @param String $category
+     * @param string $category
+     * @param string $case_type
      *
      * @return int
      */
