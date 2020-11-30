@@ -1,9 +1,9 @@
 @extends('layouts.backend.old.guest')
 
 @section('content')
-<div class="subheader py-2 py-lg-4 subheader-transparent mt-xs-20 mt-sm-18 mt-md-20 mt-lg-0" id="kt_subheader">
+<div class="subheader py-2 py-lg-4 subheader-transparent mt-xs-20 mt-sm-18 mt-md-20 mt-lg-0 subheader-applicants" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-        <div class="sub-header-desktop">
+        <div class="sub-header-desktop subheader-applicants">
             <div class="d-flex align-items-baseline mr-5">
                 <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
