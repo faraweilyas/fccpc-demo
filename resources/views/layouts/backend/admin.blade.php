@@ -202,7 +202,7 @@
                     </li>
                     @endif
                     <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('dashboard.profile') }}" class="menu-link">
+                        <a href="{{ route('dashboard.user_detail') }}" class="menu-link">
                             <span class="svg-icon menu_icon_custom">
                                 <x-icons.user-profile-shield></x-icons.user-profile-shield>
                             </span>
@@ -331,7 +331,7 @@
                                     @php
                                         $user       = \App\Models\User::find($data->user_id);
                                     @endphp
-                                    <div class="notifications-cards">
+                                    <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('dashboard.user_detail', ['user' => $user->id]) }}';">
                                         <p class="message my-1">{!! $message !!}</p>
                                         <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                         <p class="my-1">
@@ -353,7 +353,7 @@
                                     @php
                                         $case = \App\Models\Cases::find($data->case_id);
                                     @endphp
-                                    <div class="notifications-cards">
+                                    <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('cases.analyze', [$case->id]) }}';">
                                         <p class="message my-1">{!! $message !!}</p>
                                         <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                         <p class="subject my-1">{{ $case->subject }}</p>
@@ -586,7 +586,7 @@
                 </div>
                 <div class="topbar-item">
                     <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                        <a href="{{ route('dashboard.profile') }}">
+                        <a href="{{ route('dashboard.user_detail') }}">
                             <div class="d-flex flex-column text-right pr-3">
                                 <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
                                     {{ Auth::user()->getAccountType() }}
