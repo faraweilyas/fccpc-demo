@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Models\Guest;
-use App\Models\Cases;
 use App\Models\User;
+use App\Models\Cases;
+use App\Models\Guest;
 use App\Models\Document;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
@@ -15,28 +15,30 @@ use App\Notifications\NotifyHandlerForDeficientCaseSubmission;
 
 class ApplicationController extends Controller
 {
-    protected $methods = [
-        'saveCaseInfo' => 'saveCaseInfo',
-        'saveContactInfo' => 'saveContactInfo',
-        'saveChecklistDocument' => 'saveChecklistDocument',
-        'saveDeficientChecklistDocument' => 'saveDeficientChecklistDocument',
+    protected $methods                      = [
+        'saveCaseInfo'                      => 'saveCaseInfo',
+        'saveContactInfo'                   => 'saveContactInfo',
+        'saveChecklistDocument'             => 'saveChecklistDocument',
+        'saveDeficientChecklistDocument'    => 'saveDeficientChecklistDocument',
     ];
 
     public function test()
     {
         $case = Cases::find(31);
 
+        foreach (User::all() as $user)
+        {
+            $user->notify(new \App\Notifications\NewCaseHandler(
+                "newuser",
+                "Hi {$user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.",
+                $user,
+                config('app.default_password')
+            ));
+        }
+
         $user = auth()->user();
         // $user->notifications[0]->markAsRead();
         // $user->notifications->where('id', "fca8faa8-1557-490c-ba6b-9e48c339caba")->markAsRead();
-
-        return [
-            $case_handler,
-            $supervisor,
-            'notifications'         => $user->notifications,
-            'unreadNotifications'   => $user->unreadNotifications,
-            'readNotifications'     => $user->readNotifications,
-        ];
 
         // foreach (Cases::all() as $case)
         // {
@@ -44,11 +46,8 @@ class ApplicationController extends Controller
         //     $case->amount_paid = rand(5000000, 10000000);
         //     $case->save();
         // }
-        // return Cases::all();
-        // return $case->getTotalAmountByMonthAndCategory(9, 'FFM', 'LG');
 
         // $documents = [];
-
         // foreach (Cases::all() as $case)
         // {
         //     foreach ($case->documents as $document)
@@ -59,14 +58,10 @@ class ApplicationController extends Controller
         //             : NULL;
         //         $document->save();
         //         $documents[] = $document;
-        //         // dump();
         //     }
         // }
 
-        // return $documents;
-
         // $submittedDocuments = $case->submittedDocuments();
-
         // foreach ($submittedDocuments as $date => $documents)
         // {
         //     foreach ($documents as $document)
@@ -75,11 +70,15 @@ class ApplicationController extends Controller
         //         $group      = $document->group;
         //     }
         // }
-
         // $date = "2020-11-17 09:40:46";
         // $submittedDocument = $case->getSubmittedDocumentByDate($date);
 
         return [
+            'notifications'         => $user->notifications,
+            'unreadNotifications'   => $user->unreadNotifications,
+            'readNotifications'     => $user->readNotifications,
+
+            // $documents,
             // $case,
             // $case->documents,
             // $case->guest,
@@ -440,12 +439,13 @@ class ApplicationController extends Controller
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
 
+        // Notify case handler
         $case_handler->notify(new NotifyHandlerForDeficientCaseSubmission(
             'defresponse',
             'Applicant has responded to deficient documents',
             $case
         ));
-
+        // Notify supervisor
         $supervisor->notify(new NotifyHandlerForDeficientCaseSubmission(
             'defresponse',
             'Applicant has responded to deficient documents',
