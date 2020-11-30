@@ -187,7 +187,7 @@ Route::prefix('/')
             'update_user_profile'
         );
 
-        Route::get('mark-notification/{notification}', 'DashboardController@markNotification')->name('mark_notification');
+        Route::get('mark-notifications', 'DashboardController@markNotifications')->name('mark_notifications');
 
         Route::get('clear-notification', 'DashboardController@clearReadNotification')->name('clear_notification');
 

@@ -252,6 +252,9 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
+        if (auth()->user()->account_type == 'CH' && $case->active_handlers->first()->case_handler->handler_id != auth()->user()->id)
+            return redirect()->back();
+
         $caseHandlers   = (new User())->caseHandlers();
         $title          = APP_NAME;
         $description    = 'FCCPC Case Analysis Dashboard';

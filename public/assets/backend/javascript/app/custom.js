@@ -109,10 +109,9 @@ $(document).ready(function() {
         });
     });
 
-    $(".mark-notification").mouseover(function(){
-        var notification_id = $(this).attr('data-id');
+    $("#mark-notifications").click(function(){
         $.ajax({
-            url: '/mark-notification/'+notification_id,
+            url: '/mark-notifications',
             type: 'GET',
             data: {}, 
             success: function(response){

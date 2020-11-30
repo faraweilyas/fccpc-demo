@@ -255,7 +255,7 @@
                         @endphp
                         <p class="mb-10 {{ $unreadDisplay }}">
                             <span class='float-left'>Unread</span>
-                            <span class='float-right cr-pointer text-hover-primary'>Mark as read</span>
+                            <span id="mark-notifications" class='float-right cr-pointer text-hover-primary'>Mark as read</span>
                         </p>
                         <div class="clear-fix"></div>
                         @forelse ($unreadNotifications as $notification)
@@ -269,7 +269,7 @@
                                 @php
                                     $user       = \App\Models\User::find($data->user_id);
                                 @endphp
-                                <div class="notifications-cards mark-notification" data-id="{{ $notification->id }}">
+                                <div class="notifications-cards">
                                     <p class="message my-1">{!! $message !!}</p>
                                     <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                     <p class="my-1">

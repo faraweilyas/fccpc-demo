@@ -168,12 +168,12 @@ class DashboardController extends Controller
     }
 
     /**
-     * Handles the mark notification as read route.
+     * Handles the mark notifications as read route.
      * @return void
      */
-    public function markNotification($notification)
+    public function markNotifications()
     {
-        auth()->user()->notifications->where('id', $notification)->markAsRead();
+        auth()->user()->unreadNotifications->markAsRead();
         return true;
     }
 
