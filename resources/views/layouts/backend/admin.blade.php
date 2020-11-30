@@ -565,19 +565,19 @@
                             </a>
                         </div>
                     </div>
-                    <div class="topbar-item" id="kt_quick_cart_toggle">
-                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                            <span class="symbol symbol-35 mx-2">
-                                <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
-                            </span>
-                            <a href="#">
-                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                                    Fee
-                                </span>
-                            </a>
-                        </div>
-                    </div>
                 @endif
+                <div class="topbar-item" id="kt_quick_cart_toggle">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <span class="symbol symbol-35 mx-2">
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
+                        </span>
+                        <a href="#">
+                            <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                Fee
+                            </span>
+                        </a>
+                    </div>
+                </div>
                 <div class="topbar-item">
                     <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                         <a href="{{ route('dashboard.profile') }}">
