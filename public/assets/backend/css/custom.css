@@ -1295,3 +1295,27 @@ th.fees_tab__head {
     font-size: 1.1rem;
     color: #242424;
 }
+
+
+.unread-title{
+    color: #227a4e;
+    font-weight: bold
+}
+
+.unread-clear{
+    color: #227a4e;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.unread-clear:hover{
+    transition: all 0.5s ease-in-out;
+    font-weight: bold;
+   font-size: 1.1rem;
+}
+
+.text-gray{
+    font-size: .7rem;
+    font-weight: lighter;
+    font-style: italic;
+    color: #999;
+}
