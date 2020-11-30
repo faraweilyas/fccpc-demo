@@ -6,9 +6,9 @@ use Auth;
 use App\Models\User;
 use App\Models\Cases;
 use Illuminate\Http\Request;
+use App\Notifications\NewUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-use App\Notifications\NewUser;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -29,13 +29,13 @@ class DashboardController extends Controller
 	 */
     public function index()
     {
-        if(in_array(\Auth::user()->account_type, ['SP'])):
+        if (in_array(\Auth::user()->account_type, ['SP'])):
             $new_cases = (new Cases())->unassignedCases()->take(5);
         else:
             $new_cases = auth()
-                    ->user()
-                    ->active_cases_assigned_to()
-                    ->get()->take(5);
+                ->user()
+                ->active_cases_assigned_to()
+                ->get()->take(5);
         endif;
         $cases            = new Cases();
     	$title            = APP_NAME;
@@ -69,18 +69,21 @@ class DashboardController extends Controller
             'accountType'     => 'required',
         ]);
 
-        User::create([
-            'first_name'     => trim(ucfirst($request->firstName)),
-            'last_name'      => trim(ucfirst($request->lastName)),
+        $user = User::create([
+            'first_name'    => trim(ucfirst($request->firstName)),
+            'last_name'     => trim(ucfirst($request->lastName)),
             'email'         => $request->email,
             'password'      => Hash::make(config('app.default_password')),
-            'account_type'   => $request->accountType,
+            'account_type'  => $request->accountType,
         ]);
 
-        $user->notify(
-                new NewUser($request->email, config('app.default_password'))
-            );   
-
+        // Notify new user
+        $user->notify(new NewUser(
+            "newuser",
+            "Hi {$user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.",
+            $user,
+            config('app.default_password')
+        ));
         return redirect()->back()->with("success", "User created sucessfully");
     }
 
@@ -134,7 +137,6 @@ class DashboardController extends Controller
 
     public function updateProfile(Request $request)
     {
-
         if (isset($request->password)) {
             if (Hash::check($request->password, Auth::user()->password)) {
                 if ($request->new_password === $request->password_confirmation) {
@@ -157,15 +159,14 @@ class DashboardController extends Controller
         ]);
 
         User::whereId(Auth::user()->id)->update([
-                'first_name'    => $request->first_name,
-                'last_name'     => $request->last_name,
-                'phone_number'  => $request->phone_number ?? '',
-                'address'       => $request->address  ?? ''
-         ]);
-
+            'first_name'    => $request->first_name,
+            'last_name'     => $request->last_name,
+            'phone_number'  => $request->phone_number ?? '',
+            'address'       => $request->address  ?? ''
+        ]);
         return redirect()->back()->with("success", "Profile updated");
     }
-    
+
 
     /**
      * Handles the generate report page route.
