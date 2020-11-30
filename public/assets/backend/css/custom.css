@@ -635,7 +635,7 @@ a.checklist-list {
     margin: 1rem 0;
 }
 
-.notifications-cards .label {
+.notifications-cards .not_label {
     width: auto;
     margin: 1rem 0;
     padding: 1rem;
@@ -644,12 +644,12 @@ a.checklist-list {
     text-align: left;
 }
 
-.notifications-cards .label-success {
+.notifications-cards .not_label.label-success {
     color: #1F877A;
     background: #E5F9F5;
 }
 
-.notifications-cards .label-warning {
+.notifications-cards .not_label.label-warning {
     color: #F4A261;
     background: #FAF3DD;
 }
