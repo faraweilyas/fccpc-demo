@@ -503,6 +503,11 @@
         font-size: 1.5rem;
         color: #4f4f4f;
     }
+
+    .checklist-header {
+        padding: 1rem 0;
+        font-size: 1.5rem !important;
+    }
 }
 
 @media (min-width: 992px) {

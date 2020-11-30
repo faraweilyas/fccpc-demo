@@ -428,9 +428,11 @@ textarea {
     font-size: 2rem !important;
 }
 .home__headers{
-    font-size: 2rem !important;
+    font-size: 2.3rem !important;
     margin: 2rem 0;
-    font-weight: bold;
+    font-weight: bolder !important;
+    /* text-transform: uppercase; */
+    padding-bottom: 20px;
 }
 
 .card__box-stack .card__box--content span {
@@ -1051,3 +1053,6 @@ textarea {
 .push-top{
     margin-top: -200px;
 }
+
+
+/*  */
