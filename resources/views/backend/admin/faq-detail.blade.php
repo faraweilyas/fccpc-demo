@@ -58,7 +58,7 @@
                                 </div>
                                 <div>
                                     <span>Created:</span>
-                                    <p class="faq-question-header">{{ $faq->getCreatedAt() }}</p>
+                                    <p class="faq-question-header">{!! $faq->getSubmittedAt() !!}</p>
                                 </div>
                             </div>
                         </div>
