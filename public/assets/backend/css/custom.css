@@ -379,9 +379,8 @@ section#orderWizard {
 }
 
 @media only screen and (max-width: 768px) {
-    .subheader {
+    .subheader-applicants {
         margin-top: 58px  !important;
-        /* margin-bottom: -50px; */
     }
 
     .sm-d-flex{
