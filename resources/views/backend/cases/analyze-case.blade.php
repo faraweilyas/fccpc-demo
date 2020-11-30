@@ -151,7 +151,7 @@
             </div>
         </div>
         @if ($case->isCaseChecklistsApproved())
-            @if (!in_array(Auth::user()->account_type, ['SP']))
+            @if (!in_array(Auth::user()->account_type, ['SP']) && !$case->isRecommendationIssued())
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-custom">
