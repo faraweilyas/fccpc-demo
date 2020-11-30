@@ -106,7 +106,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4" data-toggle="tab"
                                                     href="#ffx">
-                                                    <span class="nav-text font-size-sm">FFM Expedited</span>
+                                                    <span class="nav-text font-size-sm">Expedited</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -157,7 +157,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.ffx></x-icons.ffx>
                                         </section>
-                                        <p class="mx-5">FFM Expedited</p>
+                                        <p class="mx-5">Expedited</p>
                                         <span class="main mx-5 my-25" >{{ $cases->getCasesByCategory('FFX')->count() }}</span>
                                     </div>
                                 </div>

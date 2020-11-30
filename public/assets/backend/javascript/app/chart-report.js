@@ -38,10 +38,10 @@ var KTWidgets = function () {
 
                 var options = {
                     series: [{
-                        name: 'Small Fees',
+                        name: 'Small',
                         data: result_small_array
                     },{
-                        name: 'Large Fees',
+                        name: 'Large',
                         data: result_large_array
                     }],
                     chart: {
