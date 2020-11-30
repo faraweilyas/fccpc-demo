@@ -175,15 +175,15 @@ Route::prefix('/')
             'DashboardController@updateUserStatus'
         )->name('update_users_status');
 
-        Route::get('profile', 'DashboardController@viewProfile')->name(
+        Route::get('profile/update', 'DashboardController@viewProfile')->name(
             'profile'
         );
 
-        Route::get('user/detail/{user}', 'DashboardController@viewUserDetail')->name(
+        Route::get('profile/{user?}', 'DashboardController@viewUserDetail')->name(
             'user_detail'
         );
 
-        Route::post('profile', 'DashboardController@updateProfile')->name(
+        Route::post('profile/update', 'DashboardController@updateProfile')->name(
             'update_user_profile'
         );
 

@@ -75,6 +75,14 @@
                                         <span>Address</span>
                                         <p>{{ $user->address ?? '...' }}</p>
                                     </div>
+                                    @if (auth()->user()->isUserSame($user))
+                                    <div class="row" style="justify-content: flex-end;">
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary my-5"
+                                                onclick="window.location.href = '{{ route('dashboard.profile') }}';">Update Profile</button>
+                                        </div>
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

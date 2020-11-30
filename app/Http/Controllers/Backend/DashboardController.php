@@ -118,6 +118,9 @@ class DashboardController extends Controller
      */
     public function viewUserDetail(User $user)
     {
+        if (!in_array(auth()->user()->account_type, ['AD']))
+            $user = auth()->user();
+        
         $title            = APP_NAME;
         $description      = "FCCPC Dashboard User Detail";
         $details          = details($title, $description);
