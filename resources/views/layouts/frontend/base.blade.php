@@ -307,7 +307,7 @@
                   <div class="col-md-4">
 
                     <br/>
-                    <span class="float-right" style="font-size: 1.5rem">  Powered by <a href="https://techbarn.ng/" target="_blank">techbarn </span>
+                    <span class="float-right float-right-inverse" style="font-size: 1.5rem">  Powered by <a href="https://techbarn.ng/" target="_blank">techbarn </span>
 
                   </div>
                 </div>

@@ -56,6 +56,39 @@ body {
     .header__content {
         display: none;
     }
+
+    .float-right-inverse{
+        float: left !important;
+
+        padding-bottom: 20px !important;
+    }
+
+
+    .not__found h1{
+        font-size: 15rem !important;
+        margin: 2rem !important;
+    }
+
+    .header-banner{
+
+        flex-direction: column !important;
+     
+    }    
+
+    .faq-content-header {
+
+        padding: 2rem 0;
+        text-align: left;
+        font-weight: bold;
+        color: #242424;
+        font-size: 18px;
+    }
+
+    .subheader {
+        margin-top: 60px;
+    }
+
+
 }
 
 .text-paragh {
