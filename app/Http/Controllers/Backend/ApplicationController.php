@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Cases;
 use App\Models\Guest;
 use App\Models\Document;
+use App\Notifications\NewUser;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
@@ -26,19 +27,19 @@ class ApplicationController extends Controller
     {
         $case = Cases::find(31);
 
-        foreach (User::all() as $user)
-        {
-            $user->notify(new \App\Notifications\NewCaseHandler(
-                "newuser",
-                "Hi {$user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.",
-                $user,
-                config('app.default_password')
-            ));
-        }
+        // foreach (User::all() as $user)
+        // {
+        //     $user->notify(new NewUser(
+        //         "newuser",
+        //         "Hi {$user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.",
+        //         $user,
+        //         config('app.default_password')
+        //     ));
+        // }
 
         $user = auth()->user();
         // $user->notifications[0]->markAsRead();
-        // $user->notifications->where('id', "fca8faa8-1557-490c-ba6b-9e48c339caba")->markAsRead();
+        // $user->notifications()->where('id', "fca8faa8-1557-490c-ba6b-9e48c339caba")->markAsRead();
 
         // foreach (Cases::all() as $case)
         // {
