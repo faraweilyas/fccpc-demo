@@ -358,58 +358,7 @@
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
                         @else
-=======
-                    </li>
-                    @endif
-                    <li class="menu-item " aria-haspopup="true">
-                        <a href="{{ route('dashboard.user_detail') }}" class="menu-link">
-                            <span class="svg-icon menu_icon_custom">
-                                <x-icons.user-profile-shield></x-icons.user-profile-shield>
-                            </span>
-                            <span class="menu-text">Profile</span>
-                        </a>
-                    </li>
-                    <li class="menu-item" aria-haspopup="true">
-                        <a href="#" class="menu-link">
-                            <span class="svg-icon menu_icon_custom">
-                                <x-icons.sign-out></x-icons.sign-out>
-                            </span>
-                            <span class="menu-text" href="{{ route('logout') }}" title="Logout"
-                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">Sign
-                                Out</span>
-                            <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        {{-- Notifications --}}
-        <div id="kt_quick_panel" class="offcanvas offcanvas-right pt-5 pb-10">
-            <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
-                <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
-                    role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#" id="toggle_notification">Notifications</a>
-                    </li>
-                </ul>
-                <div class="offcanvas-close mt-n1 pr-5">
-                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_panel_close">
-                        <i class="ki ki-close icon-xs text-muted"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="offcanvas-content px-10">
-                <div class="tab-content">
-                    <div
-                        class="tab-pane fade show pt-3 pr-5 mr-n5 active"
-                        id="kt_quick_panel_notifications"
-                        role="tabpanel"
-                    >
->>>>>>> workingon-kamsi
                         @php
                         $case = \App\Models\Cases::find($data->case_id);
                         @endphp
