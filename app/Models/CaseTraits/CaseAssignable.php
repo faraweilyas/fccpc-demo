@@ -124,15 +124,27 @@ trait CaseAssignable
      */
     public function reAssign(User $currentCaseHandler, User $newCaseHandler, User $supervisor = null)
     {
-        $supervisor_id = !is_null($supervisor) ? $supervisor->id : auth()->id();
+        $supervisor_id      = !is_null($supervisor) ? $supervisor->id : auth()->id();
+        $previouCaseHandler = $this->handlers->first()->case_handler;
 
         return $this->handlers()->syncWithoutDetaching([
             $currentCaseHandler->id => [
                 'supervisor_id'     => $supervisor_id,
                 'dropped_at'        => now()
             ],
-            $newCaseHandler->id     => [
-                'supervisor_id'     => $supervisor_id
+            $newCaseHandler->id                 => [
+                'supervisor_id'                 => $supervisor_id,
+                'workingon_at'                  => $previouCaseHandler->workingon_at,
+                'defficiency_issued_at'         => $previouCaseHandler->defficiency_issued_at,
+                'checklist_approval_issued_at'  => $previouCaseHandler->checklist_approval_issued_at,
+                'analysis_document'             => $previouCaseHandler->analysis_document,
+                'recommendation_issued_at'      => $previouCaseHandler->recommendation_issued_at,
+                'recommendation'                => $previouCaseHandler->recommendation,
+                'approval_requested_at'         => $previouCaseHandler->approval_requested_at,
+                'approval_status'               => $previouCaseHandler->approval_status,
+                'extension_requested_at'        => $previouCaseHandler->extension_requested_at,
+                'extension_reason'              => $previouCaseHandler->extension_reason,
+                'archived_at'                   => $previouCaseHandler->archived_at,
             ],
         ]);
     }
@@ -178,8 +190,21 @@ trait CaseAssignable
     {
         return $this->belongsToMany(User::class, 'case_handler', 'case_id', 'handler_id')
             ->as('case_handler')
-            ->withPivot('supervisor_id', 'defficiency_issued_at', 'checklist_approval_issued_at', 'analysis_document', 'recommendation', 'recommendation_issued_at', 'dropped_at', 'archived_at')
-            ->withTimestamps();
+            ->withPivot(
+                'supervisor_id',
+                'workingon_at',
+                'defficiency_issued_at',
+                'checklist_approval_issued_at',
+                'analysis_document',
+                'recommendation_issued_at',
+                'recommendation',
+                'approval_requested_at',
+                'approval_status',
+                'extension_requested_at',
+                'extension_reason',
+                'dropped_at',
+                'archived_at'
+            )->withTimestamps();
     }
 
     /**

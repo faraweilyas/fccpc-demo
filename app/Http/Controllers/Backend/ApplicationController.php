@@ -25,7 +25,11 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case = Cases::find(31);
+        $case           = Cases::find(37);
+        // $oldUser        = User::find(6);
+        // $newUser        = User::find(11);
+        // $supervisor     = User::find(5);
+        // return $case->reAssign($oldUser, $newUser, $supervisor);
 
         // foreach (User::all() as $user)
         // {
