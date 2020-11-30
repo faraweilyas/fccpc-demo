@@ -45,8 +45,11 @@
                         <tbody>
                             @foreach($cases as $case)
                             <tr>
-                                <td>
-                                    {!! $case->getDefficiencyIssuedAt() !!}
+                                <td data-sort='YYYYMMDD'>
+                                    <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                        data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $case->getDefficiencyIssuedAt() !!} />
+                                        {!! $case->getDefficiencyIssuedAt() !!}
+                                    </div>
                                 </td>
                                 @if(!in_array(\Auth::user()->account_type, ['CH']))
                                 <td>

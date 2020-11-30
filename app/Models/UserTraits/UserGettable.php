@@ -64,7 +64,8 @@ trait UserGettable
         return $this->cases_assigned_by()
                 ->where('dropped_at', null)
                 ->where('workingon_at', null)
-                ->where('defficiency_issued_at', null);
+                ->where('defficiency_issued_at', null)
+                ->latest();
     }
 
     /**
@@ -101,7 +102,8 @@ trait UserGettable
         return $this->cases_assigned_to()
             ->where('dropped_at', null)
             ->where('workingon_at', null)
-            ->where('defficiency_issued_at', null);
+            ->where('defficiency_issued_at', null)
+            ->latest();
     }
 
      /**
@@ -157,18 +159,21 @@ trait UserGettable
             return $this->cases_assigned_to()
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
-                ->where('defficiency_issued_at', null);
+                ->where('defficiency_issued_at', null)
+                ->latest();
         endif;
         if (in_array(auth()->user()->account_type, ['SP'])):
             return $this->cases_assigned_by()
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
-                ->where('defficiency_issued_at', null);
+                ->where('defficiency_issued_at', null)
+                ->latest();
         else:
             return $this->cases_assigned_to()
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
-                ->where('defficiency_issued_at', null);
+                ->where('defficiency_issued_at', null)
+                ->latest();
         endif;
     }
 
@@ -183,18 +188,21 @@ trait UserGettable
             return $this->cases_assigned_to()
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
-                    ->where('defficiency_issued_at', '!=', null);
+                    ->where('defficiency_issued_at', '!=', null)
+                    ->latest();
         endif;
         if (in_array(auth()->user()->account_type, ['SP'])):
             return $this->cases_assigned_by()
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
-                    ->where('defficiency_issued_at', '!=', null);
+                    ->where('defficiency_issued_at', '!=', null)
+                    ->latest();
         else:
             return $this->cases_assigned_to()
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
-                    ->where('defficiency_issued_at', '!=', null);
+                    ->where('defficiency_issued_at', '!=', null)
+                    ->latest();
         endif;
     }
 

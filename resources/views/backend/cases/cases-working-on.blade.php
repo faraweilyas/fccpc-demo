@@ -31,9 +31,7 @@
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    @if (in_array(\Auth::user()->account_type, ['CH']))
                                     <th>Submitted On</th>
-                                    @endif
                                     <th>Reference NO</th>
                                     <th>Subject</th>
                                     @if (in_array(\Auth::user()->account_type, ['SP']))
@@ -47,11 +45,13 @@
                             <tbody>
                                 @foreach($cases as $case)
                                 <tr>
-                                    @if (in_array(\Auth::user()->account_type, ['CH']))
-                                    <td>
-                                        {!! $case->getSubmittedAt() !!}
+                                    <td data-sort='YYYYMMDD'>
+                                        <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                            data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $case->
+                                            getSubmittedAt('customdate') !!} />
+                                            {!! $case->getSubmittedAt('customdate') !!}
+                                        </div>
                                     </td>
-                                    @endif
                                     <td>
                                         <div class="font-weight-bolder mb-0">
                                             {!! $case->getRefNO() !!}

@@ -31,6 +31,7 @@
                     <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                         <thead>
                             <tr>
+                                <th>Submitted On</th>
                                 @if (!in_array(\Auth::user()->account_type, ['CH']))
                                 <th>Case Handler</th>
                                 @endif
@@ -44,6 +45,13 @@
                         <tbody>
                             @foreach($cases as $case)
                             <tr>
+                                <td data-sort='YYYYMMDD'>
+                                    <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                        data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $case->
+                                        getSubmittedAt('customdate') !!} />
+                                        {!! $case->getSubmittedAt('customdate') !!}
+                                    </div>
+                                </td>
                                 @if(!in_array(\Auth::user()->account_type, ['CH']))
                                 <td>
                                     {{ $case->active_handlers->first()->getFullName() }}

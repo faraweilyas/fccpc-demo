@@ -156,6 +156,8 @@ $(document).ready(function()
     $("#assigned_cases_datatable").DataTable({
         responsive: true,
         paging: true,
+
+        columnDefs: [{ type: "date-dd-mmm-yyyy", targets: 0 }],
     });
 
     $("#case_handlers_datatable").DataTable({
