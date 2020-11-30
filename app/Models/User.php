@@ -112,6 +112,16 @@ class User extends Authenticatable implements JWTSubject
         return strtoupper($initials);
     }
 
+     /**
+     * Check if user is the same.
+     *
+     * @return string
+     */
+    public function isUserSame(User $user) : bool
+    {
+        return ($this->id == $user->id) ? true : false;
+    }
+
     /**
      * Get method for is active user.
      *
@@ -120,6 +130,16 @@ class User extends Authenticatable implements JWTSubject
     public function isActive() : bool
     {
         return ($this->status == "active") ? true : false;
+    }
+
+     /**
+     * Check if user is case handler.
+     *
+     * @return string
+     */
+    public function isCaseHandler() : bool
+    {
+        return ($this->account_type == "CH") ? true : false;
     }
 
      /**

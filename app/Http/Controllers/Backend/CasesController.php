@@ -249,11 +249,15 @@ class CasesController extends Controller
      */
     public function analyzeCase(Cases $case)
     {
-        if (auth()->user()->isAdmin())
+        $authUser = auth()->user();
+
+        if ($authUser->isAdmin())
             return redirect()->back();
 
-        if (auth()->user()->account_type == 'CH' && $case->active_handlers->first()->case_handler->handler_id != auth()->user()->id)
-            return redirect()->back();
+        if ($authUser->isCaseHandler()):
+            if (!$case->active_handlers->first()->isUserSame($authUser))
+                return redirect()->back();
+        endif;
 
         $caseHandlers   = (new User())->caseHandlers();
         $title          = APP_NAME;
