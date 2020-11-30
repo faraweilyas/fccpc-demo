@@ -108,4 +108,26 @@ $(document).ready(function() {
             }
         });
     });
+
+    $(".mark-notification").mouseover(function(){
+        var notification_id = $(this).attr('data-id');
+        $.ajax({
+            url: '/mark-notification/'+notification_id,
+            type: 'GET',
+            data: {}, 
+            success: function(response){
+            }
+        });
+    });
+
+    $("#clear-notification").click(function(){
+        $.ajax({
+            url: '/clear-notification',
+            type: 'GET',
+            data: {}, 
+            success: function(response){
+                $("#read-notifications").empty();
+            }
+        });
+    });
 });

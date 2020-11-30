@@ -3,6 +3,11 @@ body {
     background-color: rgb(251 246 241)
 }
 
+.clear-fix
+{
+    clear: both;
+}
+
 .align__center {
     align-items: center;
 }

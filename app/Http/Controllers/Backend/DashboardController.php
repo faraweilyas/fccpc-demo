@@ -121,6 +121,7 @@ class DashboardController extends Controller
         return view('backend.admin.user-detail', compact('details', 'user'));
     }
 
+
     public function updateUserStatus($id)
     {
         $check_status = User::findOrFail($id);
@@ -166,6 +167,26 @@ class DashboardController extends Controller
         return redirect()->back()->with("success", "Profile updated");
     }
     
+    
+    /**
+     * Handles the mark notification as read route.
+     * @return void
+     */
+    public function markNotification($notification)
+    {
+        auth()->user()->notifications->where('id', $notification)->markAsRead();
+        return true;
+    }
+
+    /**
+     * Handles the clear read notification as read route.
+     * @return void
+     */
+    public function clearReadNotification()
+    {
+        auth()->user()->readNotifications()->delete();
+        return true;
+    }
 
     /**
      * Handles the generate report page route.

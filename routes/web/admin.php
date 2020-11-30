@@ -187,6 +187,10 @@ Route::prefix('/')
             'update_user_profile'
         );
 
+        Route::get('mark-notification/{notification}', 'DashboardController@markNotification')->name('mark_notification');
+
+        Route::get('clear-notification', 'DashboardController@clearReadNotification')->name('clear_notification');
+
         Route::get('report/{show}', 'DashboardController@generateReportTable')->name(
             'report.show'
         );
