@@ -101,30 +101,30 @@ class DashboardController extends Controller
 
     /**
      * Handles the view profile page route.
+     *
      * @return void
      */
-    public function viewProfile()
+    public function viewProfileUpdate()
     {
-        $user             = Auth::user();
-        $title            = APP_NAME;
-        $description      = "FCCPC Dashboard View Profile";
-        $details          = details($title, $description);
-        return view('backend.user.profile', compact('details', 'user'));
+        $user           = Auth::user();
+        $title          = "Update Profile - ".APP_NAME;
+        $description    = "Update Profile - ".APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.user.update-profile', compact('details', 'user'));
     }
 
     /**
      * Handles the view user detail page route.
+     *
      * @return void
      */
-    public function viewUserDetail(User $user)
+    public function viewProfile(User $user = null)
     {
-        if (!in_array(auth()->user()->account_type, ['AD']))
-            $user = auth()->user();
-        
-        $title            = APP_NAME;
-        $description      = "FCCPC Dashboard User Detail";
-        $details          = details($title, $description);
-        return view('backend.admin.user-detail', compact('details', 'user'));
+        $user           = (!$user) ? auth()->user() : $user;
+        $title          = "Profile - ".APP_NAME;
+        $description    = "Profile - ".APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.admin.profile', compact('details', 'user'));
     }
 
     public function updateUserStatus($id)

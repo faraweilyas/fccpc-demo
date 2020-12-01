@@ -11,8 +11,9 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('dashboard.user_detail') }}" class="text-muted">Profile</a>
+                            <a href="{{ route('dashboard.profile') }}" class="text-muted">Profile</a>
                         </li>
+                        <li class="breadcrumb-item">Update</li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +32,6 @@
                             <p>Personal Information</p>
                         </div>
                     </div>
-
                     <div class="card__box card__box-stack shadow align__center" id="change-password-control">
                         <section class="card__box-stack-img">
                             <x-icons.open-book></x-icons.open-book>
@@ -40,9 +40,7 @@
                             <p>Change Password</p>
                         </div>
                     </div>
-
                 </div>
-
                 <div id="edit-profile-card" class="col-md-7 my-5">
                     <form method="POST" action="{{ route('dashboard.update_user_profile') }}">
                         @csrf

@@ -201,7 +201,7 @@
                     </div>
                 </li>
                 @endif
-                <li class="menu-item " aria-haspopup="true">
+                <li class="menu-item" aria-haspopup="true">
                     <a href="{{ route('dashboard.profile') }}" class="menu-link">
                         <span class="svg-icon menu_icon_custom">
                             <x-icons.user-profile-shield></x-icons.user-profile-shield>
@@ -242,143 +242,139 @@
         </div>
         <div class="offcanvas-content px-10">
             <div class="tab-content">
-                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications"
-                    role="tabpanel">
+                <div class="tab-pane fade show pt-3 pr-5 mr-n5 active" id="kt_quick_panel_notifications" role="tabpanel">
                     @php
-                    $unreadNotifications = auth()->user()->unreadNotifications;
-                    $readNotifications = auth()->user()->readNotifications;
-                    $unreadDisplay = ($unreadNotifications->count() > 0) ? "" : "hide";
-                    $readDisplay = ($readNotifications->count() > 0) ? "" : "hide";
+                        $unreadNotifications    = auth()->user()->unreadNotifications;
+                        $readNotifications      = auth()->user()->readNotifications;
+                        $unreadDisplay          = ($unreadNotifications->count() > 0) ? "" : "hide";
+                        $readDisplay            = ($readNotifications->count() > 0) ? "" : "hide";
                     @endphp
                     <p class="mb-10 {{ $unreadDisplay }}">
-
-
-
                         <span class='float-left unread-title'>Unread Notifications</span>
                         <span id="mark-notifications" class='float-right cr-pointer text-hover-primary unread-clear'>Mark as read
-                          <span class="show-marker hide"><x-icons.check></x-icons.check></span>
+                            <span class="show-marker hide"><x-icons.check></x-icons.check></span>
                         </span>
                     </p>
                     <div class="clear-fix"></div>
                     @forelse ($unreadNotifications as $notification)
-                    @php
-                    $data = (object) $notification->data;
-                    $action = getNotificationAction($data->action);
-                    $action_style = getNotificationActionStyle($data->action);
-                    $message = $data->message;
-                    @endphp
-                    @if ($data->action == "newuser")
-                    @php
-                    $user = \App\Models\User::find($data->user_id);
-                    @endphp
-                    <div class="notifications-cards">
-                        <p class="message my-1">{!! $message !!}</p>
-                        <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
-                        <p class="my-1">
-                            <span class='subject mr-3'>{{ $user->getFullName() }}</span>
-                            <span class='message'>{{ $user->email }}</span>
-                        </p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">Status:</p>
-                                <span class="description">{!! $user->getStatusHtml('uppercase') !!}</span>
+                        @php
+                            $data           = (object) $notification->data;
+                            $action         = getNotificationAction($data->action);
+                            $action_style   = getNotificationActionStyle($data->action);
+                            $message        = $data->message;
+                        @endphp
+                        @if ($data->action == "newuser")
+                            @php
+                                $user = \App\Models\User::find($data->user_id);
+                            @endphp
+                            <div class="notifications-cards">
+                                <p class="message my-1">{!! $message !!}</p>
+                                <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                <p class="my-1">
+                                    <span class='subject mr-3'>{{ $user->getFullName() }}</span>
+                                    <span class='message'>{{ $user->email }}</span>
+                                </p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Status:</p>
+                                        <span class="description">{!! $user->getStatusHtml('uppercase') !!}</span>
+                                    </div>
+                                    <div class="notifications-card-col">
+                                        <p class="title">Date Registered:</p>
+                                        <span class="description">{{ $user->getCreatedAt() }}</span>
+                                    </div>
+                                </div>
+                                <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
                             </div>
-                            <div class="notifications-card-col">
-                                <p class="title">Date Registered:</p>
-                                <span class="description">{{ $user->getCreatedAt() }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    @else
-                    @php
-                    $case = \App\Models\Cases::find($data->case_id);
-                    @endphp
-                    <div class="notifications-cards mark-notification" data-id="{{ $notification->id }}">
-                        <p class="message my-1">{!! $message !!}</p>
-                        <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
-                        <p class="subject my-1">{{ $case->subject }}</p>
-                        <div class="d-flex">
-                            <div class="notifications-card-col">
-                                <p class="title">Category:</p>
-                                <span class="description">{!! $case->getCategory('ucwords') !!}</span>
-                            </div>
-                            <div class="notifications-card-col">
-                                <p class="title">Parties:</p>
-                                <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
-                            </div>
+                        @else
+                            @php
+                                $case = \App\Models\Cases::find($data->case_id);
+                            @endphp
+                            <div class="notifications-cards mark-notification" data-id="{{ $notification->id }}">
+                                <p class="message my-1">{!! $message !!}</p>
+                                <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                <p class="subject my-1">{{ $case->subject }}</p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Category:</p>
+                                        <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                    </div>
+                                    <div class="notifications-card-col">
+                                        <p class="title">Parties:</p>
+                                        <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                    </div>
 
-                        </div>
-                        <span class="float-right text-gray">2 seconds ago</span>
-                    </div>
-                    @endif
+                                </div>
+                                <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
+                            </div>
+                        @endif
                     @empty
-                    <div class="no-notification">
-                        <div class="mr-10">
-                            <x-icons.caught-up></x-icons.caught-up>
+                        <div class="no-notification">
+                            <div class="mr-10">
+                                <x-icons.caught-up></x-icons.caught-up>
+                            </div>
+                            <span class="mx-5">You're All Caught Up!</span>
                         </div>
-                        <span class="mx-5">You're All Caught Up!</span>
-                    </div>
                     @endforelse
                     <hr class='notification_divider' />
                     <p class="my-10 {{ $readDisplay }}">
-
                         <span class='float-left unread-title'>Read Notifications</span>
-                        <span id="clear-notification"
-                            class='float-right cr-pointer text-hover-primary unread-clear'>Clear</span>
+                        <span id="clear-notification" class='float-right cr-pointer text-hover-primary unread-clear'>Clear</span>
                     </p>
                     <div class="clear-fix"></div>
                     <div id="read-notifications">
                         @foreach ($readNotifications as $notification)
-                        @php
-                        $data = (object) $notification->data;
-                        $action = getNotificationAction($data->action);
-                        $action_style = getNotificationActionStyle($data->action);
-                        $message = $data->message;
-                        @endphp
-                        @if ($data->action == "newuser")
-                        @php
-                        $user = \App\Models\User::find($data->user_id);
-                        @endphp
-                        <div class="notifications-cards">
-                            <p class="message my-1">{!! $message !!}</p>
-                            <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
-                            <p class="my-1">
-                                <span class='subject mr-3'>{{ $user->getFullName() }}</span>
-                                <span class='message'>{{ $user->email }}</span>
-                            </p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">Status:</p>
-                                    <span class="description">{!! $user->getStatusHtml('uppercase') !!}</span>
+                            @php
+                                $data           = (object) $notification->data;
+                                $action         = getNotificationAction($data->action);
+                                $action_style   = getNotificationActionStyle($data->action);
+                                $message        = $data->message;
+                            @endphp
+                            @if ($data->action == "newuser")
+                                @php
+                                    $user = \App\Models\User::find($data->user_id);
+                                @endphp
+                                <div class="notifications-cards">
+                                    <p class="message my-1">{!! $message !!}</p>
+                                    <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                    <p class="my-1">
+                                        <span class='subject mr-3'>{{ $user->getFullName() }}</span>
+                                        <span class='message'>{{ $user->email }}</span>
+                                    </p>
+                                    <div class="d-flex">
+                                        <div class="notifications-card-col">
+                                            <p class="title">Status:</p>
+                                            <span class="description">{!! $user->getStatusHtml('uppercase') !!}</span>
+                                        </div>
+                                        <div class="notifications-card-col">
+                                            <p class="title">Date Registered:</p>
+                                            <span class="description">{{ $user->getCreatedAt() }}</span>
+                                        </div>
+                                    </div>
+                                    <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
                                 </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">Date Registered:</p>
-                                    <span class="description">{{ $user->getCreatedAt() }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        @else
-                        @php
-                        $case = \App\Models\Cases::find($data->case_id);
-                        @endphp
-                        <div class="notifications-cards">
-                            <p class="message my-1">{!! $message !!}</p>
-                            <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
-                            <p class="subject my-1">{{ $case->subject }}</p>
-                            <div class="d-flex">
-                                <div class="notifications-card-col">
-                                    <p class="title">Category:</p>
-                                    <span class="description">{!! $case->getCategory('ucwords') !!}</span>
-                                </div>
-                                <div class="notifications-card-col">
-                                    <p class="title">Parties:</p>
-                                    <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
-                                </div>
+                            @else
+                                @php
+                                    $case = \App\Models\Cases::find($data->case_id);
+                                @endphp
+                                <div class="notifications-cards">
+                                    <p class="message my-1">{!! $message !!}</p>
+                                    <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                    <p class="subject my-1">{{ $case->subject }}</p>
+                                    <div class="d-flex">
+                                        <div class="notifications-card-col">
+                                            <p class="title">Category:</p>
+                                            <span class="description">{!! $case->getCategory('ucwords') !!}</span>
+                                        </div>
+                                        <div class="notifications-card-col">
+                                            <p class="title">Parties:</p>
+                                            <span class="description">{{ $case->getCasePartiesText(FALSE) }}</span>
+                                        </div>
 
-                            </div>
-                            <span class="float-right text-gray">2 seconds ago</span>
-                        </div>
-                        @endif
+                                    </div>
+                                    <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
                 </div>
@@ -632,10 +628,10 @@
 @endsection
 
 @section('custom.css')
-<link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.css') }}" />
 @endsection
 
 @section('custom.javascript')
-<script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
-<script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/jqueryui/jquery-ui.js') }}"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 @endsection

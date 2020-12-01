@@ -11,8 +11,9 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">Profile</a>
+                            <a href="{{ route('dashboard.update_profile') }}" class="text-muted">Update</a>
                         </li>
+                        <li class="breadcrumb-item">Profile</li>
                     </ul>
                 </div>
             </div>
@@ -76,12 +77,16 @@
                                         <p>{{ $user->address ?? '...' }}</p>
                                     </div>
                                     @if (auth()->user()->isUserSame($user))
-                                    <div class="row" style="justify-content: flex-end;">
-                                        <div class="col-md-3">
-                                            <button class="btn btn-primary my-5"
-                                                onclick="window.location.href = '{{ route('dashboard.profile') }}';">Update Profile</button>
+                                        <div class="row" style="justify-content: flex-end;">
+                                            <div class="col-md-3">
+                                                <button
+                                                    class="btn btn-primary my-5"
+                                                    onclick="window.location.href = '{{ route('dashboard.update_profile') }}';"
+                                                >
+                                                    Update Profile
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
                                     @endif
                                 </div>
                             </div>
