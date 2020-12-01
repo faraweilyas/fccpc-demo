@@ -173,19 +173,26 @@ Route::prefix('/')
         Route::get(
             'users/status/update/{id}',
             'DashboardController@updateUserStatus'
-        )->name('update_users_status');
+        )
+        ->name('update_users_status');
 
-        Route::get('profile/update', 'DashboardController@viewProfile')->name(
-            'profile'
-        );
+        Route::get(
+            'profile/update',
+            'DashboardController@viewProfileUpdate'
+        )
+        ->name('update_profile');
 
-        Route::get('profile/{user?}', 'DashboardController@viewUserDetail')->name(
-            'user_detail'
-        );
+        Route::post(
+            'profile/update',
+            'DashboardController@updateProfile'
+        )
+        ->name('update_user_profile');
 
-        Route::post('profile/update', 'DashboardController@updateProfile')->name(
-            'update_user_profile'
-        );
+        Route::get(
+            'profile/{user?}',
+            'DashboardController@viewProfile'
+        )
+        ->name('profile');
 
         Route::get('mark-notifications', 'DashboardController@markNotifications')->name('mark_notifications');
 
