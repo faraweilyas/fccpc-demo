@@ -63,13 +63,19 @@ Route::prefix('application')
         ->name('show');
 
         Route::get(
-            '/applicant/{guest:tracking_id}/review/{step}',
+            'applicant/download-form/{form}',
+            'ApplicationController@downloadForm'
+        )
+        ->name('download_form');
+
+        Route::get(
+            'applicant/{guest:tracking_id}/review/{step}',
             'ApplicationController@review'
         )
         ->name('review');
 
         Route::get(
-            '/applicant/{guest:tracking_id}/review-deficient/{step}',
+            'applicant/{guest:tracking_id}/review-deficient/{step}',
             'ApplicationController@reviewDeficient'
         )
         ->name('review.deficient');

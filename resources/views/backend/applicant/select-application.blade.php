@@ -117,14 +117,14 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
-                                    <a class="" href="" title="Download Form 1">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
+                                    <a class="" href="{{ route('application.download_form', ['form' => 'form_1.docx']) }}" title="Download Form 1">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>
                                 </div>
                                 <div class="mt-10 mb-5">
-                                    <p>This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                    <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                 </div>
                             </div>
                         </div>
@@ -141,14 +141,14 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
-                                    <a class="" href="" title="Download Form 2">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
+                                    <a class="" href="{{ route('application.download_form', ['form' => 'form_2.docx']) }}" title="Download Form 2">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>
                                 </div>
                                 <div class="mt-10 mb-5">
-                                    <p>This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                    <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                 </div>
                             </div>
                         </div>
@@ -165,14 +165,14 @@
                             </div>
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
-                                    <a class="" href="" title="Download Form 1">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
+                                    <a class="" href="{{ route('application.download_form', ['form' => 'form_4.docx']) }}" title="Download Form 1">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>
                                 </div>
                                 <div class="mt-10 mb-5">
-                                    <p>This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                    <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                 </div>
                             </div>
                         </div>

@@ -517,6 +517,18 @@ class ApplicationController extends Controller
     }
 
     /**
+     * Handles download form page.
+     *
+     * @return document
+     */
+    public function downloadForm($form)
+    {
+        $file    = public_path()."/assets/forms/{$form}";
+        $headers = array('Content-Type: application/docx',);
+        return response()->download($file, $form, $headers);
+    }
+
+    /**
      * Handles Review application page.
      *
      * @return \Illuminate\Contracts\View\Factory

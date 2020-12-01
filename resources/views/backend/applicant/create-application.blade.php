@@ -8,7 +8,7 @@
                 <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
-                        <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a>
+                        <a href="{{ $guest->applicationPath() }}" class="text-muted">Select transaction category</a>
                     </li>
                     <li class="breadcrumb-item">
                         <a href="" class="text-muted">{{ $case_category }} Transaction</a>
