@@ -67,7 +67,7 @@ class AppHelper
     protected $case_categories_text = [
         "REG" => "Domestic Merger",
         "FFM" => "Foreign to Foreign Merger",
-        "FFX" => "Foreign to Foreign Merger (Expedited)",
+        "FFX" => "Expedited",
     ];
 
     protected $case_categories_html = [
