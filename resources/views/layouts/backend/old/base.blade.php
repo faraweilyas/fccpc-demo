@@ -104,6 +104,8 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'scripts.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
+    <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
+    <script src="{{ pc_asset(BE_APP_JS.'app.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'main.js') }}" defer></script>
 
