@@ -25,9 +25,9 @@
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('reg') }}">
                             @php
-                            $regStyle = $guest->case->selectedCategoryStyle('REG');
-                            $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
-                            $ffxStyle = $guest->case->selectedCategoryStyle('FFX');
+                                $regStyle = $guest->case->selectedCategoryStyle('REG');
+                                $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
+                                $ffxStyle = $guest->case->selectedCategoryStyle('FFX');
                             @endphp
                             <div class="card card-custom gutter-b card__with__bg {{ $regStyle->bg }}" style="height: 300px">
                                 <div class="card-body">
