@@ -379,6 +379,11 @@ section#orderWizard {
 }
 
 @media only screen and (max-width: 768px) {
+
+    .checklist-list {
+        margin-top: -10px;
+    }
+
     .subheader-applicants {
         margin-top: 58px  !important;
     }
@@ -517,10 +522,14 @@ section#orderWizard {
 }
 
 .checklist-list {
+
     margin: 1rem .2rem;
+    padding: 2rem 0;
+
 }
 
 a.checklist-list {
+
     font-size: 1rem;
     text-decoration: underline;
 }

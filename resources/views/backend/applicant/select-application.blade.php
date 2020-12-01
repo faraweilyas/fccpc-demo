@@ -24,7 +24,7 @@
     <div class="d-flex flex-column-fluid">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 pb-10">
                     <a href="{{ $guest->createApplicationPath('reg') }}">
                         @php
                         $regStyle = $guest->case->selectedCategoryStyle('REG');
@@ -62,7 +62,7 @@
                         class="checklist-list">View Local Merger Document Checklist</a>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 pb-10">
                     <a href="{{ $guest->createApplicationPath('ffm') }}">
                         <div class="card card-custom gutter-b card__with__bg {{ $ffmStyle->bg }}" style="height: 300px">
                             <div class="card-body">
@@ -88,7 +88,7 @@
                         class="checklist-list">View Foreign to Foreign Merger Document Checklist</a>
 
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 pb-10">
                     <a href="{{ $guest->createApplicationPath('ffx') }}">
                         <div class="card card-custom gutter-b  card__with__bg {{ $ffxStyle->bg }}"
                             style="height: 300px">
