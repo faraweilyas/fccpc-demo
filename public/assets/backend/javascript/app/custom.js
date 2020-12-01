@@ -119,6 +119,7 @@ $(document).ready(function() {
             type: 'GET',
             data: {}, 
             success: function(response){
+                $(".show-marker").removeClass('hide');
             }
         });
     });

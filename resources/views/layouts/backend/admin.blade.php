@@ -255,9 +255,8 @@
 
 
                         <span class='float-left unread-title'>Unread Notifications</span>
-                        <span id="mark-notifications"
-                            class='float-right cr-pointer text-hover-primary unread-clear'>Mark as read
-                          <x-icons.check></x-icons.check>
+                        <span id="mark-notifications" class='float-right cr-pointer text-hover-primary unread-clear'>Mark as read
+                          <span class="show-marker hide"><x-icons.check></x-icons.check></span>
                         </span>
                     </p>
                     <div class="clear-fix"></div>
@@ -516,120 +515,120 @@
 @endsection
 
 @section('top_navigation')
-<div class="header-top header-top-custom">
-    <div class="container">
-        <div class="map mr-20 mb-3">
-            <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
-                <form method="get" class="quick-search-form">
-                    <div class="input-group rounded bg-light">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <span class="svg-icon svg-icon-lg">
-                                    <x-icons.search></x-icons.search>
+    <div class="header-top header-top-custom">
+        <div class="container">
+            <div class="map mr-20 mb-3">
+                <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
+                    <form method="get" class="quick-search-form">
+                        <div class="input-group rounded bg-light">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <span class="svg-icon svg-icon-lg">
+                                        <x-icons.search></x-icons.search>
+                                    </span>
                                 </span>
-                            </span>
+                            </div>
+                            <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search" autocomplete="off" />
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="spin-loader fa fa-spinner fa-spin" style="display: none;"></i>
+                                    <i class="quick-search-close ki ki-close icon-sm" style="display: none;"></i>
+                                </span>
+                            </div>
                         </div>
-                        <input type="text" class="form-control h-45px search-input" placeholder="Search..." id="search"
-                            autocomplete="off" />
-                        <div class="input-group-append">
-                            <span class="input-group-text">
-                                <i class="quick-search-close ki ki-close icon-sm" style="display: none;"></i>
-                            </span>
-                        </div>
-                    </div>
-                </form>
-                <div class="autoComplete"></div>
-            </div>
-        </div>
-        <div class="topbar">
-            @php
-            $countUnreadNotifications = auth()->user()->countUnreadNotifications();
-            @endphp
-            <div class="topbar-item" id="kt_quick_panel_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
-                    </span>
-                    <a href="#">
-                        @empty (!$countUnreadNotifications)
-                        <span class="badge">{{ $countUnreadNotifications }}</span>
-                        @endempty
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Notifications
-                        </span>
-                    </a>
+                    </form>
+                    <div class="autoComplete"></div>
                 </div>
             </div>
-            @if (!in_array(\Auth::user()->account_type, ['AD']))
-            <div class="topbar-item" id="kt_quick_user_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        @empty (!$count_cases_working_on)
-                        <span class="badge">{{ $count_cases_working_on }}</span>
-                        @endempty
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Ongoing Cases
+            <div class="topbar">
+                @php
+                    $countUnreadNotifications = auth()->user()->countUnreadNotifications();
+                @endphp
+                <div class="topbar-item" id="kt_quick_panel_toggle">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <span class="symbol symbol-35 mx-2">
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/Notification_2.svg') }}" alt="Notification_2" />
                         </span>
-                    </a>
-                </div>
-            </div>
-            @endif
-            <div class="topbar-item" id="kt_quick_cart_toggle">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <span class="symbol symbol-35 mx-2">
-                        <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
-                    </span>
-                    <a href="#">
-                        <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                            Fee
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <a href="{{ route('dashboard.profile') }}">
-                        <div class="d-flex flex-column text-right pr-3">
-                            <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getAccountType() }}
-                            </span>
+                        <a href="#">
+                            @empty (!$countUnreadNotifications)
+                                <span class="badge">{{ $countUnreadNotifications }}</span>
+                            @endempty
                             <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                                {{ Auth::user()->getFullName() }}
-                            </span>
-                        </div>
-                    </a>
-                    <span class="symbol symbol-35">
-                        <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
-                            {{ Auth::user()->getInitials() }}
-                        </span>
-                    </span>
-                </div>
-            </div>
-            <div class="topbar-item">
-                <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
-                    <div class="d-flex flex-column text-right pr-3">
-                        <a href="{{ route('logout') }}" title="Logout"
-                            onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
-                            <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
-                                <span class="svg-icon svg-icon-xl svg-icon-white">
-                                    <x-icons.sign-out></x-icons.sign-out>
-                                </span>
-                                <form id="form-logout" action="{{ route('logout') }}" method="POST"
-                                    style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                                Sign Out
+                                Notifications
                             </span>
                         </a>
+                    </div>
+                </div>
+                @if (!in_array(\Auth::user()->account_type, ['AD']))
+                    <div class="topbar-item" id="kt_quick_user_toggle">
+                        <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                            <span class="symbol symbol-35 mx-2">
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/Layout_horizontal.svg') }}" alt="Layout_horizontal" />
+                            </span>
+                            <a href="#">
+                                @empty (!$count_cases_working_on)
+                                <span class="badge">{{ $count_cases_working_on }}</span>
+                                @endempty
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    Ongoing Cases
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                @endif
+                <div class="topbar-item" id="kt_quick_cart_toggle">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <span class="symbol symbol-35 mx-2">
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/fee_calculator.svg') }}" alt="Layout_horizontal" />
+                        </span>
+                        <a href="#">
+                            <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                Fee
+                            </span>
+                        </a>
+                    </div>
+                </div>
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <a href="{{ route('dashboard.profile') }}">
+                            <div class="d-flex flex-column text-right pr-3">
+                                <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getAccountType() }}
+                                </span>
+                                <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
+                                    {{ Auth::user()->getFullName() }}
+                                </span>
+                            </div>
+                        </a>
+                        <span class="symbol symbol-35">
+                            <span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">
+                                {{ Auth::user()->getInitials() }}
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div class="topbar-item">
+                    <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
+                        <div class="d-flex flex-column text-right pr-3">
+                            <a href="{{ route('logout') }}" title="Logout"
+                                onclick="event.preventDefault(); document.getElementById('form-logout').submit();">
+                                <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
+                                    <span class="svg-icon svg-icon-xl svg-icon-white">
+                                        <x-icons.sign-out></x-icons.sign-out>
+                                    </span>
+                                    <form id="form-logout" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                    Sign Out
+                                </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
 
 @section('custom.css')
