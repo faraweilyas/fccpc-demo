@@ -523,8 +523,10 @@ class ApplicationController extends Controller
      */
     public function downloadForm($form)
     {
-        $file    = public_path()."/assets/forms/{$form}";
-        $headers = array('Content-Type: application/docx',);
+        $form_array = explode('.', $form);
+        $file       = public_path()."/assets/forms/{$form}";
+        $headers    = array('Content-Type: application/'.$form_array[1]);
+
         return response()->download($file, $form, $headers);
     }
 
