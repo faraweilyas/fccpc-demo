@@ -118,7 +118,7 @@
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
                                     <a class="" href="" title="Download Form 1">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>
@@ -142,7 +142,7 @@
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
                                     <a class="" href="" title="Download Form 2">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>
@@ -166,7 +166,7 @@
                             <div class="card-body d-flex flex-column">
                                 <div class="flex-grow-1 text-center" style="position: relative;">
                                     <a class="" href="" title="Download Form 1">
-                                        <span class="svg-icon svg-icon-primary svg-icon-10x">
+                                        <span class="svg-icon svg-icon-primary svg-icon-10x svg-download-hover">
                                             <x-icons.download-btn></x-icons.download-btn>
                                         </span>
                                     </a>

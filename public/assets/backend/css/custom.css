@@ -1316,10 +1316,17 @@ th.fees_tab__head {
     cursor: pointer;
     transition: all 0.5s ease-in-out;
 }
+
 .unread-clear:hover{
     transition: all 0.5s ease-in-out;
     font-weight: bold;
    font-size: 1.1rem;
+}
+
+.svg-download-hover:hover svg
+{
+    height: 12rem !important;
+    width: 12rem !important;
 }
 
 .text-gray{
