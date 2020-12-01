@@ -1,7 +1,6 @@
 @extends('layouts.backend.old.user')
 
 @section('mobile_navigation')
-
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <a data-turbolinks="false" href="/">
             <h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
@@ -14,7 +13,6 @@
                 <button class="btn p-0 ml-2">
                     <span class="svg-icon svg-icon-xl svg-icon-white">
                         <x-icons.profile></x-icons.profile>
-
                     </span>
                 </button>
             </a>
@@ -34,11 +32,9 @@
             </form>
         </div>
     </div>
-
 @endsection
 
 @section('navigation')
-
     <!-- Top navigation -->
     <div class="header-top hide-small-md">
         <div class="container">
@@ -74,7 +70,6 @@
                                 <span class="text-white font-weight-bold font-size-sm d-none d-md-inline">
                                     <span class="svg-icon svg-icon-xl svg-icon-white">
                                         <x-icons.sign-out></x-icons.sign-out>
-
                                     </span>
                                     <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
@@ -88,8 +83,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="header-bottom">
         <div class="container">
             <div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
@@ -136,7 +129,6 @@
                             </div>
                         </li>
                         @endif
-
                         @if(in_array(\Auth::user()->account_type,['SP']))
                         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
@@ -157,7 +149,7 @@
                                      <li class="menu-item menu-item-submenu" aria-haspopup="true">
                                         <a href="{{ route('handlers.index') }}" class="menu-link">
                                             <span class="svg-icon svg-icon-primary svg-icon-2x">
-                                               <x-icons.view-case-handler></x-icons.view-case-handler> 
+                                               <x-icons.view-case-handler></x-icons.view-case-handler>
                                             </span>
                                             &nbsp;&nbsp;<span class="menu-text">View Handlers</span></a>
                                         </a>
@@ -166,7 +158,6 @@
                             </div>
                         </li>
                         @endif
-
                         @if(in_array(\Auth::user()->account_type, ['AD']))
                         <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="hover" aria-haspopup="true">
                             <a href="javascript:;" class="menu-link menu-toggle">
@@ -256,7 +247,4 @@
             </div>
         </div>
     </div>
-
 @endsection
-
-
