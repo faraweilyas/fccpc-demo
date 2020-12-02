@@ -70,13 +70,6 @@
                             <h4>{{ $case->getCategoryText() }}</h4>
                         </div>
                     </div>
-                    <p class="section-header">FEES</p>
-                    <div class="grid-col-2">
-                        <div class="grid-row-2 d-flex">
-                            <h4 class="info-title">Amount Paid:</h4>
-                            <h4>{!! $case->getAmountPaid() !!}</h4>
-                        </div>
-                    </div>
                     <p class="section-header">CONTACT INFORMATION</p>
                     <div class="grid-col-2">
                         <div class="grid-row-2 d-flex">
@@ -123,23 +116,36 @@
                             </div>
                         </div>
                     </div>
-                    <p class="section-header">APPLICATION FORMS</p>
-                    <div class="row mt-5">
-                        @if(!empty($case->application_forms))
-                            @php
-                                $applicantion_forms_array = explode(',', $case->application_forms);
-                            @endphp
-                            @foreach($applicantion_forms_array as $key => $value)
-                            <div class="col-md-1 my-2">
-                                <span>
-                                    <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
-                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                        src="{{ $case->getApplicationFormIconText($value) }}"
-                                        title="Download Form Document" />
-                                </span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="section-header">FEES</p>
+                            <div class="grid-col-2">
+                                <div class="grid-row-2 d-flex">
+                                    <h4 class="info-title">Amount Paid:</h4>
+                                    <h4>{!! $case->getAmountPaid() !!}</h4>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-md-6">
+                            <p class="section-header">APPLICATION FORMS</p>
+                            <div class="row mt-n2">
+                                @if(!empty($case->application_forms))
+                                    @php
+                                        $applicantion_forms_array = explode(',', $case->application_forms);
+                                    @endphp
+                                    @foreach($applicantion_forms_array as $key => $value)
+                                    <div class="col-md-1 my-2">
+                                        <span>
+                                            <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
+                                                class="max-h-30px mr-3 doc-cursor-pointer w--200"
+                                                src="{{ $case->getApplicationFormIconText($value) }}"
+                                                title="Download Form Document" />
+                                        </span>
+                                    </div>
+                                    @endforeach
+                                @endif
                             </div>
-                            @endforeach
-                        @endif
+                        </div>
                     </div>
                     <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
                     {{-- @foreach($documents as $document) --}}
