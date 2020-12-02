@@ -6,6 +6,11 @@ body {
     display: none !important;
 }
 
+.bg__white
+{
+    background: white;
+}
+
 .download__btn
 {
     width: 30%;
@@ -15,6 +20,11 @@ body {
 .download__btn:hover
 {
     width: 35%;
+}
+
+.download-text
+{
+    line-height: 1.8rem;
 }
 
 .mb__20
