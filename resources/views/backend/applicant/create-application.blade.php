@@ -151,7 +151,6 @@
                                                     <a href="javascript:;" id="add-party-fields">
                                                         <span class="svg-icon svg-icon-primary svg-icon-2x">
                                                             <x-icons.add-more></x-icons.add-more>
-                                                            
                                                         </span>
                                                         <span class="text-primary">&nbsp;&nbsp;Add More</span>
                                                     </a>
@@ -280,7 +279,7 @@
                                             format.
                                         </h6>
                                         <p class="mt-20">
-                                            Upload application forms below.
+                                            Upload application forms below, you can also upload multiple forms.
                                         </p>
                                         <div class="row">
                                             <div class="col-md-3">

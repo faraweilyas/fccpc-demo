@@ -140,11 +140,13 @@
                                     $applicantion_forms_array = explode(',', $case->application_forms);
                                 @endphp
                                 @foreach($applicantion_forms_array as $key => $value)
-                                    <span>
-                                        <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
-                                            class="max-h-30px mr-3 doc-cursor-pointer"
-                                            src="{{ $case->getApplicationFormIconText($value) }}"
-                                            title="Download Form Document" />
+                                    <span style="display: flex; flex-direction: row;">
+                                    <img
+                                        onclick="window.location.href='{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
+                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                        src="{{ $case->getApplicationFormIconText($value) }}"
+                                        title="Download Form Document"
+                                    />
                                     </span>
                                 @endforeach
                             @endif
