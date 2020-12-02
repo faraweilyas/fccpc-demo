@@ -278,24 +278,30 @@
                                             requires you to upload all relevant application document in a searchable PDF
                                             format.
                                         </h6>
-                                        <p class="mt-20">
-                                            Upload application forms below, you can also upload multiple forms.
-                                        </p>
+                                        <p class="mt-20 mb-10">Please upload application forms below.</p>
                                         <div class="row">
-                                            <div class="col-md-3">
-                                                <div class="uploadButton tw-mb-4 ">
-                                                    <input id="application_form_doc"
-                                                        class="js-file-upload-input ember-view"
-                                                        type="file"
-                                                        name="application_form_doc[]"
-                                                        multiple="">
-                                                    <span class="btn btn--small btn--brand">Upload
-                                                        File</span>
+                                            @php
+                                                $forms = AppHelper::get('application_forms', NULL);
+                                    // $form = AppHelper::value('application_forms', 'form1', NULL);
+                                    // "form1:792a9cbc-1606907794.pdf,form2:792afbad-1606907794.pdf,form4:792b3cc3-1606907794.pdf"
+                                            @endphp
+                                            @foreach ($forms as $key => $form)
+                                                <div class="col-md-12 mb-4">
+                                                    <p class="">Upload {{ $form }}</p>
+                                                    <div class="uploadButton tw-mb-4">
+                                                        <input
+                                                            class="js-file-upload-input ember-view"
+                                                            type="file"
+                                                            name="application_form_doc_{{ $key }}"
+                                                            id="application_form_doc_{{ $key }}"
+                                                        />
+                                                        <span class="btn btn--small btn--brand">Upload File</span>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                                <div class='clear-fix'></div>
+                                            @endforeach
                                         </div>
-                                        <div id="form-docs">
-                                        </div>
+                                        <div id="form-docs"></div>
                                         <div class="row mt-5">
                                             @if(!empty($case->application_forms))
                                                 @php

@@ -158,6 +158,12 @@ class AppHelper
         "DEFRESPONSE"   => "success",
     ];
 
+    protected $application_forms = [
+        "form1"     => "Notice of Merger Form 1",
+        "form2"     => "Simplified Procedure Form 2",
+        "form4"     => "Negative Clearance Form 4",
+    ];
+
 	/**
 	 * Validates array key
      *
