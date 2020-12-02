@@ -45,7 +45,7 @@
                     </form>
                     <div class="mt-10">
                         <p>
-                            <span class="opacity-70" style="font-weight: bold; color: #006535">Existing
+                            <span class="text-black" style="font-weight: bold;">Existing
                                 application?</span><br />
                             <a href="{{ route('applicant.track') }}" id="kt_login_signup2"
                                 class="text-hover-primary font-weight-bold text-black-sm">Add supporting documents or
