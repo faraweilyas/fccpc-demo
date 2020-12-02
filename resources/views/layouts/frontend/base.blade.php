@@ -77,6 +77,9 @@
               <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{{ route('home.resources') }}">Resources</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
             </li>
 

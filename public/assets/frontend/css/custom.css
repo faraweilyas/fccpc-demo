@@ -6,6 +6,22 @@ body {
     display: none !important;
 }
 
+.download__btn
+{
+    width: 30%;
+    transition: all .5s;
+}
+
+.download__btn:hover
+{
+    width: 35%;
+}
+
+.mb__20
+{
+    margin-bottom: 20px;
+}
+
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;

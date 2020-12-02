@@ -69,6 +69,20 @@ class HomeController extends Controller
     }
 
     /**
+     * Handles the resources page.
+     *
+     * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
+     */
+    public function resources()
+    {
+        $title = 'Resources - ' . APP_NAME;
+        $description =
+            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details = details($title, $description);
+        return view('frontend.resources', compact('details'));
+    }
+
+    /**
      * Handles the faqs page.
      *
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory

@@ -71,7 +71,7 @@
     </div>
   </div>
 </div>
-@endSection
+@endsection
 @section('custom.javascript')
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'app.js') }}"></script>
