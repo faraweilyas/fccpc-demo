@@ -876,6 +876,10 @@ function saveApplicationDocumentation(action, currentForm)
       formData.append("files[]", currentForm.find('#application_form_doc')[0].files[index]);
     }
 
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
+
     formData.append('_token', $("#token").val());
     formData.append('previous_application_forms_name', previous_application_forms_name);
 
@@ -887,11 +891,14 @@ function saveApplicationDocumentation(action, currentForm)
         function(data, status)
         {
             result = JSON.parse(data);
-            console.log(result);
-            // if (result.responseType !== 'error'){
-            //      _wizard.goNext();
-            //     KTUtil.scrollTop();
-            // }
+            notify(result.responseType, result.message);
+            $("#previous-btn").removeAttr('disabled');
+            $("#save-info").toggle();
+            $("#saving-img").addClass('hide');
+            if (result.responseType !== 'error'){
+                 _wizard.goNext();
+                KTUtil.scrollTop();
+            }
         }
     );
     return;

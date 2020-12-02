@@ -296,7 +296,6 @@
                                             </div>
                                         </div>
                                         <div id="form-docs">
-                                        {{-- <p class="document-uploaded applicant_form_doc_name"></p> --}}
                                         </div>
                                         <div class="row mt-5">
                                             @if(!empty($case->application_forms))
