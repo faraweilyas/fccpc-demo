@@ -36,4 +36,9 @@ Route::prefix('applicant')
             'ApplicantController@letterOfAppointmenDownload'
         )->name('download_contact_loa');
 
+        Route::get(
+            'form-doc/download/{document}',
+            'ApplicantController@downloadFormDocument'
+        )->name('download_form_doc');
+
     });

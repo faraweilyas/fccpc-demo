@@ -121,6 +121,16 @@ class Cases extends Model
         return "{$path}{$file}";
     }
 
+    public function getApplicationFormIconText($form)
+    {
+        $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
+        $path           = "/assets/backend/media/svg/";
+        $fileExtension  = pathinfo($form)['extension'] ?? '';
+        $extension      = $extensions[$fileExtension] ?? '';
+        $file           = (in_array($fileExtension, array_keys($extensions))) ? "files/{$extension}.svg" : 'icons/Files/File.svg';
+        return "{$path}{$file}";
+    }
+
     public function getSubject($textStyle=NULL) : string
     {
         return textTransformer(shortenContent($this->subject, 35), $textStyle);

@@ -867,8 +867,34 @@ function saveDeficientChecklistDocument(action, currentForm)
 
 function saveApplicationDocumentation(action, currentForm)
 {
-    _wizard.goNext();
-    KTUtil.scrollTop();
+    var tracking_id                            = $("#tracking_id").val(),
+        previous_application_forms_name        = currentForm.find("#previous_application_forms_name").val(),
+        formData                               = new FormData(),
+        totalfiles                             = currentForm.find('#application_form_doc')[0].files.length;
+
+    for (var index = 0; index < totalfiles; index++) {
+      formData.append("files[]", currentForm.find('#application_form_doc')[0].files[index]);
+    }
+
+    formData.append('_token', $("#token").val());
+    formData.append('previous_application_forms_name', previous_application_forms_name);
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false,
+        function(data, status)
+        {
+            result = JSON.parse(data);
+            console.log(result);
+            // if (result.responseType !== 'error'){
+            //      _wizard.goNext();
+            //     KTUtil.scrollTop();
+            // }
+        }
+    );
+    return;
 }
 
 function submitCase()

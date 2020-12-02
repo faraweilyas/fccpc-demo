@@ -13,6 +13,14 @@ $(document).ready(function() {
         $('.doc_name').html(fileName);
     });
 
+    $("#application_form_doc").on("change", function () {
+         var files = $(this).prop("files")
+         var names = $.map(files, function (val) { return val.name; });
+         $.each(names, function (i, name) {
+              $("#form-docs").append('<p class="document-uploaded my-1">'+name+'</p>')
+         });
+    });
+
 	$(".start_doc_approval").on('click', function (e) {
 		var approval_link  = $(this).attr('data-link'); 
 		var workingon_link = $(this).attr('data-workingon-link'); 

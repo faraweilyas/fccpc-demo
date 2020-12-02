@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Cases;
 use App\Models\Guest;
 use App\Models\Document;
+use Illuminate\Support\Str;
 use App\Notifications\NewUser;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
@@ -21,6 +22,7 @@ class ApplicationController extends Controller
         'saveContactInfo'                   => 'saveContactInfo',
         'saveChecklistDocument'             => 'saveChecklistDocument',
         'saveDeficientChecklistDocument'    => 'saveDeficientChecklistDocument',
+        'saveApplicationDocumentation'      => 'saveApplicationDocumentation',
     ];
 
     public function test()
@@ -224,6 +226,12 @@ class ApplicationController extends Controller
         return;
     }
 
+    /**
+     * Save case info.
+     *
+     * @param Guest $guest
+     * @return void
+     */
     public function saveCaseInfo(Guest $guest)
     {
         $parties = is_array(request('parties')) ? request('parties') : [];
@@ -237,6 +245,12 @@ class ApplicationController extends Controller
         $this->sendResponse('Transaction info saved.', 'success', $guest->case);
     }
 
+    /**
+     * Save case contact info.
+     *
+     * @param Guest $guest
+     * @return void
+     */
     public function saveContactInfo(Guest $guest)
     {
         $previous_document_name = request('previous_document_name') ?? '';
@@ -276,6 +290,12 @@ class ApplicationController extends Controller
         $this->sendResponse('Contact info saved.', 'success', $guest->case);
     }
 
+    /**
+     * Save case checklist document.
+     *
+     * @param Guest $guest
+     * @return void
+     */
     public function saveChecklistDocument(Guest $guest)
     {
         if (!empty(request('amount_paid'))):
@@ -327,6 +347,12 @@ class ApplicationController extends Controller
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
+    /**
+     * Save case deficient checklist document.
+     *
+     * @param Guest $guest
+     * @return void
+     */
     public function saveDeficientChecklistDocument(Guest $guest)
     {
         if (!empty(request('amount_paid'))):
@@ -376,6 +402,55 @@ class ApplicationController extends Controller
         ]);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
+    }
+
+    /**
+     * Save application documentation.
+     *
+     * @param Guest $guest
+     * @return void
+     */
+    public function saveApplicationDocumentation(Guest $guest)
+    {
+        $previous_application_forms_name = request('previous_application_forms_name') ?? '';
+
+        if (!request()->hasFile('files')):
+            $this->sendResponse('No file has been uploaded.', 'warning', []);
+        endif;
+
+        $previous_application_forms = Cases::where('id', $guest->case->id)
+                                            ->where('application_forms', $previous_application_forms_name)
+                                            ->first();
+
+        if ($previous_application_forms):
+            if (Str::contains($previous_application_forms_name, ',')):
+                $previous_application_forms_name_array = explode(',', $previous_application_forms_name);
+                foreach($previous_application_forms_name_array as $key => $value):
+                    unlink(
+                        storage_path('app/public/application_forms/'.$value)
+                    );
+                endforeach;
+            else:
+                unlink(
+                    storage_path('app/public/application_forms/'.$previous_application_forms_name)
+                );
+            endif;
+        endif;
+
+        foreach (request('files') as $file):
+            $extension    = $file->getClientOriginalExtension();
+            $newFileName  = \SerialNumber::randomFileName($extension);
+            $path         = $file->storeAs('public/application_forms', $newFileName); 
+            $file_array[] = $newFileName;  
+        endforeach;
+
+        $guest->case->saveApplicationForms(
+            (object) [
+                'application_forms' => implode(',', $file_array),
+            ]
+        );
+
+        $this->sendResponse('Document has been saved.', 'success', []);
     }
 
     /**
@@ -517,9 +592,10 @@ class ApplicationController extends Controller
     }
 
     /**
-     * Handles download form page.
+     * Download form.
      *
-     * @return document
+     * @param string $form
+     * @return void
      */
     public function downloadForm($form)
     {

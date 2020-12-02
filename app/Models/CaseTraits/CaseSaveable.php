@@ -62,6 +62,18 @@ trait CaseSaveable
     }
 
     /**
+     * Saves application forms
+     *
+     * @param  \stdClass $forms
+     * @return bool
+     */
+    public function saveApplicationForms(\stdClass $forms) : bool
+    {
+        $this->application_forms   = $forms->application_forms;
+        return $this->save();
+    }
+
+    /**
      * Saves Declaration
      *
      * @param  \stdClass $declarationInfo

@@ -168,7 +168,27 @@ class ApplicantController extends Controller
     {
         $groupName = \Str::slug($document);
         $extension = pathinfo($document)['extension'];
-        $file      = storage_path("app/public/documents/{$document->file}");
+        $file      = storage_path("app/public/documents/{$document}");
+
+        if (!is_file($file) && !file_exists($file))
+            return redirect()->back()->with('error', 'File was not found!');
+
+        return response()->download(
+            $file,
+            "{$groupName}.{$extension}"
+        );
+    }
+
+    /**
+     * Handles download document page for form document.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function downloadFormDocument($document)
+    {
+        $groupName = \Str::slug($document);
+        $extension = pathinfo($document)['extension'];
+        $file      = storage_path("app/public/application_forms/{$document}");
 
         if (!is_file($file) && !file_exists($file))
             return redirect()->back()->with('error', 'File was not found!');
