@@ -134,6 +134,20 @@
                             </span>
                         </div>
                         <div class="col-md-3">
+                            <p class="text_dark_blue"><b>APPLICATION FORMS</b></p>
+                             @if(!empty($case->application_forms))
+                                @php
+                                    $applicantion_forms_array = explode(',', $case->application_forms);
+                                @endphp
+                                @foreach($applicantion_forms_array as $key => $value)
+                                    <span>
+                                        <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
+                                            class="max-h-30px mr-3 doc-cursor-pointer"
+                                            src="{{ $case->getApplicationFormIconText($value) }}"
+                                            title="Download Form Document" />
+                                    </span>
+                                @endforeach
+                            @endif
                         </div>
 
                         <div class="col-md-3 text-right">

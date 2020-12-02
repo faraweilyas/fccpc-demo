@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body">
                 <div class="card card-custom" style="margin: -1.75rem; margin-bottom: -23px;">
-                    <div class="card-header card-header-tabs-line justify-content-centre">
+                    <div class="card-header card-header-tabs-line" style="justify-content: flex-start;">
                         <div class="card-title">
                             <h3 class="card-label">&nbsp;&nbsp;</h3>
                         </div>

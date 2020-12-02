@@ -253,6 +253,7 @@ class ApplicationController extends Controller
      */
     public function saveContactInfo(Guest $guest)
     {
+        $fileName = '';
         $previous_document_name = request('previous_document_name') ?? '';
 
         if (request()->hasFile('file')):
@@ -270,9 +271,9 @@ class ApplicationController extends Controller
 
             $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', $previous_document_name)->first();
             if ($previous_document):
-                unlink(
-                    storage_path('app/public/documents/'.$previous_document->letter_of_appointment)
-                );
+                $old_file = $previous_document->letter_of_appointment;
+                if (checkFile($old_file))
+                    unlink(storage_path('app/public/documents/'.$old_file));
             endif;
         endif;
 
@@ -283,7 +284,7 @@ class ApplicationController extends Controller
                 'applicant_email' => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
                 'applicant_address' => request('applicant_address'),
-                'letter_of_appointment' => $fileName,
+                'letter_of_appointment' => empty($fileName) ? $previous_document_name : $fileName,
             ]
         );
 

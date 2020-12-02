@@ -59,6 +59,16 @@ function details($title, $description) : \stdClass
 }
 
 /**
+ * Checks if a file exist.
+ * @param string $file
+ * @return bool
+ */
+function checkFile($file='') : bool
+{
+    return (is_file($file) && file_exists($file)) ? TRUE : FALSE;
+}
+
+/**
  * Formats a given number
  * @param mixed $number
  * @param bool $round

@@ -123,7 +123,25 @@
                             </div>
                         </div>
                     </div>
-                    <p class="section-header">RELEVANT DOCUMENTS</p>
+                    <p class="section-header">APPLICATION FORMS</p>
+                    <div class="row mt-5">
+                        @if(!empty($case->application_forms))
+                            @php
+                                $applicantion_forms_array = explode(',', $case->application_forms);
+                            @endphp
+                            @foreach($applicantion_forms_array as $key => $value)
+                            <div class="col-md-1 my-2">
+                                <span>
+                                    <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
+                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                        src="{{ $case->getApplicationFormIconText($value) }}"
+                                        title="Download Form Document" />
+                                </span>
+                            </div>
+                            @endforeach
+                        @endif
+                    </div>
+                    <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
                     {{-- @foreach($documents as $document) --}}
                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                     @php
@@ -198,9 +216,9 @@
                     <div class="card-body">
                         <p>
                             I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30"
-                                    name="declaration_name" /></span> the appointed representative of <span><input
+                                    name="declaration_name" value="{{ $case->applicant_fullname }}" /></span> the appointed representative of <span><input
                                     id="declaration_rep" type="text" class="form-control-declaration w--30"
-                                    name="declaration_rep" />, hereby declare that all the information submitted by me
+                                    name="declaration_rep" value="{{ $case->applicant_firm }}"/>, hereby declare that all the information submitted by me
                                 in the application form is correct, true and valid.
                         </p>
                     </div>
