@@ -19,9 +19,9 @@ class ApplicantController extends Controller
      */
     public function show()
     {
-        $title = 'Submit Application | ' . APP_NAME;
-        $description = 'Submit Application | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Submit Application | ' . APP_NAME;
+        $description    = 'Submit Application | ' . APP_NAME;
+        $details        = details($title, $description);
         return view('backend.applicant.show', compact('details'));
     }
 
@@ -32,9 +32,9 @@ class ApplicantController extends Controller
      */
     public function confirm($email)
     {
-        $title = 'Confirm Tracking ID | ' . APP_NAME;
-        $description = 'Confirm Tracking ID | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Confirm Tracking ID | ' . APP_NAME;
+        $description    = 'Confirm Tracking ID | ' . APP_NAME;
+        $details        = details($title, $description);
         return view('backend.applicant.confirm', compact('details', 'email'));
     }
 
@@ -100,9 +100,9 @@ class ApplicantController extends Controller
      */
     public function trackApplication()
     {
-        $title = 'Track Application | ' . APP_NAME;
-        $description = 'Track Application | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Track Application | ' . APP_NAME;
+        $description    = 'Track Application | ' . APP_NAME;
+        $details        = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }
 
@@ -152,7 +152,7 @@ class ApplicantController extends Controller
 
         if (!is_file($file) && !file_exists($file))
             return redirect()->back()->with('error', 'File was not found!');
-        
+
         return response()->download(
             $file,
             "{$groupName}.{$extension}"
