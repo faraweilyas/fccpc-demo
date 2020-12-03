@@ -159,7 +159,14 @@
                         </div>
                         <div class="col-md-2 text-right">
                             @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
-                                <button class="btn btn-info-sm my-5" data-toggle="modal" data-target="#assignAnalyzeCaseModal">Assign</button>
+                                <button
+                                    class="btn btn-light-warning my-5"
+                                    data-toggle="modal"
+                                    data-target="#assignAnalyzeCaseModal"
+                                    style='font-size: 1rem; padding: 1rem;'
+                                >
+                                    Assign
+                                </button>
                             @endif
                         </div>
                         <div class="col-md-3">
