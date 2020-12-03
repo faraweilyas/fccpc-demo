@@ -1350,3 +1350,19 @@ th.fees_tab__head {
     font-style: italic;
     color: #999;
 }
+
+.mxw-15
+{
+    max-width: 15%;
+}
+
+.mxw-20
+{
+    max-width: 20%;
+}
+
+.align_icon
+{
+    width: 40px;
+    margin-left: 30px;
+}
