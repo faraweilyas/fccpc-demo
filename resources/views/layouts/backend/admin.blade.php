@@ -267,7 +267,7 @@
                             @php
                                 $user = \App\Models\User::find($data->user_id);
                             @endphp
-                            <div class="notifications-cards">
+                            <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('dashboard.profile', ['user' => $user->id]) }}';">
                                 <p class="message my-1">{!! $message !!}</p>
                                 <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                 <p class="my-1">
@@ -290,7 +290,7 @@
                             @php
                                 $case = \App\Models\Cases::find($data->case_id);
                             @endphp
-                            <div class="notifications-cards mark-notification" data-id="{{ $notification->id }}">
+                            <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('cases.analyze', ['case' => $case->id]) }}';">
                                 <p class="message my-1">{!! $message !!}</p>
                                 <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                 <p class="subject my-1">{{ $case->subject }}</p>
@@ -334,7 +334,7 @@
                                 @php
                                     $user = \App\Models\User::find($data->user_id);
                                 @endphp
-                                <div class="notifications-cards">
+                                <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('dashboard.profile', ['user' => $user->id]) }}';">
                                     <p class="message my-1">{!! $message !!}</p>
                                     <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                     <p class="my-1">
@@ -357,7 +357,7 @@
                                 @php
                                     $case = \App\Models\Cases::find($data->case_id);
                                 @endphp
-                                <div class="notifications-cards">
+                                <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('cases.analyze', ['case' => $case->id]) }}';">
                                     <p class="message my-1">{!! $message !!}</p>
                                     <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
                                     <p class="subject my-1">{{ $case->subject }}</p>
