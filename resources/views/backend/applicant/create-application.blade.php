@@ -272,21 +272,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="application-documentation-section" class="pb-5 my-40"
-                                        data-wizard-type="step-content" data-form='ApplicationDocumentation'>
-                                        <h6 class="font-weight-bold text-dark text-center section__breaker">This section
-                                            requires you to upload all relevant application document in a searchable PDF
-                                            format.
+                                    <div
+                                        id="application-documentation-section"
+                                        class=""
+                                        data-wizard-type="step-content"
+                                        data-form='ApplicationDocumentation'
+                                    >
+                                        <h6 class="font-weight-bold text-dark text-center section__breaker">This section requires you to upload all relevant application document in a searchable PDF format.
                                         </h6>
                                         <p class="mt-20 mb-10">Please upload application forms below.</p>
                                         <div class="row">
                                             @php
-                                                $forms = AppHelper::get('application_forms', NULL);
-                                                $index = 0;
-                                    // $form = AppHelper::value('application_forms', 'form1', NULL);
-                                    // "form1:792a9cbc-1606907794.pdf,form2:792afbad-1606907794.pdf,form4:792b3cc3-1606907794.pdf"
+                                                $application_forms  = \AppHelper::get('application_forms', NULL);
+                                                $formObjects        = $case->formatApplicationForms();
                                             @endphp
-                                            @foreach ($forms as $key => $form)
+                                            @foreach ($application_forms as $key => $form)
                                                 <div class="col-md-12 mb-4">
                                                     <p class="">Upload {{ $form }}</p>
                                                     <div class="uploadButton tw-mb-4">
@@ -298,23 +298,16 @@
                                                             data-form="application_form_doc_name_{{ $key }}"
                                                         />
                                                         <span class="btn btn--small btn--brand">Upload File</span>
-                                                        @if(\Str::contains($case->application_forms, $key))
-                                                            @php
-                                                                $applicantion_forms_array     = explode(',', $case->application_forms);
-                                                                $new_applicantion_forms_array = explode(':', $applicantion_forms_array[$index]);
-                                                            @endphp
-                                                                <span>
-                                                                    <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $new_applicantion_forms_array[1]]) }}';"
-                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                        src="{{ $case->getApplicationFormIconText($new_applicantion_forms_array[1]) }}"
-                                                                        title="Download {{ ucfirst($key) }} Document" />
-                                                                </span>
-                                                            @php 
-                                                                $index++;
-                                                            @endphp
+                                                        @if (!empty($old_form = $formObjects[$key] ?? []))
+                                                            <a href="{{ route('applicant.download_form_doc', ['document' => $old_form->file]) }}">
+                                                                <img
+                                                                    class="align_icon"
+                                                                    src="{{ $case->getApplicationFormIconText($old_form->file) }}"
+                                                                    title="Download {{ ucfirst($old_form->name) }} Document"
+                                                                />
+                                                            </a>
                                                         @endif
                                                         <p class="document-uploaded application_form_doc_name_{{ $key }}"></p>
-                                                        
                                                     </div>
                                                 </div>
                                                 <div class='clear-fix'></div>
@@ -323,125 +316,132 @@
                                         <input id="previous_application_forms_name" type="hidden" value="{{ $case->application_forms }}">
                                     </div>
                                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                                    @php
-                                    $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
-                                    @endphp
-                                    <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
-                                        <div class="row mt-4">
-                                            <div class="col-md-12">
-                                                <div class="card card-custom gutter-b example example-compact">
-                                                    <div class="card-header">
-                                                        <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p>
-                                                            Upload the {{ strtolower($checklistGroup->name) }} as a
-                                                            single PDF file containing the relevant information listed
-                                                            below.
-                                                        </p>
-                                                        <p>
-                                                            Check all applicable boxes and use the additional
-                                                            information section to explain reasons for any unavailable
-                                                            information.
-                                                        </p>
-                                                        <div class="row mt-4">
-                                                            @foreach($checklistGroup->checklists as $checklist)
-                                                            @php
-                                                            $checked = (in_array($checklist->id, $checklistIds)) ?
-                                                            "checked='checked'" : '';
-                                                            @endphp
-                                                            <div class="col-md-12">
-                                                                <label class="checkbox mb-4">
-                                                                    <input type="checkbox" class="checklist_id"
-                                                                        value="{{ $checklist->id }}" {{ $checked }} />
-                                                                    <span></span>
-                                                                    <small
-                                                                        class="fs--100">{{ ucfirst($checklist->name) }}</small>
-                                                                </label>
-                                                            </div>
-                                                            @endforeach
+                                        @php
+                                            $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                                        @endphp
+                                        <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
+                                            <div class="row mt-4">
+                                                <div class="col-md-12">
+                                                    <div class="card card-custom gutter-b example example-compact">
+                                                        <div class="card-header">
+                                                            <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                         </div>
-                                                        <div class="row">
-                                                            @if ($checklistGroup->isGroupFees())
-                                                            <div class="col-md-6 mb-4 ml-8">
-                                                                <input type="text" class="form-control amount_paid"
-                                                                    name="amount_paid" value="{{ $case->amount_paid }}"
-                                                                    placeholder="Enter Amount Paid:" id="amount_paid" />
+                                                        <div class="card-body">
+                                                            <p>
+                                                                Upload the {{ strtolower($checklistGroup->name) }} as a
+                                                                single PDF file containing the relevant information listed
+                                                                below.
+                                                            </p>
+                                                            <p>
+                                                                Check all applicable boxes and use the additional
+                                                                information section to explain reasons for any unavailable
+                                                                information.
+                                                            </p>
+                                                            <div class="row mt-4">
+                                                                @foreach($checklistGroup->checklists as $checklist)
+                                                                @php
+                                                                $checked = (in_array($checklist->id, $checklistIds)) ?
+                                                                "checked='checked'" : '';
+                                                                @endphp
+                                                                <div class="col-md-12">
+                                                                    <label class="checkbox mb-4">
+                                                                        <input type="checkbox" class="checklist_id"
+                                                                            value="{{ $checklist->id }}" {{ $checked }} />
+                                                                        <span></span>
+                                                                        <small
+                                                                            class="fs--100">{{ ucfirst($checklist->name) }}</small>
+                                                                    </label>
+                                                                </div>
+                                                                @endforeach
                                                             </div>
-                                                            @endif
-                                                        </div>
-                                                        <div class="row mt-4">
-                                                            <div class="col-md-12">
-                                                                <div class="form-group mb-1">
-                                                                    <textarea class="form-control" id="additional_info"
-                                                                        rows="6"
-                                                                        name="{{ Str::camel($checklistGroup->label) }}_additional_info"
-                                                                        placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
+                                                            <div class="row">
+                                                                @if ($checklistGroup->isGroupFees())
+                                                                <div class="col-md-6 mb-4 ml-8">
+                                                                    <input type="text" class="form-control amount_paid"
+                                                                        name="amount_paid" value="{{ $case->amount_paid }}"
+                                                                        placeholder="Enter Amount Paid:" id="amount_paid" />
+                                                                </div>
+                                                                @endif
+                                                            </div>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <div class="form-group mb-1">
+                                                                        <textarea class="form-control" id="additional_info"
+                                                                            rows="6"
+                                                                            name="{{ Str::camel($checklistGroup->label) }}_additional_info"
+                                                                            placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row mt-4">
-                                                            <div class="col-md-3">
-                                                                <div class="uploadButton tw-mb-4 ">
-                                                                    <input accept=".pdf" id="checklist_doc"
-                                                                        class="js-file-upload-input ember-view"
-                                                                        type="file"
-                                                                        name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                        data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
-                                                                    <span class="btn btn--small btn--brand">Upload
-                                                                        File</span>
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-3">
+                                                                    <div class="uploadButton tw-mb-4 ">
+                                                                        <input accept=".pdf" id="checklist_doc"
+                                                                            class="js-file-upload-input ember-view"
+                                                                            type="file"
+                                                                            name="{{ Str::camel($checklistGroup->label) }}_doc"
+                                                                            data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}">
+                                                                        <span class="btn btn--small btn--brand">Upload
+                                                                            File</span>
+                                                                    </div>
+
                                                                 </div>
+                                                                <br>
 
+                                                                @if(!empty($document))
+                                                                <div class="col-md-3 my-1">
+                                                                    <span>
+                                                                        <img onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
+                                                                            class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                            src="{{ $document->getIconText() }}"
+                                                                            title="Download Document" />
+                                                                    </span>
+                                                                </div>
+                                                                @endif
+                                                                <input type="hidden" id="uploaded_doc"
+                                                                    value="{{ !empty($document) ? $document->file : '' }}">
+                                                                <input type="hidden" id="checklist_doc_name"
+                                                                    value="{{ strtolower($checklist->name) }}">
+                                                                <input type="hidden" id="doc_id"
+                                                                    value="{{ !empty($document) ? $document->id : '' }}">
+                                                                <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}">
                                                             </div>
-                                                            <br>
-
-                                                            @if(!empty($document))
-                                                            <div class="col-md-3 my-1">
-                                                                <span>
-                                                                    <img onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                        src="{{ $document->getIconText() }}"
-                                                                        title="Download Document" />
-                                                                </span>
-                                                            </div>
-                                                            @endif
-                                                            <input type="hidden" id="uploaded_doc"
-                                                                value="{{ !empty($document) ? $document->file : '' }}">
-                                                            <input type="hidden" id="checklist_doc_name"
-                                                                value="{{ strtolower($checklist->name) }}">
-                                                            <input type="hidden" id="doc_id"
-                                                                value="{{ !empty($document) ? $document->id : '' }}">
-                                                            <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}">
+                                                            <p
+                                                                class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">
+                                                            </p>
                                                         </div>
-                                                        <p
-                                                            class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">
-                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
                                         <div id="upload-img" class="hide">
-                                            <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
-                                                disabled><i
-                                                    class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...</button>
+                                            <button class="btn btn-primary font-weight-bold text-uppercase px-9 py-4" disabled>
+                                                <i class="fas fa-spinner fa-pulse"></i>&nbsp;Uploading...
+                                            </button>
                                         </div>
                                         <div id="previous-btn" class="mr-2">
-                                            <button
-                                                class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4"
-                                                data-wizard-type="action-prev">Previous</button>
+                                            <button class="btn btn-light-primary font-weight-bold text-uppercase px-9 py-4" data-wizard-type="action-prev">
+                                                Previous
+                                            </button>
                                         </div>
                                         <div id="save-btns">
-                                            <button id="save-transaction-info"
+                                            <button
+                                                id="save-transaction-info"
                                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
                                                 data-wizard-type="action-submit"
-                                                data-review-route="/application/applicant/{{ $guest->tracking_id }}/review/1">Save
-                                                & Review</button>
-                                            <button id="save-info"
+                                                data-review-route="/application/applicant/{{ $guest->tracking_id }}/review/1"
+                                            >
+                                                Save &nbsp; Review
+                                            </button>
+                                            <button
+                                                id="save-info"
                                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
-                                                data-wizard-type="action-next">Save & Continue</button>
+                                                data-wizard-type="action-next"
+                                            >
+                                                Save &nbsp; Continue
+                                            </button>
                                             <button id="saving-img" class="btn btn-primary font-weight-bold text-uppercase px-15 py-3 hide"
                                                 disabled>
                                                 <div class="spinner-grow text-white" role="status">
