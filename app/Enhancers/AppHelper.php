@@ -58,6 +58,11 @@ class AppHelper
         'active'   => 'success',
     ];
 
+    protected $recommendation_types = [
+        'Approve'   => 'Approved',
+        'Reject'   => 'Rejected',
+    ];
+
 	protected $case_categories = [
 		"REG" => "Domestic",
 		"FFM" => "FFM",
@@ -141,23 +146,27 @@ class AppHelper
     protected $feedbacks = ["Yes", "No"];
 
     protected $notification_types = [
-        "NEWUSER"       => "New User",
-        "ASSIGN"        => "New Case Assigned",
-        "REASSIGN"      => "Case Reassigned",
-        "UNASSIGN"      => "Case Unassigned",
-        "ONHOLD"        => "Case on Hold",
-        "DEFRESPONSE"   => "Response to Defincency",
-        "REQUEST"       => "Approval Requested",
+        "NEWUSER"                => "New User",
+        "ASSIGN"                 => "New Case Assigned",
+        "REASSIGN"               => "Case Reassigned",
+        "UNASSIGN"               => "Case Unassigned",
+        "ONHOLD"                 => "Case on Hold",
+        "DEFRESPONSE"            => "Response to Defincency",
+        "REQUEST"                => "Approval Requested",
+        "REQUEST_APPROVED"       => "Approved Request",
+        "REQUEST_REJECTED"       => "Rejected Request",
     ];
 
     protected $notification_types_styles = [
-        "NEWUSER"       => "success",
-        "ASSIGN"        => "secondary",
-        "REASSIGN"      => "primary",
-        "UNASSIGN"      => "danger",
-        "ONHOLD"        => "warning",
-        "DEFRESPONSE"   => "success",
-        "REQUEST"       => "primary",
+        "NEWUSER"                => "success",
+        "ASSIGN"                 => "secondary",
+        "REASSIGN"               => "primary",
+        "UNASSIGN"               => "danger",
+        "ONHOLD"                 => "warning",
+        "DEFRESPONSE"            => "success",
+        "REQUEST"                => "primary",
+        "REQUEST_APPROVED"       => "success",
+        "REQUEST_REJECTED"       => "danger",
     ];
 
     protected $application_forms = [

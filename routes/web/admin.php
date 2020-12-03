@@ -307,10 +307,15 @@ Route::prefix('cases')
             'CasesController@issueRecommendation'
         )->name('issue-recommendation');
 
-         Route::post(
+        Route::post(
             'request-approval/{case}',
             'CasesController@requestApproval'
         )->name('request-approval');
+
+        Route::post(
+            'resolve-recommendation/{case}',
+            'CasesController@resolveRecommendation'
+        )->name('resolve-recommendation');
 
         Route::post(
             'assign/{case}/{user}',

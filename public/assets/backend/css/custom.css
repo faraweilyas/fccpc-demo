@@ -18,6 +18,14 @@ body {
     line-height: 1.8rem;
 }
 
+.btn-danger-sm {
+    background: #F64E60 !important;
+    border-color: #F64E60 !important;
+    font-size: 1rem;
+    padding: 1rem;
+    color: #fff;
+}
+
 .svg-icon.svg-icon-10x svg {
     height: 10rem !important;
     width: 10rem !important;

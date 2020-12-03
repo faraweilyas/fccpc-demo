@@ -254,7 +254,27 @@
                                         </p>
                                     </div>
                                 </div>
-                            </div>
+                                <form action="{{ route('cases.resolve-recommendation', ['case' => $case->id]) }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6 my-5">
+                                            <p class="mb-5"><b>RECOMMENDATION COMMENT:</b></p>
+                                            <textarea class="form-control form-control-teaxtarea"
+                                                name="comment" id="" cols="30" rows="10" required>{!! nl2br($case->getApprovalComment()) !!}</textarea>
+                                            <p class="text-danger mt-5">
+                                                @error('recommendation')
+                                                    {{ $message }}
+                                                @enderror
+                                            </p>
+                                            <br>
+                                            <div class="text-right">
+                                                <input type="submit" class="btn btn-success-sm my-5" name="status" value="Approve" />
+                                                <input type="submit" class="btn btn-danger-sm my-5" name="status" value="Reject" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>  
                         </div>
                     </div>
                 @endif

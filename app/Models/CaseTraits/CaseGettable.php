@@ -141,6 +141,19 @@ trait CaseGettable
     }
 
     /**
+     * Gets approval comment
+     *
+     * @return string
+     */
+    public function getApprovalComment()
+    {
+        if (!$this->active_handlers->first())
+            return '';
+
+        return $this->active_handlers->first()->case_handler->approval_comment;
+    }
+
+    /**
      * Gets analysis document
      *
      * @return string

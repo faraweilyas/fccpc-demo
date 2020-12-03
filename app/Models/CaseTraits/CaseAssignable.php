@@ -69,6 +69,22 @@ trait CaseAssignable
         ]);
     }
 
+     /**
+     * A supervisor issues approval comment
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function issueApprovalComment(User $caseHandler, $comment, $status)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'approval_status'  => $status,
+                'approval_comment' => $comment,
+            ]
+        ]);
+    }
+
     /**
      * A case handler issues recommendation
      *
@@ -155,6 +171,7 @@ trait CaseAssignable
                 'recommendation'                => $previouCaseHandler->recommendation,
                 'approval_requested_at'         => $previouCaseHandler->approval_requested_at,
                 'approval_status'               => $previouCaseHandler->approval_status,
+                'approval_comment'              => $previouCaseHandler->approval_comment,
                 'extension_requested_at'        => $previouCaseHandler->extension_requested_at,
                 'extension_reason'              => $previouCaseHandler->extension_reason,
                 'archived_at'                   => $previouCaseHandler->archived_at,
@@ -213,6 +230,7 @@ trait CaseAssignable
                 'recommendation',
                 'approval_requested_at',
                 'approval_status',
+                'approval_comment',
                 'extension_requested_at',
                 'extension_reason',
                 'dropped_at',

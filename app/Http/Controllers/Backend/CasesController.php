@@ -451,6 +451,42 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles recommendation resolving by supervisor
+     *
+     * @return json
+     */
+    public function resolveRecommendation(Cases $case)
+    {
+        $status       = \AppHelper::value('recommendation_types', request('status'), 'strtolower');
+        $status_type  = ($status == 'approved') ? 'success' : 'error';
+        $comment      = request('comment');
+        $request_type = ($status == 'approved') ? 'request_approved' : 'request_rejected';
+
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+
+        // Notify case handler
+        $case_handler->notify(new CaseActionNotifier(
+            $request_type,
+            "Your approval request has been {$status}.",
+            $case->id
+        ));
+
+         // Notify supervisor
+        $supervisor->notify(new CaseActionNotifier(
+            $request_type,
+            "{$case_handler->getFullName()} requested has been {$status}.",
+            $case->id
+        ));
+
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->issueApprovalComment($handler, $comment, $status);
+
+        return redirect()->back()->with($status_type, "Request has been {$status}!");
+    }
+
+    /**
      * Handles the case analysis case documents page route.
      *
      * @return void
