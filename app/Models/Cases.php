@@ -424,6 +424,22 @@ class Cases extends Model
         return $checklistGroupName;
     }
 
+    public function getApplicationForms() : array
+    {
+        return explode(',', $this->application_forms);
+    }
+
+    public function formatApplicationForms() : array
+    {
+        $formObjects = [];
+        foreach ($this->getApplicationForms() as $key => $form)
+        {
+            $key                = explode(':', $form)[0];
+            $formObjects[$key]  = getApplicationFormObject($form);
+        }
+        return $formObjects;
+    }
+
     // ...
     public function getCaseStatus($textStyle='strtolower')
     {
