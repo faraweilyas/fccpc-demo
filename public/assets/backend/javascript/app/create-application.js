@@ -870,10 +870,23 @@ function saveApplicationDocumentation(action, currentForm)
     var tracking_id                            = $("#tracking_id").val(),
         previous_application_forms_name        = currentForm.find("#previous_application_forms_name").val(),
         formData                               = new FormData(),
-        totalfiles                             = currentForm.find('#application_form_doc')[0].files.length;
+        form1                                  = currentForm.find('#application_form_doc_form1')[0].files[0],
+        form2                                  = currentForm.find('#application_form_doc_form2')[0].files[0],
+        form4                                  = currentForm.find('#application_form_doc_form4')[0].files[0];
 
-    for (var index = 0; index < totalfiles; index++) {
-      formData.append("files[]", currentForm.find('#application_form_doc')[0].files[index]);
+    if (currentForm.find('#application_form_doc_form1')[0].files.length <= 0)
+    {
+        form1 = '';
+    }
+
+    if (currentForm.find('#application_form_doc_form2')[0].files.length <= 0)
+    {
+        form2 = '';
+    }
+
+    if (currentForm.find('#application_form_doc_form4')[0].files.length <= 0)
+    {
+        form4 = '';
     }
 
     $("#previous-btn").attr('disabled', 'disabled');
@@ -882,6 +895,9 @@ function saveApplicationDocumentation(action, currentForm)
 
     formData.append('_token', $("#token").val());
     formData.append('previous_application_forms_name', previous_application_forms_name);
+    formData.append("files[form1]", form1);
+    formData.append("files[form2]", form2);
+    formData.append("files[form4]", form4);
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,

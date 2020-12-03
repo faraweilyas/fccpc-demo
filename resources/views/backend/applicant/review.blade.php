@@ -134,12 +134,15 @@
                                         $applicantion_forms_array = explode(',', $case->application_forms);
                                     @endphp
                                     @foreach($applicantion_forms_array as $key => $value)
+                                    @php 
+                                        $new_applicantion_forms_array = explode(':', $applicantion_forms_array[$key]);
+                                    @endphp
                                     <div class="col-md-1 my-2">
                                         <span>
-                                            <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
+                                            <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $new_applicantion_forms_array[1]]) }}';"
                                                 class="max-h-30px mr-3 doc-cursor-pointer w--200"
-                                                src="{{ $case->getApplicationFormIconText($value) }}"
-                                                title="Download Form Document" />
+                                                src="{{ $case->getApplicationFormIconText($new_applicantion_forms_array[1]) }}"
+                                                title="Download {{ $new_applicantion_forms_array[0] }} Document" />
                                         </span>
                                     </div>
                                     @endforeach
@@ -166,8 +169,6 @@
                                 @else
                                 <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
                                     <x-icons.letter-file></x-icons.letter-file>
-
-                                 
                                 </span>
                                 <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">
                                     {{ $checklistGroup->name }}</h4>
@@ -222,9 +223,9 @@
                     <div class="card-body">
                         <p>
                             I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30"
-                                    name="declaration_name" value="{{ $case->applicant_fullname }}" /></span> the appointed representative of <span><input
+                                    name="declaration_name" value="{{ $case->applicant_fullname ?? '' }}" /></span> the appointed representative of <span><input
                                     id="declaration_rep" type="text" class="form-control-declaration w--30"
-                                    name="declaration_rep" value="{{ $case->applicant_firm }}"/>, hereby declare that all the information submitted by me
+                                    name="declaration_rep" value="{{ $case->applicant_firm ?? '' }}"/>, hereby declare that all the information submitted by me
                                 in the application form is correct, true and valid.
                         </p>
                     </div>

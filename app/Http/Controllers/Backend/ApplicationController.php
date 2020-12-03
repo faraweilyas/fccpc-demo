@@ -27,7 +27,7 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case           = Cases::find(37);
+        $case           = Cases::find(89);
         // $oldUser        = User::find(6);
         // $newUser        = User::find(11);
         // $supervisor     = User::find(5);
@@ -438,11 +438,13 @@ class ApplicationController extends Controller
             endif;
         endif;
 
-        foreach (request('files') as $file):
-            $extension    = $file->getClientOriginalExtension();
-            $newFileName  = \SerialNumber::randomFileName($extension);
-            $path         = $file->storeAs('public/application_forms', $newFileName); 
-            $file_array[] = $newFileName;  
+        foreach (request('files') as $key => $file):
+            if (!empty($file)):
+                $extension    = $file->getClientOriginalExtension();
+                $newFileName  = \SerialNumber::randomFileName($extension);
+                $path         = $file->storeAs('public/application_forms', $newFileName); 
+                $file_array[] = $key.':'.$newFileName;
+            endif;  
         endforeach;
 
         $guest->case->saveApplicationForms(

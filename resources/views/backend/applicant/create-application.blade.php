@@ -282,6 +282,7 @@
                                         <div class="row">
                                             @php
                                                 $forms = AppHelper::get('application_forms', NULL);
+                                                $index = 0;
                                     // $form = AppHelper::value('application_forms', 'form1', NULL);
                                     // "form1:792a9cbc-1606907794.pdf,form2:792afbad-1606907794.pdf,form4:792b3cc3-1606907794.pdf"
                                             @endphp
@@ -290,34 +291,34 @@
                                                     <p class="">Upload {{ $form }}</p>
                                                     <div class="uploadButton tw-mb-4">
                                                         <input
-                                                            class="js-file-upload-input ember-view"
+                                                            class="js-file-upload-input ember-view application_form_doc"
                                                             type="file"
                                                             name="application_form_doc_{{ $key }}"
                                                             id="application_form_doc_{{ $key }}"
+                                                            data-form="application_form_doc_name_{{ $key }}"
                                                         />
                                                         <span class="btn btn--small btn--brand">Upload File</span>
+                                                        @if(\Str::contains($case->application_forms, $key))
+                                                            @php
+                                                                $applicantion_forms_array     = explode(',', $case->application_forms);
+                                                                $new_applicantion_forms_array = explode(':', $applicantion_forms_array[$index]);
+                                                            @endphp
+                                                                <span>
+                                                                    <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $new_applicantion_forms_array[1]]) }}';"
+                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                        src="{{ $case->getApplicationFormIconText($new_applicantion_forms_array[1]) }}"
+                                                                        title="Download {{ ucfirst($key) }} Document" />
+                                                                </span>
+                                                            @php 
+                                                                $index++;
+                                                            @endphp
+                                                        @endif
+                                                        <p class="document-uploaded application_form_doc_name_{{ $key }}"></p>
+                                                        
                                                     </div>
                                                 </div>
                                                 <div class='clear-fix'></div>
                                             @endforeach
-                                        </div>
-                                        <div id="form-docs"></div>
-                                        <div class="row mt-5">
-                                            @if(!empty($case->application_forms))
-                                                @php
-                                                    $applicantion_forms_array = explode(',', $case->application_forms);
-                                                @endphp
-                                                @foreach($applicantion_forms_array as $key => $value)
-                                                <div class="col-md-2 my-2">
-                                                    <span>
-                                                        <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $value]) }}';"
-                                                            class="max-h-30px mr-3 doc-cursor-pointer"
-                                                            src="{{ $case->getApplicationFormIconText($value) }}"
-                                                            title="Download Form Document" />
-                                                    </span>
-                                                </div>
-                                                @endforeach
-                                            @endif
                                         </div>
                                         <input id="previous_application_forms_name" type="hidden" value="{{ $case->application_forms }}">
                                     </div>
