@@ -152,6 +152,16 @@ class User extends Authenticatable implements JWTSubject
         return ($this->account_type == "AD") ? true : false;
     }
 
+     /**
+     * Get method for is active user supervisor.
+     *
+     * @return string
+     */
+    public function isSupervisor() : bool
+    {
+        return ($this->account_type == "SP") ? true : false;
+    }
+
     /**
      * Get account type
      *

@@ -226,36 +226,80 @@
                 @php
                     $recommendation_data = $case->active_handlers->first()->case_handler;
                 @endphp
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card-custom">
-                            <h5>Analysis Document & Recommendation</h5>
-                            <div class="row py-5">
-                                <div class="col-md-6 my-5">
-                                    <div class="doc-card">
-                                        <div class="row">
-                                            <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
-                                            <div class="col-md-4">
-                                                <div class="doc-name">Analysis document</div>
-                                            </div>
-                                            <div class="col-md-6 align-center">
-                                                <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
-                                                    Download
-                                                </button>
+                @if (auth()->user()->isSupervisor() && $case->isApprovalRequested())
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-custom">
+                                <h5>Analysis Document & Recommendation</h5>
+                                <div class="row py-5">
+                                    <div class="col-md-6 my-5">
+                                        <div class="doc-card">
+                                            <div class="row">
+                                                <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
+                                                <div class="col-md-4">
+                                                    <div class="doc-name">Analysis document</div>
+                                                </div>
+                                                <div class="col-md-6 align-center">
+                                                    <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
+                                                        Download
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6 my-5">
-                                    <span><b>REASON/RECOMMENDATION:</b></span>
-                                    <p>
-                                        {!! nl2br($case->getRecommendation() ) !!}
-                                    </p>
+                                    <div class="col-md-6 my-5">
+                                        <span><b>REASON/RECOMMENDATION:</b></span>
+                                        <p>
+                                            {!! nl2br($case->getRecommendation() ) !!}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
+                @if (auth()->user()->isCaseHandler())
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-custom">
+                                <h5>Analysis Document & Recommendation</h5>
+                                <div class="row py-5">
+                                    <div class="col-md-6 my-5">
+                                        <div class="doc-card">
+                                            <div class="row">
+                                                <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
+                                                <div class="col-md-4">
+                                                    <div class="doc-name">Analysis document</div>
+                                                </div>
+                                                <div class="col-md-6 align-center">
+                                                    <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
+                                                        Download
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 my-5">
+                                        <span><b>REASON/RECOMMENDATION:</b></span>
+                                        <p>
+                                            {!! nl2br($case->getRecommendation() ) !!}
+                                        </p>
+                                    </div>
+                                </div>
+                                @if (!$case->isApprovalRequested())
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <form action="{{ route('cases.request-approval', ['case' => $case->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" class="btn btn-success-sm my-5">Request Approval</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endif
         @endif
     </div>
