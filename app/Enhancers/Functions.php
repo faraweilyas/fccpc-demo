@@ -368,3 +368,12 @@ function getNotificationActionStyle(string $action) : string
 {
     return \AppHelper::value('notification_types_styles', strtoupper($action), 'strtolower');
 }
+
+function getApplicationFormObject(string $form) : \stdClass
+{
+    $form = explode(':', $form);
+    return (object) [
+        'name' => isset($form[0]) && !empty($form[0]) ? AppHelper::value('application_forms', $form[0], NULL) : '',
+        'file' => isset($form[1]) && !empty($form[1]) ? $form[1] : '',
+    ];
+}
