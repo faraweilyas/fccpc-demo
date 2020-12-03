@@ -31,40 +31,35 @@
                     <div class="row">
                         <div class="col-md-12 text-right pull__right__position">
                             <button class="btn btn-light-primary font-weight-bold ">
-                                <span class="svg-icon svg-icon-primary svg-icon-2x cr-pointer" onclick="window.print()"
-                                    title="Print Transaction Summary">
-                                    <x-icons.print></x-icons.print>
-
-                                    Print
+                                <span
+                                    class="svg-icon svg-icon-primary svg-icon-2x cr-pointer"
+                                    onclick="window.print()"
+                                    title="Print Transaction Summary"
+                                >
+                                    <x-icons.print></x-icons.print> Print
                                 </span>
                             </button>
                         </div>
                     </div>
                     <h3 class="checklist-header">APPLICATION SUMMARY</h3>
-
                     <p class="review-description">
                         Review your entries for any kind of error. Kindly note that you cannot edit information once it
                         has been submitted.
                     </p>
-
                     <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
-
                     <div class="grid-col-2">
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Subject:</h4>
                             <h4>{{ $case->subject }}</h4>
                         </div>
-
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Parties:</h4>
                             <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                         </div>
-
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Transaction Type:</h4>
                             <h4>{{ $case->getType() }}</h4>
                         </div>
-
                         <div class="grid-row-2 d-flex">
                             <h4 class="info-title">Transaction Category:</h4>
                             <h4>{{ $case->getCategoryText() }}</h4>
@@ -98,20 +93,24 @@
                         </div>
                         <div class="grid-row-2 d-flex">
                             <div class="d-flex mt-n7">
-                                @if(!empty($case->letter_of_appointment))
-                                <img class="mw-10 cr-pointer" src="{{ $case->getLetterOfAppointmentIconText() }}"
-                                    alt="pdf" height="50px"
-                                    onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';" />
-                                <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
-                                    onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';">
-                                    Letter Of Appointment</h4>
+                                @if (!empty($case->letter_of_appointment))
+                                    <img
+                                        class="mw-10 cr-pointer"
+                                        src="{{ $case->getLetterOfAppointmentIconText() }}"
+                                        alt="pdf" height="50px"
+                                        onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
+                                    />
+                                    <h4
+                                        class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
+                                        onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
+                                    >
+                                        Letter Of Appointment
+                                    </h4>
                                 @else
-                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
-                                    <x-icons.letter-file></x-icons.letter-file>
-                                   
-                                </span>
-                                <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Letter Of
-                                    Appointment</h4>
+                                    <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
+                                        <x-icons.letter-file></x-icons.letter-file>
+                                    </span>
+                                    <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Letter OfAppointment</h4>
                                 @endif
                             </div>
                         </div>
@@ -124,67 +123,65 @@
                                     <h4 class="info-title">Amount Paid:</h4>
                                     <h4>{!! $case->getAmountPaid() !!}</h4>
                                 </div>
-                            </div>    
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <p class="section-header">APPLICATION FORMS</p>
-                            <div class="row mt-n2">
-                                @if(!empty($case->application_forms))
-                                    @php
-                                        $applicantion_forms_array = explode(',', $case->application_forms);
-                                    @endphp
-                                    @foreach($applicantion_forms_array as $key => $value)
-                                    @php 
-                                        $new_applicantion_forms_array = explode(':', $applicantion_forms_array[$key]);
-                                    @endphp
-                                    <div class="col-md-1 my-2">
-                                        <span>
-                                            <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $new_applicantion_forms_array[1]]) }}';"
-                                                class="max-h-30px mr-3 doc-cursor-pointer w--200"
-                                                src="{{ $case->getApplicationFormIconText($new_applicantion_forms_array[1]) }}"
-                                                title="Download {{ $new_applicantion_forms_array[0] }} Document" />
-                                        </span>
-                                    </div>
+                            @if (!empty($case->application_forms))
+                                <div class="row">
+                                    @foreach($case->getApplicationForms() as $key => $value)
+                                        @php
+                                            $form = getApplicationFormObject($value);
+                                        @endphp
+                                        <div class="col-md-12">
+                                            <div class="d-flex mb-5">
+                                                <img
+                                                    onclick="window.location.href='{{ route('applicant.download_form_doc', ['document' => $form->file]) }}';"
+                                                    class="mw-10 cr-pointer"
+                                                    src="{{ $case->getApplicationFormIconText($form->file) }}"
+                                                    title="Download {{ $form->name }} Document"
+                                                />
+                                                <span class="py-5 mx-5 text-hover-primary cr-pointer">{{ $form->name }}</span>
+                                            </div>
+                                        </div>
                                     @endforeach
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
-                    {{-- @foreach($documents as $document) --}}
                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                    @php
-                    $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
-                    @endphp
-                    <div class="row">
-                        <div class="col-md-6 my-5" key={item[0]}>
-                            <div class="d-flex py-3 px-3">
-                                @if(!empty($document))
-                                <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf"
-                                    height="50px"
-                                    onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';" />
-                                <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
-                                    onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
-                                    {{ $checklistGroup->name }}</h4>
-                                @else
-                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
-                                    <x-icons.letter-file></x-icons.letter-file>
-                                </span>
-                                <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">
-                                    {{ $checklistGroup->name }}</h4>
-                                @endif
+                        @php
+                            $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                        @endphp
+                        <div class="row">
+                            <div class="col-md-6 my-5" key={item[0]}>
+                                <div class="d-flex py-3 px-3">
+                                    @if(!empty($document))
+                                    <img class="mw-10 cr-pointer" src="{{ $document->getIconText() }}" alt="pdf"
+                                        height="50px"
+                                        onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';" />
+                                    <h4 class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
+                                        onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
+                                        {{ $checklistGroup->name }}</h4>
+                                    @else
+                                    <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
+                                        <x-icons.letter-file></x-icons.letter-file>
+                                    </span>
+                                    <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">
+                                        {{ $checklistGroup->name }}</h4>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4 class="info-title info-title-margin">
+                                    Additional Information:
+                                </h4>
+                                <h4 class="info-title-description">
+                                    @if(!empty($document->additional_info)) {!! nl2br($document->additional_info) !!} @else ... @endif
+                                </h4>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <h4 class="info-title info-title-margin">
-                                Additional Information:
-                            </h4>
-                            <h4 class="info-title-description">@if(!empty($document->additional_info)) {!!
-                                nl2br($document->additional_info) !!} @else ... @endif</h4>
-                        </div>
-
-                    </div>
-
                     @endforeach
                     <form class="form" id="kt_form">
                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />

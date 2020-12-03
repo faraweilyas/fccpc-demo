@@ -442,9 +442,9 @@ class ApplicationController extends Controller
             if (!empty($file)):
                 $extension    = $file->getClientOriginalExtension();
                 $newFileName  = \SerialNumber::randomFileName($extension);
-                $path         = $file->storeAs('public/application_forms', $newFileName); 
+                $path         = $file->storeAs('public/application_forms', $newFileName);
                 $file_array[] = $key.':'.$newFileName;
-            endif;  
+            endif;
         endforeach;
 
         $guest->case->saveApplicationForms(

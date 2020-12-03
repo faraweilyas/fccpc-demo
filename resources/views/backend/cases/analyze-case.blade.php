@@ -128,43 +128,47 @@
                     <div class="row py-5">
                         <div class="col-md-3">
                             <p class="text_dark_blue"><b>CONTACT REP INFO:</b></p>
-                            <span>{!! $case->getApplicantName() !!}<br />
+                            <span>
+                                {!! $case->getApplicantName() !!}<br />
                                 {!! $case->applicant_email !!}<br />
                                 {!! $case->applicant_phone_number !!}
                             </span>
                         </div>
-                        <div class="col-md-3">
-                            <p class="text_dark_blue"><b>APPLICATION FORMS</b></p>
-                             @if(!empty($case->application_forms))
-                                    @php
-                                        $applicantion_forms_array = explode(',', $case->application_forms);
-                                    @endphp
-                                    <div class="row">
-                                        @foreach($applicantion_forms_array as $key => $value)
-                                            @php 
-                                                $new_applicantion_forms_array = explode(':', $applicantion_forms_array[$key]);
-                                            @endphp
-                                            <div class="col">
-                                                <span>
-                                                    <img onclick="window.location.href = '{{ route('applicant.download_form_doc', ['document' => $new_applicantion_forms_array[1]]) }}';"
-                                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                                        src="{{ $case->getApplicationFormIconText($new_applicantion_forms_array[1]) }}"
-                                                        title="Download {{ $new_applicantion_forms_array[0] }} Document" />
-                                                </span>
+                        <div class="col-md-4">
+                            <p class="text_dark_blue"><b>APPLICATION FORMS:</b></p>
+                            @if (!empty($case->application_forms))
+                                <div class="row">
+                                    @foreach($case->getApplicationForms() as $key => $value)
+                                        @php
+                                            $form = getApplicationFormObject($value);
+                                        @endphp
+                                        <div class="col-md-12">
+                                            <div class="d-flex">
+                                                <img
+                                                    onclick="window.location.href='{{ route('applicant.download_form_doc', ['document' => $form->file]) }}';"
+                                                    class="mxw-15 cr-pointer"
+                                                    src="{{ $case->getApplicationFormIconText($form->file) }}"
+                                                    title="Download {{ $form->name }} Document"
+                                                />
+                                                <span class="py-5 mx-5 text-hover-primary cr-pointer">{{ $form->name }}</span>
                                             </div>
-                                        @endforeach
-                                    </div>
-                                @endif
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @endif
                         </div>
-                        <div class="col-md-3 text-right">
+                        <div class="col-md-2 text-right">
                             @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
-                            <button class="btn btn-info-sm my-5" data-toggle="modal"
-                                data-target="#assignAnalyzeCaseModal">Assign</button>
+                                <button class="btn btn-info-sm my-5" data-toggle="modal" data-target="#assignAnalyzeCaseModal">Assign</button>
                             @endif
                         </div>
                         <div class="col-md-3">
-                            <button class="btn btn-success-sm my-5"
-                                onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';">View Documents Submitted</button>
+                            <button
+                                class="btn btn-success-sm my-5"
+                                onclick="window.location.href = '{{ route('cases.analyze-documents', ['case' => $case->id]) }}';"
+                            >
+                                View Documents Submitted
+                            </button>
                         </div>
                     </div>
                 </div>
