@@ -164,7 +164,7 @@ class AppHelper
         "UNASSIGN"               => "danger",
         "ONHOLD"                 => "warning",
         "DEFRESPONSE"            => "success",
-        "REQUEST"                => "primary",
+        "REQUEST"                => "warning",
         "REQUEST_APPROVED"       => "success",
         "REQUEST_REJECTED"       => "danger",
     ];

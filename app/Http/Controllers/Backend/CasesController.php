@@ -459,7 +459,7 @@ class CasesController extends Controller
     {
         $status       = \AppHelper::value('recommendation_types', request('status'), 'strtolower');
         $status_type  = ($status == 'approved') ? 'success' : 'error';
-        $comment      = request('comment');
+        $comment      = empty(request('comment')) ? NULL : request('comment');
         $request_type = ($status == 'approved') ? 'request_approved' : 'request_rejected';
 
         $active_case_handler    = $case->active_handlers->first()->case_handler;
@@ -476,7 +476,7 @@ class CasesController extends Controller
          // Notify supervisor
         $supervisor->notify(new CaseActionNotifier(
             $request_type,
-            "{$case_handler->getFullName()} requested has been {$status}.",
+            "{$case_handler->getFullName()} request has been {$status}.",
             $case->id
         ));
 

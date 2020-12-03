@@ -98,6 +98,49 @@ class Cases extends Model
         return TRUE;
     }
 
+    public function checkApprovalRejection() : bool
+    {
+        if ($this->isApprovalRejected())
+            return TRUE;
+
+        return !$this->isRecommendationIssued();
+    }
+
+    public function checkApprovalApproved() : bool
+    {
+        if ($this->isApprovalApproved())
+            return TRUE;
+
+        return !$this->isRecommendationIssued();
+    }
+
+    public function isApprovalRejected() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return ($active_handler->case_handler->approval_status == 'rejected') ? true : false;
+    }
+
+    public function isApprovalApproved() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return ($active_handler->case_handler->approval_status == 'approved') ? true : false;
+    }
+
+    public function checkApprovalStatus() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return (!empty($active_handler->case_handler->approval_status)) ? true : false;
+    }
+
     public function getAmountPaid()
     {
         return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '...';

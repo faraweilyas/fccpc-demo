@@ -31,6 +31,7 @@
         @php
             $approvedIcon       = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
             $recommendationIcon = ($case->isRecommendationIssued())   ? 'Position-square-white.svg' : 'Position-square.svg';
+            $approvalIcon       = ($case->isApprovalApproved())   ? 'Position-square-white.svg' : 'Position-square.svg';
         @endphp
         <div class="row px-3">
             <div class="tab-custom">
@@ -52,9 +53,9 @@
                         <span>Duration: 10 days</span>
                     </a>
                 </div>
-                <div class="tab-link">
-                    <img src="{{ pc_asset(BE_IMAGE.'svg/Position-square.svg') }}" alt="Position-square">
-                    <a class="nav-link active" href="#">Publication
+                <div class="tab-link @if ($case->isApprovalApproved()) active @endif">
+                    <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvalIcon) }}" alt="Position-square">
+                    <a class="nav-link @if($case->isApprovalApproved()) text-white @else active @endif" href="#">Publication
                         <span>Duration: 10 days</span>
                     </a>
                 </div>
@@ -65,13 +66,13 @@
             <div class="col-md-12">
                 <div class="card-custom">
                     @if($case->isCaseOnHold())
-                    <div class="ribbon ribbon-clip ribbon-left">
-                        <div class="ribbon-target" style="top: 15px;">
-                            <span class="ribbon-inner bg-warning"></span>On Hold</div>
-                    </div>
+                        <div class="ribbon ribbon-clip ribbon-left">
+                            <div class="ribbon-target" style="top: 15px;">
+                                <span class="ribbon-inner bg-warning"></span>On Hold
+                            </div>
+                        </div>
                     @endif
                     <h5 class="text_dark_blue">Case Information</h5>
-
                     <div class="row py-5">
                         <div class="col-md-3">
                             <p><b>SUBJECT:</b></p>
@@ -182,7 +183,7 @@
             </div>
         </div>
         @if ($case->isCaseChecklistsApproved())
-            @if (!in_array(Auth::user()->account_type, ['SP']) && !$case->isRecommendationIssued())
+            @if (!in_array(Auth::user()->account_type, ['SP']) && $case->checkApprovalRejection())
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-custom">
@@ -230,6 +231,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-custom">
+                                @if ($case->isApprovalRejected())
+                                    <div class="ribbon ribbon-clip ribbon-left">
+                                        <div class="ribbon-target" style="top: 15px;">
+                                            <span class="ribbon-inner bg-danger"></span>Rejected
+                                        </div>
+                                    </div>
+                                @endif
+                                @if ($case->isApprovalApproved())
+                                    <div class="ribbon ribbon-clip ribbon-left">
+                                        <div class="ribbon-target" style="top: 15px;">
+                                            <span class="ribbon-inner bg-success"></span>Approved
+                                        </div>
+                                    </div>
+                                @endif
                                 <h5>Analysis Document & Recommendation</h5>
                                 <div class="row py-5">
                                     <div class="col-md-6 my-5">
@@ -254,27 +269,29 @@
                                         </p>
                                     </div>
                                 </div>
-                                <form action="{{ route('cases.resolve-recommendation', ['case' => $case->id]) }}" method="POST">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-md-6 my-5">
-                                            <p class="mb-5"><b>RECOMMENDATION COMMENT:</b></p>
-                                            <textarea class="form-control form-control-teaxtarea"
-                                                name="comment" id="" cols="30" rows="10" required>{!! nl2br($case->getApprovalComment()) !!}</textarea>
-                                            <p class="text-danger mt-5">
-                                                @error('recommendation')
-                                                    {{ $message }}
-                                                @enderror
-                                            </p>
-                                            <br>
-                                            <div class="text-right">
-                                                <input type="submit" class="btn btn-success-sm my-5" name="status" value="Approve" />
-                                                <input type="submit" class="btn btn-danger-sm my-5" name="status" value="Reject" />
+                                @if (!$case->checkApprovalStatus())
+                                    <form action="{{ route('cases.resolve-recommendation', ['case' => $case->id]) }}" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-6 my-5">
+                                                <p class="mb-5"><b>COMMENT:</b></p>
+                                                <textarea class="form-control form-control-teaxtarea"
+                                                    name="comment" id="" cols="30" rows="10"></textarea>
+                                                <p class="text-danger mt-5">
+                                                    @error('recommendation')
+                                                        {{ $message }}
+                                                    @enderror
+                                                </p>
+                                                <br>
+                                                <div class="text-right">
+                                                    <input type="submit" class="btn btn-success-sm my-5" name="status" value="Approve" />
+                                                    <input type="submit" class="btn btn-danger-sm my-5" name="status" value="Reject" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>  
+                                    </form>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 @endif
@@ -282,6 +299,20 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-custom">
+                                @if ($case->isApprovalRejected())
+                                    <div class="ribbon ribbon-clip ribbon-left">
+                                        <div class="ribbon-target" style="top: 15px;">
+                                            <span class="ribbon-inner bg-danger"></span>Rejected
+                                        </div>
+                                    </div>
+                                @endif
+                                @if ($case->isApprovalApproved())
+                                    <div class="ribbon ribbon-clip ribbon-left">
+                                        <div class="ribbon-target" style="top: 15px;">
+                                            <span class="ribbon-inner bg-success"></span>Approved
+                                        </div>
+                                    </div>
+                                @endif
                                 <h5>Analysis Document & Recommendation</h5>
                                 <div class="row py-5">
                                     <div class="col-md-6 my-5">
@@ -306,16 +337,24 @@
                                         </p>
                                     </div>
                                 </div>
-                                @if (!$case->isApprovalRequested())
-                                    <div class="row">
+                                <div class="row">
+                                    @if ($case->checkApprovalStatus())
+                                        <div class="col-md-6">
+                                            <p class="mb-5"><b>COMMENT:</b></p>
+                                            <p>
+                                                {!! nl2br($case->getApprovalComment() ) !!}
+                                            </p>
+                                        </div>
+                                    @endif
+                                    @if (!$case->isApprovalRequested())
                                         <div class="col-md-12 text-right">
                                             <form action="{{ route('cases.request-approval', ['case' => $case->id]) }}" method="POST">
                                                 @csrf
                                                 <button type="submit" class="btn btn-success-sm my-5">Request Approval</button>
                                             </form>
                                         </div>
-                                    </div>
-                                @endif
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

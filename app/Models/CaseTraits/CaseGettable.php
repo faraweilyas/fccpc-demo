@@ -150,7 +150,7 @@ trait CaseGettable
         if (!$this->active_handlers->first())
             return '';
 
-        return $this->active_handlers->first()->case_handler->approval_comment;
+        return $this->active_handlers->first()->case_handler->approval_comment ?? '...';
     }
 
     /**

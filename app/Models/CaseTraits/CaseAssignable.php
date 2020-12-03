@@ -97,7 +97,10 @@ trait CaseAssignable
             $caseHandler->id    => [
                 'analysis_document'        => $file_name,
                 'recommendation_issued_at' => now(),
-                'recommendation'           => $recommendation
+                'recommendation'           => $recommendation,
+                'approval_requested_at'    => NULL,
+                'approval_status'          => NULL,
+                'approval_comment'         => NULL,
             ]
         ]);
     }
