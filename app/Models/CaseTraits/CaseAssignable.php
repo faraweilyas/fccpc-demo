@@ -55,6 +55,21 @@ trait CaseAssignable
     }
 
     /**
+     * A case handler send approval request to supervisor
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function issueApprovalRequest(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'approval_requested_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler issues recommendation
      *
      * @param  User $caseHandler

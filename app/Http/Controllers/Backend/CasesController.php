@@ -420,6 +420,37 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles requesting of approval
+     *
+     * @return json
+     */
+    public function requestApproval(Cases $case)
+    {
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+
+        // Notify case handler
+        $case_handler->notify(new CaseActionNotifier(
+            'request',
+            'Your approval request has been sent.',
+            $case->id
+        ));
+
+         // Notify supervisor
+        $supervisor->notify(new CaseActionNotifier(
+            'request',
+            "{$case_handler->getFullName()} has requested approval.",
+            $case->id
+        ));
+
+        $handler = User::find($case->active_handlers->first()->id);
+        $case->issueApprovalRequest($handler);
+
+        return redirect()->back()->with('success', 'Approval requested!');
+    }
+
+    /**
      * Handles the case analysis case documents page route.
      *
      * @return void

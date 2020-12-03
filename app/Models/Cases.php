@@ -70,6 +70,15 @@ class Cases extends Model
         return empty($this->getDefficiencyDate()) ? false : true;
     }
 
+    public function isApprovalRequested() : bool
+    {
+         $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return is_null($active_handler->case_handler->approval_requested_at) ? false : true;
+    }
+
     public function isCaseChecklistsApproved() : bool
     {
         return empty($this->getChecklistApprovedDate()) ? false : true;
