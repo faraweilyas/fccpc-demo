@@ -142,6 +142,11 @@
                                                                 placeholder="Enter party name" name="party[]">
                                                             <div class="d-md-none mb-2"></div>
                                                         </div>
+                                                        <div class="col-lg-5">
+                                                            <input type="text" class="form-control"
+                                                                placeholder="Enter party name" name="party[]">
+                                                            <div class="d-md-none mb-2"></div>
+                                                        </div>
                                                         @endforelse
                                                     </div>
                                                 </div>
@@ -274,7 +279,7 @@
                                     </div>
                                     <div
                                         id="application-documentation-section"
-                                        class=""
+                                        class="pb-5"
                                         data-wizard-type="step-content"
                                         data-form='ApplicationDocumentation'
                                     >

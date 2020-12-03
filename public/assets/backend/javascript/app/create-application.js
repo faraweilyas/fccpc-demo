@@ -435,7 +435,7 @@ $(document).ready(function()
         if (amount_paid == null)
         {
             amount_paid = '';
-        } 
+        }
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
@@ -459,7 +459,7 @@ $(document).ready(function()
                 $("#saving-img").addClass('hide');
                 if (result.responseType !== 'error'){
                     window.location.replace(review_route);
-                }   
+                }
             }
         );
         return;
@@ -498,7 +498,7 @@ $(document).ready(function()
         if (amount_paid == null)
         {
             amount_paid = '';
-        } 
+        }
 
         formData.append('_token', $("#token").val());
         formData.append('file', file);
@@ -522,7 +522,7 @@ $(document).ready(function()
                 $("#saving-img").addClass('hide');
                 if (result.responseType !== 'error'){
                     window.location.replace(review_route);
-                }   
+                }
             }
         );
         return;
@@ -779,7 +779,7 @@ function saveChecklistDocument(action, currentForm)
     if (amount_paid == null)
     {
         amount_paid = '';
-    } 
+    }
 
     formData.append('_token', $("#token").val());
     formData.append('file', file);
@@ -834,7 +834,7 @@ function saveDeficientChecklistDocument(action, currentForm)
     if (amount_paid == null)
     {
         amount_paid = '';
-    } 
+    }
 
     formData.append('_token', $("#token").val());
     formData.append('file', file);

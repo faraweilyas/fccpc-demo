@@ -13,11 +13,6 @@ body {
     width: 200%;
 }
 
-.download-text
-{
-    line-height: 1.8rem;
-}
-
 .btn-danger-sm {
     background: #F64E60 !important;
     border-color: #F64E60 !important;

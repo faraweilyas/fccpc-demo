@@ -8,13 +8,13 @@
                     <h2 class="home__headers">Resources & Application Forms</h2>
                     <div class="custom-bar"></div>
                     <div class="row">
-                        <div class="col-xl-4 mb__20">
+                        <div class="col-xl-12 mb__20">
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
                                         <div class="card-label">
-                                            <div class="font-weight-bolder">Download Form 1</div>
-                                            <div class="font-size-sm text-muted mt-2">Notice of Merger & Guidance Notes</div>
+                                            <div class="font-weight-bolder fs__2rem">Download Form 1</div>
+                                            <div class="font-size-sm text-muted mt-2 fs__2rem">Notice of Merger & Guidance Notes</div>
                                         </div>
                                     </div>
                                 </div>
@@ -25,18 +25,18 @@
                                         </a>
                                     </div>
                                     <div class="mt-10 mb-5">
-                                        <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                        <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 mb__20">
+                        <div class="col-xl-12 mb__20">
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
                                         <div class="card-label">
-                                            <div class="font-weight-bolder">Download Form 2</div>
-                                            <div class="font-size-sm text-muted mt-2">Notice of Merger - Simplified Procedure</div>
+                                            <div class="font-weight-bolder fs__2rem">Download Form 2</div>
+                                            <div class="font-size-sm text-muted mt-2 fs__2rem">Notice of Merger - Simplified Procedure</div>
                                         </div>
                                     </div>
                                 </div>
@@ -47,18 +47,18 @@
                                         </a>
                                     </div>
                                     <div class="mt-10 mb-5">
-                                        <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                        <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-4 mb__20">
+                        <div class="col-xl-12 mb__20">
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
                                         <div class="card-label">
-                                            <div class="font-weight-bolder">Download Form 4</div>
-                                            <div class="font-size-sm text-muted mt-2">Application for Negative Clearance</div>
+                                            <div class="font-weight-bolder fs__2rem">Download Form 4</div>
+                                            <div class="font-size-sm text-muted mt-2 fs__2rem">Application for Negative Clearance</div>
                                         </div>
                                     </div>
                                 </div>
@@ -69,7 +69,7 @@
                                         </a>
                                     </div>
                                     <div class="mt-10 mb-5">
-                                        <p class="download-text">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
+                                        <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>
                             </div>

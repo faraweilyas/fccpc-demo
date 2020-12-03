@@ -11,20 +11,20 @@ body {
     background: white;
 }
 
+.fs__2rem
+{
+    font-size: 2rem !important;
+}
+
 .download__btn
 {
-    width: 30%;
+    width: 20%;
     transition: all .5s;
 }
 
 .download__btn:hover
 {
-    width: 35%;
-}
-
-.download-text
-{
-    line-height: 1.8rem;
+    width: 25%;
 }
 
 .mb__20
@@ -98,8 +98,8 @@ body {
     .header-banner{
 
         flex-direction: column !important;
-     
-    }    
+
+    }
 
     .faq-content-header {
 
