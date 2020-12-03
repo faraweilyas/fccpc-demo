@@ -147,6 +147,7 @@ class AppHelper
         "UNASSIGN"      => "Case Unassigned",
         "ONHOLD"        => "Case on Hold",
         "DEFRESPONSE"   => "Response to Defincency",
+        "REQUEST"       => "Approval Requested",
     ];
 
     protected $notification_types_styles = [
@@ -156,6 +157,7 @@ class AppHelper
         "UNASSIGN"      => "danger",
         "ONHOLD"        => "warning",
         "DEFRESPONSE"   => "success",
+        "REQUEST"       => "primary",
     ];
 
     protected $application_forms = [
