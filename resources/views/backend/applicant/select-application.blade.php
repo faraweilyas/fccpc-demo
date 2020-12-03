@@ -22,6 +22,13 @@
         <div class="d-flex flex-column-fluid">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-primary alert-warning fade show" role="alert">
+                            <div class="alert-text text-dark">View resources page!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('reg') }}">
                             @php
