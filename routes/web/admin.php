@@ -229,26 +229,26 @@ Route::prefix('cases')
     {
         Route::get('search', 'CasesController@searchCases')->name('search');
 
-        Route::get('/new', 'CasesController@unassignedCases')->name(
+        Route::get('new', 'CasesController@unassignedCases')->name(
             'unassigned'
         );
 
         Route::get(
-            '/assigned/{handler?}',
+            'assigned/{handler?}',
             'CasesController@assignedCases'
         )->name('assigned');
 
-        Route::get('/dropped/{handler}', 'CasesController@droppedCases')->name(
+        Route::get('dropped/{handler}', 'CasesController@droppedCases')->name(
             'dropped'
         );
 
         Route::get(
-            '/ongoing/{handler?}',
+            'ongoing/{handler?}',
             'CasesController@workingonCases'
         )->name('working_on');
 
         Route::get(
-            '/approved',
+            'approved/{handler?}',
             'CasesController@approvedCases'
         )->name('approved');
 
@@ -258,7 +258,7 @@ Route::prefix('cases')
         )->name('on-hold');
 
         Route::get(
-            '/archived',
+            'archived',
             'CasesController@archivedCases'
         )->name('archived');
 

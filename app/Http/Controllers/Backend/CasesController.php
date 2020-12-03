@@ -177,12 +177,17 @@ class CasesController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function approvedCases()
+    public function approvedCases(User $handler)
     {
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        $cases          = (new Cases())->assignedCases();
+        if ($handler->status):
+            $cases = $handler->approved_cases(TRUE)->get();
+        else:
+            $cases = \Auth::user()->approved_cases()->get();
+        endif;
+
         $caseHandlers   = (new User())->caseHandlers();
 
         $title          = 'Approved Cases | ' . APP_NAME;

@@ -28,13 +28,15 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-separate table-head-custom table-checkable"
-                            id="unassigned_cases_datatable">
+                        <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
                                     <th>Submitted On</th>
                                     <th>Reference NO</th>
                                     <th>Subject</th>
+                                    @if (in_array(\Auth::user()->account_type, ['SP']))
+                                    <th>Case Handler</th>
+                                    @endif
                                     <th class="text-center">Category</th>
                                     <th class="text-center">Type</th>
                                     <th class="text-center">Action(s)</th>
@@ -43,9 +45,11 @@
                             <tbody>
                                 @foreach($cases as $case)
                                 <tr>
-                                    <td>
-                                        <div class="font-weight-bold text-success mb-0">
-                                            {!! $case->getSubmittedAt() !!}
+                                    <td data-sort='YYYYMMDD'>
+                                        <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
+                                            data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $case->
+                                            getSubmittedAt('customdate') !!} />
+                                            {!! $case->getSubmittedAt('customdate') !!}
                                         </div>
                                     </td>
                                     <td>
@@ -56,6 +60,11 @@
                                     <td class="case-subject">
                                         {{ $case->getSubject() }}
                                     </td>
+                                    @if (in_array(\Auth::user()->account_type, ['SP']))
+                                    <td>
+                                        {{ $case->active_handlers->first()->getFullName() }}
+                                    </td>
+                                    @endif
                                     <td class="text-center">
                                         {!! $case->getCategoryHtml() !!}
                                     </td>
@@ -63,16 +72,23 @@
                                         {!! $case->getTypeHtml() !!}
                                     </td>
                                     <td nowrap="nowrap" class="text-center">
+                                        @if(in_array(\Auth::user()->account_type, ['SP']))
                                         <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Case Info"
                                             data-toggle="modal" data-target="#viewCaseModal">
                                             <i class="flaticon-eye"></i> View
                                         </a>
-                                        <a href="#" class="btn btn-sm btn-light-info mr-3" title="Assign Case Handler"
-                                            data-toggle="modal" data-target="#assignCaseModal">
-                                            <i class="flaticon-user-add"></i> Assign
+                                        @else
+                                        <a href="{{ route('cases.analyze', ['case' => $case->id]) }}"
+                                            class="btn btn-sm btn-light-warning mr-3" title="Analyse Case">
+                                            <i class="flaticon-eye"></i> View
                                         </a>
+                                        @endif
                                         <div class="hide">
                                             {{-- Case --}}
+                                            <span class="case_id">{{ $case->id }}</span>
+                                            <span
+                                                class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span>
+                                            <span class="case_handler_id">{{ $case->active_handlers->first()->id }}</span>
                                             <span class="reference_no">{{ $case->getRefNO() }}</span>
                                             <span class="subject">{{ $case->subject }}</span>
                                             <span class="category">{!! $case->getCategoryHtml() !!}</span>
@@ -101,7 +117,7 @@
             </div>
         </div>
     </div>
-    <!-- Modals -->
+
     @include("layouts.modals.case")
     @include("layouts.modals.case-handler", [
         'caseHandlers' => $caseHandlers

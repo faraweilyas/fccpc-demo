@@ -144,7 +144,7 @@ trait UserGettable
                 ->get()->toArray();
         $faq   = Faq::where('question', 'LIKE', '%'.$search.'%')
                 ->get()->toArray();
-        
+
         return array_merge($users, $faq);
     }
 
@@ -178,7 +178,7 @@ trait UserGettable
     }
 
     /**
-     * Gets deficient cases 
+     * Gets deficient cases
      *
      * @return Collection
      */
@@ -202,6 +202,35 @@ trait UserGettable
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
                     ->where('defficiency_issued_at', '!=', null)
+                    ->latest();
+        endif;
+    }
+
+    /**
+     * Gets approved cases
+     *
+     * @return Collection
+     */
+    public function approved_cases($handler = FALSE)
+    {
+        if ($handler):
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
+                    ->latest();
+        endif;
+        if (in_array(auth()->user()->account_type, ['SP'])):
+            return $this->cases_assigned_by()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
+                    ->latest();
+        else:
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
                     ->latest();
         endif;
     }
