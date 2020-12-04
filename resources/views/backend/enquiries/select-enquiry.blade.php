@@ -54,7 +54,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 text-dark">PRE NOTIFICATION Enquiry</div>
                                     <span class="font-weight-bold font-size-lg mt-1">
                                         <br />
-                                        <small class="text-black">Click here to make  pre-notification enquiries</small>
+                                        <small class="text-black">Click here to make pre-notification enquiries</small>
                                     </span>
                                 </div>
                             </div>
