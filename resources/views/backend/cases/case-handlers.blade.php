@@ -21,7 +21,7 @@
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="d-flex flex-column-fluid">
             <div class="container">
-                <div class="card card-custom">
+                <div class="card card-custom" style="padding: 0;">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
                             <h3 class="card-label">Case Handlers</h3>
@@ -47,7 +47,9 @@
                                 @foreach($handlers as $handler)
                                 <tr>
                                     <td>
-                                        <b>{{ $handler->getFullName() }}</b>
+                                        <a href="{{ route('dashboard.profile', ['user' => $handler->id]) }}">
+                                            <b>{{ $handler->getFullName() }}</b>
+                                        </a>
                                     </td>
                                     <td class="text-center">
                                         <a
