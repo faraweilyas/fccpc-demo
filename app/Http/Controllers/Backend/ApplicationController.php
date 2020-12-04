@@ -415,32 +415,48 @@ class ApplicationController extends Controller
      */
     public function saveApplicationDocumentation(Guest $guest)
     {
-        if (!request()->hasFile('files'))
+       $previous_application_forms_name = request('previous_application_forms_name') ?? '';
+
+        if (!request()->hasFile('files')):
             $this->sendResponse('No file has been uploaded.', 'warning', []);
+        endif;
 
-        // $previous_application_forms_name = request('previous_application_forms_name') ?? '';
-        // if ($guest->case->getApplicationForms()):
-        //     foreach($guest->case->getApplicationForms() as $key => $form):
-        //         list($key, $file) = explode(':', $form);
-        //         $file = storage_path("app/public/application_forms/{$file}");
-        //         if (checkFile($file)) unlink($file);
-        //     endforeach;
-        // endif;
+        $previous_application_forms = Cases::where('id', $guest->case->id)
+                                            ->where('application_forms', $previous_application_forms_name)
+                                            ->first();
 
-        $newForm = [];
+        if ($previous_application_forms):
+            if (Str::contains($previous_application_forms_name, ',')):
+                $previous_application_forms_name_array = explode(',', $previous_application_forms_name);
+                foreach($previous_application_forms_name_array as $key => $value):
+                    $new_value = explode(':', $value);
+                    unlink(
+                        storage_path('app/public/application_forms/'.$new_value[1])
+                    );
+                endforeach;
+            else:
+                $new_previous_application_forms_name = explode(':', $previous_application_forms_name);
+                unlink(
+                    storage_path('app/public/application_forms/'.$new_previous_application_forms_name[1])
+                );
+            endif;
+        endif;
+
         foreach (request('files') as $key => $file):
             if (!empty($file)):
-                $extension      = $file->getClientOriginalExtension();
-                $newFileName    = \SerialNumber::randomFileName($extension);
-                $path           = $file->storeAs('public/application_forms', $newFileName);
-                $newForm[]      = $key.':'.$newFileName;
+                $extension    = $file->getClientOriginalExtension();
+                $newFileName  = \SerialNumber::randomFileName($extension);
+                $path         = $file->storeAs('public/application_forms', $newFileName);
+                $file_array[] = $key.':'.$newFileName;
             endif;
         endforeach;
 
-        $newForm = implode(',', $newForm);
-        $guest->case->saveApplicationForms((object) [
-            'application_forms' => $guest->case->mergeApplicationForms($newForm),
-        ]);
+        $guest->case->saveApplicationForms(
+            (object) [
+                'application_forms' => implode(',', $file_array),
+            ]
+        );
+
         $this->sendResponse('Document has been saved.', 'success', []);
     }
 
