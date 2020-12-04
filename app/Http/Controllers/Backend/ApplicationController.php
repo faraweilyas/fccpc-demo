@@ -427,13 +427,15 @@ class ApplicationController extends Controller
             if (Str::contains($previous_application_forms_name, ',')):
                 $previous_application_forms_name_array = explode(',', $previous_application_forms_name);
                 foreach($previous_application_forms_name_array as $key => $value):
+                    $new_value = explode(':', $value);
                     unlink(
-                        storage_path('app/public/application_forms/'.$value)
+                        storage_path('app/public/application_forms/'.$new_value[1])
                     );
                 endforeach;
             else:
+                $new_previous_application_forms_name = explode(':', $previous_application_forms_name);
                 unlink(
-                    storage_path('app/public/application_forms/'.$previous_application_forms_name)
+                    storage_path('app/public/application_forms/'.$new_previous_application_forms_name[1])
                 );
             endif;
         endif;
@@ -464,7 +466,8 @@ class ApplicationController extends Controller
      */
     public function submit(Guest $guest)
     {
-        $case = $guest->case;
+        $case        = $guest->case;
+        $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
 
         if (
             is_null($case->subject) ||
@@ -506,6 +509,16 @@ class ApplicationController extends Controller
         } catch (\Exception $exception) {
             $message = $exception->getMessage();
         }
+
+        // foreach ($supervisors as $supervisor):
+        //      // Notify supervisor
+        //     $supervisor->notify(new CaseActionNotifier(
+        //         'newcase',
+        //         "{$case->applicant_fullname} has created a new application.",
+        //         $case->id
+        //     ));
+        // endforeach;
+
         $this->sendResponse('Application submitted.', 'success', $case);
     }
 

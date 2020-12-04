@@ -147,6 +147,7 @@ class AppHelper
 
     protected $notification_types = [
         "NEWUSER"                => "New User",
+        "NEWCASE"                => "New Case",
         "ASSIGN"                 => "New Case Assigned",
         "REASSIGN"               => "Case Reassigned",
         "UNASSIGN"               => "Case Unassigned",
@@ -159,6 +160,7 @@ class AppHelper
 
     protected $notification_types_styles = [
         "NEWUSER"                => "success",
+        "NEWCASE"                => "primary",
         "ASSIGN"                 => "secondary",
         "REASSIGN"               => "primary",
         "UNASSIGN"               => "danger",

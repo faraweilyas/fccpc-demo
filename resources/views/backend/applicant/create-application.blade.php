@@ -301,6 +301,7 @@
                                                             name="application_form_doc_{{ $key }}"
                                                             id="application_form_doc_{{ $key }}"
                                                             data-form="application_form_doc_name_{{ $key }}"
+                                                            style="width: 19%;"
                                                         />
                                                         <span class="btn btn--small btn--brand">Upload File</span>
                                                         @if (!empty($old_form = $formObjects[$key] ?? []))

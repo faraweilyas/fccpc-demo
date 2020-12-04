@@ -442,7 +442,7 @@ class CasesController extends Controller
             $case->id
         ));
 
-         // Notify supervisor
+        // Notify supervisor
         $supervisor->notify(new CaseActionNotifier(
             'request',
             "{$case_handler->getFullName()} has requested approval.",

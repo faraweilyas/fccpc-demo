@@ -180,7 +180,11 @@
                                 </div>
                                 <div class="col-md-6">
                                     <h4 class="info-title info-title-margin">Additional Information:</h4>
-                                    <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                    @if (!empty($document))
+                                        <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                    @else
+                                        <h4 class="info-title-description">...</h4>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
