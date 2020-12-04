@@ -35,7 +35,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 text-dark">General Enquiry</div>
                                     <span class="font-weight-bold font-size-lg mt-1">
                                         <br />
-                                        <small class="text-black">A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. Applications take 60 days</small>
+                                        <small class="text-black">Submit all enquiries about merger transactions here</small>
                                     </span>
                                 </div>
                             </div>
@@ -54,7 +54,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 text-dark">PRE NOTIFICATION Enquiry</div>
                                     <span class="font-weight-bold font-size-lg mt-1">
                                         <br />
-                                        <small class="text-black">A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. Applications take 60 days</small>
+                                        <small class="text-black">Click here to make  pre-notification enquiries</small>
                                     </span>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 text-dark">Complaint</div>
                                     <span class="font-weight-bold font-size-lg mt-1">
                                         <br />
-                                        <small class="text-black">A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. Applications take 60 days</small>
+                                        <small class="text-black">Click here to submit a complaint relating to a merger transaction</small>
                                     </span>
                                 </div>
                             </div>

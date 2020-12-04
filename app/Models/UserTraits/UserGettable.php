@@ -149,6 +149,22 @@ trait UserGettable
     }
 
     /**
+     * Gets all cases
+     *
+     * @return Collection
+     */
+    public function all_cases()
+    {
+        if (in_array(auth()->user()->account_type, ['SP'])):
+            return (new Cases)->submittedCases();
+        else:
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->latest();
+        endif;
+    }
+
+    /**
      * Gets cases on going
      *
      * @return HasRelationships

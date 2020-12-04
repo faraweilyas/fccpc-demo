@@ -80,7 +80,7 @@
                     <div class="col-lg-3 my-5">
                         <div class="dashboard-card">
                             <p>All Cases</p>
-                            <span>{{ $cases->submittedCases()->count() }}</span>
+                            <span>{{ \Auth::user()->all_cases()->count() }}</span>
                             <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                         </div>
                     </div>
