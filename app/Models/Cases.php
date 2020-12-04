@@ -492,6 +492,27 @@ class Cases extends Model
         return $formObjects;
     }
 
+    public function mergeApplicationForms(string $newForm) : string
+    {
+        list($newKey, $newFile)         = explode(':', $newForm);
+        $formatedApplicationforms       = $this->formatApplicationForms();
+        if (isset($formatedApplicationforms[$newKey])):
+            $newApplicationForms        = [];
+            foreach ($this->getApplicationForms() as $application_form)
+            {
+                list($key, $file)       = explode(':', $application_form);
+                $newApplicationForms[]  = ($key != $newKey) ? $application_form : $newForm;
+            }
+            $newApplicationForms        = implode(",", $newApplicationForms);
+        else:
+            $applicationForms           = empty($this->getApplicationForms())
+                                        ? [$newForm]
+                                        : array_merge($this->getApplicationForms(), [$newForm]);
+            $newApplicationForms        = implode(",", $applicationForms);
+        endif;
+        return $newApplicationForms;
+    }
+
     // ...
     public function getCaseStatus($textStyle='strtolower')
     {
