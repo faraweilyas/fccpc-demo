@@ -53,7 +53,7 @@
                                     {!! $item->getStatusHtml() !!}
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('dashboard.user_detail', ['user' => $item->id]) }}" class="btn btn-sm btn-light-warning mr-3" title="View User">
+                                    <a href="{{ route('dashboard.profile', ['user' => $item->id]) }}" class="btn btn-sm btn-light-warning mr-3" title="View User">
                                         <i class="flaticon-eye"></i> View
                                     </a>
                                     @if($item->status == 'active')
