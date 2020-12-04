@@ -18,6 +18,11 @@ body {
     background: #E9C46A !important;
 }
 
+.lightish-yellow-border
+{
+    border-color: #E9C46A !important;
+}
+
 .btn-danger-sm {
     background: #F64E60 !important;
     border-color: #F64E60 !important;

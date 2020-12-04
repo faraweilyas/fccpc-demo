@@ -23,8 +23,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="alert alert-primary alert-warning fade show" role="alert">
-                            <div class="alert-text text-dark">Note: Please complete an application form before you begin this process. <a href="{{ route('home.resources') }}" target="_blank">Click here</a> to visit the resource page and download the required form. </div>
+                        <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
+                            <div class="alert-text text-dark"><i class="la la-info text-dark"></i>Note: Please complete an application form before you begin this process. <a href="{{ route('home.resources') }}" target="_blank">Click here</a> to visit the resource page and download the required form. </div>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Domestic Merger</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <br />
-                                        <small class="text-black">A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. Applications take 60 days</small>
+                                        <small class="text-black">A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. <br />Applications take 60 days</small>
                                     </span>
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Foreign to Foreign Merger</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                         <br />
-                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. Application takes 60 days</small>
+                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. <br />Application takes 60 days</small>
                                     </span>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Expedited Merger</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         <br />
-                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. Application takes 15 days</small>
+                                        <small class="text-black">Domestic and Foreign to Foreign applications takes 15 working days.</small>
                                     </span>
                                 </div>
                             </div>
