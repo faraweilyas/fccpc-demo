@@ -28,20 +28,8 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case                       = Cases::find(29);
-        $explodedApplicationform    = $case->getApplicationForms();
-        $formatedApplicationforms   = $case->formatApplicationForms();
-
-        // form1:792a9cbc-1606907794.pdf,form2:792afbad-1606907794.pdf,form4:792b3cc3-1606907794.pdf
-        $newForm = "form1:1606907794-792a9cbc.pdf";
-
-        return [
-            'applicationforms'          => $case->application_forms,
-            'mergeApplicationForms'     => $case->mergeApplicationForms($newForm),
-            'explodedApplicationform'   => $explodedApplicationform,
-            'formatedApplicationforms'  => $formatedApplicationforms,
-        ];
-
+        $case           = Cases::find(29);
+        $user           = auth()->user();
         // $oldUser        = User::find(6);
         // $newUser        = User::find(11);
         // $supervisor     = User::find(5);
@@ -57,7 +45,6 @@ class ApplicationController extends Controller
         //     ));
         // }
 
-        $user = auth()->user();
         // $user->notifications[0]->markAsRead();
         // $user->notifications()->where('id', "fca8faa8-1557-490c-ba6b-9e48c339caba")->markAsRead();
 
