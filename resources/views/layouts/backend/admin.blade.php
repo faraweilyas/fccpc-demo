@@ -78,14 +78,6 @@
                                     <span class="menu-text">Ongoing Cases</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ route('cases.approved') }}" class="menu-link menu-toggle">
-                                    <i class="menu-bullet menu-bullet-line">
-                                        <span></span>
-                                    </i>
-                                    <span class="menu-text">Approved Cases</span>
-                                </a>
-                            </li>
                             @endif
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.on-hold') }}" class="menu-link menu-toggle">
@@ -93,6 +85,14 @@
                                         <span></span>
                                     </i>
                                     <span class="menu-text">Cases On Hold</span>
+                                </a>
+                            </li>
+                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                                <a href="{{ route('cases.approved') }}" class="menu-link menu-toggle">
+                                    <i class="menu-bullet menu-bullet-line">
+                                        <span></span>
+                                    </i>
+                                    <span class="menu-text">Approved Cases</span>
                                 </a>
                             </li>
                         </ul>

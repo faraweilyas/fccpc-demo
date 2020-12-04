@@ -49,24 +49,30 @@
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    <div class="row justify-content-end">
-                                        @if ($cases->count() > 0 || $case->isCaseOnHold())
-                                            <button
-                                                class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
-                                                onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
-                                            >
-                                                Continue Document Approval
-                                            </button>
-                                        @else
-                                            <button
-                                                class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
-                                                data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
-                                                data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
-                                            >
-                                                Start Document Approval
-                                            </button>
-                                        @endif
-                                    </div>
+                                    @if (!$case->isCaseChecklistsApproved())
+                                        <div class="row justify-content-end">
+                                            @if ($cases->count() > 0 || $case->isCaseOnHold())
+                                                @if ($x == 1)
+                                                    <button
+                                                        class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
+                                                        onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
+                                                    >
+                                                        Continue Document Approval
+                                                    </button>
+                                                @endif
+                                            @else
+                                                @if ($x == 1)
+                                                    <button
+                                                        class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
+                                                        data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
+                                                        data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
+                                                    >
+                                                        Start Document Approval
+                                                    </button>
+                                                @endif
+                                            @endif
+                                        </div>
+                                    @endif
                                     <div class="row">
                                         @foreach ($documents as $document)
                                             @if (!empty($document->group_id))
