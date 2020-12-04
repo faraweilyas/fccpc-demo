@@ -160,6 +160,7 @@ trait UserGettable
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
                 ->where('defficiency_issued_at', null)
+                ->where('approval_status', null)
                 ->latest();
         endif;
         if (in_array(auth()->user()->account_type, ['SP'])):
@@ -167,12 +168,14 @@ trait UserGettable
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
                 ->where('defficiency_issued_at', null)
+                ->where('approval_status', null)
                 ->latest();
         else:
             return $this->cases_assigned_to()
                 ->where('dropped_at', null)
                 ->where('workingon_at', '!=', null)
                 ->where('defficiency_issued_at', null)
+                ->where('approval_status', null)
                 ->latest();
         endif;
     }
