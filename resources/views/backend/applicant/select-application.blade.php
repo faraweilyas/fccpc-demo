@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-primary alert-warning fade show" role="alert">
-                            <div class="alert-text text-dark">View resources page!</div>
+                            <div class="alert-text text-dark">Note: Please complete an application form before you begin this process. <a href="{{ route('home.resources') }}" target="_blank">Click here</a> to visit the resource page and download the required form. </div>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
-                                        <div class="card-label">
+                                        <div class="card-label p__20">
                                             <div class="font-weight-bolder fs__2rem">Download Form 1</div>
                                             <div class="font-size-sm text-muted mt-2 fs__2rem">Notice of Merger & Guidance Notes</div>
                                         </div>
@@ -24,7 +24,7 @@
                                             <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="download__btn" />
                                         </a>
                                     </div>
-                                    <div class="mt-10 mb-5">
+                                    <div class="mt-10 mb-5 p__20">
                                         <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>
@@ -34,7 +34,7 @@
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
-                                        <div class="card-label">
+                                        <div class="card-label p__20">
                                             <div class="font-weight-bolder fs__2rem">Download Form 2</div>
                                             <div class="font-size-sm text-muted mt-2 fs__2rem">Notice of Merger - Simplified Procedure</div>
                                         </div>
@@ -46,7 +46,7 @@
                                             <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="download__btn" />
                                         </a>
                                     </div>
-                                    <div class="mt-10 mb-5">
+                                    <div class="mt-10 mb-5 p__20">
                                         <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                             <div class="card card-custom gutter-b card-stretch shadow">
                                 <div class="card-header border-0 pt-5 bg__white">
                                     <div class="card-title">
-                                        <div class="card-label">
+                                        <div class="card-label p__20">
                                             <div class="font-weight-bolder fs__2rem">Download Form 4</div>
                                             <div class="font-size-sm text-muted mt-2 fs__2rem">Application for Negative Clearance</div>
                                         </div>
@@ -68,7 +68,7 @@
                                             <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="download__btn" />
                                         </a>
                                     </div>
-                                    <div class="mt-10 mb-5">
+                                    <div class="mt-10 mb-5 p__20">
                                         <p class="fs__2rem">This form should be completed jointly by parties to the proposed transaction. The requested information may be provided in this form or in appendices arranged according to corresponding section numbers in the form. All documents should be bound together.</p>
                                     </div>
                                 </div>

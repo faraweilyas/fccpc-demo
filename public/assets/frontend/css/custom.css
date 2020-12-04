@@ -6,6 +6,11 @@ body {
     display: none !important;
 }
 
+.p__20
+{
+    padding: 20px;
+}
+
 .bg__white
 {
     background: white;
