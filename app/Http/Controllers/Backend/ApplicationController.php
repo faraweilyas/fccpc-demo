@@ -12,6 +12,7 @@ use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\CaseActionNotifier;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\NotifyHandlerForDeficientCaseSubmission;
 
@@ -469,6 +470,8 @@ class ApplicationController extends Controller
         $case        = $guest->case;
         $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
 
+        // $this->sendResponse('Application submitted.', 'success', $supervisors);
+
         if (
             is_null($case->subject) ||
             is_null($case->parties) ||
@@ -510,14 +513,14 @@ class ApplicationController extends Controller
             $message = $exception->getMessage();
         }
 
-        // foreach ($supervisors as $supervisor):
-        //      // Notify supervisor
-        //     $supervisor->notify(new CaseActionNotifier(
-        //         'newcase',
-        //         "{$case->applicant_fullname} has created a new application.",
-        //         $case->id
-        //     ));
-        // endforeach;
+        foreach ($supervisors as $supervisor):
+             // Notify supervisor
+            $supervisor->notify(new CaseActionNotifier(
+                'newcase',
+                "{$case->applicant_fullname} has created a new application.",
+                $case->id
+            ));
+        endforeach;
 
         $this->sendResponse('Application submitted.', 'success', $case);
     }
