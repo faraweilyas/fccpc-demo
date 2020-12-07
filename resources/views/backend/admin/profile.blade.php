@@ -11,9 +11,8 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('dashboard.update_profile') }}" class="text-muted">Update</a>
+                            <a href="#" class="text-muted">Profile</a>
                         </li>
-                        <li class="breadcrumb-item">Profile</li>
                     </ul>
                 </div>
             </div>
