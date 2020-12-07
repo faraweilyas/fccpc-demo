@@ -23,6 +23,13 @@ body {
     border-color: #E9C46A !important;
 }
 
+.dashboard-bg-image
+{
+    background-image: url('../images/svg/linesx2.png') !important;
+    background-size: 35rem;
+    background-position: center center !important;
+}
+
 .btn-danger-sm {
     background: #F64E60 !important;
     border-color: #F64E60 !important;

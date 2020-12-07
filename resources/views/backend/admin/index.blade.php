@@ -70,8 +70,8 @@
                             <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                         </div>
                     </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.on-hold') }}';">
-                        <div class="dashboard-card lightish-yellow">
+                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.approved') }}';">
+                        <div class="dashboard-card lightish-yellow dashboard-bg-image">
                             <p>Approved</p>
                             <span>{{ \Auth::user()->approved_cases()->count() }}</span>
                             <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
