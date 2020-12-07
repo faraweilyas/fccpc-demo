@@ -524,7 +524,7 @@
             <div class="map mr-20 mb-3">
                 <div class="quick-search quick-search-inline ml-4 w-300px" id="kt_quick_search_inline">
                     <form method="get" class="quick-search-form">
-                        <div class="input-group rounded bg-light">
+                        <div class="input-group rounded bg-light-trans">
                             <div class="input-group-prepend">
                                 <span class="input-group-text">
                                     <span class="svg-icon svg-icon-lg">
