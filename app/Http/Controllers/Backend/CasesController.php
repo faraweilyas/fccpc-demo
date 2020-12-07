@@ -43,25 +43,93 @@ class CasesController extends Controller
 
         $output = '';
         if (auth()->user()->account_type == 'AD'):
-            if (count($data) <= 0):
-                $output .= '<p>No data found!</p>';
+            if (count($data->users) <= 0 && count($data->faqs) <= 0):
+                $output .= '<div class="text-muted text-center">No record found</div>';
             else:
-                foreach ($data as $key => $value):
-                    if (!empty($value['account_type'])):
-                        $output .= '<a href='.route('dashboard.user_detail', ['user' => $value['id']]).'><i class="la la-user-alt"></i>&nbsp;&nbsp;'.shortenContent($value['first_name'].' '.$value['last_name'], 40).'</a>';
-                    else:
+                if (count($data->users) > 0):
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Members
+                                </div>';
+                    $output .= '<div class="mb-10">';
 
-                        $output .= '<a href='.route('faq.faq_detail', ['faq' => $value['id']]).'><i class="la la-question-circle-o"></i>&nbsp;&nbsp;'.shortenContent($value['question'], 28).'</a>';
-                    endif;
-                endforeach;
+                    foreach ($data->users as $user):
+                        $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
+                                        <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                            <i class="la la-user-alt icon-xl"></i>
+                                        </div>';
+                        $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">';
+                        $output .= '<a href="'.route('dashboard.profile', ['user' => $user->id]).'" class="font-weight-bold text-dark text-hover-primary">'.$user->getFullName().'</a>';
+                        $output .= '<span class="font-size-sm font-weight-bold text-muted">
+                                        '.$user->getAccountType().'
+                                    </span>';
+                        $output .= '</div>
+                                    </div>';
+                    endforeach;
+
+                    $output .= '</div>';
+                else:
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Members
+                                </div>';
+                    $output .= '<div class="mb-10">';
+                    $output .= '<div class="text-muted text-center">No record found</div>';
+                    $output .= '</div>';
+                endif;
+
+                if (count($data->faqs) > 0):
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Faqs
+                                </div>';
+                    $output .= '<div class="mb-10">';
+
+                    foreach ($data->faqs as $faq):
+                        $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
+                                        <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                            <i class="la la-question-circle-o icon-xl"></i>
+                                        </div>';
+                        $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">';
+                        $output .= '<a href="'.route('faq.faq_detail', ['faq' => $faq->id]).'" class="font-weight-bold text-dark text-hover-primary">'.$faq->getQuestion(60).'</a>';
+                        $output .= '<span class="font-size-sm font-weight-bold text-muted">
+                                        '.$faq->getSubmittedAt().'
+                                    </span>';
+                        $output .= '</div>
+                                    </div>';
+                    endforeach;
+
+                    $output .= '</div>';
+                else:
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Faqs
+                                </div>';
+                    $output .= '<div class="mb-10">';
+                    $output .= '<div class="text-muted text-center">No record found</div>';
+                    $output .= '</div>';
+                endif;
             endif;
         else:
             if ($cases->count() <= 0):
-                $output .= '<p>No transaction found!</p>';
+                $output .= '<div class="text-muted text-center">No record found</div>';
             else:
+                $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                Cases
+                            </div>';
+                $output .= '<div class="mb-10">';
+
                 foreach ($cases as $case):
-                    $output .= '<a href="'.route('cases.analyze', ['case' => $case->id]).'">'.shortenContent($case->subject, 40).'</a>';
+                    $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
+                                    <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                        <i class="la la-file-alt icon-xl"></i>
+                                    </div>';
+                    $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">
+                                        <a href="'.route('cases.analyze', ['case' => $case->id]).'" class="font-weight-bold text-dark text-hover-primary">'.shortenContent($case->subject, 40).'</a>';
+                    $output .= '<span class="font-size-sm font-weight-bold text-muted">
+                                    by '.$case->getApplicantFullName().'
+                                </span>';
+                    $output .= '</div>
+                                </div>';
                 endforeach;
+
+                $output .= '</div>';
             endif;
         endif;
 

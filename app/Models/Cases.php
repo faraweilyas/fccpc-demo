@@ -146,6 +146,11 @@ class Cases extends Model
         return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '...';
     }
 
+     public function getApplicantFullName()
+    {
+        return (!empty($this->applicant_fullname)) ? $this->applicant_fullname : '...';
+    }
+
     public function selectedCategoryStyle($case_category='reg') : \stdClass
     {
         $case_category = strtoupper($case_category);

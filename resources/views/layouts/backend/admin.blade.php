@@ -549,7 +549,44 @@
                             </div>
                         </div>
                     </form>
-                    <div class="autoComplete"></div>
+                    {{-- <div class="autoComplete"></div> --}}
+                </div>
+                <div class="dropdown-search dropdown-menu dropdown-menu-left dropdown-menu-lg dropdown-menu-anim-up hide" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: -190px; transform: translate3d(203px, 68px, 0px);padding: 20px;">
+                    <div class="quick-search-wrapper scroll ps ps--active-y" data-scroll="true" data-height="350" data-mobile-height="200" style="height: 350px; overflow: hidden;">
+                        <div class="quick-search-result">
+                            <!--begin::Message-->
+                            <div class="text-muted d-none">
+                                No record found
+                            </div>
+                            <!--end::Message-->
+                            <!--begin::Section-->
+                            <div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                Cases
+                            </div>
+                            <div class="mb-10">
+                                <div class="d-flex align-items-center flex-grow-1 mb-2">
+                                    <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                        <img src="https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/media/svg/files/doc.svg" alt="">
+                                    </div>
+                                    <div class="d-flex flex-column ml-3 mt-2 mb-2">
+                                        <a href="#" class="font-weight-bold text-dark text-hover-primary">
+                                        AirPlus Requirements
+                                        </a>
+                                        <span class="font-size-sm font-weight-bold text-muted">
+                                        by Grog John
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Section-->
+                        </div>
+                        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+                            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                        </div>
+                        <div class="ps__rail-y" style="top: 0px; right: 0px; height: 350px;">
+                            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 146px;"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="topbar">

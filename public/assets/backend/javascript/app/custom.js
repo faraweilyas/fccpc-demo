@@ -6,7 +6,7 @@ $(document).ready(function() {
 
     $('#get_categories').select2();
     $('#get_account_types').select2();
-    
+
     $('input[type="file"]').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
@@ -23,12 +23,12 @@ $(document).ready(function() {
              data_form = $(this).attr('data-form');
 
         $('.'+data_form).html(fileName);
-         
+
     });
 
 	$(".start_doc_approval").on('click', function (e) {
-		var approval_link  = $(this).attr('data-link'); 
-		var workingon_link = $(this).attr('data-workingon-link'); 
+		var approval_link  = $(this).attr('data-link');
+		var workingon_link = $(this).attr('data-workingon-link');
 		 swal.fire({
             title: "Are you sure?",
             text: "You want to start document approval!",
@@ -41,12 +41,12 @@ $(document).ready(function() {
 	                url: workingon_link,
 	                type: 'POST',
 	                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-	                data: {}, 
+	                data: {},
 	                success: function(response){
 	                  window.location.replace(approval_link);
 	                }
 	            });
-                
+
             } else {
             	return false;
             }
@@ -72,30 +72,33 @@ $(document).ready(function() {
         	$.ajax({
                 url: '/cases/search',
                 type: 'GET',
-                data: {'search': input}, 
+                data: {'search': input},
                 success: function(response){
-                	$(".autoComplete").css("display", "block");
+                	$('.dropdown-search').show();
+                    $('.dropdown-search').addClass('show');
                     $(".spin-loader").css("display", "none");
                     $(".quick-search-close").css("display", "flex");
-                	$('.autoComplete').html(response);
+                    $('.quick-search-result').empty();
+                	$('.quick-search-result').html(response);
             	  }
             });
 
         } else {
-			$('.autoComplete').hide();
+			$('.dropdown-search').hide();
             $(".spin-loader").css("display", "none");
             $(".quick-search-close").css("display", "none");
+            $('.quick-search-result').empty();
         }
     });
 
     $(".quick-search-close").on('click', function (event) {
         $("#search").val('');
-        $(".autoComplete").hide();
+       $('.dropdown-search').hide();
         $(this).css("display", "none");
     })
 
     $(".delete_faq").on('click', function (e) {
-        var faq_delete_route  = $(this).attr('data-route'); 
+        var faq_delete_route  = $(this).attr('data-route');
          swal.fire({
             title: "Are you sure?",
             text: "You want to delete this FAQ!",
@@ -108,7 +111,7 @@ $(document).ready(function() {
                     url: faq_delete_route,
                     type: 'GET',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                    data: {}, 
+                    data: {},
                     success: function(response){
                       if(response)
                       {
@@ -119,7 +122,7 @@ $(document).ready(function() {
                       }
                     }
                 });
-                
+
             } else {
                 return false;
             }
@@ -130,7 +133,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/mark-notifications',
             type: 'GET',
-            data: {}, 
+            data: {},
             success: function(response){
                 $(".show-marker").removeClass('hide');
             }
@@ -141,7 +144,7 @@ $(document).ready(function() {
         $.ajax({
             url: '/clear-notification',
             type: 'GET',
-            data: {}, 
+            data: {},
             success: function(response){
                 $("#read-notifications").empty();
             }

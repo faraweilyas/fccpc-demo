@@ -141,11 +141,14 @@ trait UserGettable
     {
         $users = $this->where('first_name', 'LIKE', '%'.$search.'%')
                 ->orWhere('last_name', 'LIKE', '%'.$search.'%')
-                ->get()->toArray();
-        $faq   = Faq::where('question', 'LIKE', '%'.$search.'%')
-                ->get()->toArray();
+                ->get();
+        $faqs  = Faq::where('question', 'LIKE', '%'.$search.'%')
+                ->get();
 
-        return array_merge($users, $faq);
+        return (object)[
+            'users' => $users,
+            'faqs'  => $faqs
+        ];
     }
 
     /**
