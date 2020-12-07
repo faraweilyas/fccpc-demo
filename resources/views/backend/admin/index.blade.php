@@ -77,6 +77,13 @@
                             <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                         </div>
                     </div>
+                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.approved') }}';">
+                        <div class="dashboard-card bg-warning dashboard-bg-image">
+                            <p>Archived</p>
+                            <span>{{ \Auth::user()->archived_cases()->count() }}</span>
+                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        </div>
+                    </div>
                     <div class="col-lg-3 my-5">
                         <div class="dashboard-card">
                             <p>All Cases</p>

@@ -237,6 +237,7 @@ trait UserGettable
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
                     ->where('approval_status', 'approved')
+                    ->where('archived_at', null)
                     ->latest();
         endif;
         if (in_array(auth()->user()->account_type, ['SP'])):
@@ -244,12 +245,46 @@ trait UserGettable
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
                     ->where('approval_status', 'approved')
+                    ->where('archived_at', null)
                     ->latest();
         else:
             return $this->cases_assigned_to()
                     ->where('dropped_at', null)
                     ->where('workingon_at', '!=', null)
                     ->where('approval_status', 'approved')
+                    ->where('archived_at', null)
+                    ->latest();
+        endif;
+    }
+
+    /**
+     * Gets archived cases
+     *
+     * @return Collection
+     */
+    public function archived_cases($handler = FALSE)
+    {
+        if ($handler):
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
+                    ->where('archived_at', '!=', null)
+                    ->latest();
+        endif;
+        if (in_array(auth()->user()->account_type, ['SP'])):
+            return $this->cases_assigned_by()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
+                    ->where('archived_at', '!=', null)
+                    ->latest();
+        else:
+            return $this->cases_assigned_to()
+                    ->where('dropped_at', null)
+                    ->where('workingon_at', '!=', null)
+                    ->where('approval_status', 'approved')
+                    ->where('archived_at', '!=', null)
                     ->latest();
         endif;
     }

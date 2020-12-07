@@ -83,9 +83,9 @@
                                             <i class="flaticon-eye"></i> View
                                         </a>
                                         @endif
-                                        <a href="#"
+                                        <a href="{{ route('cases.archive', ['case' => $case->id]) }}"
                                             class="btn btn-sm btn-light-dark mr-3" title="Archive Case">
-                                            <i class="flaticon-eye"></i> Archive
+                                            <i class="flaticon-interface-9"></i> Archive
                                         </a>
                                         <div class="hide">
                                             {{-- Case --}}

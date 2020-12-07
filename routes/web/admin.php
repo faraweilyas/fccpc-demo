@@ -263,6 +263,11 @@ Route::prefix('cases')
         )->name('archived');
 
         Route::get(
+            'archive/{case}',
+            'CasesController@archiveCase'
+        )->name('archive');
+
+        Route::get(
             'analyze/{case}',
             'CasesController@analyzeCase'
         )->name('analyze');

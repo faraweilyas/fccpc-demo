@@ -248,6 +248,39 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles archive case page.
+     *
+     * @return void
+     */
+    public function archiveCase(Cases $case)
+    {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+
+        $case->archive($case_handler);
+
+        // Notify case handler
+        $case_handler->notify(new CaseActionNotifier(
+            'archive',
+            'Case has been archived.',
+            $case->id
+        ));
+
+        // Notify supervisor
+        $supervisor->notify(new CaseActionNotifier(
+            'archive',
+            "Case has been archived.",
+            $case->id
+        ));
+
+        return redirect()->back()->with('success', 'Case archived!');
+    }
+
+    /**
      * Handles the case analysis page route.
      *
      * @return void

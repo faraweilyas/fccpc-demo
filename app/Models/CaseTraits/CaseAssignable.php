@@ -25,6 +25,21 @@ trait CaseAssignable
     }
 
     /**
+     * A supervisor/handler archives an approved case
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function archive(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'archived_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler issues deficiency
      *
      * @param  User $caseHandler
