@@ -121,7 +121,7 @@ class CasesController extends Controller
                                         <i class="la la-file-alt icon-xl"></i>
                                     </div>';
                     $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">
-                                        <a href="'.route('cases.analyze', ['case' => $case->id]).'" class="font-weight-bold text-dark text-hover-primary">'.shortenContent($case->subject, 40).'</a>';
+                                        <a href="'.route('cases.analyze', ['case' => $case->id]).'" class="font-weight-bold text-dark text-hover-primary">'.shortenContent($case->subject, 60).'</a>';
                     $output .= '<span class="font-size-sm font-weight-bold text-muted">
                                     by '.$case->getApplicantFullName().'
                                 </span>';
