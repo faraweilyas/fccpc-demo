@@ -6,7 +6,7 @@
             @if (\Auth::user()->account_type == 'SP')
                 <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-                <x-icons.map-admin></x-icons.map-admin>
+                <img src="{{ pc_asset(BE_IMAGE.'svg/admin.svg') }}" alt="admin" />
             @elseif (\Auth::user()->account_type == 'CH')
                 <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else

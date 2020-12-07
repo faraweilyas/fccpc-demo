@@ -5,13 +5,13 @@
     <div class="brand flex-column-auto" id="kt_brand">
         <a href="/dashboard" class="brand-logo">
             @if (\Auth::user()->account_type == 'SP')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/supervisor.svg') }}" alt="supervisor" />
             @elseif (\Auth::user()->account_type == 'AD')
-            <x-icons.map-admin></x-icons.map-admin>
+                <img src="{{ pc_asset(BE_IMAGE.'svg/admin.svg') }}" alt="admin" />
             @elseif (\Auth::user()->account_type == 'CH')
-            <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/case_handler.svg') }}" alt="case_handler" />
             @else
-            <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
+                <img src="{{ pc_asset(BE_IMAGE.'svg/ma_fccpc.svg') }}" alt="ma_fccpc" />
             @endif
         </a>
         <button class="brand-toggle btn btn-sm px-0" id="kt_aside_toggle">
