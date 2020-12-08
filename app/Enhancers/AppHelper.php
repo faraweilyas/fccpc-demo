@@ -241,8 +241,7 @@ class AppHelper
      * Validates and returns array value
      *
      * @param string $array
-     * @param mixed $arrayKey
-     * @param mixed $textStyle
+     * @param mixed $arrayValue
      * @return mixed
      */
     public function key(string $array, $arrayValue)
