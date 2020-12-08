@@ -48,11 +48,7 @@
                     <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
                         <div class="dashboard-card blue">
                             <p>@if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</p>
-                            @if(in_array(\Auth::user()->account_type, ['CH']))
-                            <span>{{ \Auth::user()->active_cases_assigned_to()->count() }}</span>
-                            @else
-                            <span>{{ \Auth::user()->active_cases_assigned_by()->count() }}</span>
-                            @endif
+                            <span>{{ \Auth::user()->active_cases_assigned()->count() }}</span>
                             <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
                         </div>
                     </div>

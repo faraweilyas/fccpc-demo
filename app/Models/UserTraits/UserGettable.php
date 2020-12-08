@@ -55,20 +55,6 @@ trait UserGettable
     }
 
     /**
-     * Defines a many to many relationship for case and active case handlers
-     *
-     * @return HasRelationships
-     */
-    public function active_cases_assigned_by()
-    {
-        return $this->cases_assigned_by()
-                ->where('dropped_at', null)
-                ->where('workingon_at', null)
-                ->where('defficiency_issued_at', null)
-                ->latest();
-    }
-
-    /**
      * Defines a many to many relationship for case and dropped case handlers
      *
      * @return HasRelationships
@@ -97,13 +83,28 @@ trait UserGettable
      *
      * @return HasRelationships
      */
-    public function active_cases_assigned_to()
+    public function active_cases_assigned($handler = FALSE)
     {
-        return $this->cases_assigned_to()
-            ->where('dropped_at', null)
-            ->where('workingon_at', null)
-            ->where('defficiency_issued_at', null)
-            ->latest();
+        if ($handler):
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', null)
+                ->where('defficiency_issued_at', null)
+                ->latest();
+        endif;
+        if (in_array(auth()->user()->account_type, ['SP'])):
+            return $this->cases_assigned_by()
+                ->where('dropped_at', null)
+                ->where('workingon_at', null)
+                ->where('defficiency_issued_at', null)
+                ->latest();
+        else:
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->where('workingon_at', null)
+                ->where('defficiency_issued_at', null)
+                ->latest();
+        endif;
     }
 
      /**

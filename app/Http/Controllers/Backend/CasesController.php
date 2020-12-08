@@ -169,7 +169,7 @@ class CasesController extends Controller
             return redirect()->back();
 
         if (isset($handler->status)):
-            $cases = $handler->all_cases($handler)->get();
+            $cases = $handler->all_cases(TRUE)->get();
         else:
             $cases = auth()->user()->all_cases()->get();
         endif;
@@ -196,16 +196,9 @@ class CasesController extends Controller
             return redirect()->back();
 
         if (isset($handler->status)):
-            $cases = $handler->active_cases_assigned_to()->get();
+            $cases = $handler->active_cases_assigned(TRUE)->get();
         else:
-            if (auth()->user()->account_type == 'CH'):
-                $cases = auth()
-                    ->user()
-                    ->active_cases_assigned_to()
-                    ->get();
-            else:
-                $cases = \Auth::user()->active_cases_assigned_by()->get();
-            endif;
+            $cases = auth()->user()->active_cases_assigned()->get();
         endif;
 
         $caseHandlers = (new User())->caseHandlers();

@@ -34,7 +34,7 @@ class DashboardController extends Controller
         else:
             $new_cases = auth()
                 ->user()
-                ->active_cases_assigned_to()
+                ->active_cases_assigned()
                 ->get()->take(5);
         endif;
         $cases            = new Cases();
