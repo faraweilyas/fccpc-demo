@@ -88,12 +88,14 @@
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                            <a href="@if ($handler->approved_cases(TRUE)->count() > 0) {{ route('cases.approved', ['handler' => $handler->id]) }} @else # @endif">
+                                            <a href="@if ($handler->approved_cases(TRUE)->count() > 0) {{ route('cases.approved', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
                                                 <span class="badge badge-secondary"><b>{{ $handler->approved_cases(TRUE)->count() }}</b></span>
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                            <a href="@if ($handler->archived_cases(TRUE)->count() > 0) {{ route('cases.archived', ['handler' => $handler->id]) }} @else # @endif">
+                                            <a href="@if ($handler->archived_cases(TRUE)->count() > 0) {{ route('cases.archived', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
                                                 <span class="badge badge-secondary"><b>{{ $handler->archived_cases(TRUE)->count() }}</b></span>
                                             </a>
                                         </td>
@@ -102,13 +104,19 @@
                                         </td>
                                         <td class="text-center" nowrap="nowrap">
                                             @if ($handler->status === "active")
-                                                <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
-                                                    class="btn btn-sm btn-light-danger mr-3" title="Deactivate Case Handler">
+                                                <a
+                                                    href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-danger mr-3"
+                                                    title="Deactivate Case Handler"
+                                                >
                                                     <i class="flaticon-user-settings"></i> Deactivate
                                                 </a>
                                             @elseif ($handler->status === "inactive")
-                                                <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
-                                                    class="btn btn-sm btn-light-success mr-3" title="Activate Case Handler">
+                                                <a
+                                                    href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-success mr-3"
+                                                    title="Activate Case Handler"
+                                                >
                                                     <i class="flaticon-user-add"></i> Activate
                                                 </a>
                                             @endif

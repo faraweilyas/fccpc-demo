@@ -38,6 +38,9 @@ class CasesController extends Controller
         elseif (auth()->user()->account_type == 'AD'):
             $data = auth()->user()->search_users_and_faqs($search);
         else:
+            $users = (new User)->where('first_name', 'LIKE', '%'.$search.'%')
+                                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+                                ->get();
             $cases = (new Cases())->searchAssignedCases($search);
         endif;
 
@@ -48,7 +51,7 @@ class CasesController extends Controller
             else:
                 if (count($data->users) > 0):
                     $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-                                    Members
+                                    Users
                                 </div>';
                     $output .= '<div class="mb-10">';
 
@@ -69,7 +72,7 @@ class CasesController extends Controller
                     $output .= '</div>';
                 else:
                     $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-                                    Members
+                                    Users
                                 </div>';
                     $output .= '<div class="mb-10">';
                     $output .= '<div class="text-muted text-center">No record found</div>';
@@ -107,29 +110,68 @@ class CasesController extends Controller
                 endif;
             endif;
         else:
-            if ($cases->count() <= 0):
+            if (count($users) <= 0 && count($cases) <= 0):
                 $output .= '<div class="text-muted text-center">No record found</div>';
             else:
-                $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-                                Cases
-                            </div>';
-                $output .= '<div class="mb-10">';
-
-                foreach ($cases as $case):
-                    $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
-                                    <div class="symbol symbol-30 bg-transparent flex-shrink-0">
-                                        <i class="la la-file-alt icon-xl"></i>
-                                    </div>';
-                    $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">
-                                        <a href="'.route('cases.analyze', ['case' => $case->id]).'" class="font-weight-bold text-dark text-hover-primary">'.shortenContent($case->subject, 60).'</a>';
-                    $output .= '<span class="font-size-sm font-weight-bold text-muted">
-                                    by '.$case->getApplicantFullName().'
-                                </span>';
-                    $output .= '</div>
+                if ($cases->count() <= 0):
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Cases
                                 </div>';
-                endforeach;
+                    $output .= '<div class="mb-10">';
+                    $output .= '<div class="text-muted text-center">No record found</div>';
+                    $output .= '</div>';
+                else:
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Cases
+                                </div>';
+                    $output .= '<div class="mb-10">';
 
-                $output .= '</div>';
+                    foreach ($cases as $case):
+                        $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
+                                        <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                            <i class="la la-file-alt icon-xl"></i>
+                                        </div>';
+                        $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">
+                                            <a href="'.route('cases.analyze', ['case' => $case->id]).'" class="font-weight-bold text-dark text-hover-primary">'.shortenContent($case->subject, 60).'</a>';
+                        $output .= '<span class="font-size-sm font-weight-bold text-muted">
+                                        by '.$case->getApplicantFullName().'
+                                    </span>';
+                        $output .= '</div>
+                                    </div>';
+                    endforeach;
+
+                    $output .= '</div>';
+                endif;
+
+                if (count($users) > 0):
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Users
+                                </div>';
+                    $output .= '<div class="mb-10">';
+
+                    foreach ($users as $user):
+                        $output .= '<div class="d-flex align-items-center flex-grow-1 mb-2">
+                                        <div class="symbol symbol-30 bg-transparent flex-shrink-0">
+                                            <i class="la la-user-alt icon-xl"></i>
+                                        </div>';
+                        $output .= '<div class="d-flex flex-column ml-3 mt-2 mb-2">';
+                        $output .= '<a href="'.route('dashboard.profile', ['user' => $user->id]).'" class="font-weight-bold text-dark text-hover-primary">'.$user->getFullName().'</a>';
+                        $output .= '<span class="font-size-sm font-weight-bold text-muted">
+                                        '.$user->getAccountType().'
+                                    </span>';
+                        $output .= '</div>
+                                    </div>';
+                    endforeach;
+
+                    $output .= '</div>';
+                else:
+                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                    Users
+                                </div>';
+                    $output .= '<div class="mb-10">';
+                    $output .= '<div class="text-muted text-center">No record found</div>';
+                    $output .= '</div>';
+                endif;
             endif;
         endif;
 
