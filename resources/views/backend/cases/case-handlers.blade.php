@@ -26,9 +26,14 @@
                         <div class="card-title">
                             <h3 class="card-label">Case Handlers</h3>
                         </div>
-                        <span class="float-right"><button class="btn btn-success-ts no-border mx-5"
-                                onclick="window.location.href = '{{ route('handlers.create') }}';">New Case
-                                Handler</button></span>
+                        <span class="float-right">
+                            <button
+                                class="btn btn-success-ts no-border mx-5"
+                                onclick="window.location.href = '{{ route('handlers.create') }}';"
+                            >
+                                New Case Handler
+                            </button>
+                        </span>
                     </div>
                     <div class="card-body">
                         <table class="table table-separate table-head-custom table-checkable" id="case_handlers_datatable">
@@ -47,71 +52,68 @@
                             </thead>
                             <tbody>
                                 @foreach($handlers as $handler)
-                                <tr>
-                                    <td>
-                                        <a href="{{ route('dashboard.profile', ['user' => $handler->id]) }}">
-                                            <b>{{ $handler->getFullName() }}</b>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->all_cases(TRUE)->count() > 0) {{ route('cases.all', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-success"><b>{{ $handler->all_cases(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->active_cases_assigned(TRUE)->count() > 0) {{ route('cases.assigned', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-success"><b>{{ $handler->active_cases_assigned(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->deficient_cases(TRUE)->count() > 0) {{ route('cases.on-hold', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-secondary"><b>{{ $handler->deficient_cases(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->cases_working_on(TRUE)->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-secondary"><b>{{ $handler->cases_working_on(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->approved_cases(TRUE)->count() > 0) {{ route('cases.approved', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-secondary"><b>{{ $handler->approved_cases(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <a
-                                            href="@if($handler->archived_cases(TRUE)->count() > 0) {{ route('cases.archived', ['handler' => $handler->id]) }} @else # @endif">
-                                            <span
-                                                class="badge badge-secondary"><b>{{ $handler->archived_cases(TRUE)->count() }}</b></span>
-                                        </a>
-                                    </td>
-                                    <td>
-                                        {!! $handler->getStatusHtml() !!}
-                                    </td>
-                                    <td class="text-center" nowrap="nowrap">
-                                        @if($handler->status === "active")
-                                        <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
-                                            class="btn btn-sm btn-light-danger mr-3" title="Deactivate Case Handler">
-                                            <i class="flaticon-user-settings"></i> Deactivate
-                                        </a>
-                                        @elseif($handler->status === "inactive")
-                                        <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
-                                            class="btn btn-sm btn-light-success mr-3" title="Activate Case Handler">
-                                            <i class="flaticon-user-add"></i> Activate
-                                        </a>
-                                        @endif
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="{{ route('dashboard.profile', ['user' => $handler->id]) }}">
+                                                <b>{{ $handler->getFullName() }}</b>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a
+                                                href="@if ($handler->all_cases(TRUE)->count() > 0) {{ route('cases.all', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
+                                                <span class="badge badge-success"><b>{{ $handler->all_cases(TRUE)->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@if ($handler->active_cases_assigned(TRUE)->count() > 0) {{ route('cases.assigned', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
+                                                <span class="badge badge-success"><b>{{ $handler->active_cases_assigned(TRUE)->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@if ($handler->deficient_cases(TRUE)->count() > 0) {{ route('cases.on-hold', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
+                                                <span class="badge badge-secondary"><b>{{ $handler->deficient_cases(TRUE)->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@if ($handler->cases_working_on(TRUE)->count() > 0) {{ route('cases.working_on', ['handler' => $handler->id]) }} @else # @endif"
+                                            >
+                                                <span
+                                                    class="badge badge-secondary"
+                                                >
+                                                    <b>{{ $handler->cases_working_on(TRUE)->count() }}</b>
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@if ($handler->approved_cases(TRUE)->count() > 0) {{ route('cases.approved', ['handler' => $handler->id]) }} @else # @endif">
+                                                <span class="badge badge-secondary"><b>{{ $handler->approved_cases(TRUE)->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="@if ($handler->archived_cases(TRUE)->count() > 0) {{ route('cases.archived', ['handler' => $handler->id]) }} @else # @endif">
+                                                <span class="badge badge-secondary"><b>{{ $handler->archived_cases(TRUE)->count() }}</b></span>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            {!! $handler->getStatusHtml() !!}
+                                        </td>
+                                        <td class="text-center" nowrap="nowrap">
+                                            @if ($handler->status === "active")
+                                                <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-danger mr-3" title="Deactivate Case Handler">
+                                                    <i class="flaticon-user-settings"></i> Deactivate
+                                                </a>
+                                            @elseif ($handler->status === "inactive")
+                                                <a href="{{ route('handlers.update_status', ['handler' => $handler->id]) }}"
+                                                    class="btn btn-sm btn-light-success mr-3" title="Activate Case Handler">
+                                                    <i class="flaticon-user-add"></i> Activate
+                                                </a>
+                                            @endif
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>

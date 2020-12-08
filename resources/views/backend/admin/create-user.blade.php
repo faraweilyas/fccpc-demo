@@ -49,8 +49,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Email</label> <span class="text-danger">*</span>
-                                                <input type="email" class="form-control" placeholder="Enter email"
-                                                    name="email">
+                                                <input
+                                                    type="email"
+                                                    class="form-control"
+                                                    placeholder="Enter email"
+                                                    name="email"
+                                                />
                                                 <span class="form-text text-muted">Please enter email.</span>
                                                 @error('email')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -62,8 +66,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label> <span class="text-danger">*</span>
-                                                <input type="text" class="form-control" placeholder="Enter first name"
-                                                    name="firstName">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter first name"
+                                                    name="firstName"
+                                                />
                                                 <span class="form-text text-muted">Please enter first name.</span>
                                                 @error('firstName')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>
@@ -73,8 +81,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label> <span class="text-danger">*</span>
-                                                <input type="text" class="form-control" placeholder="Enter last name"
-                                                    name="lastName">
+                                                <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    placeholder="Enter last name"
+                                                    name="lastName"
+                                                />
                                                 <span class="form-text text-muted">Please enter last name.</span>
                                                 @error('lastName')
                                                     <p class="text-danger text-left mt-2">* {{ $message }}</p>

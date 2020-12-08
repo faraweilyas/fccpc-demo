@@ -11,9 +11,9 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         @if(in_array(\Auth::user()->account_type, ['SP']))
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('cases.unassigned') }}" class="text-muted">New Cases</a>
-                        </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('cases.unassigned') }}" class="text-muted">New Cases</a>
+                            </li>
                         @endif
                         <li class="breadcrumb-item">
                             <a href="{{ route('cases.assigned') }}" class="text-muted">Assigned Cases</a>
@@ -99,7 +99,6 @@
                             </span>
                         </div>
                     </div>
-
                     <div class="row py-5">
                         <div class="col-md-3">
                             <p><b>AMOUNT PAID:</b></p>
@@ -188,7 +187,11 @@
                     <div class="col-md-12">
                         <div class="card-custom">
                             <h5>Analysis Document & Recommendation</h5>
-                            <form method="POST" action="{{ route('cases.issue-recommendation', ['case' => $case->id]) }}" enctype="multipart/form-data">
+                            <form
+                                method="POST"
+                                action="{{ route('cases.issue-recommendation', ['case' => $case->id]) }}"
+                                enctype="multipart/form-data"
+                            >
                                 @csrf
                                 <div class="row py-5">
                                     <div class="col-md-6 my-5">
@@ -207,8 +210,13 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6 my-5">
-                                        <textarea class="form-control form-control-teaxtarea"
-                                            name="recommendation" id="" cols="30" rows="10" >{{ $case->getRecommendation() }}</textarea>
+                                        <textarea
+                                            class="form-control form-control-teaxtarea"
+                                            name="recommendation"
+                                            id=""
+                                            cols="30"
+                                            rows="10" >{{ $case->getRecommendation() }}
+                                        </textarea>
                                         <p class="text-danger mt-5">
                                             @error('recommendation')
                                                 {{ $message }}
@@ -255,7 +263,11 @@
                                                     <div class="doc-name">Analysis document</div>
                                                 </div>
                                                 <div class="col-md-6 align-center">
-                                                    <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
+                                                    <button
+                                                        class="btn btn-success-sm"
+                                                        type="button"
+                                                        onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';"
+                                                    >
                                                         Download
                                                     </button>
                                                 </div>
@@ -275,8 +287,13 @@
                                         <div class="row">
                                             <div class="col-md-6 my-5">
                                                 <p class="mb-5"><b>COMMENT:</b></p>
-                                                <textarea class="form-control form-control-teaxtarea"
-                                                    name="comment" id="" cols="30" rows="10"></textarea>
+                                                <textarea
+                                                    class="form-control form-control-teaxtarea"
+                                                    name="comment"
+                                                    id=""
+                                                    cols="30"
+                                                    rows="10"
+                                                ></textarea>
                                                 <p class="text-danger mt-5">
                                                     @error('recommendation')
                                                         {{ $message }}
@@ -318,12 +335,18 @@
                                     <div class="col-md-6 my-5">
                                         <div class="doc-card">
                                             <div class="row">
-                                                <div class="col-md-2"><img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf"></div>
+                                                <div class="col-md-2">
+                                                    <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
+                                                </div>
                                                 <div class="col-md-4">
                                                     <div class="doc-name">Analysis document</div>
                                                 </div>
                                                 <div class="col-md-6 align-center">
-                                                    <button class="btn btn-success-sm" type="button" onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';">
+                                                    <button
+                                                        class="btn btn-success-sm"
+                                                        type="button"
+                                                        onclick="window.location.href = '{{ route('cases.download_analysis_document', ['document' => $case->getAnalysisDocument()]) }}';"
+                                                    >
                                                         Download
                                                     </button>
                                                 </div>
@@ -362,8 +385,15 @@
             @endif
         @endif
     </div>
-    <div class="modal fade" id="assignAnalyzeCaseModal" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+        class="modal fade"
+        id="assignAnalyzeCaseModal"
+        data-backdrop="static"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -405,13 +435,28 @@
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" id="caseID">
-                        <button type="button" id="assignAnalyzeCaseButton" class="btn btn-light-primary font-weight-bold"
-                            data-case-id="{{ $case->id }}">Assign</button>
-
-                        <button id="assigningCaseButton" class="btn btn-light-primary font-weight-bold hide" disabled><i
-                                class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...</button>
-                        <button type="button" class="btn btn-light-danger font-weight-bold"
-                            data-dismiss="modal">Close</button>
+                        <button
+                            type="button"
+                            id="assignAnalyzeCaseButton"
+                            class="btn btn-light-primary font-weight-bold"
+                            data-case-id="{{ $case->id }}"
+                        >
+                            Assign
+                        </button>
+                        <button
+                            id="assigningCaseButton"
+                            class="btn btn-light-primary font-weight-bold hide"
+                            disabled
+                        >
+                            <i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-light-danger font-weight-bold"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
                     </div>
                 </form>
             </div>

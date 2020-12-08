@@ -11,16 +11,20 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         @if(in_array(\Auth::user()->account_type, ['SP']))
-                        <li class="breadcrumb-item">
-                            <a href="{{ route('cases.unassigned') }}" class="text-muted">New Cases</a>
-                        </li>
+                            <li class="breadcrumb-item">
+                                <a href="{{ route('cases.unassigned') }}" class="text-muted">New Cases</a>
+                            </li>
                         @endif
                         <li class="breadcrumb-item">
                             <a href="{{ route('cases.assigned') }}" class="text-muted">Assigned Cases</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="{{ route('cases.analyze', ['case' => $case->id]) }}" class="text-muted">Analyze
-                                Case</a>
+                            <a
+                                href="{{ route('cases.analyze', ['case' => $case->id]) }}"
+                                class="text-muted"
+                            >
+                                Analyze Case
+                            </a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="" class="text-muted">Checklist Documents</a>
@@ -40,12 +44,16 @@
                         $submittedDocuments = $case->submittedDocuments();
                         $x = 1;
                     @endphp
-
                     @foreach ($submittedDocuments as $date => $documents)
                         <div class="card">
                             <div class="card-header" id="headingOne{{ $x }}">
-                                <div class="card-title @if($x !== 1) collapsed @endif" data-toggle="collapse" data-target="#collapseOne{{ $x }}">
-                                <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, '%d %B. %Y at %I:%M %p') }}</div>
+                                <div
+                                    class="card-title @if($x !== 1) collapsed @endif"
+                                    data-toggle="collapse"
+                                    data-target="#collapseOne{{ $x }}"
+                                >
+                                    <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, '%d %B. %Y at %I:%M %p') }}
+                                </div>
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">
@@ -114,13 +122,17 @@
                             </div>
                             <div class="row mt-6">
                                 <div class="col-md-12 text-center">
-                                    <p><strong>No document was submitted.</strong></p>
-
+                                    <p>
+                                        <strong>No document was submitted.</strong>
+                                    </p>
                                     <a href="#" class="btn btn-danger font-weight-bold text-uppercase mr-5 px-9 py-4">
                                         Issue a deficiency
                                     </a>
-                                    <a data-turbolinks="false" href="{{ route('cases.analyze', ['case' => $case->id]) }}"
-                                        class="btn btn-secondary font-weight-bold text-uppercase mr-5 px-9 py-4">
+                                    <a
+                                        data-turbolinks="false"
+                                        href="{{ route('cases.analyze', ['case' => $case->id]) }}"
+                                        class="btn btn-secondary font-weight-bold text-uppercase mr-5 px-9 py-4"
+                                    >
                                         Go back
                                     </a>
                                 </div>

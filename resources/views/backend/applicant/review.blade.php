@@ -97,7 +97,7 @@
                                             class="mw-10 cr-pointer"
                                             src="{{ $case->getLetterOfAppointmentIconText() }}"
                                             alt="pdf" height="50px"
-                                            onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
+                                            onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
                                         />
                                         <h4
                                             class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
@@ -171,10 +171,12 @@
                                                 {{ $checklistGroup->name }}
                                             </h4>
                                         @else
-                                            <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
+                                            <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onclick="printPdf(2)">
                                                 <x-icons.letter-file></x-icons.letter-file>
                                             </span>
-                                            <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">{{ $checklistGroup->name }}</h4>
+                                            <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">
+                                                {{ $checklistGroup->name }}
+                                            </h4>
                                         @endif
                                     </div>
                                 </div>
@@ -192,14 +194,24 @@
                             <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                             <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}">
                             <div class="grid-col-2-btn my-20">
-                                <button type="button" id="goback-btn"
+                                <button
+                                    type="button"
+                                    id="goback-btn"
                                     class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
-                                    onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'">Go
-                                    back to edit</button>
-                                <button type="button" id="fill-declaration"
+                                    onclick="window.location.href = '{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category, 'step' => $step]) }}'"
+                                >
+                                        Go back to edit
+                                </button>
+                                <button
+                                    type="button"
+                                    id="fill-declaration"
                                     class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
-                                    title="View Declaration" data-toggle="modal"
-                                    data-target="#viewDeclarationModal">Submit</button>
+                                    title="View Declaration"
+                                    data-toggle="modal"
+                                    data-target="#viewDeclarationModal"
+                                >
+                                    Submit
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -208,8 +220,15 @@
         </div>
     </div>
     {{-- Declaration Modal --}}
-    <div class="modal fade" id="viewDeclarationModal" data-backdrop="static" tabindex="-1" role="dialog"
-        aria-labelledby="viewDeclarationModalLabel" aria-hidden="true">
+    <div
+        class="modal fade"
+        id="viewDeclarationModal"
+        data-backdrop="static"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="viewDeclarationModalLabel"
+        aria-hidden="true"
+    >
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -222,20 +241,43 @@
                     <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                         <div class="card-body">
                             <p>
-                                I, <span><input id="declaration_name" type="text" class="form-control-declaration w--30"
-                                        name="declaration_name" value="{{ $case->applicant_fullname ?? '' }}" /></span> the appointed representative of <span><input
-                                        id="declaration_rep" type="text" class="form-control-declaration w--30"
-                                        name="declaration_rep" value="{{ $case->applicant_firm ?? '' }}"/>, hereby declare that all the information submitted by me
-                                    in the application form is correct, true and valid.
+                                I, <span>
+                                        <input
+                                            id="declaration_name"
+                                            type="text"
+                                            class="form-control-declaration w--30"
+                                            name="declaration_name"
+                                            value="{{ $case->applicant_fullname ?? '' }}" />
+                                    </span> the appointed representative of
+                                    <span>
+                                        <input
+                                            id="declaration_rep"
+                                            type="text"
+                                            class="form-control-declaration w--30"
+                                            name="declaration_rep"
+                                            value="{{ $case->applicant_firm ?? '' }}"
+                                        />, hereby declare that all the information submitted by me
+                                            in the application form is correct, true and valid.
+                                    </span>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="upload-info" type="button" class="btn btn-light-primary font-weight-bold"
-                        data-wizard-type="action-submit">Submit Case</button>
-                    <button id="upload-img" type="button"
-                        class="btn btn-primary font-weight-bold py-2 px-10 hide" disabled>
+                    <button
+                        id="upload-info"
+                        type="button"
+                        class="btn btn-light-primary font-weight-bold"
+                        data-wizard-type="action-submit"
+                    >
+                        Submit Case
+                    </button>
+                    <button
+                        id="upload-img"
+                        type="button"
+                        class="btn btn-primary font-weight-bold py-2 px-10 hide"
+                        disabled
+                    >
                         <div class="spinner-grow text-white" role="status">
                           <span class="sr-only">Loading...</span>
                         </div>

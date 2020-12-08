@@ -20,73 +20,73 @@
             <div class="container">
                 <div class="row">
                     @if(in_array(\Auth::user()->account_type, ['AD']))
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('dashboard.users') }}';">
-                        <div class="dashboard-card purple">
-                            <p>Users</p>
-                            <span>{{ \App\Models\User::where('status', 'active')->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('dashboard.users') }}';">
+                            <div class="dashboard-card purple">
+                                <p>Users</p>
+                                <span>{{ \App\Models\User::where('status', 'active')->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('faq.faqs') }}';">
-                        <div class="dashboard-card blue">
-                            <p>FAQs</p>
-                            <span>{{ \App\Models\Faq::all()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('faq.faqs') }}';">
+                            <div class="dashboard-card blue">
+                                <p>FAQs</p>
+                                <span>{{ \App\Models\Faq::all()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
                     @endif
                     @if(in_array(\Auth::user()->account_type, ['SP']))
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.unassigned') }}';">
-                        <div class="dashboard-card purple">
-                            <p>New Cases</p>
-                            <span>{{ $cases->unassignedCases()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.unassigned') }}';">
+                            <div class="dashboard-card purple">
+                                <p>New Cases</p>
+                                <span>{{ $cases->unassignedCases()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
                     @endif
                     @if(!in_array(\Auth::user()->account_type, ['AD']))
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.assigned') }}';">
-                        <div class="dashboard-card blue">
-                            <p>@if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</p>
-                            <span>{{ \Auth::user()->active_cases_assigned()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.assigned') }}';">
+                            <div class="dashboard-card blue">
+                                <p>@if(in_array(\Auth::user()->account_type, ['CH'])) New @else Assigned @endif Cases</p>
+                                <span>{{ \Auth::user()->active_cases_assigned()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.working_on') }}';">
-                        <div class="dashboard-card orange">
-                            <p>Ongoing</p>
-                            <span>{{ \Auth::user()->cases_working_on()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.working_on') }}';">
+                            <div class="dashboard-card orange">
+                                <p>Ongoing</p>
+                                <span>{{ \Auth::user()->cases_working_on()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.on-hold') }}';">
-                        <div class="dashboard-card redish-orange">
-                            <p>On Hold</p>
-                            <span>{{ \Auth::user()->deficient_cases()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.on-hold') }}';">
+                            <div class="dashboard-card redish-orange">
+                                <p>On Hold</p>
+                                <span>{{ \Auth::user()->deficient_cases()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.approved') }}';">
-                        <div class="dashboard-card lightish-yellow dashboard-bg-image">
-                            <p>Approved</p>
-                            <span>{{ \Auth::user()->approved_cases()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.approved') }}';">
+                            <div class="dashboard-card lightish-yellow dashboard-bg-image">
+                                <p>Approved</p>
+                                <span>{{ \Auth::user()->approved_cases()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.approved') }}';">
-                        <div class="dashboard-card bg-warning dashboard-bg-image">
-                            <p>Archived</p>
-                            <span>{{ \Auth::user()->archived_cases()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.approved') }}';">
+                            <div class="dashboard-card bg-warning dashboard-bg-image">
+                                <p>Archived</p>
+                                <span>{{ \Auth::user()->archived_cases()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 my-5" onclick="window.location.href = '{{ route('cases.all') }}';">
-                        <div class="dashboard-card">
-                            <p>All Cases</p>
-                            <span>{{ \Auth::user()->all_cases()->count() }}</span>
-                            <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                        <div class="col-lg-3 my-5" onclick="window.location.href='{{ route('cases.all') }}';">
+                            <div class="dashboard-card">
+                                <p>All Cases</p>
+                                <span>{{ \Auth::user()->all_cases()->count() }}</span>
+                                <img src="{{ pc_asset(BE_IMAGE.'svg/dd_angle.svg') }}" alt="double angle" />
+                            </div>
                         </div>
-                    </div>
                     @endif
                 </div>
                 @if(!in_array(\Auth::user()->account_type, ['AD']))
@@ -196,8 +196,7 @@
                                     <h3 class="card-title align-items-start flex-column">
                                         <span class="card-label font-weight-bolder text-dark">New Cases</span>
                                     </h3>
-                                    <div class="card-toolbar">
-                                    </div>
+                                    <div class="card-toolbar"></div>
                                 </div>
                                 <div class="card-body pt-2 pb-0 mt-n3">
                                     @if ($new_cases->count() <= 0)
@@ -209,8 +208,12 @@
                                         </div>
                                     @else
                                         <div class="tab-content mt-5" id="myTabTables11">
-                                            <div class="tab-pane fade show active" id="kt_tab_pane_11_3" role="tabpanel"
-                                                aria-labelledby="kt_tab_pane_11_3">
+                                            <div
+                                                class="tab-pane fade show active"
+                                                id="kt_tab_pane_11_3"
+                                                role="tabpanel"
+                                                aria-labelledby="kt_tab_pane_11_3"
+                                            >
                                                 <div class="table-responsive">
                                                     <table class="table table-borderless table-vertical-center">
                                                         <thead>
