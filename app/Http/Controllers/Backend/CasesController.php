@@ -159,6 +159,33 @@ class CasesController extends Controller
     }
 
     /**
+     * Handles all cases page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function allCases(User $handler)
+    {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
+        if (isset($handler->status)):
+            $cases = $handler->all_cases($handler)->get();
+        else:
+            $cases = auth()->user()->all_cases()->get();
+        endif;
+
+        $caseHandlers   = (new User())->caseHandlers();
+
+        $title          = 'All Cases | ' . APP_NAME;
+        $description    = 'All Cases | ' . APP_NAME;
+        $details        = details($title, $description);
+        return view(
+            'backend.cases.cases-all',
+            compact('details', 'cases', 'caseHandlers')
+        );
+    }
+
+    /**
      * Handles assigned cases page.
      *
      * @return \Illuminate\Contracts\View\Factory

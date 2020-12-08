@@ -11,7 +11,7 @@ trait CaseGettable
      */
     public function submittedCases()
     {
-        return static::where('submitted_at', '!=', null)->get();
+        return static::where('submitted_at', '!=', null)->latest()->get();
     }
 
     /**

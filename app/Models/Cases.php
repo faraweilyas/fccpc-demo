@@ -556,4 +556,17 @@ class Cases extends Model
 
         return '...';
     }
+
+    /**
+     * Get handler id
+     *
+     * @return string
+     */
+    public function getHandlerId()
+    {
+        if ($this->active_handlers->first())
+            return $this->active_handlers->first()->id;
+
+        return '';
+    }
 }

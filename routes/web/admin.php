@@ -234,6 +234,11 @@ Route::prefix('cases')
         );
 
         Route::get(
+            'all/{handler?}',
+            'CasesController@allCases'
+        )->name('all');
+
+        Route::get(
             'assigned/{handler?}',
             'CasesController@assignedCases'
         )->name('assigned');

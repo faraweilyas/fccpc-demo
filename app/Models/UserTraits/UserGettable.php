@@ -156,10 +156,16 @@ trait UserGettable
      *
      * @return Collection
      */
-    public function all_cases()
+    public function all_cases($handler = FALSE)
     {
+        if ($handler):
+            return $this->cases_assigned_to()
+                ->where('dropped_at', null)
+                ->latest();
+        endif;
+
         if (in_array(auth()->user()->account_type, ['SP'])):
-            return (new Cases)->submittedCases();
+            return (new Cases)->where('submitted_at', '!=', null);
         else:
             return $this->cases_assigned_to()
                 ->where('dropped_at', null)

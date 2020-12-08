@@ -35,10 +35,12 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
+                                    <th class="text-center">All Cases</th>
                                     <th class="text-center">Assigned Cases</th>
                                     <th class="text-center">Cases On Hold</th>
                                     <th class="text-center">Ongoing Cases</th>
                                     <th class="text-center">Approved Cases</th>
+                                    <th class="text-center">Archived Cases</th>
                                     <th>Status</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
@@ -49,6 +51,13 @@
                                     <td>
                                         <a href="{{ route('dashboard.profile', ['user' => $handler->id]) }}">
                                             <b>{{ $handler->getFullName() }}</b>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a
+                                            href="@if($handler->all_cases(TRUE)->count() > 0) {{ route('cases.all', ['handler' => $handler->id]) }} @else # @endif">
+                                            <span
+                                                class="badge badge-success"><b>{{ $handler->all_cases(TRUE)->count() }}</b></span>
                                         </a>
                                     </td>
                                     <td class="text-center">
@@ -77,6 +86,13 @@
                                             href="@if($handler->approved_cases(TRUE)->count() > 0) {{ route('cases.approved', ['handler' => $handler->id]) }} @else # @endif">
                                             <span
                                                 class="badge badge-secondary"><b>{{ $handler->approved_cases(TRUE)->count() }}</b></span>
+                                        </a>
+                                    </td>
+                                    <td class="text-center">
+                                        <a
+                                            href="@if($handler->archived_cases(TRUE)->count() > 0) {{ route('cases.archived', ['handler' => $handler->id]) }} @else # @endif">
+                                            <span
+                                                class="badge badge-secondary"><b>{{ $handler->archived_cases(TRUE)->count() }}</b></span>
                                         </a>
                                     </td>
                                     <td>
