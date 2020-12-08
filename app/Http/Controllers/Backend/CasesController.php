@@ -33,14 +33,12 @@ class CasesController extends Controller
     public function searchCases()
     {
         $search = $_GET['search'] ?? '';
+        $users  = auth()->user()->search_users($search);
         if (auth()->user()->account_type == 'CH'):
             $cases = auth()->user()->search_active_cases_assigned_to($search);
         elseif (auth()->user()->account_type == 'AD'):
             $data = auth()->user()->search_users_and_faqs($search);
         else:
-            $users = (new User)->where('first_name', 'LIKE', '%'.$search.'%')
-                                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
-                                ->get();
             $cases = (new Cases())->searchAssignedCases($search);
         endif;
 
@@ -110,7 +108,7 @@ class CasesController extends Controller
                 endif;
             endif;
         else:
-            if (count($users) <= 0 && count($cases) <= 0):
+            if ($users->count() <= 0 && count($cases) <= 0):
                 $output .= '<div class="text-muted text-center">No record found</div>';
             else:
                 if ($cases->count() <= 0):
@@ -143,7 +141,7 @@ class CasesController extends Controller
                     $output .= '</div>';
                 endif;
 
-                if (count($users) > 0):
+                if ($users->count() > 0 && auth()->user()->account_type == 'SP'):
                     $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
                                     Users
                                 </div>';
@@ -165,12 +163,14 @@ class CasesController extends Controller
 
                     $output .= '</div>';
                 else:
-                    $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
-                                    Users
-                                </div>';
-                    $output .= '<div class="mb-10">';
-                    $output .= '<div class="text-muted text-center">No record found</div>';
-                    $output .= '</div>';
+                    if (auth()->user()->account_type == 'SP'):
+                        $output .= '<div class="font-size-sm text-primary font-weight-bolder text-uppercase mb-2">
+                                        Users
+                                    </div>';
+                        $output .= '<div class="mb-10">';
+                        $output .= '<div class="text-muted text-center">No record found</div>';
+                        $output .= '</div>';
+                    endif;
                 endif;
             endif;
         endif;

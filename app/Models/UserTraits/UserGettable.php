@@ -132,6 +132,23 @@ trait UserGettable
     }
 
     /**
+     * Searches for users by supervisor
+     *
+     * @param String $search
+     *
+     * @return array
+     */
+    public function search_users($search)
+    {
+        $users = $this->where('first_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('email', 'LIKE', '%'.$search.'%')
+                ->get();
+
+        return $users;
+    }
+
+    /**
      * Searches for users and faqs by admin
      *
      * @param String $search

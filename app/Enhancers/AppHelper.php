@@ -238,6 +238,24 @@ class AppHelper
     }
 
     /**
+     * Validates and returns array value
+     *
+     * @param string $array
+     * @param mixed $arrayKey
+     * @param mixed $textStyle
+     * @return mixed
+     */
+    public function key(string $array, $arrayValue)
+    {
+        if (!isset($this->$array) || is_null($arrayValue))
+            return NULL;
+        if (!$this->validateValue($arrayValue, $array))
+            return NULL;
+
+        return array_search($arrayValue, $array);
+    }
+
+    /**
      * Get array values
      *
      * @param string $array
