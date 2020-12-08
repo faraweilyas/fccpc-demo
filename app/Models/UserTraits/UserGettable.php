@@ -159,6 +159,7 @@ trait UserGettable
     {
         $users = $this->where('first_name', 'LIKE', '%'.$search.'%')
                 ->orWhere('last_name', 'LIKE', '%'.$search.'%')
+                ->orWhere('email', 'LIKE', '%'.$search.'%')
                 ->get();
         $faqs  = Faq::where('question', 'LIKE', '%'.$search.'%')
                 ->get();
