@@ -210,13 +210,8 @@
                                         </p>
                                     </div>
                                     <div class="col-md-6 my-5">
-                                        <textarea
-                                            class="form-control form-control-teaxtarea"
-                                            name="recommendation"
-                                            id=""
-                                            cols="30"
-                                            rows="10" >{{ $case->getRecommendation() }}
-                                        </textarea>
+                                        <textarea class="form-control form-control-teaxtarea" name="recommendation" id="" cols="30"
+                                            rows="10" >{{ $case->getRecommendation() }}</textarea>
                                         <p class="text-danger mt-5">
                                             @error('recommendation')
                                                 {{ $message }}

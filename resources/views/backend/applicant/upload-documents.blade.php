@@ -150,15 +150,7 @@
                                                                                 <div class="row mt-4">
                                                                                     <div class="col-md-12">
                                                                                         <div class="form-group mb-1">
-                                                                                            <textarea
-                                                                                                class="form-control"
-                                                                                                id="additional_info"
-                                                                                                rows="6"
-                                                                                                name="{{ Str::camel($checklistGroup->label) }}_additional_info"
-                                                                                                placeholder="Additional Information..."
-                                                                                            >
-                                                                                                {{ $document->additional_info ?? '' }}
-                                                                                            </textarea>
+                                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>

@@ -427,15 +427,7 @@
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-1">
-                                                                            <textarea
-                                                                                class="form-control"
-                                                                                id="additional_info"
-                                                                                rows="6"
-                                                                                name="{{ Str::camel($checklistGroup->label) }}_additional_info"
-                                                                                placeholder="Additional Information..."
-                                                                            >
-                                                                                {{ !empty($document) ? $document->additional_info : '' }}
-                                                                            </textarea>
+                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -512,14 +504,14 @@
                                                     data-wizard-type="action-submit"
                                                     data-review-route="/application/applicant/{{ $guest->tracking_id }}/review/1"
                                                 >
-                                                    Save &nbsp; Review
+                                                    Save & Review
                                                 </button>
                                                 <button
                                                     id="save-info"
                                                     class="btn btn-primary font-weight-bold text-uppercase px-9 py-4"
                                                     data-wizard-type="action-next"
                                                 >
-                                                    Save &nbsp; Continue
+                                                    Save & Continue
                                                 </button>
                                                 <button
                                                     id="saving-img"
