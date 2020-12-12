@@ -100,8 +100,8 @@ class ApplicantController extends Controller
      */
     public function trackApplication()
     {
-        $title          = 'Track Application | ' . APP_NAME;
-        $description    = 'Track Application | ' . APP_NAME;
+        $title          = 'Manage Application | ' . APP_NAME;
+        $description    = 'Manage Application | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }

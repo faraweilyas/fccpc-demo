@@ -30,6 +30,7 @@
                         <div class="mb_30">
                             <h3>Merger & Acquisition Application</h3>
                             <div class="font-weight-bold text-black-sm">Enter your email to begin your application:</div>
+                            <small class="text-danger">Note: The email provided would be used to communicate information about case.</small>
                         </div>
                         <form class="form" method="POST" action="{{ route('applicant.store') }}">
                             @csrf
@@ -48,18 +49,6 @@
                                 Submit
                             </button>
                         </form>
-                        <div class="mt-10">
-                            <p>
-                                <span class="text-black" style="font-weight: bold;">Existing application?</span><br />
-                                <a
-                                    href="{{ route('applicant.track') }}"
-                                    id="kt_login_signup2"
-                                    class="text-hover-primary font-weight-bold text-black-sm"
-                                >
-                                    Add supporting documents or continue where you left off
-                                </a>
-                            </p>
-                        </div>
                     </div>
                 </div>
             </div>

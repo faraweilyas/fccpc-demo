@@ -505,7 +505,7 @@ class ApplicationController extends Controller
             Mail::to($guest->email)->send(
                 new ApplicationRequest([
                     'fullname' => $case->applicant_fullname,
-                    'ref_no' => $case->ref_no,
+                    'ref_no' => $case->reference_number,
                     'case' => $case,
                     'guest' => $guest,
                 ])

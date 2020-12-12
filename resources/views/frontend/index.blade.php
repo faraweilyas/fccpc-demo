@@ -7,8 +7,7 @@
                 <div class="col-md-8">
                     <h2 class="home__headers">Mergers and Aquisition Portal</h2>
                     <div class="custom-bar"></div>
-                    <p class="home__content">The Federal Competition and Consumer Protection Commission is a statutory
-                        body established under the FCCPA 2018 and empowered to review and analyse all mergers and other
+                    <p class="home__content">The Federal Competition and Consumer Protection Commission is empowered to review and analyse all mergers and other
                         business combinations or arrangement to ensure that such combination does not substantially prevent
                         or lessen competition.</p>
                 </div>
@@ -25,7 +24,7 @@
                         onclick="window.location.href = '{{ route('enquiries.index') }}';">
                         <img class="card__box-stack-img" src="{{ FE_IMAGE.'svg/book-open.svg' }}" alt="user-bg" />
                         <div class="card__box--content">
-                            <p>Enquiry</p>
+                            <p>Pre-Notification</p>
                         </div>
                     </div>
                     <div class="card__box card__box-stack shadow" id="control-2"

@@ -65,10 +65,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('applicant.show') }}">Submit Applciation</a>
+              <a class="nav-link" href="{{ route('applicant.show') }}">Submit Application</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('enquiries.index') }}">Enquiry</a>
+              <a class="nav-link" href="{{ route('enquiries.index') }}">Pre-Notification</a>
             </li>
             <li class="nav-item hide">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
@@ -77,12 +77,11 @@
               <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('home.resources') }}">Resources</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
             </li>
-
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('applicant.track') }}">Manage Application</a>
+            </li>
             <li class="nav-item dropdown administrator-right">
               <a
                 class="nav-link dropdown-toggle"

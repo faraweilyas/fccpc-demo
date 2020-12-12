@@ -18,11 +18,11 @@ Route::prefix('applicant')
 
         Route::post('authenticate', 'ApplicantController@store')->name('store');
 
-        Route::get('track', 'ApplicantController@trackApplication')->name(
+        Route::get('manage', 'ApplicantController@trackApplication')->name(
             'track'
         );
 
-        Route::post('track', 'ApplicantController@authenticateTrack')->name(
+        Route::post('manage', 'ApplicantController@authenticateTrack')->name(
             'authenticate.track'
         );
 
