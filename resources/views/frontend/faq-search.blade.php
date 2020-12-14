@@ -10,7 +10,7 @@
 
                 <div class="form-group">
                     <form id="faqSearchForm" method="GET" action="{{ route('home.faqs.search') }}">
-                        <input class="form-control faq-search-input" type="text" name="query" placeholder="Search" />
+                        <input class="form-control faq-search-input" type="text" name="query" placeholder="Search" value="{{ $_GET['query'] ?? '' }}" />
                     </form>
                 </div>
             </div>
