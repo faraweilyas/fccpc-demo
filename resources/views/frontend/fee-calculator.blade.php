@@ -71,8 +71,69 @@
     </div>
   </div>
 </div>
+<!-- Modal Popup -->
+<div class="modal fade hide" id="localGuideline" tabindex="-1" role="dialog" aria-labelledby="localGuidelineModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mx-auto text-center" id="localGuidelineModalTitle">Local Merger Fees Guideline</h5>
+            </div>
+            <div class="modal-body">...</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-localGuideline" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Popup -->
+<div class="modal fade hide" id="ffmGuideline" tabindex="-1" role="dialog" aria-labelledby="ffmGuidelineModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mx-auto text-center" id="ffmGuidelineModalTitle">Foreign-to-Foreign Merger Fees Guideline</h5>
+            </div>
+            <div class="modal-body">
+                <p class="modal_guideline__header">Applicable Fees for Foreign-to-Foreign Merger Notifications</p>
+                <p>As approved by the Federal Competition and Consumer Protection
+                Commission (the Commission), the following fees shall apply with respect
+                to foreign-to-foreign mergers with a nexus to Nigeria:</p>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">Threshold</th>
+                            <th scope="col">Fees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Merger with combined turnover of N1billion and above</td>
+                            <td>&#8358;3,000,000.00 or 0.1% of the combined turnover, whichever is higher</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Merger where target undertaking has turnover of up to &#8358;500 million and between N1 billion</td>
+                            <td>&#8358;2,000,000.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="modal_guideline__sub__header">Applicable Fees for Foreign-to-Foreign Merger Notifications: EXPEDITED PROCEDURE</p>
+                <ol>
+                    <li>The Commission, in the interest of transactional efciency, shall adopt an expedited procedure, for foreign to foreign mergers where it will conduct a review under the simplifed procedure.</li>
+                    <li>Under the expedited procedure, the Commission shall conclude its review and issue its decision within 15 (fifteen) business days.</li>
+                    <li>The expedited procedure fee is &#8358;5,000,000 (five million Naira) to be paid in addition to the application fee.</li>
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary close-ffmGuideline" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('custom.javascript')
+    <script src="{{ pc_asset(FE_JS.'jquery.min.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'app.js') }}"></script>
 @endsection
