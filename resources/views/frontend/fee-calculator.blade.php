@@ -5,7 +5,7 @@
     <div>
       <h2 class="fee-calc-header">Fee Calculator</h2>
 
-      <p class="fee-calc-subh py-5">
+      <p class="fee-calc-subh py-5" data-toggle="modal" data-target="#ffmGuideline">
         Fees Guideline for Domestic Merger
       </p>
     </div>
@@ -86,8 +86,8 @@
     </div>
 </div>
 <!-- Modal Popup -->
-<div class="modal fade hide" id="ffmGuideline" tabindex="-1" role="dialog" aria-labelledby="ffmGuidelineModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+<div class="modal" id="ffmGuideline" tabindex="-1" role="dialog" aria-labelledby="ffmGuidelineModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title mx-auto text-center" id="ffmGuidelineModalTitle">Foreign-to-Foreign Merger Fees Guideline</h5>
@@ -133,7 +133,6 @@
 </div>
 @endsection
 @section('custom.javascript')
-    <script src="{{ pc_asset(FE_JS.'jquery.min.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'app.js') }}"></script>
 @endsection

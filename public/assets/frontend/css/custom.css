@@ -2,8 +2,10 @@ body {
     color: #242424 !important;
 }
 
-.hide {
-    display: none !important;
+.container-fluid
+{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .p__20

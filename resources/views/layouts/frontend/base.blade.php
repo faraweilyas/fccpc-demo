@@ -15,6 +15,7 @@
     <meta property="og:url" content="{{ agencyLink() }}" />
     <meta property="og:site_name" content="Federal Competition and Consumer Protection Commission" />
     <link rel="shortcut icon" href="{{ BE_IMAGE.'favicon/fccpc_favicon.ico' }}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ pc_asset(FE_CSS.'main.css') }}" />
     <link rel="stylesheet" href="{{ pc_asset(FE_CSS.'custom.css') }}" />
 </head>
@@ -318,7 +319,11 @@
             </div>
           </div>
         </div>
-        <script
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"></script>
+    <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"
