@@ -32,7 +32,7 @@ Route::prefix('applicant')
         )->name('document.download');
 
         Route::get(
-            'loa/download/{document}',
+            'loa/download/{document?}',
             'ApplicantController@letterOfAppointmenDownload'
         )->name('download_contact_loa');
 
