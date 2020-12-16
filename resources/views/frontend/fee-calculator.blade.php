@@ -11,18 +11,53 @@
     </div>
     <div class="row fee-calc-container">
       <div class="col-md-4">
-        <div class="form-group ">
-          <label>Type of Transaction</label>
+        <div class="form-group">
+          <label>Type of Transaction:</label>
             <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
                 <option value="local" selected="">Merger</option>
                 <option value="ffm">Simplified Procedure</option>
                 <option value="ffx">Negative Clearance</option>
             </select>
         </div>
-
-        <div class="form-group ">
-          <label>Combined Turnover</label>
-          <input type="text" id="combinedTurnover" name="combinedTurnover" class="form-control" placeholder="Enter your combined turnover:" />
+        <div class="form-group">
+          <label>Number of Parties:</label>
+          <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
+        </div>
+        <div class="form-group">
+          <label>Transaction Category:</label>
+            <div class="radio">
+                <label style="margin-right: 15px;">
+                    <input type="radio" class="transaction_category" name="transaction_category" value="domestic" /> Domestic
+                </label>
+                <label>
+                    <input type="radio" class="transaction_category" name="transaction_category" value="ffm" /> Foreign To Foreign
+                </label>
+            </div>
+        </div>
+        <div class="form-group hide">
+          <label>The acquiring undertaking (including group companies where relevant):</label>
+          <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter your turnover:" />
+        </div>
+        <div class="form-group hide">
+          <label>The target undertaking:</label>
+          <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter your turnover:" />
+        </div>
+        <div class="form-group hide">
+          <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
+          <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter your turnover:" />
+        </div>
+        <div class="form-group">
+          <label>Purchase Consideration:</label>
+          <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+              <label><input type="checkbox" id="expedited">Expedited</label>
+            </div>
+        </div>
+        <div class="form-group">
+          <label>Annual Turnover:</label>
+          <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
         </div>
       </div>
       <div class="col-md-2"></div>

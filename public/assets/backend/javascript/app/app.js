@@ -24,6 +24,24 @@ $(document).ready(function()
         $("#ffmGuideline").removeClass('show');
     });
 
+    $(".transaction_category").on('click', function (event) {
+        let transaction_category = $(this).val();
+
+        if (transaction_category == 'domestic')
+        {
+            $("#turnover_a").parent().removeClass('hide');
+            $("#turnover_b").parent().removeClass('hide');
+            $("#turnover_c").parent().addClass('hide');
+        }
+
+        if (transaction_category == 'ffm')
+        {
+            $("#turnover_a").parent().addClass('hide');
+            $("#turnover_b").parent().addClass('hide');
+            $("#turnover_c").parent().removeClass('hide');
+        }
+    });
+
     // on first run Hide/show expedited option based on transaction type and generate fee
     validateEpeditedOption();
     // Hide/show expedited option based on transaction type and generate fee
