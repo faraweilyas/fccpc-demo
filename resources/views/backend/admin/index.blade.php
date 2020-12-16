@@ -104,19 +104,19 @@
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4 active" data-toggle="tab"
                                                     href="#local">
-                                                    <span class="nav-text font-size-sm">Domestic</span>
+                                                    <span class="nav-text font-size-sm" title="Merger">Merger</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4" data-toggle="tab"
                                                     href="#ffm">
-                                                    <span class="nav-text font-size-sm">FFM</span>
+                                                    <span class="nav-text font-size-sm" title="Simplified Procedure">Simplified...</span>
                                                 </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link py-2 px-4" data-toggle="tab"
                                                     href="#ffx">
-                                                    <span class="nav-text font-size-sm">Expedited</span>
+                                                    <span class="nav-text font-size-sm" title="Negative Clearance">Negative...</span>
                                                 </a>
                                             </li>
                                         </ul>
@@ -147,7 +147,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.regular></x-icons.regular>
                                         </section>
-                                        <p class="mx-5">Domestic</p>
+                                        <p class="mx-5">Merger</p>
                                         <span class="main mx-5 my-25">{{ $cases->getCasesByCategory('REG')->count() }}</span>
                                     </div>
                                 </div>
@@ -156,7 +156,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.ffm></x-icons.ffm>
                                         </section>
-                                        <p class="mx-5">FFM</p>
+                                        <p class="mx-5">Simplified Procedure</p>
                                         <span class="main mx-5 my-25">{{ $cases->getCasesByCategory('FFM')->count() }}</span>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                                         <section class="svg-hodler">
                                            <x-icons.ffx></x-icons.ffx>
                                         </section>
-                                        <p class="mx-5">Expedited</p>
+                                        <p class="mx-5">Negative <br/>Clearance</p>
                                         <span class="main mx-5 my-25" >{{ $cases->getCasesByCategory('FFX')->count() }}</span>
                                     </div>
                                 </div>
