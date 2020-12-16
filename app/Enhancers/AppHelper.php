@@ -64,9 +64,9 @@ class AppHelper
     ];
 
 	protected $case_categories = [
-		"REG" => "Domestic",
-		"FFM" => "FFM",
-		"FFX" => "Expedited",
+		"REG" => "Merger",
+		"FFM" => "Simplified Procedure",
+		"FFX" => "Negative Clearance",
 	];
 
     protected $case_categories_text = [

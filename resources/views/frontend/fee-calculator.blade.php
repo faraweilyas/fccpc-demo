@@ -5,8 +5,8 @@
     <div>
       <h2 class="fee-calc-header">Fee Calculator</h2>
 
-      <p class="fee-calc-subh py-5" data-toggle="modal" data-target="#ffmGuideline">
-        Fees Guideline for Domestic Merger
+      <p class="fee-calc-subh py-5">
+        <span class="cr-pointer" data-toggle="modal" data-target="#feesGuideline">Fees Guideline for Domestic Merger</span>
       </p>
     </div>
     <div class="row fee-calc-container">
@@ -14,9 +14,9 @@
         <div class="form-group ">
           <label>Type of Transaction</label>
             <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                <option value="local" selected="">Domestic</option>
-                <option value="ffm">Foreign to Foreign</option>
-                <option value="ffx">Foreign to Foreign Expedited</option>
+                <option value="local" selected="">Merger</option>
+                <option value="ffm">Simplified Procedure</option>
+                <option value="ffx">Negative Clearance</option>
             </select>
         </div>
 
@@ -37,7 +37,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>Filling fee</td>
+                <td>Application fee</td>
                 <td>
                     <span class="fillingFee">₦0.00</span>
                 </td>
@@ -72,21 +72,7 @@
   </div>
 </div>
 <!-- Modal Popup -->
-<div class="modal fade hide" id="localGuideline" tabindex="-1" role="dialog" aria-labelledby="localGuidelineModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mx-auto text-center" id="localGuidelineModalTitle">Local Merger Fees Guideline</h5>
-            </div>
-            <div class="modal-body">...</div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary close-localGuideline" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal Popup -->
-<div class="modal" id="ffmGuideline" tabindex="-1" role="dialog" aria-labelledby="ffmGuidelineModalTitle" aria-hidden="true">
+<div class="modal" id="feesGuideline" tabindex="-1" role="dialog" aria-labelledby="feesGuidelineModalTitle" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header">

@@ -26,9 +26,9 @@
                         <div class="form-group fee-calc-form-group">
                             <label>Type of Transaction</label>
                             <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                                <option value="local" selected="">Domestic</option>
-                                <option value="ffm">Foreign to Foreign</option>
-                                <option value="ffx">Expedited</option>
+                                <option value="local" selected="">Merge</option>
+                                <option value="ffm">Simplified Procedure</option>
+                                <option value="ffx">Negative Clearance</option>
                             </select>
                         </div>
 

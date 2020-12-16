@@ -21,7 +21,7 @@
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="d-flex flex-column-fluid">
             <div class="container">
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
                             <div class="alert-text text-dark">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="row">
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('reg') }}">
@@ -50,7 +50,7 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $regStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Domestic Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Merger</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <br />
                                         <small class="text-black">
@@ -59,12 +59,6 @@
                                     </span>
                                 </div>
                             </div>
-                        </a>
-                        <a
-                            href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'REG']) }}"
-                            class="checklist-list"
-                        >
-                            View Domestic Merger Document Checklist
                         </a>
                     </div>
                     <div class="col-md-4 pb-10">
@@ -77,19 +71,13 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $ffmStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Foreign to Foreign Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Simplified Procedure</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                         <br />
                                         <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. <br />Application takes 60 days</small>
                                     </span>
                                 </div>
                             </div>
-                        </a>
-                        <a
-                            href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'FFM']) }}"
-                            class="checklist-list"
-                        >
-                            View Foreign to Foreign Merger Document Checklist
                         </a>
                     </div>
                     <div class="col-md-4 pb-10">
@@ -103,19 +91,13 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $ffxStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Expedited Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Negative Clearance</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         <br />
                                         <small class="text-black">Domestic and Foreign to Foreign applications takes 15 working days.</small>
                                     </span>
                                 </div>
                             </div>
-                        </a>
-                        <a
-                            href="{{ route('application.checklist-documents', ['guest' => $guest->guest_tracking_id, 'case_category' => 'FFX']) }}"
-                            class="checklist-list"
-                        >
-                            View Expedited Document Checklist
                         </a>
                     </div>
                 </div>
