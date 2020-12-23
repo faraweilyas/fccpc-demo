@@ -96,7 +96,10 @@
                                                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                                                         @if ((in_array($checklistGroup->id, $deficientGroupIds)))
                                                             @php
-                                                                $document = $unSubmittedDocuments[$checklistGroup->id] ?? '';
+                                                                $document = \App\Models\Document::where('case_id', $case->id)
+                                                                                ->where('group_id', $checklistGroup->id)
+                                                                                ->where('date_case_submitted', null)
+                                                                                ->first() ?? '';
                                                                 $documentChecklists = (!empty($document)) ? $document->checklists->pluck('id')->toArray() : [];
                                                             @endphp
                                                             <div class="pb-5" data-wizard-type="step-content" data-form='DeficientChecklistDocument'>
@@ -108,27 +111,15 @@
                                                                             </div>
                                                                             <div class="card-body">
                                                                                 <p>
-                                                                                    Upload the {{ strtolower($checklistGroup->name) }} as a single PDF file containing the relevant information listed below.
+                                                                                    Upload the {{ strtolower($checklistGroup->name) }} as a single PDF file containing the missing information listed below.
                                                                                 </p>
                                                                                 <div class="row mt-4">
                                                                                     @foreach($checklistGroup->checklists as $checklist)
-                                                                                        @php
-                                                                                            $checked = (in_array($checklist->id, $documentChecklists)) ? "checked='checked'" : '';
-                                                                                        @endphp
                                                                                         @if ((in_array($checklist->id, $checklistIds)))
                                                                                             <div class="col-md-12">
-                                                                                                <label class="checkbox mb-4">
-                                                                                                    <input
-                                                                                                        type="checkbox"
-                                                                                                        value="{{ $checklist->id }}"
-                                                                                                        id="checklist_id"
-                                                                                                        {{ $checked }}
-                                                                                                    />
-                                                                                                    <span></span>
-                                                                                                    <small>
-                                                                                                        {{ ucfirst($checklist->name) }}
-                                                                                                    </small>
-                                                                                                </label>
+                                                                                                <ul>
+                                                                                                    <li>{{ ucfirst($checklist->name) }}</li>
+                                                                                                </ul>
                                                                                             </div>
                                                                                         @endif
                                                                                     @endforeach
@@ -170,10 +161,11 @@
                                                                                             </span>
                                                                                         </div>
                                                                                     </div>
-                                                                                    @if (!empty($document))
+                                                                                    @if(!empty($document))
                                                                                         <div class="col-md-3 my-1">
                                                                                             <span>
-                                                                                                <img onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
+                                                                                                <img
+                                                                                                    onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
                                                                                                     class="max-h-30px mr-3 doc-cursor-pointer"
                                                                                                     src="{{ $document->getIconText() }}"
                                                                                                     title="Download Document"
@@ -188,19 +180,10 @@
                                                                                     />
                                                                                     <input
                                                                                         type="hidden"
-                                                                                        id="checklist_doc_name"
-                                                                                        value="{{ strtolower($checklist->name) }}"
-                                                                                    />
-                                                                                    <input
-                                                                                        type="hidden"
                                                                                         id="doc_id"
                                                                                         value="{{ !empty($document) ? $document->id : '' }}"
                                                                                     />
-                                                                                    <input
-                                                                                        type="hidden"
-                                                                                        id="group_id"
-                                                                                        value="{{ $checklistGroup->id }}"
-                                                                                    />
+                                                                                    <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                                 </div>
                                                                                 <p
                                                                                     class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}">

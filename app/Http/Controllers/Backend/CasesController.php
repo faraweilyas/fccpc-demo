@@ -445,7 +445,7 @@ class CasesController extends Controller
             return redirect()->back();
 
         $checklistIds           = $case->getChecklistIds();
-        $submittedDocuments     = $case->submittedDocuments($case->case_category)[$date];
+        $submittedDocuments     = $case->submittedDocumentsComplete($case->case_category)[$date];
         $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category);
 
         $title          = APP_NAME;

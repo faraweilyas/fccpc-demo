@@ -76,7 +76,10 @@
                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                             @if ((in_array($checklistGroup->id, $deficientGroupIds)))
                                 @php
-                                    $document = $unSubmittedDocuments[$checklistGroup->id] ?? '';
+                                    $document = \App\Models\Document::where('case_id', $case->id)
+                                                ->where('group_id', $checklistGroup->id)
+                                                ->where('date_case_submitted', null)
+                                                ->first() ?? '';
                                 @endphp
                                 <div class="row">
                                     <div class="col-md-6 my-5" key={item[0]}>

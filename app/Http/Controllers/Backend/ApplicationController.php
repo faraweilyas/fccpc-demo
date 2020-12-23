@@ -439,7 +439,7 @@ class ApplicationController extends Controller
         $newFileName = \SerialNumber::randomFileName($extension);
         $path = $file->storeAs('public/documents', $newFileName);
 
-        $previous_document = Document::where('id', request('document_id'))->where('date_case_submitted', null)->first();
+        $previous_document = Document::find(request('document_id'));
 
         if ($previous_document):
             unlink(
@@ -454,11 +454,6 @@ class ApplicationController extends Controller
             'additional_info' => trim(request('additional_info')),
         ]);
 
-        $checklistIds = request('checklists');
-        $arrayOfChecklistIds = transformChecklistIds($checklistIds, [
-            'selected_at' => now(),
-        ]);
-        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
@@ -592,7 +587,6 @@ class ApplicationController extends Controller
         $isDeficient            = $case->isDeficient();
         $checklistIds           = $case->getLatestSubmittedDocumentChecklistsIDs('deficient');
         $deficientGroupIds      = $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
-        $unSubmittedDocuments   = $case->getChecklistGroupUnSubmittedDocuments();
 
         $title          = 'Upload Documents | ' . APP_NAME;
         $description    = 'Upload Documents | ' . APP_NAME;
@@ -606,7 +600,6 @@ class ApplicationController extends Controller
                 'isDeficient',
                 'checklistIds',
                 'deficientGroupIds',
-                'unSubmittedDocuments'
             )
         );
     }

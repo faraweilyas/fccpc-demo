@@ -147,7 +147,10 @@
                         <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
                         @foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $case->case_category])->get() as $checklistGroup)
                             @php
-                                $document = \App\Models\Document::where('case_id', $case->id)->where('group_id', $checklistGroup->id)->where('date_case_submitted', null)->first() ?? '';
+                                $document = \App\Models\Document::where('case_id', $case->id)
+                                                ->where('group_id', $checklistGroup->id)
+                                                ->where('date_case_submitted', null)
+                                                ->first() ?? '';
                             @endphp
                             <div class="row">
                                 <div class="col-md-6 my-5" key={item[0]}>

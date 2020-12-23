@@ -368,7 +368,7 @@ class Cases extends Model
         return $this->documents()->where('date_case_submitted', null)->get();
     }
 
-    public function submittedDocuments($case_category = NULL)
+    public function submittedDocumentsComplete($case_category = NULL)
     {
         return $this
             ->documents()
@@ -378,6 +378,16 @@ class Cases extends Model
             {
                 return $document->group->category !== $case_category && $document->group->category !== "ALL";
             })
+            ->groupBy('date_case_submitted')
+            ->sortKeysDesc();
+    }
+
+    public function submittedDocuments($case_category = NULL)
+    {
+        return $this
+            ->documents()
+            ->where('date_case_submitted', '!=', null)
+            ->get()
             ->groupBy('date_case_submitted')
             ->sortKeysDesc();
     }

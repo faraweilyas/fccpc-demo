@@ -469,10 +469,8 @@ $(document).ready(function()
 
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
-            checklists         = [],
             additional_info    = currentForm.find('#additional_info').val(),
             file               = currentForm.find('#checklist_doc')[0].files[0],
-            checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
             amount_paid        = currentForm.find("#amount_paid").val(),
             group_id           = currentForm.find("#group_id").val(),
@@ -482,11 +480,6 @@ $(document).ready(function()
         $("#save-deficient-doc").toggle();
         $("#saving-img").removeClass('hide');
 
-        $(currentForm).find(':checkbox:checked').each(function(i)
-        {
-           checklists[i] = $(this).val();
-        });
-
         if (amount_paid == null)
         {
             amount_paid = '';
@@ -495,7 +488,6 @@ $(document).ready(function()
         formData.append('_token', $("#token").val());
         formData.append('file', file);
         formData.append('additional_info', additional_info);
-        formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
         formData.append('group_id', group_id);
         formData.append('amount_paid', amount_paid);
@@ -823,10 +815,8 @@ function saveDeficientChecklistDocument(action, currentForm)
 {
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
-        checklists         = [],
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
-        checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
         amount_paid        = currentForm.find("#amount_paid").val(),
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
@@ -834,11 +824,6 @@ function saveDeficientChecklistDocument(action, currentForm)
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
-
-    $(currentForm).find(':checkbox:checked').each(function(i)
-    {
-       checklists[i] = $(this).val();
-    });
 
     if (amount_paid == null)
     {
@@ -848,7 +833,6 @@ function saveDeficientChecklistDocument(action, currentForm)
     formData.append('_token', $("#token").val());
     formData.append('file', file);
     formData.append('additional_info', additional_info);
-    formData.append('checklists', checklists);
     formData.append('document_id', doc_id);
     formData.append('group_id', group_id);
     formData.append('amount_paid', amount_paid);
