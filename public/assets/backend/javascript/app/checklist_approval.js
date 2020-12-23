@@ -68,6 +68,7 @@ $(document).ready(function ()
             checklist_id        = $(this).attr('data-checklist-id'),
             switch_box          = $(this).attr('data-switch-box'),
             date                = $(this).attr('data-date'),
+            reason              = $(this).parent().parent().parent().parent().parent().next().next(),
             remove_checklist    = '',
             status              = '';
 
@@ -89,7 +90,8 @@ $(document).ready(function ()
             data: {
                 checklist: checklist_id,
                 status: status,
-                remove_checklist: remove_checklist
+                remove_checklist: remove_checklist,
+                reason: reason.val()
             },
             success: function(response)
             {
@@ -101,7 +103,6 @@ $(document).ready(function ()
                     success: function(response)
                     {
                         var result      = JSON.parse(response);
-
                         deficient_count = result.response.deficient_cases;
                         deficient_count = (typeof (deficient_count) !== "undefined" || deficient_count != 0) ? deficient_count : 0;
 
@@ -126,6 +127,24 @@ $(document).ready(function ()
                     }
                 });
             }
+        });
+    });
+
+    $('.reason').on('keyup', function (event) {
+        var formData            = new FormData(),
+            doc_id              = $(this).attr('data-document-id'),
+            checklist_id        = $(this).attr('data-checklist-id');
+
+        $.ajax({
+            url: '/cases/checklist-approval-reason/'+doc_id,
+            type: 'POST',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: {
+                checklist: checklist_id,
+                reason: $(this).val()
+            },
+            success: function(response)
+            { }
         });
     });
 

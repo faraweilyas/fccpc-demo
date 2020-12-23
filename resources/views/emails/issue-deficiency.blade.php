@@ -546,13 +546,21 @@
                                                                         Your application <strong>{{ $data['ref_no'] }}</strong> is now
                                                                         under review, please provide the following <a href="{{ route('applicant.track') }}">here</a>;</p>
                                                                     @foreach($data['deficent_cases'] as $checklist)
-                                                                    <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
-                                                                        paraid="640540932"
-                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        <b>{{ $checklist->group->name }}</b> -
-                                                                        {{ $checklist->name }}</p>
+                                                                        <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
+                                                                            paraid="640540932"
+                                                                            style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                                            <b>{{ $checklist->group->name }}</b> -
+                                                                            {{ $checklist->name }}
+                                                                        </p>
+                                                                        @if(!empty($checklist->checklist_document->reason))
+                                                                            <p>
+                                                                                <b>Reason For Deficiency</b><br/>
+                                                                                {{ $checklist->checklist_document->reason ?? '...'}}
+                                                                            </p>
+                                                                        @endif
                                                                     @endforeach
                                                                     @isset($data['additional_info'])
+                                                                    <p><b>Additional Information</b></p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">

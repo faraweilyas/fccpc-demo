@@ -445,8 +445,8 @@ class CasesController extends Controller
             return redirect()->back();
 
         $checklistIds           = $case->getChecklistIds();
-        $submittedDocuments     = $case->submittedDocuments()[$date];
-        $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient');
+        $submittedDocuments     = $case->submittedDocuments($case->case_category)[$date];
+        $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category);
 
         $title          = APP_NAME;
         $description    = 'FCCPC Checklist Approval Dashboard';
@@ -465,8 +465,8 @@ class CasesController extends Controller
     public function getChecklistCount(Cases $case, $date)
     {
         $this->sendResponse('Case checklist status count.', 'success', [
-            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient')->count(),
-            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved')->count(),
+            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category)->count(),
+            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved', $case->case_category)->count(),
         ]);
     }
 
@@ -478,8 +478,8 @@ class CasesController extends Controller
     public function getChecklistByStatus(Cases $case, $date)
     {
         $this->sendResponse('Case checklist by status.', 'success', [
-            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
-            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved'),
+            'deficient_cases'   => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category),
+            'approved_cases'    => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'approved', $case->case_category),
         ]);
     }
 
@@ -495,11 +495,24 @@ class CasesController extends Controller
         if (request('remove_checklist') == 'yes'):
             $document->checklists()->detach([$checklist]);
         else:
-            $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status')]]);
+            $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status'), 'reason' => request('reason')]]);
         endif;
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
         ]);
+    }
+
+    /**
+     * Update document checklist reason.
+     *
+     * @return json
+     */
+    public function saveChecklistApprovalReason(Document $document)
+    {
+        $case       = $document->case;
+        $checklist  = request('checklist');
+            $document->checklists()->syncWithoutDetaching([$checklist => ['reason' => request('reason')]]);
+        return $this->sendResponse(200, "Checklist document updated", "success", []);
     }
 
     /**
@@ -523,7 +536,7 @@ class CasesController extends Controller
             ->send(new IssueDeficiencyEmail([
                 'fullname'        => $case->applicant_fullname,
                 'ref_no'          => $case->guest->tracking_id,
-                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient'),
+                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category),
                 'additional_info' => request('additional_info'),
             ]));
         $case_handler->notify(new IssueCaseDeficiency(

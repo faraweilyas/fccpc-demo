@@ -41,7 +41,7 @@
                 <div class="accordion accordion-solid accordion-toggle-plus mt-10" id="accordionExample">
                     @php
                         $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
-                        $submittedDocuments = $case->submittedDocuments();
+                        $submittedDocuments = $case->submittedDocuments($case->case_category);
                         $x = 1;
                     @endphp
                     @foreach ($submittedDocuments as $date => $documents)

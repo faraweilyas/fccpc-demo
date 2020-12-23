@@ -21,7 +21,7 @@ class Document extends Model
     public function checklists()
     {
         return $this->belongsToMany(Checklist::class, 'checklist_document', 'document_id', 'checklist_id')
-            ->withPivot('status', 'selected_at')
+            ->withPivot('status', 'reason', 'selected_at')
             ->as('checklist_document')
             ->withTimestamps();
     }
@@ -55,6 +55,11 @@ class Document extends Model
     public function getChecklistDocumentStatus($checklist)
     {
         return $this->getChecklistDocument($checklist)->status ?? NULL;
+    }
+
+    public function getChecklistDocumentReason($checklist)
+    {
+        return $this->getChecklistDocument($checklist)->reason ?? NULL;
     }
 
     public function getCheckedChecklistDocument($checklist, $checklistIds)

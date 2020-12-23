@@ -368,19 +368,23 @@ class Cases extends Model
         return $this->documents()->where('date_case_submitted', null)->get();
     }
 
-    public function submittedDocuments()
+    public function submittedDocuments($case_category = NULL)
     {
         return $this
             ->documents()
             ->where('date_case_submitted', '!=', null)
             ->get()
+            ->reject(function($document) use (&$case_category)
+            {
+                return $document->group->category !== $case_category && $document->group->category !== "ALL";
+            })
             ->groupBy('date_case_submitted')
             ->sortKeysDesc();
     }
 
-    public function getSubmittedDocumentByDate(string $date=NULL)
+    public function getSubmittedDocumentByDate(string $date=NULL, string $case_category)
     {
-        $submittedDocuments = $this->submittedDocuments();
+        $submittedDocuments = $this->submittedDocuments($case_category);
 
         foreach ($submittedDocuments as $dateSubmitted => $documents)
         {
@@ -396,9 +400,9 @@ class Cases extends Model
         return ($submittedDocuments[$date] ?? NULL);
     }
 
-    public function getSubmittedDocumentChecklistByDateAndStatus(string $date=NULL, string $status=NULL)
+    public function getSubmittedDocumentChecklistByDateAndStatus(string $date=NULL, string $status=NULL, string $case_category)
     {
-        $submittedDocument = $this->getSubmittedDocumentByDate($date);
+        $submittedDocument = $this->getSubmittedDocumentByDate($date, $case_category);
 
         return $submittedDocument
             ->pluck('checklists')

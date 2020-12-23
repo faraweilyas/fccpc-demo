@@ -303,6 +303,11 @@ Route::prefix('cases')
         )->name('checklist-approval-submit');
 
         Route::post(
+            'checklist-approval-reason/{document}',
+            'CasesController@saveChecklistApprovalReason'
+        );
+
+        Route::post(
             'issue-deficiency/{case}/{date}',
             'CasesController@issueDeficiency'
         )->name('issue-deficiency');
