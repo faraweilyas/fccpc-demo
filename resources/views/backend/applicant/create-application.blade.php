@@ -419,7 +419,10 @@
                                         </div>
                                         @foreach($filteredChecklistGroup as $checklistGroup)
                                             @php
-                                                $document = \App\Models\Document::where('case_id', $case->id)->where('group_id', $checklistGroup->id)->where('date_case_submitted', null)->first() ?? '';
+                                                $document = \App\Models\Document::where('case_id', $case->id)
+                                                                ->where('group_id', $checklistGroup->id)
+                                                                ->where('date_case_submitted', null)
+                                                                ->first() ?? '';
                                             @endphp
                                             <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
                                                 <div class="row mt-4">
@@ -521,7 +524,10 @@
                                         @endforeach
                                         @foreach($filteredChecklistGroupFees as $checklistGroup)
                                             @php
-                                                $document = \App\Models\Document::where('case_id', $case->id)->where('group_id', $checklistGroup->id)->where('date_case_submitted', null)->first() ?? '';
+                                                $document = \App\Models\Document::where('case_id', $case->id)
+                                                                ->where('group_id', $checklistGroup->id)
+                                                                ->where('date_case_submitted', null)
+                                                                ->first() ?? '';
                                             @endphp
                                             <div class="pb-5" data-wizard-type="step-content" data-form='ChecklistDocument'>
                                                 <div class="row mt-4">

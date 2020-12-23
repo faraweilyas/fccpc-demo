@@ -473,8 +473,6 @@ class ApplicationController extends Controller
         $case        = $guest->case;
         $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
 
-        // $this->sendResponse('Application submitted.', 'success', $supervisors);
-
         if (
             is_null($case->subject) ||
             is_null($case->parties) ||

@@ -134,7 +134,31 @@
                                 {!! $case->applicant_phone_number !!}
                             </span>
                         </div>
-                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            @if(strtolower($case->case_category) == 'reg')
+                                <p class="text_dark_blue"><b>FORM 1A:</b></p>
+                                @if (!empty($case->form_1A))
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="d-flex">
+                                                <img
+                                                     onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                                    class="mxw-15 cr-pointer"
+                                                    src="{{ $case->getForm1AIconText() }}"
+                                                    title="Download Form 1A Document"
+                                                />
+                                                <span
+                                                    class="py-5 mx-5 text-hover-primary cr-pointer"
+                                                    onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                                >
+                                                    Form 1A
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
+                            @endif
+                        </div>
                         <div class="col-md-2 text-right">
                             @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
                                 <button

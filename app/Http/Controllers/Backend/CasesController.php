@@ -667,7 +667,7 @@ class CasesController extends Controller
         if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
-        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
+        $checklistGroupDocuments    = Document::where('case_id', $case->id)->get();
         $title                      = APP_NAME;
         $description                = 'FCCPC Case Documents Analysis Dashboard';
         $details                    = details($title, $description);
@@ -798,7 +798,7 @@ class CasesController extends Controller
      */
     public function caseDocuments(Cases $case)
     {
-        $documents = $case->getChecklistGroupDocuments();
+        $documents = Document::where('case_id', $case->id)->first();
         abort_if(!auth()->user(), 404);
 
         $this->sendResponse('Case documents received.', 'success', [

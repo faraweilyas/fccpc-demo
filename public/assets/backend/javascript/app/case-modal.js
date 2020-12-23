@@ -254,6 +254,7 @@ $(document).ready(function()
             type: "get",
             success: function (response) {
                 var result = JSON.parse(response);
+                console.log(result);
                 $("#document_items").empty();
                 $.each(result.response.documents, function (index, value) {
                     $("#document_items").append(

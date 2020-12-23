@@ -146,7 +146,7 @@ class ApplicantController extends Controller
      */
     public function downloadDocument(Document $document)
     {
-        $groupName = \Str::slug($document->checklists[0]->group->name);
+        $groupName = \Str::slug($document->group->name);
         $extension = pathinfo($document->file)['extension'];
         $file      = storage_path("app/public/documents/{$document->file}");
 
