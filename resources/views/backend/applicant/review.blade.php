@@ -119,33 +119,35 @@
                             </div>
                             <div class="grid-row-2 d-flex">
                                 <div class="d-flex mt-n7" style="align-items: center;">
-                                    @if (!empty($case->form_1A))
-                                        <img
-                                            class="cr-pointer"
-                                            src="{{ $case->getForm1AIconText() }}"
-                                            alt="pdf"
-                                            style="height: 30px;"
-                                            onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
-                                        />
-                                        <h4
-                                            class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
-                                            onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
-                                        >
-                                            Form 1A
-                                        </h4>
-                                    @else
-                                        <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
-                                            <x-icons.letter-file></x-icons.letter-file>
-                                        </span>
-                                        <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Form 1A</h4>
+                                    @if(strtolower($case->case_category) == 'reg')
+                                        @if (!empty($case->form_1A))
+                                            <img
+                                                class="cr-pointer"
+                                                src="{{ $case->getForm1AIconText() }}"
+                                                alt="pdf"
+                                                style="height: 30px;"
+                                                onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                            />
+                                            <h4
+                                                class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
+                                                onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                            >
+                                                Form 1A
+                                            </h4>
+                                        @else
+                                            <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
+                                                <x-icons.letter-file></x-icons.letter-file>
+                                            </span>
+                                            <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Form 1A</h4>
+                                        @endif
                                     @endif
                                 </div>
                             </div>
                         </div>
                         <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
-                        @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
+                        @foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $case->case_category])->get() as $checklistGroup)
                             @php
-                                $document = $checklistGroupDocuments[$checklistGroup->id] ?? '';
+                                $document = \App\Models\Document::where('case_id', $case->id)->where('group_id', $checklistGroup->id)->where('date_case_submitted', null)->first() ?? '';
                             @endphp
                             <div class="row">
                                 <div class="col-md-6 my-5" key={item[0]}>
@@ -155,6 +157,7 @@
                                                 class="cr-pointer"
                                                 src="{{ $document->getIconText() }}"
                                                 alt="pdf"
+                                                style="height: 40px"
                                                 onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
                                             />
                                             <h4

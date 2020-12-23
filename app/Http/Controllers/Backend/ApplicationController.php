@@ -7,6 +7,7 @@ use App\Models\Cases;
 use App\Models\Guest;
 use App\Models\Document;
 use Illuminate\Support\Str;
+use App\Models\ChecklistGroup;
 use App\Notifications\NewUser;
 use App\Mail\ApplicationRequest;
 use App\Http\Controllers\Controller;
@@ -24,7 +25,6 @@ class ApplicationController extends Controller
         'saveContactInfo'                   => 'saveContactInfo',
         'saveChecklistDocument'             => 'saveChecklistDocument',
         'saveDeficientChecklistDocument'    => 'saveDeficientChecklistDocument',
-        'saveApplicationDocumentation'      => 'saveApplicationDocumentation',
     ];
 
     public function test()
@@ -167,6 +167,19 @@ class ApplicationController extends Controller
         $case_category = $case->getCategoryText();
         $case_parties = $case->getCaseParties(false);
         $checklistIds = $case->getChecklistIds();
+        $filteredChecklistGroup = ChecklistGroup::where('category', $case_category_key)
+                                    ->get()
+                                    ->reject(function($checklistGroup)
+                                    {
+                                        return $checklistGroup->name === "Fees";
+                                    });
+        $filteredChecklistGroupFees = ChecklistGroup::where('category', 'ALL')
+            ->get()
+            ->reject(function($checklistGroup)
+            {
+                return $checklistGroup->name !== "Fees";
+            });
+
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
 
         $title = "{$case_category} Application | " . APP_NAME;
@@ -182,6 +195,8 @@ class ApplicationController extends Controller
                 'case_category',
                 'case_parties',
                 'checklistIds',
+                'filteredChecklistGroup',
+                'filteredChecklistGroupFees',
                 'checklistGroupDocuments'
             )
         );
@@ -387,11 +402,6 @@ class ApplicationController extends Controller
             'additional_info' => trim(request('additional_info')),
         ]);
 
-        $checklistIds = request('checklists');
-        $arrayOfChecklistIds = transformChecklistIds($checklistIds, [
-            'selected_at' => now(),
-        ]);
-        $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
@@ -450,59 +460,6 @@ class ApplicationController extends Controller
         ]);
         $document->checklists()->syncWithoutDetaching($arrayOfChecklistIds);
         $this->sendResponse('Document has been saved.', 'success', $document);
-    }
-
-    /**
-     * Save application documentation.
-     *
-     * @param Guest $guest
-     * @return void
-     */
-    public function saveApplicationDocumentation(Guest $guest)
-    {
-       $previous_application_forms_name = request('previous_application_forms_name') ?? '';
-
-        if (!request()->hasFile('files')):
-            $this->sendResponse('No file has been uploaded.', 'warning', []);
-        endif;
-
-        $previous_application_forms = Cases::where('id', $guest->case->id)
-                                            ->where('application_forms', $previous_application_forms_name)
-                                            ->first();
-
-        if ($previous_application_forms):
-            if (Str::contains($previous_application_forms_name, ',')):
-                $previous_application_forms_name_array = explode(',', $previous_application_forms_name);
-                foreach($previous_application_forms_name_array as $key => $value):
-                    $new_value = explode(':', $value);
-                    unlink(
-                        storage_path('app/public/application_forms/'.$new_value[1])
-                    );
-                endforeach;
-            else:
-                $new_previous_application_forms_name = explode(':', $previous_application_forms_name);
-                unlink(
-                    storage_path('app/public/application_forms/'.$new_previous_application_forms_name[1])
-                );
-            endif;
-        endif;
-
-        foreach (request('files') as $key => $file):
-            if (!empty($file)):
-                $extension    = $file->getClientOriginalExtension();
-                $newFileName  = \SerialNumber::randomFileName($extension);
-                $path         = $file->storeAs('public/application_forms', $newFileName);
-                $file_array[] = $key.':'.$newFileName;
-            endif;
-        endforeach;
-
-        $guest->case->saveApplicationForms(
-            (object) [
-                'application_forms' => implode(',', $file_array),
-            ]
-        );
-
-        $this->sendResponse('Document has been saved.', 'success', []);
     }
 
     /**

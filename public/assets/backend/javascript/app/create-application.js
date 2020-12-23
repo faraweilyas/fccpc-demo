@@ -414,10 +414,8 @@ $(document).ready(function()
 
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
-            checklists         = [],
             additional_info    = currentForm.find('#additional_info').val(),
             file               = currentForm.find('#checklist_doc')[0].files[0],
-            checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
             review_route       = $(this).attr('data-review-route'),
             amount_paid        = currentForm.find("#amount_paid").val(),
             group_id           = currentForm.find("#group_id").val(),
@@ -427,11 +425,6 @@ $(document).ready(function()
         $("#save-transaction-info").toggle();
         $("#saving-img").removeClass('hide');
 
-        $(currentForm).find(':checkbox:checked').each(function(i)
-        {
-           checklists[i] = $(this).val();
-        });
-
         if (amount_paid == null)
         {
             amount_paid = '';
@@ -440,7 +433,6 @@ $(document).ready(function()
         formData.append('_token', $("#token").val());
         formData.append('file', file);
         formData.append('additional_info', additional_info);
-        formData.append('checklists', checklists);
         formData.append('document_id', doc_id);
         formData.append('group_id', group_id);
         formData.append('amount_paid', amount_paid);
@@ -784,10 +776,8 @@ function saveChecklistDocument(action, currentForm)
 {
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
-        checklists         = [],
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
-        checklist_doc_name = currentForm.find("#checklist_doc_name").val(),
         amount_paid        = currentForm.find("#amount_paid").val(),
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
@@ -795,11 +785,6 @@ function saveChecklistDocument(action, currentForm)
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
-
-    $(currentForm).find(':checkbox:checked').each(function(i)
-    {
-       checklists[i] = $(this).val();
-    });
 
     if (amount_paid == null)
     {
@@ -809,7 +794,6 @@ function saveChecklistDocument(action, currentForm)
     formData.append('_token', $("#token").val());
     formData.append('file', file);
     formData.append('additional_info', additional_info);
-    formData.append('checklists', checklists);
     formData.append('document_id', doc_id);
     formData.append('group_id', group_id);
     formData.append('amount_paid', amount_paid);
@@ -892,56 +876,8 @@ function saveDeficientChecklistDocument(action, currentForm)
 
 function saveApplicationDocumentation(action, currentForm)
 {
-    var tracking_id                            = $("#tracking_id").val(),
-        previous_application_forms_name        = currentForm.find("#previous_application_forms_name").val(),
-        formData                               = new FormData(),
-        form1                                  = currentForm.find('#application_form_doc_form1')[0].files[0],
-        form2                                  = currentForm.find('#application_form_doc_form2')[0].files[0],
-        form4                                  = currentForm.find('#application_form_doc_form4')[0].files[0];
-
-    if (currentForm.find('#application_form_doc_form1')[0].files.length <= 0)
-    {
-        form1 = '';
-    }
-
-    if (currentForm.find('#application_form_doc_form2')[0].files.length <= 0)
-    {
-        form2 = '';
-    }
-
-    if (currentForm.find('#application_form_doc_form4')[0].files.length <= 0)
-    {
-        form4 = '';
-    }
-
-    $("#previous-btn").attr('disabled', 'disabled');
-    $("#save-info").toggle();
-    $("#saving-img").removeClass('hide');
-
-    formData.append('_token', $("#token").val());
-    formData.append('previous_application_forms_name', previous_application_forms_name);
-    formData.append("files[form1]", form1);
-    formData.append("files[form2]", form2);
-    formData.append("files[form4]", form4);
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            notify(result.responseType, result.message);
-            $("#previous-btn").removeAttr('disabled');
-            $("#save-info").toggle();
-            $("#saving-img").addClass('hide');
-            if (result.responseType !== 'error'){
-                 _wizard.goNext();
-                KTUtil.scrollTop();
-            }
-        }
-    );
+     _wizard.goNext();
+    KTUtil.scrollTop();
     return;
 }
 
