@@ -53,6 +53,20 @@
                     <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                         <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                             <div class="wizard-steps">
+                                @if(strtolower($case_category_key) == 'reg')
+                                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                        <div class="wizard-wrapper">
+                                            <div class="wizard-icon">
+                                                <span class="svg-icon svg-icon-2x">
+                                                    <x-icons.text-document></x-icons.text-document>
+                                                </span>
+                                            </div>
+                                            <div class="wizard-label">
+                                                <h3 class="wizard-title">Form 1A</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
                                     <div class="wizard-wrapper">
                                         <div class="wizard-icon">
@@ -111,7 +125,60 @@
                                     <form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}" />
-                                        <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='CaseInfo'>
+                                        @if(strtolower($case_category_key) == 'reg')
+                                            <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='Form1AInfo'>
+                                                <h4 class="mb-10 font-weight-bold text-dark">Non-Confidential Executive Summary For Publication</h4>
+                                                <p>
+                                                    Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
+                                                </p>
+                                                <p>
+                                                    It is intended that this Executive SUmmary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
+                                                </p>
+                                                <div class="d-flex flex-column">
+                                                    <div class="flex-grow-1 text-center" style="position: relative;">
+                                                        <a class="" href="{{ route('application.download_form', ['form' => 'form_1.docx']) }}" title="Download Form 1A">
+                                                            <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="w--20" />
+                                                        </a>
+                                                        <p class="text-center">
+                                                            <b>Download Form 1A</b>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="row mt-n2">
+                                                    <div class="col-md-3">
+                                                        <div class="uploadButton tw-mb-4 ">
+                                                            <input
+                                                                accept=".pdf"
+                                                                id="form1A_doc"
+                                                                class="js-file-upload-input ember-view"
+                                                                type="file"
+                                                                name="form1A_doc"
+                                                            />
+                                                            <span class="btn btn--small btn--brand">Upload File</span>
+                                                        </div>
+                                                    </div>
+                                                    @if(!empty($case->form_1A))
+                                                        <div class="col-md-3 my-1">
+                                                            <span>
+                                                                <img
+                                                                    onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                                                    class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                    src="{{ $case->getForm1AIconText() }}"
+                                                                    title="Download Document"
+                                                                />
+                                                            </span>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                                <p class="document-uploaded form1A_doc_name"></p>
+                                                <input
+                                                    id="previous_form1A_document_name"
+                                                    type="hidden"
+                                                    value="{{ $case->form_1A }}"
+                                                />
+                                            </div>
+                                        @endif
+                                        <div class="pb-5" data-wizard-type="step-content" @if(strtolower($case_category_key) !== 'reg') data-wizard-state="current" @endif data-form='CaseInfo'>
                                             <h4 class="mb-10 font-weight-bold text-dark">Transaction information</h4>
                                             <div class="form-group fv-plugins-icon-container">
                                                 <label>Subject</label> <span class="text-danger">*</span>
@@ -315,7 +382,7 @@
                                                             </div>
                                                         @endif
                                                     </div>
-                                                    <p class="document-uploaded doc_name"></p>
+                                                    <p class="document-uploaded loa_doc_name"></p>
                                                     <input
                                                         id="previous_letter_of_appointment_doc_name"
                                                         type="hidden"

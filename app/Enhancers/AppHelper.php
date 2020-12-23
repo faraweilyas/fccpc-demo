@@ -70,9 +70,9 @@ class AppHelper
 	];
 
     protected $case_categories_text = [
-        "REG" => "Domestic Merger",
-        "FFM" => "Foreign to Foreign Merger",
-        "FFX" => "Expedited",
+        "REG" => "Merger",
+        "FFM" => "Simplified Procedure",
+        "FFX" => "Negative Clearance",
     ];
 
     protected $case_categories_html = [

@@ -17,6 +17,18 @@ trait CaseSaveable
     }
 
     /**
+     * Saves form 1A information
+     *
+     * @param  string $form1A
+     * @return bool
+     */
+    public function saveForm1AInfo($form1A) : bool
+    {
+        $this->form_1A      = $form1A;
+        return $this->save();
+    }
+
+    /**
      * Saves case information
      *
      * @param  string $subject

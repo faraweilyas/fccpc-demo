@@ -700,6 +700,31 @@ function sendRequest(
     return;
 }
 
+
+function saveForm1AInfo(action, currentForm)
+{
+     var tracking_id            = $("#tracking_id").val(),
+        formData               = new FormData(),
+        file                   = $('#form1A_doc')[0].files[0],
+        previous_document_name = $("#previous_form1A_document_name").val();
+
+    $("#previous-btn").attr('disabled', 'disabled');
+    $("#save-info").toggle();
+    $("#saving-img").removeClass('hide');
+
+    formData.append('_token',                 $("#token").val());
+    formData.append('file',                   file);
+    formData.append('previous_document_name', previous_document_name);
+
+    sendRequest(
+        '/application/create/'+tracking_id+'/'+action,
+        formData,
+        false,
+        false
+    );
+    return;
+}
+
 function saveCaseInfo(action, currentForm)
 {
     var tracking_id = $("#tracking_id").val(),

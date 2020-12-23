@@ -7,10 +7,16 @@ $(document).ready(function() {
     $('#get_categories').select2();
     $('#get_account_types').select2();
 
-    $('input[type="file"]').on('change', function(event)
+    $('#form1A_doc').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
-        $('.doc_name').html(fileName);
+        $('.form1A_doc_name').html(fileName);
+    });
+
+    $('#letter_of_appointment_doc').on('change', function(event)
+    {
+        var fileName = event.target.files[0].name;
+        $('.loa_doc_name').html(fileName);
     });
 
     $(".application_form_doc").on("change", function (event) {

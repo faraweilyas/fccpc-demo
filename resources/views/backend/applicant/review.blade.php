@@ -109,43 +109,37 @@
                                         <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
                                             <x-icons.letter-file></x-icons.letter-file>
                                         </span>
-                                        <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Letter OfAppointment</h4>
+                                        <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Letter Of Appointment</h4>
                                     @endif
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <p class="section-header">FEES</p>
-                                <div class="grid-col-2">
-                                    <div class="grid-row-2 d-flex">
-                                        <h4 class="info-title">Amount Paid:</h4>
-                                        <h4>{!! $case->getAmountPaid() !!}</h4>
-                                    </div>
-                                </div>
+                            <div class="grid-row-2 d-flex">
+                                <h4 class="info-title">Amount Paid:</h4>
+                                <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>
-                            <div class="col-md-6">
-                                <p class="section-header">APPLICATION FORMS</p>
-                                @if (!empty($case->application_forms))
-                                    <div class="row">
-                                        @foreach($case->getApplicationForms() as $key => $value)
-                                            @php
-                                                $form = getApplicationFormObject($value);
-                                            @endphp
-                                            <div class="col-md-12">
-                                                <div class="d-flex mb-5">
-                                                    <img
-                                                        onclick="window.location.href='{{ route('applicant.download_form_doc', ['document' => $form->file]) }}';"
-                                                        class="mw-10 cr-pointer"
-                                                        src="{{ $case->getApplicationFormIconText($form->file) }}"
-                                                        title="Download {{ $form->name }} Document"
-                                                    />
-                                                    <span class="py-5 mx-5 text-hover-primary cr-pointer">{{ $form->name }}</span>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                @endif
+                            <div class="grid-row-2 d-flex">
+                                <div class="d-flex mt-n7" style="align-items: center;">
+                                    @if (!empty($case->form_1A))
+                                        <img
+                                            class="cr-pointer"
+                                            src="{{ $case->getForm1AIconText() }}"
+                                            alt="pdf"
+                                            style="height: 30px;"
+                                            onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                        />
+                                        <h4
+                                            class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
+                                            onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
+                                        >
+                                            Form 1A
+                                        </h4>
+                                    @else
+                                        <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
+                                            <x-icons.letter-file></x-icons.letter-file>
+                                        </span>
+                                        <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Form 1A</h4>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                         <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
@@ -158,14 +152,13 @@
                                     <div class="d-flex py-3 px-3">
                                         @if (!empty($document))
                                             <img
-                                                class="mw-10 cr-pointer"
+                                                class="cr-pointer"
                                                 src="{{ $document->getIconText() }}"
                                                 alt="pdf"
-                                                height="50px"
                                                 onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
                                             />
                                             <h4
-                                                class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
+                                                class="py-5 mx-5 text-hover-primary cr-pointer"
                                                 onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
                                             >
                                                 {{ $checklistGroup->name }}
