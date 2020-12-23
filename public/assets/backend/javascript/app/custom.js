@@ -7,6 +7,12 @@ $(document).ready(function() {
     $('#get_categories').select2();
     $('#get_account_types').select2();
 
+    $('#enquiry_doc').on('change', function(event)
+    {
+        var fileName = event.target.files[0].name;
+        $('.enquiry_doc_name').html(fileName);
+    });
+
     $('#form1A_doc').on('change', function(event)
     {
         var fileName = event.target.files[0].name;

@@ -113,11 +113,11 @@
                                 <div class="row">
                                     <div class="col-md-12 mb-4">
                                         <div class="uploadButton tw-mb-4">
-                                            <input type="file" name="file" id="file"
+                                            <input type="file" name="file" id="enquiry_doc"
                                                 class="js-file-upload-input ember-view" />
                                             <span class="btn btn--small btn--brand img-info">Attach Document</span>
                                         </div>
-                                        <p class="document-uploaded doc_name"></p>
+                                        <p class="document-uploaded enquiry_doc_name"></p>
                                     </div>
                                 </div>
                                 <div class="row">

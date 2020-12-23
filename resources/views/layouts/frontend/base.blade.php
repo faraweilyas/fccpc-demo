@@ -69,7 +69,7 @@
               <a class="nav-link" href="{{ route('applicant.show') }}">Submit Application</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('enquiries.index') }}">Pre-Notification</a>
+              <a class="nav-link" href="{{ route('enquiries.create', ['type' => 'prn']) }}">Pre-Notification</a>
             </li>
             <li class="nav-item hide">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>

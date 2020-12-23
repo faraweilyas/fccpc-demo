@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="card__box card__box-stack shadow" id="control-3"
-                        onclick="window.location.href = '{{ route('enquiries.index') }}';">
+                        onclick="window.location.href = '{{ route('enquiries.create', ['type' => 'prn']) }}';">
                         <img class="card__box-stack-img" src="{{ FE_IMAGE.'svg/book-open.svg' }}" alt="user-bg" />
                         <div class="card__box--content">
                             <p>Pre-Notification</p>
