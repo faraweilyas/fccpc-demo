@@ -134,29 +134,7 @@
                                 {!! $case->applicant_phone_number !!}
                             </span>
                         </div>
-                        <div class="col-md-4">
-                            <p class="text_dark_blue"><b>APPLICATION FORMS:</b></p>
-                            @if (!empty($case->application_forms))
-                                <div class="row">
-                                    @foreach($case->getApplicationForms() as $key => $value)
-                                        @php
-                                            $form = getApplicationFormObject($value);
-                                        @endphp
-                                        <div class="col-md-12">
-                                            <div class="d-flex">
-                                                <img
-                                                    onclick="window.location.href='{{ route('applicant.download_form_doc', ['document' => $form->file]) }}';"
-                                                    class="mxw-15 cr-pointer"
-                                                    src="{{ $case->getApplicationFormIconText($form->file) }}"
-                                                    title="Download {{ $form->name }} Document"
-                                                />
-                                                <span class="py-5 mx-5 text-hover-primary cr-pointer">{{ $form->name }}</span>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
+                        <div class="col-md-4"></div>
                         <div class="col-md-2 text-right">
                             @if (!$case->isAssigned() && in_array(\Auth::user()->account_type, ['SP']))
                                 <button
