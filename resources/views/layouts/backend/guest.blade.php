@@ -1,7 +1,6 @@
 @extends('layouts.backend.user')
 
 @section('mobile_navigation')
-
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <a data-turbolinks="false" href="/">
             <h3 class="text-white text-bold font-weight-bolder text-dark">{!! config("app.name") !!}</h3>
@@ -19,11 +18,9 @@
             </a>
         </div>
     </div>
-
 @endsection
 
 @section('navigation')
-
     <div class="header-top">
         <div class="container">
             <div class="d-none d-lg-flex align-items-center mr-3">
@@ -37,11 +34,11 @@
                         <div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2">
                             <a href="#">
                                 <div class="d-flex flex-column text-right pr-3">
-                                    <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
-                                        {{ $guest->email }}
-                                    </span>
                                     <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
                                         {{ $guest->getTrackingID() }}
+                                    </span>
+                                    <span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+                                        {{ $guest->email }}
                                     </span>
                                 </div>
                             </a>
@@ -61,8 +58,8 @@
                                             <x-icons.sign-out></x-icons.sign-out>
                                         </span>
                                         Sign Out
-                                    </a>
-                                </span>
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -70,5 +67,4 @@
             @endisset
         </div>
     </div>
-
 @endsection

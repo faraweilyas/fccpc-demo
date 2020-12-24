@@ -27,12 +27,8 @@
     <div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
             <x-icons.arrow-up></x-icons.arrow-up>
-
         </span>
     </div>
-
-
-
 
     <!-- JavaScript -->
     <script type="text/javascript" defer>
@@ -111,23 +107,24 @@
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
 
     <script type="text/javascript" defer>
-        $(document).ready(function ($) {
+        $(document).ready(function($)
+        {
             toastr.options = {
                 "progressBar": true,
                 "positionClass": "toast-bottom-right",
             };
+
             @if(Session::has('success'))
-            toastr.success("{{ Session::get('success') }}");
+                toastr.success("{{ Session::get('success') }}");
             @endif
+
             @if(Session::has('error'))
-            toastr.error("{{ Session::get('error') }}");
+                toastr.error("{{ Session::get('error') }}");
             @endif
         });
-
     </script>
 
     @yield('custom.javascript')
 
 </body>
-
 </html>
