@@ -27,12 +27,6 @@
                                         <span class="nav-text">Applicant</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#documents_tab">
-                                        <span class="nav-icon"><i class="flaticon2-folder"></i></span>
-                                        <span class="nav-text">Documents</span>
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                     </div>
@@ -107,13 +101,6 @@
                                     <span class="font-weight-bold mr-2">Address:</span>
                                     <br />
                                     <span id="applicant_address">...</span>
-                                </div>
-                            </div>
-
-                            {{-- Documents --}}
-                            <div class="tab-pane fade" id="documents_tab" role="tabpanel">
-                                <div id="document_items" class="d-flex flex-column font-size-sm font-weight-bold">
-                                    ...
                                 </div>
                             </div>
                         </div>
