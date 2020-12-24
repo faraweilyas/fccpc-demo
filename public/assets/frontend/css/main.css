@@ -14,7 +14,7 @@ IBM Plex Sans
 */
 
 @import url("./bootstrap/bootstrap.min.css");
-@import url("./vendors/toastr.min.css");
+/*@import url("./vendors/toastr.min.css");*/
 @import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans&display=swap");
 
 *,
