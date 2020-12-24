@@ -53,6 +53,7 @@
           aria-controls="navbarsExampleDefault"
           aria-expanded="false"
           aria-label="Toggle navigation"
+          style="position: absolute;right: 10px;"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
