@@ -38,7 +38,7 @@
                     <div class="transaction-category-section">
                         <div class="form-group">
                             <label>Purchase Consideration:</label>
-                            <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
+                            <input value="50000000000" type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
                         </div>
                         <div class="form-group">
                             <label>Transaction Category:</label>
@@ -53,15 +53,15 @@
                         </div>
                         <div class="form-group hide">
                             <label>The acquiring undertaking (including group companies where relevant):</label>
-                            <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
+                            <input value="30000000000" type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
                             <label>The target undertaking:</label>
-                            <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
+                            <input value="15000000000" type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
                             <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
-                            <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
+                            <input value="60000000000" type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                                 </tr>
                                 <tr>
                                     <td>Expedited fee</td>
-                                    <td><span class="expeditedFee">-</span></td>
+                                    <td><span class="expeditedFee">₦0.00</span></td>
                                 </tr>
                                 <tr class="fee__calculator-total">
                                     <td><b>Total</b></td>

@@ -2,58 +2,41 @@ $(document).ready(function()
 {
     // On first run validate type of transaction
     validateTypeOfTransaction($("#typeOfTransaction").val());
-    // On first run hide/show expedited option based on transaction type and generate fee
-    // validateEpeditedOption();
     $(document).on("change", "#typeOfTransaction", function()
     {
         let typeOfTransaction = $(this).val();
 
         validateTypeOfTransaction(typeOfTransaction);
 
-        calculateAnnualTurnOver();
-
-        if (typeOfTransaction == '') return;
-
-        console.log(typeOfTransaction);
-
-        // validateEpeditedOption();
-        // generateFee($("#combinedTurnover"));
+        generateFee();
     });
 
     // Show application fee
-    showApplicationFee();
+    // getApplicationFee();
     $(document).on("keyup change", "#parties_number", function()
     {
-        showApplicationFee();
+        generateFee();
     });
 
     // Show expedited fee
-    showExpeditedFee();
+    // getExpeditedFee();
     $(document).on("change", "#expedited", function()
     {
-        showExpeditedFee();
-        // generateFee($("#combinedTurnover"));
+        generateFee();
     });
 
     // Format amount
-    $(document).on("keyup change", "#purchase_consideration, #turnover_a, #turnover_b, #turnover_c", function()
+    $(document).on("keyup change focus", "#purchase_consideration, #turnover_a, #turnover_b, #turnover_c", function()
     {
         formatAmount($(this));
+        generateFee();
     });
-
-    // Validate combined turnover to be digits and generate fee
-    // $(document).on("keyup change", "#combinedTurnover", function()
-    // {
-    //     let validatedAmount = castNumber($(this).val()),
-    //         formatter       = new Intl.NumberFormat('en-US');
-
-    //     $(this).val(formatter.format(validatedAmount));
-    //     generateFee($(this));
-    // });
 
     $(".transaction_category").on('click', function(event)
     {
-        let transaction_category = $(this).val();
+        let transaction_category = $("input[name=transaction_category]:checked").val();
+
+        generateFee();
 
         if (transaction_category == 'domestic')
         {
@@ -96,7 +79,7 @@ $(document).ready(function()
     });
 });
 
-function showApplicationFee()
+function getApplicationFee()
 {
     let parties_number  = $("#parties_number"),
         partiesAmount   = castNumber(parties_number.val()),
@@ -113,7 +96,7 @@ function showApplicationFee()
     return applicationFeeAmount;
 }
 
-function showExpeditedFee()
+function getExpeditedFee()
 {
     let expedited           = $("#expedited"),
         expeditedFee        = $(".expeditedFee"),
@@ -134,37 +117,100 @@ function validateTypeOfTransaction(typeOfTransaction)
     }
 }
 
-function calculateAnnualTurnOver()
+function getAnnualTurnOver()
 {
-    let annual_turnover         = $("#annual_turnover"),
+    let transaction_category    = $("input[name=transaction_category]:checked").val(),
         typeOfTransaction       = $("#typeOfTransaction").val(),
-        purchase_consideration  = castNumber($("#purchase_consideration").val()),
+        annual_turnover         = $("#annual_turnover"),
         annualTurnoverAmount    = 0;
 
-    if (typeOfTransaction == '') return;
-
-    if (typeOfTransaction == 'local')
+    if (transaction_category == 'domestic')
     {
-        let turnover_a          = castNumber($("#turnover_a").val()),
-            turnover_b          = castNumber($("#turnover_b").val()),
-            combinedTurnover    = turnover_a + turnover_b;
-
-        annualTurnoverAmount    = (purchase_consideration > combinedTurnover) ? purchase_consideration : combinedTurnover;
+        let turnover_a              = castNumber($("#turnover_a").val()),
+            turnover_b              = castNumber($("#turnover_b").val());
+            annualTurnoverAmount    = turnover_a + turnover_b;
     }
 
-    if (typeOfTransaction == 'ffm')
+    if (transaction_category == 'ffm')
     {
-        let turnover_c          = castNumber($("#turnover_c").val());
-        annualTurnoverAmount    = (purchase_consideration > turnover_c) ? purchase_consideration : turnover_c;
+        annualTurnoverAmount        = castNumber($("#turnover_c").val());
     }
 
-    if (typeOfTransaction == 'ffx')
+    if (typeOfTransaction == 'ffx' || typeOfTransaction == '')
     {
-        annualTurnoverAmount = 2500000;
+        annualTurnoverAmount        = 0;
     }
 
     annual_turnover.val(annualTurnoverAmount);
     formatAmount(annual_turnover);
+    return annualTurnoverAmount;
+}
+
+function getProcessingFee()
+{
+    let typeOfTransaction       = $("#typeOfTransaction").val(),
+        annualTurnover          = getAnnualTurnOver(),
+        purchaseConsideration   = castNumber($("#purchase_consideration").val()),
+        processingFee           = $(".processingFee"),
+        formatter               = new Intl.NumberFormat('en-US', {minimumFractionDigits: 2});
+
+    let processingFeeAmount, purchaseConsiderationAmount, annualTurnoverAmount = 0;
+
+    if (typeOfTransaction == 'local' || typeOfTransaction == 'ffm')
+    {
+        // generate purchase consideration
+        purchaseConsiderationAmount     = calculatePurchaseConsideration(purchaseConsideration);
+        // generate annual turnover
+        annualTurnoverAmount            = calculateAnnualTurnover(annualTurnover);
+        // calculate processing fee
+        processingFeeAmount             = (purchaseConsiderationAmount > annualTurnoverAmount)
+                                        ? purchaseConsiderationAmount
+                                        : annualTurnoverAmount;
+    }
+
+    if (typeOfTransaction == 'ffx')
+    {
+        processingFeeAmount     = 2500000;
+    }
+
+    // console.log(annualTurnover);
+    // console.log(annualTurnoverAmount);
+    // console.log(purchaseConsideration);
+    // console.log(purchaseConsiderationAmount);
+    // console.log(processingFeeAmount);
+
+    processingFee.html("&#8358;"+formatter.format(processingFeeAmount));
+    return processingFeeAmount;
+}
+
+function calculatePurchaseConsideration(purchase_consideration)
+{
+    let firstAmount, secondAmount, thirdAmount, result = 0;
+
+    if (purchase_consideration > 1000000000)
+    {
+        result += firstAmount = (0.3 / 100) * 500000000;
+        result += secondAmount = (0.225 / 100) * 500000000;
+        thirdAmount = purchase_consideration - 1000000000;
+        result += (0.15 / 100) * thirdAmount;
+    }
+
+    return result;
+}
+
+function calculateAnnualTurnover(annualTurnover)
+{
+    let firstAmount, secondAmount, thirdAmount, result = 0;
+
+    if (annualTurnover > 1000000000)
+    {
+        result += firstAmount = (0.3 / 100) * 500000000;
+        result += secondAmount = (0.225 / 100) * 500000000;
+        thirdAmount = annualTurnover - 1000000000;
+        result += (0.75 / 100) * thirdAmount;
+    }
+
+    return result;
 }
 
 function castNumber(value)
@@ -182,107 +228,16 @@ function formatAmount(amount)
 
 function generateFee()
 {
-    let amount                  = castNumber($("#annual_turnover").val()),
-        parties_number          = $("#parties_number"),
-        expedited               = $("#expedited"),
-        applicationFee          = $(".applicationFee"),
-        processingFee           = $(".processingFee"),
-        expeditedFee            = $(".expeditedFee"),
-        totalAmount             = $(".totalAmount"),
-        result                  = 50000,
-        typeOfTransaction       = document.querySelector('#typeOfTransaction'),
-        typeOfTransactionValue  = typeOfTransaction.options[typeOfTransaction.selectedIndex].value,
-        formatter               = new Intl.NumberFormat('en-US', {minimumFractionDigits: 2});
+    console.log(getProcessingFee());
 
-    if (amount <= 0)
-    {
-        applicationFee.html("&#8358;0.00");
-        processingFee.html("&#8358;0.00");
-        expeditedFee.html("-");
-        totalAmount.html("&#8358;0.00");
-        return;
-    }
+    let applicationFee  = getApplicationFee(),
+        processingFee   = Number(getProcessingFee()),
+        expeditedFee    = getExpeditedFee(),
+        totalAmount     = $(".totalAmount"),
+        result          = 0,
+        formatter       = new Intl.NumberFormat('en-US', {minimumFractionDigits: 2});
 
-    if (typeOfTransactionValue == "local")
-    {
-        if (amount >= 500000000 && amount <= 1000000000)
-        {
-            result += (0.3 / 100) * 500000000;
-            secondAmount = amount - 500000000;
-            result += (0.225 / 100) * secondAmount;
-        }
-        if (amount > 1000000000)
-        {
-            result += (0.3 / 100) * 500000000;
-            result += (0.225 / 100) * 500000000;
-            thirdAmount = amount - 1000000000;
-            result += (0.15 / 100) * thirdAmount;
-        }
-        applicationFee.html("&#8358;50,000.00");
-        processingFee.html("&#8358;"+formatter.format(result - 50000));
-        expeditedFee.html("-");
-        totalAmount.html("&#8358;"+formatter.format(result));
-    }
-
-    if (typeOfTransactionValue == "ffm")
-    {
-        if (amount >= 500000000 && amount < 1000000000)
-        {
-            result += 2000000;
-        }
-        if (amount >= 1000000000)
-        {
-            otherAmount = (0.1 / 100) * amount;
-            result += (otherAmount > 3000000) ? otherAmount : 3000000;
-        }
-        applicationFee.html("&#8358;50,000.00");
-        processingFee.html("&#8358;"+formatter.format(result - 50000));
-        expeditedFee.html("-");
-        totalAmount.html("&#8358;"+formatter.format(result));
-    }
-
-    if (typeOfTransactionValue == "ffx")
-    {
-        if (amount >= 500000000 && amount < 1000000000)
-        {
-            result += 2000000;
-        }
-        if (amount >= 1000000000)
-        {
-            otherAmount = (0.1 / 100) * amount;
-            result += (otherAmount > 3000000) ? otherAmount : 3000000;
-        }
-        applicationFee.html("&#8358;50,000.00");
-        processingFee.html("&#8358;"+formatter.format(result - 50000));
-        expeditedFee.html("&#8358;"+formatter.format(5000000));
-        result += 5000000;
-        totalAmount.html("&#8358;"+formatter.format(result));
-    }
-}
-
-// ...
-function validateEpeditedOption()
-{
-    let localGuideline          = $(".localGuideline"),
-        ffmGuideline            = $(".ffmGuideline"),
-        typeOfTransaction       = document.querySelector('#typeOfTransaction'),
-        typeOfTransactionValue  = typeOfTransaction.options[typeOfTransaction.selectedIndex].value;
-
-    if (typeOfTransactionValue == "local")
-    {
-        localGuideline.fadeIn('fast');
-        ffmGuideline.fadeOut('fast');
-    }
-
-    if (typeOfTransactionValue == "ffm")
-    {
-        localGuideline.fadeOut('fast');
-        ffmGuideline.fadeIn('fast');
-    }
-
-    if (typeOfTransactionValue == "ffx")
-    {
-        localGuideline.fadeOut('fast');
-        ffmGuideline.fadeIn('fast');
-    }
+    result = applicationFee + processingFee + expeditedFee;
+    totalAmount.html("&#8358;"+formatter.format(result));
+    return result;
 }
