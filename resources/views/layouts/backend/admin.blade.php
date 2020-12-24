@@ -455,7 +455,7 @@
         </div>
     </div>
     {{-- Fee Calculator --}}
-    <div id="kt_quick_cart" class="offcanvas offcanvas-right pt-5 pb-10">
+    <div id="kt_quick_cart" class="offcanvas offcanvas-right pt-5 pb-10" style="overflow-y: auto;">
         <div class="offcanvas-header offcanvas-header-navs d-flex align-items-center justify-content-between mb-5">
             <ul class="nav nav-bold nav-tabs nav-tabs-line nav-tabs-line-3x nav-tabs-primary flex-grow-1 px-10"
                 role="tablist">
