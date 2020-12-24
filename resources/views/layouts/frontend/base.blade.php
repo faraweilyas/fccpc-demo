@@ -23,7 +23,7 @@
     <header class="fixed-top bg-dark shadow">
       <div class="header">
         <div class="header_logo">
-          <a href="#">
+          <a href="/">
             <img src="{{ FE_IMAGE.'png/logo.png' }}" alt="" />
           </a>
         </div>

@@ -6,7 +6,7 @@
         <div class="d-flex flex-row flex-column-fluid page">
             <div id="kt_quick_cart" class="offcanvas offcanvas-right p-10 ">
                 <div class="offcanvas-header d-flex align-items-center justify-content-between pb-7">
-                    <h4 class="font-weight-bold m-0" style="font-weight: 700 !important">Fee Calculator 2</h4>
+                    <h4 class="font-weight-bold m-0" style="font-weight: 700 !important">Fee Calculator</h4>
                     <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
                         <i class="ki ki-close icon-xs text-muted"></i>
                     </a>
@@ -17,19 +17,55 @@
                             <div class="form-group fee-calc-form-group">
                                 <label>Type of Transaction</label>
                                 <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
-                                    <option value="local" selected="">Merge</option>
+                                     <option value="" selected="">Select type:</option>
+                                    <option value="local">Merger</option>
                                     <option value="ffm">Simplified Procedure</option>
                                     <option value="ffx">Negative Clearance</option>
                                 </select>
                             </div>
-                            <div class="form-group fee-calc-form-group">
-                                <label>Combined Turnover</label>
-                                <input
-                                    type="text"
-                                    id="combinedTurnover"
-                                    name="combinedTurnover"
-                                    class="form-control custom-input fee-calc-form form-no-bg"
-                                />
+                            <div class="form-group">
+                                <label>Number of Parties:</label>
+                                <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
+                            </div>
+                            <div class="form-group">
+                                <div class="checkbox-inline">
+                                    <label class="checkbox">
+                                    <input type="checkbox" name="expedited" id="expedited">Expedited
+                                    <span></span></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Annual Turnover:</label>
+                                <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
+                            </div>
+                            <div class="transaction-category-section">
+                                <div class="form-group">
+                                    <label>Purchase Consideration:</label>
+                                    <input value="50000000000" type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Transaction Category:</label>
+                                    <div class="radio">
+                                        <label style="margin-right: 15px;">
+                                            <input type="radio" class="transaction_category" name="transaction_category" value="domestic" /> Domestic
+                                        </label>
+                                        <label>
+                                            <input type="radio" class="transaction_category" name="transaction_category" value="ffm" /> Foreign To Foreign
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group hide">
+                                    <label>The acquiring undertaking (including group companies where relevant):</label>
+                                    <input value="30000000000" type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
+                                </div>
+                                <div class="form-group hide">
+                                    <label>The target undertaking:</label>
+                                    <input value="15000000000" type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
+                                </div>
+                                <div class="form-group hide">
+                                    <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
+                                    <input value="60000000000" type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12 fee-table-container">
@@ -43,22 +79,20 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Filling fee</td>
-                                            <td class="fillingFee">₦0.00</td>
+                                            <td>Application fee</td>
+                                            <td><span class="applicationFee">₦0.00</span></td>
                                         </tr>
                                         <tr>
                                             <td>Processing fee</td>
-                                            <td class="processingFee">₦0.00</td>
+                                            <td><span class="processingFee">₦0.00</span></td>
                                         </tr>
                                         <tr>
                                             <td>Expedited fee</td>
-                                            <td class="expeditedFee">-</td>
+                                            <td><span class="expeditedFee">₦0.00</span></td>
                                         </tr>
                                         <tr class="fee__calculator-total">
-                                            <td>
-                                                <b>Total</b>
-                                            </td>
-                                            <td class="totalAmount">₦0.00</td>
+                                            <td><b>Total</b></td>
+                                            <td><span class="totalAmount">₦0.00</span></td>
                                         </tr>
                                     </tbody>
                                 </table>

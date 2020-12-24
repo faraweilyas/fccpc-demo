@@ -37,7 +37,7 @@
                             </span>
                             <a href="#">
                                 <span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">
-                                    Fee Calculator 1
+                                    Fee Calculator
                                 </span>
                             </a>
                         </div>
