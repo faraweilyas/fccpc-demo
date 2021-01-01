@@ -93,22 +93,6 @@
                                     <div class="d-flex">
                                         <div class="form-check" style="padding: 0px">
                                             <div class="radio-inline">
-                                                @empty($checked)
-                                                <span class="switch switch-sm">
-                                                    <label>
-                                                        <input type="checkbox" class="save_approval" name="select"
-                                                            @if($checklist_document_status=='deficient' ) checked="checked"
-                                                            @endif value="deficient"
-                                                            @if($checklist_document_status=='deficient' ) checked="checked"
-                                                            @endif data-document-id="{{ $document->id }}"
-                                                            data-checklist-id="{{ $checklist->id }}"
-                                                            data-case-id="{{ $case->id }}" data-switch-box="true"
-                                                            data-date="{{ $date }}">
-                                                        <span></span>
-                                                    </label>
-                                                    Deficient
-                                                </span>
-                                                @else
                                                 <label class="radio">
                                                     <input class="form-check-input save_approval" type="radio"
                                                         name="exampleRadios{{ $checklist->id }}" value="approved"
@@ -131,7 +115,6 @@
                                                     <span></span>
                                                     Deficient
                                                 </label>
-                                                @endif
                                             </div>
                                         </div>
                                     </div>
