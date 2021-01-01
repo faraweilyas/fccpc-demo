@@ -641,6 +641,48 @@ $(document).ready(function()
         return false;
     });
 
+    $("#save-form1A-info").on('click', function (event) {
+        var name     = $("#form1a_declaration_name").val(),
+            position = $("#form1a_declaration_position").val();
+
+        if (name !== '' && position !== '') {
+            var tracking_id            = $("#tracking_id").val(),
+                formData               = new FormData(),
+                form_text              = $("#form1a_declaration_text").val();
+
+            $("#save-form1A-info").toggle();
+            $("#save-form1A-upload-img").removeClass('hide');
+
+            formData.append('_token',                 $("#token").val());
+            formData.append('form_text',              form_text);
+            formData.append('name',                   name);
+            formData.append('position',               position);
+
+            sendRequest(
+                '/application/create/'+tracking_id+'/saveForm1AInfo',
+                formData,
+                false,
+                false,
+                function(data, status)
+            {
+                result = JSON.parse(data);
+                notify(result.responseType, result.message);
+                $("#save-form1A-info").toggle();
+                $("#save-form1A-upload-img").addClass('hide');
+                $('#form1ADeclarationModal').modal('hide');
+                if (result.responseType !== 'error'){
+                     _wizard.goNext();
+                    KTUtil.scrollTop();
+                }
+            });
+
+        } else {
+            notify('error', 'Provide input fields!');
+        }
+
+        return;
+    });
+
     $(document).on("click", ".remove", function(event)
     {
         if (fieldsCounter > 1 ) {
@@ -729,23 +771,12 @@ function sendRequest(
 
 function saveForm1AInfo(action, currentForm)
 {
-     var tracking_id           = $("#tracking_id").val(),
-        formData               = new FormData(),
-        additional_info        = currentForm.find('#additional_info').val();
+    if ($("#form1a_declaration_text").val() !== ''){
+        $('#form1ADeclarationModal').modal('show');
+    } else {
+        notify('error', 'Input field cannot be empty!');
+    }
 
-    $("#previous-btn").attr('disabled', 'disabled');
-    $("#save-info").toggle();
-    $("#saving-img").removeClass('hide');
-
-    formData.append('_token',                 $("#token").val());
-    formData.append('additional_info', additional_info);
-
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false
-    );
     return;
 }
 

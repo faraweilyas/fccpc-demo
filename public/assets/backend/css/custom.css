@@ -23,6 +23,11 @@ body {
     width: 20%;
 }
 
+.w--60
+{
+    width: 60%;
+}
+
 .lightish-yellow
 {
     background: #E9C46A !important;

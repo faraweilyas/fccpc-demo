@@ -253,9 +253,13 @@ class ApplicationController extends Controller
      */
     public function saveForm1AInfo(Guest $guest)
     {
-        $additional_info = !empty(request('additional_info')) ? request('additional_info') : '';
+        $form_text       = !empty(request('form_text')) ? request('form_text') : '';
+        $name            = !empty(request('name')) ? request('name') : '';
+        $position        = !empty(request('position')) ? request('position') : '';
         $guest->case->saveForm1AInfo(
-            $additional_info
+            $form_text,
+            $name,
+            $position
         );
 
         $this->sendResponse('Form 1A info saved.', 'success', $guest->case);

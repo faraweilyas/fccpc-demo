@@ -110,7 +110,7 @@
                 </div>
                 @yield('content')
                 <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
-                    <div class="container-fluid">
+                    <div class="container">
                         <div class="row">
                           <div class="col-md-8">
                             <span style="font-size: 1rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC)

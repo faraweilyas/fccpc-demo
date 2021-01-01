@@ -137,7 +137,7 @@
                                                     It is intended that this Executive SUmmary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" id="additional_info" rows="6" name="additional_info" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
+                                                    <textarea class="form-control" id="form1a_declaration_text" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
                                                 </div>
                                             </div>
                                         @endif
@@ -619,6 +619,82 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Form 1A Declaration Modal -->
+    <div
+        class="modal fade"
+        id="form1ADeclarationModal"
+        data-backdrop="static"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="viewDeclarationModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewForm1AModalLabel">Form 1A Declaration</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
+                        <div class="card-body">
+                            <p>
+                                This Declaration must be signed by a duly authorised person or on behalf of each of the merger parties:
+                            </p>
+                            <p>
+                                I declare that, to the best of my knowledge and belief, the information given in response to the questions in this Notice is true, correct, and complete in all material respects.
+                            </p>
+                            <p>
+                                It is a criminal offence under section 112 of the Federal Competition and Consumer Protection Act, 2018 for a person knowingly to supply to the Commission information which is false or misleading in any material respect. This includes supplying such information to another person or any officer of the Commission knowing that the information is to be used for the purpose of supplying information to the Commission;
+                            </p>
+                            <div class="form-group">
+                                <input
+                                    id="form1a_declaration_name"
+                                    type="text"
+                                    class="form-control-declaration w--60"
+                                    name="form1a_declaration_name"
+                                    placeholder="Full Name"
+                                    value="{{ $case->form_1A_Name ?? '' }}"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <input
+                                    id="form1a_declaration_position"
+                                    type="text"
+                                    class="form-control-declaration w--60"
+                                    name="form1a_declaration_position"
+                                    placeholder="Position"
+                                    value="{{ $case->form_1A_Position ?? '' }}"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        id="save-form1A-info"
+                        type="button"
+                        class="btn btn-light-primary font-weight-bold"
+                    >
+                        Save
+                    </button>
+                    <button
+                        id="save-form1A-upload-img"
+                        type="button"
+                        class="btn btn-primary font-weight-bold py-2 px-10 hide"
+                        disabled
+                    >
+                        <div class="spinner-grow text-white" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                    </button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
