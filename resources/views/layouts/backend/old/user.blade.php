@@ -98,6 +98,9 @@
                                 </table>
                             </div>
                         </div>
+                        <div id="show-generate-fee" class="col-md-12">
+                            <input id="generate-fee" type="button" class="btn btn-primary float-right" name="" value="Generate Fee" />
+                        </div>
                     </div>
                 </div>
             </div>

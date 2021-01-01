@@ -143,7 +143,7 @@ class Cases extends Model
 
     public function getAmountPaid()
     {
-        return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '...';
+        return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '₦0.00';
     }
 
      public function getApplicantFullName()

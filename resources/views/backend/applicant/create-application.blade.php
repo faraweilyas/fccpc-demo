@@ -486,9 +486,10 @@
                                                                 </p>
                                                                 <div class="row">
                                                                     @if ($checklistGroup->isGroupFees())
-                                                                        <div class="col-md-6 mb-4 ml-8">
+                                                                        <div class="col-md-12 mb-4">
+                                                                            Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
                                                                             <input
-                                                                                type="text"
+                                                                                type="hidden"
                                                                                 class="form-control amount_paid"
                                                                                 name="amount_paid"
                                                                                 value="{{ $case->amount_paid }}"
@@ -497,6 +498,11 @@
                                                                             />
                                                                         </div>
                                                                     @endif
+                                                                </div>
+                                                                <div class="col-md-4 ml-n4">
+                                                                    <a href="#" id="kt_fee">
+                                                                        <i class="la la-info-circle"></i>&nbsp;Generate Fee
+                                                                    </a>
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
