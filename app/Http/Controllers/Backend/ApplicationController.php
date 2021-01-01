@@ -253,36 +253,9 @@ class ApplicationController extends Controller
      */
     public function saveForm1AInfo(Guest $guest)
     {
-        $fileName = '';
-        $previous_document_name = request('previous_document_name') ?? '';
-
-        if (!request()->hasFile('file')) {
-            $this->sendResponse('No file has been uploaded.', 'warning', []);
-        }
-
-        if (request()->hasFile('file')):
-            $validator = Validator::make(request()->all(), [
-            'file' => 'mimes:pdf',
-            ]);
-
-            if ($validator->fails())
-                $this->sendResponse('Only PDF file format is supported.', 'error', []);
-
-            $file = request('file');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = \SerialNumber::randomFileName($extension);
-            $path = $file->storeAs('public/documents', $fileName);
-
-            $previous_document = Cases::where('id', $guest->case->id)->where('form_1A', $previous_document_name)->first();
-            if ($previous_document):
-                $old_file = $previous_document->form_1A;
-                if (checkFile($old_file))
-                    unlink(storage_path('app/public/documents/'.$old_file));
-            endif;
-        endif;
-
+        $additional_info = !empty(request('additional_info')) ? request('additional_info') : '';
         $guest->case->saveForm1AInfo(
-            empty($fileName) ? $previous_document_name : $fileName,
+            $additional_info
         );
 
         $this->sendResponse('Form 1A info saved.', 'success', $guest->case);

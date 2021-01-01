@@ -492,10 +492,6 @@
                             <span></span>Expedited</label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Annual Turnover:</label>
-                        <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
-                    </div>
                     <div class="transaction-category-section">
                         <div class="form-group">
                             <label>Purchase Consideration:</label>
@@ -524,6 +520,10 @@
                             <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
                             <input value="60000000000" type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Annual Turnover:</label>
+                        <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
                     </div>
                 </div>
                 <div class="col-md-12 fee-table-container">

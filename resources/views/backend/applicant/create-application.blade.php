@@ -91,18 +91,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="wizard-step" data-wizard-type="step">
-                                    <div class="wizard-wrapper">
-                                        <div class="wizard-icon">
-                                            <span class="svg-icon svg-icon-2x">
-                                                <x-icons.text-document></x-icons.text-document>
-                                            </span>
-                                        </div>
-                                        <div class="wizard-label">
-                                            <h3 class="wizard-title">Application Documentation</h3>
-                                        </div>
-                                    </div>
-                                </div>
                                 @foreach($filteredChecklistGroup as $group)
                                     <div class="wizard-step" data-wizard-type="step">
                                         <div class="wizard-wrapper">
@@ -148,50 +136,9 @@
                                                 <p>
                                                     It is intended that this Executive SUmmary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
-                                                <div class="d-flex flex-column">
-                                                    <div class="flex-grow-1 text-center" style="position: relative;">
-                                                        <a class="" href="{{ route('application.download_form', ['form' => 'form_1.docx']) }}" title="Download Form 1A">
-                                                            <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="w--20" />
-                                                        </a>
-                                                        <a class="" href="{{ route('application.download_form', ['form' => 'form_1.docx']) }}" title="Download Form 1A">
-                                                            <p class="text-center">
-                                                                <b>Download Form 1A</b>
-                                                            </p>
-                                                        </a>
-                                                    </div>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="additional_info" rows="6" name="additional_info" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
                                                 </div>
-                                                <div class="row mt-n2">
-                                                    <div class="col-md-3">
-                                                        <div class="uploadButton tw-mb-4 ">
-                                                            <input
-                                                                accept=".pdf"
-                                                                id="form1A_doc"
-                                                                class="js-file-upload-input ember-view"
-                                                                type="file"
-                                                                name="form1A_doc"
-                                                            />
-                                                            <span class="btn btn--small btn--brand">Upload File</span>
-                                                        </div>
-                                                    </div>
-                                                    @if(!empty($case->form_1A))
-                                                        <div class="col-md-3 my-1">
-                                                            <span>
-                                                                <img
-                                                                    onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
-                                                                    class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                    src="{{ $case->getForm1AIconText() }}"
-                                                                    title="Download Document"
-                                                                />
-                                                            </span>
-                                                        </div>
-                                                    @endif
-                                                </div>
-                                                <p class="document-uploaded form1A_doc_name"></p>
-                                                <input
-                                                    id="previous_form1A_document_name"
-                                                    type="hidden"
-                                                    value="{{ $case->form_1A }}"
-                                                />
                                             </div>
                                         @endif
                                         <div class="pb-5" data-wizard-type="step-content" @if(strtolower($case_category_key) !== 'reg') data-wizard-state="current" @endif data-form='CaseInfo'>
@@ -406,16 +353,6 @@
                                                     />
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div
-                                            id="application-documentation-section"
-                                            class="pb-5"
-                                            data-wizard-type="step-content"
-                                            data-form='ApplicationDocumentation'
-                                        >
-                                            <h6 class="font-weight-bold text-dark text-center section__breaker">
-                                                This section requires you to upload all relevant application document in a searchable PDF format.
-                                            </h6>
                                         </div>
                                         @foreach($filteredChecklistGroup as $checklistGroup)
                                             @php

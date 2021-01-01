@@ -687,18 +687,16 @@ function sendRequest(
 
 function saveForm1AInfo(action, currentForm)
 {
-     var tracking_id            = $("#tracking_id").val(),
+     var tracking_id           = $("#tracking_id").val(),
         formData               = new FormData(),
-        file                   = $('#form1A_doc')[0].files[0],
-        previous_document_name = $("#previous_form1A_document_name").val();
+        additional_info        = currentForm.find('#additional_info').val();
 
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
 
     formData.append('_token',                 $("#token").val());
-    formData.append('file',                   file);
-    formData.append('previous_document_name', previous_document_name);
+    formData.append('additional_info', additional_info);
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
@@ -855,13 +853,6 @@ function saveDeficientChecklistDocument(action, currentForm)
             }
         }
     );
-    return;
-}
-
-function saveApplicationDocumentation(action, currentForm)
-{
-     _wizard.goNext();
-    KTUtil.scrollTop();
     return;
 }
 

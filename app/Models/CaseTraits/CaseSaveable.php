@@ -22,9 +22,10 @@ trait CaseSaveable
      * @param  string $form1A
      * @return bool
      */
-    public function saveForm1AInfo($form1A) : bool
+    public function saveForm1AInfo($form1A_Text) : bool
     {
-        $this->form_1A      = $form1A;
+        $this->form_1A_Text      = $form1A_Text;
+        $this->form_1A_Date      = now();
         return $this->save();
     }
 
