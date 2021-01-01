@@ -21,25 +21,21 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Number of Parties:</label>
-                        <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
-                    </div>
-                    <div class="form-group">
                         <div class="checkbox">
                             <label><input type="checkbox" name="expedited" id="expedited">Expedited</label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Annual Turnover:</label>
-                        <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
+                        <label>Number of Parties:</label>
+                        <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
+                    </div>
+                    <div class="form-group">
+                        <label>Purchase Consideration:</label>
+                        <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="transaction-category-section">
-                        <div class="form-group">
-                            <label>Purchase Consideration:</label>
-                            <input value="50000000000" type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
-                        </div>
                         <div class="form-group">
                             <label>Transaction Category:</label>
                             <div class="radio">
@@ -53,20 +49,24 @@
                         </div>
                         <div class="form-group hide">
                             <label>The acquiring undertaking (including group companies where relevant):</label>
-                            <input value="30000000000" type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
+                            <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
                             <label>The target undertaking:</label>
-                            <input value="15000000000" type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
+                            <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
                             <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
-                            <input value="60000000000" type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
+                            <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="fee__calculator--table">
+                        <div class="form-group">
+                            <label>Annual Turnover:</label>
+                            <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
+                        </div>
                         <table class="table fee-calc-table">
                             <thead class="thead-light">
                                 <tr>
