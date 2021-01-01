@@ -101,9 +101,18 @@
                     </div>
                     <div class="row py-5">
                         <div class="col-md-3">
-                            <p><b>AMOUNT PAID:</b></p>
+                            <p><b>FEES:</b></p>
                             <p class="info-title">
-                                {!! $case->getAmountPaid() !!}
+                                Application Fee: {!! $case->getApplicationFee() !!}
+                            </p>
+                            <p class="info-title">
+                                Processing Fee: {!! $case->getProcessingFee() !!}
+                            </p>
+                            <p class="info-title">
+                                Expedited Fee: {!! $case->getExpeditedFee() !!}
+                            </p>
+                            <p class="info-title">
+                                Amount Paid: {!! $case->getAmountPaid() !!}
                             </p>
                         </div>
                         <div class="col-md-3">

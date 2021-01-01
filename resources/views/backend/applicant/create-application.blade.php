@@ -391,20 +391,6 @@
                                                                         </a>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row">
-                                                                    @if ($checklistGroup->isGroupFees())
-                                                                        <div class="col-md-6 mb-4 ml-8">
-                                                                            <input
-                                                                                type="text"
-                                                                                class="form-control amount_paid"
-                                                                                name="amount_paid"
-                                                                                value="{{ $case->amount_paid }}"
-                                                                                placeholder="Enter Amount Paid:"
-                                                                                id="amount_paid"
-                                                                            />
-                                                                        </div>
-                                                                    @endif
-                                                                </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-1">
@@ -425,7 +411,6 @@
                                                                             />
                                                                             <span class="btn btn--small btn--brand">Upload File</span>
                                                                         </div>
-
                                                                     </div>
                                                                     <br>
                                                                     @if(!empty($document))

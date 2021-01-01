@@ -392,12 +392,18 @@ class ApplicationController extends Controller
      */
     public function saveDeficientChecklistDocument(Guest $guest)
     {
-        if (!empty(request('amount_paid'))):
-            $amount_paid  = str_replace(',', '', request('amount_paid'));
+        if (!empty(request('application_fee')) && !empty(request('processing_fee')) && !empty(request('amount_paid'))):
+            $application_fee  = str_replace(',', '', request('application_fee'));
+            $processing_fee   = str_replace(',', '', request('processing_fee'));
+            $expedited_fee    = str_replace(',', '', request('expedited_fee'));
+            $amount_paid      = str_replace(',', '', request('amount_paid'));
 
             $guest->case->saveFeeInfo(
                 (object) [
-                    'amount_paid' => $amount_paid,
+                    'application_fee' => $application_fee,
+                    'processing_fee'  => $processing_fee,
+                    'expedited_fee'   => $expedited_fee,
+                    'amount_paid'     => $amount_paid,
                 ]
             );
         endif;

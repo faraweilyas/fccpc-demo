@@ -493,6 +493,9 @@ $(document).ready(function()
             additional_info    = currentForm.find('#additional_info').val(),
             file               = currentForm.find('#checklist_doc')[0].files[0],
             review_route       = $(this).attr('data-review-route'),
+            application_fee    = currentForm.find("#application_fee").val(),
+            processing_fee     = currentForm.find("#processing_fee").val(),
+            expedited_fee      = currentForm.find("#expedited_fee").val(),
             amount_paid        = currentForm.find("#amount_paid").val(),
             group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
@@ -500,6 +503,21 @@ $(document).ready(function()
         $("#previous-btn").attr('disabled', 'disabled');
         $("#save-deficient-doc").toggle();
         $("#saving-img").removeClass('hide');
+
+        if (application_fee == null)
+        {
+            application_fee = '';
+        }
+
+        if (processing_fee == null)
+        {
+            processing_fee = '';
+        }
+
+        if (expedited_fee == null)
+        {
+            expedited_fee = 0;
+        }
 
         if (amount_paid == null)
         {
@@ -511,6 +529,9 @@ $(document).ready(function()
         formData.append('additional_info', additional_info);
         formData.append('document_id', doc_id);
         formData.append('group_id', group_id);
+        formData.append('application_fee', application_fee);
+        formData.append('processing_fee', processing_fee);
+        formData.append('expedited_fee', expedited_fee);
         formData.append('amount_paid', amount_paid);
         sendRequest(
             '/application/create/'+tracking_id+'/'+sendForm,
@@ -857,6 +878,9 @@ function saveDeficientChecklistDocument(action, currentForm)
         formData           = new FormData(),
         additional_info    = currentForm.find('#additional_info').val(),
         file               = currentForm.find('#checklist_doc')[0].files[0],
+        application_fee    = currentForm.find("#application_fee").val(),
+        processing_fee     = currentForm.find("#processing_fee").val(),
+        expedited_fee      = currentForm.find("#expedited_fee").val(),
         amount_paid        = currentForm.find("#amount_paid").val(),
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
@@ -864,6 +888,21 @@ function saveDeficientChecklistDocument(action, currentForm)
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
     $("#saving-img").removeClass('hide');
+
+    if (application_fee == null)
+    {
+        application_fee = '';
+    }
+
+    if (processing_fee == null)
+    {
+        processing_fee = '';
+    }
+
+    if (expedited_fee == null)
+    {
+        expedited_fee = 0;
+    }
 
     if (amount_paid == null)
     {
@@ -875,6 +914,9 @@ function saveDeficientChecklistDocument(action, currentForm)
     formData.append('additional_info', additional_info);
     formData.append('document_id', doc_id);
     formData.append('group_id', group_id);
+    formData.append('application_fee', application_fee);
+    formData.append('processing_fee', processing_fee);
+    formData.append('expedited_fee', expedited_fee);
     formData.append('amount_paid', amount_paid);
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,
