@@ -470,6 +470,14 @@
                         <span class="font-weight-bold mr-2">Date:</span>
                         <span class="text-dark">{{ $case->getForm1ADate() }}</span>
                     </div>
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="font-weight-bold mr-2">Name:</span>
+                        <span class="text-dark">{{ $case->form_1A_Name ?? '...' }}</span>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="font-weight-bold mr-2">Positon:</span>
+                        <span class="text-dark">{{ $case->form_1A_Position ?? '...' }}</span>
+                    </div>
                     <div class="mt-4">
                         <span class="font-weight-bold mr-2">Text:</span>
                         <br />
