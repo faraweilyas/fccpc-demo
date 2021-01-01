@@ -14,7 +14,9 @@ class AddFeesColumnsToCasesTable extends Migration
     public function up()
     {
         Schema::table('cases', function (Blueprint $table) {
-            //
+            $table->string('application_fee')->after('form_1A_Date')->nullable();
+            $table->string('processing_fee')->after('application_fee')->nullable();
+            $table->string('expedited_fee')->after('processing_fee')->nullable();
         });
     }
 
@@ -26,7 +28,9 @@ class AddFeesColumnsToCasesTable extends Migration
     public function down()
     {
         Schema::table('cases', function (Blueprint $table) {
-            //
+            $table->dropColumn('application_fee');
+            $table->dropColumn('processing_fee');
+            $table->dropColumn('expedited_fee');
         });
     }
 }

@@ -141,6 +141,21 @@ class Cases extends Model
         return (!empty($active_handler->case_handler->approval_status)) ? true : false;
     }
 
+    public function getApplicationFee()
+    {
+        return (!empty($this->application_fee) && $this->application_fee != 'undefined') ? formatDigit($this->application_fee) : '₦0.00';
+    }
+
+    public function getProcessingFee()
+    {
+        return (!empty($this->processing_fee) && $this->processing_fee != 'undefined') ? formatDigit($this->processing_fee) : '₦0.00';
+    }
+
+    public function getExpeditedFee()
+    {
+        return (!empty($this->expedited_fee) && $this->expedited_fee != 'undefined') ? formatDigit($this->expedited_fee) : '₦0.00';
+    }
+
     public function getAmountPaid()
     {
         return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '₦0.00';

@@ -70,6 +70,9 @@ trait CaseSaveable
      */
     public function saveFeeInfo(\stdClass $feeInfo) : bool
     {
+        $this->application_fee    = $feeInfo->application_fee;
+        $this->processing_fee     = $feeInfo->processing_fee;
+        $this->expedited_fee      = $feeInfo->expedited_fee;
         $this->amount_paid        = $feeInfo->amount_paid;
         return $this->save();
     }

@@ -487,13 +487,42 @@
                                                                 <div class="row">
                                                                     @if ($checklistGroup->isGroupFees())
                                                                         <div class="col-md-12 mb-4">
+                                                                            Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
+                                                                            <input
+                                                                                type="hidden"
+                                                                                class="form-control"
+                                                                                name="application_fee"
+                                                                                value="{{ $case->application_fee }}"
+                                                                                id="application_fee"
+                                                                            />
+                                                                        </div>
+                                                                        <div class="col-md-12 mb-4">
+                                                                            Processing Fee: <span class="processing_fee">{!! $case->getProcessingFee() !!}</span>
+                                                                            <input
+                                                                                type="hidden"
+                                                                                class="form-control"
+                                                                                name="processing_fee"
+                                                                                value="{{ $case->processing_fee }}"
+                                                                                id="processing_fee"
+                                                                            />
+                                                                        </div>
+                                                                        <div class="col-md-12 mb-4">
+                                                                            Expedited Fee: <span class="expedited_fee">{!! $case->getExpeditedFee() !!}</span>
+                                                                            <input
+                                                                                type="hidden"
+                                                                                class="form-control"
+                                                                                name="expedited_fee"
+                                                                                value="{{ $case->expedited_fee }}"
+                                                                                id="expedited_fee"
+                                                                            />
+                                                                        </div>
+                                                                        <div class="col-md-12 mb-4">
                                                                             Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
                                                                             <input
                                                                                 type="hidden"
-                                                                                class="form-control amount_paid"
+                                                                                class="form-control"
                                                                                 name="amount_paid"
                                                                                 value="{{ $case->amount_paid }}"
-                                                                                placeholder="Enter Amount Paid:"
                                                                                 id="amount_paid"
                                                                             />
                                                                         </div>
