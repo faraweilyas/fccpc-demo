@@ -275,6 +275,11 @@ class Cases extends Model
         return !empty($this->submitted_at) ? datetimeToText($this->submitted_at, $format) : "";
     }
 
+    public function getForm1ADate(string $format='customdate') : string
+    {
+        return !empty($this->form_1A_Date) ? datetimeToText($this->form_1A_Date, $format) : "";
+    }
+
     public function getDefficiencyIssuedAt(string $format='customdate') : string
     {
         $defficiency_issued_at = $this->case_handler->defficiency_issued_at;

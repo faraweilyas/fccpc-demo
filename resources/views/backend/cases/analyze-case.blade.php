@@ -137,26 +137,14 @@
                         <div class="col-md-4">
                             @if(strtolower($case->case_category) == 'reg')
                                 <p class="text_dark_blue"><b>FORM 1A:</b></p>
-                                @if (!empty($case->form_1A))
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="d-flex">
-                                                <img
-                                                     onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
-                                                    class="mxw-15 cr-pointer"
-                                                    src="{{ $case->getForm1AIconText() }}"
-                                                    title="Download Form 1A Document"
-                                                />
-                                                <span
-                                                    class="py-5 mx-5 text-hover-primary cr-pointer"
-                                                    onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->form_1A]) }}';"
-                                                >
-                                                    Form 1A
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
+                                <a
+                                    href="#"
+                                    class="form_1A_link"
+                                    data-toggle="modal"
+                                    data-target="#viewForm1AModal"
+                                >
+                                    View Form
+                                </a>
                             @endif
                         </div>
                         <div class="col-md-2 text-right">
@@ -456,6 +444,32 @@
                         </button>
                     </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="viewForm1AModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="viewForm1AModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewCaseModalLabel">Form 1A</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex align-items-center justify-content-between mb-2">
+                        <span class="font-weight-bold mr-2">Date:</span>
+                        <span class="text-dark">{{ $case->getForm1ADate() }}</span>
+                    </div>
+                    <div class="mt-4">
+                        <span class="font-weight-bold mr-2">Text:</span>
+                        <br />
+                        <span id="text">{!! nl2br($case->form_1A_Text) ?? '...' !!}</span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
