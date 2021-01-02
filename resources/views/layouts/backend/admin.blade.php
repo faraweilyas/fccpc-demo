@@ -122,7 +122,7 @@
                         <span class="svg-icon menu-icon">
                             <x-icons.enquire></x-icons.enquire>
                         </span>
-                        <span class="menu-text">Enquiries</span>
+                        <span class="menu-text">Pre-Notifications</span>
                         <img src="{{ pc_asset(BE_IMAGE.'svg/drop_down.svg') }}" alt="arrow" />
                     </a>
                     <div class="menu-submenu">
@@ -130,7 +130,7 @@
                         <ul class="menu-subnav">
                             <li class="menu-item menu-item-parent" aria-haspopup="true">
                                 <span class="menu-link">
-                                    <span class="menu-text">Enquiries</span>
+                                    <span class="menu-text">Pre-Notifications</span>
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
@@ -139,7 +139,7 @@
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
                                     </i>
-                                    <span class="menu-text">Enquiry log</span>
+                                    <span class="menu-text">logs</span>
                                 </a>
                             </li>
                         </ul>

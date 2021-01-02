@@ -34,16 +34,14 @@ class Enquiry extends Model
         return textTransformer(shortenContent($this->message ?? '...', 30), $textStyle);
     }
 
-    public function getCaseHandler($textStyle='strtoupper') : string
+    public function getStatus() : string
     {
-        return textTransformer('unassigned', $textStyle);
+        return !empty($this->status) ? strtoupper($this->status) : '...';
+    }
 
-        if ($this->caseHandler != null) {
-            $result = User::where('id', $this->caseHandler)->first();
-            return textTransformer($result->getFullName(), $textStyle);
-        }
-
-        return textTransformer('unassigned', $textStyle);
+    public function getHandlerName() : string
+    {
+        return !empty($this->handler_id) ? strtoupper($this->getFullName()) : '...';
     }
 
     public function getSubmittedAt(string $format='customdate') : string

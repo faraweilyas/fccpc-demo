@@ -399,7 +399,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-4">
-                                                                    <div class="col-md-3">
+                                                                    <div class="col-md-4">
                                                                         <div class="uploadButton tw-mb-4 ">
                                                                             <input
                                                                                 accept=".pdf"
@@ -409,7 +409,7 @@
                                                                                 name="{{ Str::camel($checklistGroup->label) }}_doc"
                                                                                 data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
                                                                             />
-                                                                            <span class="btn btn--small btn--brand">Upload File</span>
+                                                                            <span class="btn btn--small btn--brand">Upload Files</span>
                                                                         </div>
                                                                     </div>
                                                                     <br>
@@ -633,7 +633,7 @@
         aria-labelledby="viewDeclarationModalLabel"
         aria-hidden="true"
     >
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="viewForm1AModalLabel">Form 1A Declaration</h5>
@@ -651,7 +651,19 @@
                                 I declare that, to the best of my knowledge and belief, the information given in response to the questions in this Notice is true, correct, and complete in all material respects.
                             </p>
                             <p>
+                                I understand that:
+                            </p>
+                            <p>
                                 It is a criminal offence under section 112 of the Federal Competition and Consumer Protection Act, 2018 for a person knowingly to supply to the Commission information which is false or misleading in any material respect. This includes supplying such information to another person or any officer of the Commission knowing that the information is to be used for the purpose of supplying information to the Commission;
+                            </p>
+                            <p>
+                                The Commission shall reject any Notice if it is discovered that it contains information which is false or misleading in any material respect;
+                            </p>
+                            <p>
+                                The Commission conducts both Phase 1 and Phase 2 investigations. In the event that the merger is referred for a Phase 2 investigation, information provided to the Commission during the course of the Phase 1 investigation will also be used for the Phase 2 investigation; and
+                            </p>
+                            <p>
+                                The Commission will publish to the public some information described in this Notice, and the fact that the merger has been notified, as prescribed by the Act.
                             </p>
                             <div class="form-group">
                                 <input

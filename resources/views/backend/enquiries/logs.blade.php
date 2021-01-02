@@ -5,13 +5,13 @@
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
             <div class="d-flex align-items-baseline mr-5">
-                <h5 class="text-dark font-weight-bold my-2 mr-5">Enquiries</h5>
+                <h5 class="text-dark font-weight-bold my-2 mr-5">Pre-Notifications</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Enquiries</a>
+                        <a href="" class="text-muted">Pre-Notifications</a>
                     </li>
                 </ul>
             </div>
@@ -24,7 +24,7 @@
             <div class="card card-custom">
                 <div class="card-header flex-wrap py-5">
                     <div class="card-title">
-                        <h3 class="card-label">All Enquiries</h3>
+                        <h3 class="card-label">All Pre-Notifications</h3>
                     </div>
                 </div>
                 <div class="card-body">
@@ -32,9 +32,11 @@
                         <thead>
                             <tr>
                                 <th>Date Submitted</th>
+                                <th class="text-center">Case Handler</th>
                                 <th class="text-center">Type</th>
                                 <th>Subject</th>
                                 <th class="text-center">Name</th>
+                                <th>Status</th>
                                 <th class="text-center">Action(s)</th>
                             </tr>
                         </thead>
@@ -48,6 +50,9 @@
                                         {!! $item->getSubmittedAt('customdate') !!}
                                     </div>
                                 </td>
+                                <td>
+                                    {{ $item->getHandlerName() }}
+                                </td>
                                 <td class="text-center">
                                     <span
                                         class="label label-lg font-weight-bold label-light-{{ $item->getEnquiryTypeHTML() }} text-dark label-inline">
@@ -56,20 +61,27 @@
                                 </td>
                                 <td>{{ $item->subject }}</td>
                                 <td class="text-center"><b>{{ $item->getFullName() }}</b></td>
+                                <td><b>{{ $item->getStatus() }}</b></td>
                                 <td class="text-center" nowrap="nowrap">
                                     <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Enquiry Info"
                                         data-toggle="modal" data-target="#viewEnqiryModal">
-                                        <i class="flaticon-eye"></i>View
+                                        <i class="flaticon-eye"></i>
+                                    </a>
+                                    <a href="#" class="assignCaseButto btn btn-sm btn-light-info mr-3"
+                                        title="Assign Case Handler" data-toggle="modal" data-target="#assignCaseModal">
+                                        <i class="flaticon-user-add"></i>
                                     </a>
                                     @if ($item->file != '')
-                                    <a href="{{ route('enquiries.download', ['file' => $item->file]) }}"
-                                        class="btn btn-sm btn-light-primary mr-3" title="Download enquiry document">
-                                        <i class="la la-download"></i>Download
-                                    </a>
+                                        <a href="{{ route('enquiries.download', ['file' => $item->file]) }}"
+                                            class="btn btn-sm btn-light-primary mr-3" title="Download enquiry document">
+                                            <i class="la la-download"></i>
+                                        </a>
                                     @else
-                                    <span></span>
+                                        <a href="#"
+                                            class="btn btn-sm btn-light-danger mr-3" title="No Document">
+                                            <i class="la la-download"></i>
+                                        </a>
                                     @endif
-
                                     <div class="hide">
                                         <span class="email">{{ $item->email }}</span>
                                         <span class="message">{{ $item->message }}</span>

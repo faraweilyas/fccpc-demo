@@ -82,7 +82,7 @@ Route::prefix('application')
     });
 
 // Enquiries
-Route::prefix('enquiries')
+Route::prefix('pre-notifications')
     ->name('enquiries.')
     ->namespace('Backend')
     ->group(function()
