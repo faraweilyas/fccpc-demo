@@ -50,7 +50,7 @@
                                         {!! $item->getSubmittedAt('customdate') !!}
                                     </div>
                                 </td>
-                                <td>
+                                <td class="text-center">
                                     {{ $item->getHandlerName() }}
                                 </td>
                                 <td class="text-center">
@@ -67,10 +67,12 @@
                                         data-toggle="modal" data-target="#viewEnqiryModal">
                                         <i class="flaticon-eye"></i>
                                     </a>
-                                    <a href="#" class="assignCaseButto btn btn-sm btn-light-info mr-3"
-                                        title="Assign Case Handler" data-toggle="modal" data-target="#assignCaseModal">
-                                        <i class="flaticon-user-add"></i>
-                                    </a>
+                                    @if(in_array(\Auth::user()->account_type, ['SP']) && $item->status == 'pending')
+                                        <a href="#" class="assignEnquiryButton btn btn-sm btn-light-info mr-3"
+                                            title="Assign Case Handler To Enquiry" data-toggle="modal" data-target="#assignEnquiryModal">
+                                            <i class="flaticon-user-add"></i>
+                                        </a>
+                                    @endif
                                     @if ($item->file != '')
                                         <a href="{{ route('enquiries.download', ['file' => $item->file]) }}"
                                             class="btn btn-sm btn-light-primary mr-3" title="Download enquiry document">
@@ -83,6 +85,7 @@
                                         </a>
                                     @endif
                                     <div class="hide">
+                                        <span class="enquiry_id">{{ $item->id }}</span>
                                         <span class="email">{{ $item->email }}</span>
                                         <span class="message">{{ $item->message }}</span>
                                     </div>

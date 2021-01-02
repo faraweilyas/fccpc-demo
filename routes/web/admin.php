@@ -100,15 +100,8 @@ Route::prefix('pre-notifications')
         ->name('logs')
         ->middleware('auth');
 
-        Route::get(
-            'assigned/handler/logs',
-            'EnquiriesController@assignedLogs'
-        )
-        ->name('assigned-logs')
-        ->middleware('auth');
-
         Route::post(
-            'assign/{id}',
+            'assign/handler',
             'EnquiriesController@assignLog'
         )
         ->name('assign')

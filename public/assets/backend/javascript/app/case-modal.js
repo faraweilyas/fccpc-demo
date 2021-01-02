@@ -337,10 +337,12 @@ $(document).ready(function()
     });
 
     $("#assignEnquiryModal").on("shown.bs.modal", function (event) {
-        var assignButton = $(event.relatedTarget);
-        (caseContainer = assignButton.parent().children("div")),
-            (thisModal = $(this));
-        // caseID = thisModal.find('#caseID');
+        var assignButton  = $(event.relatedTarget),
+            caseContainer = assignButton.parent().children("div"),
+            enquiry_id    = caseContainer.find('.enquiry_id').html(),
+            thisModal     = $(this);
+
+        thisModal.find('#enquiry_id').val(enquiry_id);
 
         return;
     });

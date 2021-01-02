@@ -41,7 +41,7 @@ class Enquiry extends Model
 
     public function getHandlerName() : string
     {
-        return !empty($this->handler_id) ? strtoupper($this->getFullName()) : '...';
+        return !empty($this->handler_id) ? strtoupper($this->user->getFullName()) : '...';
     }
 
     public function getSubmittedAt(string $format='customdate') : string

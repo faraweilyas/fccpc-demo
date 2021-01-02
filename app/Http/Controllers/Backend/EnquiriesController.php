@@ -94,7 +94,12 @@ class EnquiriesController extends Controller
     public function logs()
     {
         $caseHandlers     = User::where('status', 'active')->where('account_type', 'CH')->get();
-        $enquiries        = Enquiry::orderBy('id', 'DESC')->get();
+        if (auth()->user()->account_type == 'CH'):
+            $enquiries        = Enquiry::where('handler_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+        else:
+            $enquiries        = Enquiry::orderBy('id', 'DESC')->get();
+        endif;
+
         $title            = APP_NAME;
         $description      = "FCCPC Logs Dashboard";
         $details          = details($title, $description);
@@ -102,33 +107,15 @@ class EnquiriesController extends Controller
     }
 
     /**
-     * Handles assigned enquiries log page route.
-     * @return void
-     */
-    public function assignedLogs()
-    {
-        if (getAccountType() == 'AD'):
-            $enquiries        = Enquiry::where('caseHandler', \Auth::user()->id)->get();
-        else:
-            $enquiries        = Enquiry::all();
-        endif;
-
-        $title            = APP_NAME;
-        $description      = "FCCPC Assigned Logs Dashboard";
-        $details          = details($title, $description);
-        return view('backend.enquiries.assigned-logs', compact('details', 'enquiries'));
-    }
-
-    /**
      * Handles enquiry assign page route.
      *
      * @return void
      */
-    public function assignLog(Request $request, $id)
+    public function assignLog()
     {
-        Enquiry::whereId($id)->update([
-            'caseHandler' => $request->case_handler,
-            'status'      => 1
+        Enquiry::whereId(request('enquiry_id'))->update([
+            'handler_id'  => request('case_handler'),
+            'status'      => 'assigned'
         ]);
 
         return redirect()->back()->with("success", "Enquiry has been assigned to case handler");

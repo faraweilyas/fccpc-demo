@@ -116,7 +116,7 @@
                     </a>
                 </li>
                 @endif
-                @if(in_array(\Auth::user()->account_type, ['SP', 'AD']))
+                @if(in_array(\Auth::user()->account_type, ['SP', 'AD', 'CH']))
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
@@ -134,7 +134,7 @@
                                 </span>
                             </li>
                             <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
-                                <a href="{{ in_array(\Auth::user()->account_type, ['SP', 'AD']) ? route('enquiries.logs') : route('enquiries.assigned-logs') }}"
+                                <a href="{{ route('enquiries.logs') }}"
                                     class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>

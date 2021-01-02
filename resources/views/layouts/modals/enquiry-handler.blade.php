@@ -7,10 +7,10 @@
                     <i aria-hidden="true" class="ki ki-close"></i>
                 </button>
             </div>
-            <form method="POST">
+            <form method="POST" action="{{ route('enquiries.assign') }}">
                 @csrf
                 <div class="modal-body">
-                    <div class="row mt-5">
+                    <div class="row">
                         <div class="col-md-12">
                             <label>Select case handler</label><br>
                             <select class="form-control select2" id="case_handler_dropdown" name="case_handler" style="width: 100%;">
@@ -22,8 +22,9 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary font-weight-bold">Assign</button>
+                    <input type="hidden" id="enquiry_id" name="enquiry_id" />
+                    <button id="assignEnquiryButton" type="submit" class="btn btn-primary font-weight-bold">Assign</button>
+                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </form>
         </div>
