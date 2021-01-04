@@ -19,6 +19,16 @@ trait UserGettable
     }
 
     /**
+     * Gets case supervisors
+     *
+     * @return Collection
+     */
+    public function supervisors()
+    {
+        return static::where('account_type', 'SP')->where('status', 'active')->get();
+    }
+
+    /**
      * Defines a one to many relationship for user that has created one or more cases
      * The user is expected to be a registrar
      *

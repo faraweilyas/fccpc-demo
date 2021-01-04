@@ -190,13 +190,14 @@ class CasesController extends Controller
 
         $cases          = (new Cases())->unassignedCases();
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
 
         $title          = 'New Cases | ' . APP_NAME;
         $description    = 'New Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.unassigned',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 
@@ -217,13 +218,14 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
 
         $title          = 'All Cases | ' . APP_NAME;
         $description    = 'All Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-all',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 
@@ -243,14 +245,15 @@ class CasesController extends Controller
             $cases = auth()->user()->active_cases_assigned()->get();
         endif;
 
-        $caseHandlers = (new User())->caseHandlers();
+        $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
 
         $title          = 'Assigned Cases | ' . APP_NAME;
         $description    = 'Assigned Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-assigned',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 
@@ -293,12 +296,14 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
+
         $title          = 'Ongoing Cases | ' . APP_NAME;
         $description    = 'Ongoing Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-working-on',
-            compact('details', 'caseHandlers', 'cases')
+            compact('details', 'caseHandlers', 'cases', 'supervisors')
         );
     }
 
@@ -319,13 +324,14 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
 
         $title          = 'Approved Cases | ' . APP_NAME;
         $description    = 'Approved Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-approved',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 
@@ -346,12 +352,14 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
+
         $title          = 'Cases On hold| ' . APP_NAME;
         $description    = 'Cases On hold| ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-on-hold',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 
@@ -367,13 +375,14 @@ class CasesController extends Controller
 
         $cases          = (new Cases())->archivedCases();
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
 
         $title          = 'Archived Cases | ' . APP_NAME;
         $description    = 'Archived Cases | ' . APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-archived',
-            compact('details', 'cases', 'caseHandlers')
+            compact('details', 'cases', 'caseHandlers', 'supervisors')
         );
     }
 

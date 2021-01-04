@@ -30,6 +30,9 @@
                             <label>Select case handler:</label>
                             <br />
                             <select class="form-control select2" id="caseHandler" name="caseHandler" style="width: 100%;">
+                                @foreach($supervisors as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->getFullName() }}</option>
+                                @endforeach
                                 @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
@@ -44,11 +47,11 @@
                     <button id="assigningCaseButton" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
                         <div class="spinner-grow text-white" role="status">
                           <span class="sr-only">Loading...</span>
-                        </div> 
+                        </div>
                     <button id="unassigningCaseButton" class="btn btn-danger font-weight-bold py-2 px-8 hide" disabled>
                         <div class="spinner-grow text-white" role="status">
                           <span class="sr-only">Loading...</span>
-                        </div> 
+                        </div>
                     </button>
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
@@ -93,6 +96,9 @@
                             <label>Select new case handler:</label>
                             <br />
                             <select class="form-control select2" id="newCaseHandler" name="newCaseHandler" style="width: 100%;">
+                                @foreach($supervisors as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->getFullName() }}</option>
+                                @endforeach
                                 @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                 @endforeach
@@ -110,7 +116,7 @@
                         <button class="btn btn-primary font-weight-bold py-2 px-8" disabled>
                             <div class="spinner-grow text-white" role="status">
                               <span class="sr-only">Loading...</span>
-                            </div> 
+                            </div>
                         </button>
                     </div>
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>

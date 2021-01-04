@@ -5,7 +5,7 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Transaction Analysis</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Case Analysis</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
@@ -57,7 +57,7 @@
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    @if (!$case->isCaseChecklistsApproved())
+                                    @if (!$case->isCaseChecklistsApproved() && $case->active_handlers->count() > 0)
                                         <div class="row justify-content-end">
                                             @if ($cases->count() > 0 || $case->isCaseOnHold())
                                                 @if ($x == 1)
@@ -79,6 +79,16 @@
                                                     </button>
                                                 @endif
                                             @endif
+                                        </div>
+                                    @else
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
+                                                    <div class="alert-text text-dark">
+                                                        <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     @endif
                                     <div class="row">

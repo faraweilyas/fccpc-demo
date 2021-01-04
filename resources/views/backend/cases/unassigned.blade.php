@@ -120,7 +120,8 @@
 
 @include("layouts.modals.case")
 @include("layouts.modals.case-handler", [
-'caseHandlers' => $caseHandlers
+'caseHandlers' => $caseHandlers,
+'supervisors' => $supervisors
 ])
 @endsection
 
