@@ -493,7 +493,7 @@ $(document).ready(function()
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
             additional_info    = currentForm.find('#additional_info').val(),
-            file               = currentForm.find('#checklist_doc')[0].files[0],
+            totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
             review_route       = $(this).attr('data-review-route'),
             application_fee    = currentForm.find("#application_fee").val(),
             processing_fee     = currentForm.find("#processing_fee").val(),
@@ -526,8 +526,11 @@ $(document).ready(function()
             amount_paid = '';
         }
 
+        for (var index = 0; index < totalfiles; index++) {
+          formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
+        }
+
         formData.append('_token', $("#token").val());
-        formData.append('file', file);
         formData.append('additional_info', additional_info);
         formData.append('document_id', doc_id);
         formData.append('group_id', group_id);
@@ -915,7 +918,7 @@ function saveDeficientChecklistDocument(action, currentForm)
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
         additional_info    = currentForm.find('#additional_info').val(),
-        file               = currentForm.find('#checklist_doc')[0].files[0],
+        totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
         application_fee    = currentForm.find("#application_fee").val(),
         processing_fee     = currentForm.find("#processing_fee").val(),
         expedited_fee      = currentForm.find("#expedited_fee").val(),
@@ -947,8 +950,11 @@ function saveDeficientChecklistDocument(action, currentForm)
         amount_paid = '';
     }
 
+    for (var index = 0; index < totalfiles; index++) {
+      formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
+    }
+
     formData.append('_token', $("#token").val());
-    formData.append('file', file);
     formData.append('additional_info', additional_info);
     formData.append('document_id', doc_id);
     formData.append('group_id', group_id);

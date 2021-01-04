@@ -147,20 +147,25 @@
                                                         onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
                                                     >
                                                         {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
-                                                    </h4>&nbsp;<i class="la la-download text-primary"></i>
+                                                        &nbsp;<i class="la la-download text-primary"></i>
+                                                    </h4>
                                                 </div>
                                                 @php
                                                     $file_count++;
                                                 @endphp
                                             @endforeach
-
                                         @else
-                                            <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onclick="printPdf(2)">
-                                                <x-icons.letter-file></x-icons.letter-file>
-                                            </span>
-                                            <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">
-                                                {{ $checklistGroup->name }}
-                                            </h4>
+                                            <div class="row">
+                                                <span class="svg-icon svg-icon-danger svg-icon-4x">
+                                                    <x-icons.close-file></x-icons.close-file>
+                                                </span>
+                                                <h4
+                                                    class="py-5 mx-5 text-danger w-75"
+                                                    title="No document submitted"
+                                                >
+                                                    {{ $checklistGroup->name }}
+                                                </h4>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

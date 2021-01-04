@@ -83,31 +83,44 @@
                                 @endphp
                                 <div class="row">
                                     <div class="col-md-6 my-5" key={item[0]}>
-                                        <div class="d-flex py-3 px-3">
+                                        <div class="py-3 px-3">
                                             @if(!empty($document))
-                                                <img
-                                                    class="mw-10 cr-pointer"
-                                                    src="{{ $document->getIconText() }}"
-                                                    alt="pdf"
-                                                    height="50px"
-                                                    onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                />
-                                                <h4
-                                                    class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
-                                                    onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                >
-                                                    {{ $checklistGroup->name }}
-                                                </h4>
+                                                @php
+                                                    $file_count = 1;
+                                                @endphp
+                                                @foreach($document->getFileArray() as $key => $file)
+                                                    <div class="row">
+                                                        <img
+                                                            class="cr-pointer"
+                                                            src="{{ $document->getFileIconText($file) }}"
+                                                            alt="pdf"
+                                                            style="height: 40px"
+                                                            onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                        />
+                                                        <h4
+                                                            class="py-5 mx-5 text-hover-primary cr-pointer"
+                                                            onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                        >
+                                                            {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                            &nbsp;<i class="la la-download text-primary"></i>
+                                                        </h4>
+                                                    </div>
+                                                    @php
+                                                        $file_count++;
+                                                    @endphp
+                                                @endforeach
                                             @else
-                                                <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
-                                                    <x-icons.close-file></x-icons.close-file>
-                                                </span>
-                                                <h4
-                                                    class="py-5 mx-5 text-danger w-75"
-                                                    title="No document submitted"
-                                                >
-                                                    {{ $checklistGroup->name }}
-                                                </h4>
+                                                <div class="row">
+                                                    <span class="svg-icon svg-icon-danger svg-icon-4x">
+                                                        <x-icons.close-file></x-icons.close-file>
+                                                    </span>
+                                                    <h4
+                                                        class="py-5 mx-5 text-danger w-75"
+                                                        title="No document submitted"
+                                                    >
+                                                        {{ $checklistGroup->name }}
+                                                    </h4>
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
