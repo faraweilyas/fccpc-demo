@@ -72,6 +72,13 @@ $(document).ready(function ()
             remove_checklist    = '',
             status              = '';
 
+        if ($(this).val() == 'deficient')
+        {
+            $('.toggle-reason-'+checklist_id).removeClass('hide');
+        } else {
+            $('.toggle-reason-'+checklist_id).addClass('hide');
+        }
+
         if ($(this).is(":checked") && switch_box === "true") {
             remove_checklist = 'no';
             status           = $(this).val();

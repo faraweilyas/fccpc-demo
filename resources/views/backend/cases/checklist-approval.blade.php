@@ -104,9 +104,9 @@
                         <div class="row">
                             @foreach($document->group->checklists as $checklist)
                             @php
-                            $checklist_document_status = $document->getChecklistDocumentStatus($checklist);
-                            $checklist_reason = $document->getChecklistDocumentReason($checklist);
-                            $checked = $document->getCheckedChecklistDocument($checklist, $checklistIds);
+                                $checklist_document_status = $document->getChecklistDocumentStatus($checklist);
+                                $checklist_reason = $document->getChecklistDocumentReason($checklist);
+                                $checked = $document->getCheckedChecklistDocument($checklist, $checklistIds);
                             @endphp
                             <div class="col-lg-6">
                                 <div class="consent-card {{ $checked }}">
@@ -140,7 +140,7 @@
                                     </div>
                                     <p>{{ ucfirst($checklist->name) }}</p>
                                     <textarea
-                                        class="form-control reason" data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" rows="3" name="reason" placeholder="Reason (If Deficient)">{{ $checklist_reason }}</textarea>
+                                        class="form-control reason toggle-reason-{{ $checklist->id }}  @if($checklist_document_status !== 'deficient' ) hide @endif" data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" rows="3" name="reason" placeholder="Reason (If Deficient)">{{ $checklist_reason }}</textarea>
                                 </div>
                             </div>
                             @endforeach
