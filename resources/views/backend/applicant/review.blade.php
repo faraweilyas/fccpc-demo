@@ -147,7 +147,7 @@
                                                         onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
                                                     >
                                                         {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
-                                                    </h4>
+                                                    </h4>&nbsp;<i class="la la-download text-primary"></i>
                                                 </div>
                                                 @php
                                                     $file_count++;

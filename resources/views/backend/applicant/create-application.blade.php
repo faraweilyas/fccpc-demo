@@ -442,7 +442,7 @@
                                                                                         class="text-dark text-hover-primary"
                                                                                     >
                                                                                         {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
-                                                                                    </a>
+                                                                                    </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                                 </span>
                                                                             </div>
                                                                             @php

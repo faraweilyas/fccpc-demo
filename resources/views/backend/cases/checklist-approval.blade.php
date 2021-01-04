@@ -45,35 +45,55 @@
                 @foreach($submittedDocuments as $document)
                 @if ($document->group_id)
                 <div class="row my-3 py-5 hide" id="step-{{ $x }}">
+                    <h5 class="text-bold w-50 px-5">{{ $document->group->name }}</h5>
+                    <div class="pull-button-right move-up">
+                        <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
+                            data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}"
+                            data-date="{{ $date }}">
+                            <span class="svg-icon svg-icon-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <rect x="0" y="0" width="24" height="24" />
+                                        <path
+                                            d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z"
+                                            fill="#000000" opacity="0.3" />
+                                        <path
+                                            d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z"
+                                            fill="#000000" />
+                                    </g>
+                                </svg>
+                                <span class="checklist-deficient-count">{{ $deficient_count }}</span>
+                            </span>
+                        </button>
+                    </div>
+                    <div class="row mt-4 ml-1">
+                        @php
+                            $file_count = 1;
+                        @endphp
+                        @foreach($document->getFileArray() as $key => $file)
+                            <div class="col-md-12 my-1">
+                                <span>
 
-                    {{-- <div class="w-75 card-header-fixed"> --}}
-                        <h5 class="text-bold w-50 px-5">{{ $document->group->name }}</h5>
-                        <div class="pull-button-right move-up">
-                            <button class="btn btn-light-primary font-weight-bold mx-lg-5 py-3 deficient-basket"
-                                data-toggle="modal" data-target="#Issue" data-case-id="{{ $case->id }}"
-                                data-date="{{ $date }}">
-                                <span class="svg-icon svg-icon-xl">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                            <rect x="0" y="0" width="24" height="24" />
-                                            <path
-                                                d="M4.5,21 L21.5,21 C22.3284271,21 23,20.3284271 23,19.5 L23,8.5 C23,7.67157288 22.3284271,7 21.5,7 L11,7 L8.43933983,4.43933983 C8.15803526,4.15803526 7.77650439,4 7.37867966,4 L4.5,4 C3.67157288,4 3,4.67157288 3,5.5 L3,19.5 C3,20.3284271 3.67157288,21 4.5,21 Z"
-                                                fill="#000000" opacity="0.3" />
-                                            <path
-                                                d="M2.5,19 L19.5,19 C20.3284271,19 21,18.3284271 21,17.5 L21,6.5 C21,5.67157288 20.3284271,5 19.5,5 L9,5 L6.43933983,2.43933983 C6.15803526,2.15803526 5.77650439,2 5.37867966,2 L2.5,2 C1.67157288,2 1,2.67157288 1,3.5 L1,17.5 C1,18.3284271 1.67157288,19 2.5,19 Z"
-                                                fill="#000000" />
-                                        </g>
-                                    </svg>
-                                    <span class="checklist-deficient-count">{{ $deficient_count }}</span>
+                                    <img
+                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                        src="{{ $document->getFileIconText($file) }}"
+                                        title="Download Document"
+                                    />
+                                    <a
+                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                        class="text-dark text-hover-primary"
+                                    >
+                                        {{ ucfirst($document->group->name).' Form '.$file_count }}&nbsp;<i class="la la-download text-primary"></i>
+                                    </a>
                                 </span>
-                            </button>
-                            <button class="btn btn-success no-border px-10 py-4"
-                                onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';">
-                                Download Document
-                            </button>
-                        </div>
-                    {{-- </div> --}}
+                            </div>
+                            @php
+                                $file_count++;
+                            @endphp
+                        @endforeach
+                    </div>
                     <div class="height-75">
                         <div class="row py-5 margin-top">
                             <div class="col-md-12 ">

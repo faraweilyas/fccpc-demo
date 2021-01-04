@@ -97,13 +97,34 @@
                                                 <div class="col-md-4 ">
                                                     <div class="download-card">
                                                         <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
-                                                        <p>{{ $document->group->name }}</p>
-                                                        <button
-                                                            class="btn btn-success-sm"
-                                                            onclick="window.location.href = '{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                        >
-                                                            Download
-                                                        </button>
+                                                        <p><b>{{ $document->group->name }} documents</b></p>
+                                                        <div class="row mt-4">
+                                                            @php
+                                                                $file_count = 1;
+                                                            @endphp
+                                                            @foreach($document->getFileArray() as $key => $file)
+                                                                <div class="col-md-12 my-1">
+                                                                    <span>
+
+                                                                        <img
+                                                                            onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                                            class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                            src="{{ $document->getFileIconText($file) }}"
+                                                                            title="Download Document"
+                                                                        />
+                                                                        <a
+                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                            class="text-dark text-hover-primary"
+                                                                        >
+                                                                            {{ ucfirst($document->group->name).' Form '.$file_count }}
+                                                                        </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                    </span>
+                                                                </div>
+                                                                @php
+                                                                    $file_count++;
+                                                                @endphp
+                                                            @endforeach
+                                                        </div>
                                                     </div>
                                                 </div>
                                             @endif
