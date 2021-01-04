@@ -27,7 +27,7 @@ Route::prefix('applicant')
         );
 
         Route::get(
-            'document/download/{document}',
+            'document/download/{document}/{file}',
             'ApplicantController@downloadDocument'
         )->name('document.download');
 

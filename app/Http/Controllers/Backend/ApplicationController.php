@@ -311,7 +311,7 @@ class ApplicationController extends Controller
             $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', $previous_document_name)->first();
             if ($previous_document):
                 $old_file = $previous_document->letter_of_appointment;
-                if (checkFile($old_file))
+                if (checkFile(storage_path('app/public/documents/'.$old_file)))
                     unlink(storage_path('app/public/documents/'.$old_file));
             endif;
         endif;
@@ -354,34 +354,34 @@ class ApplicationController extends Controller
             );
         endif;
 
-        if (!request()->hasFile('file')) {
+        if (!request()->hasFile('files')) {
             $this->sendResponse('No file has been uploaded.', 'warning', []);
         }
-
-        $validator = Validator::make(request()->all(), [
-            'file' => 'mimes:pdf',
-        ]);
-
-        if ($validator->fails())
-            $this->sendResponse('Only PDF file format is supported.', 'error', []);
-
-        $file = request('file');
-        $extension = $file->getClientOriginalExtension();
-        $newFileName = \SerialNumber::randomFileName($extension);
-        $path = $file->storeAs('public/documents', $newFileName);
 
         $previous_document = Document::find(request('document_id'));
 
         if ($previous_document):
-            unlink(
-                storage_path('app/public/documents/' . $previous_document->file)
-            );
+            $previous_file_array = explode(',', $previous_document->file);
+            foreach ($previous_file_array as $key => $file):
+                if (checkFile(storage_path('app/public/documents/'.$file)))
+                    unlink(storage_path('app/public/documents/'.$file));
+            endforeach;
             Document::destroy($previous_document->id);
         endif;
+
+        foreach (request('files') as $key => $file):
+            if (!empty($file)):
+                $extension    = $file->getClientOriginalExtension();
+                $newFileName  = \SerialNumber::randomFileName($extension);
+                $path         = $file->storeAs('public/documents', $newFileName);
+                $file_array[] = $newFileName;
+            endif;
+        endforeach;
+
         $document = Document::create([
-            'case_id' => $guest->case->id,
-            'group_id' => request('group_id'),
-            'file' => $newFileName,
+            'case_id'         => $guest->case->id,
+            'group_id'        => request('group_id'),
+            'file'            => implode(',', $file_array),
             'additional_info' => trim(request('additional_info')),
         ]);
 

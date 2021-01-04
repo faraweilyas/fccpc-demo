@@ -415,7 +415,7 @@ $(document).ready(function()
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
             additional_info    = currentForm.find('#additional_info').val(),
-            file               = currentForm.find('#checklist_doc')[0].files[0],
+            totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
             review_route       = $(this).attr('data-review-route'),
             application_fee    = currentForm.find("#application_fee").val(),
             processing_fee     = currentForm.find("#processing_fee").val(),
@@ -448,8 +448,10 @@ $(document).ready(function()
             amount_paid = '';
         }
 
+        for (var index = 0; index < totalfiles; index++) {
+          formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
+        }
         formData.append('_token', $("#token").val());
-        formData.append('file', file);
         formData.append('additional_info', additional_info);
         formData.append('document_id', doc_id);
         formData.append('group_id', group_id);
@@ -554,12 +556,15 @@ $(document).ready(function()
         return;
     });
 
-    $('input[type="file"]').on('change', function(event)
+    $(".checklist_doc").on('change', function(event)
     {
-        var fileName = event.target.files[0].name;
-        // var extension = fileName.substr((fileName. lastIndexOf('.')+1));
+        var files    = $(this).prop("files")
+        var names    = $.map(files, function (val) { return val.name; });
         var doc_name = $(this).attr('data-doc-name');
-        $('.'+doc_name).html(fileName);
+        $("#"+doc_name).empty();
+        $.each(names, function (i, name) {
+            $("#"+doc_name).append('<p class="document-uploaded my-1">'+name+'</p>')
+        });
     });
 
     $("#upload-info").on('click', function(event)
@@ -840,7 +845,7 @@ function saveChecklistDocument(action, currentForm)
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
         additional_info    = currentForm.find('#additional_info').val(),
-        file               = currentForm.find('#checklist_doc')[0].files[0],
+        totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
         application_fee    = currentForm.find("#application_fee").val(),
         processing_fee     = currentForm.find("#processing_fee").val(),
         expedited_fee      = currentForm.find("#expedited_fee").val(),
@@ -872,8 +877,10 @@ function saveChecklistDocument(action, currentForm)
         amount_paid = '';
     }
 
+    for (var index = 0; index < totalfiles; index++) {
+      formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
+    }
     formData.append('_token', $("#token").val());
-    formData.append('file', file);
     formData.append('additional_info', additional_info);
     formData.append('document_id', doc_id);
     formData.append('group_id', group_id);

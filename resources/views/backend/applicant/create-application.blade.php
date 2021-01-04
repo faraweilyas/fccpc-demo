@@ -404,32 +404,16 @@
                                                                             <input
                                                                                 accept=".pdf"
                                                                                 id="checklist_doc"
-                                                                                class="js-file-upload-input ember-view"
+                                                                                class="js-file-upload-input ember-view checklist_doc"
                                                                                 type="file"
                                                                                 name="{{ Str::camel($checklistGroup->label) }}_doc"
                                                                                 data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
+                                                                                multiple
                                                                             />
                                                                             <span class="btn btn--small btn--brand">Upload Files</span>
                                                                         </div>
                                                                     </div>
                                                                     <br>
-                                                                    @if(!empty($document))
-                                                                        <div class="col-md-3 my-1">
-                                                                            <span>
-                                                                                <img
-                                                                                    onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                                                    class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                                    src="{{ $document->getIconText() }}"
-                                                                                    title="Download Document"
-                                                                                />
-                                                                            </span>
-                                                                        </div>
-                                                                    @endif
-                                                                    <input
-                                                                        type="hidden"
-                                                                        id="uploaded_doc"
-                                                                        value="{{ !empty($document) ? $document->file : '' }}"
-                                                                    />
                                                                     <input
                                                                         type="hidden"
                                                                         id="doc_id"
@@ -437,7 +421,36 @@
                                                                     />
                                                                     <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                 </div>
-                                                                <p class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}"></p>
+                                                                <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                @if(!empty($document))
+                                                                    <div class="row mt-4">
+                                                                        @php
+                                                                            $file_count = 1;
+                                                                        @endphp
+                                                                        @foreach($document->getFileArray() as $key => $file)
+                                                                            <div class="col-md-12 my-1">
+                                                                                <span>
+
+                                                                                    <img
+                                                                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                                        src="{{ $document->getFileIconText($file) }}"
+                                                                                        title="Download Document"
+                                                                                    />
+                                                                                    <a
+                                                                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                        class="text-dark text-hover-primary"
+                                                                                    >
+                                                                                        {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                                                    </a>
+                                                                                </span>
+                                                                            </div>
+                                                                            @php
+                                                                                $file_count++;
+                                                                            @endphp
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
@@ -526,33 +539,22 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-4">
-                                                                    <div class="col-md-3">
+                                                                    <div class="col-md-4">
                                                                         <div class="uploadButton tw-mb-4 ">
                                                                             <input
                                                                                 accept=".pdf"
                                                                                 id="checklist_doc"
-                                                                                class="js-file-upload-input ember-view"
+                                                                                class="js-file-upload-input ember-view checklist_doc"
                                                                                 type="file"
                                                                                 name="{{ Str::camel($checklistGroup->label) }}_doc"
                                                                                 data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
+                                                                                multiple
                                                                             />
-                                                                            <span class="btn btn--small btn--brand">Upload File</span>
+                                                                            <span class="btn btn--small btn--brand">Upload Files</span>
                                                                         </div>
 
                                                                     </div>
                                                                     <br>
-                                                                    @if(!empty($document))
-                                                                        <div class="col-md-3 my-1">
-                                                                            <span>
-                                                                                <img
-                                                                                    onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id]) }}';"
-                                                                                    class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                                    src="{{ $document->getIconText() }}"
-                                                                                    title="Download Document"
-                                                                                />
-                                                                            </span>
-                                                                        </div>
-                                                                    @endif
                                                                     <input
                                                                         type="hidden"
                                                                         id="uploaded_doc"
@@ -565,7 +567,37 @@
                                                                     />
                                                                     <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                 </div>
-                                                                <p class="document-uploaded checklist_doc_name_{{ $checklistGroup->id}}"></p>
+                                                                <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                @if(!empty($document))
+                                                                    <div class="row mt-4">
+                                                                        @php
+                                                                            $file_count = 1;
+                                                                        @endphp
+                                                                        @foreach($document->getFileArray() as $key => $file)
+                                                                            <div class="col-md-12 my-1">
+                                                                                <span>
+
+                                                                                    <img
+                                                                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
+                                                                                        src="{{ $document->getFileIconText($file) }}"
+                                                                                        title="Download Document"
+                                                                                    />
+                                                                                    <a
+                                                                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                        class="text-dark text-hover-primary"
+                                                                                    >
+                                                                                        {{
+                                                                                            ucfirst($checklistGroup->name).' Form '.$file_count}}
+                                                                                    </a>
+                                                                                </span>
+                                                                            </div>
+                                                                            @php
+                                                                                $file_count++;
+                                                                            @endphp
+                                                                        @endforeach
+                                                                    </div>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>

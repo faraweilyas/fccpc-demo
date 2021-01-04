@@ -144,17 +144,17 @@ class ApplicantController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory
      */
-    public function downloadDocument(Document $document)
+    public function downloadDocument(Document $document, $file)
     {
         $groupName = \Str::slug($document->group->name);
-        $extension = pathinfo($document->file)['extension'];
-        $file      = storage_path("app/public/documents/{$document->file}");
+        $extension = pathinfo($file)['extension'];
+        $doc      = storage_path("app/public/documents/{$file}");
 
-        if (!is_file($file) && !file_exists($file))
+        if (!is_file($doc) && !file_exists($doc))
             return redirect()->back()->with('error', 'File was not found!');
 
         return response()->download(
-            $file,
+            $doc,
             "{$groupName}.{$extension}"
         );
     }

@@ -26,11 +26,6 @@ $(document).ready(function() {
     });
 
     $(".application_form_doc").on("change", function (event) {
-         // var files = $(this).prop("files")
-         // var names = $.map(files, function (val) { return val.name; });
-         // $.each(names, function (i, name) {
-         //      $("#form-docs").append('<p class="document-uploaded my-1">'+name+'</p>')
-         // });
          var fileName  = event.target.files[0].name,
              data_form = $(this).attr('data-form');
 

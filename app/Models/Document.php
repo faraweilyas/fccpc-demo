@@ -36,6 +36,16 @@ class Document extends Model
         return "{$path}{$file}";
     }
 
+    public function getFileIconText($file)
+    {
+        $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
+        $path           = "/assets/backend/media/svg/";
+        $fileExtension  = pathinfo($file)['extension'] ?? '';
+        $extension      = $extensions[$fileExtension] ?? '';
+        $file           = (in_array($fileExtension, array_keys($extensions))) ? "files/{$extension}.svg" : 'icons/Files/File.svg';
+        return "{$path}{$file}";
+    }
+
     public function getAdditionalInfo(string $replacement="...", $newline=true) : string
     {
         $additional_info = ($newline) ? nl2br($this->additional_info) : $this->additional_info;
@@ -60,6 +70,11 @@ class Document extends Model
     public function getChecklistDocumentReason($checklist)
     {
         return $this->getChecklistDocument($checklist)->reason ?? NULL;
+    }
+
+    public function getFileArray() : array
+    {
+        return explode(',', $this->file);
     }
 
     public function getCheckedChecklistDocument($checklist, $checklistIds)
