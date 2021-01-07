@@ -54,7 +54,7 @@
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <br />
                                         <small class="text-black">
-                                            A merger transaction between 2 Nigerian entities or between a Nigerian entity and a Foreign entity. <br />Applications take 60 days
+                                            Occurs when one or more undertakings directly or indirectly acquires or establish direct or indirect control over the whole or part of the business of another undertaking. 
                                         </small>
                                     </span>
                                 </div>
@@ -74,7 +74,9 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Simplified Procedure</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                         <br />
-                                        <small class="text-black">A transaction between 2 Foreign entities which has a local effect in Nigeria. <br />Application takes 60 days</small>
+                                        <small class="text-black">
+                                            If upon self-assessment, the parties are of the view that a proposed merger is less than likely to prevent or lessen competition Form 2 may be applicable.
+                                        </small>
                                     </span>
                                 </div>
                             </div>
@@ -94,7 +96,9 @@
                                     <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Negative Clearance</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         <br />
-                                        <small class="text-black">Domestic and Foreign to Foreign applications takes 15 working days.</small>
+                                        <small class="text-black">
+                                            Where parties to a transaction are uncertain whether or not a proposed transaction constitutes a relevant merger and is notifiable, it may apply to the Commission using Form 4.
+                                        </small>
                                     </span>
                                 </div>
                             </div>

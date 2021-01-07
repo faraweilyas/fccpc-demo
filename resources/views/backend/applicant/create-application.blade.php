@@ -53,7 +53,7 @@
                     <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                         <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                             <div class="wizard-steps">
-                                @if(strtolower($case_category_key) == 'reg')
+                                @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                     <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
                                         <div class="wizard-wrapper">
                                             <div class="wizard-icon">
@@ -127,7 +127,7 @@
                                     <form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}" />
-                                        @if(strtolower($case_category_key) == 'reg')
+                                        @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                             <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='Form1AInfo'>
                                                 <h4 class="mb-10 font-weight-bold text-dark">Non-Confidential Executive Summary For Publication</h4>
                                                 <p>
@@ -141,7 +141,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        <div class="pb-5" data-wizard-type="step-content" @if(strtolower($case_category_key) !== 'reg') data-wizard-state="current" @endif data-form='CaseInfo'>
+                                        <div class="pb-5" data-wizard-type="step-content" @if(strtolower($case_category_key) !== 'reg' || strtolower($case_category_key) !== 'ffm') data-wizard-state="current" @endif data-form='CaseInfo'>
                                             <h4 class="mb-10 font-weight-bold text-dark">Transaction information</h4>
                                             <div class="form-group fv-plugins-icon-container">
                                                 <label>Subject</label> <span class="text-danger">*</span>
