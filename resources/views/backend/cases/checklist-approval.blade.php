@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p>{{ ucfirst($checklist->name) }}</p>
+                                    <p>{!! ucfirst($checklist->name) !!}</p>
                                     <textarea
                                         class="form-control reason toggle-reason-{{ $checklist->id }}  @if($checklist_document_status !== 'deficient' ) hide @endif" data-document-id="{{ $document->id }}" data-checklist-id="{{ $checklist->id }}" rows="3" name="reason" placeholder="Reason (If Deficient)">{{ $checklist_reason }}</textarea>
                                 </div>
