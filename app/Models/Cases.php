@@ -613,4 +613,89 @@ class Cases extends Model
 
         return '';
     }
+
+    /**
+     * Validate application documents
+     *
+     * @return json
+     */
+    public function validateDocuments()
+    {
+        foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $this->case_category])->get() as $checklistGroup):
+                $document = \App\Models\Document::where('case_id', $this->id)
+                                ->where('group_id', $checklistGroup->id)
+                                ->where('date_case_submitted', null)
+                                ->first() ?? '';
+                if (!$document)
+                    $this->sendResponse('Provide required documents.', 'error');
+        endforeach;
+    }
+    /**
+     * Validate application submission
+     *
+     * @return json
+     */
+    public function validateSubmission()
+    {
+        $case_parties = count(explode(':', $this->parties));
+
+        $this->validateDocuments();
+
+        if (
+            ($this->case_category == 'REG' || $this->case_category == 'FFM') &&
+            (empty($this->form_1A_Text) ||
+            empty($this->form_1A_Name) ||
+            empty($this->form_1A_Position))
+        ):
+            $this->sendResponse('Provide required fields.', 'error');
+        endif;
+
+        if ($case_parties < 2)
+            $this->sendResponse('Minimum of two parties required..', 'error');
+
+        if (
+            empty($this->subject) ||
+            empty($this->parties) ||
+            empty($this->case_category) ||
+            empty($this->case_type) ||
+            empty($this->applicant_firm) ||
+            empty($this->applicant_fullname) ||
+            empty($this->applicant_email) ||
+            empty($this->applicant_phone_number) ||
+            empty($this->applicant_address)
+        ):
+            $this->sendResponse('Provide required fields.', 'error');
+        endif;
+    }
+
+    /**
+     * Validate deficient application submission
+     *
+     * @return json
+     */
+    public function validateDeficientSubmission()
+    {
+        $this->validateDocuments();
+    }
+
+    /**
+     * Send response.
+     *
+     * @param string $message
+     * @param string $responseType
+     * @param mixed $response
+     * @return void
+     */
+    public function sendResponse(
+        string $message,
+        string $responseType,
+        $response = null
+    ) {
+        echo json_encode([
+            'message' => $message,
+            'responseType' => $responseType,
+            'response' => $response,
+        ]);
+        exit();
+    }
 }

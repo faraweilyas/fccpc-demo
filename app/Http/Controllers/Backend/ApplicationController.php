@@ -29,7 +29,7 @@ class ApplicationController extends Controller
 
     public function test()
     {
-        $case           = Cases::find(29);
+        $case           = Cases::find(1);
         $user           = auth()->user();
         // $oldUser        = User::find(6);
         // $newUser        = User::find(11);
@@ -457,19 +457,7 @@ class ApplicationController extends Controller
         $case        = $guest->case;
         $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
 
-        if (
-            is_null($case->subject) ||
-            is_null($case->parties) ||
-            is_null($case->case_category) ||
-            is_null($case->case_type) ||
-            is_null($case->applicant_firm) ||
-            is_null($case->applicant_fullname) ||
-            is_null($case->applicant_email) ||
-            is_null($case->applicant_phone_number) ||
-            is_null($case->applicant_address)
-        ):
-            $this->sendResponse('Provide required fields.', 'error');
-        endif;
+        $case->validateSubmission();
 
         $guest->case->saveDeclaration(
          (object) [
@@ -522,6 +510,8 @@ class ApplicationController extends Controller
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
+
+        $case->validateDeficientSubmission();
 
         // Notify case handler
         $case_handler->notify(new NotifyHandlerForDeficientCaseSubmission(
