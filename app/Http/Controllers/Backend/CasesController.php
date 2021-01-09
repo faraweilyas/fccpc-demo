@@ -453,6 +453,9 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
+        if ($case->active_handlers->count() <= 0)
+            return redirect()->back();
+
         $checklistIds           = $case->getChecklistIds();
         $submittedDocuments     = $case->submittedDocumentsComplete($case->case_category)[$date];
         $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category);
