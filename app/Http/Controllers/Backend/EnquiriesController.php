@@ -116,10 +116,28 @@ class EnquiriesController extends Controller
      */
     public function assignLog()
     {
-        Enquiry::whereId(request('enquiry_id'))->update([
-            'handler_id'  => request('case_handler'),
+        $handler_id = request('case_handler');
+        $enquiry_id = request('enquiry_id');
+        $enquiry    = Enquiry::find($enquiry_id);
+        $handler    = User::find($handler_id);
+        $supervisor = auth()->user();
+
+        Enquiry::whereId($enquiry_id)->update([
+            'handler_id'  => $handler_id,
             'status'      => 'assigned'
         ]);
+
+        $supervisor->notify(new CaseActionNotifier(
+                'newenquiry',
+                "Pre-notification has been assigned to {$handler->getFullName()}.",
+                $enquiry->id
+            ));
+
+        $handler->notify(new CaseActionNotifier(
+                'newenquiry',
+                "{$supervisor->getFullName()} has assigned a pre-notification to you.",
+                $enquiry->id
+            ));
 
         return redirect()->back()->with("success", "Enquiry has been assigned to case handler");
     }
