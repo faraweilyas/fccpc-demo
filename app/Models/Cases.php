@@ -675,7 +675,18 @@ class Cases extends Model
      */
     public function validateDeficientSubmission()
     {
-        $this->validateDocuments();
+        $deficientGroupIds      = $this->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
+
+        foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup):
+                if ((in_array($checklistGroup->id, $deficientGroupIds))):
+                        $document = \App\Models\Document::where('case_id', $this->id)
+                                        ->where('group_id', $checklistGroup->id)
+                                        ->where('date_case_submitted', null)
+                                        ->first() ?? '';
+                        if (!$document)
+                            $this->sendResponse('Provide required documents.', 'error');
+                endif;
+        endforeach;
     }
 
     /**
