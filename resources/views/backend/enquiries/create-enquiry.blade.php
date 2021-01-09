@@ -43,9 +43,13 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Representing Firm:</label>
+                                            <label>Representing Firm:</label><span class="text-danger">*</span>
                                             <input type="text" name="firm" value="{{ old('firm') }}"
                                                 class="form-control" placeholder="Enter representing firm:" />
+                                            <span class="form-text text-muted">Please enter representing firm.</span>
+                                            @error('firm')
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +61,7 @@
                                                 class="form-control" placeholder="Enter first name:" />
                                             <span class="form-text text-muted">Please enter first name.</span>
                                             @error('first_name')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -81,7 +85,7 @@
                                                 class="form-control" placeholder="Enter email:" />
                                             <span class="form-text text-muted">Please enter email.</span>
                                             @error('email')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -92,7 +96,7 @@
                                                 class="form-control" placeholder="Enter phone number:" />
                                             <span class="form-text text-muted">Please enter phone number.</span>
                                             @error('phone_number')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>
@@ -105,7 +109,7 @@
                                                 rows="4">{{ old('message') }}</textarea>
                                             <span class="form-text text-muted">Please enter message.</span>
                                             @error('message')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
                                     </div>

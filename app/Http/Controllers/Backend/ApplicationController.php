@@ -491,7 +491,7 @@ class ApplicationController extends Controller
             $supervisor->notify(new CaseActionNotifier(
                 'newcase',
                 "{$case->applicant_fullname} has created a new application.",
-                $case->id
+                $enquiry->id
             ));
         endforeach;
 

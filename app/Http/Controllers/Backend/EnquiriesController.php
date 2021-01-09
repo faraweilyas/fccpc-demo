@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use App\Models\Guest;
 use App\Models\Enquiry;
-use App\Models\User;
 use App\Mail\EnquiryMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use App\Notifications\CaseActionNotifier;
 
 class EnquiriesController extends Controller
 {
@@ -48,11 +49,12 @@ class EnquiriesController extends Controller
      */
     public function store()
     {
+        $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
+
         $validated = request()->validate([
             'type'          => ['required', 'string'],
             'firm'          => ['required', 'string'],
             'subject'       => ['required', 'string'],
-            'first_name'    => ['required', 'string'],
             'first_name'    => ['required', 'string'],
             'last_name'     => ['required', 'string'],
             'email'         => ['required', 'string', 'email'],
@@ -61,6 +63,7 @@ class EnquiriesController extends Controller
             'file'          => 'file',
         ]);
 
+        $fullname = request('first_name').' '.request('last_name');
         if (request()->hasFile('file'))
         {
             $file               = request('file');
@@ -74,14 +77,14 @@ class EnquiriesController extends Controller
         $enquiry            = Enquiry::create($validated);
         $enquiry->document  = $file ?? null;
 
-        try
-        {
-            Mail::to(config('mail.from.address'))->send(new EnquiryMail($enquiry));
-        }
-        catch (\Exception $exception)
-        {
-            $message = $exception->getMessage();
-        }
+        foreach ($supervisors as $supervisor):
+             // Notify supervisor
+            $supervisor->notify(new CaseActionNotifier(
+                'newenquiry',
+                "{$fullname} has created a new pre-notification.",
+                $enquiry->id
+            ));
+        endforeach;
 
         return redirect()->back()->with("success", "One of our representatives would get back to you.");
     }
