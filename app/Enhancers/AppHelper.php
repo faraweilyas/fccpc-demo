@@ -163,6 +163,7 @@ class AppHelper
     protected $notification_types_styles = [
         "NEWUSER"                => "success",
         "NEWENQUIRY"             => "secondary",
+        "NEWCASE"                => "primary",
         "ASSIGN"                 => "secondary",
         "REASSIGN"               => "primary",
         "UNASSIGN"               => "danger",
