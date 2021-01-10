@@ -224,6 +224,7 @@ $(document).ready(function ()
 
     $('#issue-deficiency').on('click', function(event)
     {
+        var analyze_case_route = $("#deficiency").attr('data-analyze-case-route');
         $("#saving-deficiency").removeClass('hide');
         $('#issue-deficiency').addClass('hide');
         $.ajax({
@@ -237,6 +238,7 @@ $(document).ready(function ()
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
                 toastr.success("Applicant has been notified!");
+                window.location.href = analyze_case_route;
             }
         });
     });

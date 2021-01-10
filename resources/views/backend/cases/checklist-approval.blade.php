@@ -156,7 +156,8 @@
                     <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="prev">Previous</button>
                     <button class="btn btn-success-pale-ts no-border mx-1 px-10 py-4" id="next">Next</button>
                     <button class="btn btn-warning no-border mx-5 px-10 py-4 hide" id="deficiency" data-toggle="modal"
-                        data-target="#viewDeficiencyModal">
+                        data-target="#viewDeficiencyModal"
+                        data-analyze-case-route="{{ route('cases.analyze', ['case' => $case->id]) }}">
                         Issue Deficiency
                     </button>
                     <button class="btn btn-success no-border mx-5 px-10 py-4 hide" id="approve-checklists"

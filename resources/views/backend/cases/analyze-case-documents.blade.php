@@ -57,16 +57,18 @@
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    @if (!$case->isCaseChecklistsApproved() && $case->active_handlers->count() > 0)
+                                    @if (!$case->isCaseChecklistsApproved())
                                         <div class="row justify-content-end">
-                                            @if ($cases->count() > 0 || $case->isCaseOnHold())
+                                            @if ($cases->count() > 0)
                                                 @if ($x == 1)
-                                                    <button
-                                                        class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
-                                                        onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
-                                                    >
-                                                        Continue Document Approval
-                                                    </button>
+                                                    @if(!$case->isCaseOnHold())
+                                                        <button
+                                                            class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
+                                                            onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
+                                                        >
+                                                            Continue Document Approval
+                                                        </button>
+                                                    @endif
                                                 @endif
                                             @else
                                                 @if ($x == 1)
@@ -81,15 +83,17 @@
                                             @endif
                                         </div>
                                     @else
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
-                                                    <div class="alert-text text-dark">
-                                                        <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
+                                        @if ($case->active_handlers->count() <= 0)
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
+                                                        <div class="alert-text text-dark">
+                                                            <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        @endif
                                     @endif
                                     <div class="row">
                                         @foreach ($documents as $document)

@@ -453,7 +453,7 @@ class CasesController extends Controller
         if (auth()->user()->isAdmin())
             return redirect()->back();
 
-        if ($case->active_handlers->count() <= 0)
+        if ($case->active_handlers->count() <= 0 || $case->isCaseChecklistsApproved() || $case->isCaseOnHold())
             return redirect()->back();
 
         $checklistIds           = $case->getChecklistIds();
