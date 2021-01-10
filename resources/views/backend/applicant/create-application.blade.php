@@ -134,7 +134,7 @@
                                                     Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
                                                 </p>
                                                 <p>
-                                                    It is intended that this Executive SUmmary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
+                                                    It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
                                                     <textarea class="form-control" id="form1a_declaration_text" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
