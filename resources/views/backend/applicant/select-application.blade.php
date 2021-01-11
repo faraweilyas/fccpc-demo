@@ -42,7 +42,7 @@
                                 $ffmStyle = $guest->case->selectedCategoryStyle('FFM');
                                 $ffxStyle = $guest->case->selectedCategoryStyle('FFX');
                             @endphp
-                            <div class="card card-custom gutter-b card__with__bg {{ $regStyle->bg }}" style="height: 300px">
+                            <div class="card card-custom gutter-b card__with__bg {{ $regStyle->bg }} h-100">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $regStyle->svg }}">
                                         <x-icons.file-tag></x-icons.file-tag>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('ffm') }}">
-                            <div class="card card-custom gutter-b card__with__bg {{ $ffmStyle->bg }}" style="height: 300px">
+                            <div class="card card-custom gutter-b card__with__bg {{ $ffmStyle->bg }} h-100">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $ffmStyle->svg }}">
                                         <x-icons.arrow-meet></x-icons.arrow-meet>
@@ -84,8 +84,7 @@
                     </div>
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('ffx') }}">
-                            <div class="card card-custom gutter-b  card__with__bg {{ $ffxStyle->bg }}"
-                                style="height: 300px">
+                            <div class="card card-custom gutter-b  card__with__bg {{ $ffxStyle->bg }} h-100">
                                 <div class="card-body">
                                     <span class="svg-icon svg-icon-2x {{ $ffxStyle->svg }}">
                                         <x-icons.arrow-crop></x-icons.arrow-crop>
