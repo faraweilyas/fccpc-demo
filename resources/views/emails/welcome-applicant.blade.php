@@ -515,7 +515,10 @@
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         Thank you for your application, your application
                                                                         id is
-                                                                        <strong>{{ $guest->tracking_id }}</strong><br>
+                                                                        <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
+                                                                            <strong>{{ $guest->tracking_id }}</strong>
+                                                                        </a>
+                                                                        <br>
                                                                         &nbsp;</p>
 
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"

@@ -476,7 +476,7 @@ class ApplicationController extends Controller
         try {
             Mail::to($guest->email)->send(
                 new ApplicationRequest([
-                    'fullname' => $case->applicant_fullname,
+                    'fullname'    => $case->applicant_fullname,
                     'ref_no' => $case->reference_number,
                     'case' => $case,
                     'guest' => $guest,

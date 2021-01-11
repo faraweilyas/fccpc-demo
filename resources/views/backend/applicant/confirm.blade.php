@@ -41,6 +41,7 @@
                                     placeholder="Application ID:"
                                     name="application_id"
                                     class="form-control h-auto form-control-solid py-4 px-8"
+                                    value="{{ $_GET['app_id'] ?? '' }}"
                                     autocomplete="off"
                                     required
                                 />
@@ -59,7 +60,7 @@
                         <div class="mt-10">
                             <p>
                                 <a
-                                    href="{{ route('applicant.show') }}"
+                                    href="{{ route('applicant.resend-email', ['email' => $email]) }}"
                                     id="kt_login_signup2"
                                     class="text-dark text-hover-primary font-weight-bold"
                                 >

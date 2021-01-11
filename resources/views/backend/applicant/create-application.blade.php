@@ -53,20 +53,6 @@
                     <div class="wizard wizard-2" id="kt_wizard_v2" data-wizard-state="step-first" data-wizard-clickable="true">
                         <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                             <div class="wizard-steps">
-                                @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
-                                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
-                                        <div class="wizard-wrapper">
-                                            <div class="wizard-icon">
-                                                <span class="svg-icon svg-icon-2x">
-                                                    <x-icons.text-document></x-icons.text-document>
-                                                </span>
-                                            </div>
-                                            <div class="wizard-label">
-                                                <h3 class="wizard-title">Form 1A</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
                                 <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
                                     <div class="wizard-wrapper">
                                         <div class="wizard-icon">
@@ -91,6 +77,20 @@
                                         </div>
                                     </div>
                                 </div>
+                                @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
+                                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                        <div class="wizard-wrapper">
+                                            <div class="wizard-icon">
+                                                <span class="svg-icon svg-icon-2x">
+                                                    <x-icons.text-document></x-icons.text-document>
+                                                </span>
+                                            </div>
+                                            <div class="wizard-label">
+                                                <h3 class="wizard-title">Form 1A</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 @foreach($filteredChecklistGroup as $group)
                                     <div class="wizard-step" data-wizard-type="step">
                                         <div class="wizard-wrapper">
@@ -127,21 +127,7 @@
                                     <form class="form new-case-form" id="kt_form" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}" />
-                                        @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
-                                            <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='Form1AInfo'>
-                                                <h4 class="mb-10 font-weight-bold text-dark">Non-Confidential Executive Summary For Publication</h4>
-                                                <p>
-                                                    Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
-                                                </p>
-                                                <p>
-                                                    It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
-                                                </p>
-                                                <div class="form-group">
-                                                    <textarea class="form-control" id="form1a_declaration_text" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
-                                                </div>
-                                            </div>
-                                        @endif
-                                        <div class="pb-5" data-wizard-type="step-content" @if(strtolower($case_category_key) !== 'reg' || strtolower($case_category_key) !== 'ffm') data-wizard-state="current" @endif data-form='CaseInfo'>
+                                        <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='CaseInfo'>
                                             <h4 class="mb-10 font-weight-bold text-dark">Transaction information</h4>
                                             <div class="form-group fv-plugins-icon-container">
                                                 <label>Subject</label> <span class="text-danger">*</span>
@@ -354,6 +340,20 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
+                                            <div class="pb-5" data-wizard-type="step-content" data-form='Form1AInfo'>
+                                                <h4 class="mb-10 font-weight-bold text-dark">Non-Confidential Executive Summary For Publication</h4>
+                                                <p>
+                                                    Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
+                                                </p>
+                                                <p>
+                                                    It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
+                                                </p>
+                                                <div class="form-group">
+                                                    <textarea class="form-control" id="form1a_declaration_text" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
+                                                </div>
+                                            </div>
+                                        @endif
                                         @foreach($filteredChecklistGroup as $checklistGroup)
                                             @php
                                                 $document = \App\Models\Document::where('case_id', $case->id)

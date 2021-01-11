@@ -94,6 +94,33 @@ class ApplicantController extends Controller
     }
 
     /**
+     * Handles resending of confirmation email.
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function resendEmail($email)
+    {
+        $guest = Guest::create([
+            'ip_address' => request()->ip(),
+            'email' => $email,
+            'tracking_id' => \SerialNumber::trackingId(),
+        ]);
+
+        $case = $guest->startCase();
+
+        try {
+            Mail::to($email)->send(
+                new WelcomeApplicant($guest, $case)
+            );
+            $message = 'Mail notification sent!';
+        } catch (\Exception $exception) {
+            $message = $exception->getMessage();
+        }
+
+        return redirect()->back()->with('success', 'Email has been sent!');
+    }
+
+    /**
      * Handles track application page.
      *
      * @return \Illuminate\Contracts\View\Factory

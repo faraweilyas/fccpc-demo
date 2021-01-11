@@ -16,6 +16,10 @@ Route::prefix('applicant')
             'confirm.store'
         );
 
+        Route::get('resend-email/{email}', 'ApplicantController@resendEmail')->name(
+            'resend-email'
+        );
+
         Route::post('authenticate', 'ApplicantController@store')->name('store');
 
         Route::get('manage', 'ApplicantController@trackApplication')->name(
