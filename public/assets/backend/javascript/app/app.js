@@ -187,7 +187,7 @@ function calculatePurchaseConsideration(purchase_consideration)
 {
     let firstAmount, secondAmount, thirdAmount, result = 0;
 
-    if (purchase_consideration > 1000000000)
+    if (purchase_consideration >= 500000000)
     {
         result += firstAmount = (0.3 / 100) * 500000000;
         result += secondAmount = (0.225 / 100) * 500000000;
@@ -202,7 +202,7 @@ function calculateAnnualTurnover(annualTurnover)
 {
     let firstAmount, secondAmount, thirdAmount, result = 0;
 
-    if (annualTurnover > 1000000000)
+    if (annualTurnover >= 500000000)
     {
         result += firstAmount = (0.3 / 100) * 500000000;
         result += secondAmount = (0.225 / 100) * 500000000;
