@@ -222,11 +222,19 @@ $(document).ready(function()
             (amount_paid = thisModal.find("#amount_paid")),
             (submittedAt = thisModal.find("#submittedAt"));
 
-        var letter_of_appointment_link =
-            caseContainer.find(".letter_of_appointment").attr("data-param") ===
-            "nil"
-                ? "#"
-                : caseContainer.find(".letter_of_appointment").html();
+        var letter_of_appointment_link = '';
+
+        if (caseContainer.find(".letter_of_appointment").attr("data-param") ===
+            "nil" || caseContainer.find(".letter_of_appointment").attr("data-param") === '')
+        {
+            letter_of_appointment.empty();
+            letter_of_appointment.html('...');
+            letter_of_appointment_link = "#";
+        } else {
+            letter_of_appointment.empty();
+            letter_of_appointment.html('<span class="flaticon2-download icon-1x"></span> Download');
+            letter_of_appointment_link = caseContainer.find(".letter_of_appointment").html();
+        }
         // Get Case Checklists Asynchronously
         $.ajax({
             url: "/cases/checklists/" + caseID,
