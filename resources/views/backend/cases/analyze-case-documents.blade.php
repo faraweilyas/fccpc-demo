@@ -72,28 +72,28 @@
                                                 @endif
                                             @else
                                                 @if ($x == 1)
-                                                    <button
-                                                        class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
-                                                        data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
-                                                        data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
-                                                    >
-                                                        Start Document Approval
-                                                    </button>
+                                                    @if ($case->active_handlers->count() <= 0)
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
+                                                                    <div class="alert-text text-dark">
+                                                                        <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @else
+                                                        <button
+                                                            class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
+                                                            data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
+                                                            data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
+                                                        >
+                                                            Start Document Approval
+                                                        </button>
+                                                    @endif
                                                 @endif
                                             @endif
                                         </div>
-                                    @else
-                                        @if ($case->active_handlers->count() <= 0)
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
-                                                        <div class="alert-text text-dark">
-                                                            <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        @endif
                                     @endif
                                     <div class="row">
                                         @foreach ($documents as $document)

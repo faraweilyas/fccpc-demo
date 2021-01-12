@@ -132,6 +132,24 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_status == 'approved') ? true : false;
     }
 
+    public function isCaseArchived() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return (!empty($active_handler->case_handler->archived_at)) ? true : false;
+    }
+
+    public function isCaseOnGoing() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return (!empty($active_handler->case_handler->workingon_at)) ? true : false;
+    }
+
     public function checkApprovalStatus() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -161,9 +179,26 @@ class Cases extends Model
         return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '₦0.00';
     }
 
-     public function getApplicantFullName()
+    public function getApplicantFullName()
     {
         return (!empty($this->applicant_fullname)) ? $this->applicant_fullname : '...';
+    }
+
+    public function getApplicationStatus() : string
+    {
+        if ($this->isCaseArchived())
+            return 'It has been archived';
+
+        if ($this->isApprovalApproved())
+            return 'It has been approved';
+
+        if ($this->isCaseOnGoing())
+            return 'It is being worked on';
+
+        if ($this->isAssigned())
+            return 'It has been assigned';
+
+        return 'It has been received';
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass
