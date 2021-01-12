@@ -187,18 +187,18 @@ class Cases extends Model
     public function getApplicationStatus() : string
     {
         if ($this->isCaseArchived())
-            return 'It has been archived';
+            return "It has been <span class='text-danger'>ARCHIVED</span>";
 
         if ($this->isApprovalApproved())
-            return 'It has been approved';
+            return "It has been <span class='text-primary'>APPROVED</span>";
 
         if ($this->isCaseOnGoing())
-            return 'It is being worked on';
+            return "It is being <span class='text-warning'>WORKED ON</span>";
 
         if ($this->isAssigned())
-            return 'It has been assigned';
+            return "It has been <span class='text-success'>ASSIGNED</span>";
 
-        return 'It has been received';
+        return "It has been <span class='text-primary'>RECEIVED</span>";
     }
 
     public function selectedCategoryStyle($case_category='reg') : \stdClass

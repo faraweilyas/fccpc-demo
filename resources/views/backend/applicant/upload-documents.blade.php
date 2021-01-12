@@ -19,7 +19,7 @@
                                 <div class="row mt-6">
                                     <div class="col-md-12 text-center">
                                         <p>
-                                            <strong>Your application <b>{{ $guest->getTrackingID() }}</b> was submitted on {{ $case->getSubmittedAt() }}. {{ $case->getApplicationStatus() }}.</strong>
+                                            <strong>Your application <b>{{ $guest->getTrackingID() }}</b> was submitted on {{ $case->getSubmittedAt() }}. {!! $case->getApplicationStatus() !!}.</strong>
                                         </p>
                                         <p>
                                             <strong>Our representative would get back to you.</strong>
