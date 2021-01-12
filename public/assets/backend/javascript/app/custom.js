@@ -19,6 +19,12 @@ $(document).ready(function() {
         $('.form1A_doc_name').html(fileName);
     });
 
+    $('.approval-file').on('change', function(event)
+    {
+        var fileName = event.target.files[0].name;
+        $('.doc_name').html(fileName);
+    });
+
     $('#letter_of_appointment_doc').on('change', function(event)
     {
         var fileName = event.target.files[0].name;

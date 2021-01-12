@@ -537,9 +537,7 @@ class CasesController extends Controller
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-        $emails                 = ($case->guest->email == $case->applicant_email)
-                                ? [$case->applicant_email]
-                                : [$case->applicant_email, $case->guest->email];
+        $emails                 = $case->guest->email;
 
         // Issue deficiency
         $case->issueDeficiency($case_handler);
@@ -570,9 +568,23 @@ class CasesController extends Controller
      */
     public function approveChecklists(Cases $case)
     {
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+
         $handler = User::find($case->active_handlers->first()->id);
         $case->removeDeficiency($handler);
         $case->approveChecklists($handler);
+
+        $case_handler->notify(new IssueCaseDeficiency(
+            'approved_doc',
+            "Approved for Documentation.", $case->id
+        ));
+        // Notify supervisor
+        $supervisor->notify(new IssueCaseDeficiency(
+            'approved_doc',
+            "Approved for Documentation by <b>{$case_handler->getFullName()}</b>.", $case->id
+        ));
 
         return $this->sendResponse('Checklists approved.', 'success');
     }

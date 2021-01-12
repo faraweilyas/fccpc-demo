@@ -195,7 +195,7 @@
                                 <div class="row py-5">
                                     <div class="col-md-6 my-5">
                                         <div id="drop-area">
-                                            <input accept=".doc,.docx,.pdf" type="file" id="fileElem" name="file">
+                                            <input accept=".doc,.docx,.pdf" type="file" id="fileElem" name="file" class="approval-file">
                                             <label class="drop-label" for="fileElem">
                                                 <img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
                                                 <br />Drop file here or click to upload.
