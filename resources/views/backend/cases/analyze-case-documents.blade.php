@@ -86,7 +86,7 @@
                                                         <button
                                                             class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 start_doc_approval float-right my-5"
                                                             data-link="{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}"
-                                                            data-workingon-link="{{ route('cases.update_working_on', [$case->id, \Auth::user()->id]) }}"
+                                                            data-workingon-link="{{ route('cases.update_working_on', [$case->id, $case->active_handlers[0]->id]) }}"
                                                         >
                                                             Start Document Approval
                                                         </button>

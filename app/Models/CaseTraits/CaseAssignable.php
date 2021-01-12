@@ -143,20 +143,12 @@ trait CaseAssignable
      */
     public function update_working_on(User $caseHandler)
     {
-        $data   = (auth()->user()->account_type == 'SP')
-                ? [
-                    $caseHandler->id     => [
-                        'workingon_at'   => now(),
-                        'supervisor_id'  => auth()->user()->id,
-                    ]
-                ]
-                : [
-                    $caseHandler->id     => [
-                        'workingon_at'   => now(),
-                    ]
-                ];
 
-        return $this->handlers()->syncWithoutDetaching($data);
+        return $this->handlers()->syncWithoutDetaching([
+                    $caseHandler->id     => [
+                        'workingon_at'   => now(),
+                    ]
+                ]);
     }
 
     /**
