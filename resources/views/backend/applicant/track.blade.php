@@ -49,6 +49,9 @@
                                     required
                                 />
                             </div>
+                            <div class="form-group d-flex flex-wrap justify-content-end align-items-center">
+                                <a href="{{ route('applicant.recover_id') }}" id="kt_login_forgot" class="text-muted font-weight-bold text-hover-primary">Forgot ID?</a>
+                            </div>
                             <button
                                 id="kt_login_signin_submit"
                                 type="submit"

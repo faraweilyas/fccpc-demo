@@ -48,7 +48,7 @@
                                 <label class="checkbox m-0 text-muted">
                                 <input type="checkbox" name="remember" />Remember me
                                 <span></span></label>
-                                <a href="{{ route('password.request') }}" id="kt_login_forgot" class="text-muted font-weight-bold">Forget Password ?</a>
+                                <a href="{{ route('password.request') }}" id="kt_login_forgot" class="text-muted font-weight-bold text-hover-primary">Forgot Password?</a>
                             </div>
                             <button type="submit" id="kt_login_signin_submit2" class="btn btn-primary font-weight-bold px-9 py-4 my-3 mx-4">Sign In</button>
                         </form>

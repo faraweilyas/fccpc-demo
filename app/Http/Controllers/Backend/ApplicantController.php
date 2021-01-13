@@ -32,8 +32,8 @@ class ApplicantController extends Controller
      */
     public function confirm($email)
     {
-        $title          = 'Confirm Tracking ID | ' . APP_NAME;
-        $description    = 'Confirm Tracking ID | ' . APP_NAME;
+        $title          = 'Confirm Application ID | ' . APP_NAME;
+        $description    = 'Confirm Application ID | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.confirm', compact('details', 'email'));
     }
@@ -91,6 +91,19 @@ class ApplicantController extends Controller
         return redirect()->route('applicant.confirm', [
             'email' => request('email'),
         ]);
+    }
+
+    /**
+     * Handles recovery of application ID page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function recoverID()
+    {
+        $title          = 'Recover Application ID | ' . APP_NAME;
+        $description    = 'Recover Application ID | ' . APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.applicant.recover-id', compact('details'));
     }
 
     /**

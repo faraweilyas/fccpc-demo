@@ -30,6 +30,10 @@ Route::prefix('applicant')
             'authenticate.track'
         );
 
+        Route::get('recover-id', 'ApplicantController@recoverID')->name(
+            'recover_id'
+        );
+
         Route::get(
             'document/download/{document}/{file}',
             'ApplicantController@downloadDocument'

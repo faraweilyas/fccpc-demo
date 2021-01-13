@@ -649,6 +649,16 @@ $(document).ready(function()
         return false;
     });
 
+    $(document).on("click", ".remove", function(event)
+    {
+        if (fieldsCounter > 1 ) {
+            $(this).closest('.field-item').remove();
+            fieldsCounter--;
+        }
+
+        return false;
+    });
+
     $("#save-form1A-info").on('click', function (event) {
         var name     = $("#form1a_declaration_name").val(),
             position = $("#form1a_declaration_position").val();
@@ -690,22 +700,6 @@ $(document).ready(function()
 
         return;
     });
-
-    $(document).on("click", ".remove", function(event)
-    {
-        if (fieldsCounter > 1 ) {
-            $(this).closest('.field-item').remove();
-            fieldsCounter--;
-        }
-
-        return false;
-    });
-
-    // $('#checklist_doc').change(function(e){
-    //     var fileName = e.target.files[0].name;
-    //     var new_file = fileName.split('.').pop();
-    //     $('.checklist_doc_name').html('file.'+new_file);
-    // });
 });
 
 function formatInputAmount(inputAmount)

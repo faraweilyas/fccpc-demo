@@ -7,6 +7,10 @@ $(document).ready(function() {
     $('#get_categories').select2();
     $('#get_account_types').select2();
 
+    var InputsWrapper   = $(".fields"),
+        fieldsCounter   = InputsWrapper.length,
+        FieldCount      = 1;
+
     $('#enquiry_doc').on('change', function(event)
     {
         var fileName = event.target.files[0].name;
