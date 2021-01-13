@@ -21,7 +21,7 @@
                 style="background-image: url({{ asset(BE_MEDIA.'bg/bg-3.jpg') }}"
             >
                 <div class="login-form text-center p-7 position-relative overflow-hidden">
-                    <div class="d-flex flex-center mb_15">
+                    <div class="d-flex flex-center mb_15 mt-10">
                         <a data-turbolinks="false" href="{{ route('home.index') }}">
                             <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}" class="maxh_130" />
                         </a>
@@ -33,9 +33,10 @@
                                 Provide the information below to request for your application ID
                             </div>
                         </div>
-                        <form class="form" method="POST" action="{{ route('applicant.authenticate.track') }}">
+                        <form class="form" method="POST" action="{{ route('applicant.recover_id') }}">
                             @csrf
-                            <div class="form-group">
+                            <div class="form-group text-left">
+                                <label>Email</label> <span class="text-danger">*</span>
                                 <input
                                     type="email"
                                     value="{{ old('email') }}"
@@ -45,14 +46,14 @@
                                     autocomplete="off"
                                     required
                                 />
-                                <p class="my-2">
+                                <p>
                                     @error('email')
-                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                        <span class="text-danger mb-5 display__block">*{{ $message }}</span>
                                     @enderror
                                 </p>
                             </div>
                             <div class="form-group text-left">
-                                <label>Do you have access to email provided?</label>
+                                <label>Do you have access to email provided?</label> <span class="text-danger">*</span>
                                 <div class="radio-inline">
                                     <label class="radio">
                                         <input
@@ -71,26 +72,28 @@
                                         No<span></span>
                                     </label>
                                 </div>
-                                <p class="my-2">
+                                <p>
                                     @error('access')
-                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                        <span class="text-danger mb-5 display__block">*{{ $message }}</span>
                                     @enderror
                                 </p>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-left">
+                                <label>Transaction Category</label><span class="text-danger">*</span>
                                 <select id="get_categories" class="form-control" name="category">
                                     <option>Select Category</option>
                                     @foreach(\AppHelper::get('case_categories') as $key => $value)
                                         <option value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
-                                <p class="my-2">
+                                <p>
                                     @error('category')
-                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                        <span class="text-danger mb-5 display__block">*{{ $message }}</span>
                                     @enderror
                                 </p>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-left">
+                                <label>Subject</label> <span class="text-danger">*</span>
                                 <input
                                     type="text"
                                     value="{{ old('subject') }}"
@@ -100,9 +103,9 @@
                                     autocomplete="off"
                                     required
                                 />
-                                <p class="my-2">
+                                <p>
                                     @error('subject')
-                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                        <span class="text-danger mb-5 display__block">*{{ $message }}</span>
                                     @enderror
                                 </p>
                             </div>
@@ -127,6 +130,7 @@
                                                     class="form-control"
                                                     placeholder="Enter party name"
                                                     name="party[]"
+                                                    required
                                                 />
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
@@ -145,7 +149,7 @@
                                 </div>
                             </div>
                             <div class="form-group text-left">
-                                <label>Transaction Type</label>
+                                <label>Transaction Type</label> <span class="text-danger">*</span>
                                 <div class="radio-inline">
                                     <label class="radio">
                                         <input
@@ -164,9 +168,9 @@
                                         Large<span></span>
                                     </label>
                                 </div>
-                                <p class="my-2">
+                                <p>
                                     @error('type')
-                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                        <span class="text-danger mb-5 display__block">*{{ $message }}</span>
                                     @enderror
                                 </p>
                             </div>

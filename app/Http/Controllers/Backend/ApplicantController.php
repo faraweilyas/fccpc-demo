@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Models\Guest;
 use App\Models\Document;
+use App\Models\RequestID;
 use Illuminate\Http\Request;
 use App\Mail\WelcomeApplicant;
 use App\Http\Controllers\Controller;
@@ -104,6 +105,35 @@ class ApplicantController extends Controller
         $description    = 'Recover Application ID | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.recover-id', compact('details'));
+    }
+
+    /**
+     * Handles recovery of application ID request.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function recoverIDRequest()
+    {
+        request()->validate([
+            'email'    => ['required', 'email'],
+            'access'   => 'required',
+            'category' => 'required',
+            'subject'  => 'required',
+            'type'     => 'required',
+        ]);
+
+        $parties = is_array(request('party')) ? request('party') : [];
+
+        RequestID::create([
+            'email'           => request('email'),
+            'email_access'    => request('access'),
+            'category'        => request('category'),
+            'subject'         => request('subject'),
+            'parties'         => implode(':', $parties),
+            'type'            => request('type'),
+        ]);
+
+        return redirect()->back()->with('success', 'Your request has been sent!');
     }
 
     /**

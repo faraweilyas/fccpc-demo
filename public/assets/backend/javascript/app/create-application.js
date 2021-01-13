@@ -652,7 +652,7 @@ $(document).ready(function()
     $(document).on("click", ".remove", function(event)
     {
         if (fieldsCounter > 1 ) {
-            $(this).closest('.field-item').remove();
+            $(this).closest('.field-item').fadeOut();
             fieldsCounter--;
         }
 
