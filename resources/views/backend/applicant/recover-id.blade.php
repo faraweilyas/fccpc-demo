@@ -106,7 +106,7 @@
                                     @enderror
                                 </p>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group text-left">
                                 <label>Parties</label> <span class="text-danger">*</span>
                                 <div class="fields">
                                     <div class="field-item">
@@ -117,6 +117,7 @@
                                                     class="form-control"
                                                     placeholder="Enter party name"
                                                     name="party[]"
+                                                    required
                                                 />
                                                 <div class="d-md-none mb-2"></div>
                                             </div>
