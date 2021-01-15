@@ -67,7 +67,7 @@
                                         <input
                                             type="radio"
                                             name="access"
-                                            value="NO"
+                                            value="no"
                                         />
                                         No<span></span>
                                     </label>

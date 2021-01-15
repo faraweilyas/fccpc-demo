@@ -155,6 +155,16 @@
                     </a>
                 </li>
                 @endif
+                @if(in_array(\Auth::user()->account_type, ['SP', 'CH']))
+                <li class="menu-item " aria-haspopup="true">
+                    <a href="{{ route('dashboard.id_requests') }}" class="menu-link">
+                        <span class="svg-icon menu-icon">
+                             <x-icons.enquire></x-icons.enquire>
+                        </span>
+                        <span class="menu-text">ID Requests</span>
+                    </a>
+                </li>
+                @endif
                 @if(in_array(\Auth::user()->account_type, ['AD']))
                 <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">

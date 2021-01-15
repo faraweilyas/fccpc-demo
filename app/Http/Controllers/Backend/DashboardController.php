@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Auth;
 use App\Models\User;
 use App\Models\Cases;
+use App\Models\RequestID;
 use Illuminate\Http\Request;
 use App\Notifications\NewUser;
 use App\Http\Controllers\Controller;
@@ -111,6 +112,20 @@ class DashboardController extends Controller
         $description    = "Update Profile - ".APP_NAME;
         $details        = details($title, $description);
         return view('backend.user.update-profile', compact('details', 'user'));
+    }
+
+    /**
+     * Handles the view application id requests page route.
+     *
+     * @return void
+     */
+    public function viewIDRequests()
+    {
+        $requests       = RequestID::orderBy('id', 'DESC')->get();
+        $title          = "ID Requests - ".APP_NAME;
+        $description    = "ID Requests - ".APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.admin.id-requests', compact('details', 'requests'));
     }
 
     /**

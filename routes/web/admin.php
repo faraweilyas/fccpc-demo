@@ -188,6 +188,12 @@ Route::prefix('/')
         ->name('update_user_profile');
 
         Route::get(
+            'id-requests',
+            'DashboardController@viewIDRequests'
+        )
+        ->name('id_requests');
+
+        Route::get(
             'profile/{user?}',
             'DashboardController@viewProfile'
         )
