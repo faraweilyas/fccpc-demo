@@ -2,6 +2,8 @@
 
 namespace App\Models\CaseTraits;
 
+use App\Models\RequestID;
+
 trait CaseGettable
 {
     /**
@@ -44,6 +46,27 @@ trait CaseGettable
         return (\AppHelper::validateKey('case_categories', $category))
             ? static::where('case_category', $category)->where('submitted_at', '!=', NULL)->get()
             : [];
+    }
+
+    /**
+     * Gets suggested cases by request id
+     *
+     * @return Collection
+     */
+    public function getSuggestedCases($request_id)
+    {
+        $request          = RequestID::find($request_id);
+
+        return static::where('subject', 'LIKE', '%'.$request->subject.'%')
+                    ->where('case_category', 'LIKE', '%'.$request->category.'%')
+                    ->where('parties', 'LIKE', '%'.$request->parties.'%')
+                    ->where('case_type', 'LIKE', '%'.$request->type.'%')
+                    ->latest()
+                    ->get()
+                    ->reject(function($case)
+                    {
+                        return $case->submitted_at == null;
+                    });
     }
 
     /**

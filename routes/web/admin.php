@@ -194,6 +194,12 @@ Route::prefix('/')
         ->name('id_requests');
 
         Route::get(
+            'suggested-cases/{id}',
+            'DashboardController@viewSuggestedCases'
+        )
+        ->name('suggested_cases');
+
+        Route::get(
             'profile/{user?}',
             'DashboardController@viewProfile'
         )

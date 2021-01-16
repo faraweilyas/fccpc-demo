@@ -121,11 +121,25 @@ class DashboardController extends Controller
      */
     public function viewIDRequests()
     {
-        $requests       = RequestID::orderBy('id', 'DESC')->get();
+        $requests       = RequestID::where('status', 0)->latest()->get();
         $title          = "ID Requests - ".APP_NAME;
         $description    = "ID Requests - ".APP_NAME;
         $details        = details($title, $description);
         return view('backend.admin.id-requests', compact('details', 'requests'));
+    }
+
+    /**
+     * Handles the view application id requests page route.
+     *
+     * @return void
+     */
+    public function viewSuggestedCases($id)
+    {
+        $cases          = (new Cases)->getSuggestedCases($id);
+        $title          = "Suggested Cases - ".APP_NAME;
+        $description    = "Suggested Cases - ".APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.admin.suggested-cases', compact('details', 'cases'));
     }
 
     /**

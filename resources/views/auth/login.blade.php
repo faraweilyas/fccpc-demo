@@ -32,17 +32,21 @@
                         <form class="form" method="POST" action="{{ route('login') }}">
                             @csrf
                             <div class="form-group mb-5">
-                                @error('email')
-                                    <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
-                                @enderror
                                 <input class="form-control h-auto form-control-solid py-4 px-8" type="text" placeholder="Email" name="email" autocomplete="off" />
+                                <p>
+                                    @error('email')
+                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                    @enderror
+                                </p>
                             </div>
                             <div class="form-group mb-5">
-                                @error('password')
-                                    <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
-                                @enderror
                                 <input class="hide" type="password" />
                                 <input class="form-control h-auto form-control-solid py-4 px-8" type="password" placeholder="Password" name="password" />
+                                <p>
+                                    @error('password')
+                                        <span class="text-danger mb-5 float-left display__block">*{{ $message }}</span>
+                                    @enderror
+                                </p>
                             </div>
                             <div class="form-group d-flex flex-wrap justify-content-between align-items-center">
                                 <label class="checkbox m-0 text-muted">

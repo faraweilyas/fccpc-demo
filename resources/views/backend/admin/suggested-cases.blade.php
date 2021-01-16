@@ -5,13 +5,16 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">ID Requests</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Suggested Cases</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="" class="text-muted">ID Requests</a>
+                            <a href="{{ route('dashboard.id_requests') }}" class="text-muted">ID Requests</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="" class="text-muted">Suggested Cases</a>
                         </li>
                     </ul>
                 </div>
@@ -24,43 +27,41 @@
                 <div class="card card-custom">
                     <div class="card-header flex-wrap py-5">
                         <div class="card-title">
-                            <h3 class="card-label">ID Requests</h3>
+                            <h3 class="card-label">Suggested Cases</h3>
                         </div>
                     </div>
                     <div class="card-body">
                         <table class="table table-separate table-head-custom table-checkable" id="assigned_cases_datatable">
                             <thead>
                                 <tr>
-                                    <th>Requested On</th>
-                                    <th>Email</th>
+                                    <th>Submitted On</th>
                                     <th>Subject</th>
+                                    <th class="text-center">Category</th>
                                     <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($requests as $request)
+                                @foreach($cases as $case)
                                 <tr>
                                     <td data-sort='YYYYMMDD'>
                                         <div class="font-weight-bold text-dark mb-0" data-sort='YYYYMMDD'
-                                            data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $request->
+                                            data-order=<fmt:formatDate pattern="yyyy-MM-dd" value={!! $case->
                                             getSubmittedAt('customdate') !!} />
-                                            {!! $request->getSubmittedAt('customdate') !!}
+                                            {!! $case->getSubmittedAt('customdate') !!}
                                         </div>
                                     </td>
                                     <td>
                                         <div class="font-weight-bolder mb-0">
-                                            {{ $request->email }}
+                                            {{ $case->getSubject() }}
                                         </div>
                                     </td>
-                                    <td>
-                                        <div class="font-weight-bolder mb-0">
-                                            {{ $request->subject }}
-                                        </div>
+                                    <td class="text-center">
+                                        {!! $case->getCategoryHtml() !!}
                                     </td>
                                     <td nowrap="nowrap" class="text-center">
-                                        <a href="{{ route('dashboard.suggested_cases', ['id' => $request->id]) }}"
-                                            class="btn btn-sm btn-light-warning mr-3" title="Analyse Case">
-                                            <i class="flaticon-eye"></i> View
+                                        <a href="#"
+                                            class="btn btn-sm btn-light-primary mr-3" title="Analyse Case">
+                                            <i class="flaticon-paper-plane"></i> Send ID
                                         </a>
                                     </td>
                                 </tr>
