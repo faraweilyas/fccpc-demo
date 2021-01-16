@@ -155,7 +155,7 @@
                     </a>
                 </li>
                 @endif
-                @if(in_array(\Auth::user()->account_type, ['SP', 'CH']))
+                @if(in_array(\Auth::user()->account_type, ['CH']))
                 <li class="menu-item " aria-haspopup="true">
                     <a href="{{ route('dashboard.id_requests') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
