@@ -11,14 +11,16 @@ class SendRequestedID extends Notification
 {
     use Queueable;
 
+    protected $application_id;
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($application_id)
     {
-        //
+        $this->application_id = $application_id;
     }
 
     /**
@@ -41,8 +43,9 @@ class SendRequestedID extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->subject('Application ID Request')
+                    ->line('Your requested application ID is '.$this->application_id)
+                    ->action('Manage Application', route('applicant.track'))
                     ->line('Thank you for using our application!');
     }
 

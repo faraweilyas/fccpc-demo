@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Notifications\NewUser;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\SendRequestedID;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
@@ -139,7 +140,25 @@ class DashboardController extends Controller
         $title          = "Suggested Cases - ".APP_NAME;
         $description    = "Suggested Cases - ".APP_NAME;
         $details        = details($title, $description);
-        return view('backend.admin.suggested-cases', compact('details', 'cases'));
+        return view('backend.admin.suggested-cases', compact('details', 'cases', 'id'));
+    }
+
+    /**
+     * Handles the send application id page route.
+     *
+     * @return void
+     */
+    public function sendCaseID(Cases $case, $request_id)
+    {
+        (new User)->forceFill([
+            'email' => $case->guest->email,
+        ])->notify(new SendRequestedID($case->guest->tracking_id));
+
+        $requests   = RequestID::whereId($request_id)->update([
+                            'status'  => 1
+                         ]);
+
+        return redirect()->route('dashboard.id_requests')->with('success', 'Application ID Sent!');
     }
 
     /**

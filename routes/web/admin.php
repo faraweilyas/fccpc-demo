@@ -200,6 +200,12 @@ Route::prefix('/')
         ->name('suggested_cases');
 
         Route::get(
+            'send-id/{case}/{request_id}',
+            'DashboardController@sendCaseID'
+        )
+        ->name('send_id');
+
+        Route::get(
             'profile/{user?}',
             'DashboardController@viewProfile'
         )

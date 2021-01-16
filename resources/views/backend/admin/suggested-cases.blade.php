@@ -59,7 +59,7 @@
                                         {!! $case->getCategoryHtml() !!}
                                     </td>
                                     <td nowrap="nowrap" class="text-center">
-                                        <a href="#"
+                                        <a href="{{ route('dashboard.send_id', ['case' => $case->id, 'request_id' => $id]) }}"
                                             class="btn btn-sm btn-light-primary mr-3" title="Analyse Case">
                                             <i class="flaticon-paper-plane"></i> Send ID
                                         </a>
