@@ -355,6 +355,25 @@ $(document).ready(function()
         return;
     });
 
+    $("#viewIDRequestModal").on("shown.bs.modal", function (event) {
+        var viewButton    = $(event.relatedTarget),
+            viewContainer = viewButton.parent().children("div"),
+            email         = viewContainer.find('.email').html(),
+            subject       = viewContainer.find('.subject').html(),
+            category      = viewContainer.find('.category').html(),
+            type          = viewContainer.find('.type').html(),
+            parties       = viewContainer.find('.parties').html(),
+            thisModal     = $(this);
+
+        thisModal.find('#email').html(email);
+        thisModal.find('#subject').html(subject);
+        thisModal.find('#category').html(category);
+        thisModal.find('#type').html(type);
+        thisModal.find('#parties').html(parties);
+
+        return;
+    });
+
     $("#assignCaseModal").on("hidden.bs.modal", function () {
         $("#assignCaseButton").removeClass("hide");
         $("#unassignCaseButton").addClass("hide");

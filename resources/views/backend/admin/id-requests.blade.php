@@ -58,10 +58,27 @@
                                         </div>
                                     </td>
                                     <td nowrap="nowrap" class="text-center">
-                                        <a href="{{ route('dashboard.suggested_cases', ['id' => $request->id]) }}"
-                                            class="btn btn-sm btn-light-warning mr-3" title="Analyse Case">
+                                        <a
+                                            class="btn btn-sm btn-light-warning mr-3"
+                                            title="View Request"
+                                            data-toggle="modal"
+                                            data-target="#viewIDRequestModal"
+                                        >
                                             <i class="flaticon-eye"></i> View
                                         </a>
+                                        <a href="{{ route('dashboard.suggested_cases', ['id' => $request->id]) }}"
+                                            class="btn btn-sm btn-light-primary mr-3" title="Suggested Cases">
+                                            <i class="flaticon-file"></i> Cases
+                                        </a>
+                                        <div class="hide">
+                                            {{-- Request --}}
+                                            <span class="email">{{ $request->email }}</span>
+                                            <span class="subject">{{ $request->subject }}</span>
+                                            <span class="category">{!! $request->getCategoryHtml() !!}</span>
+                                            <span class="type">{!! $request->getTypeHtml() !!}</span>
+                                            <span class="parties">{!! $request->generateCasePartiesBadge('mr_10 mb-2')
+                                            !!}</span>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -72,6 +89,8 @@
             </div>
         </div>
     </div>
+<!-- Modals -->
+@include("layouts.modals.id-request")
 @endsection
 
 @section('custom.css')
