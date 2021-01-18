@@ -108,7 +108,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="analyze-case" type="button" class="btn btn-light-primary font-weight-bold">View More</button>
+                @if(in_array(\Auth::user()->account_type, ['SP']))
+                    <button id="analyze-case" type="button" class="btn btn-light-primary font-weight-bold">View More</button>
+                @endif
                 <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
             </div>
         </div>
