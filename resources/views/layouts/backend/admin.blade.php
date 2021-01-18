@@ -334,6 +334,24 @@
                                 </div>
                                 <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
                             </div>
+                        @elseif ($data->action == "newidrequest")
+                            @php
+                                $request = \App\Models\RequestID::find($data->request_id);
+                            @endphp
+                            <div class="notifications-cards cr-pointer">
+                                <p class="message my-1">{!! $message !!}</p>
+                                <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                <p class="my-1">
+                                    <span class='subject mr-3'>{{ $request->subject }}</span>
+                                </p>
+                                <div class="d-flex">
+                                    <div class="notifications-card-col">
+                                        <p class="title">Date Submitted:</p>
+                                        <span class="description">{{ $request->getSubmittedAt() }}</span>
+                                    </div>
+                                </div>
+                                <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
+                            </div>
                         @else
                             @php
                                 $case = \App\Models\Cases::find($data->case_id);
@@ -419,6 +437,24 @@
                                         <div class="notifications-card-col">
                                             <p class="title">Date Submitted:</p>
                                             <span class="description">{{ $enquiry->getSubmittedAt() }}</span>
+                                        </div>
+                                    </div>
+                                    <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
+                                </div>
+                            @elseif ($data->action == "newidrequest")
+                                @php
+                                    $request = \App\Models\RequestID::find($data->request_id);
+                                @endphp
+                                <div class="notifications-cards cr-pointer">
+                                    <p class="message my-1">{!! $message !!}</p>
+                                    <span class="not_label label label-{{ $action_style }}">{{ $action }}</span>
+                                    <p class="my-1">
+                                        <span class='subject mr-3'>{{ $request->subject }}</span>
+                                    </p>
+                                    <div class="d-flex">
+                                        <div class="notifications-card-col">
+                                            <p class="title">Date Submitted:</p>
+                                            <span class="description">{{ $request->getSubmittedAt() }}</span>
                                         </div>
                                     </div>
                                     <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>

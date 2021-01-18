@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Models\User;
 use App\Models\Guest;
 use App\Models\Document;
 use App\Models\RequestID;
 use Illuminate\Http\Request;
 use App\Mail\WelcomeApplicant;
+use App\Notifications\IDRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -122,9 +124,10 @@ class ApplicantController extends Controller
             'type'     => 'required',
         ]);
 
-        $parties = is_array(request('party')) ? request('party') : [];
+        $handlers   = (new User)->caseHandlers();
+        $parties    = is_array(request('party')) ? request('party') : [];
 
-        RequestID::create([
+        $request = RequestID::create([
             'email'           => request('email'),
             'email_access'    => request('access'),
             'category'        => request('category'),
@@ -132,6 +135,15 @@ class ApplicantController extends Controller
             'parties'         => implode(':', $parties),
             'type'            => request('type'),
         ]);
+
+        foreach ($handlers as $handler):
+            // Notify case handler
+            $handler->notify(new IDRequest(
+                "newidrequest",
+                'New Application ID Request.',
+                $request->id
+            ));
+        endforeach;
 
         return redirect()->back()->with('success', 'Your request has been sent!');
     }
