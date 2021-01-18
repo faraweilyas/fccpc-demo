@@ -59,10 +59,38 @@
                                         {!! $case->getCategoryHtml() !!}
                                     </td>
                                     <td nowrap="nowrap" class="text-center">
+                                        <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Case Info"
+                                        data-toggle="modal" data-target="#viewCaseModal">
+                                            <i class="flaticon-eye"></i> View
+                                        </a>
                                         <a href="{{ route('dashboard.send_id', ['case' => $case->id, 'request_id' => $id]) }}"
-                                            class="btn btn-sm btn-light-primary mr-3" title="Analyse Case">
+                                            class="btn btn-sm btn-light-primary mr-3" title="Send Application ID">
                                             <i class="flaticon-paper-plane"></i> Send ID
                                         </a>
+                                        <div class="hide">
+                                            {{-- Case --}}
+                                            <span class="case_id">{{ $case->id }}</span>
+                                            <span
+                                                class="case_handler">{{ $case->active_handlers->first()->getFullName() }}</span>
+                                            <span class="case_handler_id">{{ $case->active_handlers->first()->id }}</span>
+                                            <span class="reference_no">{{ $case->getRefNO() }}</span>
+                                            <span class="subject">{{ $case->subject }}</span>
+                                            <span class="category">{!! $case->getCategoryHtml() !!}</span>
+                                            <span class="type">{!! $case->getTypeHtml() !!}</span>
+                                            <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
+                                            <span class="parties">{!! $case->generateCasePartiesBadge('mr_10 mb-2')
+                                                !!}</span>
+                                            <span class="submitted_at">{!! $case->getSubmittedAt() !!}</span>
+                                            {{-- Applicant --}}
+                                            <span class="firm">{!! $case->applicant_firm !!}</span>
+                                            <span class="name">{!! $case->getApplicantName() !!}</span>
+                                            <span class="email">{!! $case->applicant_email !!}</span>
+                                            <span class="phone_number">{!! $case->applicant_phone_number !!}</span>
+                                            <span class="letter_of_appointment"
+                                                data-param={{ $case->letter_of_appointment ?? 'nil'}}>{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment ?? 'nil']) }}</span>
+                                            <span class="address">{!! $case->applicant_address !!}</span>
+                                            {{-- Documents --}}
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -73,6 +101,12 @@
             </div>
         </div>
     </div>
+<!-- Modals -->
+@include("layouts.modals.case")
+@include("layouts.modals.case-handler", [
+'caseHandlers' => $caseHandlers,
+'supervisors' => $supervisors
+])
 @endsection
 
 @section('custom.css')

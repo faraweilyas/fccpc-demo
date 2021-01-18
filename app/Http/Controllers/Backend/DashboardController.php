@@ -137,10 +137,13 @@ class DashboardController extends Controller
     public function viewSuggestedCases($id)
     {
         $cases          = (new Cases)->getSuggestedCases($id);
+        $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
+
         $title          = "Suggested Cases - ".APP_NAME;
         $description    = "Suggested Cases - ".APP_NAME;
         $details        = details($title, $description);
-        return view('backend.admin.suggested-cases', compact('details', 'cases', 'id'));
+        return view('backend.admin.suggested-cases', compact('details', 'cases', 'id', 'caseHandlers', 'supervisors'));
     }
 
     /**
