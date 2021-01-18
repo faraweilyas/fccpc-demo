@@ -123,6 +123,15 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_status == 'rejected') ? true : false;
     }
 
+    public function isActiveUsersCase() : bool
+    {
+        $active_handler = $this->active_handlers->first() ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return $active_handler->case_handler->handler_id == auth()->user()->id;
+    }
+
     public function isApprovalApproved() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;

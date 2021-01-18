@@ -181,7 +181,7 @@
             </div>
         </div>
         @if ($case->isCaseChecklistsApproved())
-            @if (!in_array(Auth::user()->account_type, ['SP']) && $case->checkApprovalRejection())
+            @if ($case->isActiveUsersCase() && $case->checkApprovalRejection())
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-custom">
@@ -306,7 +306,7 @@
                         </div>
                     </div>
                 @endif
-                @if (auth()->user()->isCaseHandler())
+                @if($case->isActiveUsersCase())
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card-custom">
@@ -420,6 +420,9 @@
                                 <br />
                                 <select class="form-control select2" id="case_handler_dropdown" name="caseHandler"
                                     style="width: 100%;">
+                                    @foreach($supervisors as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->getFullName() }}</option>
+                                    @endforeach
                                     @foreach($caseHandlers as $handler)
                                     <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
                                     @endforeach
@@ -437,12 +440,10 @@
                         >
                             Assign
                         </button>
-                        <button
-                            id="assigningCaseButton"
-                            class="btn btn-light-primary font-weight-bold hide"
-                            disabled
-                        >
-                            <i class="fas fa-spinner fa-pulse"></i>&nbsp;Assigning...
+                        <button id="assigningCaseButton" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
+                            <div class="spinner-grow text-white" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div>
                         </button>
                         <button
                             type="button"

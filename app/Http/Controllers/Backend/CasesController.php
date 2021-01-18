@@ -437,10 +437,11 @@ class CasesController extends Controller
         endif;
 
         $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
         $title          = APP_NAME;
         $description    = 'FCCPC Case Analysis Dashboard';
         $details        = details($title, $description);
-        return view('backend.cases.analyze-case', compact('details', 'case', 'caseHandlers'));
+        return view('backend.cases.analyze-case', compact('details', 'case', 'caseHandlers', 'supervisors'));
     }
 
     /*

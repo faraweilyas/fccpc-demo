@@ -48,6 +48,7 @@
                         <div class="spinner-grow text-white" role="status">
                           <span class="sr-only">Loading...</span>
                         </div>
+                    </button>
                     <button id="unassigningCaseButton" class="btn btn-danger font-weight-bold py-2 px-8 hide" disabled>
                         <div class="spinner-grow text-white" role="status">
                           <span class="sr-only">Loading...</span>
