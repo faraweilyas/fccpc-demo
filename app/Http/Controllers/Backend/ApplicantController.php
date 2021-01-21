@@ -145,7 +145,20 @@ class ApplicantController extends Controller
             ));
         endforeach;
 
-        return redirect()->back()->with('success', 'Your request has been sent!');
+        return redirect()->route('applicant.recover_id_success')->with('success', 'Your request has been sent!');
+    }
+
+    /**
+     * Handles recovery of application ID success page.
+     *
+     * @return \Illuminate\Contracts\View\Factory
+     */
+    public function viewRecoverIDSuccess()
+    {
+        $title          = 'Recover Application ID | ' . APP_NAME;
+        $description    = 'Recover Application ID | ' . APP_NAME;
+        $details        = details($title, $description);
+        return view('backend.applicant.recover-id-success', compact('details'));
     }
 
     /**

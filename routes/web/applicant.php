@@ -38,6 +38,10 @@ Route::prefix('applicant')
             'recover_id'
         );
 
+        Route::get('recover-id/success', 'ApplicantController@viewRecoverIDSuccess')->name(
+            'recover_id_success'
+        );
+
         Route::get(
             'document/download/{document}/{file}',
             'ApplicantController@downloadDocument'
