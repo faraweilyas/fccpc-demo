@@ -24,7 +24,7 @@
                 <div class="col-md-12 my-5">
                     <div class="card card__box__large">
                         <div class="card__box__large-content">
-                            @if (auth()->user()->account_type == 'SP' && $user->account_type == 'CH')
+                            @if (auth()->user()->account_type == 'SP' && (in_array($user->account_type, ['CH', 'SP'])))
                                 <div class='row'>
                                     <div class='col-md-12'>
                                         <div class="card card-stretch gutter-b" style="border: none !important;">
