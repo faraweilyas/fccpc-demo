@@ -124,8 +124,8 @@
                                                                                         @endif
                                                                                     @endforeach
                                                                                 </div>
-                                                                                <div class="row">
-                                                                                    @if ($checklistGroup->isGroupFees())
+                                                                                @if ($checklistGroup->isGroupFees())
+                                                                                    <div class="row">
                                                                                         <div class="col-md-12 mb-4">
                                                                                             Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
                                                                                             <input
@@ -166,13 +166,13 @@
                                                                                                 id="amount_paid"
                                                                                             />
                                                                                         </div>
-                                                                                    @endif
-                                                                                </div>
-                                                                                <div class="col-md-4 ml-n4">
-                                                                                    <a href="#" id="kt_fee">
-                                                                                        <i class="la la-info-circle"></i>&nbsp;Generate Fee
-                                                                                    </a>
-                                                                                </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4 ml-n4">
+                                                                                        <a href="#" id="kt_fee">
+                                                                                            <i class="la la-info-circle"></i>&nbsp;Generate Fee
+                                                                                        </a>
+                                                                                    </div>
+                                                                                @endif
                                                                                 <div class="row mt-4">
                                                                                     <div class="col-md-12">
                                                                                         <div class="form-group mb-1">
