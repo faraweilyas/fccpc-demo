@@ -118,12 +118,22 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return string
      */
-    public function isUserSame(Cases $case, User $user) : bool
+    public function isHandlerSame(Cases $case, User $user) : bool
     {
         $active_handler = $case->active_handlers[0] ?? NULL;
 
         if (is_null($active_handler)) return false;
 
+        return ($this->id == $user->id) ? true : false;
+    }
+
+    /**
+     * Check if user is the same.
+     *
+     * @return string
+     */
+    public function isUserSame(User $user) : bool
+    {
         return ($this->id == $user->id) ? true : false;
     }
 

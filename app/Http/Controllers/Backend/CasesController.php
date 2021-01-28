@@ -432,7 +432,7 @@ class CasesController extends Controller
             return redirect()->back();
 
         if ($authUser->isCaseHandler()):
-            if (!$authUser->isUserSame($case, $authUser))
+            if (!$authUser->isHandlerSame($case, $authUser))
                 return redirect()->back();
         endif;
 
