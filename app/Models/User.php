@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Auth;
+use App\Models\Cases;
 use App\Models\UserTraits\UserGettable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -117,8 +118,12 @@ class User extends Authenticatable implements JWTSubject
      *
      * @return string
      */
-    public function isUserSame(User $user) : bool
+    public function isUserSame(Cases $case, User $user) : bool
     {
+        $active_handler = $case->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
         return ($this->id == $user->id) ? true : false;
     }
 
