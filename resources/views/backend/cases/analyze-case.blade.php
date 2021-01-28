@@ -144,7 +144,7 @@
                             </span>
                         </div>
                         <div class="col-md-4">
-                            @if(strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm')
+                            @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP']))
                                 <p class="text_dark_blue"><b>FORM 1A:</b></p>
                                 <a
                                     href="#"
