@@ -38,7 +38,7 @@
                 </div>
                 <div class="text-center">
                     <div class="faq-sub-header">
-                        Was this article Helpful?
+                        Was this response helpful?
                     </div>
                     <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
                         @csrf
