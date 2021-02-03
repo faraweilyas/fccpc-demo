@@ -7,7 +7,7 @@
                 <div class="col-md-8">
                     <h2 class="home__headers">Mergers and Aquisition Portal</h2>
                     <div class="custom-bar"></div>
-                    <p class="home__content" style="font-family: 'Segoe UI Regular';">The Federal Competition and Consumer Protection Commission is empowered to review and analyse all mergers and other
+                    <p class="home__content">The Federal Competition and Consumer Protection Commission is empowered to review and analyse all mergers and other
                         business combinations or arrangement to ensure that such combination does not substantially prevent
                         or lessen competition.</p>
                 </div>
@@ -17,7 +17,7 @@
                         onclick="window.location.href = '{{ route('applicant.show') }}';">
                         <img class="card__box-stack-img" src="{{ FE_IMAGE.'png/folder.png' }}" alt="book-open" />
                         <div class="card__box--content">
-                            <p style="font-family: 'Segoe UI Regular';">Submit Application</p>
+                            <p>Submit Application</p>
                         </div>
                     </div>
                     <div class="card__box card__box-stack shadow" id="control-3"
