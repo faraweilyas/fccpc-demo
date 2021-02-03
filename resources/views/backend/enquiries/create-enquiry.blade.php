@@ -5,13 +5,13 @@
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
         <div class="d-flex align-items-center flex-wrap mr-1">
             <div class="d-flex align-items-baseline mr-5 sm-d-flex">
-                <h5 class="text-dark font-weight-bold my-2 mr-5">Create {{ $enquiry }} Enquiry</h5>
+                <h5 class="text-dark font-weight-bold my-2 mr-5">Create {{ $enquiry }}</h5>
                 <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                     <li class="breadcrumb-item">
                         <a href="{{ route('enquiries.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">{{ $enquiry }} Enquiry</a>
+                        <a href="" class="text-muted">{{ $enquiry }}</a>
                     </li>
                 </ul>
             </div>
@@ -25,7 +25,7 @@
                 <div class="col-md-8 mx-auto">
                     <div class="card card-custom gutter-b example example-compact">
                         <div class="card-header">
-                            <h3 class="card-title">{{ $enquiry }} Enquiry</h3>
+                            <h3 class="card-title">{{ $enquiry }}</h3>
                         </div>
                         <form method="POST" action="{{ route('enquiries.store') }}" enctype="multipart/form-data">
                             @csrf
@@ -127,7 +127,7 @@
                                 <div class="row">
                                     <div class="col-md-7 text-right">
                                         <button type="submit" class="btn btn-primary mr-2"><i
-                                                class="la la-cloud-upload"></i> Submit Enquiry</button>
+                                                class="la la-cloud-upload"></i> Submit</button>
                                     </div>
                                 </div>
                             </div>

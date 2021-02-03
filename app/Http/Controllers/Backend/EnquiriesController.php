@@ -21,6 +21,8 @@ class EnquiriesController extends Controller
      */
     public function index()
     {
+        return redirect()->back();
+
         $title          = 'Select Enquiry Category | '.APP_NAME;
         $description    = 'Select Enquiry Category | '.APP_NAME;
         $details        = details($title, $description);
