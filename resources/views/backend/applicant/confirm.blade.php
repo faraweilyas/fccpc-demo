@@ -27,7 +27,8 @@
                     </div>
                     <div class="login-signin">
                         <div class="mb_30">
-                            <h3>Get your Application ID
+                            <h3>
+                                Application ID
                             </h3>
                             <div class=" font-weight-bold text-black-sm">
                                 We sent your application ID to {{ $email }}. enter it here

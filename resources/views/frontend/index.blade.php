@@ -7,9 +7,11 @@
                 <div class="col-md-8">
                     <h2 class="home__headers">Mergers and Aquisition Portal</h2>
                     <div class="custom-bar"></div>
-                    <p class="home__content">The Federal Competition and Consumer Protection Commission is empowered to review and analyse all mergers and other
-                        business combinations or arrangement to ensure that such combination does not substantially prevent
-                        or lessen competition.</p>
+                    <p class="home__content">
+                        The Federal Competition and Consumer Protection Commission is empowered to review and analyse all mergers and other
+                        business combinations or arrangements to ensure that such combinations do not substantially prevent
+                        or lessen competition.
+                    </p>
                 </div>
                 <div class="col-md-4">
                     <h2 class="home__headers">Quick Links</h2>

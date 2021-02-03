@@ -473,7 +473,7 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ strtolower($checklistGroup->name) }} as a
+                                                                    Upload the {{ strtolower($checklistGroup->name) }} form as a
                                                                     single PDF file containing the relevant information listed
                                                                     below.
                                                                 </p>
@@ -528,7 +528,7 @@
                                                                 </div>
                                                                 <div class="col-md-4 ml-n4">
                                                                     <a href="#" id="kt_fee">
-                                                                        <i class="la la-info-circle"></i>&nbsp;Generate Fee
+                                                                        <i class="la la-info-circle"></i>&nbsp;Calculate Fees
                                                                     </a>
                                                                 </div>
                                                                 <div class="row mt-4">
@@ -677,7 +677,9 @@
                     <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                         <div class="card-body">
                             <p>
-                                This Declaration must be signed by a duly authorised person or on behalf of each of the merger parties:
+                                <b>
+                                    This Declaration must be signed by a duly authorised person or on behalf of each of the merger parties:
+                                </b>
                             </p>
                             <p>
                                 I declare that, to the best of my knowledge and belief, the information given in response to the questions in this Notice is true, correct, and complete in all material respects.

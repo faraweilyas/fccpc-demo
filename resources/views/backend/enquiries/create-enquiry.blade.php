@@ -37,6 +37,10 @@
                                             <label>Subject:</label><span class="text-danger">*</span>
                                             <input type="text" name="subject" value="{{ old('subject') }}"
                                                 class="form-control" placeholder="Enter subject:" />
+                                            <span class="form-text text-muted">Please enter subject.</span>
+                                            @error('subject')
+                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
