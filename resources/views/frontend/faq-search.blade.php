@@ -38,7 +38,11 @@
                     </div>
                     <div class="faq-answer-content">
                         @if(Str::contains($faq->question, 'cost to file'))
-                            <a href="{{ route('home.fee.calculator') }}" class="fee__CalculatorLink" __target="blank">Click here to calculate your merger fees</a><br />
+                            <p>
+                                <a href="{{ route('home.fee.calculator') }}" class="fee__CalculatorLink" __target="blank">
+                                    Click here to calculate your merger fees
+                                </a>
+                            </p>
                         @endif
                         {!! nl2br($faq->answer) !!}
                     </div>
