@@ -37,6 +37,9 @@
                         {{ $faq->question }}
                     </div>
                     <div class="faq-answer-content">
+                        @if(Str::contains($faq->question, 'cost to file'))
+                            <a href="{{ route('home.fee.calculator') }}" class="fee__CalculatorLink" __target="blank">Fee Calculator</a><br />
+                        @endif
                         {!! nl2br($faq->answer) !!}
                     </div>
                     <div class="text-center">

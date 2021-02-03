@@ -8,6 +8,18 @@ body {
     padding-right: 0 !important;
 }
 
+.fee__CalculatorLink
+{
+    color: #006535;
+    text-decoration: underline;
+}
+
+.fee__CalculatorLink:hover
+{
+    color: #006535 !important;
+    text-decoration: underline !important;
+}
+
 .cr-pointer
 {
     cursor: pointer;

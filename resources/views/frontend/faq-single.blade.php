@@ -34,11 +34,14 @@
                     {{ $faq->question }}
                 </div>
                 <div class="faq-answer-content">
+                    @if(Str::contains($faq->question, 'cost to file'))
+                        <a href="{{ route('home.fee.calculator') }}" class="fee__CalculatorLink" target="_blank">Fee Calculator</a><br />
+                    @endif
                     {!! nl2br($faq->answer) !!}
                 </div>
                 <div class="text-center">
                     <div class="faq-sub-header">
-                        Was this response helpful?
+                        Was this response helpfuls?
                     </div>
                     <form id="feedback-form" action="{{ route('home.faq.feedback', $faq) }}" method="POST">
                         @csrf
