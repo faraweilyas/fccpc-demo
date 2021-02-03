@@ -24,7 +24,7 @@
       <div class="header">
         <div class="header_logo">
           <a href="/">
-            <img src="{{ FE_IMAGE.'png/logo.png' }}" alt="" />
+            <img src="{{ FE_IMAGE.'png/logo.png' }}" alt="" style="height: 80px;object-fit: contain;"/>
           </a>
         </div>
 
@@ -36,7 +36,7 @@
 
         <div class="header_logo">
           <a href="#">
-            <img src="{{ FE_IMAGE.'png/coat_of_arm.png' }}" height="50px" />
+            <img src="{{ FE_IMAGE.'png/coat_of_arm.png' }}" style="height: 50px;object-fit: contain;" />
           </a>
         </div>
       </div>
