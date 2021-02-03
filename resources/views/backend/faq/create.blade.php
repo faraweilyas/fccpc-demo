@@ -11,7 +11,7 @@
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">FAQ</a>
+                        <a href="{{ route('faq.faqs') }}" class="text-muted">FAQs</a>
                     </li>
                 </ul>
             </div>
@@ -54,19 +54,6 @@
                                             <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                             @enderror
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8 mx-auto">
-                                        <label>Question Category</label> <span class="text-danger">*</span>
-                                        <select class="form-control select2" name="category" id="get_categories">
-                                            @foreach(\AppHelper::get('faq_categories') as $key => $value)
-                                            <option value="{{ $key }}">{{ $value }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('category')
-                                        <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row mt-8">

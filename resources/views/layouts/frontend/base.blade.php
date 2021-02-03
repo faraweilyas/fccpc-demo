@@ -79,7 +79,7 @@
               <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('home.faqs') }}">Faqs</a>
+              <a class="nav-link" href="{{ route('home.faqs.category', ['category' => 'GEN']) }}">FAQs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('applicant.track') }}">Manage Application</a>

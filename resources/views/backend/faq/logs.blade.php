@@ -11,7 +11,7 @@
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">FAQs</a>
+                        <a href="{{ route('faq.faqs') }}" class="text-muted">FAQs</a>
                     </li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach(\App\Models\Faq::all() as $item)
+                            @foreach(\App\Models\Faq::orderBy('id', 'DESC')->get() as $item)
                             <tr>
                                 <td>{{ $item->getCreator() }}</td>
                                 <td>{!! $item->getCategoryHtml() !!}</td>

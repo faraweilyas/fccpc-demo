@@ -70,7 +70,6 @@ class FaqController extends Controller
          $this->validate($request, [
             'question'    => 'required',
             'answer'      => 'required',
-            'category'    => 'required',
         ]);
 
         $faq->where('id', $faq->id)->update([
@@ -78,7 +77,6 @@ class FaqController extends Controller
             'slug'      => Str::slug(request('question')),
             'question'  => trim(request('question')),
             'answer'    => trim(request('answer')),
-            'category'  => trim(request('category')),
         ]);
 
         return redirect()->back()->with("success", "Faq updated successfully!");
@@ -93,7 +91,6 @@ class FaqController extends Controller
         $this->validate($request, [
             'question'    => 'required',
             'answer'      => 'required',
-            'category'    => 'required',
         ]);
 
         $result = Faq::create([
@@ -101,7 +98,7 @@ class FaqController extends Controller
             'slug'      => Str::slug(request('question')),
             'question'  => trim(request('question')),
             'answer'    => trim(request('answer')),
-            'category'  => trim(request('category')),
+            'category'  => 'GEN',
         ]);
 
         return redirect()->back()->with("success", "Faq created successfully!");

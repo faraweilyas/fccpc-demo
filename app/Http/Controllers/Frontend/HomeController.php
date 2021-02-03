@@ -89,6 +89,8 @@ class HomeController extends Controller
      */
     public function faqs()
     {
+        return redirect()->back();
+
         $faq_categories = \AppHelper::get('faq_categories');
         $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
         $description =
