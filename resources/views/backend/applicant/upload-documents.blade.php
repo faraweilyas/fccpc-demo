@@ -111,7 +111,8 @@
                                                                             </div>
                                                                             <div class="card-body">
                                                                                 <p>
-                                                                                    Upload the {{ strtolower($checklistGroup->name) }} as a single PDF file containing the missing information listed below.
+                                                                                    Upload the {{ strtolower($checklistGroup->name) }} form as a
+                                                                                    single PDF file containing the missing information listed below.
                                                                                 </p>
                                                                                 <div class="row mt-4">
                                                                                     @foreach($checklistGroup->checklists as $checklist)

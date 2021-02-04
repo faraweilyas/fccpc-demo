@@ -91,29 +91,6 @@
                                 <h4>{{ $case->applicant_address }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <div class="d-flex mt-n7">
-                                    @if (!empty($case->letter_of_appointment))
-                                        <img
-                                            class="mw-10 cr-pointer"
-                                            src="{{ $case->getLetterOfAppointmentIconText() }}"
-                                            alt="pdf" height="50px"
-                                            onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
-                                        />
-                                        <h4
-                                            class="py-5 mx-5 w-75 text-hover-primary cr-pointer"
-                                            onclick="window.location.href = '{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
-                                        >
-                                            Letter Of Appointment
-                                        </h4>
-                                    @else
-                                        <span class="svg-icon svg-icon-danger svg-icon-4x ml-n1" onClick="printPdf(2)">
-                                            <x-icons.letter-file></x-icons.letter-file>
-                                        </span>
-                                        <h4 class="py-5 mx-5 text-danger w-75" title="No document submitted">Letter Of Appointment</h4>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="grid-row-2 d-flex">
                                 <h4 class="info-title">Amount Paid:</h4>
                                 <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>

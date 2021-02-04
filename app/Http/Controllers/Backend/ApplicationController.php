@@ -292,38 +292,13 @@ class ApplicationController extends Controller
      */
     public function saveContactInfo(Guest $guest)
     {
-        $fileName = '';
-        $previous_document_name = request('previous_document_name') ?? '';
-
-        if (request()->hasFile('file')):
-            $validator = Validator::make(request()->all(), [
-            'file' => 'mimes:pdf',
-            ]);
-
-            if ($validator->fails())
-                $this->sendResponse('Only PDF file format is supported.', 'error', []);
-
-            $file = request('file');
-            $extension = $file->getClientOriginalExtension();
-            $fileName = \SerialNumber::randomFileName($extension);
-            $path = $file->storeAs('public/documents', $fileName);
-
-            $previous_document = Cases::where('id', $guest->case->id)->where('letter_of_appointment', $previous_document_name)->first();
-            if ($previous_document):
-                $old_file = $previous_document->letter_of_appointment;
-                if (checkFile(storage_path('app/public/documents/'.$old_file)))
-                    unlink(storage_path('app/public/documents/'.$old_file));
-            endif;
-        endif;
-
         $guest->case->saveContactInfo(
             (object) [
                 'applicant_firm' => request('applicant_firm'),
                 'applicant_fullname' => request('applicant_fullname'),
                 'applicant_email' => request('applicant_email'),
                 'applicant_phone_number' => request('applicant_phone_number'),
-                'applicant_address' => request('applicant_address'),
-                'letter_of_appointment' => empty($fileName) ? $previous_document_name : $fileName,
+                'applicant_address' => request('applicant_address')
             ]
         );
 

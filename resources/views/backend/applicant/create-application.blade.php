@@ -78,7 +78,7 @@
                                     </div>
                                 </div>
                                 @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
-                                    <div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+                                    <div class="wizard-step" data-wizard-type="step">
                                         <div class="wizard-wrapper">
                                             <div class="wizard-icon">
                                                 <span class="svg-icon svg-icon-2x">
@@ -298,45 +298,6 @@
                                                         <span class="form-text text-muted">Please enter your address.</span>
                                                         <div class="fv-plugins-message-container"></div>
                                                     </div>
-                                                    <div class="row mt-4">
-                                                        <div class="col-md-12">
-                                                            <p>
-                                                                <label>Letter Of Appointment</label>
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-n2">
-                                                        <div class="col-md-3">
-                                                            <div class="uploadButton tw-mb-4 ">
-                                                                <input
-                                                                    accept=".pdf"
-                                                                    id="letter_of_appointment_doc"
-                                                                    class="js-file-upload-input ember-view"
-                                                                    type="file"
-                                                                    name="letter_of_appointment_doc"
-                                                                />
-                                                                <span class="btn btn--small btn--brand">Upload File</span>
-                                                            </div>
-                                                        </div>
-                                                        @if(!empty($case->letter_of_appointment))
-                                                            <div class="col-md-3 my-1">
-                                                                <span>
-                                                                    <img
-                                                                        onclick="window.location.href='{{ route('applicant.download_contact_loa', ['document' => $case->letter_of_appointment]) }}';"
-                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                        src="{{ $case->getLetterOfAppointmentIconText() }}"
-                                                                        title="Download Document"
-                                                                    />
-                                                                </span>
-                                                            </div>
-                                                        @endif
-                                                    </div>
-                                                    <p class="document-uploaded loa_doc_name"></p>
-                                                    <input
-                                                        id="previous_letter_of_appointment_doc_name"
-                                                        type="hidden"
-                                                        value="{{ $case->letter_of_appointment }}"
-                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -370,14 +331,8 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ strtolower($checklistGroup->name) }} as a
-                                                                    single PDF file containing the relevant information listed
-                                                                    below.
-                                                                </p>
-                                                                <p>
-                                                                    Check all applicable boxes and use the additional
-                                                                    information section to explain reasons for any unavailable
-                                                                    information.
+                                                                    Upload the {{ strtolower($checklistGroup->name) }} form as a
+                                                                    single PDF file containing the relevant information listed.
                                                                 </p>
                                                                 <div class="d-flex flex-column">
                                                                     <div class="flex-grow-1 text-center" style="position: relative;">
@@ -474,13 +429,7 @@
                                                             <div class="card-body">
                                                                 <p>
                                                                     Upload the {{ strtolower($checklistGroup->name) }} form as a
-                                                                    single PDF file containing the relevant information listed
-                                                                    below.
-                                                                </p>
-                                                                <p>
-                                                                    Check all applicable boxes and use the additional
-                                                                    information section to explain reasons for any unavailable
-                                                                    information.
+                                                                    single PDF file containing the relevant information listed.
                                                                 </p>
                                                                 <div class="row">
                                                                     @if ($checklistGroup->isGroupFees())

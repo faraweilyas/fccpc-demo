@@ -811,9 +811,7 @@ function saveCaseInfo(action, currentForm)
 function saveContactInfo(action, currentForm)
 {
     var tracking_id            = $("#tracking_id").val(),
-        formData               = new FormData(),
-        file                   = $('#letter_of_appointment_doc')[0].files[0],
-        previous_document_name = $("#previous_letter_of_appointment_doc_name").val();
+        formData               = new FormData();
 
     $("#previous-btn").attr('disabled', 'disabled');
     $("#save-info").toggle();
@@ -825,8 +823,6 @@ function saveContactInfo(action, currentForm)
     formData.append('applicant_email',        $("input[name='applicant_email']").val());
     formData.append('applicant_phone_number', $("input[name='applicant_phone_number']").val());
     formData.append('applicant_address',      $("input[name='applicant_address']").val());
-    formData.append('file',                   file);
-    formData.append('previous_document_name', previous_document_name);
 
     sendRequest(
         '/application/create/'+tracking_id+'/'+action,

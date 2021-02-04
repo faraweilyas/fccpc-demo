@@ -217,24 +217,10 @@ $(document).ready(function()
             (applicant_phone_number = thisModal.find(
                 "#applicant_phone_number"
             )),
-            (letter_of_appointment = thisModal.find("#letter_of_appointment")),
             (applicant_address = thisModal.find("#applicant_address")),
             (amount_paid = thisModal.find("#amount_paid")),
             (submittedAt = thisModal.find("#submittedAt"));
 
-        var letter_of_appointment_link = '';
-
-        if (caseContainer.find(".letter_of_appointment").attr("data-param") ===
-            "nil" || caseContainer.find(".letter_of_appointment").attr("data-param") === '')
-        {
-            letter_of_appointment.empty();
-            letter_of_appointment.html('...');
-            letter_of_appointment_link = "#";
-        } else {
-            letter_of_appointment.empty();
-            letter_of_appointment.html('<span class="flaticon2-download icon-1x"></span> Download');
-            letter_of_appointment_link = caseContainer.find(".letter_of_appointment").html();
-        }
         // Get Case Checklists Asynchronously
         $.ajax({
             url: "/cases/checklists/" + caseID,
@@ -268,7 +254,6 @@ $(document).ready(function()
         applicant_name.html(caseContainer.find(".name").html());
         applicant_email.html(caseContainer.find(".email").html());
         applicant_phone_number.html(caseContainer.find(".phone_number").html());
-        letter_of_appointment.attr("href", letter_of_appointment_link);
         applicant_address.html(caseContainer.find(".address").html());
         amount_paid.html(caseContainer.find(".amount_paid").html());
         submittedAt.html(caseContainer.find(".submitted_at").html());
