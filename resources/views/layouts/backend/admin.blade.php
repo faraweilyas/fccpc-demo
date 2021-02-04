@@ -599,11 +599,11 @@
                             </div>
                         </div>
                         <div class="form-group hide">
-                            <label>The acquiring undertaking (including group companies where relevant):</label>
+                            <label>The annual turnover of the acquiring undertaking (including group companies where relevant):</label>
                             <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
-                            <label>The target undertaking:</label>
+                            <label>The annual turnover of the target undertaking:</label>
                             <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
                         </div>
                         <div class="form-group hide">
@@ -612,7 +612,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>Annual Turnover:</label>
+                        <label>Total annual turnover:</label>
                         <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
                     </div>
                 </div>
