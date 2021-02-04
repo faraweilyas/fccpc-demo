@@ -112,8 +112,10 @@ function validateTypeOfTransaction(typeOfTransaction)
     if (typeOfTransaction == 'ffx' || typeOfTransaction == '')
     {
         $('.transaction-category-section').addClass('hide');
+        $('.purchase_consideration').addClass('hide');
     } else {
         $('.transaction-category-section').removeClass('hide');
+        $('.purchase_consideration').removeClass('hide');
     }
 }
 
@@ -228,7 +230,7 @@ function formatAmount(amount)
 
 function generateFee()
 {
-    console.log(getProcessingFee());
+    // console.log(getProcessingFee());
 
     let applicationFee  = getApplicationFee(),
         processingFee   = Number(getProcessingFee()),

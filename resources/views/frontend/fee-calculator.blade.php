@@ -29,7 +29,7 @@
                         <label>Number of Parties:</label>
                         <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group purchase_consideration">
                         <label>Purchase Consideration:</label>
                         <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
                     </div>

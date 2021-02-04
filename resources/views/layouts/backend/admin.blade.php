@@ -583,7 +583,7 @@
                         </div>
                     </div>
                     <div class="transaction-category-section">
-                        <div class="form-group">
+                        <div class="form-group purchase_consideration">
                             <label>Purchase Consideration:</label>
                             <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
                         </div>
