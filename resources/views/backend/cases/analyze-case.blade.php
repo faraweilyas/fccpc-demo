@@ -201,7 +201,7 @@
                                             <input accept=".doc,.docx,.pdf" type="file" id="fileElem" name="file" class="approval-file">
                                             <label class="drop-label" for="fileElem">
                                                 <img src="{{ pc_asset(BE_IMAGE.'svg/file.svg') }}" alt="file">
-                                                <br />Drop file here or click to upload.
+                                                <br />Click to upload.
                                             </label>
                                         </div>
                                         <p class="text-primary my-3 doc_name"></p>
