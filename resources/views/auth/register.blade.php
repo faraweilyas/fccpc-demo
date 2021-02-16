@@ -12,7 +12,7 @@
                 <span class="font-weight-bold text-dark-50">Do you need help?</span>
                 <a data-turbolinks="false" href="{{ route('home.index') }}" class="font-weight-bold ml-2"
                     id="kt_login_signup">Home</a> |
-                <a data-turbolinks="false" href="{{ route('home.faqs') }}" class="font-weight-bold ml-2"
+                <a data-turbolinks="false" href="{{ route('home.faqs.category', ['category' => 'GEN']) }}" class="font-weight-bold ml-2"
                     id="kt_login_signup">FAQ</a> |
                 <a data-turbolinks="false" href="{{ route('home.fee.calculator') }}" class="font-weight-bold ml-2"
                     id="kt_login_signup">Fee Calculator</a>

@@ -547,7 +547,7 @@
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                             If you have any queries, please visit the FAQ
-                                                            section <a href="{{ route("home.faqs") }}"
+                                                            section <a href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                 rel="noreferrer noopener" target="_blank"
                                                                 style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
                                                             for more information. Please keep your
