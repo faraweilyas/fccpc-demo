@@ -64,15 +64,15 @@ class AppHelper
     ];
 
 	protected $case_categories = [
-		"REG" => "Merger",
-		"FFM" => "Simplified Procedure",
-		"FFX" => "Negative Clearance",
+		"REG" => "Merger (Form 1)",
+		"FFM" => "Simplified Procedure (Form 2)",
+		"FFX" => "Negative Clearance (Form 4)",
 	];
 
     protected $case_categories_text = [
-        "REG" => "Merger",
-        "FFM" => "Simplified Procedure",
-        "FFX" => "Negative Clearance",
+        "REG" => "Merger (Form 1)",
+        "FFM" => "Simplified Procedure (Form 2)",
+        "FFX" => "Negative Clearance (Form 4)",
     ];
 
     protected $case_categories_html = [

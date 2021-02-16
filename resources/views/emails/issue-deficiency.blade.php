@@ -543,13 +543,14 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your application <strong>{{ $data['ref_no'] }}</strong> is now
-                                                                        under review, please provide the following <a href="{{ route('applicant.track') }}">here</a>;</p>
+                                                                        Your application <strong>{{ $data['case']->guest->tracking_id }}</strong> is now
+                                                                        under review, please provide the following information:</p>
+                                                                        @php $count = 1; @endphp
                                                                     @foreach($data['deficent_cases'] as $checklist)
                                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                             paraid="640540932"
                                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                            <b>{{ $checklist->group->name }}</b> -
+                                                                            <b>{{ $count }}.</b>
                                                                             {{ $checklist->name }}
                                                                         </p>
                                                                         @if(!empty($checklist->checklist_document->reason))
@@ -558,6 +559,7 @@
                                                                                 {{ $checklist->checklist_document->reason ?? '...'}}
                                                                             </p>
                                                                         @endif
+                                                                        @php $count++; @endphp
                                                                     @endforeach
                                                                     @isset($data['additional_info'])
                                                                     <p><b>Additional Information</b></p>
@@ -566,6 +568,13 @@
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         {!! nl2br($data['additional_info']) !!}</p>
                                                                     @endif
+                                                                    <p>
+                                                                        <a href="{{ route('applicant.track') }}">Click here to update your application</a>
+                                                                    </p>
+                                                                    <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
+                                                                        paraid="622938900"
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                                        Thank you&nbsp;</p>
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                                         paraid="1344694371"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -576,12 +585,6 @@
                                                                         for more information. Please keep your
                                                                         application reference number safe.
                                                                     </p>
-
-                                                                    <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
-                                                                        paraid="622938900"
-                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Thank you&nbsp;</p>
-
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -612,7 +615,7 @@
                                                                         paraid="6160621"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
                                                                         Email Security:&nbsp;if you are concerned about
-                                                                        clicking the link above, the M&amp;A portal can
+                                                                        clicking the link above, the Mergers portal can
                                                                         be accessed by typing&nbsp;<a
                                                                             href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"

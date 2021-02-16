@@ -76,7 +76,14 @@
                                                                 <div class="col-md-12">
                                                                     <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
                                                                         <div class="alert-text text-dark">
-                                                                            <i class="la la-info-circle text-dark"></i>&nbsp;Please assign a case handler to continue document approval!
+                                                                            <i class="la la-info-circle text-dark"></i>&nbsp;Please
+                                                                            <a
+                                                                                href="#"
+                                                                                data-toggle="modal"
+                                                                                data-target="#assignAnalyzeCaseModal"
+                                                                            >
+                                                                                assign
+                                                                            </a> a case handler to continue document approval!
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -113,7 +120,7 @@
                                                                             href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                                                             class="text-dark text-hover-primary"
                                                                         >
-                                                                            {{ ucfirst($document->group->name).' Form '.$file_count }}
+                                                                            {{ ucfirst($document->group->name).' Doc_'.$file_count }}
                                                                         </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                     </span>
                                                                 </div>
@@ -171,8 +178,92 @@
             </div>
         </div>
     @endif
+    <div
+        class="modal fade"
+        id="assignAnalyzeCaseModal"
+        data-backdrop="static"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+    >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Assign Case Handler</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <form method="POST" action="#">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="py-9">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="font-weight-bold mr-2">Reference NO:</span>
+                                <span class="text-muted text-hover-primary">{!! $case->getRefNO() !!}</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <span class="font-weight-bold mr-2">Submitted On:</span>
+                                <span class="text-muted">{!! $case->getSubmittedAt() !!}</span>
+                            </div>
+                            <div>
+                                <span class="font-weight-bold mr-2">Subject:</span>
+                                <br />
+                                <span>{{ $case->subject }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Select case handler:</label>
+                                <br />
+                                <select class="form-control select2" id="case_handler_dropdown" name="caseHandler"
+                                    style="width: 100%;">
+                                    @foreach($supervisors as $supervisor)
+                                    <option value="{{ $supervisor->id }}">{{ $supervisor->getFullName() }}</option>
+                                    @endforeach
+                                    @foreach($caseHandlers as $handler)
+                                    <option value="{{ $handler->id }}">{{ $handler->getFullName() }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" id="caseID">
+                        <button
+                            type="button"
+                            id="assignAnalyzeCaseButton"
+                            class="btn btn-light-primary font-weight-bold"
+                            data-case-id="{{ $case->id }}"
+                        >
+                            Assign
+                        </button>
+                        <button id="assigningCaseButton" class="btn btn-primary font-weight-bold py-2 px-8 hide" disabled>
+                            <div class="spinner-grow text-white" role="status">
+                              <span class="sr-only">Loading...</span>
+                            </div>
+                        </button>
+                        <button
+                            type="button"
+                            class="btn btn-light-danger font-weight-bold"
+                            data-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'reports.css') }}" />
+@endsection
+
+@section('custom.javascript')
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/datatables/datatables.bundle.js') }}" defer></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'case-modal.js') }}"></script>
 @endsection

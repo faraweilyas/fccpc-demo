@@ -642,6 +642,16 @@ class Cases extends Model
     }
 
     /**
+     * Get Form 1A set status
+     *
+     * @return bool
+     */
+    public function isForm1ASet() : bool
+    {
+        return (!empty($this->form_1A_text) || !empty($this->form_1A_Name) || !empty($this->form_1A_Position)) ? true : false;
+    }
+
+    /**
      * Get handlers full name
      *
      * @return string

@@ -78,7 +78,7 @@
                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                         class="text-dark text-hover-primary"
                                     >
-                                        {{ ucfirst($document->group->name).' Form '.$file_count }}&nbsp;<i class="la la-download text-primary"></i>
+                                        {{ ucfirst($document->group->name).' Doc_'.$file_count }}&nbsp;<i class="la la-download text-primary"></i>
                                     </a>
                                 </span>
                             </div>

@@ -542,7 +542,7 @@
                                                             {{ datetimeToText($data['case']->submitted_at, "time") }}
                                                             has been received and the Commission will revert
                                                             shortly.</p>
-                                                            <p>Your application referrence number is <b>{{ $data['ref_no'] }}</b></p>
+                                                            <p>Your application ID is <b>{{ $data['guest']->tracking_id }}</b></p>
                                                         <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -593,7 +593,7 @@
                                                             paraid="6160621"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
                                                             Email Security:&nbsp;if you are concerned about
-                                                            clicking the link above, the M&amp;A portal can
+                                                            clicking the link above, the Mergers portal can
                                                             be accessed by typing&nbsp;<a href="{{ config("app.url") }}"
                                                                 rel="noreferrer noopener" target="_blank"
                                                                 style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>&nbsp;in

@@ -547,6 +547,7 @@ class CasesController extends Controller
             ->send(new IssueDeficiencyEmail([
                 'fullname'        => $case->applicant_fullname,
                 'ref_no'          => $case->guest->tracking_id,
+                'case'            => $case,
                 'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category),
                 'additional_info' => request('additional_info'),
             ]));
@@ -705,13 +706,15 @@ class CasesController extends Controller
         if (\Auth::user()->active_cases_assigned_to_all()->where('case_id', $case->id)->count() <= 0 && !in_array(\Auth::user()->account_type, ['SP']))
             return redirect()->route('cases.assigned');
 
+        $caseHandlers               = (new User())->caseHandlers();
+        $supervisors                = (new User())->supervisors();
         $checklistGroupDocuments    = Document::where('case_id', $case->id)->get();
         $title                      = APP_NAME;
         $description                = 'FCCPC Case Documents Analysis Dashboard';
         $details                    = details($title, $description);
         return view(
             'backend.cases.analyze-case-documents',
-            compact('details', 'case', 'checklistGroupDocuments')
+            compact('details', 'case', 'checklistGroupDocuments', 'caseHandlers', 'supervisors')
         );
     }
 

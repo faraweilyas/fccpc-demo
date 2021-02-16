@@ -50,7 +50,7 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $regStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Merger</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $regStyle->text }}">Merger (Form 1)</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $regStyle->textsm }}">
                                         <br />
                                         <small class="text-black">
@@ -71,7 +71,7 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $ffmStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Simplified Procedure</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffmStyle->text }}">Simplified Procedure (Form 2)</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffmStyle->textsm }}">
                                         <br />
                                         <small class="text-black">
@@ -92,7 +92,7 @@
                                     <span class="svg-icon svg-icon-2x float-right {{ $ffxStyle->svg }}">
                                         <x-icons.arrow-right></x-icons.arrow-right>
                                     </span>
-                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Negative Clearance</div>
+                                    <div class="font-weight-bolder font-size-h2 mt-3 {{ $ffxStyle->text }}">Negative Clearance (Form 4)</div>
                                     <span class="font-weight-bold font-size-lg mt-1 {{ $ffxStyle->textsm }}">
                                         <br />
                                         <small class="text-black">

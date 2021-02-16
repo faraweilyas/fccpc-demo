@@ -100,7 +100,7 @@
                                                 </span>
                                             </div>
                                             <div class="wizard-label">
-                                                <h3 class="wizard-title">{{ ucfirst($group->name) }} Form</h3>
+                                                <h3 class="wizard-title">{{ ucfirst($group->name) }}</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -327,25 +327,12 @@
                                                     <div class="col-md-12">
                                                         <div class="card card-custom gutter-b example example-compact">
                                                             <div class="card-header">
-                                                                <h3 class="card-title">{{ ucfirst($checklistGroup->name) }} Form</h3>
+                                                                <h3 class="card-title">{{ ucfirst($checklistGroup->name) }}</h3>
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ strtolower($checklistGroup->name) }} form as a
-                                                                    single PDF file containing the relevant information listed.
+                                                                    Upload the {{ ucfirst($checklistGroup->name) }} and all relevant supporting documents in this section. <br><a href="https://www.fccpc.gov.ng/businesses/mergers/" target="__blank">Click here to download {{ ucfirst($checklistGroup->name) }}</a>
                                                                 </p>
-                                                                <div class="d-flex flex-column">
-                                                                    <div class="flex-grow-1 text-center" style="position: relative;">
-                                                                        <a class="" href="{{ route('application.download_form', ['form' => $checklistGroup->file]) }}" title="Download Form">
-                                                                            <img src="{{ BE_MEDIA.'/svg/icons/Files/DownloadFileGreen.svg' }}" class="w--20" />
-                                                                        </a>
-                                                                        <a class="" href="{{ route('application.download_form', ['form' => $checklistGroup->file]) }}" title="Download Form">
-                                                                            <p class="text-center">
-                                                                                <b>Download Form</b>
-                                                                            </p>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
                                                                         <div class="form-group mb-1">
@@ -396,7 +383,7 @@
                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                                                                         class="text-dark text-hover-primary"
                                                                                     >
-                                                                                        {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                                                        {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
                                                                                     </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                                 </span>
                                                                             </div>
@@ -428,9 +415,13 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ strtolower($checklistGroup->name) }} form as a
-                                                                    single PDF file containing the relevant information listed.
+                                                                    Upload proof of fee(s) payment.
                                                                 </p>
+                                                                <div class="col-md-12 my-3">
+                                                                    <a href="#" id="kt_fee">
+                                                                        <i class="la la-info-circle"></i>&nbsp;Click here to calculate applicable fees
+                                                                    </a>
+                                                                </div>
                                                                 <div class="row">
                                                                     @if ($checklistGroup->isGroupFees())
                                                                         <div class="col-md-12 mb-4">
@@ -474,11 +465,6 @@
                                                                             />
                                                                         </div>
                                                                     @endif
-                                                                </div>
-                                                                <div class="col-md-4 ml-n4">
-                                                                    <a href="#" id="kt_fee">
-                                                                        <i class="la la-info-circle"></i>&nbsp;Calculate Fees
-                                                                    </a>
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
@@ -537,7 +523,7 @@
                                                                                         class="text-dark text-hover-primary"
                                                                                     >
                                                                                         {{
-                                                                                            ucfirst($checklistGroup->name).' Form '.$file_count}}
+                                                                                            ucfirst($checklistGroup->name).' Doc_'.$file_count}}
                                                                                     </a>
                                                                                 </span>
                                                                             </div>

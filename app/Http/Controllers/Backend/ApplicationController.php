@@ -434,12 +434,6 @@ class ApplicationController extends Controller
 
         $case->validateSubmission();
 
-        $guest->case->saveDeclaration(
-         (object) [
-            'declaration_name' => request('declaration_name'),
-            'declaration_rep'  => request('declaration_rep'),
-         ]);
-
         $guest->case->submit();
 
         $case = $guest->case;

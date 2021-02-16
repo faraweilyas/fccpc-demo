@@ -988,8 +988,6 @@ function submitCase()
         '/application/submit/'+tracking_id,
         {
             _token: $("#token").val(),
-            declaration_name: declaration_name,
-            declaration_rep: declaration_rep,
         },
         'application/x-www-form-urlencoded; charset=UTF-8',
         true,
@@ -998,10 +996,18 @@ function submitCase()
             result = JSON.parse(data);
             if (result.responseType != "success")
             {
-                notify(result.responseType, result.message);
-                setTimeout(() => {
-                    location.reload();
-                }, 1500);
+                swal.fire(
+                    "Not Submitted!",
+                    result.message,
+                    "error"
+                ).then(function()
+                {
+
+                });
+
+                $("#goback-btn").removeClass('hide');
+                $("#upload-info").removeClass('hide');
+                $("#upload-img").toggle();
                 return;
             }
 
@@ -1046,10 +1052,18 @@ function submitDeficientCase()
             result = JSON.parse(data);
             if (result.responseType != "success")
             {
-                notify(result.responseType, result.message);
-                setTimeout(() => {
-                    location.reload();
-                }, 1500);
+                swal.fire(
+                    "Not Submitted!",
+                    result.message,
+                    "error"
+                ).then(function()
+                {
+
+                });
+
+                $("#goback-btn").removeClass('hide');
+                $("#upload-deficient-info").removeClass('hide');
+                $("#upload-img").toggle();
                 return;
             }
 

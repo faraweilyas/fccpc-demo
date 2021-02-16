@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="conatiner px-5 py-5 relative">
-        <button class="btn btn-success-transparent">Request Extension</button>
+        {{-- <button class="btn btn-success-transparent">Request Extension</button> --}}
         @php
             $approvedIcon       = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
             $recommendationIcon = ($case->isRecommendationIssued())   ? 'Position-square-white.svg' : 'Position-square.svg';
@@ -35,32 +35,27 @@
         @endphp
         <div class="row px-3">
             <div class="tab-custom">
-                <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif">
+                <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif px-5 py-5">
                     <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
-                    <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif" href="#">Documentation
-                        <span>Duration: 10 days</span>
+                    <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif fs__13_rem" href="#">Documentation
                     </a>
                 </div>
-                <div class="tab-link @if($case->isCaseChecklistsApproved()) active @endif">
+                <div class="tab-link @if($case->isCaseChecklistsApproved()) active @endif px-5 py-5">
                     <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-square">
-                    <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif" href="#">Case Analysis
-                        <span>Duration: 10 days</span>
+                    <a class="nav-link @if($case->isCaseChecklistsApproved()) text-white @else active @endif fs__13_rem" href="#">Case Analysis
                     </a>
                 </div>
-                <div class="tab-link @if($case->isRecommendationIssued()) active @endif">
+                <div class="tab-link @if($case->isRecommendationIssued()) active @endif px-5 py-5">
                     <img src="{{ pc_asset(BE_IMAGE.'svg/'.$recommendationIcon) }}" alt="Position-square">
-                    <a class="nav-link @if($case->isRecommendationIssued()) text-white @else active @endif" href="#">Approval
-                        <span>Duration: 10 days</span>
+                    <a class="nav-link @if($case->isRecommendationIssued()) text-white @else active @endif fs__13_rem" href="#">Approval
                     </a>
                 </div>
-                <div class="tab-link @if ($case->isApprovalApproved()) active @endif">
+                <div class="tab-link @if ($case->isApprovalApproved()) active @endif px-5 py-5">
                     <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvalIcon) }}" alt="Position-square">
-                    <a class="nav-link @if($case->isApprovalApproved()) text-white @else active @endif" href="#">Publication
-                        <span>Duration: 10 days</span>
+                    <a class="nav-link @if($case->isApprovalApproved()) text-white @else active @endif fs__13_rem" href="#">Publication
                     </a>
                 </div>
             </div>
-            <span class="duration pull-right">Total Duration: 60 days</span>
         </div>
         <div class="row">
             <div class="col-md-12">
@@ -120,6 +115,14 @@
                             <span>
                                 {!! $case->getRefNO() !!}
                             </span>
+                            <p class="mt-5">
+                                <b>Application ID:</b>
+                            </p>
+                            <p>
+                                <span>
+                                    {{ $case->guest->tracking_id }}
+                                </span>
+                            </p>
                         </div>
                         <div class="col-md-3">
                             <p><b>TRANSACTION REP:</b></p>
@@ -144,7 +147,7 @@
                             </span>
                         </div>
                         <div class="col-md-4">
-                            @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP']))
+                            @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP', 'CH']))
                                 <p class="text_dark_blue"><b>FORM 1A:</b></p>
                                 <a
                                     href="#"

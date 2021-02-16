@@ -42,57 +42,63 @@
                         </div>
                         <h3 class="checklist-header">APPLICATION SUMMARY</h3>
                         <p class="review-description">
-                            Review your entries for any kind of error. Kindly note that you cannot edit information once it
-                            has been submitted.
+                            Please review your application. You will not be able to make any changes once submitted.
                         </p>
                         <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Subject:</h4>
+                                <h4 class="info-title @empty($case->subject) text-danger @endif">Subject:</h4>
                                 <h4>{{ $case->subject }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Parties:</h4>
+                                <h4 class="info-title @empty($case->parties) text-danger @endif">Parties:</h4>
                                 <h4>{!! $case->generateCasePartiesBadge('mr_10 mb-2') !!}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Transaction Type:</h4>
+                                <h4 class="info-title @empty($case->case_type) text-danger @endif">Transaction Type:</h4>
                                 <h4>{{ $case->getType() }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Transaction Category:</h4>
+                                <h4 class="info-title @empty($case->case_category) text-danger @endif">Transaction Category:</h4>
                                 <h4>{{ $case->getCategoryText() }}</h4>
                             </div>
                         </div>
                         <p class="section-header">CONTACT INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Applicant/Representing Firm:</h4>
+                                <h4 class="info-title @empty($case->applicant_firm) text-danger @endif">Applicant/Representing Firm:</h4>
                                 <h4>{{ $case->applicant_firm }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Contact Person:</h4>
+                                <h4 class="info-title @empty($case->applicant_fullname) text-danger @endif">Contact Person:</h4>
                                 <h4>{{ $case->getApplicantName() }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Email address:</h4>
+                                <h4 class="info-title @empty($case->applicant_email) text-danger @endif">Email address:</h4>
                                 <a href="mailto:{{ $case->applicant_email }}" class="text-black-custom">
                                     <h4>{{ $case->applicant_email }}</h4>
                                 </a>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Phone number:</h4>
+                                <h4 class="info-title @empty($case->applicant_phone_number) text-danger @endif">Phone number:</h4>
                                 <a href="tel:{{ $case->applicant_phone_number }}" class="text-black-custom">
                                     <h4>{{ $case->applicant_phone_number }}</h4>
                                 </a>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Address:</h4>
+                                <h4 class="info-title @empty($case->applicant_address) text-danger @endif">Address:</h4>
                                 <h4>{{ $case->applicant_address }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Amount Paid:</h4>
+                                <h4 class="info-title @empty($case->amount_paid) text-danger @endif">Amount Paid:</h4>
                                 <h4>{!! $case->getAmountPaid() !!}</h4>
+                            </div>
+                        </div>
+                        <p class="section-header">Form 1A</p>
+                        <div class="grid-col-2">
+                            <div class="grid-row-2 d-flex">
+                                <h4 class="info-title @empty($case->isForm1ASet()) text-danger @endif">Form 1A:</h4>
+                                <h4>{{ $case->form_1A_Name }}</h4>
                             </div>
                         </div>
                         <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
@@ -123,7 +129,7 @@
                                                         class="py-5 mx-5 text-hover-primary cr-pointer"
                                                         onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
                                                     >
-                                                        {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                        {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
                                                         &nbsp;<i class="la la-download text-primary"></i>
                                                     </h4>
                                                 </div>
@@ -169,86 +175,27 @@
                                         Go back to edit
                                 </button>
                                 <button
+                                    id="upload-img"
                                     type="button"
-                                    id="fill-declaration"
+                                    class="btn btn-primary font-weight-bold text-uppercase px-9 py-6 hide"
+                                    disabled
+                                >
+                                    <div class="spinner-grow text-white" role="status">
+                                      <span class="sr-only">Loading...</span>
+                                    </div>
+                                </button>
+                                <button
+                                    type="button"
+                                    id="upload-info"
                                     class="btn btn-primary font-weight-bold text-uppercase px-9 py-6"
-                                    title="View Declaration"
-                                    data-toggle="modal"
-                                    data-target="#viewDeclarationModal"
+                                    title="Submit application"
+                                    data-wizard-type="action-submit"
                                 >
                                     Submit
                                 </button>
                             </div>
                         </form>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- Declaration Modal --}}
-    <div
-        class="modal fade"
-        id="viewDeclarationModal"
-        data-backdrop="static"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="viewDeclarationModalLabel"
-        aria-hidden="true"
-    >
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="viewCaseModalLabel">Declaration</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <i aria-hidden="true" class="ki ki-close"></i>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
-                        <div class="card-body">
-                            <p>
-                                I, <span>
-                                        <input
-                                            id="declaration_name"
-                                            type="text"
-                                            class="form-control-declaration w--30"
-                                            name="declaration_name"
-                                            value="{{ $case->applicant_fullname ?? '' }}" />
-                                    </span> the appointed representative of
-                                    <span>
-                                        <input
-                                            id="declaration_rep"
-                                            type="text"
-                                            class="form-control-declaration w--30"
-                                            name="declaration_rep"
-                                            value="{{ $case->applicant_firm ?? '' }}"
-                                        />, hereby declare that all the information submitted by me
-                                            in the application form is correct, true and valid.
-                                    </span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button
-                        id="upload-info"
-                        type="button"
-                        class="btn btn-light-primary font-weight-bold"
-                        data-wizard-type="action-submit"
-                    >
-                        Submit Case
-                    </button>
-                    <button
-                        id="upload-img"
-                        type="button"
-                        class="btn btn-primary font-weight-bold py-2 px-10 hide"
-                        disabled
-                    >
-                        <div class="spinner-grow text-white" role="status">
-                          <span class="sr-only">Loading...</span>
-                        </div>
-                    </button>
-                    <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>

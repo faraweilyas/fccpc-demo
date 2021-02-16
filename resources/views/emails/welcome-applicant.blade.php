@@ -513,28 +513,28 @@
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
                                                                         paraid="1117038438"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Thank you for your application, your application
-                                                                        id is
-                                                                        <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
+                                                                        Thank you for your application.
+                                                                    </p>
+                                                                    <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
+                                                                        paraid="1117038438"
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
+                                                                        Your application ID is <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
                                                                             <strong>{{ $guest->tracking_id }}</strong>
-                                                                        </a>
-                                                                        <br>
+                                                                        </a>. Please use the above application id to begin
+                                                                        and monitor your <a
+                                                                            href="{{ route("applicant.track") }}"
+                                                                            rel="noreferrer noopener" target="_blank"
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">application</a>.
                                                                         &nbsp;</p>
 
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                                         paraid="1344694371"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Please use the above application id to begin
-                                                                        and monitor your <a
-                                                                            href="{{ route("applicant.track") }}"
-                                                                            rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">application</a>. If you have any queries,
-                                                                        please visit the FAQ section <a
+                                                                             If you have any queries, please visit the FAQ section <a
                                                                             href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                             rel="noreferrer noopener" target="_blank"
                                                                             style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                                        for more information. Please keep your
-                                                                        application reference number safe.
+                                                                        for more information. Please keep your application ID safe.
                                                                     </p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{2}"
@@ -585,7 +585,7 @@
                                                                                     style="padding: 18px;color: #1B1616;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;line-height: 150%;">
                                                                                     Email Security:&nbsp;if you are
                                                                                     concerned about clicking the link
-                                                                                    above,&nbsp;the M&amp;A portal can
+                                                                                    above,&nbsp;the Mergers portal can
                                                                                     be accessed by typing&nbsp;<a
                                                                                         href="{{ config("app.url") }}"
                                                                                         rel="noreferrer noopener"
