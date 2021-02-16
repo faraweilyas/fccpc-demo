@@ -572,7 +572,7 @@
                                                                         If you have any queries, please visit the FAQ
                                                                         section <a href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
                                                                         for more information. Please keep your
                                                                         application reference number safe.
                                                                     </p>
@@ -616,7 +616,7 @@
                                                                         be accessed by typing&nbsp;<a
                                                                             href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>&nbsp;in
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>&nbsp;in
                                                                         the address bar of your browser.&nbsp;</p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{151}"

@@ -532,7 +532,7 @@
                                                                         please visit the FAQ section <a
                                                                             href="{{ route("home.faqs") }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
                                                                         for more information. Please keep your
                                                                         application reference number safe.
                                                                     </p>
@@ -590,7 +590,7 @@
                                                                                         href="{{ config("app.url") }}"
                                                                                         rel="noreferrer noopener"
                                                                                         target="_blank"
-                                                                                        style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://ma.fccpc.gov.ng</a>&nbsp;in&nbsp;the
+                                                                                        style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>&nbsp;in&nbsp;the
                                                                                     address bar of&nbsp;your
                                                                                     browser.&nbsp;
                                                                                 </td>
