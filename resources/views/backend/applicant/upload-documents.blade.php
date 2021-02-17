@@ -213,13 +213,6 @@
                                                                                         @foreach($document->getFileArray() as $key => $file)
                                                                                             <div class="col-md-12 my-1">
                                                                                                 <span>
-
-                                                                                                    <img
-                                                                                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
-                                                                                                        class="max-h-30px mr-3 doc-cursor-pointer"
-                                                                                                        src="{{ $document->getFileIconText($file) }}"
-                                                                                                        title="Download Document"
-                                                                                                    />
                                                                                                     <a
                                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                                                                                         class="text-dark text-hover-primary"
