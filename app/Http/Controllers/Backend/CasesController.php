@@ -582,7 +582,7 @@ class CasesController extends Controller
         $additional_info        = request('additional_info');
 
         // Issue deficiency
-        $case->issueDeficiency($case_handler, );
+        $case->issueDeficiency($case_handler, $additional_info);
         // Notify case handler
         Mail::to($emails)
             ->send(new IssueDeficiencyEmail([

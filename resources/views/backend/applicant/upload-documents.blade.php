@@ -124,6 +124,10 @@
                                                                                         @endif
                                                                                     @endforeach
                                                                                 </div>
+                                                                                @if(!empty($case->getDefficientInfo()))
+                                                                                    <p><b>Additional Info</b></p>
+                                                                                    <p>{{ $case->getDefficientInfo() }}</p>
+                                                                                @endif
                                                                                 @if ($checklistGroup->isGroupFees())
                                                                                     <div class="row">
                                                                                         <div class="col-md-12 mb-4">

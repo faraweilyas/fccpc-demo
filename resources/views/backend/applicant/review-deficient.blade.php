@@ -43,8 +43,7 @@
                         </div>
                         <h3 class="checklist-header">APPLICATION SUMMARY</h3>
                         <p class="review-description">
-                            Review your entries for any kind of error. Kindly note that you cannot edit information once it
-                            has been submitted.
+                            Please review your application. You will not be able to make any changes once submitted.
                         </p>
                         <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
                         <div class="grid-col-2">

@@ -374,6 +374,12 @@ class Cases extends Model
         return $deficientChecklist;
     }
 
+    public function getDefficientInfo()
+    {
+        $defficiency = $this->active_handlers->first()->case_handler->defficiency;
+        return !(empty($defficiency)) ? $defficiency : '';
+    }
+
     public function getChecklistStatusCount() : array
     {
         return $this
