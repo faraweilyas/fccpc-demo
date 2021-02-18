@@ -57,16 +57,36 @@
                             </div>
                             <div id="collapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    @if (!$case->isCaseChecklistsApproved())
-                                        @if (!$case->isCaseOnHold())
+                                    {{-- @if (!$case->isCaseChecklistsApproved())
+                                        @if (!$case->isCaseOnHold()) --}}
                                             <div class="row justify-content-end">
                                                 @if ($case->isOngoing())
                                                     @if ($x == 1)
+                                                        @if (!$case->isCaseChecklistsApproved())
+                                                            @if (!$case->isCaseOnHold())
+                                                                <button
+                                                                    class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
+                                                                    onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
+                                                                >
+                                                                    Continue Document Approval
+                                                                </button>
+                                                            @endif
+                                                        @endif
+
+                                                        @if ($case->isCaseChecklistsApproved() || $case->isCaseOnHold())
+                                                            <button
+                                                                class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
+                                                                onclick="window.location.href = '{{ route('cases.review-checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
+                                                            >
+                                                                Review Document Approval
+                                                            </button>
+                                                        @endif
+                                                    @else
                                                         <button
                                                             class="btn btn-success-transparent-timestamp btn-sm px-3 mx-5 float-right my-5"
-                                                            onclick="window.location.href = '{{ route('cases.checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
+                                                            onclick="window.location.href = '{{ route('cases.review-checklist-approval', ['case' => $case->id, 'date' => $date]) }}';"
                                                         >
-                                                            Continue Document Approval
+                                                            Review Document Approval
                                                         </button>
                                                     @endif
                                                 @else
@@ -100,8 +120,8 @@
                                                     @endif
                                                 @endif
                                             </div>
-                                        @endif
-                                    @endif
+                                        {{-- @endif
+                                    @endif --}}
                                     <div class="row">
                                         @foreach ($documents as $document)
                                             @if (!empty($document->group_id))

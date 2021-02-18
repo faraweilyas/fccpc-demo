@@ -485,6 +485,32 @@ class CasesController extends Controller
     }
 
     /*
+     * Handles the review checklist approval page route.
+     *
+     * @return void
+     */
+    public function reviewChecklistApproval(Cases $case, $date)
+    {
+        if (auth()->user()->isAdmin())
+            return redirect()->back();
+
+        if ($case->active_handlers->count() <= 0)
+            return redirect()->back();
+
+        $checklistIds           = $case->getChecklistIds();
+        $submittedDocuments     = $case->submittedDocumentsComplete($case->case_category)[$date];
+        $checklistStatus        = $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category);
+
+        $title          = APP_NAME;
+        $description    = 'FCCPC Checklist Approval Dashboard';
+        $details        = details($title, $description);
+        return view(
+            'backend.cases.review-checklist-approval',
+            compact('details', 'case', 'checklistIds', 'submittedDocuments', 'checklistStatus', 'date')
+        );
+    }
+
+    /*
      * Handles the get checklist count page route.
      *
      * @return void

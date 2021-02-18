@@ -490,7 +490,7 @@
                 </div>
                 <div class="modal-footer">
                     <a href="{{ route('cases.generate_form1A_pdf', ['case' => $case]) }}" target="__blank">
-                        <button type="submit" class="btn btn-light-primary font-weight-bold">Download</button>
+                        <button type="submit" class="btn btn-light-primary font-weight-bold">Preview</button>
                     </a>
                     <button type="button" class="btn btn-light-danger font-weight-bold" data-dismiss="modal">Close</button>
                 </div>

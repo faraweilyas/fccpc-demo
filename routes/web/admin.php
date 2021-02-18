@@ -304,6 +304,11 @@ Route::prefix('cases')
         )->name('checklist-approval');
 
         Route::get(
+            'review-checklist-approval/{case}/{date}',
+            'CasesController@reviewChecklistApproval'
+        )->name('review-checklist-approval');
+
+        Route::get(
             'checklist-status-count/{case}/{date}',
             'CasesController@getChecklistCount'
         )->name('checklist-status-count');
