@@ -509,8 +509,19 @@ $(document).ready(function()
     $('#issue-deficiency').on('click', function(event)
     {
         var analyze_case_route = $(this).attr('data-analyze-case-route');
+
+        if ($("#additional_info").val() === ''){
+            swal.fire(
+                    "Error!",
+                    "Additional info text field required!",
+                    "error"
+                );
+                return;
+        }
+
         $("#saving-deficiency").removeClass('hide');
         $('#issue-deficiency').addClass('hide');
+
         $.ajax({
             url: '/cases/issue-deficiency/'+$(this).attr('data-case-id'),
             type: 'POST',
@@ -529,7 +540,6 @@ $(document).ready(function()
                 {
                     location.reload();
                 });
-                // toastr.success("Applicant has been notified!");
             },
             error: function (err) {
                 $("#saving-deficiency").addClass('hide');
@@ -537,7 +547,7 @@ $(document).ready(function()
                 swal.fire(
                     "Deficiency Not Successful!",
                     "Applicant has been not notified!",
-                    "success"
+                    "error"
                 );
             }
         });

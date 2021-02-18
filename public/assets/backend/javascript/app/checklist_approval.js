@@ -252,7 +252,7 @@ $(document).ready(function ()
                 swal.fire(
                     "Deficiency Not Successful!",
                     "Applicant has been not notified!",
-                    "success"
+                    "error"
                 );
             }
         });
