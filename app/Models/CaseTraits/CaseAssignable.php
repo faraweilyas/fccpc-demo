@@ -43,13 +43,15 @@ trait CaseAssignable
      * A case handler issues deficiency
      *
      * @param  User $caseHandler
+     * @param  String $defficiency
      * @return array
      */
-    public function issueDeficiency(User $caseHandler)
+    public function issueDeficiency(User $caseHandler, $defficiency)
     {
         return $this->handlers()->syncWithoutDetaching([
             $caseHandler->id    => [
-                'defficiency_issued_at' => now()
+                'defficiency_issued_at' => now(),
+                'defficiency'           => $defficiency
             ]
         ]);
     }
@@ -175,6 +177,7 @@ trait CaseAssignable
                 'supervisor_id'                 => $supervisor_id,
                 'workingon_at'                  => $previouCaseHandler->workingon_at,
                 'defficiency_issued_at'         => $previouCaseHandler->defficiency_issued_at,
+                'defficiency'                   => $previouCaseHandler->defficiency,
                 'checklist_approval_issued_at'  => $previouCaseHandler->checklist_approval_issued_at,
                 'analysis_document'             => $previouCaseHandler->analysis_document,
                 'recommendation_issued_at'      => $previouCaseHandler->recommendation_issued_at,
@@ -234,6 +237,7 @@ trait CaseAssignable
                 'supervisor_id',
                 'workingon_at',
                 'defficiency_issued_at',
+                'defficiency',
                 'checklist_approval_issued_at',
                 'analysis_document',
                 'recommendation_issued_at',

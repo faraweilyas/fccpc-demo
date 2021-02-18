@@ -579,9 +579,10 @@ class CasesController extends Controller
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
         $emails                 = $case->guest->email;
+        $additional_info        = request('additional_info');
 
         // Issue deficiency
-        $case->issueDeficiency($case_handler);
+        $case->issueDeficiency($case_handler, );
         // Notify case handler
         Mail::to($emails)
             ->send(new IssueDeficiencyEmail([
@@ -589,7 +590,7 @@ class CasesController extends Controller
                 'ref_no'          => $case->guest->tracking_id,
                 'case'            => $case,
                 'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category),
-                'additional_info' => request('additional_info'),
+                'additional_info' => $additional_info,
             ]));
         $case_handler->notify(new IssueCaseDeficiency(
             'onhold',
