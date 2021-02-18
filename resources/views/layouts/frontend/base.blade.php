@@ -85,7 +85,8 @@
               <a class="nav-link" href="{{ route('applicant.track') }}">Manage Application</a>
             </li>
             <li class="nav-item dropdown administrator-right">
-              <a
+                <a class="nav-link" href="{{ route('login') }}">Sign In</a>
+              {{-- <a
                 class="nav-link dropdown-toggle"
                 href="#"
                 id="dropdown01"
@@ -98,7 +99,7 @@
               <div class="dropdown-menu" aria-labelledby="dropdown01">
                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                 <a class="dropdown-item" href="{{ route('register') }}">Register</a>
-              </div>
+              </div> --}}
             </li>
           </ul>
         </div>

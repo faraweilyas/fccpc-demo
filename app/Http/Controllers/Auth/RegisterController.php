@@ -48,6 +48,8 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
+        return redirect()->back();
+
         $title            = APP_NAME;
         $description      = "FCCPC Register";
         $details = details($title, $description);
