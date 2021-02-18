@@ -569,7 +569,7 @@
                                                                         {!! nl2br($data['additional_info']) !!}</p>
                                                                     @endif
                                                                     <p>
-                                                                        <a href="{{ route('applicant.track') }}">Click here to update your application</a>
+                                                                        <a href="{{ route('applicant.track', ['app_id' => $data['case']->guest->tracking_id]) }}">Click here to update your application</a>
                                                                     </p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"

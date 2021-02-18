@@ -41,11 +41,11 @@
                                 @enderror
                                 <input
                                     type="text"
-                                    value="{{ old('tracking_id') }}"
                                     placeholder="Please provide application id:"
                                     name="tracking_id"
                                     class="form-control h-auto form-control-solid py-4 px-8"
                                     autocomplete="off"
+                                    value="{{ $_GET['app_id'] ?? '' }}"
                                     required
                                 />
                             </div>

@@ -1000,10 +1000,7 @@ function submitCase()
                     "Not Submitted!",
                     result.message,
                     "error"
-                ).then(function()
-                {
-
-                });
+                );
 
                 $("#goback-btn").removeClass('hide');
                 $("#upload-info").removeClass('hide');

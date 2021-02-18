@@ -329,7 +329,7 @@ Route::prefix('cases')
         );
 
         Route::post(
-            'issue-deficiency/{case}/{date}',
+            'issue-deficiency/{case}/{date?}',
             'CasesController@issueDeficiency'
         )->name('issue-deficiency');
 

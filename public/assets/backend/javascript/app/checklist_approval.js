@@ -237,8 +237,23 @@ $(document).ready(function ()
                 var result = JSON.parse(response);
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
-                toastr.success("Applicant has been notified!");
-                window.location.href = analyze_case_route;
+                swal.fire(
+                    "Deficiency Success!",
+                    "Applicant has been notified!",
+                    "success"
+                ).then(function()
+                {
+                    window.location.href = analyze_case_route;
+                });
+            },
+            error: function (err) {
+                $("#saving-deficiency").addClass('hide');
+                $('#issue-deficiency').removeClass('hide');
+                swal.fire(
+                    "Deficiency Not Successful!",
+                    "Applicant has been not notified!",
+                    "success"
+                );
             }
         });
     });

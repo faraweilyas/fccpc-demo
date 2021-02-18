@@ -573,7 +573,7 @@ class CasesController extends Controller
      *
      * @return json
      */
-    public function issueDeficiency(Cases $case, $date)
+    public function issueDeficiency(Cases $case, $date = null)
     {
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
@@ -589,7 +589,7 @@ class CasesController extends Controller
                 'fullname'        => $case->applicant_fullname,
                 'ref_no'          => $case->guest->tracking_id,
                 'case'            => $case,
-                'deficent_cases'  => $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category),
+                'deficent_cases'  => !empty($date) ? $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category) : [],
                 'additional_info' => $additional_info,
             ]));
         $case_handler->notify(new IssueCaseDeficiency(
@@ -621,12 +621,12 @@ class CasesController extends Controller
 
         $case_handler->notify(new IssueCaseDeficiency(
             'approved_doc',
-            "Approved for Documentation.", $case->id
+            "Approved for analysis.", $case->id
         ));
         // Notify supervisor
         $supervisor->notify(new IssueCaseDeficiency(
             'approved_doc',
-            "Approved for Documentation by <b>{$case_handler->getFullName()}</b>.", $case->id
+            "Approved for analysis by <b>{$case_handler->getFullName()}</b>.", $case->id
         ));
 
         return $this->sendResponse('Checklists approved.', 'success');
@@ -916,7 +916,7 @@ class CasesController extends Controller
 
         return redirect()
             ->back()
-            ->with('success', 'Transaction status has been updated');
+            ->with('success', 'Case status has been updated');
     }
 
     /**
@@ -926,7 +926,7 @@ class CasesController extends Controller
      */
     public function downloadAnalysisDocument($document)
     {
-        return response()->download(storage_path("app/public/analysis_documents/{$document}"));
+        return response()->file(storage_path("app/public/analysis_documents/{$document}"));
     }
 
     /**

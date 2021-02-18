@@ -505,4 +505,41 @@ $(document).ready(function()
     $("#analyze-case").on("click", function (event) {
         window.location.replace("/cases/analyze/" + $(this).attr("case_id"));
     });
+
+    $('#issue-deficiency').on('click', function(event)
+    {
+        var analyze_case_route = $(this).attr('data-analyze-case-route');
+        $("#saving-deficiency").removeClass('hide');
+        $('#issue-deficiency').addClass('hide');
+        $.ajax({
+            url: '/cases/issue-deficiency/'+$(this).attr('data-case-id'),
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {additional_info: $("#additional_info").val()},
+            success: function(response)
+            {
+                var result = JSON.parse(response);
+                $("#saving-deficiency").addClass('hide');
+                $('#issue-deficiency').removeClass('hide');
+                swal.fire(
+                    "Deficiency Success!",
+                    "Applicant has been notified!",
+                    "success"
+                ).then(function()
+                {
+                    location.reload();
+                });
+                // toastr.success("Applicant has been notified!");
+            },
+            error: function (err) {
+                $("#saving-deficiency").addClass('hide');
+                $('#issue-deficiency').removeClass('hide');
+                swal.fire(
+                    "Deficiency Not Successful!",
+                    "Applicant has been not notified!",
+                    "success"
+                );
+            }
+        });
+    });
 });
