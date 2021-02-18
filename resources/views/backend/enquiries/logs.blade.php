@@ -75,6 +75,7 @@
                                     @endif
                                     @if ($item->file != '')
                                         <a href="{{ route('enquiries.download', ['file' => $item->file]) }}"
+                                            target="__blank"
                                             class="btn btn-sm btn-light-primary mr-3" title="Download enquiry document">
                                             <i class="la la-download"></i>
                                         </a>

@@ -678,6 +678,16 @@ class Cases extends Model
     }
 
     /**
+     * Generate form 1A download link
+     *
+     * @return string
+     */
+    public function generateForm1ALink()
+    {
+        return $this->subject.'_Form1A'.'_'.now().'.pdf';
+    }
+
+    /**
      * Validate application documents
      *
      * @return json

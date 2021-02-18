@@ -303,11 +303,11 @@
                                         </div>
                                         @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                             <div class="pb-5" data-wizard-type="step-content" data-form='Form1AInfo'>
-                                                <h4 class="mb-10 font-weight-bold text-dark">Non-Confidential Executive Summary For Publication</h4>
-                                                <p>
+                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-Confidential Executive Summary For Publication</h4>
+                                                <p class="fs__12rem">
                                                     Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
                                                 </p>
-                                                <p>
+                                                <p class="fs__12rem">
                                                     It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
@@ -599,27 +599,27 @@
                 <div class="modal-body">
                     <div class="card card-custom-approval" style="margin: -1.75rem; margin-bottom: -23px;">
                         <div class="card-body">
-                            <p>
+                            <p class="fs__12rem">
                                 <b>
                                     This Declaration must be signed by a duly authorised person or on behalf of each of the merger parties:
                                 </b>
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 I declare that, to the best of my knowledge and belief, the information given in response to the questions in this Notice is true, correct, and complete in all material respects.
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 I understand that:
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 It is a criminal offence under section 112 of the Federal Competition and Consumer Protection Act, 2018 for a person knowingly to supply to the Commission information which is false or misleading in any material respect. This includes supplying such information to another person or any officer of the Commission knowing that the information is to be used for the purpose of supplying information to the Commission;
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 The Commission shall reject any Notice if it is discovered that it contains information which is false or misleading in any material respect;
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 The Commission conducts both Phase 1 and Phase 2 investigations. In the event that the merger is referred for a Phase 2 investigation, information provided to the Commission during the course of the Phase 1 investigation will also be used for the Phase 2 investigation; and
                             </p>
-                            <p>
+                            <p class="fs__12rem">
                                 The Commission will publish to the public some information described in this Notice, and the fact that the merger has been notified, as prescribed by the Act.
                             </p>
                             <div class="form-group">

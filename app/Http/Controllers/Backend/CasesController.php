@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use PDF;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
@@ -417,6 +418,19 @@ class CasesController extends Controller
         ));
 
         return redirect()->back()->with('success', 'Case archived!');
+    }
+
+    /**
+     * Handles the generate form 1A Pdf page route.
+     *
+     * @return void
+     */
+    public function generateForm1APdf(Cases $case)
+    {
+        $fileName = $case->generateForm1ALink();
+        $pdf      = PDF::loadView('backend.applicant.form-1A', compact('case'));
+
+        return $pdf->stream($fileName);
     }
 
     /**

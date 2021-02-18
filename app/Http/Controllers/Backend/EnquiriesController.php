@@ -151,6 +151,6 @@ class EnquiriesController extends Controller
      */
     public function download($file)
     {
-      return response()->download(storage_path("app/public/enquiry_documents/{$file}"));
+      return response()->file(storage_path("app/public/enquiry_documents/{$file}"));
     }
 }

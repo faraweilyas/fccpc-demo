@@ -35,6 +35,11 @@ body {
     font-family: 'Segoe UI Regular' !important;
 }
 
+.fs__12rem
+{
+    font-size: 1.2rem;
+}
+
 .fs__13_rem
 {
     font-size: 1.3rem;

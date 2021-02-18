@@ -284,6 +284,11 @@ Route::prefix('cases')
         )->name('archive');
 
         Route::get(
+            'form-1A/generate-pdf/{case}',
+            'CasesController@generateForm1APdf'
+        )->name('generate_form1A_pdf');
+
+        Route::get(
             'analyze/{case}',
             'CasesController@analyzeCase'
         )->name('analyze');
