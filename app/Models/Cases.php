@@ -702,15 +702,13 @@ class Cases extends Model
     {
         $case_parties = count(explode(':', $this->parties));
 
-        $this->validateDocuments();
-
         if (
             ($this->case_category == 'REG' || $this->case_category == 'FFM') &&
             (empty($this->form_1A_Text) ||
             empty($this->form_1A_Name) ||
             empty($this->form_1A_Position))
         ):
-            $this->sendResponse('Provide required fields.', 'error');
+            $this->sendResponse('Provide required Form 1A fields.', 'error');
         endif;
 
         if ($case_parties < 2)
@@ -725,10 +723,13 @@ class Cases extends Model
             empty($this->applicant_fullname) ||
             empty($this->applicant_email) ||
             empty($this->applicant_phone_number) ||
-            empty($this->applicant_address)
+            empty($this->applicant_address) ||
+            empty($this->amount_paid)
         ):
             $this->sendResponse('Provide required fields.', 'error');
         endif;
+
+        $this->validateDocuments();
     }
 
     /**
