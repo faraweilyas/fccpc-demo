@@ -271,6 +271,11 @@ class Cases extends Model
         return textTransformer(shortenContent($this->subject, 35), $textStyle);
     }
 
+    public function getCategoryKey() : string
+    {
+        return$this->case_category ?? "";
+    }
+
     public function getCategory($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories', $this->case_category, $textStyle) ?? "";
@@ -758,14 +763,25 @@ class Cases extends Model
         $deficientGroupIds      = $this->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
 
         foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup):
-                if ((in_array($checklistGroup->id, $deficientGroupIds))):
-                        $document = \App\Models\Document::where('case_id', $this->id)
-                                        ->where('group_id', $checklistGroup->id)
-                                        ->where('date_case_submitted', null)
-                                        ->first() ?? '';
-                        if (!$document)
-                            $this->sendResponse('Provide required documents.', 'error');
+            if($this->isCaseChecklistsApproved()):
+                if($this->getCategoryKey() == $checklistGroup->category):
+                    $document = \App\Models\Document::where('case_id', $this->id)
+                                            ->where('group_id', $checklistGroup->id)
+                                            ->where('date_case_submitted', null)
+                                            ->first() ?? '';
+                            if (!$document)
+                                $this->sendResponse('Provide required documents.', 'error');
                 endif;
+            else:
+                    if ((in_array($checklistGroup->id, $deficientGroupIds))):
+                            $document = \App\Models\Document::where('case_id', $this->id)
+                                            ->where('group_id', $checklistGroup->id)
+                                            ->where('date_case_submitted', null)
+                                            ->first() ?? '';
+                            if (!$document)
+                                $this->sendResponse('Provide required documents.', 'error');
+                    endif;
+            endif;
         endforeach;
     }
 

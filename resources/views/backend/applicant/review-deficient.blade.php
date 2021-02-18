@@ -73,69 +73,136 @@
                         </div>
                         <p class="section-header">DEFICIENT DOCUMENTS</p>
                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                            @if ((in_array($checklistGroup->id, $deficientGroupIds)))
-                                @php
-                                    $document = \App\Models\Document::where('case_id', $case->id)
-                                                ->where('group_id', $checklistGroup->id)
-                                                ->where('date_case_submitted', null)
-                                                ->first() ?? '';
-                                @endphp
-                                <div class="row">
-                                    <div class="col-md-6 my-5" key={item[0]}>
-                                        <div class="py-3 px-3">
-                                            @if(!empty($document))
-                                                @php
-                                                    $file_count = 1;
-                                                @endphp
-                                                @foreach($document->getFileArray() as $key => $file)
+                            @if($case->isCaseChecklistsApproved())
+                                @if($case->getCategoryKey() == $checklistGroup->category)
+                                    @php
+                                        $document = \App\Models\Document::where('case_id', $case->id)
+                                                    ->where('group_id', $checklistGroup->id)
+                                                    ->where('date_case_submitted', null)
+                                                    ->first() ?? '';
+                                    @endphp
+                                    <div class="row">
+                                        <div class="col-md-6 my-5" key={item[0]}>
+                                            <div class="py-3 px-3">
+                                                @if(!empty($document))
+                                                    @php
+                                                        $file_count = 1;
+                                                    @endphp
+                                                    @foreach($document->getFileArray() as $key => $file)
+                                                        <div class="row">
+                                                            <img
+                                                                class="cr-pointer"
+                                                                src="{{ $document->getFileIconText($file) }}"
+                                                                alt="pdf"
+                                                                style="height: 40px"
+                                                                onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                            />
+                                                            <h4
+                                                                class="py-5 mx-5 text-hover-primary cr-pointer"
+                                                                onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                            >
+                                                                {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                                &nbsp;<i class="la la-download text-primary"></i>
+                                                            </h4>
+                                                        </div>
+                                                        @php
+                                                            $file_count++;
+                                                        @endphp
+                                                    @endforeach
+                                                @else
                                                     <div class="row">
-                                                        <img
-                                                            class="cr-pointer"
-                                                            src="{{ $document->getFileIconText($file) }}"
-                                                            alt="pdf"
-                                                            style="height: 40px"
-                                                            onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
-                                                        />
+                                                        <span class="svg-icon svg-icon-danger svg-icon-4x">
+                                                            <x-icons.close-file></x-icons.close-file>
+                                                        </span>
                                                         <h4
-                                                            class="py-5 mx-5 text-hover-primary cr-pointer"
-                                                            onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                            class="py-5 mx-5 text-danger w-75"
+                                                            title="No document submitted"
                                                         >
-                                                            {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
-                                                            &nbsp;<i class="la la-download text-primary"></i>
+                                                            {{ $checklistGroup->name }}
                                                         </h4>
                                                     </div>
-                                                    @php
-                                                        $file_count++;
-                                                    @endphp
-                                                @endforeach
-                                            @else
-                                                <div class="row">
-                                                    <span class="svg-icon svg-icon-danger svg-icon-4x">
-                                                        <x-icons.close-file></x-icons.close-file>
-                                                    </span>
-                                                    <h4
-                                                        class="py-5 mx-5 text-danger w-75"
-                                                        title="No document submitted"
-                                                    >
-                                                        {{ $checklistGroup->name }}
-                                                    </h4>
-                                                </div>
-                                            @endif
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4 class="info-title info-title-margin">
+                                                Additional Information:
+                                            </h4>
+                                            <h4 class="info-title-description">
+                                                @if(!empty($document->additional_info))
+                                                    {!! nl2br($document->additional_info) !!}
+                                                @else
+                                                    ...
+                                                @endif
+                                            </h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <h4 class="info-title info-title-margin">
-                                            Additional Information:
-                                        </h4>
-                                        <h4 class="info-title-description">
-                                            @if(!empty($document->additional_info))
-                                                {!! nl2br($document->additional_info) !!}
-                                            @else
-                                                ...
-                                            @endif
-                                        </h4>
+                                @endif
+                            @else
+                                @if ((in_array($checklistGroup->id, $deficientGroupIds)))
+                                    @php
+                                        $document = \App\Models\Document::where('case_id', $case->id)
+                                                    ->where('group_id', $checklistGroup->id)
+                                                    ->where('date_case_submitted', null)
+                                                    ->first() ?? '';
+                                    @endphp
+                                    <div class="row">
+                                        <div class="col-md-6 my-5" key={item[0]}>
+                                            <div class="py-3 px-3">
+                                                @if(!empty($document))
+                                                    @php
+                                                        $file_count = 1;
+                                                    @endphp
+                                                    @foreach($document->getFileArray() as $key => $file)
+                                                        <div class="row">
+                                                            <img
+                                                                class="cr-pointer"
+                                                                src="{{ $document->getFileIconText($file) }}"
+                                                                alt="pdf"
+                                                                style="height: 40px"
+                                                                onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                            />
+                                                            <h4
+                                                                class="py-5 mx-5 text-hover-primary cr-pointer"
+                                                                onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                            >
+                                                                {{ ucfirst($checklistGroup->name).' Form '.$file_count }}
+                                                                &nbsp;<i class="la la-download text-primary"></i>
+                                                            </h4>
+                                                        </div>
+                                                        @php
+                                                            $file_count++;
+                                                        @endphp
+                                                    @endforeach
+                                                @else
+                                                    <div class="row">
+                                                        <span class="svg-icon svg-icon-danger svg-icon-4x">
+                                                            <x-icons.close-file></x-icons.close-file>
+                                                        </span>
+                                                        <h4
+                                                            class="py-5 mx-5 text-danger w-75"
+                                                            title="No document submitted"
+                                                        >
+                                                            {{ $checklistGroup->name }}
+                                                        </h4>
+                                                    </div>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h4 class="info-title info-title-margin">
+                                                Additional Information:
+                                            </h4>
+                                            <h4 class="info-title-description">
+                                                @if(!empty($document->additional_info))
+                                                    {!! nl2br($document->additional_info) !!}
+                                                @else
+                                                    ...
+                                                @endif
+                                            </h4>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             @endif
                         @endforeach
                         <form class="form" id="kt_form">

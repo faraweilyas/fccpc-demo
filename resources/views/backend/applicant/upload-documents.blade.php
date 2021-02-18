@@ -66,17 +66,32 @@
                                     <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
                                         <div class="wizard-steps">
                                             @foreach(\App\Models\ChecklistGroup::all() as $checklistGroup)
-                                                @if ((in_array($checklistGroup->id, $deficientGroupIds)))
-                                                    <div class="wizard-step" data-wizard-type="step">
-                                                        <div class="wizard-wrapper">
-                                                            <div class="wizard-icon">
-                                                                <x-icons.text-document></x-icons.text-document>
-                                                            </div>
-                                                            <div class="wizard-label">
-                                                                <h3 class="wizard-title">{{ ucfirst($checklistGroup->name) }}</h3>
+                                                @if($case->isCaseChecklistsApproved())
+                                                    @if($case->getCategoryKey() == $checklistGroup->category)
+                                                        <div class="wizard-step" data-wizard-type="step">
+                                                            <div class="wizard-wrapper">
+                                                                <div class="wizard-icon">
+                                                                    <x-icons.text-document></x-icons.text-document>
+                                                                </div>
+                                                                <div class="wizard-label">
+                                                                    <h3 class="wizard-title">{{ ucfirst($checklistGroup->name) }}</h3>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                    @endif
+                                                @else
+                                                    @if ((in_array($checklistGroup->id, $deficientGroupIds)))
+                                                        <div class="wizard-step" data-wizard-type="step">
+                                                            <div class="wizard-wrapper">
+                                                                <div class="wizard-icon">
+                                                                    <x-icons.text-document></x-icons.text-document>
+                                                                </div>
+                                                                <div class="wizard-label">
+                                                                    <h3 class="wizard-title">{{ ucfirst($checklistGroup->name) }}</h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                         </div>
@@ -94,149 +109,247 @@
                                                     />
 
                                                     @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
-                                                        @if ((in_array($checklistGroup->id, $deficientGroupIds)))
-                                                            @php
-                                                                $document = \App\Models\Document::where('case_id', $case->id)
-                                                                                ->where('group_id', $checklistGroup->id)
-                                                                                ->where('date_case_submitted', null)
-                                                                                ->first() ?? '';
-                                                                $documentChecklists = (!empty($document)) ? $document->checklists->pluck('id')->toArray() : [];
-                                                            @endphp
-                                                            <div class="pb-5" data-wizard-type="step-content" data-form='DeficientChecklistDocument'>
-                                                                <div class="row mt-4">
-                                                                    <div class="col-md-12">
-                                                                        <div class="card card-custom gutter-b example example-compact">
-                                                                            <div class="card-header">
-                                                                                <h3 class="card-title">{{ ucfirst($checklistGroup->name) }} (Deficiency)</h3>
-                                                                            </div>
-                                                                            <div class="card-body">
-                                                                                <p>
-                                                                                    Upload the required information here
-                                                                                </p>
-                                                                                <div class="row mt-4">
-                                                                                    @foreach($checklistGroup->checklists as $checklist)
-                                                                                        @if ((in_array($checklist->id, $checklistIds)))
-                                                                                            <div class="col-md-12">
-                                                                                                <ul>
-                                                                                                    <li>{{ ucfirst($checklist->name) }}</li>
-                                                                                                </ul>
-                                                                                            </div>
-                                                                                        @endif
-                                                                                    @endforeach
+                                                        @if($case->isCaseChecklistsApproved())
+                                                            @if($case->getCategoryKey() == $checklistGroup->category)
+                                                                @php
+                                                                    $document = \App\Models\Document::where('case_id', $case->id)
+                                                                                    ->where('group_id', $checklistGroup->id)
+                                                                                    ->where('date_case_submitted', null)
+                                                                                    ->first() ?? '';
+                                                                    $documentChecklists = (!empty($document)) ? $document->checklists->pluck('id')->toArray() : [];
+                                                                @endphp
+                                                                <div class="pb-5" data-wizard-type="step-content" data-form='DeficientChecklistDocument'>
+                                                                    <div class="row mt-4">
+                                                                        <div class="col-md-12">
+                                                                            <div class="card card-custom gutter-b example example-compact">
+                                                                                <div class="card-header">
+                                                                                    <h3 class="card-title">{{ ucfirst($checklistGroup->name) }} (Deficiency)</h3>
                                                                                 </div>
-                                                                                @if(!empty($case->getDefficientInfo()))
-                                                                                    <p><b>Additional Info</b></p>
-                                                                                    <p>{{ $case->getDefficientInfo() }}</p>
-                                                                                @endif
-                                                                                @if ($checklistGroup->isGroupFees())
-                                                                                    <div class="row">
-                                                                                        <div class="col-md-12 mb-4">
-                                                                                            Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
-                                                                                            <input
-                                                                                                type="hidden"
-                                                                                                class="form-control"
-                                                                                                name="application_fee"
-                                                                                                value="{{ $case->application_fee }}"
-                                                                                                id="application_fee"
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div class="col-md-12 mb-4">
-                                                                                            Processing Fee: <span class="processing_fee">{!! $case->getProcessingFee() !!}</span>
-                                                                                            <input
-                                                                                                type="hidden"
-                                                                                                class="form-control"
-                                                                                                name="processing_fee"
-                                                                                                value="{{ $case->processing_fee }}"
-                                                                                                id="processing_fee"
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div class="col-md-12 mb-4">
-                                                                                            Expedited Fee: <span class="expedited_fee">{!! $case->getExpeditedFee() !!}</span>
-                                                                                            <input
-                                                                                                type="hidden"
-                                                                                                class="form-control"
-                                                                                                name="expedited_fee"
-                                                                                                value="{{ $case->expedited_fee }}"
-                                                                                                id="expedited_fee"
-                                                                                            />
-                                                                                        </div>
-                                                                                        <div class="col-md-12 mb-4">
-                                                                                            Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
-                                                                                            <input
-                                                                                                type="hidden"
-                                                                                                class="form-control"
-                                                                                                name="amount_paid"
-                                                                                                value="{{ $case->amount_paid }}"
-                                                                                                id="amount_paid"
-                                                                                            />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-4 ml-n4">
-                                                                                        <a href="#" id="kt_fee">
-                                                                                            <i class="la la-info-circle"></i>&nbsp;Generate Fee
-                                                                                        </a>
-                                                                                    </div>
-                                                                                @endif
-                                                                                <div class="row mt-4">
-                                                                                    <div class="col-md-12">
-                                                                                        <div class="form-group mb-1">
-                                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="row mt-4">
-                                                                                    <div class="col-md-4">
-                                                                                        <div class="uploadButton tw-mb-4">
-                                                                                            <input
-                                                                                                accept=".pdf,image/*"
-                                                                                                id="checklist_doc"
-                                                                                                class="js-file-upload-input ember-view checklist_doc"
-                                                                                                type="file"
-                                                                                                name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                                                data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
-                                                                                                multiple
-                                                                                            />
-                                                                                            <span class="btn btn--small btn--brand">
-                                                                                                Upload Files
-                                                                                            </span>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <input
-                                                                                        type="hidden"
-                                                                                        id="doc_id"
-                                                                                        value="{{ !empty($document) ? $document->id : '' }}"
-                                                                                    />
-                                                                                    <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
-                                                                                </div>
-                                                                                <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
-                                                                                @if(!empty($document))
+                                                                                <div class="card-body">
+                                                                                    <p>
+                                                                                        Upload the required information here
+                                                                                    </p>
                                                                                     <div class="row mt-4">
-                                                                                        @php
-                                                                                            $file_count = 1;
-                                                                                        @endphp
-                                                                                        @foreach($document->getFileArray() as $key => $file)
-                                                                                            <div class="col-md-12 my-1">
-                                                                                                <span>
-                                                                                                    <a
-                                                                                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
-                                                                                                        class="text-dark text-hover-primary"
-                                                                                                        target="__blank"
-                                                                                                    >
-                                                                                                        {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
-                                                                                                    </a>&nbsp;<i class="la la-download text-primary"></i>
-                                                                                                </span>
-                                                                                            </div>
-                                                                                            @php
-                                                                                                $file_count++;
-                                                                                            @endphp
+                                                                                        @foreach($checklistGroup->checklists as $checklist)
+                                                                                            @if ((in_array($checklist->id, $checklistIds)))
+                                                                                                <div class="col-md-12">
+                                                                                                    <ul>
+                                                                                                        <li>{{ ucfirst($checklist->name) }}</li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            @endif
                                                                                         @endforeach
                                                                                     </div>
-                                                                                @endif
+                                                                                    @if(!empty($case->getDefficientInfo()))
+                                                                                        <p><b>Additional Info</b></p>
+                                                                                        <p>{{ $case->getDefficientInfo() }}</p>
+                                                                                    @endif
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group mb-1">
+                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-4">
+                                                                                            <div class="uploadButton tw-mb-4">
+                                                                                                <input
+                                                                                                    accept=".pdf,image/*"
+                                                                                                    id="checklist_doc"
+                                                                                                    class="js-file-upload-input ember-view checklist_doc"
+                                                                                                    type="file"
+                                                                                                    name="{{ Str::camel($checklistGroup->label) }}_doc"
+                                                                                                    data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
+                                                                                                    multiple
+                                                                                                />
+                                                                                                <span class="btn btn--small btn--brand">
+                                                                                                    Upload Files
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            type="hidden"
+                                                                                            id="doc_id"
+                                                                                            value="{{ !empty($document) ? $document->id : '' }}"
+                                                                                        />
+                                                                                        <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
+                                                                                    </div>
+                                                                                    <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                                    @if(!empty($document))
+                                                                                        <div class="row mt-4">
+                                                                                            @php
+                                                                                                $file_count = 1;
+                                                                                            @endphp
+                                                                                            @foreach($document->getFileArray() as $key => $file)
+                                                                                                <div class="col-md-12 my-1">
+                                                                                                    <span>
+                                                                                                        <a
+                                                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                                            class="text-dark text-hover-primary"
+                                                                                                            target="__blank"
+                                                                                                        >
+                                                                                                            {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
+                                                                                                        </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                @php
+                                                                                                    $file_count++;
+                                                                                                @endphp
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    @endif
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            @endif
+                                                        @else
+                                                            @if ((in_array($checklistGroup->id, $deficientGroupIds)))
+                                                                @php
+                                                                    $document = \App\Models\Document::where('case_id', $case->id)
+                                                                                    ->where('group_id', $checklistGroup->id)
+                                                                                    ->where('date_case_submitted', null)
+                                                                                    ->first() ?? '';
+                                                                    $documentChecklists = (!empty($document)) ? $document->checklists->pluck('id')->toArray() : [];
+                                                                @endphp
+                                                                <div class="pb-5" data-wizard-type="step-content" data-form='DeficientChecklistDocument'>
+                                                                    <div class="row mt-4">
+                                                                        <div class="col-md-12">
+                                                                            <div class="card card-custom gutter-b example example-compact">
+                                                                                <div class="card-header">
+                                                                                    <h3 class="card-title">{{ ucfirst($checklistGroup->name) }} (Deficiency)</h3>
+                                                                                </div>
+                                                                                <div class="card-body">
+                                                                                    <p>
+                                                                                        Upload the required information here
+                                                                                    </p>
+                                                                                    <div class="row mt-4">
+                                                                                        @foreach($checklistGroup->checklists as $checklist)
+                                                                                            @if ((in_array($checklist->id, $checklistIds)))
+                                                                                                <div class="col-md-12">
+                                                                                                    <ul>
+                                                                                                        <li>{{ ucfirst($checklist->name) }}</li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            @endif
+                                                                                        @endforeach
+                                                                                    </div>
+                                                                                    @if(!empty($case->getDefficientInfo()))
+                                                                                        <p><b>Additional Info</b></p>
+                                                                                        <p>{{ $case->getDefficientInfo() }}</p>
+                                                                                    @endif
+                                                                                    @if ($checklistGroup->isGroupFees())
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-12 mb-4">
+                                                                                                Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
+                                                                                                <input
+                                                                                                    type="hidden"
+                                                                                                    class="form-control"
+                                                                                                    name="application_fee"
+                                                                                                    value="{{ $case->application_fee }}"
+                                                                                                    id="application_fee"
+                                                                                                />
+                                                                                            </div>
+                                                                                            <div class="col-md-12 mb-4">
+                                                                                                Processing Fee: <span class="processing_fee">{!! $case->getProcessingFee() !!}</span>
+                                                                                                <input
+                                                                                                    type="hidden"
+                                                                                                    class="form-control"
+                                                                                                    name="processing_fee"
+                                                                                                    value="{{ $case->processing_fee }}"
+                                                                                                    id="processing_fee"
+                                                                                                />
+                                                                                            </div>
+                                                                                            <div class="col-md-12 mb-4">
+                                                                                                Expedited Fee: <span class="expedited_fee">{!! $case->getExpeditedFee() !!}</span>
+                                                                                                <input
+                                                                                                    type="hidden"
+                                                                                                    class="form-control"
+                                                                                                    name="expedited_fee"
+                                                                                                    value="{{ $case->expedited_fee }}"
+                                                                                                    id="expedited_fee"
+                                                                                                />
+                                                                                            </div>
+                                                                                            <div class="col-md-12 mb-4">
+                                                                                                Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
+                                                                                                <input
+                                                                                                    type="hidden"
+                                                                                                    class="form-control"
+                                                                                                    name="amount_paid"
+                                                                                                    value="{{ $case->amount_paid }}"
+                                                                                                    id="amount_paid"
+                                                                                                />
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-4 ml-n4">
+                                                                                            <a href="#" id="kt_fee">
+                                                                                                <i class="la la-info-circle"></i>&nbsp;Generate Fee
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    @endif
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group mb-1">
+                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-4">
+                                                                                            <div class="uploadButton tw-mb-4">
+                                                                                                <input
+                                                                                                    accept=".pdf,image/*"
+                                                                                                    id="checklist_doc"
+                                                                                                    class="js-file-upload-input ember-view checklist_doc"
+                                                                                                    type="file"
+                                                                                                    name="{{ Str::camel($checklistGroup->label) }}_doc"
+                                                                                                    data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
+                                                                                                    multiple
+                                                                                                />
+                                                                                                <span class="btn btn--small btn--brand">
+                                                                                                    Upload Files
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <input
+                                                                                            type="hidden"
+                                                                                            id="doc_id"
+                                                                                            value="{{ !empty($document) ? $document->id : '' }}"
+                                                                                        />
+                                                                                        <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
+                                                                                    </div>
+                                                                                    <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                                    @if(!empty($document))
+                                                                                        <div class="row mt-4">
+                                                                                            @php
+                                                                                                $file_count = 1;
+                                                                                            @endphp
+                                                                                            @foreach($document->getFileArray() as $key => $file)
+                                                                                                <div class="col-md-12 my-1">
+                                                                                                    <span>
+                                                                                                        <a
+                                                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                                            class="text-dark text-hover-primary"
+                                                                                                            target="__blank"
+                                                                                                        >
+                                                                                                            {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
+                                                                                                        </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                                                    </span>
+                                                                                                </div>
+                                                                                                @php
+                                                                                                    $file_count++;
+                                                                                                @endphp
+                                                                                            @endforeach
+                                                                                        </div>
+                                                                                    @endif
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                         @endif
                                                     @endforeach
                                                     <div class="d-flex justify-content-between border-top mt-5 pt-10">
