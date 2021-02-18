@@ -411,11 +411,13 @@ class ApplicationController extends Controller
             endif;
         endforeach;
 
+        $post_checklist = ($guest->case->isCaseChecklistsApproved()) ? 1 : NULL;
         $document = Document::create([
             'case_id'         => $guest->case->id,
             'group_id'        => request('group_id'),
             'file'            => implode(',', $file_array),
             'additional_info' => trim(request('additional_info')),
+            'post_checklist'  => $post_checklist,
         ]);
 
         $this->sendResponse('Document has been saved.', 'success', $document);
@@ -434,6 +436,8 @@ class ApplicationController extends Controller
 
         $case->validateSubmission();
 
+        if ($case->isSubmitted())
+             $this->sendResponse('Application already submitted.', 'error', $case);
         $guest->case->submit();
 
         $case = $guest->case;

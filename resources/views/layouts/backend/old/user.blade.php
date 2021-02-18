@@ -7,8 +7,8 @@
             <div id="kt_quick_cart" class="offcanvas offcanvas-right p-10 ">
                 <div class="offcanvas-header d-flex align-items-center justify-content-between pb-7">
                     <h4 class="font-weight-bold m-0" style="font-weight: 700 !important">Fee Calculator</h4>
-                    <a href="#" class="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_quick_cart_close">
-                        <i class="ki ki-close icon-xs text-muted"></i>
+                    <a href="#" class="btn btn-xs btn-icon btn-primary" id="kt_quick_cart_close">
+                        <i class="ki ki-close icon-xs text-white"></i>
                     </a>
                 </div>
                 <div class="offcanvas-content">

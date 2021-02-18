@@ -132,8 +132,7 @@ trait CaseAssignable
     {
         return $this->handlers()->syncWithoutDetaching([
             $caseHandler->id    => [
-                'defficiency_issued_at' => null,
-                'defficiency' => null
+                'defficiency_issued_at' => null
             ]
         ]);
     }

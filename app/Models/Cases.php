@@ -456,6 +456,22 @@ class Cases extends Model
     {
         return $this
             ->documents()
+            ->where('post_checklist', NULL)
+            ->where('date_case_submitted', '!=', null)
+            ->get()
+            ->reject(function($document) use (&$case_category)
+            {
+                return $document->group->category !== $case_category && $document->group->category !== "ALL";
+            })
+            ->groupBy('date_case_submitted')
+            ->sortKeysDesc();
+    }
+
+    public function submittedPostDocumentsComplete($case_category = NULL)
+    {
+        return $this
+            ->documents()
+            ->where('post_checklist', 1)
             ->where('date_case_submitted', '!=', null)
             ->get()
             ->reject(function($document) use (&$case_category)

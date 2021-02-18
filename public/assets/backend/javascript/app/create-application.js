@@ -1019,10 +1019,15 @@ function submitCase()
         },
         function(xhr, desc, err)
         {
+            swal.fire(
+                    "Not Submitted!",
+                    err,
+                    "error"
+                );
+
             $("#goback-btn").removeClass('hide');
             $("#upload-info").removeClass('hide');
             $("#upload-img").toggle();
-            notify(desc, err);
         }
     );
     return;
@@ -1053,10 +1058,7 @@ function submitDeficientCase()
                     "Not Submitted!",
                     result.message,
                     "error"
-                ).then(function()
-                {
-
-                });
+                );
 
                 $("#goback-btn").removeClass('hide');
                 $("#upload-deficient-info").removeClass('hide');
@@ -1075,10 +1077,15 @@ function submitDeficientCase()
         },
         function(xhr, desc, err)
         {
+            swal.fire(
+                    "Not Submitted!",
+                    err,
+                    "error"
+                );
+
             $("#goback-btn").removeClass('hide');
             $("#upload-deficient-info").removeClass('hide');
             $("#upload-img").toggle();
-            notify(desc, err);
         }
     );
     return;

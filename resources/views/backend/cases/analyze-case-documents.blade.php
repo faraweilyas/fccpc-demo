@@ -38,6 +38,91 @@
         <div class="conatiner-fl px-5 py-5 ">
             <div class="card-custom relative">
                 <h5 class="text-bold mb-10">Submitted Documents</h5>
+                <div class="accordion accordion-solid accordion-toggle-plus mt-10" id="postAccordionExample">
+                    @php
+                        $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
+                        $submittedPostDocuments = $case->submittedPostDocumentsComplete($case->case_category);
+                        $x = 1;
+                    @endphp
+                    @foreach ($submittedPostDocuments as $date => $documents)
+                        <div class="card">
+                            <div class="card-header" id="postHeadingwOne{{ $x }}">
+                                <div
+                                    class="card-title @if($x !== 1) collapsed @endif"
+                                    data-toggle="collapse"
+                                    data-target="#postCollapseOne{{ $x }}"
+                                >
+                                    <i class="flaticon-folder-1"></i>Date: {{ datetimeToText($date, '%d %B. %Y at %I:%M %p') }}
+                                </div>
+                            </div>
+                            <div id="postCollapseOne{{ $x }}" class="collapse @if($x == 1) show @endif" data-parent="#postAccordionExample">
+                                <div class="card-body">
+                                    <div class="row">
+                                        @foreach ($documents as $document)
+                                            @if (!empty($document->group_id))
+                                                <div class="col-md-4">
+                                                    <div class="download-card">
+                                                        <img src="{{ pc_asset(BE_IMAGE.'png/pdf.png') }}" alt="pdf" />
+                                                        <p><b>{{ $document->group->name }} documents</b></p>
+                                                        <div class="row mt-4">
+                                                            @php
+                                                                $file_count = 1;
+                                                            @endphp
+                                                            @foreach($document->getFileArray() as $key => $file)
+                                                                <div class="col-md-12 my-1">
+                                                                    <span>
+                                                                        <a
+                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                            class="text-dark text-hover-primary"
+                                                                            target="__blank"
+                                                                        >
+                                                                            {{ ucfirst($document->group->name).' Doc_'.$file_count }}
+                                                                        </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                    </span>
+                                                                </div>
+                                                                @php
+                                                                    $file_count++;
+                                                                @endphp
+                                                            @endforeach
+                                                        </div>
+                                                        @if(!empty($document->getAdditionalInfo()))
+                                                            <div class="row mt-4">
+                                                                <div class="col-md-12">
+                                                                    <h5><b>Additional Info</b></h5>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <p>
+                                                                        {{ $document->getAdditionalInfo() }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    @if(!empty($case->getDefficientInfo()))
+                                        <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <h5><b>Deficient Reason</b></h5>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p>
+                                                    {{ $case->getDefficientInfo() }}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @php
+                            $x++;
+                        @endphp
+                    @endforeach
+                </div>
+                <hr />
                 <div class="accordion accordion-solid accordion-toggle-plus mt-10" id="accordionExample">
                     @php
                         $cases = \Auth::user()->cases_working_on()->where('case_id', $case->id)->get();
