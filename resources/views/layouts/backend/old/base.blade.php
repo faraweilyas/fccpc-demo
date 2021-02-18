@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'style.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'toaster.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'dropzone.css') }}" />
     <!-- Custom CSS -->
     @yield('custom.css')
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'custom.css') }}" />

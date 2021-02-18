@@ -342,9 +342,9 @@
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-4">
-                                                                        <div class="uploadButton tw-mb-4 ">
+                                                                        <div class="uploadButton tw-mb-4">
                                                                             <input
-                                                                                accept=".pdf"
+                                                                                accept=".pdf,image/*"
                                                                                 id="checklist_doc"
                                                                                 class="js-file-upload-input ember-view checklist_doc"
                                                                                 type="file"
@@ -375,6 +375,7 @@
                                                                                     <a
                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                                                                         class="text-dark text-hover-primary"
+                                                                                        target="__blank"
                                                                                     >
                                                                                         {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
                                                                                     </a>&nbsp;<i class="la la-download text-primary"></i>
@@ -470,7 +471,7 @@
                                                                     <div class="col-md-4">
                                                                         <div class="uploadButton tw-mb-4 ">
                                                                             <input
-                                                                                accept=".pdf"
+                                                                                accept=".pdf,image/*"
                                                                                 id="checklist_doc"
                                                                                 class="js-file-upload-input ember-view checklist_doc"
                                                                                 type="file"
@@ -507,6 +508,7 @@
                                                                                     <a
                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
                                                                                         class="text-dark text-hover-primary"
+                                                                                        target="__blank"
                                                                                     >
                                                                                         {{
                                                                                             ucfirst($checklistGroup->name).' Doc_'.$file_count}}
@@ -676,5 +678,6 @@
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
 @endsection

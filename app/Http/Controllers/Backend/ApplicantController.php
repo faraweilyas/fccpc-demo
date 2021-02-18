@@ -248,6 +248,7 @@ class ApplicantController extends Controller
         if (!is_file($doc) && !file_exists($doc))
             return redirect()->back()->with('error', 'File was not found!');
 
+        return response()->file($doc);
         return response()->download(
             $doc,
             "{$groupName}.{$extension}"

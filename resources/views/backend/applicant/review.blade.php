@@ -123,11 +123,11 @@
                                                         src="{{ $document->getFileIconText($file) }}"
                                                         alt="pdf"
                                                         style="height: 40px"
-                                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                        onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
                                                     />
                                                     <h4
                                                         class="py-5 mx-5 text-hover-primary cr-pointer"
-                                                        onclick="window.location.href='{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}';"
+                                                        onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
                                                     >
                                                         {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
                                                         &nbsp;<i class="la la-download text-primary"></i>
