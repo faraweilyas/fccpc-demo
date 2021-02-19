@@ -350,6 +350,7 @@ $(document).ready(function()
 
     // Change event
     _wizard.on('change', function (wizard) {
+
         if($("#application-documentation-section").is(":visible")){
             $("#save-info").html('Next');
         } else {
@@ -388,7 +389,11 @@ $(document).ready(function()
                             return (typeof ($(element).attr('data-wizard-state')) !== "undefined")
                         }),
             sendForm    = 'save'+currentForm.attr('data-form');
-        window[sendForm](sendForm, currentForm);
+            if (sendForm == "saveChecklistDocument" || sendForm == "saveDeficientChecklistDocument") {
+                window[sendForm](myDropzone, sendForm, currentForm);
+            } else {
+                window[sendForm](sendForm, currentForm);
+            }
         // _wizard.goNext();
         // KTUtil.scrollTop();
         return;
@@ -415,7 +420,7 @@ $(document).ready(function()
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
             additional_info    = currentForm.find('#additional_info').val(),
-            totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
+            totalfiles         = myDropzone.getFiles().length,
             review_route       = $(this).attr('data-review-route'),
             application_fee    = currentForm.find("#application_fee").val(),
             processing_fee     = currentForm.find("#processing_fee").val(),
@@ -424,59 +429,131 @@ $(document).ready(function()
             group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
-        $("#previous-btn").attr('disabled', 'disabled');
-        $("#save-transaction-info").toggle();
-        $("#saving-img").removeClass('hide');
-
-        if (application_fee == null)
-        {
-            application_fee = '';
-        }
-
-        if (processing_fee == null)
-        {
-            processing_fee = '';
-        }
-
-        if (expedited_fee == null)
-        {
-            expedited_fee = 0;
-        }
-
-        if (amount_paid == null)
-        {
-            amount_paid = '';
-        }
-
-        for (var index = 0; index < totalfiles; index++) {
-          formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
-        }
-        formData.append('_token', $("#token").val());
-        formData.append('additional_info', additional_info);
-        formData.append('document_id', doc_id);
-        formData.append('group_id', group_id);
-        formData.append('application_fee', application_fee);
-        formData.append('processing_fee', processing_fee);
-        formData.append('expedited_fee', expedited_fee);
-        formData.append('amount_paid', amount_paid);
-        sendRequest(
-            '/application/create/'+tracking_id+'/'+sendForm,
-            formData,
-            false,
-            false,
-            function(data, status)
+        if (doc_id !== '') {
+            swal.fire({
+                title: "Are you sure?",
+                text: "This would override your previous uploads for this section!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, override it!"
+            }).then(function(result)
             {
-                result = JSON.parse(data);
-                currentForm.find("#doc_id").val(result.response.id);
-                notify(result.responseType, result.message);
-                $("#previous-btn").removeAttr('disabled');
-                $("#save-transaction-info").toggle();
-                $("#saving-img").addClass('hide');
-                if (result.responseType !== 'error'){
-                    window.location.replace(review_route);
+                if (result.value){
+                    $("#previous-btn").attr('disabled', 'disabled');
+                    $("#save-transaction-info").toggle();
+                    $("#saving-img").removeClass('hide');
+
+                    if (application_fee == null)
+                    {
+                        application_fee = '';
+                    }
+
+                    if (processing_fee == null)
+                    {
+                        processing_fee = '';
+                    }
+
+                    if (expedited_fee == null)
+                    {
+                        expedited_fee = 0;
+                    }
+
+                    if (amount_paid == null)
+                    {
+                        amount_paid = '';
+                    }
+
+                    for (var index = 0; index < totalfiles; index++) {
+                      formData.append("files[]", myDropzone.getFiles()[index]);
+                    }
+                    formData.append('_token', $("#token").val());
+                    formData.append('additional_info', additional_info);
+                    formData.append('document_id', doc_id);
+                    formData.append('group_id', group_id);
+                    formData.append('application_fee', application_fee);
+                    formData.append('processing_fee', processing_fee);
+                    formData.append('expedited_fee', expedited_fee);
+                    formData.append('amount_paid', amount_paid);
+                    sendRequest(
+                        '/application/create/'+tracking_id+'/'+sendForm,
+                        formData,
+                        false,
+                        false,
+                        function(data, status)
+                        {
+                            result = JSON.parse(data);
+                            currentForm.find("#doc_id").val(result.response.id);
+                            notify(result.responseType, result.message);
+                            $("#previous-btn").removeAttr('disabled');
+                            $("#save-transaction-info").toggle();
+                            $("#saving-img").addClass('hide');
+                            if (result.responseType !== 'error'){
+                                myDropzone.clearAll();
+                                window.location.replace(review_route);
+                            }
+                        }
+                    );
+                } else {
+                    return false;
                 }
+            });
+        } else {
+            $("#previous-btn").attr('disabled', 'disabled');
+            $("#save-transaction-info").toggle();
+            $("#saving-img").removeClass('hide');
+
+            if (application_fee == null)
+            {
+                application_fee = '';
             }
-        );
+
+            if (processing_fee == null)
+            {
+                processing_fee = '';
+            }
+
+            if (expedited_fee == null)
+            {
+                expedited_fee = 0;
+            }
+
+            if (amount_paid == null)
+            {
+                amount_paid = '';
+            }
+
+            for (var index = 0; index < totalfiles; index++) {
+              formData.append("files[]", myDropzone.getFiles()[index]);
+            }
+            formData.append('_token', $("#token").val());
+            formData.append('additional_info', additional_info);
+            formData.append('document_id', doc_id);
+            formData.append('group_id', group_id);
+            formData.append('application_fee', application_fee);
+            formData.append('processing_fee', processing_fee);
+            formData.append('expedited_fee', expedited_fee);
+            formData.append('amount_paid', amount_paid);
+            sendRequest(
+                '/application/create/'+tracking_id+'/'+sendForm,
+                formData,
+                false,
+                false,
+                function(data, status)
+                {
+                    result = JSON.parse(data);
+                    currentForm.find("#doc_id").val(result.response.id);
+                    notify(result.responseType, result.message);
+                    $("#previous-btn").removeAttr('disabled');
+                    $("#save-transaction-info").toggle();
+                    $("#saving-img").addClass('hide');
+                    if (result.responseType !== 'error'){
+                        myDropzone.clearAll();
+                        window.location.replace(review_route);
+                    }
+                }
+            );
+        }
+
         return;
     });
 
@@ -493,7 +570,7 @@ $(document).ready(function()
         var tracking_id        = $("#tracking_id").val(),
             formData           = new FormData(),
             additional_info    = currentForm.find('#additional_info').val(),
-            totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
+            totalfiles         = myDropzone.getFiles().length,
             review_route       = $(this).attr('data-review-route'),
             application_fee    = currentForm.find("#application_fee").val(),
             processing_fee     = currentForm.find("#processing_fee").val(),
@@ -502,60 +579,132 @@ $(document).ready(function()
             group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
-        $("#previous-btn").attr('disabled', 'disabled');
-        $("#save-deficient-doc").toggle();
-        $("#saving-img").removeClass('hide');
-
-        if (application_fee == null)
-        {
-            application_fee = '';
-        }
-
-        if (processing_fee == null)
-        {
-            processing_fee = '';
-        }
-
-        if (expedited_fee == null)
-        {
-            expedited_fee = 0;
-        }
-
-        if (amount_paid == null)
-        {
-            amount_paid = '';
-        }
-
-        for (var index = 0; index < totalfiles; index++) {
-          formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
-        }
-
-        formData.append('_token', $("#token").val());
-        formData.append('additional_info', additional_info);
-        formData.append('document_id', doc_id);
-        formData.append('group_id', group_id);
-        formData.append('application_fee', application_fee);
-        formData.append('processing_fee', processing_fee);
-        formData.append('expedited_fee', expedited_fee);
-        formData.append('amount_paid', amount_paid);
-        sendRequest(
-            '/application/create/'+tracking_id+'/'+sendForm,
-            formData,
-            false,
-            false,
-            function(data, status)
+        if (doc_id !== '') {
+            swal.fire({
+                title: "Are you sure?",
+                text: "This would override your previous uploads for this section!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, override it!"
+            }).then(function(result)
             {
-                result = JSON.parse(data);
-                currentForm.find("#doc_id").val(result.response.id);
-                notify(result.responseType, result.message);
-                $("#previous-btn").removeAttr('disabled');
-                $("#save-deficient-doc").toggle();
-                $("#saving-img").addClass('hide');
-                if (result.responseType !== 'error'){
-                    window.location.replace(review_route);
+                if (result.value){
+                    $("#previous-btn").attr('disabled', 'disabled');
+                    $("#save-deficient-doc").toggle();
+                    $("#saving-img").removeClass('hide');
+
+                    if (application_fee == null)
+                    {
+                        application_fee = '';
+                    }
+
+                    if (processing_fee == null)
+                    {
+                        processing_fee = '';
+                    }
+
+                    if (expedited_fee == null)
+                    {
+                        expedited_fee = 0;
+                    }
+
+                    if (amount_paid == null)
+                    {
+                        amount_paid = '';
+                    }
+
+                    for (var index = 0; index < totalfiles; index++) {
+                      formData.append("files[]", myDropzone.getFiles()[index]);
+                    }
+
+                    formData.append('_token', $("#token").val());
+                    formData.append('additional_info', additional_info);
+                    formData.append('document_id', doc_id);
+                    formData.append('group_id', group_id);
+                    formData.append('application_fee', application_fee);
+                    formData.append('processing_fee', processing_fee);
+                    formData.append('expedited_fee', expedited_fee);
+                    formData.append('amount_paid', amount_paid);
+                    sendRequest(
+                        '/application/create/'+tracking_id+'/'+sendForm,
+                        formData,
+                        false,
+                        false,
+                        function(data, status)
+                        {
+                            result = JSON.parse(data);
+                            currentForm.find("#doc_id").val(result.response.id);
+                            notify(result.responseType, result.message);
+                            $("#previous-btn").removeAttr('disabled');
+                            $("#save-deficient-doc").toggle();
+                            $("#saving-img").addClass('hide');
+                            if (result.responseType !== 'error'){
+                                myDropzone.clearAll();
+                                window.location.replace(review_route);
+                            }
+                        }
+                    );
+                } else {
+                    return false;
                 }
+            });
+        } else {
+            $("#previous-btn").attr('disabled', 'disabled');
+            $("#save-deficient-doc").toggle();
+            $("#saving-img").removeClass('hide');
+
+            if (application_fee == null)
+            {
+                application_fee = '';
             }
-        );
+
+            if (processing_fee == null)
+            {
+                processing_fee = '';
+            }
+
+            if (expedited_fee == null)
+            {
+                expedited_fee = 0;
+            }
+
+            if (amount_paid == null)
+            {
+                amount_paid = '';
+            }
+
+            for (var index = 0; index < totalfiles; index++) {
+              formData.append("files[]", myDropzone.getFiles()[index]);
+            }
+
+            formData.append('_token', $("#token").val());
+            formData.append('additional_info', additional_info);
+            formData.append('document_id', doc_id);
+            formData.append('group_id', group_id);
+            formData.append('application_fee', application_fee);
+            formData.append('processing_fee', processing_fee);
+            formData.append('expedited_fee', expedited_fee);
+            formData.append('amount_paid', amount_paid);
+            sendRequest(
+                '/application/create/'+tracking_id+'/'+sendForm,
+                formData,
+                false,
+                false,
+                function(data, status)
+                {
+                    result = JSON.parse(data);
+                    currentForm.find("#doc_id").val(result.response.id);
+                    notify(result.responseType, result.message);
+                    $("#previous-btn").removeAttr('disabled');
+                    $("#save-deficient-doc").toggle();
+                    $("#saving-img").addClass('hide');
+                    if (result.responseType !== 'error'){
+                        myDropzone.clearAll();
+                        window.location.replace(review_route);
+                    }
+                }
+            );
+        }
         return;
     });
 
@@ -833,12 +982,12 @@ function saveContactInfo(action, currentForm)
     return;
 }
 
-function saveChecklistDocument(action, currentForm)
+function saveChecklistDocument(myDropzone, action, currentForm)
 {
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
         additional_info    = currentForm.find('#additional_info').val(),
-        totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
+        totalfiles         = myDropzone.getFiles().length,
         application_fee    = currentForm.find("#application_fee").val(),
         processing_fee     = currentForm.find("#processing_fee").val(),
         expedited_fee      = currentForm.find("#expedited_fee").val(),
@@ -846,69 +995,141 @@ function saveChecklistDocument(action, currentForm)
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-    $("#previous-btn").attr('disabled', 'disabled');
-    $("#save-info").toggle();
-    $("#saving-img").removeClass('hide');
+        if (doc_id !== '') {
+            swal.fire({
+                title: "Are you sure?",
+                text: "This would override your previous uploads for this section!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Yes, override it!"
+            }).then(function(result)
+            {
+                if (result.value){
+                    $("#previous-btn").attr('disabled', 'disabled');
+                    $("#save-info").toggle();
+                    $("#saving-img").removeClass('hide');
 
-    if (application_fee == null)
-    {
-        application_fee = '';
-    }
+                    if (application_fee == null)
+                    {
+                        application_fee = '';
+                    }
 
-    if (processing_fee == null)
-    {
-        processing_fee = '';
-    }
+                    if (processing_fee == null)
+                    {
+                        processing_fee = '';
+                    }
 
-    if (expedited_fee == null)
-    {
-        expedited_fee = 0;
-    }
+                    if (expedited_fee == null)
+                    {
+                        expedited_fee = 0;
+                    }
 
-    if (amount_paid == null)
-    {
-        amount_paid = '';
-    }
+                    if (amount_paid == null)
+                    {
+                        amount_paid = '';
+                    }
 
-    for (var index = 0; index < totalfiles; index++) {
-      formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
-    }
-    formData.append('_token', $("#token").val());
-    formData.append('additional_info', additional_info);
-    formData.append('document_id', doc_id);
-    formData.append('group_id', group_id);
-    formData.append('application_fee', application_fee);
-    formData.append('processing_fee', processing_fee);
-    formData.append('expedited_fee', expedited_fee);
-    formData.append('amount_paid', amount_paid);
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
-        {
-            result = JSON.parse(data);
-            currentForm.find("#doc_id").val(result.response.id);
-            notify(result.responseType, result.message);
-            $("#previous-btn").removeAttr('disabled');
+                    for (var index = 0; index < totalfiles; index++) {
+                      formData.append("files[]", myDropzone.getFiles()[index]);
+                    }
+                    formData.append('_token', $("#token").val());
+                    formData.append('additional_info', additional_info);
+                    formData.append('document_id', doc_id);
+                    formData.append('group_id', group_id);
+                    formData.append('application_fee', application_fee);
+                    formData.append('processing_fee', processing_fee);
+                    formData.append('expedited_fee', expedited_fee);
+                    formData.append('amount_paid', amount_paid);
+                    sendRequest(
+                        '/application/create/'+tracking_id+'/'+action,
+                        formData,
+                        false,
+                        false,
+                        function(data, status)
+                        {
+                            result = JSON.parse(data);
+                            currentForm.find("#doc_id").val(result.response.id);
+                            notify(result.responseType, result.message);
+                            $("#previous-btn").removeAttr('disabled');
+                            $("#save-info").toggle();
+                            $("#saving-img").addClass('hide');
+                            if (result.responseType !== 'error'){
+                                myDropzone.clearAll();
+                                 _wizard.goNext();
+                                KTUtil.scrollTop();
+                            }
+                        }
+                    );
+                } else {
+                    return false;
+                }
+            });
+        } else {
+            $("#previous-btn").attr('disabled', 'disabled');
             $("#save-info").toggle();
-            $("#saving-img").addClass('hide');
-            if (result.responseType !== 'error'){
-                 _wizard.goNext();
-                KTUtil.scrollTop();
+            $("#saving-img").removeClass('hide');
+
+            if (application_fee == null)
+            {
+                application_fee = '';
             }
+
+            if (processing_fee == null)
+            {
+                processing_fee = '';
+            }
+
+            if (expedited_fee == null)
+            {
+                expedited_fee = 0;
+            }
+
+            if (amount_paid == null)
+            {
+                amount_paid = '';
+            }
+
+            for (var index = 0; index < totalfiles; index++) {
+              formData.append("files[]", myDropzone.getFiles()[index]);
+            }
+            formData.append('_token', $("#token").val());
+            formData.append('additional_info', additional_info);
+            formData.append('document_id', doc_id);
+            formData.append('group_id', group_id);
+            formData.append('application_fee', application_fee);
+            formData.append('processing_fee', processing_fee);
+            formData.append('expedited_fee', expedited_fee);
+            formData.append('amount_paid', amount_paid);
+            sendRequest(
+                '/application/create/'+tracking_id+'/'+action,
+                formData,
+                false,
+                false,
+                function(data, status)
+                {
+                    result = JSON.parse(data);
+                    currentForm.find("#doc_id").val(result.response.id);
+                    notify(result.responseType, result.message);
+                    $("#previous-btn").removeAttr('disabled');
+                    $("#save-info").toggle();
+                    $("#saving-img").addClass('hide');
+                    if (result.responseType !== 'error'){
+                        myDropzone.clearAll();
+                         _wizard.goNext();
+                        KTUtil.scrollTop();
+                    }
+                }
+            );
         }
-    );
     return;
 }
 
-function saveDeficientChecklistDocument(action, currentForm)
+function saveDeficientChecklistDocument(myDropzone, action, currentForm)
 {
     var tracking_id        = $("#tracking_id").val(),
         formData           = new FormData(),
         additional_info    = currentForm.find('#additional_info').val(),
-        totalfiles         = currentForm.find('#checklist_doc')[0].files.length,
+        totalfiles         = myDropzone.getFiles().length,
         application_fee    = currentForm.find("#application_fee").val(),
         processing_fee     = currentForm.find("#processing_fee").val(),
         expedited_fee      = currentForm.find("#expedited_fee").val(),
@@ -916,61 +1137,134 @@ function saveDeficientChecklistDocument(action, currentForm)
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-    $("#previous-btn").attr('disabled', 'disabled');
-    $("#save-info").toggle();
-    $("#saving-img").removeClass('hide');
-
-    if (application_fee == null)
-    {
-        application_fee = '';
-    }
-
-    if (processing_fee == null)
-    {
-        processing_fee = '';
-    }
-
-    if (expedited_fee == null)
-    {
-        expedited_fee = 0;
-    }
-
-    if (amount_paid == null)
-    {
-        amount_paid = '';
-    }
-
-    for (var index = 0; index < totalfiles; index++) {
-      formData.append("files[]", currentForm.find('#checklist_doc')[0].files[index]);
-    }
-
-    formData.append('_token', $("#token").val());
-    formData.append('additional_info', additional_info);
-    formData.append('document_id', doc_id);
-    formData.append('group_id', group_id);
-    formData.append('application_fee', application_fee);
-    formData.append('processing_fee', processing_fee);
-    formData.append('expedited_fee', expedited_fee);
-    formData.append('amount_paid', amount_paid);
-    sendRequest(
-        '/application/create/'+tracking_id+'/'+action,
-        formData,
-        false,
-        false,
-        function(data, status)
+    if (doc_id !== '') {
+        swal.fire({
+            title: "Are you sure?",
+            text: "This would override your previous uploads for this section!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, override it!"
+        }).then(function(result)
         {
-            result = JSON.parse(data);
-            currentForm.find("#doc_id").val(result.response.id);
-            notify(result.responseType, result.message);
-            $("#previous-btn").removeAttr('disabled');
-            $("#save-info").toggle();
-            $("#saving-img").addClass('hide');
-            if (result.responseType !== 'error'){
-                 _wizard.goNext();
-                KTUtil.scrollTop();
+            if (result.value){
+                $("#previous-btn").attr('disabled', 'disabled');
+                $("#save-info").toggle();
+                $("#saving-img").removeClass('hide');
+
+                if (application_fee == null)
+                {
+                    application_fee = '';
+                }
+
+                if (processing_fee == null)
+                {
+                    processing_fee = '';
+                }
+
+                if (expedited_fee == null)
+                {
+                    expedited_fee = 0;
+                }
+
+                if (amount_paid == null)
+                {
+                    amount_paid = '';
+                }
+
+                for (var index = 0; index < totalfiles; index++) {
+                  formData.append("files[]", myDropzone.getFiles()[index]);
+                }
+
+                formData.append('_token', $("#token").val());
+                formData.append('additional_info', additional_info);
+                formData.append('document_id', doc_id);
+                formData.append('group_id', group_id);
+                formData.append('application_fee', application_fee);
+                formData.append('processing_fee', processing_fee);
+                formData.append('expedited_fee', expedited_fee);
+                formData.append('amount_paid', amount_paid);
+                sendRequest(
+                    '/application/create/'+tracking_id+'/'+action,
+                    formData,
+                    false,
+                    false,
+                    function(data, status)
+                    {
+                        result = JSON.parse(data);
+                        currentForm.find("#doc_id").val(result.response.id);
+                        notify(result.responseType, result.message);
+                        $("#previous-btn").removeAttr('disabled');
+                        $("#save-info").toggle();
+                        $("#saving-img").addClass('hide');
+                        if (result.responseType !== 'error'){
+                            myDropzone.clearAll();
+                             _wizard.goNext();
+                            KTUtil.scrollTop();
+                        }
+                    }
+                );
+            } else {
+                return false;
             }
+        });
+    } else {
+        $("#previous-btn").attr('disabled', 'disabled');
+        $("#save-info").toggle();
+        $("#saving-img").removeClass('hide');
+
+        if (application_fee == null)
+        {
+            application_fee = '';
         }
-    );
+
+        if (processing_fee == null)
+        {
+            processing_fee = '';
+        }
+
+        if (expedited_fee == null)
+        {
+            expedited_fee = 0;
+        }
+
+        if (amount_paid == null)
+        {
+            amount_paid = '';
+        }
+
+        for (var index = 0; index < totalfiles; index++) {
+          formData.append("files[]", myDropzone.getFiles()[index]);
+        }
+
+        formData.append('_token', $("#token").val());
+        formData.append('additional_info', additional_info);
+        formData.append('document_id', doc_id);
+        formData.append('group_id', group_id);
+        formData.append('application_fee', application_fee);
+        formData.append('processing_fee', processing_fee);
+        formData.append('expedited_fee', expedited_fee);
+        formData.append('amount_paid', amount_paid);
+        sendRequest(
+            '/application/create/'+tracking_id+'/'+action,
+            formData,
+            false,
+            false,
+            function(data, status)
+            {
+                result = JSON.parse(data);
+                currentForm.find("#doc_id").val(result.response.id);
+                notify(result.responseType, result.message);
+                $("#previous-btn").removeAttr('disabled');
+                $("#save-info").toggle();
+                $("#saving-img").addClass('hide');
+                if (result.responseType !== 'error'){
+                    myDropzone.clearAll();
+                     _wizard.goNext();
+                    KTUtil.scrollTop();
+                }
+            }
+        );
+    }
     return;
 }
 

@@ -740,18 +740,6 @@ class Cases extends Model
         $case_parties = count(explode(':', $this->parties));
 
         if (
-            ($this->case_category == 'REG' || $this->case_category == 'FFM') &&
-            (empty($this->form_1A_Text) ||
-            empty($this->form_1A_Name) ||
-            empty($this->form_1A_Position))
-        ):
-            $this->sendResponse('Provide required Form 1A fields.', 'error');
-        endif;
-
-        if ($case_parties < 2)
-            $this->sendResponse('Minimum of two parties required..', 'error');
-
-        if (
             empty($this->subject) ||
             empty($this->parties) ||
             empty($this->case_category) ||
@@ -765,6 +753,18 @@ class Cases extends Model
         ):
             $this->sendResponse('Provide required fields.', 'error');
         endif;
+
+        if (
+            ($this->case_category == 'REG' || $this->case_category == 'FFM') &&
+            (empty($this->form_1A_Text) ||
+            empty($this->form_1A_Name) ||
+            empty($this->form_1A_Position))
+        ):
+            $this->sendResponse('Provide required Form 1A fields.', 'error');
+        endif;
+
+        if ($case_parties < 2)
+            $this->sendResponse('Minimum of two parties required..', 'error');
 
         $this->validateDocuments();
     }

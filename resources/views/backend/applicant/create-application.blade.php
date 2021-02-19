@@ -148,7 +148,7 @@
                                                     <div class="field-item">
                                                         <div class="row">
                                                             @forelse ($case_parties as $party)
-                                                                <div class="col-lg-5 mb-4">
+                                                                <div class="col-lg-5 my-2">
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
@@ -159,7 +159,7 @@
                                                                     <div class="d-md-none mb-2"></div>
                                                                 </div>
                                                             @empty
-                                                                <div class="col-lg-5">
+                                                                <div class="col-lg-5 my-2">
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
@@ -168,7 +168,7 @@
                                                                     />
                                                                     <div class="d-md-none mb-2"></div>
                                                                 </div>
-                                                                <div class="col-lg-5">
+                                                                <div class="col-lg-5 my-2">
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
@@ -193,7 +193,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Transaction Type</label>
+                                                <label>Transaction Type</label> <span class="text-danger">*</span>
                                                 <div class="radio-inline">
                                                     <label class="radio">
                                                         <input
@@ -340,19 +340,18 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="row mt-4">
-                                                                    <div class="col-md-4">
-                                                                        <div class="uploadButton tw-mb-4">
-                                                                            <input
-                                                                                accept=".pdf,image/*"
-                                                                                id="checklist_doc"
-                                                                                class="js-file-upload-input ember-view checklist_doc"
-                                                                                type="file"
-                                                                                name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                                data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
-                                                                                multiple
-                                                                            />
-                                                                            <span class="btn btn--small btn--brand">Upload Files</span>
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mt-4 mb-n3">
+                                                                        <p class="text-danger">
+                                                                            Note: Supported file formats are ( .pdf, .jpg, .jpeg)
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="box">
+                                                                            <div class="words">
+                                                                              <p>Drag And Drop Files Here</p>
+                                                                            </div>
+                                                                            <div class="files"></div>
                                                                         </div>
                                                                     </div>
                                                                     <br>
@@ -468,20 +467,18 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row mt-4">
-                                                                    <div class="col-md-4">
-                                                                        <div class="uploadButton tw-mb-4 ">
-                                                                            <input
-                                                                                accept=".pdf,image/*"
-                                                                                id="checklist_doc"
-                                                                                class="js-file-upload-input ember-view checklist_doc"
-                                                                                type="file"
-                                                                                name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                                data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
-                                                                                multiple
-                                                                            />
-                                                                            <span class="btn btn--small btn--brand">Upload Files</span>
+                                                                    <div class="col-md-12 mt-4 mb-n3">
+                                                                        <p class="text-danger">
+                                                                            Note: Supported file formats are ( .pdf, .jpg, .jpeg)
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="box">
+                                                                            <div class="words">
+                                                                              <p>Drag And Drop Files Here</p>
+                                                                            </div>
+                                                                            <div class="files"></div>
                                                                         </div>
-
                                                                     </div>
                                                                     <br>
                                                                     <input
@@ -512,7 +509,7 @@
                                                                                     >
                                                                                         {{
                                                                                             ucfirst($checklistGroup->name).' Doc_'.$file_count}}
-                                                                                    </a>
+                                                                                    </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                                 </span>
                                                                             </div>
                                                                             @php
@@ -677,7 +674,8 @@
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'file-dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom-dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
-    <script type="text/javascript" src="{{ pc_asset(BE_JS.'dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
 @endsection

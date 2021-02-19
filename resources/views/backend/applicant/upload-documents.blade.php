@@ -152,22 +152,20 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row mt-4">
-                                                                                        <div class="col-md-4">
-                                                                                            <div class="uploadButton tw-mb-4">
-                                                                                                <input
-                                                                                                    accept=".pdf,image/*"
-                                                                                                    id="checklist_doc"
-                                                                                                    class="js-file-upload-input ember-view checklist_doc"
-                                                                                                    type="file"
-                                                                                                    name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                                                    data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
-                                                                                                    multiple
-                                                                                                />
-                                                                                                <span class="btn btn--small btn--brand">
-                                                                                                    Upload Files
-                                                                                                </span>
+                                                                                        <div class="col-md-12 mt-4 mb-n3">
+                                                                                            <p class="text-danger">
+                                                                                                Note: Supported file formats are ( .pdf, .jpg, .jpeg)
+                                                                                            </p>
+                                                                                        </div>
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="box">
+                                                                                                <div class="words">
+                                                                                                  <p>Drag And Drop Files Here</p>
+                                                                                                </div>
+                                                                                                <div class="files"></div>
                                                                                             </div>
                                                                                         </div>
+                                                                                        <br />
                                                                                         <input
                                                                                             type="hidden"
                                                                                             id="doc_id"
@@ -297,22 +295,15 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="row mt-4">
-                                                                                        <div class="col-md-4">
-                                                                                            <div class="uploadButton tw-mb-4">
-                                                                                                <input
-                                                                                                    accept=".pdf,image/*"
-                                                                                                    id="checklist_doc"
-                                                                                                    class="js-file-upload-input ember-view checklist_doc"
-                                                                                                    type="file"
-                                                                                                    name="{{ Str::camel($checklistGroup->label) }}_doc"
-                                                                                                    data-doc-name="checklist_doc_name_{{ $checklistGroup->id}}"
-                                                                                                    multiple
-                                                                                                />
-                                                                                                <span class="btn btn--small btn--brand">
-                                                                                                    Upload Files
-                                                                                                </span>
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="box">
+                                                                                                <div class="words">
+                                                                                                  <p>Drag And Drop Files Here</p>
+                                                                                                </div>
+                                                                                                <div class="files"></div>
                                                                                             </div>
                                                                                         </div>
+                                                                                        <br />
                                                                                         <input
                                                                                             type="hidden"
                                                                                             id="doc_id"
@@ -419,5 +410,7 @@
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'file-dropzone.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom-dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>
 @endsection
