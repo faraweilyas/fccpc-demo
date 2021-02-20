@@ -6,14 +6,12 @@
             <h3 class="text-white text-bold font-weight-bolder " style="color: white !important"> Mergers & Acquisition Platform</h3>
         </a>
         <div class="d-flex align-items-center">
-            <button class="btn p-0 burger-icon burger-icon-left ml-4" id="kt_header_mobile_toggle">
-                <span></span>
-            </button>
             <a href="/">
                 <button class="btn p-0 ml-2">
                     <span class="svg-icon svg-icon-xl svg-icon-white">
-                        <x-icons.profile></x-icons.profile>
+                        <x-icons.sign-out></x-icons.sign-out>
                     </span>
+                    <span class="text-white">Sign Out</span>
                 </button>
             </a>
         </div>

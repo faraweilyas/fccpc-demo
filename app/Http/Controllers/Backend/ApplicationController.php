@@ -253,6 +253,9 @@ class ApplicationController extends Controller
      */
     public function saveForm1AInfo(Guest $guest)
     {
+        if ($guest->case->isSubmitted())
+            $this->sendResponse('Case already submitted.', 'error', $guest->case);
+
         $form_text       = !empty(request('form_text')) ? request('form_text') : '';
         $name            = !empty(request('name')) ? request('name') : '';
         $position        = !empty(request('position')) ? request('position') : '';
@@ -275,6 +278,9 @@ class ApplicationController extends Controller
     {
         $parties = is_array(request('parties')) ? request('parties') : [];
 
+        if ($guest->case->isSubmitted())
+            $this->sendResponse('Case already submitted.', 'error', $guest->case);
+
         $guest->case->saveCaseInfo(
             request('subject'),
             implode(':', $parties),
@@ -292,6 +298,9 @@ class ApplicationController extends Controller
      */
     public function saveContactInfo(Guest $guest)
     {
+        if ($guest->case->isSubmitted())
+            $this->sendResponse('Case already submitted.', 'error', $guest->case);
+
         $guest->case->saveContactInfo(
             (object) [
                 'applicant_firm' => request('applicant_firm'),
@@ -313,6 +322,9 @@ class ApplicationController extends Controller
      */
     public function saveChecklistDocument(Guest $guest)
     {
+        if ($guest->case->isSubmitted())
+            $this->sendResponse('Case already submitted.', 'error', $guest->case);
+
         if (!empty(request('application_fee')) && !empty(request('processing_fee')) && !empty(request('amount_paid'))):
             $application_fee  = str_replace(',', '', request('application_fee'));
             $processing_fee   = str_replace(',', '', request('processing_fee'));

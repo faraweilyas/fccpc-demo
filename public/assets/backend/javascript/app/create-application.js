@@ -429,7 +429,7 @@ $(document).ready(function()
             group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
-        if (doc_id !== '') {
+        if (doc_id !== '' && totalfiles > 0) {
             swal.fire({
                 title: "Are you sure?",
                 text: "This would override your previous uploads for this section!",
@@ -579,7 +579,7 @@ $(document).ready(function()
             group_id           = currentForm.find("#group_id").val(),
             doc_id             = currentForm.find("#doc_id").val();
 
-        if (doc_id !== '') {
+        if (doc_id !== '' && totalfiles > 0) {
             swal.fire({
                 title: "Are you sure?",
                 text: "This would override your previous uploads for this section!",
@@ -995,7 +995,7 @@ function saveChecklistDocument(myDropzone, action, currentForm)
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-        if (doc_id !== '') {
+        if (doc_id !== '' && totalfiles > 0) {
             swal.fire({
                 title: "Are you sure?",
                 text: "This would override your previous uploads for this section!",
@@ -1137,7 +1137,7 @@ function saveDeficientChecklistDocument(myDropzone, action, currentForm)
         group_id           = currentForm.find("#group_id").val(),
         doc_id             = currentForm.find("#doc_id").val();
 
-    if (doc_id !== '') {
+    if (doc_id !== '' && totalfiles > 0) {
         swal.fire({
             title: "Are you sure?",
             text: "This would override your previous uploads for this section!",

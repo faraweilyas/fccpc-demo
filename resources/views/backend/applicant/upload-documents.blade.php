@@ -240,6 +240,13 @@
                                                                                     @endif
                                                                                     @if ($checklistGroup->isGroupFees())
                                                                                         <div class="row">
+                                                                                            <div class="col-md-12 my-3">
+                                                                                                <a href="#" id="kt_fee">
+                                                                                                    <i class="la la-info-circle"></i>&nbsp;Click here to calculate applicable fees
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row">
                                                                                             <div class="col-md-12 mb-4">
                                                                                                 Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
                                                                                                 <input
@@ -280,11 +287,6 @@
                                                                                                     id="amount_paid"
                                                                                                 />
                                                                                             </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-4 ml-n4">
-                                                                                            <a href="#" id="kt_fee">
-                                                                                                <i class="la la-info-circle"></i>&nbsp;Generate Fee
-                                                                                            </a>
                                                                                         </div>
                                                                                     @endif
                                                                                     <div class="row mt-4">
