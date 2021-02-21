@@ -494,7 +494,8 @@ $(document).ready(function()
                         }
                     );
                 } else {
-                    return false;
+                    myDropzone.clearAll();
+                    window.location.replace(review_route);
                 }
             });
         } else {
@@ -645,7 +646,8 @@ $(document).ready(function()
                         }
                     );
                 } else {
-                    return false;
+                    myDropzone.clearAll();
+                    window.location.replace(review_route);
                 }
             });
         } else {
@@ -1061,7 +1063,10 @@ function saveChecklistDocument(myDropzone, action, currentForm)
                         }
                     );
                 } else {
-                    return false;
+                    myDropzone.clearAll();
+                     _wizard.goNext();
+                    KTUtil.scrollTop();
+                    return;
                 }
             });
         } else {
@@ -1204,7 +1209,10 @@ function saveDeficientChecklistDocument(myDropzone, action, currentForm)
                     }
                 );
             } else {
-                return false;
+                myDropzone.clearAll();
+                 _wizard.goNext();
+                KTUtil.scrollTop();
+                return;
             }
         });
     } else {
