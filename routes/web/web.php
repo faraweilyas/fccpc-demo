@@ -2,11 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/phpmyadmin', function ()
-{
-    return 'working';
-});
-
 Route::name('home.')
     ->namespace('Frontend')
     ->group(function()
