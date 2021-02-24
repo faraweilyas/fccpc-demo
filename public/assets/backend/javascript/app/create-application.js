@@ -817,7 +817,7 @@ $(document).ready(function()
         if (name !== '' && position !== '') {
             var tracking_id            = $("#tracking_id").val(),
                 formData               = new FormData(),
-                form_text              = $("#form1a_declaration_text").val();
+                form_text              = $(".form1a_declaration_text").val();
 
             $("#save-form1A-info").toggle();
             $("#save-form1A-upload-img").removeClass('hide');
@@ -924,7 +924,7 @@ function sendRequest(
 
 function saveForm1AInfo(action, currentForm)
 {
-    if ($("#form1a_declaration_text").val() !== ''){
+    if ($(".form1a_declaration_text").val() !== ''){
         $('#form1ADeclarationModal').modal('show');
     } else {
         notify('error', 'Input field cannot be empty!');

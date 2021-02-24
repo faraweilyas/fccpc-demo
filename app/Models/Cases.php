@@ -754,6 +754,12 @@ class Cases extends Model
             $this->sendResponse('Provide required fields.', 'error');
         endif;
 
+        if ($case_parties < 2)
+            $this->sendResponse('Minimum of two parties required..', 'error');
+
+        if(!$this->validatePhoneNumber())
+            $this->sendResponse('Provide valid phone number.', 'error');
+
         if (
             ($this->case_category == 'REG' || $this->case_category == 'FFM') &&
             (empty($this->form_1A_Text) ||
@@ -762,9 +768,6 @@ class Cases extends Model
         ):
             $this->sendResponse('Provide required Form 1A fields.', 'error');
         endif;
-
-        if ($case_parties < 2)
-            $this->sendResponse('Minimum of two parties required..', 'error');
 
         $this->validateDocuments();
     }
@@ -799,6 +802,25 @@ class Cases extends Model
                     endif;
             endif;
         endforeach;
+    }
+
+    /**
+     * Validate phone number
+     *
+     * @return json
+     */
+    public function validatePhoneNumber()
+    {
+        if (empty($this->applicant_phone_number))
+            return false;
+
+        if (!is_numeric($this->applicant_phone_number))
+            return false;
+
+        if (strlen($this->applicant_phone_number) < 7 || strlen($this->applicant_phone_number) > 11)
+            return false;
+
+        return true;
     }
 
     /**

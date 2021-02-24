@@ -311,7 +311,7 @@
                                                     It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
-                                                    <textarea class="form-control" id="form1a_declaration_text" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
+                                                    <textarea class="form-control form1a_declaration_text" id="kt_maxlength_5" maxlength="8" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
                                                 </div>
                                             </div>
                                         @endif
@@ -674,6 +674,7 @@
 @section('custom.javascript')
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
     <script src="{{ pc_asset(BE_APP_JS.'functions.js') }}"></script>
+    <script type="text/javascript" src="{{ pc_asset(BE_JS.'pages/crud/forms/widgets/bootstrap-maxlength.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'file-dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom-dropzone.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'create-application.js') }}"></script>

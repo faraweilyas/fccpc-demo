@@ -80,7 +80,7 @@
                                 </a>
                             </div>
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title @empty($case->applicant_phone_number) text-danger @endif">Phone number:</h4>
+                                <h4 class="info-title @if(!$case->validatePhoneNumber()) text-danger @endif">Phone number:</h4>
                                 <a href="tel:{{ $case->applicant_phone_number }}" class="text-black-custom">
                                     <h4>{{ $case->applicant_phone_number }}</h4>
                                 </a>
