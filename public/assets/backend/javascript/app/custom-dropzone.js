@@ -12,7 +12,9 @@ var myDropzone = new FileDropzone({
           var elem = this.element.find('.files');
           elem.empty();
           files.forEach(function (item, index) {
-            elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>')
+            if (checkFileSize(item, 50)) {
+                elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>');
+            }
           });
         },
         onEnter: function () {
@@ -34,16 +36,39 @@ var myDropzone = new FileDropzone({
           notify("error", "File not supported, only pdf or images supported!");
         },
         beforeAdd: function (files) {
-          for (var i = 0, len = files.length; i < len; i++) {
-            let file = files[i]
-            file.id = new Date().getTime()
-            if (/fuck/.test(file.name)) {
-              return false;
-            }
-          }
+            for (var i = 0, len = files.length; i < len; i++) {
+                let file = files[i]
+                file.id = new Date().getTime()
+                if (/fuck/.test(file.name)) {
+                  return false;
+                }
+              }
           return true;
         }
     });
+
+// function checkFileLength(files, max)
+// {
+//     // console.log(files.length);
+//     if (files.length > max){
+//         notify("error", "Files cannot exceed "+max+" !");
+
+//     }
+
+//     myDropzone.clearAll();
+//     return true;
+// }
+
+function checkFileSize(item, max)
+{
+  size = FileDropzone.getFileSize(item, 'mb');
+  if (size > max){
+    notify('error', 'File Size cannot exceed '+max+'mb');
+    myDropzone.removeFile(item);
+    return false;
+  }
+  return;
+}
 
 function removeFile(item)
 {
