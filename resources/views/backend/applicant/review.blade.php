@@ -94,6 +94,7 @@
                                 <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>
                         </div>
+                        @if(strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm')
                         <p class="section-header">Form 1A</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
@@ -101,6 +102,7 @@
                                 <h4>{{ $case->form_1A_Name }}</h4>
                             </div>
                         </div>
+                        @endif
                         <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
                         @foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $case->case_category])->get() as $checklistGroup)
                             @php
