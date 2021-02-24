@@ -925,6 +925,11 @@ function sendRequest(
 function saveForm1AInfo(action, currentForm)
 {
     if ($(".form1a_declaration_text").val() !== ''){
+        if($(".form1a_declaration_text").val().length > 500)
+        {
+            notify('error', 'Input field cannot be greater than 500 characters!');
+            return;
+        }
         $('#form1ADeclarationModal').modal('show');
     } else {
         notify('error', 'Input field cannot be empty!');
