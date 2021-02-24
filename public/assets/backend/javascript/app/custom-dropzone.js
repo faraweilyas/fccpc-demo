@@ -4,16 +4,29 @@ var myDropzone = new FileDropzone({
         clickable: false,
         multiple: true,
         forceReplace: false,
-        unique: true,
+        unique: false,
         paramName: 'file',
         accept: 'application/pdf,image/jpg,image/jpeg',
         onChange: function () {
-          var files = this.getFiles();
-          var elem = this.element.find('.files');
+          var files     = this.getFiles();
+          var elem      = this.element.find('.files');
           elem.empty();
+          var totalSize = 0;
+
+          console.log(totalSize);
           files.forEach(function (item, index) {
-            if (checkFileSize(item, 50)) {
-                elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>');
+            if (index == 20){
+                removeFile(item);
+                notify("error", "Files cannot exceed 20!");
+            } else {
+                totalSize += item.size;
+                if (totalSize > 50000000) {
+                    notify("error", "`Total file size cannot exceed 50mb!");
+                } else {
+                    if (!checkFileSize(item, 50)) {
+                        elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>');
+                    }
+                }
             }
           });
         },
@@ -47,27 +60,15 @@ var myDropzone = new FileDropzone({
         }
     });
 
-// function checkFileLength(files, max)
-// {
-//     // console.log(files.length);
-//     if (files.length > max){
-//         notify("error", "Files cannot exceed "+max+" !");
-
-//     }
-
-//     myDropzone.clearAll();
-//     return true;
-// }
-
 function checkFileSize(item, max)
 {
   size = FileDropzone.getFileSize(item, 'mb');
   if (size > max){
     notify('error', 'File Size cannot exceed '+max+'mb');
     myDropzone.removeFile(item);
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 function removeFile(item)
