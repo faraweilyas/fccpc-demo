@@ -817,7 +817,7 @@ class Cases extends Model
         if (!is_numeric($this->applicant_phone_number))
             return false;
 
-        if (strlen($this->applicant_phone_number) < 7 || strlen($this->applicant_phone_number) > 11)
+        if (strlen($this->applicant_phone_number) != 7 && strlen($this->applicant_phone_number) != 11)
             return false;
 
         return true;
