@@ -67,11 +67,15 @@ function checkFileSize(item, max)
     myDropzone.removeFile(item);
     return false;
   }
-  return;
+  return true;
 }
 
 function removeFile(item)
 {
     myDropzone.removeFile(item);
 }
+
+$(".wizard-step").on('click', function () {
+    myDropzone.clearAll();
+});
 
