@@ -11,8 +11,8 @@ var myDropzone = new FileDropzone({
           var files = this.getFiles();
           var elem = this.element.find('.files');
           elem.empty();
-          files.forEach(function (item) {
-            elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '</div>')
+          files.forEach(function (item, index) {
+            elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>')
           });
         },
         onEnter: function () {
@@ -44,3 +44,9 @@ var myDropzone = new FileDropzone({
           return true;
         }
     });
+
+function removeFile(item)
+{
+    myDropzone.removeFile(item);
+}
+

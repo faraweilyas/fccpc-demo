@@ -331,7 +331,7 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ ucfirst($checklistGroup->name) }} and all relevant supporting documents in this section. <br><a href="https://www.fccpc.gov.ng/businesses/mergers/" target="__blank">Click here to download {{ ucfirst($checklistGroup->name) }}</a>
+                                                                    Upload the {{ ucfirst($checklistGroup->name) }} and all relevant supporting documents in this section.
                                                                 </p>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12">
@@ -343,7 +343,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12 mt-4 mb-n3">
                                                                         <p class="text-danger">
-                                                                            Note: Supported file formats are ( .pdf, .jpg, .jpeg)
+                                                                            Note: Supported file formats are ( .pdf, .jpg, .jpeg) and you cannot upload more than 20 files and the total size of uploaded files should not be greater than 50mb.
                                                                         </p>
                                                                     </div>
                                                                     <div class="col-md-12">
