@@ -519,7 +519,7 @@ class Cases extends Model
             ->flatten()
             ->filter()
             ->where('checklist_document.status', $status)
-            ->get();
+            ->toArray();
     }
 
     public function latestSubmittedDocuments()
