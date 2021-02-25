@@ -518,7 +518,7 @@ class Cases extends Model
             ->pluck('checklists')
             ->flatten()
             ->filter()
-            ->where('checklist_document.status', $status)
+            ->where('checklist_document.status', $status);
     }
 
     public function latestSubmittedDocuments()
