@@ -24,7 +24,7 @@
         <div id="kt_aside_menu" class="aside-menu my-4" data-menu-vertical="1" data-menu-scroll="1"
             data-menu-dropdown-timeout="500">
             <ul class="menu-nav">
-                <li class="menu-item " aria-haspopup="true">
+                <li class="menu-item {{ isRouteActive(['dashboard.index']) }}" aria-haspopup="true">
                     <a href="{{ route('dashboard.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <x-icons.dashboard></x-icons.dashboard>
@@ -33,7 +33,7 @@
                     </a>
                 </li>
                 @if(!in_array(\Auth::user()->account_type, ['AD']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu @if(!empty(isRouteActive(['cases.unassigned', 'cases.assigned', 'cases.working_on', 'cases.on-hold', 'cases.approved', 'cases.archived']))) menu-item-open @endif" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <x-icons.mycases></x-icons.mycases>
@@ -51,7 +51,7 @@
                                 </span>
                             </li>
                             @if(in_array(\Auth::user()->account_type, ['SP']))
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.unassigned']) }}" aria-haspopup="true" data-menu-toggle="hover" >
                                 <a href="{{ route('cases.unassigned') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -60,7 +60,7 @@
                                 </a>
                             </li>
                             @endif
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.assigned']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.assigned') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -70,7 +70,7 @@
                                 </a>
                             </li>
                             @if(in_array(\Auth::user()->account_type, ['CH', 'SP']))
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.working_on']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.working_on') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -79,7 +79,7 @@
                                 </a>
                             </li>
                             @endif
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.on-hold']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.on-hold') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -87,7 +87,7 @@
                                     <span class="menu-text">Cases On Hold</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.approved']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.approved') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -95,7 +95,7 @@
                                     <span class="menu-text">Approved Cases</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['cases.archived']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('cases.archived') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -107,7 +107,7 @@
                     </div>
                 </li>
                 @if(in_array(\Auth::user()->account_type,['SP']))
-                <li class="menu-item " aria-haspopup="true">
+                <li class="menu-item {{ isRouteActive(['handlers.index']) }}" aria-haspopup="true">
                     <a href="{{ route('handlers.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <x-icons.case-handler></x-icons.case-handler>
@@ -117,7 +117,7 @@
                 </li>
                 @endif
                 @if(in_array(\Auth::user()->account_type, ['SP', 'AD', 'CH']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu @if(!empty(isRouteActive(['enquiries.logs']))) menu-item-open @endif" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <x-icons.enquire></x-icons.enquire>
@@ -133,7 +133,7 @@
                                     <span class="menu-text">Pre-Notifications</span>
                                 </span>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['enquiries.logs']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('enquiries.logs') }}"
                                     class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
@@ -146,7 +146,7 @@
                     </div>
                 </li>
                 @endif
-                <li class="menu-item " aria-haspopup="true">
+                <li class="menu-item {{ isRouteActive(['dashboard.report']) }}" aria-haspopup="true">
                     <a href="{{ route('dashboard.report') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                             <x-icons.generate-report></x-icons.generate-report>
@@ -156,7 +156,7 @@
                 </li>
                 @endif
                 @if(in_array(\Auth::user()->account_type, ['CH']))
-                <li class="menu-item " aria-haspopup="true">
+                <li class="menu-item {{ isRouteActive(['dashboard.id_requests']) }}" aria-haspopup="true">
                     <a href="{{ route('dashboard.id_requests') }}" class="menu-link">
                         <span class="svg-icon menu-icon">
                              <x-icons.enquire></x-icons.enquire>
@@ -166,7 +166,7 @@
                 </li>
                 @endif
                 @if(in_array(\Auth::user()->account_type, ['AD']))
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu @if(!empty(isRouteActive(['dashboard.create_user', 'dashboard.users']))) menu-item-open @endif" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu_icon_custom">
                             <x-icons.users></x-icons.users>
@@ -177,7 +177,7 @@
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['dashboard.create_user']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('dashboard.create_user') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -185,7 +185,7 @@
                                     <span class="menu-text">Create User</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['dashboard.users']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('dashboard.users') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -196,7 +196,7 @@
                         </ul>
                     </div>
                 </li>
-                <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                <li class="menu-item menu-item-submenu @if(!empty(isRouteActive(['faq.create', 'faq.faqs']))) menu-item-open @endif" aria-haspopup="true" data-menu-toggle="hover">
                     <a href="javascript:;" class="menu-link menu-toggle">
                         <span class="svg-icon menu-icon">
                             <x-icons.faq></x-icons.faq>
@@ -207,7 +207,7 @@
                     <div class="menu-submenu">
                         <i class="menu-arrow"></i>
                         <ul class="menu-subnav">
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['faq.create']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('faq.create') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -215,7 +215,7 @@
                                     <span class="menu-text">Create FAQ</span>
                                 </a>
                             </li>
-                            <li class="menu-item menu-item-submenu" aria-haspopup="true" data-menu-toggle="hover">
+                            <li class="menu-item menu-item-submenu {{ isRouteActive(['faq.faqs']) }}" aria-haspopup="true" data-menu-toggle="hover">
                                 <a href="{{ route('faq.faqs') }}" class="menu-link menu-toggle">
                                     <i class="menu-bullet menu-bullet-line">
                                         <span></span>
@@ -227,7 +227,7 @@
                     </div>
                 </li>
                 @endif
-                <li class="menu-item" aria-haspopup="true">
+                <li class="menu-item {{ isRouteActive(['dashboard.profile']) }}" aria-haspopup="true">
                     <a href="{{ route('dashboard.profile') }}" class="menu-link">
                         <span class="svg-icon menu_icon_custom">
                             <x-icons.user-profile-shield></x-icons.user-profile-shield>

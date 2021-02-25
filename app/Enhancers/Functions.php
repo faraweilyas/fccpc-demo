@@ -377,3 +377,14 @@ function getApplicationFormObject(string $form) : \stdClass
         'file' => isset($form[1]) && !empty($form[1]) ? $form[1] : '',
     ];
 }
+
+/**
+ * Get active route
+ *
+ * @param string $route
+ * @return string
+ */
+function isRouteActive(array $route) : string
+{
+    return in_array(\Route::current()->getName(), $route) ? 'menu-active' : '';
+}

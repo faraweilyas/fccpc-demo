@@ -35,6 +35,11 @@ body {
     font-family: 'Segoe UI Regular' !important;
 }
 
+.menu-active
+{
+    background: #1b1b28 !important;
+}
+
 .remove-dropped
 {
     margin-left: 10px;
