@@ -30,7 +30,6 @@ class ApplicationController extends Controller
     public function test()
     {
         $case           = Cases::find(1);
-        $user           = auth()->user();
         // $oldUser        = User::find(6);
         // $newUser        = User::find(11);
         // $supervisor     = User::find(5);

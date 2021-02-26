@@ -52,9 +52,9 @@ class NewUser extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject("Welcome to FCCPC - Mergers & Acquisition Platform.")
-            ->line("Hi {$this->user->getFirstName()}, Welcome to FCCPC - Mergers & Acquisition Platform.")
-            ->line('An account has been created for you on our platform, click the login button to login.')
+            ->subject("Your Mergers Account Credentials")
+            ->greeting("Hello {$this->user->getFirstName()}!")
+            ->line('An account has been created for you on the Mergers platform. You can now access the Platform to review merger cases assigned to you.')
             ->line('Login Credetials')
             ->line('Email: '.$this->user->email)
             ->line('Password: '.$this->password)
