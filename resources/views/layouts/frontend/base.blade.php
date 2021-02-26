@@ -118,106 +118,159 @@
                           <div class="row footer-info-content-header">
                             About Us
                           </div>
-                          <div class="row footer-info-content-text">
-                            The Commission
-                          </div>
-                          <div class="row footer-info-content-text">
-                            What We Do
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Strategic Goals
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Departments & Units
-                          </div>
-                          <div class="row footer-info-content-text">
-                            People
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Strategic Alliances
-                          </div>
-                          <div class="row footer-info-content-text">
-                            FAQs
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Contact
-                          </div>
+                           <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/commission/">
+                                    The Commission
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/what-we-do/">
+                                    What We Do
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/strategic-goals/">
+                                    Strategic Goals
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/departments/">
+                                    Departments &amp; Units
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/people/">
+                                    People
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/about/alliances/">
+                                    Strategic Alliances
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/faqs/">
+                                    FAQs
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/contact/">
+                                    Contact
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6 footer-content-section">
                           <div class="row footer-info-content-header">
                             Consumers
                           </div>
-                          <div class="row footer-info-content-text">
-                            Consumer Rights
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Consumer Responsibilities
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Complaints Handling
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Procedures
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Import Prohibition List
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Absolutely Prohibited Product
-                          </div>
-                          <div class="row footer-info-content-text">
-                            List
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Testimonials
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Consumer Blog
-                          </div>
+                           <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/consumers/rights/">
+                                    Consumer Rights
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/consumers/responsibilities/">
+                                    Consumer Responsibilities
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/consumers/complaints-handling-procedures/">
+                                    Complaints Handling Procedures
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/consumers/testimonials/">
+                                    Testimonials
+                                </a>
+                            </div>
                         </div>
                       </div>
                     </div>
                     <div class="col-md-7">
                       <div class="row">
                         <div class="col-md-4 footer-content-section">
-                          <div class="row footer-info-content-header">
-                            Businesses
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Business Obligations
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Sales Promotions Regulations and Guidelines
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Register Sales Promotion
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Sales Promotion Documents
-                          </div>
+                            <div class="row footer-info-content-header">
+                                Businesses
+                            </div>
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/businesses/obligations/">
+                                    Business Obligations
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/businesses/register-sales-promotion/">
+                                    Register Sales Promotion
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/businesses/documents/">
+                                    Sales Promotion Documents
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/businesses/mergers/">
+                                    Mergers
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-4 footer-content-section">
                           <div class="row footer-info-content-header">
                             News & Events
                           </div>
-                          <div class="row footer-info-content-text">
-                            Releases
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Speeches
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Annoucements
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Alert/Advisory
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Events
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Gallery
-                          </div>
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/news-events/releases/">
+                                    Releases
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/news-events/announcements/">
+                                    Announcements
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/news-events/alerts/">
+                                    Alert/Advisory
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/news-events/speeches/">
+                                    Speeches
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/blog/">
+                                    Blog
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/news-events/events/">
+                                    Events
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/gallery/">
+                                    Gallery
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-4 footer-content-section">
                           <div class="row footer-info-content-header">
@@ -242,29 +295,63 @@
                     <div class="col-md-5">
                       <div class="row">
                         <div class="col-md-6 footer-content-section">
-                          <div class="row footer-info-content-header">
-                            Guidelines
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Relevant Documents
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Merger Guidelines
-                          </div>
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/guidelines/documents/">
+                                    FCCPA
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/guidelines/sales-promotion-guidelines/">
+                                    Regulations
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/guidelines/merger-guidelines/">
+                                    Guidelines
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/guidelines/other-guidelines/">
+                                    Other Guidelines
+                                </a>
+                            </div>
                         </div>
                         <div class="col-md-6 footer-content-section">
-                          <div class="row footer-info-content-header">
-                            Publications
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Annual Reports
-                          </div>
-                          <div class="row footer-info-content-text">
-                            Consumer Education Materials
-                          </div>
-                          <div class="row footer-info-content-text">
-                            PBOR
-                          </div>
+                           <div class="row footer-info-content-header">
+                                Publications
+                           </div>
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/publications/materials/">
+                                    Business/Consumer Education
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/publications/absolutely-prohibited-list/">
+                                    Absolutely Prohibited Product List
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/publications/import-prohibition-list/">
+                                    Import Prohibition List
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/publications/PBOR">
+                                    PBOR
+                                </a>
+                            </div>
+
+                            <div class="row footer-info-content-text">
+                                <a class="co-gainsboro" target="__blank" href="https://www.fccpc.gov.ng/publications/annual-reports/">
+                                    Annual Reports
+                                </a>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -275,13 +362,13 @@
                             Socials
                           </div>
                           <div class="row footer-info-content-text">
-                            Twitter
+                            <a href="//twitter.com/cpcnig" target="__blank">Twitter</a>
                           </div>
                           <div class="row footer-info-content-text">
-                            Instagram
+                            <a href="//instagram.com/cpcnigeria" target="__blank">Instagram</a>
                           </div>
                           <div class="row footer-info-content-text">
-                            Facebook
+                            <a href="//facebook.com/cpcng" target="__blank">Facebook</a>
                           </div>
                         </div>
                         <div class="col-md-4 footer-content-section">
@@ -289,11 +376,11 @@
                             APPS
                           </div>
                           <div class="row footer-info-content-text">
-                            <img src="{{ FE_IMAGE.'png/playstore.png' }}" alt="playstore" />
+                            <a href="https://play.google.com/store/apps/details?id=com.softcom.cpc.android" target="__blank"><img src="{{ FE_IMAGE.'png/playstore.png' }}" alt="playstore" /></a>
                           </div>
                           <br />
                           <div class="row footer-info-content-text">
-                            <img src="{{ FE_IMAGE.'png/appstore.png' }}" alt="appstore" />
+                            <a><img href="https://itunes.apple.com/us/app/consumer-protection-council/id1355501646?mt=8&ign-mpt=uo%3D4" src="{{ FE_IMAGE.'png/appstore.png' }}" target="__blank" alt="appstore" /></a>
                           </div>
                         </div>
                       </div>
