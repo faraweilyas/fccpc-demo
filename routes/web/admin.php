@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('application')
     ->name('application.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function()
     {
         Route::get(
@@ -85,6 +86,7 @@ Route::prefix('application')
 Route::prefix('pre-notifications')
     ->name('enquiries.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function()
     {
         Route::get(
@@ -131,7 +133,7 @@ Route::prefix('pre-notifications')
 Route::prefix('faq')
     ->name('faq.')
     ->namespace('Backend')
-    ->middleware('auth')
+    ->middleware(['auth', 'XssSanitizer'])
     ->group(function()
     {
         Route::get('create', 'FaqController@create')->name('create');
@@ -155,6 +157,7 @@ Route::prefix('faq')
 Route::prefix('/')
     ->name('dashboard.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function()
     {
         Route::get('dashboard', 'DashboardController@index')->name('index');
@@ -236,6 +239,7 @@ Route::prefix('/')
 Route::prefix('cases')
     ->name('cases.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function()
     {
         Route::get('search', 'CasesController@searchCases')->name('search');
@@ -402,6 +406,7 @@ Route::prefix('cases')
 Route::prefix('handlers')
     ->name('handlers.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function()
     {
         Route::get('/', 'CaseHandlersController@index')->name('index');

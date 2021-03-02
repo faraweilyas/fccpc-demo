@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('applicant')
     ->name('applicant.')
     ->namespace('Backend')
+    ->middleware('XssSanitizer')
     ->group(function () {
         Route::get('/', 'ApplicantController@show')->name('show');
 

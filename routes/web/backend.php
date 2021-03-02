@@ -2,4 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
-Auth::routes();
+Route::middleware('XssSanitizer')
+    ->group(function ()
+{
+    Auth::routes();
+});

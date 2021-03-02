@@ -388,3 +388,22 @@ function isRouteActive(array $route) : string
 {
     return in_array(\Route::current()->getName(), $route) ? 'menu-active' : '';
 }
+
+/**
+* Clean string
+*
+* @param string $string
+*
+* @return string
+*/
+function cleanString($string, $strip = TRUE) {
+    $string = trim($string);
+    $string = stripslashes($string);
+     if ($strip)
+        return strip_tags($string);
+
+    $string = htmlspecialchars($string, ENT_QUOTES);
+    $string = filter_var($string, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+
+    return $string;
+}

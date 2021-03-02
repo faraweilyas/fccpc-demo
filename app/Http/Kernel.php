@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'validate.tracking_id' => \App\Http\Middleware\ValidateTrackingId::class,
         'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
+        'XssSanitizer' => \App\Http\Middleware\XssSanitization::class,
     ];
 }
