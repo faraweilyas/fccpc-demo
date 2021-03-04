@@ -14,7 +14,7 @@ var myDropzone = new FileDropzone({
           var totalSize = 0;
 
           files.forEach(function (item, index) {
-            if (index > 20){
+            if (index >= 20){
                 removeFile(item);
                 notify("error", "Files cannot exceed 20!");
             } else {
