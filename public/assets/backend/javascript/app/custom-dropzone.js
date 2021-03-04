@@ -13,9 +13,8 @@ var myDropzone = new FileDropzone({
           elem.empty();
           var totalSize = 0;
 
-          console.log(totalSize);
           files.forEach(function (item, index) {
-            if (index == 20){
+            if (index > 20){
                 removeFile(item);
                 notify("error", "Files cannot exceed 20!");
             } else {
@@ -24,7 +23,7 @@ var myDropzone = new FileDropzone({
                     notify("error", "`Total file size cannot exceed 50mb!");
                 } else {
                     if (!checkFileSize(item, 50)) {
-                        elem.append('<div class="file-name" data-id="' + item.id + '">' + item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>');
+                        elem.append('<div class="file-name" data-id="' + item.id + '">'+ item.name + '<span class="la la-trash remove-dropped" onclick="removeFile('+ index +')"></span></div>');
                     }
                 }
             }
