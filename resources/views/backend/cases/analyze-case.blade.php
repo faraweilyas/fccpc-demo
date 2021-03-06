@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="conatiner px-5 py-5 relative">
-        @if (!$case->isCaseOnHold())
+        @if (!$case->isCaseOnHold() && $case->isCaseChecklistsApproved())
             <button
                 class="btn btn-success-transparent"
                 data-toggle="modal"
