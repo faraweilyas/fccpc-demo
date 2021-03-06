@@ -26,6 +26,11 @@ class Cases extends Model
         return false;
     }
 
+    public function publication()
+    {
+        return $this->belongsTo(Publication::class, 'case_id');
+    }
+
     public function guest()
     {
         return $this->belongsTo(Guest::class);

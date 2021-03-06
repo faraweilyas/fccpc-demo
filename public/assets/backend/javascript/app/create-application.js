@@ -724,14 +724,14 @@ $(document).ready(function()
     $("#upload-info").on('click', function(event)
     {
         event.preventDefault();
-        var declaration_name = $("#declaration_name").val(),
-            declaration_rep  = $("#declaration_rep").val();
+        // var declaration_name = $("#declaration_name").val(),
+        //     declaration_rep  = $("#declaration_rep").val();
 
-        if (declaration_name == '' || declaration_rep == '')
-        {
-            toastr.error("Please provide your name and representing firm");
-            return;
-        }
+        // if (declaration_name == '' || declaration_rep == '')
+        // {
+        //     toastr.error("Please provide your name and representing firm");
+        //     return;
+        // }
 
         swal.fire({
             title: "Are you sure?",
