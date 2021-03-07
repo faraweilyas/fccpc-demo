@@ -647,6 +647,12 @@ class Cases extends Model
         return $newApplicationForms;
     }
 
+    public function getPublicationText(bool $escape_html_entity=FALSE)
+    {
+        $publicationText = $this->publication->text ?? $this->form_1A_Text;
+        return ($escape_html_entity) ? html_entity_decode($publicationText) : $publicationText;
+    }
+
     // ...
     public function getCaseStatus($textStyle='strtolower')
     {
