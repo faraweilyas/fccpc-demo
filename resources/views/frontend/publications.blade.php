@@ -27,11 +27,15 @@
                         </a>
                         <span>Case type: {{ $publication->case->getType() }}</span>
                         <span>Case category: {{ $publication->case->getCategoryText() }}</span>
-                        <span>Case state: Open </span>
+                        @if ($publication->case->isApprovalApproved())
+                            <span>Case state: Closed </span>
+                        @else
+                            <span>Case state: Open </span>
+                        @endif
                         <span>Opened: {{ $publication->case->getSubmittedAt() }} </span>
-                        {{-- @if ($publication->case->checkApprovalApproved())
-                            <span>Closed: {{ $publication->case->caseCloseAt() }}</span>
-                        @endif --}}
+                        @if ($publication->case->isApprovalApproved())
+                            <span>Closed: {{ $publication->case->caseClosedAt() }}</span>
+                        @endif
                     <hr />
                 @endforeach
             </div>

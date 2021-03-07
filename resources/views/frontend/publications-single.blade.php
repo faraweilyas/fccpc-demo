@@ -8,11 +8,18 @@
                 <a href="#">
                     <h1>{{ ucfirst($publication->case->subject) }}</h1>
                 </a>
-                <span>Case type: Mergers</span>
-                <span>Case category: Small</span>
-                <span>Case state: Open </span>
-                <span>Opened: 5 March 2021 </span>
-                <span>Closed: 5 March 2021 </span>
+                <span>Case type: {{ $publication->case->getType() }}</span>
+                <span>Case category: {{ $publication->case->getCategoryText() }}</span>
+                @if ($publication->case->isApprovalApproved())
+                    <span>Case state: Closed </span>
+                @else
+                    <span>Case state: Open </span>
+                @endif
+                <span>Opened: {{ $publication->case->getSubmittedAt() }} </span>
+                @if ($publication->case->isApprovalApproved())
+                    <span>Closed: {{ $publication->case->caseClosedAt() }}</span>
+                @endif
+                <span>Published: {{ $publication->getPublishedAt() }} </span>
                 <hr />
                 {!! html_entity_decode($publication->text) !!}
             </div>

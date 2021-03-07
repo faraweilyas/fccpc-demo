@@ -27,4 +27,9 @@ class Publication extends Model
 
         return formatNumber($count, TRUE);
     }
+
+    public function getPublishedAt($format = 'customdate')
+    {
+        return datetimeToText($this->published_at, $format);
+    }
 }
