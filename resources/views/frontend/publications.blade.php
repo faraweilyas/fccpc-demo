@@ -25,11 +25,13 @@
                         <a href="{{ route('home.publications.view', ['slug' => $publication->slug]) }}">
                             <h3>{{ ucfirst($publication->case->subject) }}</h3>
                         </a>
-                        <span>Case type: Mergers</span>
-                        <span>Case category: Small</span>
+                        <span>Case type: {{ $publication->case->getType() }}</span>
+                        <span>Case category: {{ $publication->case->getCategoryText() }}</span>
                         <span>Case state: Open </span>
-                        <span>Opened: 5 March 2021 </span>
-                        <span>Closed: 5 March 2021 </span>
+                        <span>Opened: {{ $publication->case->getSubmittedAt() }} </span>
+                        {{-- @if ($publication->case->checkApprovalApproved())
+                            <span>Closed: {{ $publication->case->caseCloseAt() }}</span>
+                        @endif --}}
                     <hr />
                 @endforeach
             </div>

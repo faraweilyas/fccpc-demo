@@ -507,6 +507,8 @@ class CasesController extends Controller
             $case->publication->update([
                 'text'    => cleanString(request("content"), FALSE)
             ]);
+
+            $publication = $case->publication;
         else:
             $publication = Publication::create([
                 'case_id' => $case->id,
@@ -519,7 +521,7 @@ class CasesController extends Controller
             $message = "Publication has been saved";
 
         if (request()->has("publish")):
-            $case->publication->update([
+            $publication->update([
                 'text'         => cleanString(request("content"), FALSE),
                 'published_at' => now()
             ]);

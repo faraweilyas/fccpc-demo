@@ -120,6 +120,14 @@ class Cases extends Model
         return !$this->isRecommendationIssued();
     }
 
+    public function caseCloseAt($customdate = 'customdate'){
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return datetimeToText($active_handler->case_handler->approval_requested_at, $customdate);
+    }
+
     public function checkApprovalApproved() : bool
     {
         if ($this->isApprovalApproved())
