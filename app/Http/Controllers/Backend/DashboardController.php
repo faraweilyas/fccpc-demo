@@ -31,6 +31,9 @@ class DashboardController extends Controller
 	 */
     public function index()
     {
+        if (!auth()->user()->changed_password)
+            return redirect()->route('dashboard.update_password');
+
         if (in_array(\Auth::user()->account_type, ['SP'])):
             $new_cases = (new Cases())->unassignedCases()->take(5);
         else:
@@ -44,6 +47,39 @@ class DashboardController extends Controller
         $description      = "FCCPC Dashboard";
     	$details          = details($title, $description);
     	return view('backend.admin.index', compact('details', 'cases', 'new_cases'));
+    }
+
+    /**
+     * Handles the update user password page route.
+     * @return void
+     */
+    public function updatePassword()
+    {
+        if (auth()->user()->changed_password)
+            return redirect()->route('dashboard.index');
+
+        $title            = APP_NAME;
+        $description      = "FCCPC Update Password";
+        $details          = details($title, $description);
+        return view('backend.admin.update-password', compact('details'));
+    }
+
+    /**
+     * Handles the store update user password page route.
+     * @return void
+     */
+    public function storeUpdatePassword()
+    {
+        request()->validate([
+            'password'  => ['required', 'string', 'confirmed'],
+        ]);
+
+        $data = auth()->user()->update([
+            'password'         => Hash::make(request('password')),
+            'changed_password' => 1
+        ]);
+
+        return redirect()->route('dashboard.index')->with('success', 'Password updated!');
     }
 
     /**

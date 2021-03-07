@@ -161,6 +161,8 @@ Route::prefix('/')
     ->group(function()
     {
         Route::get('dashboard', 'DashboardController@index')->name('index');
+        Route::get('update-password', 'DashboardController@updatePassword')->name('update_password');
+        Route::post('update-password', 'DashboardController@storeUpdatePassword')->name('update_password');
 
         Route::get('user/create', 'DashboardController@createUser')->name(
             'create_user'
