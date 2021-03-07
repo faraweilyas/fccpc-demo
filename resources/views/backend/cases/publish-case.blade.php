@@ -48,16 +48,9 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Form 1A Content</label> <span class="text-danger">*</span>
-                                        <textarea
-                                            class="summernote kt_maxlength_5 max_text"
-                                            id="summernote"
-                                            name="content"
-                                            value="{{ $case->getPublicationText() }}"
-                                        >
-                                            {!! $case->getPublicationText(TRUE) !!}
-                                        </textarea>
+                                        <textarea class="summernote kt_maxlength_5 max_text" id="summernote" name="content" value="{{ $case->publication->text ?? '' }}">{!! html_entity_decode($case->publication->text ?? $case->form_1A_Text) !!}</textarea>
                                         @error('content')
-                                            <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                        <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                         @enderror
                                     </div>
                                 </div>

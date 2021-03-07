@@ -26,7 +26,7 @@ Route::name('home.')
         ->name('publications');
 
         Route::get(
-            'publications/{publication}',
+            'publications/{slug}',
             'HomeController@publicationView'
         )
         ->name('publications.view');

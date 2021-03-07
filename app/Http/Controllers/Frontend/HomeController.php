@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Faq;
 use App\Models\Feedback;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -44,11 +45,13 @@ class HomeController extends Controller
      */
     public function publications()
     {
+        // $search           = $_GET['search'] ?? "";
+        $publications = Publication::where('published_at', '!=', NULL)->paginate(1);
         $title = 'Publications - ' . APP_NAME;
         $description =
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
         $details = details($title, $description);
-        return view('frontend.publications', compact('details'));
+        return view('frontend.publications', compact('details' , 'publications'));
     }
 
     /**
@@ -56,8 +59,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
-    public function publicationView($publication)
+    public function publicationView($slug)
     {
+        $publication = Publication::where('slug', $slug)->first();
         $title = 'Publications - ' . APP_NAME;
         $description =
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
 use App\Models\Publication;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Mail\IssueDeficiencyEmail;
 use App\Http\Controllers\Controller;
@@ -507,8 +508,9 @@ class CasesController extends Controller
                 'text'    => cleanString(request("content"), FALSE)
             ]);
         else:
-            Publication::create([
+            $publication = Publication::create([
                 'case_id' => $case->id,
+                'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
                 'text'    => cleanString(request("content"), FALSE)
             ]);
         endif;

@@ -72,7 +72,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('enquiries.create', ['type' => 'prn']) }}">Pre-Notification</a>
             </li>
-            <li class="nav-item hide">
+            <li class="nav-item">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
             </li>
             <li class="nav-item">
