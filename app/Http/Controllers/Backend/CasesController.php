@@ -505,7 +505,8 @@ class CasesController extends Controller
 
         if (!empty($case->publication)):
             $case->publication->update([
-                'text'    => cleanString(request("content"), FALSE)
+                'text'    => cleanString(request("content"), FALSE),
+                'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
             ]);
 
             $publication = $case->publication;
@@ -523,6 +524,7 @@ class CasesController extends Controller
         if (request()->has("publish")):
             $publication->update([
                 'text'         => cleanString(request("content"), FALSE),
+                'slug'         => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
                 'published_at' => now()
             ]);
 
