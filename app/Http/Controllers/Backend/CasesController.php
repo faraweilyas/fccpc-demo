@@ -495,6 +495,10 @@ class CasesController extends Controller
             'content' => 'required',
         ]);
 
+        $active_case_handler    = $case->active_handlers->first()->case_handler;
+        $case_handler           = User::find($active_case_handler->handler_id);
+        $supervisor             = User::find($active_case_handler->supervisor_id);
+
         // if ($case->publication->isPublished())
         //     return redirect()->back()->with("error", "Publication already published!");
 
@@ -518,7 +522,13 @@ class CasesController extends Controller
                 'published_at' => now()
             ]);
 
-            auth()->user()->notify(new CaseActionNotifier(
+            $case_handler->notify(new CaseActionNotifier(
+                'new_publication',
+                'Publication has been published.',
+                $case->id
+            ));
+
+            $supervisor->notify(new CaseActionNotifier(
                 'new_publication',
                 'Publication has been published.',
                 $case->id

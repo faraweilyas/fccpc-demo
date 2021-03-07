@@ -22,8 +22,8 @@
         <div class="d-flex flex-column-fluid">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-custom gutter-b example example-compact">
+                    <div class="col-md-8 mx-auto">
+                        <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Create New Case Handler</h3>
                             </div>
@@ -31,7 +31,7 @@
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-md-7">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>First Name</label> <span class="text-danger">*</span>
                                                 <input type="text" class="form-control" placeholder="Enter first name"
@@ -41,6 +41,8 @@
                                                 <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                                 @enderror
                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Name</label> <span class="text-danger">*</span>
                                                 <input type="text" class="form-control" placeholder="Enter last name"
@@ -50,6 +52,10 @@
                                                 <p class="text-danger text-left mt-2">* {{ $message }}</p>
                                                 @enderror
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Email</label> <span class="text-danger">*</span>
                                                 <input type="email" class="form-control" placeholder="Enter email"

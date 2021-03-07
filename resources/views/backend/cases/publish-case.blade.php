@@ -34,39 +34,35 @@
             </div>
         </div>
     </div>
-    <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
-        <div class="d-flex flex-column-fluid">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card card-custom gutter-b example example-compact">
-                            <div class="card-header">
-                                <h3 class="card-title">Publish Case</h3>
-                            </div>
-                            <form method="POST" action="{{ route("cases.publish", ['case' => $case]) }}">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Form 1A Content</label> <span class="text-danger">*</span>
-                                                <textarea class="summernote kt_maxlength_5 max_text" id="summernote" name="content" value="{{ $case->publication->text }}">{!! html_entity_decode($case->publication->text ?? $case->form_1A_Text) !!}</textarea>
-                                                @error('content')
-                                                <p class="text-danger text-left mt-2">* {{ $message }}</p>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-7 text-right">
-                                            <button type="submit" name="save" class="btn btn-light-primary mr-2">Save</button>
-                                            <button type="submit" name="publish" class="btn btn-primary mr-2">Save &amp; Publish</button>
-                                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Publish Case</h3>
+                    </div>
+                    <form method="POST" action="{{ route("cases.publish", ['case' => $case]) }}">
+                        @csrf
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Form 1A Content</label> <span class="text-danger">*</span>
+                                        <textarea class="summernote kt_maxlength_5 max_text" id="summernote" name="content" value="{{ $case->publication->text }}">{!! html_entity_decode($case->publication->text ?? $case->form_1A_Text) !!}</textarea>
+                                        @error('content')
+                                        <p class="text-danger text-left mt-2">* {{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
-                            </form>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-7 text-right">
+                                    <button type="submit" name="save" class="btn btn-light-primary mr-2">Save</button>
+                                    <button type="submit" name="publish" class="btn btn-primary mr-2">Save &amp; Publish</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
