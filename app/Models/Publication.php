@@ -18,7 +18,8 @@ class Publication extends Model
         return !empty($this->published_at) ? true : false;
     }
 
-    public function getTotalPublications($count, $count_text = FALSE){
+    public function getTotalPublications($count, $count_text = FALSE)
+    {
         $count_text = ($count > 1) ? 'cases' : 'case';
 
         if ($count_text)
