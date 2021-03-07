@@ -45,8 +45,13 @@ class HomeController extends Controller
      */
     public function publications()
     {
-        $search           = $_GET['search'] ?? "";
-        $publications     = Publication::where('published_at', '!=', NULL)->orderBy('id', 'DESC')->paginate(10);
+        $search           = $_GET['query'] ?? "";
+        $publications     = Publication::where('published_at', '!=', NULL)->whereHas('case', function ($query) use (&$search) {
+            $query->where('subject', 'like', '%'.$search.'%');
+        })
+        ->orderBy('id', 'DESC')
+        ->paginate(1);
+
         $title = 'Publications - ' . APP_NAME;
         $description =
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';

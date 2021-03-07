@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="form-group">
-                    <form id="faqSearchForm" method="GET" action="{{ route('home.faqs.search') }}">
-                        <input class="form-control faq-search-input" type="text" name="query" placeholder="Search">
+                    <form id="faqSearchForm" method="GET" action="{{ route('home.publications') }}">
+                        <input class="form-control faq-search-input" type="text" name="query" placeholder="Search" value="{{ $_GET['query'] ?? "" }}">
                     </form>
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <div class="col-md-8 mx-auto case__info">
                 <h3>
                     <b>
-                        {{ (new App\Models\Publication)->getTotalPublications(TRUE) }}
+                        {{ (new App\Models\Publication)->getTotalPublications($publications->total(), TRUE) }}
                     </b>
                 </h3>
                 <hr />
