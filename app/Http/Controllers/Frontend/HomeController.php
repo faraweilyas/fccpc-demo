@@ -45,7 +45,7 @@ class HomeController extends Controller
      */
     public function publications()
     {
-        // $search           = $_GET['search'] ?? "";
+        $search           = $_GET['search'] ?? "";
         $publications = Publication::where('published_at', '!=', NULL)->paginate(1);
         $title = 'Publications - ' . APP_NAME;
         $description =
