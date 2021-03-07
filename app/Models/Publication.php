@@ -12,4 +12,9 @@ class Publication extends Model
     {
         return $this->belongsTo(Cases::class, 'case_id');
     }
+
+    public function isPublished()
+    {
+        return !empty($this->published_at) ? true : false;
+    }
 }

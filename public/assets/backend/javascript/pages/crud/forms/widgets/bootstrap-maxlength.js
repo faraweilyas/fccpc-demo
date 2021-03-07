@@ -43,6 +43,12 @@ var KTBootstrapMaxlength = function () {
             limitReachedClass: "label label-primary label-rounded label-inline"
         });
 
+        $('.kt_maxlength_5').maxlength({
+            threshold: 5,
+            warningClass: "label label-danger label-rounded label-inline",
+            limitReachedClass: "label label-primary label-rounded label-inline"
+        });
+
         // position examples
         $('#kt_maxlength_6_1').maxlength({
             alwaysShow: true,

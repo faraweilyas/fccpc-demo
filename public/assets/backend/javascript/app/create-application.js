@@ -811,13 +811,20 @@ $(document).ready(function()
     });
 
     $("#save-form1A-info").on('click', function (event) {
-        var name     = $("#form1a_declaration_name").val(),
-            position = $("#form1a_declaration_position").val();
+        var name        = $("#form1a_declaration_name").val(),
+            position    = $("#form1a_declaration_position").val(),
+            form_text   = $(".form1a_declaration_text").val();
+
+        if (form_text.length > 500)
+        {
+            notify("error", "Text cannot exceed 500 characters!");
+            return;
+        }
 
         if (name !== '' && position !== '') {
             var tracking_id            = $("#tracking_id").val(),
-                formData               = new FormData(),
-                form_text              = $(".form1a_declaration_text").val();
+                formData               = new FormData();
+
 
             $("#save-form1A-info").toggle();
             $("#save-form1A-upload-img").removeClass('hide');

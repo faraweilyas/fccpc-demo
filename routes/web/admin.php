@@ -298,6 +298,16 @@ Route::prefix('cases')
         )->name('analyze');
 
         Route::get(
+            'publish/{case}',
+            'CasesController@publishCase'
+        )->name('publish')->withoutMiddleware('XssSanitizer');
+
+        Route::post(
+            'publish/{case}',
+            'CasesController@strorePublishCase'
+        )->name('cases.publish')->withoutMiddleware('XssSanitizer');
+
+        Route::get(
             'analyze-documents/{case}',
             'CasesController@analyzeCaseDocuments'
         )->name('analyze-documents');

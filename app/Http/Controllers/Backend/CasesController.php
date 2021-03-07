@@ -6,6 +6,7 @@ use PDF;
 use App\Models\User;
 use App\Models\Cases;
 use App\Models\Document;
+use App\Models\Publication;
 use Illuminate\Http\Request;
 use App\Mail\IssueDeficiencyEmail;
 use App\Http\Controllers\Controller;
@@ -456,6 +457,78 @@ class CasesController extends Controller
         $description    = 'FCCPC Case Analysis Dashboard';
         $details        = details($title, $description);
         return view('backend.cases.analyze-case', compact('details', 'case', 'caseHandlers', 'supervisors'));
+    }
+
+    /**
+     * Handles the publish case page route.
+     *
+     * @return void
+     */
+    public function publishCase(Cases $case)
+    {
+        $authUser = auth()->user();
+
+        if ($authUser->isAdmin())
+            return redirect()->back();
+
+        if ($authUser->isCaseHandler()):
+            if (!$authUser->isHandlerSame($case, $authUser))
+                return redirect()->back();
+        endif;
+
+        $caseHandlers   = (new User())->caseHandlers();
+        $supervisors    = (new User())->supervisors();
+        $title          = APP_NAME;
+        $description    = 'FCCPC Case Analysis Dashboard';
+        $details        = details($title, $description);
+        return view('backend.cases.publish-case', compact('details', 'case'));
+    }
+
+    /**
+     * Handles the storing of publish case page route.
+     *
+     * @return void
+     */
+    public function strorePublishCase(Cases $case)
+    {
+        request()->validate([
+            'content' => 'required',
+        ]);
+
+        // if ($case->publication->isPublished())
+        //     return redirect()->back()->with("error", "Publication already published!");
+
+        if (!empty($case->publication)):
+            $case->publication->update([
+                'text'    => cleanString(request("content"), FALSE)
+            ]);
+        else:
+            Publication::create([
+                'case_id' => $case->id,
+                'text'    => cleanString(request("content"), FALSE)
+            ]);
+        endif;
+
+        if (request()->has("save"))
+            $message = "Publication has been saved";
+
+        if (request()->has("publish")):
+            $case->publication->update([
+                'text'         => cleanString(request("content"), FALSE),
+                'published_at' => now()
+            ]);
+
+            auth()->user()->notify(new CaseActionNotifier(
+                'new_publication',
+                'Publication has been published.',
+                $case->id
+            ));
+
+            $message = "Publication has been published";
+            // return redirect()->route("cases.analyze", ['case' => $case])->with('success', $message);
+        endif;
+
+        return redirect()->back()->with('success', $message);
     }
 
     /*

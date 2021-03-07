@@ -29,11 +29,19 @@
     <div class="conatiner px-5 py-5 relative">
         @if (!$case->isCaseOnHold() && $case->isCaseChecklistsApproved())
             <button
-                class="btn btn-success-transparent"
+                class="btn btn-success-transparent mr-40"
                 data-toggle="modal"
                 data-target="#viewDeficiencyModal"
             >
                 Request For Document
+            </button>
+        @endif
+        @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP', 'CH']))
+            <button
+                    class="btn btn-success-transparent"
+                    onclick="window.location.href='{{ route('cases.publish', ['case' => $case]) }}'"
+            >
+               Publish Form 1A
             </button>
         @endif
         @php

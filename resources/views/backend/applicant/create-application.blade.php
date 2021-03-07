@@ -369,7 +369,7 @@
                                                                             $file_count = 1;
                                                                         @endphp
                                                                         @foreach($document->getFileArray() as $key => $file)
-                                                                            <div class="col-md-12 my-1">
+                                                                            <div class="col-md-6 my-1">
                                                                                 <span>
                                                                                     <a
                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
@@ -500,7 +500,7 @@
                                                                             $file_count = 1;
                                                                         @endphp
                                                                         @foreach($document->getFileArray() as $key => $file)
-                                                                            <div class="col-md-12 my-1">
+                                                                            <div class="col-md-6 my-1">
                                                                                 <span>
                                                                                     <a
                                                                                         href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"

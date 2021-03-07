@@ -28,7 +28,7 @@ class Cases extends Model
 
     public function publication()
     {
-        return $this->belongsTo(Publication::class, 'case_id');
+        return $this->hasOne(Publication::class, 'case_id');
     }
 
     public function guest()
