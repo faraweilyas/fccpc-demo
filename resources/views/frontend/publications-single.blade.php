@@ -21,7 +21,7 @@
                 @endif
                 <span>Published: {{ $publication->getPublishedAt() }} </span>
                 <hr />
-                {!! html_entity_decode($publication->text) !!}
+                <p>{!! html_entity_decode($publication->text) !!}</p>
             </div>
         </div>
     </div>

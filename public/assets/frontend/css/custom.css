@@ -34,15 +34,46 @@ body {
     font-family: 'Segoe UI Regular' !important;
 }
 
+.clearfix
+{
+    clear: both;
+}
+
+.publication__checkbox input[type=checkbox] {
+    margin: 7px 0 0 !important;
+    line-height: normal;
+}
+
+.publication__btn
+{
+    font-size: 1.5rem !important;
+    color: #000 !important;
+}
+
+.bg_transparent
+{
+    background: transparent !important;
+}
+
+.publication__checkbox .form-check-label {
+    margin: 0 2rem !important;
+    font-size: 1.5rem !important;
+}
+
+.case__info a h3
+{
+    font-size: 2.4rem;
+}
+
 .case__info span
 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-right: 10px;
 }
 
 .case__info p
 {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
 }
 
 .container-fluid

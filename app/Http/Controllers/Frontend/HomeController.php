@@ -45,11 +45,20 @@ class HomeController extends Controller
      */
     public function publications()
     {
-        $search           = $_GET['query'] ?? "";
+        $search               = $_GET['query'] ?? "";
+        $case_type1           = $_GET['case_type1'] ?? "";
+        $case_type2           = $_GET['case_type2'] ?? "";
+        // return request('case_type');
         $publications     = Publication::where('published_at', '!=', NULL)
-                            ->whereHas('case', function($query) use (&$search)
+                            ->whereHas('case', function($query) use (&$search, &$case_type1, &$case_type2)
                             {
-                                $query->where('subject', 'like', '%'.$search.'%');
+                                if (!empty($case_type1) || !empty($case_type2)):
+                                    $query->where('subject', 'like', '%'.$search.'%')
+                                        ->whereIn('case_type', [$case_type1, $case_type2])
+                                        ->orWhereIn('case_category', ['']);
+                                else:
+                                    $query->where('subject', 'like', '%'.$search.'%');
+                                endif;
                             })
                             ->orderBy('id', 'DESC')
                             ->paginate(10);
