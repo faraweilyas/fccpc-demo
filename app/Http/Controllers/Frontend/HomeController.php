@@ -54,8 +54,8 @@ class HomeController extends Controller
                             {
                                 if (!empty($case_type1) || !empty($case_type2)):
                                     $query->where('subject', 'like', '%'.$search.'%')
-                                        ->whereIn('case_type', [$case_type1, $case_type2])
-                                        ->orWhereIn('case_category', ['']);
+                                        ->whereIn('case_type', [$case_type1, $case_type2]);
+                                        // ->orWhereIn('case_category', ['']);
                                 else:
                                     $query->where('subject', 'like', '%'.$search.'%');
                                 endif;
