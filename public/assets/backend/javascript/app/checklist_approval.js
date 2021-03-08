@@ -251,7 +251,7 @@ $(document).ready(function ()
                 $('#issue-deficiency').removeClass('hide');
                 swal.fire(
                     "Deficiency Not Successful!",
-                    "Applicant has been not notified!",
+                    "Applicant has not been notified!",
                     "error"
                 );
             }
