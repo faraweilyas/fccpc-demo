@@ -284,8 +284,23 @@ $(document).ready(function ()
                         var result = JSON.parse(response);
                         $("#approving_checklists").addClass('hide');
                         $('#approve-checklists').toggle();
-                        toastr.success("Checklists has been approved!");
-                        window.location.href = analyze_case_route;
+                               swal.fire(
+                            "Success!",
+                            "Checklists has been approved!",
+                            "success"
+                        ).then(function()
+                        {
+                            window.location.href = analyze_case_route;
+                        });
+                    },
+                    error: function (err) {
+                        $("#approving_checklists").addClass('hide');
+                        $('#approve-checklists').toggle();
+                        swal.fire(
+                            "Error!",
+                            "Checklists has not been approved!",
+                            "error"
+                        );
                     }
                 });
             }
