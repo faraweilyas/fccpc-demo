@@ -472,6 +472,9 @@ class CasesController extends Controller
         if ($authUser->isAdmin())
             return redirect()->back();
 
+        if ($case->active_handlers->count() <= 0)
+            return back();
+
         if ($authUser->isCaseHandler()):
             if (!$authUser->isHandlerSame($case, $authUser))
                 return redirect()->back();

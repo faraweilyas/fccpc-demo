@@ -36,13 +36,15 @@
                 Request For Document
             </button>
         @endif
-        @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP', 'CH']))
-            <button
-                    class="btn btn-success-transparent"
-                    onclick="window.location.href='{{ route('cases.publish', ['case' => $case]) }}'"
-            >
-               Publish Form 1A
-            </button>
+        @if ($case->active_handlers->count() > 0)
+            @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP', 'CH']))
+                <button
+                        class="btn btn-success-transparent"
+                        onclick="window.location.href='{{ route('cases.publish', ['case' => $case]) }}'"
+                >
+                   Publish Form 1A
+                </button>
+            @endif
         @endif
         @php
             $approvedIcon       = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
