@@ -66,7 +66,7 @@ class HomeController extends Controller
                             {
                                 $query->where('subject', 'like', '%'.$search.'%');
                                 if (!empty($case_type1) || !empty($case_type2))
-                                        $query->whereIn('case_type', [$case_type1, $case_type2]);
+                                    $query->whereIn('case_type', [$case_type1, $case_type2]);
 
                                 if (!empty($case_category1) || !empty($case_category2) || !empty($case_category3))
                                     $query->whereIn('case_category', [$case_category1, $case_category2, $case_category3]);
