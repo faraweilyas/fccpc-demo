@@ -4,7 +4,7 @@
 <div class="page-content my-5">
     <div class="container row-top">
         <div class="row">
-            <div class="col-md-10 mx-auto case__info">
+            <div class="col-md-8 mx-auto case__info">
                 <a href="#">
                     <h1>{{ ucfirst($publication->case->subject) }}</h1>
                 </a>

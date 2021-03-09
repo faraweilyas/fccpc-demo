@@ -78,8 +78,7 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('#summernote').summernote({
-                height: 200,
-                fontSize: 42
+                height: 200
             });
         });
     </script>
