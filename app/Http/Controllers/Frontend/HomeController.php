@@ -87,31 +87,7 @@ class HomeController extends Controller
      */
     public function publicationView($slug)
     {
-        $search               = $_GET['query'] ?? "";
-        $case_type1           = $_GET['case_type1'] ?? "";
-        $case_type2           = $_GET['case_type2'] ?? "";
-        $case_category1       = $_GET['case_category1'] ?? "";
-        $case_category2       = $_GET['case_category2'] ?? "";
-        $case_category3       = $_GET['case_category3'] ?? "";
-
-        $publication = Publication::where('slug', $slug)->whereHas('case',
-                                function($query)
-                                use (
-                                        $search,
-                                        $case_type1,
-                                        $case_type2,
-                                        $case_category1,
-                                        $case_category2,
-                                        $case_category3
-                                )
-                            {
-                                $query->where('subject', 'like', '%'.$search.'%');
-                                if (!empty($case_type1) || !empty($case_type2))
-                                        $query->whereIn('case_type', [$case_type1, $case_type2]);
-
-                                if (!empty($case_category1) || !empty($case_category2) || !empty($case_category3))
-                                    $query->whereIn('case_category', [$case_category1, $case_category2, $case_category3]);
-                            })->first();
+        $publication = Publication::where('slug', $slug)->first();
         $title = 'Publications - ' . APP_NAME;
         $description =
             'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
