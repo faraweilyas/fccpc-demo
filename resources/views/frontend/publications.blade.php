@@ -77,12 +77,6 @@
                                                     Simplified Procedure (Form 2)
                                                 </span>
                                             </label>
-                                            <label class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="case_category3" value="FFX" @isset($_GET['case_category3']) checked @endif>
-                                                <span class="form-check-label">
-                                                    Negative Clearance (Form 4)
-                                                </span>
-                                            </label>
                                         </div>
                                     </div>
                                 </div>
