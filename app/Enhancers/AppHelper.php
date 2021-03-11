@@ -60,7 +60,7 @@ class AppHelper
 
     protected $recommendation_types = [
         'Approve'   => 'Approved',
-        'Reject'   => 'Rejected',
+        'Reject'    => 'Rejected',
     ];
 
 	protected $case_categories = [
