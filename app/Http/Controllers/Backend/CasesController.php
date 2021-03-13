@@ -506,12 +506,12 @@ class CasesController extends Controller
         // if ($case->publication->isPublished())
         //     return redirect()->back()->with("error", "Publication already published!");
 
-        if (empty($case->publication)):
+        if (!empty($case->publication)):
             $case->publication->update([
                 'text'    => cleanString(request("content"), FALSE),
             ]);
 
-            if (!empty($case->publication->slug)):
+            if (empty($case->publication->slug)):
                 $case->publication->update([
                     'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
                 ]);
@@ -541,17 +541,17 @@ class CasesController extends Controller
                 ]);
             endif;
 
-            $case_handler->notify(new CaseActionNotifier(
-                'new_publication',
-                'Publication has been published.',
-                $case->id
-            ));
+            // $case_handler->notify(new CaseActionNotifier(
+            //     'new_publication',
+            //     'Publication has been published.',
+            //     $case->id
+            // ));
 
-            $supervisor->notify(new CaseActionNotifier(
-                'new_publication',
-                'Publication has been published.',
-                $case->id
-            ));
+            // $supervisor->notify(new CaseActionNotifier(
+            //     'new_publication',
+            //     'Publication has been published.',
+            //     $case->id
+            // ));
 
             $message = "Publication has been published";
             // return redirect()->route("cases.analyze", ['case' => $case])->with('success', $message);
