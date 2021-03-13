@@ -26,7 +26,7 @@
                         <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
                             <div class="alert-text text-dark">
                                 <i class="la la-info text-dark"></i>
-                               All electronic copies of relevant application forms and supporting documents must be provided in a useable and searchable format.
+                               <b style="font-size: 1.1rem;">All electronic copies of relevant application forms and supporting documents must be provided in a useable and searchable format.</b>
                             </div>
                         </div>
                     </div>
