@@ -506,11 +506,16 @@ class CasesController extends Controller
         // if ($case->publication->isPublished())
         //     return redirect()->back()->with("error", "Publication already published!");
 
-        if (!empty($case->publication)):
+        if (empty($case->publication)):
             $case->publication->update([
                 'text'    => cleanString(request("content"), FALSE),
-                'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
             ]);
+
+            if (!empty($case->publication->slug)):
+                $case->publication->update([
+                    'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
+                ]);
+            endif;
 
             $publication = $case->publication;
         else:
@@ -527,9 +532,14 @@ class CasesController extends Controller
         if (request()->has("publish")):
             $publication->update([
                 'text'         => cleanString(request("content"), FALSE),
-                'slug'         => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
                 'published_at' => now()
             ]);
+
+            if (empty($case->publication->slug)):
+                $case->publication->update([
+                    'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
+                ]);
+            endif;
 
             $case_handler->notify(new CaseActionNotifier(
                 'new_publication',

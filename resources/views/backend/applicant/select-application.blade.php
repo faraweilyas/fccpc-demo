@@ -21,19 +21,16 @@
     <div class="content d-flex flex-column flex-column-fluid" id="kt_content">
         <div class="d-flex flex-column-fluid">
             <div class="container">
-                {{-- <div class="row">
+                <div class="row">
                     <div class="col-md-12">
                         <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
                             <div class="alert-text text-dark">
                                 <i class="la la-info text-dark"></i>
-                                Note: Please complete an application form before you begin this process.
-                                <a href="{{ route('home.resources') }}" target="_blank">
-                                    Click here
-                                </a> to visit the resource page and download the required form.
+                               All electronic copies of relevant application forms and supporting documents must be provided in a useable and searchable format.
                             </div>
                         </div>
                     </div>
-                </div> --}}
+                </div>
                 <div class="row">
                     <div class="col-md-4 pb-10">
                         <a href="{{ $guest->createApplicationPath('reg') }}">
