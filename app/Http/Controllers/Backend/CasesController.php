@@ -541,17 +541,17 @@ class CasesController extends Controller
                 ]);
             endif;
 
-            // $case_handler->notify(new CaseActionNotifier(
-            //     'new_publication',
-            //     'Publication has been published.',
-            //     $case->id
-            // ));
+            $case_handler->notify(new CaseActionNotifier(
+                'new_publication',
+                'Publication has been published.',
+                $case->id
+            ));
 
-            // $supervisor->notify(new CaseActionNotifier(
-            //     'new_publication',
-            //     'Publication has been published.',
-            //     $case->id
-            // ));
+            $supervisor->notify(new CaseActionNotifier(
+                'new_publication',
+                'Publication has been published.',
+                $case->id
+            ));
 
             $message = "Publication has been published";
             // return redirect()->route("cases.analyze", ['case' => $case])->with('success', $message);
