@@ -3,7 +3,7 @@
 @section('content')
     <div class="page-content my-5" style="margin-bottom: 10rem !important">
         <div class="container row-top">
-           {{--  <div class="row">
+            <div class="row">
                 <div class="col-md-8 mx-auto">
                     <div class="form-group">
                         <form id="faqSearchForm" method="GET" action="{{ route('home.publications') }}">
@@ -17,9 +17,9 @@
                         </form>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="row" style="align-items: baseline;">
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="form-group">
                         <form id="publication_search" method="GET" action="{{ route('home.publications') }}">
                             <input
@@ -83,31 +83,17 @@
                             </div>
                          </form>
                     </div>
-                </div>
-                <div class="col-md-8 case__info">
-                    {{-- <h3>
-                        <b>
-                            {{ (new App\Models\Publication)->getTotalPublications($publications->total(), TRUE) }}
-                        </b>
-                    </h3>
-                    <hr /> --}}
+                </div> --}}
+                <div class="col-md-8 mx-auto case__info">
                     @foreach($publications as $publication)
-                        {{-- <hr /> --}}
-                        <a href="{{ route('home.publications.view', ['slug' => $publication->slug]) }}">
-                            <h3 class="publication_title">{{ ucfirst($publication->case->subject) }}</h3>
-                        </a>
-                        <span>Case type: {{ $publication->case->getType() }}</span>
-                        <span>Case category: {{ $publication->case->getCategoryText() }}</span>
-                        @if ($publication->case->isApprovalApproved())
-                            <span>Case state: Closed </span>
-                        @else
-                            <span>Case state: Open </span>
-                        @endif
-                        <span>Opened: {{ $publication->case->getSubmittedAt() }} </span>
-                        @if ($publication->case->isApprovalApproved())
-                            <span>Closed: {{ $publication->case->caseClosedAt() }}</span>
-                        @endif
-                        <hr />
+                        <div class="mb__20">
+                            {{-- <hr /> --}}
+                            <a href="{{ route('home.publications.view', ['slug' => $publication->slug]) }}">
+                                <h3 class="publication_title">{{ ucfirst($publication->case->subject) }}</h3>
+                            </a>
+                            <span>Transaction type: {{ $publication->case->getCategoryText() }}</span>
+                            <span>Published: {{ $publication->getPublishedAt() }} </span>
+                        </div>
                     @endforeach
                 </div>
             </div>
