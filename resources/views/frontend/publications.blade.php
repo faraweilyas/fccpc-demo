@@ -91,7 +91,7 @@
                             <a href="{{ route('home.publications.view', ['slug' => $publication->slug]) }}">
                                 <h3 class="publication_title">{{ ucfirst($publication->case->subject) }}</h3>
                             </a>
-                            <span>Transaction type: {{ $publication->case->getCategoryText() }}</span>
+                            <span>Case type: {{ $publication->case->getCategoryText() }}</span>
                             <span>Published: {{ $publication->getPublishedAt() }} </span>
                         </div>
                     @endforeach

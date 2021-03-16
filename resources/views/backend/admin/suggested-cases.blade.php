@@ -36,7 +36,7 @@
                                 <tr>
                                     <th>Submitted On</th>
                                     <th>Subject</th>
-                                    <th class="text-center">Category</th>
+                                    <th class="text-center">Case Type</th>
                                     <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>

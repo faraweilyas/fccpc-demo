@@ -80,7 +80,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-12 mt-4">
-                                    <label>Transaction Category</label>
+                                    <label>Case Type</label>
                                     <select class="form-control form-control-table" name="category">
                                         @foreach(\AppHelper::get('case_categories') as $key => $value)
                                             <option value="{{ $key }}">{{ $value }}</option>
@@ -135,8 +135,8 @@
                                         <th>Subject</th>
                                         <th class="text-center">Amount Paid</th>
                                         <th>Case Handler</th>
-                                        <th class="text-center">Category</th>
-                                        <th class="text-center">Type</th>
+                                        <th class="text-center">Case Type</th>
+                                        <th class="text-center">Transaction Type</th>
                                     </tr>
                                 </thead>
                                 <tbody>

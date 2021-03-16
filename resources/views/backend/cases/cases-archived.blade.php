@@ -37,8 +37,8 @@
                                     @if (in_array(\Auth::user()->account_type, ['SP']))
                                     <th>Case Handler</th>
                                     @endif
-                                    <th class="text-center">Category</th>
-                                    <th class="text-center">Type</th>
+                                    <th class="text-center">Case Type</th>
+                                    <th class="text-center">Transaction Type</th>
                                     <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>

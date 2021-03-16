@@ -396,6 +396,7 @@ class DashboardController extends Controller
             $case->case_type     = \AppHelper::value('case_types', $case->case_type);
             $case->submitted_on  = $case->getSubmittedAt();
             $case->case_handler  = $case->getHandlerFullName();
+            $case->amount_paid   = formatNumber($case->amount_paid);
         });
 
         $csvExporter->build($cases, ['submitted_on', 'subject', 'amount_paid', 'case_handler', 'case_category', 'case_type'])->download('case_report_'.$full_date.'.csv');

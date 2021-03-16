@@ -106,7 +106,7 @@
                             </span>
                         </div>
                         <div class="col-md-3">
-                            <p><b>CATEGORY:</b></p>
+                            <p><b>CASE TYPE:</b></p>
                             <span>
                                 {!! $case->getCategoryHtml() !!}
                             </span>

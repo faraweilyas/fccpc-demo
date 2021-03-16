@@ -52,11 +52,11 @@
                                     <span class="text-dark" id="submittedAt">...</span>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Category:</span>
+                                    <span class="font-weight-bold mr-2">Case Type:</span>
                                     <span class="text-muted" id="category">...</span>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
-                                    <span class="font-weight-bold mr-2">Type:</span>
+                                    <span class="font-weight-bold mr-2">Transaction Type:</span>
                                     <span class="text-muted" id="type">...</span>
                                 </div>
                                 <div class='mb-1'>

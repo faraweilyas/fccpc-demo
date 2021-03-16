@@ -11,7 +11,7 @@
                             <a href="{{ $guest->applicationPath() }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Select transaction category</a>
+                            <a href="#" class="text-muted">Select case type</a>
                         </li>
                     </ul>
                 </div>

@@ -8,7 +8,7 @@
                 <a href="#">
                     <h1>{{ ucfirst($publication->case->subject) }}</h1>
                 </a>
-                <span>Transaction type: {{ $publication->case->getCategoryText() }}</span>
+                <span>Case type: {{ $publication->case->getCategoryText() }}</span>
                 <span>Published: {{ $publication->getPublishedAt() }} </span>
                 <hr />
                 <p>{!! html_entity_decode($publication->text) !!}</p>

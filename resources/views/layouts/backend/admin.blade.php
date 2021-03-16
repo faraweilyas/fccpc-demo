@@ -563,7 +563,7 @@
             <div class="row fee-calc-container my-10">
                 <div class="col-md-12">
                     <div class="form-group fee-calc-form-group">
-                        <label>Type of Transaction</label>
+                        <label>Type of Case</label>
                         <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
                              <option value="" selected="">Select type:</option>
                             <option value="local">Merger</option>
