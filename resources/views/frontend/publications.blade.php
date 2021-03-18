@@ -92,7 +92,8 @@
                                 <h3 class="publication_title">{{ ucfirst($publication->case->subject) }}</h3>
                             </a>
                             <span>Case type: {{ $publication->case->getCategoryText() }}</span>
-                            <span>Published: {{ $publication->getPublishedAt() }} </span>
+                            <span>Case Parties: {{ $publication->case->getCasePartiesPublication() }}</span>
+                            <span>Published: {{ $publication->getPublishedAt() }}</span>
                         </div>
                     @endforeach
                 </div>

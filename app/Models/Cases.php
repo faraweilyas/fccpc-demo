@@ -330,6 +330,11 @@ class Cases extends Model
         return implode(', ', $this->getCaseParties(false));
     }
 
+    public function getCasePartiesPublication()
+    {
+        return implode('/', $this->getCaseParties(false));
+    }
+
     public function generateCasePartiesBadge($extraStyles='mr_10') : string
     {
         $styles = ['success', 'danger', 'warning', 'info', 'primary'];
