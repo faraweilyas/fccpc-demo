@@ -518,9 +518,9 @@
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
                                                                         paraid="1117038438"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your application ID is <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
+                                                                        Your Application ID is <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
                                                                             <strong>{{ $guest->tracking_id }}</strong>
-                                                                        </a>. Please use the above application id to begin
+                                                                        </a>. Please use the above Application ID to begin
                                                                         and monitor your <a
                                                                             href="{{ route("applicant.track") }}"
                                                                             rel="noreferrer noopener" target="_blank"
@@ -534,7 +534,7 @@
                                                                             href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                             rel="noreferrer noopener" target="_blank"
                                                                             style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                                        for more information. Please keep your application ID safe.
+                                                                        for more information. Please keep your Application ID safe.
                                                                     </p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{2}"

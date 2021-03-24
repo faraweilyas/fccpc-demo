@@ -542,7 +542,7 @@
                                                             {{ datetimeToText($data['case']->submitted_at, "time") }}
                                                             has been received and the Commission will revert
                                                             shortly.</p>
-                                                            <p>Your application ID is <b>{{ $data['guest']->tracking_id }}</b></p>
+                                                            <p>Your Application ID is <b>{{ $data['guest']->tracking_id }}</b></p>
                                                         <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
