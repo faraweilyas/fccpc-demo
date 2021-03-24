@@ -10,10 +10,10 @@
         Name : {{ $case->form_1A_Name ?? '...' }}
     </p>
     <p>
-        Position : {{ $case->form_1A_Name ?? '...' }}
+        Position : {{ $case->form_1A_Position ?? '...' }}
     </p>
     <p>
-        Date Submitted : {{ $case->form_1A_Name ?? '...' }}
+        Date Submitted : {{ datetimtotext($case->form_1A_Date, "customd") ?? '...' }}
     </p>
     <p>
         <b>Text :</b>
