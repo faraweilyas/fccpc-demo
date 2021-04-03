@@ -409,6 +409,16 @@ Route::prefix('cases')
         )->name('update_status');
 
         Route::get(
+            'generate-template/{case}',
+            'CasesController@generateApprovalLetterTemplatePage'
+        )->name('generate_template');
+
+        Route::post(
+            'generate-template/{case}',
+            'CasesController@generateApprovalLetterTemplate'
+        )->name('generate_template');
+
+        Route::get(
             'download-analysis-document/{document}',
             'CasesController@downloadAnalysisDocument'
         )->name('download_analysis_document');

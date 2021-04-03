@@ -296,6 +296,13 @@
                                         </p>
                                     </div>
                                 </div>
+                                @if ($case->isApprovalApproved())
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <button type="button" onclick="window.location.href='{{ route('cases.generate_template', ['case' => $case]) }}'" class="btn btn-success-sm my-5">Generate Approval Template</button>
+                                        </div>
+                                    </div>
+                                @endif
                                 @if (!$case->checkApprovalStatus())
                                     <form action="{{ route('cases.resolve-recommendation', ['case' => $case->id]) }}" method="POST">
                                         @csrf
@@ -393,6 +400,13 @@
                                         </div>
                                     @endif
                                 </div>
+                                @if ($case->isApprovalApproved())
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+                                            <button type="button" onclick="window.location.href='{{ route('cases.generate_template', ['case' => $case]) }}'" class="btn btn-success-sm my-5">Generate Approval Template</button>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

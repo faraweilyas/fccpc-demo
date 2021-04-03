@@ -1021,6 +1021,36 @@ class CasesController extends Controller
             ->with('success', 'Case status has been updated');
     }
 
+
+    /**
+     * Handles the generate approval letter page route.
+     *
+     * @return void
+     */
+    public function generateApprovalLetterTemplatePage(Cases $case)
+    {
+        if (!$case->isApprovalApproved())
+            return back();
+
+        $title                      = APP_NAME;
+        $description                = 'FCCPC Case Documents Analysis Dashboard';
+        $details                    = details($title, $description);
+        return view(
+            'backend.cases.generate-template',
+            compact('details', 'case')
+        );
+    }
+
+    /**
+     * Handles the generate approval letter route.
+     *
+     * @return void
+     */
+    public function generateApprovalLetterTemplate(Cases $case)
+    {
+        return $case->generateApprovalTemplate();
+    }
+
     /**
      * Handles the download analysis document route
      *

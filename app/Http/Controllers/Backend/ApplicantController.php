@@ -249,10 +249,6 @@ class ApplicantController extends Controller
             return redirect()->back()->with('error', 'File was not found!');
 
         return response()->file($doc);
-        return response()->download(
-            $doc,
-            "{$groupName}.{$extension}"
-        );
     }
 
     /**
