@@ -40,9 +40,12 @@
                                     @elseif($template_id == 3)
                                         <textarea id="approval_content" name="approval_content" class="form-control" cols="6" rows="30">Your submission to the Federal Competition and Consumer Protection Commission dated {{ $case->getSubmittedAt() }}, on the above subject matter refers.&#10;Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed (insert description of transaction) raises the following substantial competition concerns.&#10;Consequently, the above transaction is hereby approved subject to the following conditions:&#10;1. {...}.&#10;2. {...}.&#10;3. {...}.&#10;In view of the aforementioned, the commission is unable to approve this transaction. Consequently, parties may make representation to the Commission, proposing remedies that will address the competition concerns; or detailing what technological efficiency or other pro-competitive advantage will be greater than, and offset the competition concerns and which will allow consumers a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed merger  transaction.&#10;Parties may make the above representation within xxxx days of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.</textarea>
                                     @endif
-                                    <div class="row">
+                                    <div class="row" style="justify-content: start;">
+                                        <div class="col-md-4">
+                                            <button class="btn btn-primary mt-4" name="send"><i class="la la-send"></i>Send Mail</button>
+                                        </div>
                                         <div class="col-md-6">
-                                            <button class="btn btn-primary mt-4"><i class="la la-send"></i>Send Mail</button>
+                                            <button class="btn btn-warning" formtarget="_blank" name="preview"><i class="la la-file"></i>Preview</a>
                                         </div>
                                     </div>
                                 </div>

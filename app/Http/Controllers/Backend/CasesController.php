@@ -1048,7 +1048,6 @@ class CasesController extends Controller
      */
     public function generateApprovalLetterTemplate(Cases $case)
     {
-        // return $case->generateApprovalTemplate();
         return redirect()->route('cases.template_mgmt', ['case' => $case, 'template_id' => request('template')]);
     }
 
@@ -1076,18 +1075,19 @@ class CasesController extends Controller
         $data["email"]        = $case->guest->email;
         $data["case"]         = $case;
         $data["template_id"]  = $template_id;
-        $data["content"]  = request('approval_content');
+        $data["content"]      = request('approval_content');
         $data["file_name"]    = "approval_letter_".str_replace(' ', '_', now()).".pdf";
 
         $pdf       = PDF::loadView('emails.pdf.approval-letter', $data);
-
+        if (request()->has('preview'))
+            return $pdf->stream($data["file_name"], array("Attachment" => false));
         Mail::send('emails.approval-letter', $data, function($message) use ($data, $pdf) {
             $message->to($data["email"])
                     ->subject("Approval Letter")
                     ->attachData($pdf->output(), $data["file_name"]);
         });
 
-        return back()->with('success', 'Approval Letter sent!');
+        return redirect()->route('cases.template_mgmt', ['case' => $case, 'template_id' => $template_id])->with('success', 'Approval Letter sent!');
     }
 
     /**
