@@ -39,25 +39,25 @@
                                                         type="radio"
                                                         name="template"
                                                         checked
-                                                        value="temp_1"
+                                                        value="1"
                                                     />
-                                                    Template 1<span></span>
+                                                    <span></span>Approval
                                                 </label>
                                                 <label class="radio">
                                                     <input
                                                         type="radio"
                                                         name="template"
-                                                        value="temp_2"
+                                                        value="2"
                                                     />
-                                                    Template 2<span></span>
+                                                    <span></span>Conditional Approval
                                                 </label>
                                                 <label class="radio">
                                                     <input
                                                         type="radio"
                                                         name="template"
-                                                        value="temp_3"
+                                                        value="3"
                                                     />
-                                                    Template 3<span></span>
+                                                    <span></span>Notification of Substantial Competition Concerns
                                                 </label>
                                             </div>
                                         </div>

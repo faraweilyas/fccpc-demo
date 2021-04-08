@@ -419,6 +419,11 @@ Route::prefix('cases')
         )->name('generate_template');
 
         Route::get(
+            'template-mgmt/{case}/{template_id}',
+            'CasesController@approvalLetterTemplateManagement'
+        )->name('template_mgmt');
+
+        Route::get(
             'download-analysis-document/{document}',
             'CasesController@downloadAnalysisDocument'
         )->name('download_analysis_document');

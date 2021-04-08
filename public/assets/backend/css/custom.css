@@ -35,6 +35,24 @@ body {
     font-family: 'Segoe UI Regular' !important;
 }
 
+.text-underline {
+    text-decoration: underline;
+}
+
+.typing
+{
+    color: #FFF !important;
+    background-color: #275c40 !important;
+    padding: 3px;
+    font-family: monospace;
+    animation: blinker 2s linear infinite;
+}
+
+@keyframes blinker
+{
+    50% { opacity: 0; }
+}
+
 .menu-active
 {
     background: #1b1b28 !important;

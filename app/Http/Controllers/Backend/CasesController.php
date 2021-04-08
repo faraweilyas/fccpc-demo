@@ -1048,7 +1048,25 @@ class CasesController extends Controller
      */
     public function generateApprovalLetterTemplate(Cases $case)
     {
-        return $case->generateApprovalTemplate();
+        // return $case->generateApprovalTemplate();
+        return redirect()->route('cases.template_mgmt', ['case' => $case, 'template_id' => request('template')]);
+    }
+
+    /**
+     * Handles the approval letter management route.
+     *
+     * @return void
+     */
+    public function approvalLetterTemplateManagement(Cases $case, $template_id)
+    {
+        $title                      = APP_NAME;
+        $description                = 'FCCPC Case Documents Analysis Dashboard';
+        $details                    = details($title, $description);
+
+        return view(
+            'backend.cases.template-mgmt',
+            compact('details', 'case', 'template_id')
+        );
     }
 
     /**
