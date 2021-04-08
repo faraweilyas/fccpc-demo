@@ -1073,7 +1073,21 @@ class CasesController extends Controller
      */
     public function sendApprovalLetter(Cases $case, $template_id)
     {
-        echo str_replace("<br />", '<br /><br />',nl2br(cleanTextArea(request('approval_content'))));
+        $data["email"]        = $case->guest->email;
+        $data["case"]         = $case;
+        $data["template_id"]  = $template_id;
+        $data["content"]  = request('approval_content');
+        $data["file_name"]    = "approval_letter_".str_replace(' ', '_', now()).".pdf";
+
+        $pdf       = PDF::loadView('emails.pdf.approval-letter', $data);
+
+        Mail::send('emails.approval-letter', $data, function($message) use ($data, $pdf) {
+            $message->to($data["email"])
+                    ->subject("Approval Letter")
+                    ->attachData($pdf->output(), $data["file_name"]);
+        });
+
+        return back()->with('success', 'Approval Letter sent!');
     }
 
     /**

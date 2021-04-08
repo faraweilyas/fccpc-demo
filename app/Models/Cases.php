@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use PhpOffice\PhpWord\Settings;
 use App\Models\CaseTraits\CaseGettable;
 use App\Models\CaseTraits\CaseSaveable;
 use Illuminate\Database\Eloquent\Model;
@@ -859,126 +858,6 @@ class Cases extends Model
             return false;
 
         return true;
-    }
-
-    /**
-     * Generate Approval Template
-     *
-     * @return json
-     */
-    public function generateApprovalTemplate()
-    {
-        $phpWord        = new \PhpOffice\PhpWord\PhpWord();
-        $phpWord->setDefaultFontSize(13);
-        $phpWord->addParagraphStyle('headerStyle', array('align' => 'center', 'lineHeight' => 1));
-        $phpWord->addParagraphStyle('bioStyle', array('lineHeight' => 1.5));
-
-        $current_date            = datetimeToText(now(), 'customd');
-        $applicant_address_array = explode(',', $this->applicant_address);
-
-        $section                 = $phpWord->addSection();
-        // Top Right Section
-        $text                    = $section->addText('#'.$this->guest->tracking_id, [], 'bioStyle');
-        $text                    = $section->addText($current_date, [], 'bioStyle');
-        $text                    = $section->addText($this->getApplicantName(), [], 'bioStyle');
-
-        foreach ($applicant_address_array as $address):
-            $text       = $section->addText(trim($address), [], 'bioStyle');
-        endforeach;
-
-        if (request('template') == 'temp_1'):
-            // Header Section
-            $text          = $section->addText('APPROVAL', array('bold' => true, 'underline' => 'single'), 'headerStyle');
-            $text          = $section->addText('', array('lineHeight' => 0.5));
-            $text          = $section->addText('SUBJECT MATTER', array('bold' => true), 'headerStyle');
-
-            //Body
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Your letter to the Federal Competition and Consumer Protection Commission dated '.$this->getSubmittedAt().', on the above subject matter refers.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Based on the information provided, the Commission has reviewed the transaction and is satisfied that the proposed ...... will not substantially affect or lessen competition in the ...... market.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Consequently, the above transaction is hereby Approved.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('You are required to promptly inform the Commission of any material change in the information, which formed the basis of this approval.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Please note that the time frame approved for the implementation of the transaction is a period of twelve (12) months from the date of this letter.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('In the event that any information supplied by the parties is false, misleading, or inaccurate, the Commission reserves the right to revoke its approval pursuant to Section 99(d) of the Federal Competition and Consumer Protection Act, 2018.', array('italic' => true));
-
-            // Footer Section
-            $text          = $section->addText('', array('lineHeight' => 3));
-            $text          = $section->addText($this->getHandlerFullName());
-            $text          = $section->addText($this->getHandlerAccountType());
-            $text          = $section->addText('For: Chief Executive Officer.', array('bold' => true));
-        elseif (request('template') == 'temp_2'):
-            // Header Section
-            $text          = $section->addText('CONDITIONAL APPROVAL', array('bold' => true, 'underline' => 'single'), 'headerStyle');
-            $text          = $section->addText('', array('lineHeight' => 0.5));
-            $text          = $section->addText('SUBJECT MATTER', array('bold' => true, 'underline' => 'single'), 'headerStyle');
-
-            //Body
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Your submission to the Federal Competition and Consumer Protection Commission dated '.$this->getSubmittedAt().', on the above subject matter refers.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed (insert description of transaction) is likely to substantially impede /lessen competition in the market/ sector.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Consequently, the above transaction is hereby approved subject to the following conditions:');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('1.  …………………………………………………………….');
-            $text          = $section->addText('2.  …………………………………………………………….');
-            $text          = $section->addText('3.  …………………………………………………………….');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('You are requested to comply with the above conditions within a period of six (6) or twelve (12) months from the date of this letter. (The time frame will depend on the conditions proposed by the parties)');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('In the event that the outstanding obligation is not satisfied within a time the Commission considers reasonable, or any information supplied by parties is false, misleading, or inaccurate, the Commission reserves the right to revoke its approval pursuant to Section 99 (d) of the Federal Competition and Consumer Protection Act, 2018.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Please note that the time frame approved for the implementation of the transaction is a period of twelve (12) months from the date of this letter.');
-
-            // Footer Section
-            $text          = $section->addText('', array('lineHeight' => 3));
-            $text          = $section->addText($this->getHandlerFullName());
-            $text          = $section->addText($this->getHandlerAccountType());
-            $text          = $section->addText('For: Executive Vice Chairman');
-
-        elseif (request('template') == 'temp_3'):
-            // Header Section
-            $text          = $section->addText('NOTIFICATION OF SUBSTANTIAL COMPETITION CONCERNS', array('underline' => 'single'), 'headerStyle');
-            $text          = $section->addText('', array('lineHeight' => 0.5));
-            $text          = $section->addText('SUBJECT MATTER', array('bold' => true, 'underline' => 'single'), 'headerStyle');
-
-            //Body
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Your submission to the Federal Competition and Consumer Protection Commission dated '.$this->getSubmittedAt().', on the above subject matter refers.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed (insert description of transaction) raises the following substantial competition concerns.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Consequently, the above transaction is hereby approved subject to the following conditions:');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('1.  …………………………………………………………….');
-            $text          = $section->addText('2.  …………………………………………………………….');
-            $text          = $section->addText('3.  …………………………………………………………….');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('In view of the aforementioned, the commission is unable to approve this transaction. Consequently, parties may make representation to the Commission, proposing remedies that will address the competition concerns; or detailing what technological efficiency or other pro-competitive advantage will be greater than, and offset the competition concerns and which will allow consumers a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed merger  transaction.');
-            $text          = $section->addText('', array('lineHeight' => 1));
-            $text          = $section->addText('Parties may make the above representation within xxxx days of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.');
-
-
-            // Footer Section
-            $text          = $section->addText('', array('lineHeight' => 3));
-            $text          = $section->addText('Yours faithfully,');
-            $text          = $section->addText($this->getHandlerFullName());
-            $text          = $section->addText($this->getHandlerAccountType());
-            $text          = $section->addText('For: Executive Vice Chairman.');
-        endif;
-        Settings::setZipClass(Settings::PCLZIP);
-        $objWriter      = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
-
-        $caseSubject = str_replace(' ', '_', $this->subject);
-        $fileName    = $caseSubject.'_approval_letter_template.docx';
-        $objWriter->save($fileName);
-
-        return response()->download($fileName);
     }
 
     /**
