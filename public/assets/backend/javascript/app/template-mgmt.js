@@ -9,7 +9,7 @@ $(document).ready(function (event) {
         console.log(dataClass);
         // Replace newline with  <br />
         if (dataClass == ".approval_content")
-            content = content.replace(/(?:\r\n|\r|\n)/g, "<br /><br />")+"<br />";
+            content = content.replace(/(?:\r\n|\r|\n)/g, "<br /><br />")+"<br /><br />";
         $(dataClass).html(content);
     });
 
