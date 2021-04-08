@@ -1063,10 +1063,17 @@ class CasesController extends Controller
         $description                = 'FCCPC Case Documents Analysis Dashboard';
         $details                    = details($title, $description);
 
-        return view(
-            'backend.cases.template-mgmt',
-            compact('details', 'case', 'template_id')
-        );
+        return view('backend.cases.template-mgmt', compact('details', 'case', 'template_id'));
+    }
+
+    /**
+     * Handles the send approval letter route.
+     *
+     * @return void
+     */
+    public function sendApprovalLetter(Cases $case, $template_id)
+    {
+        echo str_replace("<br />", '<br /><br />',nl2br(cleanTextArea(request('approval_content'))));
     }
 
     /**

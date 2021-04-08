@@ -25,17 +25,25 @@
                     <div class="col-md-5">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Approval Letter Management</h3>
+                                <h3><i class="la la-mail-bulk"></i>&nbsp;Approval Letter Workspace</h3>
                             </div>
-                            <div class="card-body approval_body">
-                                <textarea id="approval_content" class="form-control" cols="6" rows="20">Your letter to the Federal Competition and Consumer Protection Commission dated {{ $case->getSubmittedAt() }}, on the above subject matter refers.&#10;Based on the information provided, the Commission has reviewed the transaction and is satisfied that the proposed {......} will not substantially affect or lessen competition in the {......} market.&#10;Consequently, the above transaction is hereby Approved.&#10;You are required to promptly inform the Commission of any material change in the information, which formed the basis of this approval.&#10;Please note that the time frame approved for the implementation of the transaction is a period of twelve (12) months from the date of this letter.&#102In the event that any information supplied by the parties is false, misleading, or inaccurate, the Commission reserves the right to revoke its approval pursuant to Section 99(d) of the Federal Competition and Consumer Protection Act, 2018.</textarea>
-                            </div>
+                            <form method="POST" action="{{ route('cases.send_approval_letter', ['case' => $case, 'template_id' => $template_id]) }}">
+                                @csrf
+                                <div class="card-body approval_body">
+                                    <textarea id="approval_content" name="approval_content" class="form-control" cols="6" rows="20">Your letter to the Federal Competition and Consumer Protection Commission dated {{ $case->getSubmittedAt() }}, on the above subject matter refers.&#10;Based on the information provided, the Commission has reviewed the transaction and is satisfied that the proposed {......} will not substantially affect or lessen competition in the {......} market.&#10;Consequently, the above transaction is hereby Approved.&#10;You are required to promptly inform the Commission of any material change in the information, which formed the basis of this approval.&#10;Please note that the time frame approved for the implementation of the transaction is a period of twelve (12) months from the date of this letter.&#10;In the event that any information supplied by the parties is false, misleading, or inaccurate, the Commission reserves the right to revoke its approval pursuant to Section 99(d) of the Federal Competition and Consumer Protection Act, 2018.</textarea>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <button class="btn btn-primary mt-4"><i class="la la-send"></i>Send Mail</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-7">
                         <div class="card">
                             <div class="card-header">
-                                <h3>Approval Letter Management</h3>
+                                <h3><i class="la la-mail-bulk"></i>&nbsp;Approval Letter Preview</h3>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -48,7 +56,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <h6 class="text-center text-underline"><b>APPROVAL</b></h6>
+                                        <h6 class="text-center text-underline"><b>{{ $case->getApprovalLetterTitle($template_id) }}</b></h6>
                                         <h6 class="text-center text-underline"><b>SUBJECT MATTER</b></h6>
                                     </div>
                                 </div>
@@ -79,7 +87,7 @@
                                         <p>
                                             {{ $case->getHandlerFullName() }}<br />
                                             {{ $case->getHandlerAccountType() }}<br />
-                                            <b>For: Chief Executive Officer.</b>
+                                            {{ $case->getApprovalLetterOfficer($template_id) }}
                                         </p>
                                     </div>
                                 </div>

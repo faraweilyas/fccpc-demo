@@ -982,6 +982,43 @@ class Cases extends Model
     }
 
     /**
+     * Get Approval Template Title
+     *
+     * @param int $template_id
+     * @return string
+     */
+    public function getApprovalLetterTitle($template_id)
+    {
+        $title = "APPROVAL";
+
+        if ($template_id == 1):
+            $title = "APPROVAL";
+        elseif ($template_id == 2):
+            $title = "CONDITIONAL APPROVAL";
+        elseif ($template_id == 3):
+            $title = "NOTIFICATION OF SUBSTANTIAL COMPETITION CONCERNS";
+        endif;
+
+        return $title;
+    }
+
+    /**
+     * Get Approval Template Officer
+     *
+     * @param int $template_id
+     * @return string
+     */
+    public function getApprovalLetterOfficer($template_id)
+    {
+        $officer = "For: Executive Vice Chairman.";
+
+        if ($template_id == 1)
+            $officer = "For: Chief Executive Officer.";
+
+        return $officer;
+    }
+
+    /**
      * Send response.
      *
      * @param string $message

@@ -407,3 +407,16 @@ function cleanString($string, $strip = TRUE) {
 
     return $string;
 }
+
+/**
+* Clean textarea string
+*
+* @param
+*
+* @return string
+*/
+function cleanTextArea($string)
+{
+    return preg_replace('#(\\\r|\\\r\\\n|\\\n)#','<br/>',$string);
+}
+

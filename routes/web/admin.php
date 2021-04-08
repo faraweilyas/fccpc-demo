@@ -423,6 +423,11 @@ Route::prefix('cases')
             'CasesController@approvalLetterTemplateManagement'
         )->name('template_mgmt');
 
+        Route::post(
+            'send-approval-template/{case}/{template_id}',
+            'CasesController@sendApprovalLetter'
+        )->name('send_approval_letter');
+
         Route::get(
             'download-analysis-document/{document}',
             'CasesController@downloadAnalysisDocument'
