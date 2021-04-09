@@ -1029,7 +1029,7 @@ class CasesController extends Controller
      */
     public function generateApprovalLetterTemplatePage(Cases $case)
     {
-        if (!$case->isApprovalApproved())
+        if (!$case->isApprovalApproved() && $case->isApprovalLetterSent())
             return back();
 
         $title                      = APP_NAME;
@@ -1048,6 +1048,9 @@ class CasesController extends Controller
      */
     public function generateApprovalLetterTemplate(Cases $case)
     {
+        if (!$case->isApprovalApproved() && $case->isApprovalLetterSent())
+            return back();
+
         return redirect()->route('cases.template_mgmt', ['case' => $case, 'template_id' => request('template')]);
     }
 
@@ -1058,6 +1061,9 @@ class CasesController extends Controller
      */
     public function approvalLetterTemplateManagement(Cases $case, $template_id)
     {
+        if (!$case->isApprovalApproved() && $case->isApprovalLetterSent())
+            return back();
+
         $title                      = APP_NAME;
         $description                = 'FCCPC Case Documents Analysis Dashboard';
         $details                    = details($title, $description);
@@ -1078,16 +1084,21 @@ class CasesController extends Controller
         $data["content"]      = request('approval_content');
         $data["file_name"]    = "approval_letter_".str_replace(' ', '_', now()).".pdf";
 
-        $pdf       = PDF::loadView('emails.pdf.approval-letter', $data);
+        $pdf                  = PDF::loadView('emails.pdf.approval-letter', $data);
+
         if (request()->has('preview'))
             return $pdf->stream($data["file_name"], array("Attachment" => false));
+
         Mail::send('emails.approval-letter', $data, function($message) use ($data, $pdf) {
             $message->to($data["email"])
                     ->subject("Approval Letter")
                     ->attachData($pdf->output(), $data["file_name"]);
         });
 
-        return redirect()->route('cases.template_mgmt', ['case' => $case, 'template_id' => $template_id])->with('success', 'Approval Letter sent!');
+        $case_handler = $case->getHandler();
+        $case->approvalLetterSent($case_handler);
+
+        return redirect()->route('cases.analyze', ['case' => $case])->with('success', 'Approval Letter sent!');
     }
 
     /**

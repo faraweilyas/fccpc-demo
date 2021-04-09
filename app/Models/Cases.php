@@ -163,6 +163,15 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_status == 'approved') ? true : false;
     }
 
+    public function isApprovalLetterSent() : bool
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return ($active_handler->case_handler->approval_letter_sent_at == 'approved') ? true : false;
+    }
+
     public function isCaseArchived() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -188,6 +197,15 @@ class Cases extends Model
         if (is_null($active_handler)) return false;
 
         return (!empty($active_handler->case_handler->approval_status)) ? true : false;
+    }
+
+    public function getHandler()
+    {
+        $active_handler = $this->active_handlers[0] ?? NULL;
+
+        if (is_null($active_handler)) return false;
+
+        return $active_handler;
     }
 
     public function getApplicationFee()

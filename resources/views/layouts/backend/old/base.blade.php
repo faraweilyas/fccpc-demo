@@ -113,6 +113,7 @@
             toastr.options = {
                 "progressBar": true,
                 "positionClass": "toast-bottom-right",
+                "timeOut": 10000
             };
 
             @if(Session::has('success'))

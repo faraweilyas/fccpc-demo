@@ -40,6 +40,21 @@ trait CaseAssignable
     }
 
     /**
+     * A supervisor/handler updates approval letter sent at timestamp
+     *
+     * @param  User $caseHandler
+     * @return array
+     */
+    public function approvalLetterSent(User $caseHandler)
+    {
+        return $this->handlers()->syncWithoutDetaching([
+            $caseHandler->id    => [
+                'approval_letter_sent_at' => now()
+            ]
+        ]);
+    }
+
+    /**
      * A case handler issues deficiency
      *
      * @param  User $caseHandler
@@ -185,6 +200,7 @@ trait CaseAssignable
                 'approval_requested_at'         => $previouCaseHandler->approval_requested_at,
                 'approval_status'               => $previouCaseHandler->approval_status,
                 'approval_comment'              => $previouCaseHandler->approval_comment,
+                'approval_letter_sent_at'       => $previouCaseHandler->approval_letter_sent_at,
                 'extension_requested_at'        => $previouCaseHandler->extension_requested_at,
                 'extension_reason'              => $previouCaseHandler->extension_reason,
                 'archived_at'                   => $previouCaseHandler->archived_at,
@@ -245,6 +261,7 @@ trait CaseAssignable
                 'approval_requested_at',
                 'approval_status',
                 'approval_comment',
+                'approval_letter_sent_at',
                 'extension_requested_at',
                 'extension_reason',
                 'dropped_at',

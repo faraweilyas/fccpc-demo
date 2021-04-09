@@ -11,6 +11,9 @@
                             <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
+                            <a href="{{ route('cases.analyze', ['case' => $case]) }}" class="text-muted">Analyze Case</a>
+                        </li>
+                        <li class="breadcrumb-item">
                             <a href="" class="text-muted">Generate Approval Letter</a>
                         </li>
                     </ul>

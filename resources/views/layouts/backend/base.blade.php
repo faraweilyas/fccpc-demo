@@ -24,7 +24,7 @@
 	<div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
             <x-icons.arrow-up></x-icons.arrow-up>
-          
+
         </span>
     </div>
 
@@ -43,7 +43,7 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
-    
+
     <script type="text/javascript" defer>
         $(document).ready(function($)
         {
@@ -59,7 +59,7 @@
             @endif
         });
 
-        
+
     </script>
 
     @yield('custom.javascript')
