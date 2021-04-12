@@ -122,7 +122,7 @@
                 "positionClass": "toast-bottom-right",
                 "timeOut": 10000
             };
-            toastr.success("kamsi");
+
             @if(Session::has('success'))
             toastr.success("{{ Session::get('success') }}");
             @endif
