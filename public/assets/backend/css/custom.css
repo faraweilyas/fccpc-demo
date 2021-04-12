@@ -39,7 +39,7 @@ body {
     text-decoration: underline;
 }
 
-.typing
+/*.typing
 {
     color: #FFF !important;
     background-color: #275c40 !important;
@@ -51,7 +51,7 @@ body {
 @keyframes blinker
 {
     50% { opacity: 0; }
-}
+}*/
 
 .menu-active
 {
