@@ -382,7 +382,7 @@
                           </div>
                           <br />
                           <div class="row footer-info-content-text">
-                            <a><img href="https://itunes.apple.com/us/app/consumer-protection-council/id1355501646?mt=8&ign-mpt=uo%3D4" src="{{ FE_IMAGE.'png/appstore.png' }}" target="__blank" alt="appstore" /></a>
+                            <a href="https://itunes.apple.com/us/app/consumer-protection-council/id1355501646?mt=8&ign-mpt=uo%3D4" target="__blank"><img src="{{ FE_IMAGE.'png/appstore.png' }}" target="__blank" alt="appstore" /></a>
                           </div>
                         </div>
                       </div>
