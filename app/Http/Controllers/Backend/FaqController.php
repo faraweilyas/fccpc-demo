@@ -27,7 +27,7 @@ class FaqController extends Controller
 
     /**
      * Handles the faq logs page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function index()
     {
@@ -39,7 +39,9 @@ class FaqController extends Controller
 
     /**
      * Handles the view faq detail page route.
-     * @return void
+     *
+     * @param Faq $faq
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewFaqDetail(Faq $faq)
     {
@@ -51,7 +53,9 @@ class FaqController extends Controller
 
     /**
      * Handles the faq edit page route.
-     * @return void
+     *
+     * @param Faq $faq
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function edit(Faq $faq)
     {
@@ -63,7 +67,10 @@ class FaqController extends Controller
 
     /**
      * Handles the store faq page route.
-     * @return void
+     *
+     * @param Request $request
+     * @param Faq $faq
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function update(Request $request, Faq $faq)
     {
@@ -84,7 +91,9 @@ class FaqController extends Controller
 
     /**
      * Handles the store faq page route.
-     * @return void
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function store(Request $request)
     {
@@ -106,7 +115,9 @@ class FaqController extends Controller
 
     /**
      * Handles the destroy faq page route.
-     * @return void
+     *
+     * @param Faq $faq
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function destroy(Faq $faq)
     {

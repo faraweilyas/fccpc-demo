@@ -50,8 +50,9 @@ class CaseHandlersController extends Controller
     }
 
     /**
-     * Handles the store handler page route.
+     * Handles the store case handler page route.
      *
+     * @param Request $request
      * @return void
      */
     public function storeHandler(Request $request)
@@ -82,6 +83,7 @@ class CaseHandlersController extends Controller
     /**
      * Handles the view case handlers page route.
      *
+     * @param int $id // This is the id of the case handler to be viewed
      * @return void
      */
     public function show($id)
@@ -96,6 +98,7 @@ class CaseHandlersController extends Controller
     /**
      * Handles the update case handler status page route.
      *
+     * @param User $handler
      * @return void
      */
     public function updateHandlerStatus(User $handler)

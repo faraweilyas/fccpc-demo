@@ -43,7 +43,7 @@ class ApplicationController extends Controller
 	}
 
     /**
-     * Get checklists.
+     * Get checklists by group.
      *
      * @param int $group_id
      * @return json
@@ -58,7 +58,7 @@ class ApplicationController extends Controller
     /**
      * Handles download checklist group document.
      *
-     * @param int $document
+     * @param Document $document
      * @return json
      */
     public function downloadChecklistGroupDocument(Document $document)

@@ -227,7 +227,7 @@ class ApplicationController extends Controller
      *
      * @param Guest $guest
      * @param string $action
-     * @return void
+     * @return mixed
      */
     public function create(Guest $guest, string $action)
     {
@@ -248,7 +248,7 @@ class ApplicationController extends Controller
      * Save Form 1A info.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function saveForm1AInfo(Guest $guest)
     {
@@ -271,7 +271,7 @@ class ApplicationController extends Controller
      * Save case info.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function saveCaseInfo(Guest $guest)
     {
@@ -293,7 +293,7 @@ class ApplicationController extends Controller
      * Save case contact info.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function saveContactInfo(Guest $guest)
     {
@@ -317,7 +317,7 @@ class ApplicationController extends Controller
      * Save case checklist document.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function saveChecklistDocument(Guest $guest)
     {
@@ -378,7 +378,7 @@ class ApplicationController extends Controller
      * Save case deficient checklist document.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function saveDeficientChecklistDocument(Guest $guest)
     {
@@ -438,7 +438,7 @@ class ApplicationController extends Controller
      * Submit case.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function submit(Guest $guest)
     {
@@ -486,7 +486,7 @@ class ApplicationController extends Controller
      * Submit deficient case.
      *
      * @param Guest $guest
-     * @return void
+     * @return json
      */
     public function submitDeficient(Guest $guest)
     {
@@ -585,6 +585,8 @@ class ApplicationController extends Controller
     /**
      * Handles Review application page.
      *
+     * @param Guest $guest
+     * @param int $step
      * @return \Illuminate\Contracts\View\Factory
      */
     public function review(Guest $guest, $step)
@@ -618,6 +620,8 @@ class ApplicationController extends Controller
     /**
      * Handles Review Deficient application page.
      *
+     * @param Guest $guest
+     * @param int $step
      * @return \Illuminate\Contracts\View\Factory
      */
     public function reviewDeficient(Guest $guest, $step)
@@ -650,6 +654,7 @@ class ApplicationController extends Controller
      * Handles Checklist page.
      *
      * @param Guest $guest
+     * @param string $case_category
      * @return \Illuminate\Contracts\View\Factory
      */
     public function checklistDocuments(Guest $guest, $case_category)

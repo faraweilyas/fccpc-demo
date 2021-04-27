@@ -16,6 +16,7 @@ class EnquiryMail extends Mailable
     /**
      * Create a new message instance.
      *
+     * @param object $enquiry
      * @return void
      */
     public function __construct($enquiry)

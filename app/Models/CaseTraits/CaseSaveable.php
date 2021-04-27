@@ -19,7 +19,9 @@ trait CaseSaveable
     /**
      * Saves form 1A information
      *
-     * @param  string $form1A
+     * @param String $form1A_Text
+     * @param String $form1A_Name
+     * @param String $form1A_Position
      * @return bool
      */
     public function saveForm1AInfo($form1A_Text, $form1A_Name, $form1A_Position) : bool
@@ -34,9 +36,9 @@ trait CaseSaveable
     /**
      * Saves case information
      *
-     * @param  string $subject
-     * @param  string $parties
-     * @param  string $case_type
+     * @param String $subject
+     * @param String $parties
+     * @param String $case_type
      * @return bool
      */
     public function saveCaseInfo($subject, $parties, $case_type) : bool

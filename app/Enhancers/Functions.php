@@ -319,6 +319,12 @@ function textTransformer(string $value=NULL, $textStyle='strtoupper') : string
     return (is_callable($textStyle)) ? $textStyle($value) : $value;
 }
 
+/**
+ * Mock Files Data
+ *
+ *
+ * @return array
+ */
 function mockFilesData() : array
 {
     return [
@@ -359,16 +365,37 @@ function transformChecklistIds(string $checklistIds=NULL, $value=NULL) : array
     return $newArrayOfChecklistIds;
 }
 
+/**
+ * Get notification action
+ *
+ * @param string $action
+ *
+ * @return string
+ */
 function getNotificationAction(string $action) : string
 {
     return \AppHelper::value('notification_types', strtoupper($action), 'ucwords');
 }
 
+/**
+ * Get notification action style
+ *
+ * @param string $action
+ *
+ * @return string
+ */
 function getNotificationActionStyle(string $action) : string
 {
     return \AppHelper::value('notification_types_styles', strtoupper($action), 'strtolower');
 }
 
+/**
+ * Get application form object
+ *
+ * @param string $form
+ *
+ * @return \stdClass
+ */
 function getApplicationFormObject(string $form) : \stdClass
 {
     $form = explode(':', $form);
@@ -381,7 +408,7 @@ function getApplicationFormObject(string $form) : \stdClass
 /**
  * Get active route
  *
- * @param string $route
+ * @param array $route
  * @return string
  */
 function isRouteActive(array $route) : string
@@ -393,6 +420,7 @@ function isRouteActive(array $route) : string
 * Clean string
 *
 * @param string $string
+* @param bool $strip // This determines if the tags in the string would be stripped with the strip_tags function
 *
 * @return string
 */
@@ -409,9 +437,9 @@ function cleanString($string, $strip = TRUE) {
 }
 
 /**
-* Clean textarea string
+* Clean text area string
 *
-* @param
+* @param string $string
 *
 * @return string
 */

@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="icon" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/base.css">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/template.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+                <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
+        <script src="js/search.js"></script>
+        <script defer src="js/searchIndex.js"></script>
+    </head>
+<body id="top">
+    <header class="phpdocumentor-header phpdocumentor-section">
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">Documentation</a></h1>
+    <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
+    <label class="phpdocumentor-header__menu-icon" for="menu-button">
+        <i class="fas fa-bars"></i>
+    </label>
+    <section data-search-form class="phpdocumentor-search">
+    <label>
+        <span class="visually-hidden">Search for</span>
+        <svg class="phpdocumentor-search__icon" width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="2"/>
+            <line x1="12.4892" y1="12.2727" x2="19.1559" y2="18.9393" stroke="currentColor" stroke-width="3"/>
+        </svg>
+        <input type="search" class="phpdocumentor-field phpdocumentor-search__field" placeholder="Loading .." disabled />
+    </label>
+</section>
+
+    <nav class="phpdocumentor-topnav">
+    <ul class="phpdocumentor-topnav__menu">
+        </ul>
+</nav>
+</header>
+
+    <main class="phpdocumentor">
+        <div class="phpdocumentor-section">
+            <input class="phpdocumentor-sidebar__menu-button" type="checkbox" id="sidebar-button" name="sidebar-button" />
+<label class="phpdocumentor-sidebar__menu-icon" for="sidebar-button">
+    Menu
+</label>
+<aside class="phpdocumentor-column -four phpdocumentor-sidebar">
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                <h3 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/default.html"><abbr title="\">Global</abbr></a></h3>
+                                        <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/app.html"><abbr title="\App">App</abbr></a></h4>
+                <ul class="phpdocumentor-list">
+                                            <li><a href="namespaces/app-console.html"><abbr title="\App\Console">Console</abbr></a></li>
+                                            <li><a href="namespaces/app-enhancers.html"><abbr title="\App\Enhancers">Enhancers</abbr></a></li>
+                                            <li><a href="namespaces/app-exceptions.html"><abbr title="\App\Exceptions">Exceptions</abbr></a></li>
+                                            <li><a href="namespaces/app-facades.html"><abbr title="\App\Facades">Facades</abbr></a></li>
+                                            <li><a href="namespaces/app-http.html"><abbr title="\App\Http">Http</abbr></a></li>
+                                            <li><a href="namespaces/app-mail.html"><abbr title="\App\Mail">Mail</abbr></a></li>
+                                            <li><a href="namespaces/app-models.html"><abbr title="\App\Models">Models</abbr></a></li>
+                                            <li><a href="namespaces/app-notifications.html"><abbr title="\App\Notifications">Notifications</abbr></a></li>
+                                            <li><a href="namespaces/app-providers.html"><abbr title="\App\Providers">Providers</abbr></a></li>
+                                    </ul>
+                        </section>
+
+    
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
+                <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/errors.html">Errors</a></h3>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/markers.html">Markers</a></h3>
+    </section>
+
+    <section class="phpdocumentor-sidebar__category">
+        <h2 class="phpdocumentor-sidebar__category-header">Indices</h2>
+        <h3 class="phpdocumentor-sidebar__root-package"><a href="indices/files.html">Files</a></h3>
+    </section>
+</aside>
+
+            <div class="phpdocumentor-column -eight phpdocumentor-content">
+                    <ul class="phpdocumentor-breadcrumbs">
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app.html">App</a></li>
+            <li class="phpdocumentor-breadcrumb"><a href="namespaces/app-enhancers.html">Enhancers</a></li>
+    </ul>
+
+    <article class="phpdocumentor-element -class">
+        <h2 class="phpdocumentor-content__title">
+    AppHelper
+
+    
+    
+    
+    </h2>
+
+        <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">8</span>
+</aside>
+
+            <p class="phpdocumentor-summary">AppHelper Class</p>
+
+    <section class="phpdocumentor-description"></section>
+
+
+
+
+
+
+
+
+<h3 id="toc">
+    Table of Contents
+    <a href="#toc" class="headerlink"><i class="fas fa-link"></i></a>
+</h3>
+
+<dl class="phpdocumentor-table-of-contents">
+                <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_account_types">$account_types</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid account types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_account_types_html">$account_types_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for account types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_app">$app</a>
+    <span>
+                &nbsp;: null|<abbr title="\App\Enhancers\Illuminate\Foundation\Application">Application</abbr>            </span>
+</dt>
+<dd>$app App instance</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_application_forms">$application_forms</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid application form</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_categories">$case_categories</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid case categories</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_categories_html">$case_categories_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for case categories key</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_categories_text">$case_categories_text</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid case/application categories key</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_status">$case_status</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid case status</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_status_html">$case_status_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for case status</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_types">$case_types</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid case types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_case_types_html">$case_types_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for case types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_enquiry_types">$enquiry_types</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid enquiry type</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_enquiry_types_html">$enquiry_types_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for enquiry types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories">$faq_categories</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid faq categories</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories_description">$faq_categories_description</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid faq categories matching key descriptions</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories_html">$faq_categories_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for faq categories</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_feedbacks">$feedbacks</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid feedbacks</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_file_groups">$file_groups</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid file groups</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_notification_types">$notification_types</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid notification types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_notification_types_styles">$notification_types_styles</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for notification types</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_recommendation_types">$recommendation_types</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid recommendations</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_status">$status</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid status</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/App-Enhancers-AppHelper.html#property_status_html">$status_html</a>
+    <span>
+                &nbsp;: mixed            </span>
+</dt>
+<dd>Valid _css_colors_ for status</dd>
+
+                <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method___construct">__construct()</a>
+    <span>
+                        &nbsp;: void    </span>
+</dt>
+<dd>Loads the app instance into scope</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_get">get()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Validates and returns array</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_key">key()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd>Validates and returns array value</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_keys">keys()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Get array keys</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_objSelect">objSelect()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>Generates HTML SELECT button for custom arrays with objects</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_radio">radio()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>Generates HTML RADIO button</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_select">select()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>Generates HTML SELECT button</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_udaSelect">udaSelect()</a>
+    <span>
+                        &nbsp;: string    </span>
+</dt>
+<dd>Generates HTML SELECT button for user defined array</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_validateKey">validateKey()</a>
+    <span>
+                        &nbsp;: bool    </span>
+</dt>
+<dd>Validates array key</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_validateValue">validateValue()</a>
+    <span>
+                        &nbsp;: bool    </span>
+</dt>
+<dd>Validates array value</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_value">value()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd>Validates and returns array value</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/App-Enhancers-AppHelper.html#method_values">values()</a>
+    <span>
+                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+</dt>
+<dd>Get array values</dd>
+
+        </dl>
+
+
+
+        
+
+        
+    <section class="phpdocumentor-properties">
+        <h3 class="phpdocumentor-elements__header" id="properties">
+            Properties
+            <a href="classes/App-Enhancers-AppHelper.html#properties" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_account_types">
+        $account_types
+        <a href="classes/App-Enhancers-AppHelper.html#property_account_types" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">32</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid account types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$account_types</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;RT&quot; =&gt; &quot;Root&quot;, &quot;AD&quot; =&gt; &quot;Admin&quot;, &quot;RG&quot; =&gt; &quot;Registrar&quot;, &quot;IT&quot; =&gt; &quot;IT Personnel&quot;, &quot;DG&quot; =&gt; &quot;Director General&quot;, &quot;SP&quot; =&gt; &quot;Supervisor&quot;, &quot;CH&quot; =&gt; &quot;Case Handler&quot;, &quot;DE&quot; =&gt; &quot;Data Entry&quot;, &quot;AP&quot; =&gt; &quot;Applicant&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid account types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_account_types_html">
+        $account_types_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_account_types_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">49</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for account types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$account_types_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;RT&quot; =&gt; &quot;danger&quot;, &quot;AD&quot; =&gt; &quot;warning&quot;, &quot;RG&quot; =&gt; &quot;info&quot;, &quot;IT&quot; =&gt; &quot;primary&quot;, &quot;DG&quot; =&gt; &quot;info&quot;, &quot;SP&quot; =&gt; &quot;info&quot;, &quot;CH&quot; =&gt; &quot;info&quot;, &quot;DE&quot; =&gt; &quot;info&quot;, &quot;AP&quot; =&gt; &quot;info&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for account types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_app">
+        $app
+        <a href="classes/App-Enhancers-AppHelper.html#property_app" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">14</span>
+</aside>
+
+        <p class="phpdocumentor-summary">$app App instance</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">null|<abbr title="\App\Enhancers\Illuminate\Foundation\Application">Application</abbr></span>
+    <span class="phpdocumentor-signature__name">$app</span>
+    </code>
+
+        <section class="phpdocumentor-description"></section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_application_forms">
+        $application_forms
+        <a href="classes/App-Enhancers-AppHelper.html#property_application_forms" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">294</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid application form</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$application_forms</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;form1&quot; =&gt; &quot;Notice of Merger Form 1&quot;, &quot;form2&quot; =&gt; &quot;Simplified Procedure Form 2&quot;, &quot;form4&quot; =&gt; &quot;Negative Clearance Form 4&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the application forms on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_categories">
+        $case_categories
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_categories" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">96</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid case categories</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_categories</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;REG&quot; =&gt; &quot;Merger (Form 1)&quot;, &quot;FFM&quot; =&gt; &quot;Simplified Procedure (Form 2)&quot;, &quot;FFX&quot; =&gt; &quot;Negative Clearance (Form 4)&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid case categories on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_categories_html">
+        $case_categories_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_categories_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">118</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for case categories key</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_categories_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;REG&quot; =&gt; &quot;warning&quot;, &quot;FFM&quot; =&gt; &quot;dark&quot;, &quot;FFX&quot; =&gt; &quot;danger&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for case categories on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_categories_text">
+        $case_categories_text
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_categories_text" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">107</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid case/application categories key</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_categories_text</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;REG&quot; =&gt; &quot;Merger (Form 1)&quot;, &quot;FFM&quot; =&gt; &quot;Simplified Procedure (Form 2)&quot;, &quot;FFX&quot; =&gt; &quot;Negative Clearance (Form 4)&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid case categories key on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_status">
+        $case_status
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_status" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">149</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid case status</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_status</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;1&quot; =&gt; &quot;Unassigned&quot;, &quot;2&quot; =&gt; &quot;Assigned&quot;, &quot;3&quot; =&gt; &quot;On Hold&quot;, &quot;4&quot; =&gt; &quot;Approved&quot;, &quot;5&quot; =&gt; &quot;Rejected&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid case status on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_status_html">
+        $case_status_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_status_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">162</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for case status</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_status_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;1&quot; =&gt; &quot;secondary&quot;, &quot;2&quot; =&gt; &quot;info&quot;, &quot;3&quot; =&gt; &quot;warning&quot;, &quot;4&quot; =&gt; &quot;success&quot;, &quot;5&quot; =&gt; &quot;danger&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for case status on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_types">
+        $case_types
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_types" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">129</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid case types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_types</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;SM&quot; =&gt; &quot;Small&quot;, &quot;LG&quot; =&gt; &quot;Large&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid case types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_case_types_html">
+        $case_types_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_case_types_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">139</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for case types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$case_types_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;SM&quot; =&gt; &quot;info&quot;, &quot;LG&quot; =&gt; &quot;danger&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for case types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_enquiry_types">
+        $enquiry_types
+        <a href="classes/App-Enhancers-AppHelper.html#property_enquiry_types" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">186</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid enquiry type</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$enquiry_types</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;GEN&quot; =&gt; &quot;General&quot;, &quot;PRN&quot; =&gt; &quot;Pre-Notification&quot;, &quot;COP&quot; =&gt; &quot;Complaint&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid enquiry types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_enquiry_types_html">
+        $enquiry_types_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_enquiry_types_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">197</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for enquiry types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$enquiry_types_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;GEN&quot; =&gt; &quot;primary&quot;, &quot;PRN&quot; =&gt; &quot;secondary&quot;, &quot;COP&quot; =&gt; &quot;warning&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for enquiry types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_faq_categories">
+        $faq_categories
+        <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">208</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid faq categories</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$faq_categories</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;GEN&quot; =&gt; &quot;General&quot;, &quot;GES&quot; =&gt; &quot;Getting Started&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid faq categories on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_faq_categories_description">
+        $faq_categories_description
+        <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories_description" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">230</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid faq categories matching key descriptions</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$faq_categories_description</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;GEN&quot; =&gt; &quot;General information about our patform, our clients, and security&quot;, &quot;GES&quot; =&gt; &quot;Everything you need to know about getting started on our platform&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid faq categories matching key descriptions on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_faq_categories_html">
+        $faq_categories_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_faq_categories_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">219</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for faq categories</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$faq_categories_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;GEN&quot; =&gt; &quot;primary&quot;, &quot;GES&quot; =&gt; &quot;warning&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for faq categories on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_feedbacks">
+        $feedbacks
+        <a href="classes/App-Enhancers-AppHelper.html#property_feedbacks" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">241</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid feedbacks</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$feedbacks</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;Yes&quot;, &quot;No&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid feedbacks on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_file_groups">
+        $file_groups
+        <a href="classes/App-Enhancers-AppHelper.html#property_file_groups" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">175</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid file groups</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$file_groups</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;COM&quot; =&gt; &quot;Company&quot;, &quot;ACC&quot; =&gt; &quot;Account&quot;, &quot;PAY&quot; =&gt; &quot;Payment&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid file groups on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_notification_types">
+        $notification_types
+        <a href="classes/App-Enhancers-AppHelper.html#property_notification_types" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">248</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid notification types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$notification_types</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;NEWUSER&quot; =&gt; &quot;New User&quot;, &quot;NEW_PUBLICATION&quot; =&gt; &quot;New Publication&quot;, &quot;APPROVED_DOC&quot; =&gt; &quot;Case Approved for Documentation&quot;, &quot;NEWENQUIRY&quot; =&gt; &quot;New Pre-Notification&quot;, &quot;NEWIDREQUEST&quot; =&gt; &quot;New Application ID Request&quot;, &quot;NEWCASE&quot; =&gt; &quot;New Case&quot;, &quot;ASSIGN&quot; =&gt; &quot;New Case Assigned&quot;, &quot;REASSIGN&quot; =&gt; &quot;Case Reassigned&quot;, &quot;UNASSIGN&quot; =&gt; &quot;Case Unassigned&quot;, &quot;ARCHIVE&quot; =&gt; &quot;Case Archived&quot;, &quot;ONHOLD&quot; =&gt; &quot;Case on Hold&quot;, &quot;DEFRESPONSE&quot; =&gt; &quot;Response to Defincency&quot;, &quot;REQUEST&quot; =&gt; &quot;Approval Requested&quot;, &quot;REQUEST_APPROVED&quot; =&gt; &quot;Approved Request&quot;, &quot;REQUEST_REJECTED&quot; =&gt; &quot;Rejected Request&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid notification types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_notification_types_styles">
+        $notification_types_styles
+        <a href="classes/App-Enhancers-AppHelper.html#property_notification_types_styles" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">271</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for notification types</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$notification_types_styles</span>
+     = <span class="phpdocumentor-signature__default-value">[&quot;NEWUSER&quot; =&gt; &quot;success&quot;, &quot;NEW_PUBLICATION&quot; =&gt; &quot;primary&quot;, &quot;APPROVED_DOC&quot; =&gt; &quot;success&quot;, &quot;NEWENQUIRY&quot; =&gt; &quot;secondary&quot;, &quot;NEWIDREQUEST&quot; =&gt; &quot;secondary&quot;, &quot;NEWCASE&quot; =&gt; &quot;primary&quot;, &quot;ASSIGN&quot; =&gt; &quot;secondary&quot;, &quot;REASSIGN&quot; =&gt; &quot;primary&quot;, &quot;UNASSIGN&quot; =&gt; &quot;danger&quot;, &quot;ARCHIVE&quot; =&gt; &quot;warning&quot;, &quot;ONHOLD&quot; =&gt; &quot;warning&quot;, &quot;DEFRESPONSE&quot; =&gt; &quot;success&quot;, &quot;REQUEST&quot; =&gt; &quot;warning&quot;, &quot;REQUEST_APPROVED&quot; =&gt; &quot;success&quot;, &quot;REQUEST_REJECTED&quot; =&gt; &quot;danger&quot;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for notification types on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_recommendation_types">
+        $recommendation_types
+        <a href="classes/App-Enhancers-AppHelper.html#property_recommendation_types" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">86</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid recommendations</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$recommendation_types</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;Approve&#039; =&gt; &#039;Approved&#039;, &#039;Reject&#039; =&gt; &#039;Rejected&#039;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid recommendations on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_status">
+        $status
+        <a href="classes/App-Enhancers-AppHelper.html#property_status" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">66</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid status</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$status</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;inactive&#039; =&gt; &#039;Inactive&#039;, &#039;active&#039; =&gt; &#039;Active&#039;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid status on the platform</p>
+</section>
+
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_status_html">
+        $status_html
+        <a href="classes/App-Enhancers-AppHelper.html#property_status_html" class="headerlink"><i class="fas fa-link"></i></a>
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">76</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Valid _css_colors_ for status</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$status_html</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;inactive&#039; =&gt; &#039;danger&#039;, &#039;active&#039; =&gt; &#039;success&#039;]</span></code>
+
+        <section class="phpdocumentor-description"><p>These are the valid <em>css_colors</em> for status on the platform</p>
+</section>
+
+    
+
+</article>
+            </section>
+
+            <section class="phpdocumentor-methods">
+        <h3 class="phpdocumentor-elements__header" id="methods">
+            Methods
+            <a href="classes/App-Enhancers-AppHelper.html#methods" class="headerlink"><i class="fas fa-link"></i></a>
+        </h3>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method___construct">
+        __construct()
+        <a href="classes/App-Enhancers-AppHelper.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Loads the app instance into scope</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">null|<abbr title="\App\Enhancers\Illuminate\Foundation\Application">Application</abbr>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$app</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$app</span>
+                : <span class="phpdocumentor-signature__argument__return-type">null|<abbr title="\App\Enhancers\Illuminate\Foundation\Application">Application</abbr></span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">void</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_get">
+        get()
+        <a href="classes/App-Enhancers-AppHelper.html#method_get" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">337</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Validates and returns array</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">get</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$textStyle</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&quot;strtoupper&quot;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$textStyle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;strtoupper&quot;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_key">
+        key()
+        <a href="classes/App-Enhancers-AppHelper.html#method_key" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">365</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Validates and returns array value</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">key</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$arrayValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$arrayValue</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_keys">
+        keys()
+        <a href="classes/App-Enhancers-AppHelper.html#method_keys" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">353</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Get array keys</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">keys</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$textStyle</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&quot;strtoupper&quot;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$textStyle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&quot;strtoupper&quot;</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_objSelect">
+        objSelect()
+        <a href="classes/App-Enhancers-AppHelper.html#method_objSelect" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">452</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Generates HTML SELECT button for custom arrays with objects</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">objSelect</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$properties</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$selecteds</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$textStyle</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$properties</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$selecteds</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$textStyle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_radio">
+        radio()
+        <a href="classes/App-Enhancers-AppHelper.html#method_radio" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">483</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Generates HTML RADIO button</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">radio</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$select</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$isRequired</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">TRUE</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$select</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$isRequired</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">TRUE</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_select">
+        select()
+        <a href="classes/App-Enhancers-AppHelper.html#method_select" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">412</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Generates HTML SELECT button</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">select</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$select</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$select</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_udaSelect">
+        udaSelect()
+        <a href="classes/App-Enhancers-AppHelper.html#method_udaSelect" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">431</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Generates HTML SELECT button for user defined array</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">udaSelect</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$selecteds</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$selecteds</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">string</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_validateKey">
+        validateKey()
+        <a href="classes/App-Enhancers-AppHelper.html#method_validateKey" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">307</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Validates array key</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">validateKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$arrayKey</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$arrayKey</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_validateValue">
+        validateValue()
+        <a href="classes/App-Enhancers-AppHelper.html#method_validateValue" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">322</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Validates array value</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">validateValue</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$arrayValue</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$arrayValue</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">bool</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_value">
+        value()
+        <a href="classes/App-Enhancers-AppHelper.html#method_value" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">395</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Validates and returns array value</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">value</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$arrayKey</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$textStyle</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$arrayKey</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$textStyle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_values">
+        values()
+        <a href="classes/App-Enhancers-AppHelper.html#method_values" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="app/Enhancers/AppHelper.php"><a href="files/app-enhancers-apphelper.html"><abbr title="app/Enhancers/AppHelper.php">AppHelper.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">382</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Get array values</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                <span class="phpdocumentor-signature__name">values</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$textStyle</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">NULL</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$textStyle</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">NULL</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"></section>
+
+            </dd>
+            </dl>
+
+    
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+            </section>
+
+    </article>
+                <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
+    <section class="phpdocumentor-search-results__dialog">
+        <header class="phpdocumentor-search-results__header">
+            <h2 class="phpdocumentor-search-results__title">Search results</h2>
+            <button class="phpdocumentor-search-results__close"><i class="fas fa-times"></i></button>
+        </header>
+        <section class="phpdocumentor-search-results__body">
+            <ul class="phpdocumentor-search-results__entries"></ul>
+        </section>
+    </section>
+</section>
+            </div>
+        </div>
+        <a href="classes/App-Enhancers-AppHelper.html#top" class="phpdocumentor-back-to-top"><i class="fas fa-chevron-circle-up"></i></a>
+
+    </main>
+
+    <script>
+        cssVars({});
+    </script>
+</body>
+</html>

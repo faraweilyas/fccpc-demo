@@ -105,6 +105,8 @@ trait CaseAssignable
      * A supervisor issues approval comment
      *
      * @param  User $caseHandler
+     * @param  String $comment
+     * @param  String $status
      * @return array
      */
     public function issueApprovalComment(User $caseHandler, $comment, $status)
@@ -121,6 +123,8 @@ trait CaseAssignable
      * A case handler issues recommendation
      *
      * @param  User $caseHandler
+     * @param  String $file_name
+     * @param  String $recommendation
      * @return array
      */
     public function issueReccomendation(User $caseHandler, $file_name, $recommendation)

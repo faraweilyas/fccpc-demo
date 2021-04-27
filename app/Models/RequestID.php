@@ -10,21 +10,45 @@ class RequestID extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get submitted at
+     *
+     * @param $string $format
+     * @return String
+     */
     public function getSubmittedAt(string $format='customdate') : string
     {
         return !empty($this->created_at) ? datetimeToText($this->created_at, $format) : "";
     }
 
+    /**
+     * Get category
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCategory($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories', $this->category, $textStyle) ?? "";
     }
 
+    /**
+     * Get category text
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCategoryText($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories_text', $this->category, $textStyle) ?? "";
     }
 
+    /**
+     * Get category html
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCategoryHtml($textStyle=NULL) : string
     {
         $category       = $this->getCategory($textStyle);
@@ -32,11 +56,23 @@ class RequestID extends Model
         return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
     }
 
+    /**
+     * Get case type
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getType($textStyle='ucfirst') : string
     {
         return \AppHelper::value('case_types', $this->type, $textStyle) ?? "";
     }
 
+    /**
+     * Get type html
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getTypeHtml($textStyle='ucfirst') : string
     {
         $type       = $this->getType($textStyle);
@@ -45,17 +81,34 @@ class RequestID extends Model
                 <span class='font-weight-bold text-{$typeHtml}'>{$type}</span>";
     }
 
-     public function getCaseParties(bool $collect=true)
+    /**
+     * Get case parties
+     *
+     * @param bool $collect
+     * @return Mixed
+     */
+    public function getCaseParties(bool $collect=true)
     {
         $parties = (empty($this->parties)) ? [] : explode(':', $this->parties);
         return ($collect) ? collect($parties) : $parties;
     }
 
+    /**
+     * Get case parties text
+     *
+     * @return Array
+     */
     public function getCasePartiesText()
     {
         return implode(', ', $this->getCaseParties(false));
     }
 
+    /**
+     * Generate case parties badge
+     *
+     * String $extraStyles
+     * @return integer
+     */
     public function generateCasePartiesBadge($extraStyles='mr_10') : string
     {
         $styles = ['success', 'danger', 'warning', 'info', 'primary'];

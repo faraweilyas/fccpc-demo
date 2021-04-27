@@ -81,6 +81,7 @@ class HomeController extends Controller
     /**
      * Handles the publications view page.
      *
+     * @param string $slug
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function publicationView($slug)
@@ -179,6 +180,7 @@ class HomeController extends Controller
     /**
      * Handles the faqs category view page.
      *
+     * @param string $category
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function faqCategoryView($category)
@@ -203,6 +205,8 @@ class HomeController extends Controller
     /**
      * Handles the faq page.
      *
+     * @param string $categroy
+     * @param string $slug
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function faq($category, $slug)
@@ -222,6 +226,7 @@ class HomeController extends Controller
     /**
      * Handles the store feedback route.
      *
+     * @param Faq $faq
      * @return \Illuminate\View\View|\Illuminate\Contracts\View\Factory
      */
     public function storeFeedback(Faq $faq)

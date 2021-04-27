@@ -8,16 +8,31 @@ class Document extends Model
 {
     protected $guarded = [];
 
+    /**
+     * Get case
+     *
+     * @return HasRelationship
+     */
     public function case()
     {
         return $this->hasOne(Cases::class, 'id', 'case_id');
     }
 
+    /**
+     * Get group
+     *
+     * @return HasRelationship
+     */
     public function group()
     {
         return $this->belongsTo(ChecklistGroup::class, 'group_id');
     }
 
+    /**
+     * Get checklists
+     *
+     * @return HasRelationships
+     */
     public function checklists()
     {
         return $this->belongsToMany(Checklist::class, 'checklist_document', 'document_id', 'checklist_id')
@@ -26,6 +41,11 @@ class Document extends Model
             ->withTimestamps();
     }
 
+    /**
+     * Get icon text
+     *
+     * @return String
+     */
     public function getIconText()
     {
         $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
@@ -36,6 +56,12 @@ class Document extends Model
         return "{$path}{$file}";
     }
 
+    /**
+     * Get file icon text
+     *
+     * @param String $file
+     * @return String
+     */
     public function getFileIconText($file)
     {
         $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
@@ -46,12 +72,25 @@ class Document extends Model
         return "{$path}{$file}";
     }
 
+    /**
+     * Get checklists
+     *
+     * @param String $replacement
+     * @param bool $newline
+     * @return String
+     */
     public function getAdditionalInfo(string $replacement="...", $newline=true) : string
     {
         $additional_info = ($newline) ? nl2br($this->additional_info) : $this->additional_info;
         return empty($additional_info) ? $replacement : $additional_info;
     }
 
+    /**
+     * Get checklist document
+     *
+     * @param Object $checklist
+     * @return Collection
+     */
     public function getChecklistDocument($checklist)
     {
         $checklist_document = $this
@@ -62,21 +101,44 @@ class Document extends Model
         return $checklist_document->checklist_document ?? NULL;
     }
 
+    /**
+     * Get checklist document status
+     *
+     * @param Object $checklist
+     * @return String
+     */
     public function getChecklistDocumentStatus($checklist)
     {
         return $this->getChecklistDocument($checklist)->status ?? NULL;
     }
 
+    /**
+     * Get checklist document reason
+     *
+     * @return String
+     */
     public function getChecklistDocumentReason($checklist)
     {
         return $this->getChecklistDocument($checklist)->reason ?? NULL;
     }
 
+    /**
+     * Get file array
+     *
+     * @return Array
+     */
     public function getFileArray() : array
     {
         return explode(',', $this->file);
     }
 
+    /**
+     * Get checklists
+     *
+     * @param Object $checklist
+     * @param Array $checklistIds
+     * @return String
+     */
     public function getCheckedChecklistDocument($checklist, $checklistIds)
     {
         $checklist_document = $this->getChecklistDocument($checklist);

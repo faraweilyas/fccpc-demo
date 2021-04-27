@@ -91,6 +91,7 @@ trait UserGettable
     /**
      * Defines a many to many relationship for case and active case handlers
      *
+     * @param bool $handler
      * @return HasRelationships
      */
     public function active_cases_assigned($handler = FALSE)
@@ -130,6 +131,7 @@ trait UserGettable
     /**
      * Searches for active cases assigned
      *
+     * @param String $search
      * @return HasRelationships
      */
     public function search_active_cases_assigned_to($search)
@@ -183,6 +185,7 @@ trait UserGettable
     /**
      * Gets all cases
      *
+     * @param bool $handler
      * @return Collection
      */
     public function all_cases($handler = FALSE)
@@ -205,6 +208,7 @@ trait UserGettable
     /**
      * Gets cases on going
      *
+     * @param bool $handler
      * @return HasRelationships
      */
     public function cases_working_on($handler = FALSE)
@@ -237,6 +241,7 @@ trait UserGettable
     /**
      * Gets deficient cases
      *
+     * @param bool $handler
      * @return Collection
      */
     public function deficient_cases($handler = FALSE)
@@ -266,6 +271,7 @@ trait UserGettable
     /**
      * Gets approved cases
      *
+     * @param bool $handler
      * @return Collection
      */
     public function approved_cases($handler = FALSE)
@@ -298,6 +304,7 @@ trait UserGettable
     /**
      * Gets archived cases
      *
+     * @param bool $handler
      * @return Collection
      */
     public function archived_cases($handler = FALSE)

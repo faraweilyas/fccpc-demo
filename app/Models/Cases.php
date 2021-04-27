@@ -15,6 +15,11 @@ class Cases extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get case creator
+     *
+     * @return mixed
+     */
     public function creator()
     {
         if (!empty($this->user_id))
@@ -26,41 +31,81 @@ class Cases extends Model
         return false;
     }
 
+    /**
+     * Get publication
+     *
+     * @return HasRelationship
+     */
     public function publication()
     {
         return $this->hasOne(Publication::class, 'case_id');
     }
 
+    /**
+     * Get guest
+     *
+     * @return HasRelationship
+     */
     public function guest()
     {
         return $this->belongsTo(Guest::class);
     }
 
+    /**
+     * Get user
+     *
+     * @return HasRelationship
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get documents
+     *
+     * @return HasRelationships
+     */
     public function documents()
     {
         return $this->hasMany(Document::class, 'case_id');
     }
 
+    /**
+     * Check if case category is set
+     *
+     * @return bool
+     */
     public function isCategorySet() : bool
     {
         return empty($this->case_category) ? false : true;
     }
 
+    /**
+     * Check if case assigned
+     *
+     * @return bool
+     */
     public function isAssigned() : bool
     {
         return !empty($this->active_handlers->first()) ? true : false;
     }
 
+    /**
+     * Check if case is submitted
+     *
+     * @return bool
+     */
     public function isSubmitted() : bool
     {
         return empty($this->submitted_at) ? false : true;
     }
 
+    /**
+     * Check if case is deficient
+     *
+     * @return bool
+     */
     public function isDeficient()
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -70,6 +115,11 @@ class Cases extends Model
         return is_null($active_handler->case_handler->defficiency_issued_at) ? false : true;
     }
 
+    /**
+     * Check if case is being worked-on/ongoing
+     *
+     * @return bool
+     */
     public function isOngoing()
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -79,11 +129,21 @@ class Cases extends Model
         return is_null($active_handler->case_handler->workingon_at) ? false : true;
     }
 
+    /**
+     * Check if case is on hold
+     *
+     * @return bool
+     */
     public function isCaseOnHold() : bool
     {
         return empty($this->getDefficiencyDate()) ? false : true;
     }
 
+    /**
+     * Check if case approval is requested
+     *
+     * @return bool
+     */
     public function isApprovalRequested() : bool
     {
          $active_handler = $this->active_handlers[0] ?? NULL;
@@ -93,11 +153,21 @@ class Cases extends Model
         return is_null($active_handler->case_handler->approval_requested_at) ? false : true;
     }
 
+    /**
+     * Check if case checklist is approved
+     *
+     * @return bool
+     */
     public function isCaseChecklistsApproved() : bool
     {
         return empty($this->getChecklistApprovedDate()) ? false : true;
     }
 
+    /**
+     * Check if case recommendation is issued
+     *
+     * @return bool
+     */
     public function isRecommendationIssued() : bool
     {
         if (empty($this->getRecommendationIssuedDate()))
@@ -112,6 +182,11 @@ class Cases extends Model
         return TRUE;
     }
 
+    /**
+     * Check if approval is rejected
+     *
+     * @return bool
+     */
     public function checkApprovalRejection() : bool
     {
         if ($this->isApprovalRejected())
@@ -120,6 +195,11 @@ class Cases extends Model
         return !$this->isRecommendationIssued();
     }
 
+    /**
+     * Check if case is closed
+     *
+     * @return string
+     */
     public function caseClosedAt($format = 'customdate'){
         $active_handler = $this->active_handlers[0] ?? NULL;
 
@@ -128,6 +208,11 @@ class Cases extends Model
         return datetimeToText($active_handler->case_handler->approval_requested_at, $format);
     }
 
+    /**
+     * Check if approval request has been approved
+     *
+     * @return bool
+     */
     public function checkApprovalApproved() : bool
     {
         if ($this->isApprovalApproved())
@@ -136,6 +221,11 @@ class Cases extends Model
         return !$this->isRecommendationIssued();
     }
 
+    /**
+     * Check if approval request has been rejected
+     *
+     * @return bool
+     */
     public function isApprovalRejected() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -145,6 +235,11 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_status == 'rejected') ? true : false;
     }
 
+    /**
+     * Check if logged in user is assigned to selected case
+     *
+     * @return bool
+     */
     public function isActiveUsersCase() : bool
     {
         $active_handler = $this->active_handlers->first() ?? NULL;
@@ -154,6 +249,11 @@ class Cases extends Model
         return $active_handler->case_handler->handler_id == auth()->user()->id;
     }
 
+    /**
+     * Check if final approval has been issued and approved
+     *
+     * @return bool
+     */
     public function isApprovalApproved() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -163,6 +263,11 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_status == 'approved') ? true : false;
     }
 
+    /**
+     * Check if approval letter has been sent
+     *
+     * @return bool
+     */
     public function isApprovalLetterSent() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -172,6 +277,11 @@ class Cases extends Model
         return ($active_handler->case_handler->approval_letter_sent_at == 'approved') ? true : false;
     }
 
+    /**
+     * Check if case has been archived
+     *
+     * @return bool
+     */
     public function isCaseArchived() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -181,6 +291,11 @@ class Cases extends Model
         return (!empty($active_handler->case_handler->archived_at)) ? true : false;
     }
 
+    /**
+     * Check if case is ongoing
+     *
+     * @return bool
+     */
     public function isCaseOnGoing() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -190,6 +305,11 @@ class Cases extends Model
         return (!empty($active_handler->case_handler->workingon_at)) ? true : false;
     }
 
+    /**
+     * Check approval status
+     *
+     * @return bool
+     */
     public function checkApprovalStatus() : bool
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -199,6 +319,11 @@ class Cases extends Model
         return (!empty($active_handler->case_handler->approval_status)) ? true : false;
     }
 
+    /**
+     * Get case handler
+     *
+     * @return object
+     */
     public function getHandler()
     {
         $active_handler = $this->active_handlers[0] ?? NULL;
@@ -208,31 +333,61 @@ class Cases extends Model
         return $active_handler;
     }
 
+    /**
+     * Get case application fee
+     *
+     * @return integer
+     */
     public function getApplicationFee()
     {
         return (!empty($this->application_fee) && $this->application_fee != 'undefined') ? formatDigit($this->application_fee) : '₦0.00';
     }
 
+    /**
+     * Get case processing fee
+     *
+     * @return integer
+     */
     public function getProcessingFee()
     {
         return (!empty($this->processing_fee) && $this->processing_fee != 'undefined') ? formatDigit($this->processing_fee) : '₦0.00';
     }
 
+    /**
+     * Get expedited fee
+     *
+     * @return integer
+     */
     public function getExpeditedFee()
     {
         return (!empty($this->expedited_fee) && $this->expedited_fee != 'undefined') ? formatDigit($this->expedited_fee) : '₦0.00';
     }
 
+    /**
+     * Get amount paid
+     *
+     * @return integer
+     */
     public function getAmountPaid()
     {
         return (!empty($this->amount_paid) && $this->amount_paid != 'undefined') ? formatDigit($this->amount_paid) : '₦0.00';
     }
 
+    /**
+     * Get applicant full name
+     *
+     * @return String
+     */
     public function getApplicantFullName()
     {
         return (!empty($this->applicant_fullname)) ? $this->applicant_fullname : '...';
     }
 
+    /**
+     * Get application status
+     *
+     * @return String
+     */
     public function getApplicationStatus() : string
     {
         if ($this->isCaseArchived())
@@ -250,6 +405,11 @@ class Cases extends Model
         return "It has been <span class='text-primary'>RECEIVED</span>";
     }
 
+    /**
+     * Get selected category style
+     *
+     * @return String
+     */
     public function selectedCategoryStyle($case_category='reg') : \stdClass
     {
         $case_category = strtoupper($case_category);
@@ -261,12 +421,22 @@ class Cases extends Model
         ];
     }
 
+    /**
+     * Get reference no
+     *
+     * @return String
+     */
     public function getRefNO($textStyle='strtoupper') : string
     {
         $refrenceNo = !empty($this->reference_number) ? "{$this->reference_number}" : '';
         return textTransformer($refrenceNo, $textStyle);
     }
 
+    /**
+     * Get form1A icon text
+     *
+     * @return String
+     */
     public function getForm1AIconText()
     {
         $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
@@ -277,6 +447,11 @@ class Cases extends Model
         return "{$path}{$file}";
     }
 
+    /**
+     * Get letter of appointment text
+     *
+     * @return String
+     */
     public function getLetterOfAppointmentIconText()
     {
         $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
@@ -287,6 +462,12 @@ class Cases extends Model
         return "{$path}{$file}";
     }
 
+    /**
+     * Check if case category is set
+     *
+     * @param String $form
+     * @return String
+     */
     public function getApplicationFormIconText($form)
     {
         $extensions     = ['pdf' => 'pdf', 'doc' => 'doc', 'docx' => 'doc', 'csv' => 'csv', 'zip' => 'zip'];
@@ -297,26 +478,55 @@ class Cases extends Model
         return "{$path}{$file}";
     }
 
+    /**
+     * Check if case category is set
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getSubject($textStyle=NULL) : string
     {
         return textTransformer(shortenContent($this->subject, 35), $textStyle);
     }
 
+    /**
+     * Get case category array key
+     *
+     * @return string
+     */
     public function getCategoryKey() : string
     {
         return$this->case_category ?? "";
     }
 
+    /**
+     * Get case category array value
+     *
+     * @param String $textStyle
+     * @return bool
+     */
     public function getCategory($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories', $this->case_category, $textStyle) ?? "";
     }
 
+    /**
+     * Get category text
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCategoryText($textStyle=NULL) : string
     {
         return \AppHelper::value('case_categories_text', $this->case_category, $textStyle) ?? "";
     }
 
+    /**
+     * Get categroy html string text
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCategoryHtml($textStyle=NULL) : string
     {
         $category       = $this->getCategory($textStyle);
@@ -324,11 +534,23 @@ class Cases extends Model
         return "<span class='label label-lg font-weight-bold label-inline label-light-{$categoryHtml}'>{$category}</span>";
     }
 
+    /**
+     * Get case type
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getType($textStyle='ucfirst') : string
     {
         return \AppHelper::value('case_types', $this->case_type, $textStyle) ?? "";
     }
 
+    /**
+     * Get case type html text
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getTypeHtml($textStyle='ucfirst') : string
     {
         $type       = $this->getType($textStyle);
@@ -337,22 +559,44 @@ class Cases extends Model
                 <span class='font-weight-bold text-{$typeHtml}'>{$type}</span>";
     }
 
+    /**
+     * Get case parties
+     *
+     * @param Bool $collect
+     * @return Collection
+     */
     public function getCaseParties(bool $collect=true)
     {
         $parties = (empty($this->parties)) ? [] : explode(':', $this->parties);
         return ($collect) ? collect($parties) : $parties;
     }
 
+    /**
+     * Get case parties text
+     *
+     * @return Array
+     */
     public function getCasePartiesText()
     {
         return implode(', ', $this->getCaseParties(false));
     }
 
+    /**
+     * Get case parties publication
+     *
+     * @return Array
+     */
     public function getCasePartiesPublication()
     {
         return implode('/', $this->getCaseParties(false));
     }
 
+    /**
+     * Generate case parties badge
+     *
+     * @param String $textStyles
+     * @return String
+     */
     public function generateCasePartiesBadge($extraStyles='mr_10') : string
     {
         $styles = ['success', 'danger', 'warning', 'info', 'primary'];
@@ -363,6 +607,12 @@ class Cases extends Model
         })->join(" ");
     }
 
+    /**
+     * Generate case parties radio
+     *
+     * @param String $extraStyles
+     * @return String
+     */
     public function generateCasePartiesRadio($extraStyles='mr_10') : string
     {
         $styles = ['success', 'danger', 'warning', 'info', 'primary'];
@@ -374,27 +624,52 @@ class Cases extends Model
         })->join(" ");
     }
 
+    /**
+     * Get applicant name
+     *
+     * @return String
+     */
     public function getApplicantName() : string
     {
         return trim($this->applicant_fullname);
     }
 
+    /**
+     * Get submitted at
+     *
+     * @return String
+     */
     public function getSubmittedAt(string $format='customdate') : string
     {
         return !empty($this->submitted_at) ? datetimeToText($this->submitted_at, $format) : "";
     }
 
+    /**
+     * Get form 1A date
+     *
+     * @return String
+     */
     public function getForm1ADate(string $format='customdate') : string
     {
         return !empty($this->form_1A_Date) ? datetimeToText($this->form_1A_Date, $format) : "";
     }
 
+    /**
+     * Get deficiency issued at
+     *
+     * @return String
+     */
     public function getDefficiencyIssuedAt(string $format='customdate') : string
     {
         $defficiency_issued_at = $this->case_handler->defficiency_issued_at;
         return !empty($defficiency_issued_at) ? datetimeToText($defficiency_issued_at, $format) : "";
     }
 
+    /**
+     * Get submitted checklists
+     *
+     * @return Collection
+     */
     public function getCaseSubmittedChecklist()
     {
         $checklistDocuments = [];
@@ -405,6 +680,12 @@ class Cases extends Model
         return collect($checklistDocuments)->flatten();
     }
 
+    /**
+     * Get case submitted checklist by status
+     *
+     * @param String $status
+     * @return bool
+     */
     public function getCaseSubmittedChecklistByStatus(string $status='deficient')
     {
         $deficientChecklist = $this->getCaseSubmittedChecklist()->filter(function($checklistDocument) use (&$status)
@@ -415,12 +696,22 @@ class Cases extends Model
         return $deficientChecklist;
     }
 
+    /**
+     * Get deficiency info comment
+     *
+     * @return bool
+     */
     public function getDefficientInfo()
     {
         $defficiency = $this->active_handlers->first()->case_handler->defficiency;
         return !(empty($defficiency)) ? $defficiency : '';
     }
 
+    /**
+     * Get checklist status count
+     *
+     * @return Array
+     */
     public function getChecklistStatusCount() : array
     {
         return $this
@@ -431,6 +722,11 @@ class Cases extends Model
             ->toArray();
     }
 
+    /**
+     * Get checklist id's
+     *
+     * @return Array
+     */
     public function getChecklistIds() : array
     {
         return $this
@@ -439,6 +735,11 @@ class Cases extends Model
             ->toArray();
     }
 
+    /**
+     * Get deficient group Id's
+     *
+     * @return Array
+     */
     public function getDeficientGroupIds() : array
     {
         $newDeficientGroupIds = [];
@@ -449,6 +750,11 @@ class Cases extends Model
         return $newDeficientGroupIds;
     }
 
+    /**
+     * Get checklist name
+     *
+     * @return Array
+     */
     public function getChecklistName() : array
     {
         return $this
@@ -457,6 +763,11 @@ class Cases extends Model
             ->toArray();
     }
 
+    /**
+     * Get checklist group documents
+     *
+     * @return Array
+     */
     public function getChecklistGroupDocuments() : array
     {
         $checklistGroupDocuments = [];
@@ -470,6 +781,11 @@ class Cases extends Model
         return $checklistGroupDocuments;
     }
 
+    /**
+     * Get checklist group name
+     *
+     * @return Array
+     */
     public function getChecklistGroupName() : array
     {
         $checklistGroupName = [];
@@ -483,11 +799,22 @@ class Cases extends Model
         return $checklistGroupName;
     }
 
+    /**
+     * Get unsubmitted documents
+     *
+     * @return Collection
+     */
     public function unSubmittedDocuments()
     {
         return $this->documents()->where('date_case_submitted', null)->get();
     }
 
+    /**
+     * Get complete documents submitted
+     *
+     * @param String $case_category
+     * @return Collection
+     */
     public function submittedDocumentsComplete($case_category = NULL)
     {
         return $this
@@ -503,6 +830,12 @@ class Cases extends Model
             ->sortKeysDesc();
     }
 
+    /**
+     * Get submitted post documents complete after documentation has been approved
+     *
+     * @param String $case_category
+     * @return bool
+     */
     public function submittedPostDocumentsComplete($case_category = NULL)
     {
         return $this
@@ -518,6 +851,12 @@ class Cases extends Model
             ->sortKeysDesc();
     }
 
+    /**
+     * Get submitted documents
+     *
+     * @param String $case_category
+     * @return bool
+     */
     public function submittedDocuments($case_category = NULL)
     {
         return $this
@@ -528,6 +867,13 @@ class Cases extends Model
             ->sortKeysDesc();
     }
 
+    /**
+     * Get submitted documents by date
+     *
+     * @param String $date
+     * @param String $case_category
+     * @return mixed
+     */
     public function getSubmittedDocumentByDate(string $date=NULL, string $case_category)
     {
         $submittedDocuments = $this->submittedDocuments($case_category);
@@ -546,6 +892,14 @@ class Cases extends Model
         return ($submittedDocuments[$date] ?? NULL);
     }
 
+    /**
+     * Get submitted documents by date and status
+     *
+     * @param String $date
+     * @param String $status
+     * @param String $case_category
+     * @return Collection
+     */
     public function getSubmittedDocumentChecklistByDateAndStatus(string $date=NULL, string $status=NULL, string $case_category)
     {
         $submittedDocument = $this->getSubmittedDocumentByDate($date, $case_category);
@@ -557,11 +911,21 @@ class Cases extends Model
             ->where('checklist_document.status', $status);
     }
 
+    /**
+     * Get latest submitted documents
+     *
+     * @return Collection
+     */
     public function latestSubmittedDocuments()
     {
         return $this->submittedDocuments()->first();
     }
 
+    /**
+     * Get latest submitted document checklists
+     *
+     * @return Collection
+     */
     public function getLatestSubmittedDocumentChecklists()
     {
         $checklistDocuments = [];
@@ -572,6 +936,12 @@ class Cases extends Model
         return collect($checklistDocuments)->flatten();
     }
 
+    /**
+     * Get latest submitted document checklist by status
+     *
+     * @param String $status
+     * @return Collection
+     */
     public function getLatestSubmittedDocumentChecklistsByStatus(string $status="deficient")
     {
         $status = (in_array(strtolower($status), ['deficient', 'approved'])) ? $status : "deficient";
@@ -582,11 +952,22 @@ class Cases extends Model
             });
     }
 
+    /**
+     * Check if case category is set
+     *
+     * @return bool
+     */
     public function getLatestSubmittedDocumentChecklistsIDs(string $status="deficient")
     {
         return $this->getLatestSubmittedDocumentChecklistsByStatus($status)->pluck('id')->toArray();
     }
 
+    /**
+     * Get latest submitted document checklists groupd IDs
+     *
+     * @param String $status
+     * @return Collection
+     */
     public function getLatestSubmittedDocumentChecklistsGroupIDs(string $status="deficient")
     {
         return $this
@@ -597,6 +978,12 @@ class Cases extends Model
             ->toArray();
     }
 
+    /**
+     * Get latest submitted documents checklists groups
+     *
+     * @param String $status
+     * @return Collection
+     */
     public function getLatestSubmittedDocumentChecklistsGroups(string $status="deficient")
     {
         $checklistGroups = [];
@@ -607,6 +994,12 @@ class Cases extends Model
         return collect($checklistGroups);
     }
 
+    /**
+     * Get latest submitted documents checklists group names
+     *
+     * @param String $status
+     * @return Collection
+     */
     public function getLatestSubmittedDocumentChecklistsGroupNames(string $status="deficient")
     {
         return $this
@@ -615,6 +1008,11 @@ class Cases extends Model
             ->toArray();
     }
 
+    /**
+     * Get checklist group unsubmitted documents
+     *
+     * @return Array
+     */
     public function getChecklistGroupUnSubmittedDocuments()
     {
         $checklistGroupDocuments = [];
@@ -628,6 +1026,11 @@ class Cases extends Model
         return $checklistGroupDocuments;
     }
 
+    /**
+     * Get checklist group unsubmitted documents name
+     *
+     * @return Array
+     */
     public function getChecklistGroupUnSubmittedDocumentsName() : array
     {
         $checklistGroupName = [];
@@ -641,11 +1044,21 @@ class Cases extends Model
         return $checklistGroupName;
     }
 
+    /**
+     * Get applicant forms
+     *
+     * @return Array
+     */
     public function getApplicationForms() : array
     {
         return explode(',', $this->application_forms);
     }
 
+    /**
+     * Get application forms formatted
+     *
+     * @return Array
+     */
     public function formatApplicationForms() : array
     {
         $formObjects = [];
@@ -657,6 +1070,12 @@ class Cases extends Model
         return $formObjects;
     }
 
+    /**
+     * Merge application forms
+     *
+     * @param String $newForm
+     * @return String
+     */
     public function mergeApplicationForms(string $newForm) : string
     {
         list($newKey, $newFile)         = explode(':', $newForm);
@@ -678,23 +1097,45 @@ class Cases extends Model
         return $newApplicationForms;
     }
 
+    /**
+     * Get publication text
+     *
+     * @param Bool $escape_html_entity
+     * @return String
+     */
     public function getPublicationText(bool $escape_html_entity=FALSE)
     {
         $publicationText = $this->publication->text ?? $this->form_1A_Text;
         return ($escape_html_entity) ? html_entity_decode($publicationText) : $publicationText;
     }
 
-    // ...
+    /**
+     * Get status
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCaseStatus($textStyle='strtolower')
     {
         return \AppHelper::value('case_status', $this->status ?? 1, $textStyle);
     }
 
+    /**
+     * Get status html
+     *
+     * @param String $textStyle
+     * @return String
+     */
     public function getCaseStatusHTML($textStyle='strtolower')
     {
         return \AppHelper::value('case_status_html', $this->status ?? 1, $textStyle);
     }
 
+    /**
+     * Get case handler name
+     *
+     * @return String
+     */
     public function getCaseHandlerName() : string
     {
         return ($caseHandler = $this->handler->first()) ? $caseHandler->getFullName() : "";

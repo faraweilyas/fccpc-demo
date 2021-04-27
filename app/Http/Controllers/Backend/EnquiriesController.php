@@ -94,7 +94,7 @@ class EnquiriesController extends Controller
     /**
      * Handles enquiries log page route.
      *
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function logs()
     {
@@ -114,7 +114,7 @@ class EnquiriesController extends Controller
     /**
      * Handles enquiry assign page route.
      *
-     * @return void
+     * @return object
      */
     public function assignLog()
     {

@@ -10,6 +10,11 @@ class Feedback extends Model
 
     protected $guarded = [];
 
+    /**
+     * Get faq
+     *
+     * @return HasRelationship
+     */
     public function faq()
     {
         return $this->belongsTo(Faq::class);

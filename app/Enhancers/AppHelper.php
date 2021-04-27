@@ -24,6 +24,11 @@ class AppHelper
         $this->app = is_null($app) ? app() : $app;
     }
 
+    /**
+     * Valid account types
+     *
+     * These are the valid account types on the platform
+     */
     protected $account_types = [
         "RT"  => "Root",
         "AD"  => "Admin",
@@ -36,6 +41,11 @@ class AppHelper
         "AP"  => "Applicant",
     ];
 
+    /**
+     * Valid _css_colors_ for account types
+     *
+     * These are the valid _css_colors_ for account types on the platform
+     */
     protected $account_types_html = [
         "RT"  => "danger",
         "AD"  => "warning",
@@ -48,49 +58,94 @@ class AppHelper
         "AP"  => "info",
     ];
 
+    /**
+     * Valid status
+     *
+     * These are the valid status on the platform
+     */
     protected $status = [
         'inactive' => 'Inactive',
         'active'   => 'Active',
     ];
 
+    /**
+     * Valid _css_colors_ for status
+     *
+     * These are the valid _css_colors_ for status on the platform
+     */
     protected $status_html = [
         'inactive' => 'danger',
         'active'   => 'success',
     ];
 
+    /**
+     * Valid recommendations
+     *
+     * These are the valid recommendations on the platform
+     */
     protected $recommendation_types = [
         'Approve'   => 'Approved',
         'Reject'    => 'Rejected',
     ];
 
+    /**
+     * Valid case categories
+     *
+     * These are the valid case categories on the platform
+     */
 	protected $case_categories = [
 		"REG" => "Merger (Form 1)",
 		"FFM" => "Simplified Procedure (Form 2)",
 		"FFX" => "Negative Clearance (Form 4)",
 	];
 
+    /**
+     * Valid case/application categories key
+     *
+     * These are the valid case categories key on the platform
+     */
     protected $case_categories_text = [
         "REG" => "Merger (Form 1)",
         "FFM" => "Simplified Procedure (Form 2)",
         "FFX" => "Negative Clearance (Form 4)",
     ];
 
+    /**
+     * Valid _css_colors_ for case categories key
+     *
+     * These are the valid _css_colors_ for case categories on the platform
+     */
     protected $case_categories_html = [
         "REG" => "warning",
         "FFM" => "dark",
         "FFX" => "danger",
     ];
 
+    /**
+     * Valid case types
+     *
+     * These are the valid case types on the platform
+     */
     protected $case_types = [
         "SM" => "Small",
         "LG" => "Large",
     ];
 
+    /**
+     * Valid _css_colors_ for case types
+     *
+     * These are the valid _css_colors_ for case types on the platform
+     */
     protected $case_types_html = [
         "SM" => "info",
         "LG" => "danger",
     ];
 
+    /**
+     * Valid case status
+     *
+     * These are the valid case status on the platform
+     */
 	protected $case_status = [
 		"1"  => "Unassigned",
 		"2"  => "Assigned",
@@ -99,6 +154,11 @@ class AppHelper
 		"5"  => "Rejected",
 	];
 
+    /**
+     * Valid _css_colors_ for case status
+     *
+     * These are the valid _css_colors_ for case status on the platform
+     */
 	protected $case_status_html = [
 		"1"  => "secondary",
 		"2"  => "info",
@@ -107,44 +167,84 @@ class AppHelper
 		"5"  => "danger",
 	];
 
+    /**
+     * Valid file groups
+     *
+     * These are the valid file groups on the platform
+     */
     protected $file_groups = [
         "COM" => "Company",
         "ACC" => "Account",
         "PAY" => "Payment",
     ];
 
+    /**
+     * Valid enquiry type
+     *
+     * These are the valid enquiry types on the platform
+     */
     protected $enquiry_types = [
         "GEN" => "General",
         "PRN" => "Pre-Notification",
         "COP" => "Complaint",
     ];
 
+    /**
+     * Valid _css_colors_ for enquiry types
+     *
+     * These are the valid _css_colors_ for enquiry types on the platform
+     */
     protected $enquiry_types_html = [
         "GEN"  => "primary",
         "PRN"  => "secondary",
         "COP"  => "warning",
     ];
 
+    /**
+     * Valid faq categories
+     *
+     * These are the valid faq categories on the platform
+     */
     protected $faq_categories = [
         "GEN" => "General",
         "GES" => "Getting Started"
         // "ENQ" => "Enquiry",
     ];
 
+    /**
+     * Valid _css_colors_ for faq categories
+     *
+     * These are the valid _css_colors_ for faq categories on the platform
+     */
     protected $faq_categories_html = [
         "GEN" => "primary",
         "GES" => "warning"
         // "ENQ" => "secondary",
     ];
 
+    /**
+     * Valid faq categories matching key descriptions
+     *
+     * These are the valid faq categories matching key descriptions on the platform
+     */
     protected $faq_categories_description = [
         "GEN" => "General information about our patform, our clients, and security",
         "GES" => "Everything you need to know about getting started on our platform"
         // "ENQ" => "Get Relevant information on application cases",
     ];
 
+    /**
+     * Valid feedbacks
+     *
+     * These are the valid feedbacks on the platform
+     */
     protected $feedbacks = ["Yes", "No"];
 
+    /**
+     * Valid notification types
+     *
+     * These are the valid notification types on the platform
+     */
     protected $notification_types = [
         "NEWUSER"                => "New User",
         "NEW_PUBLICATION"        => "New Publication",
@@ -163,6 +263,11 @@ class AppHelper
         "REQUEST_REJECTED"       => "Rejected Request",
     ];
 
+    /**
+     * Valid _css_colors_ for notification types
+     *
+     * These are the valid _css_colors_ for notification types on the platform
+     */
     protected $notification_types_styles = [
         "NEWUSER"                => "success",
         "NEW_PUBLICATION"        => "primary",
@@ -181,6 +286,11 @@ class AppHelper
         "REQUEST_REJECTED"       => "danger",
     ];
 
+    /**
+     * Valid application form
+     *
+     * These are the application forms on the platform
+     */
     protected $application_forms = [
         "form1"     => "Notice of Merger Form 1",
         "form2"     => "Simplified Procedure Form 2",

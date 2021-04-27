@@ -16,6 +16,7 @@ class IssueDeficiencyEmail extends Mailable
     /**
      * Create a new message instance.
      *
+     * @param object $data
      * @return void
      */
     public function __construct($data)

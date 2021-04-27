@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
 	/**
 	 * Handles the admin home page route.
-	 * @return void
+	 * @return \Illuminate\Contracts\View\Factory
 	 */
     public function index()
     {
@@ -51,7 +51,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the update user password page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function updatePassword()
     {
@@ -66,7 +66,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the store update user password page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function storeUpdatePassword()
     {
@@ -84,7 +84,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the create user page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function createUser()
     {
@@ -96,7 +96,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the store user page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function storeUser(Request $request)
     {
@@ -127,7 +127,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the view users page route.
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewUsers()
     {
@@ -140,7 +140,7 @@ class DashboardController extends Controller
     /**
      * Handles the view profile page route.
      *
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewProfileUpdate()
     {
@@ -154,7 +154,7 @@ class DashboardController extends Controller
     /**
      * Handles the view application id requests page route.
      *
-     * @return void
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewIDRequests()
     {
@@ -166,9 +166,10 @@ class DashboardController extends Controller
     }
 
     /**
-     * Handles the view application id requests page route.
+     * Handles the view application id suggested cases page route.
      *
-     * @return void
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewSuggestedCases($id)
     {
@@ -185,7 +186,9 @@ class DashboardController extends Controller
     /**
      * Handles the send application id page route.
      *
-     * @return void
+     * @param Cases $case
+     * @param int $request_id
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function sendCaseID(Cases $case, $request_id)
     {
@@ -203,7 +206,8 @@ class DashboardController extends Controller
     /**
      * Handles the view user detail page route.
      *
-     * @return void
+     * @param User $user
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function viewProfile(User $user = null)
     {
@@ -214,6 +218,12 @@ class DashboardController extends Controller
         return view('backend.admin.profile', compact('details', 'user'));
     }
 
+    /**
+     * Handles the update user status page route.
+     *
+     * @param int $user
+     * @return \Illuminate\Contracts\View\Factory
+     */
     public function updateUserStatus($id)
     {
         $check_status = User::findOrFail($id);
@@ -225,6 +235,12 @@ class DashboardController extends Controller
         return redirect()->back()->with("success", "User's status updated");
     }
 
+    /**
+     * Handles the update profile page route.
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory
+     */
     public function updateProfile(Request $request)
     {
         if (isset($request->password)) {
@@ -259,7 +275,7 @@ class DashboardController extends Controller
 
     /**
      * Handles the mark notifications as read route.
-     * @return void
+     * @return bool
      */
     public function markNotifications()
     {
@@ -292,6 +308,8 @@ class DashboardController extends Controller
 
     /**
      * Handles the get generated amount paid report page route.
+     *
+     * @param string $category
      * @return void
      */
     public function getGeneratedAmountPaidReport($category)
@@ -312,7 +330,9 @@ class DashboardController extends Controller
 
     /**
      * Handles the generate report table page route.
-     * @return void
+     *
+     * @param string $show
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function generateReportTable($show)
     {
@@ -355,7 +375,8 @@ class DashboardController extends Controller
 
     /**
      * Handles the export report to csv page route.
-     * @return void
+     *
+     * @return CSV
      */
     public function exportReportCSV()
     {

@@ -19,6 +19,7 @@ trait CaseGettable
     /**
      * Gets cases by type
      *
+     * @param String $type
      * @return Collection
      */
     public function filterCasesByType($type = null)
@@ -29,6 +30,7 @@ trait CaseGettable
     /**
      * Gets cases by category
      *
+     * @param String $category
      * @return Collection
      */
     public function filterCasesByCategory($category = null)
@@ -39,6 +41,7 @@ trait CaseGettable
     /**
      * Gets cases by category
      *
+     * @param String $category
      * @return Collection
      */
     public function getCasesByCategory($category = null)
@@ -51,6 +54,7 @@ trait CaseGettable
     /**
      * Gets suggested cases by request id
      *
+     * @param int $request_id
      * @return Collection
      */
     public function getSuggestedCases($request_id)
@@ -72,6 +76,7 @@ trait CaseGettable
     /**
      * Gets cases by type
      *
+     * @param String $type
      * @return Collection
      */
     public function getCasesByType($type = null)
@@ -104,6 +109,7 @@ trait CaseGettable
     /**
      * Gets defficeincy issued at date
      *
+     * @param String $format
      * @return string
      */
     public function getDefficiencyDate(string $format='customdate')
@@ -122,6 +128,7 @@ trait CaseGettable
     /**
      * Gets checklist approved at date
      *
+     * @param String $format
      * @return string
      */
     public function getChecklistApprovedDate(string $format='customdate')
@@ -192,6 +199,8 @@ trait CaseGettable
     /**
      * Gets case by date range
      *
+     * @param String $start_date
+     * @param String $end_date
      * @return Collection
      */
     public function getCaseByDateRange($start_date, $end_date)
@@ -208,6 +217,10 @@ trait CaseGettable
     /**
      * Gets case by date range, type and category
      *
+     * @param String $start_date
+     * @param String $end_date
+     * @param String $category
+     * @param String $type
      * @return Collection
      */
     public function getCaseByDateRangeTypeAndCategory($start_date, $end_date, $category, $type)
@@ -226,6 +239,9 @@ trait CaseGettable
     /**
      * Gets case by date range & case handler
      *
+     * @param String $start_date
+     * @param String $end_date
+     * @param int $handler_id
      * @return Collection
      */
     public function getCaseByDateRangeAndHandler($start_date, $end_date, $handler_id)
@@ -246,6 +262,11 @@ trait CaseGettable
     /**
      * Gets case by date range & case handler, type and category
      *
+     * @param String $start_date
+     * @param String $end_date
+     * @param int $handler_id
+     * @param String $category
+     * @param String $type
      * @return Collection
      */
     public function getCaseByDateRangeTypeCategoryAndHandler($start_date, $end_date, $handler_id, $category, $type)
@@ -267,6 +288,8 @@ trait CaseGettable
     /**
      * Gets case by category & type
      *
+     * @param String $category
+     * @param String $type
      * @return Collection
      */
     public function getCaseByCategoryAndType($category, $type)
@@ -318,6 +341,7 @@ trait CaseGettable
     /**
      * Gets search assigned cases with active handlers
      *
+     * @param String $search
      * @return Collection
      */
     public function searchAssignedCases($search)

@@ -18,6 +18,8 @@ class WelcomeApplicant extends Mailable
     /**
      * Create a new message instance.
      *
+     * @param string $guest
+     * @param object $case
      * @return void
      */
     public function __construct($guest, $case)

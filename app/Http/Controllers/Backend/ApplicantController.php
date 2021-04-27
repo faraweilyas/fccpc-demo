@@ -164,6 +164,7 @@ class ApplicantController extends Controller
     /**
      * Handles resending of confirmation email.
      *
+     * @param string $email
      * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function resendEmail($email)
@@ -237,6 +238,8 @@ class ApplicantController extends Controller
     /**
      * Handles download document page.
      *
+     * @param Document $document
+     * @param string $file
      * @return \Illuminate\Contracts\View\Factory
      */
     public function downloadDocument(Document $document, $file)
@@ -254,6 +257,7 @@ class ApplicantController extends Controller
     /**
      * Handles download document page for letter of appointment.
      *
+     * @param string $document
      * @return \Illuminate\Contracts\View\Factory
      */
     public function letterOfAppointmenDownload($document)
@@ -274,6 +278,7 @@ class ApplicantController extends Controller
     /**
      * Handles download document page for form document.
      *
+     * @param string $document
      * @return \Illuminate\Contracts\View\Factory
      */
     public function downloadFormDocument($document)

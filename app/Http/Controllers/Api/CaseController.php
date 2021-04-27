@@ -131,6 +131,7 @@ class CaseController extends Controller
     /**
      * Update document checklist status.
      *
+     * @param Document $document
      * @return json
      */
     public function updateDocumentChecklistStatus(Document $document)
@@ -146,6 +147,7 @@ class CaseController extends Controller
     /**
      * Get case details.
      *
+     * @param Cases $case
      * @return json
      */
     public function getCase(Cases $case)
@@ -158,6 +160,8 @@ class CaseController extends Controller
     /**
      * Get case by type.
      *
+     * @param Cases $case
+     * @param string $case_type
      * @return json
      */
     public function getCaseByType(Cases $case, $case_type)
@@ -170,6 +174,8 @@ class CaseController extends Controller
     /**
      * Get case by category.
      *
+     * @param Cases $case
+     * @param string $case_category
      * @return json
      */
     public function getCaseByCategory(Cases $case, $case_category)
@@ -182,6 +188,7 @@ class CaseController extends Controller
     /**
      * Get case checklists.
      *
+     * @param Cases $case
      * @return json
      */
     public function getCaseChecklists(Cases $case)
@@ -194,6 +201,7 @@ class CaseController extends Controller
     /**
      * Get case documents.
      *
+     * @param Cases $case
      * @return json
      */
     public function getCaseDocuments(Cases $case)
@@ -221,6 +229,7 @@ class CaseController extends Controller
     /**
      * Get case handler report.
      *
+     * @param User $handler
      * @return json
      */
     public function getCaseHandlerReport(User $handler)
@@ -233,6 +242,9 @@ class CaseController extends Controller
     /**
      * Get generated report.
      *
+     * @param string $start_date
+     * @param string $end_date
+     * @param int $handler_id
      * @return json
      */
     public function getGeneratedReport($start_date, $end_date, $handler_id = null)
@@ -251,6 +263,9 @@ class CaseController extends Controller
     /**
      * Export generated report to csv.
      *
+     * @param string $start_date
+     * @param string $end_date
+     * @param int $handler_id
      * @return json
      */
     public function exportGeneratedReportCsv($start_date, $end_date, $handler_id = null)

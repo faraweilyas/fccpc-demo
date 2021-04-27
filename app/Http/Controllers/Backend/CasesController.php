@@ -207,6 +207,7 @@ class CasesController extends Controller
     /**
      * Handles all cases page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function allCases(User $handler)
@@ -235,6 +236,7 @@ class CasesController extends Controller
     /**
      * Handles assigned cases page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function assignedCases(User $handler)
@@ -263,6 +265,7 @@ class CasesController extends Controller
     /**
      * Handles dropped cases page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function droppedCases(User $handler)
@@ -283,8 +286,9 @@ class CasesController extends Controller
     }
 
     /**
-     * Handles workingon cases page.
+     * Handles workingon/ongoing cases page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function workingonCases(User $handler)
@@ -313,6 +317,7 @@ class CasesController extends Controller
     /**
      * Handles approved cases page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function approvedCases(User $handler)
@@ -341,6 +346,7 @@ class CasesController extends Controller
     /**
      * Handles cases on hold page.
      *
+     * @param User $handler
      * @return \Illuminate\Contracts\View\Factory
      */
     public function onholdCases(User $handler)
@@ -392,6 +398,7 @@ class CasesController extends Controller
     /**
      * Handles archive case page.
      *
+     * @param Cases $case
      * @return void
      */
     public function archiveCase(Cases $case)
@@ -425,6 +432,7 @@ class CasesController extends Controller
     /**
      * Handles the generate form 1A Pdf page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function generateForm1APdf(Cases $case)
@@ -438,6 +446,7 @@ class CasesController extends Controller
     /**
      * Handles the case analysis page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function analyzeCase(Cases $case)
@@ -463,6 +472,7 @@ class CasesController extends Controller
     /**
      * Handles the publish case page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function publishCase(Cases $case)
@@ -491,6 +501,7 @@ class CasesController extends Controller
     /**
      * Handles the storing of publish case page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function strorePublishCase(Cases $case)
@@ -560,9 +571,11 @@ class CasesController extends Controller
         return redirect()->back()->with('success', $message);
     }
 
-    /*
+    /**
      * Handles the checklist approval page route.
      *
+     * @param Cases $case
+     * @param string $date
      * @return void
      */
     public function checklistApproval(Cases $case, $date)
@@ -586,9 +599,11 @@ class CasesController extends Controller
         );
     }
 
-    /*
+    /**
      * Handles the review checklist approval page route.
      *
+     * @param Cases $case
+     * @param string $date
      * @return void
      */
     public function reviewChecklistApproval(Cases $case, $date)
@@ -612,9 +627,11 @@ class CasesController extends Controller
         );
     }
 
-    /*
+    /**
      * Handles the get checklist count page route.
      *
+     * @param Cases $case
+     * @param string $date
      * @return void
      */
     public function getChecklistCount(Cases $case, $date)
@@ -625,9 +642,11 @@ class CasesController extends Controller
         ]);
     }
 
-    /*
+    /**
      * Handles the get submitted checklist by status route.
      *
+     * @param Cases $case
+     * @param string $date
      * @return void
      */
     public function getChecklistByStatus(Cases $case, $date)
@@ -641,6 +660,7 @@ class CasesController extends Controller
     /**
      * Update document checklist status.
      *
+     * @param Document $document
      * @return json
      */
     public function saveChecklistApproval(Document $document)
@@ -660,6 +680,7 @@ class CasesController extends Controller
     /**
      * Update document checklist reason.
      *
+     * @param Document $document
      * @return json
      */
     public function saveChecklistApprovalReason(Document $document)
@@ -673,6 +694,8 @@ class CasesController extends Controller
     /**
      * Handles issuing of deficiency
      *
+     * @param Cases $case
+     * @param string $date
      * @return json
      */
     public function issueDeficiency(Cases $case, $date = null)
@@ -709,6 +732,7 @@ class CasesController extends Controller
     /**
      * Handles approving of checklists
      *
+     * @param Cases $case
      * @return json
      */
     public function approveChecklists(Cases $case)
@@ -737,7 +761,8 @@ class CasesController extends Controller
     /**
      * Handles issuing of recommedation
      *
-     * @return json
+     * @param Cases $case
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function issueRecommendation(Cases $case)
     {
@@ -772,7 +797,8 @@ class CasesController extends Controller
     /**
      * Handles requesting of approval
      *
-     * @return json
+     * @param Cases $case
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function requestApproval(Cases $case)
     {
@@ -803,7 +829,8 @@ class CasesController extends Controller
     /**
      * Handles recommendation resolving by supervisor
      *
-     * @return json
+     * @param Cases $case
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function resolveRecommendation(Cases $case)
     {
@@ -839,7 +866,8 @@ class CasesController extends Controller
     /**
      * Handles the case analysis case documents page route.
      *
-     * @return void
+     * @param Cases $case
+     * @return \Illuminate\Contracts\View\Factory
      */
     public function analyzeCaseDocuments(Cases $case)
     {
@@ -864,7 +892,9 @@ class CasesController extends Controller
     /**
      * Handles the case assign page route.
      *
-     * @return void
+     * @param Cases $cases
+     * @param User $user
+     * @return json
      */
     public function assignCase(Cases $case, User $user)
     {
@@ -891,7 +921,9 @@ class CasesController extends Controller
     /**
      * Handles the case unassign page route.
      *
-     * @return void
+     * @param Cases $cases
+     * @param User $user
+     * @return json
      */
     public function unassignCase(Cases $case, User $user)
     {
@@ -918,7 +950,10 @@ class CasesController extends Controller
     /**
      * Handles the case reassign page route.
      *
-     * @return void
+     * @param Cases $case
+     * @param User $oldUser
+     * @param User $newUser
+     * @return json
      */
     public function reassignCase(Cases $case, User $oldUser, User $newUser)
     {
@@ -951,7 +986,9 @@ class CasesController extends Controller
     /**
      * Handles the update case working on .
      *
-     * @return void
+     * @param Cases $case
+     * @param User $user
+     * @return json
      */
     public function updateWorkingOn(Cases $case, User $user)
     {
@@ -963,6 +1000,7 @@ class CasesController extends Controller
     /**
      * Handles the case checklists page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function caseChecklists(Cases $case)
@@ -978,6 +1016,7 @@ class CasesController extends Controller
     /**
      * Handles the case documents page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function caseDocuments(Cases $case)
@@ -994,6 +1033,7 @@ class CasesController extends Controller
     /**
      * Handles the get document icon text page route.
      *
+     * @param Document $document
      * @return void
      */
     public function getDocumentIconText(Document $document)
@@ -1008,6 +1048,8 @@ class CasesController extends Controller
     /**
      * Handles the case update status page route.
      *
+     * @param string $status
+     * @param int $id
      * @return void
      */
     public function updateCaseStatus($status, $id)
@@ -1025,6 +1067,7 @@ class CasesController extends Controller
     /**
      * Handles the generate approval letter page route.
      *
+     * @param Cases $case
      * @return void
      */
     public function generateApprovalLetterTemplatePage(Cases $case)
@@ -1044,6 +1087,7 @@ class CasesController extends Controller
     /**
      * Handles the generate approval letter route.
      *
+     * @param Cases $case
      * @return void
      */
     public function generateApprovalLetterTemplate(Cases $case)
@@ -1057,6 +1101,8 @@ class CasesController extends Controller
     /**
      * Handles the approval letter management route.
      *
+     * @param Cases $case
+     * @param int $template_id
      * @return void
      */
     public function approvalLetterTemplateManagement(Cases $case, $template_id)
@@ -1074,6 +1120,8 @@ class CasesController extends Controller
     /**
      * Handles the send approval letter route.
      *
+     * @param Cases $case
+     * @param int $template_id
      * @return void
      */
     public function sendApprovalLetter(Cases $case, $template_id)
@@ -1104,6 +1152,7 @@ class CasesController extends Controller
     /**
      * Handles the download analysis document route
      *
+     * @param string $document
      * @return void
      */
     public function downloadAnalysisDocument($document)

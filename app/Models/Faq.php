@@ -10,31 +10,61 @@ class Faq extends Model
 {
     protected $guarded = [];
 
+    /**
+     * Get user
+     *
+     * @return HasRelationship
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Get feedbacks
+     *
+     * @return HasRelationships
+     */
     public function feedbacks()
     {
         return $this->hasMany(Feedback::class);
     }
 
+    /**
+     * Get feedbacks count
+     *
+     * @return integer
+     */
     public function countFeedbacks() : int
     {
         return $this->feedbacks()->count();
     }
 
+    /**
+     * Get positive feedbacks count
+     *
+     * @return integer
+     */
     public function countPositiveFeedbacks() : int
     {
         return $this->feedbacks()->where('feedback', 'yes')->count();
     }
 
+    /**
+     * Get negative feedbacks count
+     *
+     * @return integer
+     */
     public function countNegativeFeedbacks() : int
     {
         return $this->feedbacks()->where('feedback', 'no')->count();
     }
 
+    /**
+     * Get path
+     *
+     * @return String
+     */
     public function path()
     {
         return route('home.faqs.faq', ['category' => $this->category, 'slug' => $this->slug]);
