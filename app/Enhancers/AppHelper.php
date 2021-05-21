@@ -257,8 +257,8 @@ class AppHelper
         "UNASSIGN"               => "Case Unassigned",
         "ARCHIVE"                => "Case Archived",
         "ONHOLD"                 => "Case on Hold",
-        "DEFRESPONSE"            => "Response to Defincency",
-        "REQUEST"                => "Approval Requested",
+        "DEFRESPONSE"            => "Response to Deficiency",
+        "REQUEST"                => "Approval Request",
         "REQUEST_APPROVED"       => "Approved Request",
         "REQUEST_REJECTED"       => "Rejected Request",
     ];
