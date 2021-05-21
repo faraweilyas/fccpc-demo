@@ -168,6 +168,14 @@ function getRandomColor() : string
 	return $colors[rand(0, count($colors) - 1)];
 }
 
+function replaceTimeAbbrev($time='') : string
+{
+    $time = str_replace('AM', 'A.M.', $time);
+    $time = str_replace('PM', 'P.M.', $time);
+
+    return $time;
+}
+
 /**
  * Datetiime converter
  *

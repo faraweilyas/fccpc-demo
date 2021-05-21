@@ -538,8 +538,8 @@
                                                             paraid="640540932"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                             Your application to the Commission on
-                                                            {{ datetimeToText($data['case']->submitted_at, "customdated") }}
-                                                            {{ datetimeToText($data['case']->submitted_at, "time") }}
+                                                            {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "customdated")) }}
+                                                            {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "time")) }}
                                                             has been received and the Commission will revert
                                                             shortly.</p>
                                                             <p>Your Application ID is <b>{{ $data['guest']->tracking_id }}</b></p>
@@ -551,7 +551,7 @@
                                                                 rel="noreferrer noopener" target="_blank"
                                                                 style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
                                                             for more information. Please keep your
-                                                            application reference number safe.
+                                                            application ID safe.
                                                         </p>
 
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
