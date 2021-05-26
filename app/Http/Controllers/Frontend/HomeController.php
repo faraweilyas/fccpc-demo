@@ -52,16 +52,13 @@ class HomeController extends Controller
         $case_category2       = $_GET['case_category2'] ?? "";
 
         $publications     = Publication::where('published_at', '!=', NULL)
-                            ->whereHas('case',
-                                function($query)
-                                use (
-                                        $search,
-                                        $case_type1,
-                                        $case_type2,
-                                        $case_category1,
-                                        $case_category2
-                                )
-                            {
+                            ->whereHas('case', function($query) use (
+                                $search,
+                                $case_type1,
+                                $case_type2,
+                                $case_category1,
+                                $case_category2
+                            ) {
                                 $query->where('subject', 'like', '%'.$search.'%');
                                 if (!empty($case_type1) || !empty($case_type2))
                                     $query->whereIn('case_type', [$case_type1, $case_type2]);
@@ -86,15 +83,11 @@ class HomeController extends Controller
      */
     public function publicationView($slug)
     {
-        $publication = Publication::where('slug', $slug)->first();
-        $title = 'Publications - ' . APP_NAME;
-        $description =
-            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
-        $details = details($title, $description);
-        return view(
-            'frontend.publications-single',
-            compact('details', 'publication')
-        );
+        $publication    = Publication::where('slug', $slug)->firstOrFail();
+        $title          = 'Publications - ' . APP_NAME;
+        $description    = 'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details        = details($title, $description);
+        return view('frontend.publications-single', compact('details', 'publication'));
     }
 
     /**
@@ -211,16 +204,12 @@ class HomeController extends Controller
      */
     public function faq($category, $slug)
     {
-        $faq = Faq::where('slug', $slug)->first();
-        $related_faq = $faq->where('category', $category)->get();
-        $title = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
-        $description =
-            'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
-        $details = details($title, $description);
-        return view(
-            'frontend.faq-single',
-            compact('details', 'faq', 'related_faq')
-        );
+        $faq            = Faq::where('slug', $slug)->first();
+        $related_faq    = $faq->where('category', $category)->get();
+        $title          = 'Frequently Asked Questions (FAQs) - ' . APP_NAME;
+        $description    = 'FCCPC is the apex consumer protection agency in Nigeria established to improve the well-being of the people.';
+        $details        = details($title, $description);
+        return view('frontend.faq-single', compact('details', 'faq', 'related_faq'));
     }
 
     /**
@@ -231,15 +220,7 @@ class HomeController extends Controller
      */
     public function storeFeedback(Faq $faq)
     {
-        Feedback::updateOrcreate(
-            [
-                'ip_address' => request()->ip(),
-                'faq_id' => $faq->id,
-            ],
-            [
-                'feedback' => request('feedback'),
-            ]
-        );
+        Feedback::storeFeedback($faq);
 
         return back()->with('success', 'Thanks for your feedback');
     }

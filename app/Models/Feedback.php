@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
-    protected $table = 'feedbacks';
+    protected $table    = 'feedbacks';
 
-    protected $guarded = [];
+    protected $guarded  = [];
 
     /**
      * Get faq
@@ -18,5 +18,18 @@ class Feedback extends Model
     public function faq()
     {
         return $this->belongsTo(Faq::class);
+    }
+
+    public static function storeFeedback($faq)
+    {
+        return static::updateOrcreate(
+            [
+                'ip_address'    => request()->ip(),
+                'faq_id'        => $faq->id,
+            ],
+            [
+                'feedback'      => request('feedback'),
+            ]
+        );
     }
 }
