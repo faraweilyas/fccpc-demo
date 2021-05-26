@@ -79,11 +79,11 @@ class EnquiriesController extends Controller
         $enquiry            = Enquiry::create($validated);
         $enquiry->document  = $file ?? null;
 
-        foreach ($supervisors as $supervisor):
-             // Notify supervisor
+        foreach($supervisors as $supervisor):
+            // Notify supervisor
             $supervisor->notify(new CaseActionNotifier(
                 'newenquiry',
-                "{$fullname} has created a new pre-notification.",
+                "{$fullname} has applied for a pre-notification consultation.",
                 $enquiry->id
             ));
         endforeach;
@@ -98,11 +98,11 @@ class EnquiriesController extends Controller
      */
     public function logs()
     {
-        $caseHandlers     = User::where('status', 'active')->where('account_type', 'CH')->get();
+        $caseHandlers = User::where('status', 'active')->where('account_type', 'CH')->get();
         if (auth()->user()->account_type == 'CH'):
-            $enquiries        = Enquiry::where('handler_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
+            $enquiries = Enquiry::where('handler_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
         else:
-            $enquiries        = Enquiry::orderBy('id', 'DESC')->get();
+            $enquiries = Enquiry::orderBy('id', 'DESC')->get();
         endif;
 
         $title            = APP_NAME;
@@ -130,16 +130,16 @@ class EnquiriesController extends Controller
         ]);
 
         $supervisor->notify(new CaseActionNotifier(
-                'newenquiry',
-                "Pre-notification has been assigned to {$handler->getFullName()}.",
-                $enquiry->id
-            ));
+            'newenquiry',
+            "Pre-notification has been assigned to {$handler->getFullName()}.",
+            $enquiry->id
+        ));
 
         $handler->notify(new CaseActionNotifier(
-                'newenquiry',
-                "{$supervisor->getFullName()} has assigned a pre-notification to you.",
-                $enquiry->id
-            ));
+            'newenquiry',
+            "{$supervisor->getFullName()} has assigned a pre-notification to you.",
+            $enquiry->id
+        ));
 
         return redirect()->back()->with("success", "Enquiry has been assigned to case handler");
     }
@@ -151,6 +151,9 @@ class EnquiriesController extends Controller
      */
     public function download($file)
     {
-      return response()->file(storage_path("app/public/enquiry_documents/{$file}"));
+        if (file_exists($file = storage_path("app/public/enquiry_documents/{$file}")))
+            return response()->file($file);
+
+        return back();
     }
 }
