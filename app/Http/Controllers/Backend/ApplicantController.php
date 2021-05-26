@@ -22,8 +22,8 @@ class ApplicantController extends Controller
      */
     public function show()
     {
-        $title          = 'Submit Application | ' . APP_NAME;
-        $description    = 'Submit Application | ' . APP_NAME;
+        $title          = 'File/Submit Notification | ' . APP_NAME;
+        $description    = 'File/Submit Notification | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.show', compact('details'));
     }
@@ -35,8 +35,8 @@ class ApplicantController extends Controller
      */
     public function confirm($email)
     {
-        $title          = 'Confirm Application ID | ' . APP_NAME;
-        $description    = 'Confirm Application ID | ' . APP_NAME;
+        $title          = 'Confirm Notification ID | ' . APP_NAME;
+        $description    = 'Confirm Notification ID | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.confirm', compact('details', 'email'));
     }
@@ -103,8 +103,8 @@ class ApplicantController extends Controller
      */
     public function recoverID()
     {
-        $title          = 'Recover Application ID | ' . APP_NAME;
-        $description    = 'Recover Application ID | ' . APP_NAME;
+        $title          = 'Recover Notification ID | ' . APP_NAME;
+        $description    = 'Recover Notification ID | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.recover-id', compact('details'));
     }
@@ -140,7 +140,7 @@ class ApplicantController extends Controller
             // Notify case handler
             $handler->notify(new IDRequest(
                 "newidrequest",
-                'New Application ID Request.',
+                'New Notification ID Request.',
                 $request->id
             ));
         endforeach;
@@ -155,8 +155,8 @@ class ApplicantController extends Controller
      */
     public function viewRecoverIDSuccess()
     {
-        $title          = 'Recover Application ID | ' . APP_NAME;
-        $description    = 'Recover Application ID | ' . APP_NAME;
+        $title          = 'Recover Notification ID | ' . APP_NAME;
+        $description    = 'Recover Notification ID | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.recover-id-success', compact('details'));
     }
@@ -196,8 +196,8 @@ class ApplicantController extends Controller
      */
     public function trackApplication()
     {
-        $title          = 'Manage Application | ' . APP_NAME;
-        $description    = 'Manage Application | ' . APP_NAME;
+        $title          = 'Manage Notification | ' . APP_NAME;
+        $description    = 'Manage Notification | ' . APP_NAME;
         $details        = details($title, $description);
         return view('backend.applicant.track', compact('details'));
     }

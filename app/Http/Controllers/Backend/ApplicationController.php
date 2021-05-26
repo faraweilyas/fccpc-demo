@@ -128,8 +128,8 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
-        $title = 'Select Application | ' . APP_NAME;
-        $description = 'Select Application | ' . APP_NAME;
+        $title = 'Select Notification | ' . APP_NAME;
+        $description = 'Select Notification | ' . APP_NAME;
         $details = details($title, $description);
         return view(
             'backend.applicant.select-application',
@@ -163,27 +163,28 @@ class ApplicationController extends Controller
         // Save selected case category
         $case->saveCategory($case_category_key);
 
-        $case_category = $case->getCategoryText();
-        $case_parties = $case->getCaseParties(false);
-        $checklistIds = $case->getChecklistIds();
-        $filteredChecklistGroup = ChecklistGroup::where('category', $case_category_key)
-                                    ->get()
-                                    ->reject(function($checklistGroup)
-                                    {
-                                        return $checklistGroup->name === "Fees";
-                                    });
+        $case_category              = $case->getCategoryText();
+        $case_parties               = $case->getCaseParties(false);
+        $checklistIds               = $case->getChecklistIds();
+        $filteredChecklistGroup     = ChecklistGroup::where('category', $case_category_key)
+                                        ->get()
+                                        ->reject(function($checklistGroup)
+                                        {
+                                            return $checklistGroup->name === "Fees";
+                                        });
         $filteredChecklistGroupFees = ChecklistGroup::where('category', 'ALL')
-            ->get()
-            ->reject(function($checklistGroup)
-            {
-                return $checklistGroup->name !== "Fees";
-            });
+                                        ->get()
+                                        ->reject(function($checklistGroup)
+                                        {
+                                            return $checklistGroup->name !== "Fees";
+                                        });
 
-        $checklistGroupDocuments = $case->getChecklistGroupDocuments();
+        $checklistGroupDocuments    = $case->getChecklistGroupDocuments();
 
-        $title = "{$case_category} Application | " . APP_NAME;
-        $description = "{$case_category} Application | " . APP_NAME;
-        $details = details($title, $description);
+        $title          = "{$case_category} Notification | " . APP_NAME;
+        $description    = "{$case_category} Notification | " . APP_NAME;
+        $details        = details($title, $description);
+        // dd(get_defined_vars());
         return view(
             'backend.applicant.create-application',
             compact(
@@ -219,7 +220,7 @@ class ApplicationController extends Controller
             'responseType' => $responseType,
             'response' => $response,
         ]);
-        exit();
+        exit;
     }
 
     /**
@@ -302,11 +303,11 @@ class ApplicationController extends Controller
 
         $guest->case->saveContactInfo(
             (object) [
-                'applicant_firm' => request('applicant_firm'),
-                'applicant_fullname' => request('applicant_fullname'),
-                'applicant_email' => request('applicant_email'),
-                'applicant_phone_number' => request('applicant_phone_number'),
-                'applicant_address' => request('applicant_address')
+                'applicant_firm'            => request('applicant_firm'),
+                'applicant_fullname'        => request('applicant_fullname'),
+                'applicant_email'           => request('applicant_email'),
+                'applicant_phone_number'    => request('applicant_phone_number'),
+                'applicant_address'         => request('applicant_address')
             ]
         );
 
@@ -517,7 +518,7 @@ class ApplicationController extends Controller
             ]);
 
         $case->removeDeficiency($case_handler);
-        $this->sendResponse('Application submitted.', 'success', $case);
+        $this->sendResponse('Notification submitted.', 'success', $case);
     }
 
     /**
@@ -532,8 +533,8 @@ class ApplicationController extends Controller
             return redirect($guest->applicationPath());
         }
 
-        $title = 'Application Submitted | ' . APP_NAME;
-        $description = 'Application Submitted | ' . APP_NAME;
+        $title = 'Notification Submitted | ' . APP_NAME;
+        $description = 'Notification Submitted | ' . APP_NAME;
         $details = details($title, $description);
         return view('backend.applicant.submitted', compact('details', 'guest'));
     }
@@ -600,8 +601,8 @@ class ApplicationController extends Controller
         $checklistGroupDocuments = $case->getChecklistGroupDocuments();
         $documents               = Document::where('case_id', $guest->case->id)->get();
 
-        $title       = 'Review Application | ' . APP_NAME;
-        $description = 'Review Application | ' . APP_NAME;
+        $title       = 'Review Notification | ' . APP_NAME;
+        $description = 'Review Notification | ' . APP_NAME;
         $details = details($title, $description);
         return view(
             'backend.applicant.review',
@@ -634,8 +635,8 @@ class ApplicationController extends Controller
         $deficientGroupIds       = $case->getLatestSubmittedDocumentChecklistsGroupIDs('deficient');
         $unSubmittedDocuments    = $case->getChecklistGroupUnSubmittedDocuments();
 
-        $title       = 'Review Application | ' . APP_NAME;
-        $description = 'Review Application | ' . APP_NAME;
+        $title       = 'Review Notification | ' . APP_NAME;
+        $description = 'Review Notification | ' . APP_NAME;
         $details = details($title, $description);
         return view(
             'backend.applicant.review-deficient',

@@ -28,10 +28,10 @@
                     <div class="login-signin">
                         <div class="mb_30">
                             <h3>
-                                Application ID
+                                Notification ID
                             </h3>
                             <div class=" font-weight-bold text-black-sm">
-                                We sent your application ID to {{ $email }}. enter it here
+                                An ID has been sent to your email: {{ $email }}.
                             </div>
                         </div>
                         <form class="form" method="POST" action="{{ route('applicant.confirm.store') }}">
@@ -65,7 +65,7 @@
                                     id="kt_login_signup2"
                                     class="text-dark text-hover-primary font-weight-bold"
                                 >
-                                    Didn't receive it? Resend application ID
+                                    Resend notification ID
                                 </a>
                             </p>
                         </div>

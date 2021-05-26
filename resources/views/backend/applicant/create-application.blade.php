@@ -5,10 +5,10 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="sub-header-desktop subheader-applicants">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Notification</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
-                            <a href="{{ $guest->applicationPath() }}" class="text-muted">Select Case Type</a>
+                            <a href="{{ $guest->applicationPath() }}" class="text-muted">Select Notification Type</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="" class="text-muted">{{ $case_category }}</a>
@@ -18,7 +18,7 @@
             </div>
             <div class="sub-header-mobile">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Notification</h5>
                 </div>
                 <div class="d-flex align-items-baseline mr-5">
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
@@ -128,18 +128,18 @@
                                         <input type="hidden" name="_token" id="token" value="{{ csrf_token() }}" />
                                         <input type="hidden" id="tracking_id" name="tracking_id" value="{{ $guest->tracking_id }}" />
                                         <div class="pb-5" data-wizard-type="step-content" data-wizard-state="current" data-form='CaseInfo'>
-                                            <h4 class="mb-10 font-weight-bold text-dark">Transaction information</h4>
+                                            <h4 class="mb-10 font-weight-bold text-dark">Transaction Information</h4>
                                             <div class="form-group fv-plugins-icon-container">
-                                                <label>Subject</label> <span class="text-danger">*</span>
+                                                <label>Subject/Title of Transaction</label> <span class="text-danger">*</span>
                                                 <input
                                                     type="text"
                                                     id="subject"
                                                     class="form-control"
-                                                    placeholder="Enter subject name"
+                                                    placeholder="Please enter subject here"
                                                     name="subject"
                                                     value="{{ $case->subject }}"
                                                 />
-                                                <span class="form-text text-muted">Please enter subject.</span>
+                                                {{-- <span class="form-text text-muted">Please enter subject here</span> --}}
                                                 <div class="fv-plugins-message-container"></div>
                                             </div>
                                             <div class="form-group">
@@ -193,7 +193,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <label>Transaction Type</label> <span class="text-danger">*</span>
+                                                <label>Transaction Type <a href="https://www.fccpc.gov.ng/guidelines/sales-promotion-guidelines/" target="_blank">(Notice of Threshold Regulations)</a> </label> <span class="text-danger">*</span>
                                                 <div class="radio-inline">
                                                     <label class="radio">
                                                         <input
@@ -202,7 +202,7 @@
                                                             {{ ($case->case_type == "SM") ? 'checked="checked"' : '' }}
                                                             value="SM"
                                                         />
-                                                        Small<span></span> &nbsp;&nbsp;
+                                                        Small Merger<span></span> &nbsp;&nbsp;
                                                         <i
                                                             class="la la-info-circle text-hover-primary"
                                                             data-toggle="tooltip"
@@ -216,7 +216,7 @@
                                                             {{ ($case->case_type == "LG") ? 'checked="checked"' : '' }}
                                                             value="LG"
                                                         />
-                                                        Large<span></span> &nbsp;&nbsp;
+                                                        Large Merger<span></span> &nbsp;&nbsp;
                                                         <i
                                                             class="la la-info-circle text-hover-primary"
                                                             data-toggle="tooltip"
@@ -231,7 +231,7 @@
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="form-group fv-plugins-icon-container">
-                                                        <label>Applicant/Representing Firm</label> <span class="text-danger">*</span>
+                                                        <label>Notifying Party(ies) / Representative(s)</label> <span class="text-danger">*</span>
                                                         <input
                                                             type="text"
                                                             class="form-control"
@@ -239,7 +239,7 @@
                                                             name="applicant_firm"
                                                             value="{{ $case->applicant_firm }}"
                                                         />
-                                                        <span class="form-text text-muted">Please enter your representing firm.</span>
+                                                        {{-- <span class="form-text text-muted">Please enter your representing firm.</span> --}}
                                                         <div class="fv-plugins-message-container"></div>
                                                     </div>
                                                     <div class="form-group">
@@ -267,7 +267,7 @@
                                                                     name="applicant_email"
                                                                     value="{{ $case->applicant_email }}"
                                                                 />
-                                                                <span class="form-text text-muted">Please enter your email address.</span>
+                                                                {{-- <span class="form-text text-muted">Please enter your email address.</span> --}}
                                                                 <div class="fv-plugins-message-container"></div>
                                                             </div>
                                                         </div>
@@ -281,7 +281,7 @@
                                                                     name="applicant_phone_number"
                                                                     value="{{ $case->applicant_phone_number }}"
                                                                 />
-                                                                <span class="form-text text-muted">Please enter your phone no.</span>
+                                                                {{-- <span class="form-text text-muted">Please enter your phone no.</span> --}}
                                                                 <div class="fv-plugins-message-container"></div>
                                                             </div>
                                                         </div>
@@ -295,7 +295,7 @@
                                                             name="applicant_address"
                                                             value="{{ $case->applicant_address }}"
                                                         />
-                                                        <span class="form-text text-muted">Please enter your address.</span>
+                                                        {{-- <span class="form-text text-muted">Please enter your address.</span> --}}
                                                         <div class="fv-plugins-message-container"></div>
                                                     </div>
                                                 </div>
@@ -303,12 +303,12 @@
                                         </div>
                                         @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                             <div class="pb-5" data-wizard-type="step-content" data-form='Form1AInfo'>
-                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-Confidential Executive Summary For Publication</h4>
+                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-confidential ex. Sum. For Publication <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">(Section 96 FCCPA; Section 16 MRR)</a></h4>
                                                 <p class="fs__12rem">
-                                                    Provide a non-confidential executive summary(up to 500 words) of the merger, specifying the parties to the merger, the nature of the merger(for example, merger, acquisition, or joint venture), the areas of activity of the parties to the merger, the markets on which the merger will have an impact, and the strategic and economic rationale for the merger.
+                                                    Provide a non-confidential executive summary (up to 500 words) of the merger, specifying parties to the merger, the nature of the transaction (i.e., merger, acquisition, or joint venture), nature of the business of parties, relevant markets, and the strategic/economic rationale for the merger.
                                                 </p>
                                                 <p class="fs__12rem">
-                                                    It is intended that this Executive Summary will be published on the Commission's website and also served on employees' representatives under section 96(3) of the Act. The summary must be drafted so that it contains no confidential information or business secrets. This form should be completed jointly by parties to the proposed transaction.
+                                                    This Executive Summary will be published and provided to employees' pursuant to section 96(3) of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
                                                     <textarea class="form-control form1a_declaration_text" id="kt_maxlength_5" maxlength="500" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
@@ -334,13 +334,6 @@
                                                                     Upload the {{ ucfirst($checklistGroup->name) }} and all relevant supporting documents in this section.
                                                                 </p>
                                                                 <div class="row mt-4">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group mb-1">
-                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row">
                                                                     <div class="col-md-12 mt-4 mb-n3">
                                                                         <p class="text-danger">
                                                                             Note: supported file formats are (.pdf, .jpg, .jpeg). You cannot upload more than 20 files and total uploaded files should exceed 50mb.
@@ -363,6 +356,13 @@
                                                                     <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                 </div>
                                                                 <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group mb-1">
+                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 @if(!empty($document))
                                                                     <div class="row mt-4">
                                                                         @php
@@ -602,22 +602,25 @@
                                 </b>
                             </p>
                             <p class="fs__12rem">
-                                I declare that, to the best of my knowledge and belief, the information given in response to the questions in this Notice is true, correct, and complete in all material respects.
+                                I declare that, to the best of my knowledge and belief, the information provided in this Notification/Notice is true, correct, and complete in all material respects.
                             </p>
                             <p class="fs__12rem">
                                 I understand that:
                             </p>
                             <p class="fs__12rem">
-                                It is a criminal offence under section 112 of the Federal Competition and Consumer Protection Act, 2018 for a person knowingly to supply to the Commission information which is false or misleading in any material respect. This includes supplying such information to another person or any officer of the Commission knowing that the information is to be used for the purpose of supplying information to the Commission;
+                                It is a criminal offence under section 112 [YO1] of the Federal Competition and Consumer Protection Act, 2018 to knowingly provide information that is false or misleading. Liability under the law and this Declaration includes persons providing this information either directly or indirectly (through another) to any officer of the Commission with the knowledge that such information is intended for communication to; or to be used by the Commission;
                             </p>
                             <p class="fs__12rem">
-                                The Commission shall reject any Notice if it is discovered that it contains information which is false or misleading in any material respect;
+                                The Commission reserves the right to reject such Notices/Notifications upon discovery that any information therein is false, misleading or inaccurate in any material respect;
                             </p>
                             <p class="fs__12rem">
-                                The Commission conducts both Phase 1 and Phase 2 investigations. In the event that the merger is referred for a Phase 2 investigation, information provided to the Commission during the course of the Phase 1 investigation will also be used for the Phase 2 investigation; and
+                                The Commission conducts Phase 1 and Phase 2 investigations. In the event a merger is referred to a Phase 2 investigation, information provided in the course of the Phase 1 investigation will also be applicable in Phase 2; and
                             </p>
                             <p class="fs__12rem">
-                                The Commission will publish to the public some information described in this Notice, and the fact that the merger has been notified, as prescribed by the Act.
+                                The Commission will publish information provided in this Notification/ Notice, pursuant to the Act Section 96(2) [YO2]
+                            </p>
+                            <p class="fs__12rem">
+                                I the undersigned recognise and accept that entering my full name and position below constitutes due and sufficient signature for the purpose of satisfying legal requirement for executing documents.
                             </p>
                             <div class="form-group">
                                 <input

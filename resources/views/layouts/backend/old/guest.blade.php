@@ -3,7 +3,7 @@
 @section('mobile_navigation')
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <a data-turbolinks="false" href="/">
-            <h3 class="text-white text-bold font-weight-bolder " style="color: white !important"> Mergers & Acquisition Platform</h3>
+            <h3 class="text-white text-bold font-weight-bolder " style="color: white !important">{!! config("app.name") !!}</h3>
         </a>
         <div class="d-flex align-items-center">
             <a href="/">
