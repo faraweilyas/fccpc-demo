@@ -6,56 +6,83 @@ Route::prefix('applicant')
     ->name('applicant.')
     ->namespace('Backend')
     ->middleware('XssSanitizer')
-    ->group(function () {
-        Route::get('/', 'ApplicantController@show')->name('show');
+    ->group(function()
+    {
+        Route::get(
+            '/',
+            'ApplicantController@show'
+        )
+        ->name('show');
 
-        Route::get('confirm/{email}', 'ApplicantController@confirm')->name(
-            'confirm'
-        );
+        Route::get(
+            'confirm/{email}',
+            'ApplicantController@confirm'
+        )
+        ->name('confirm');
 
-        Route::post('confirm', 'ApplicantController@confirmSubmit')->name(
-            'confirm.store'
-        );
+        Route::post(
+            'confirm',
+            'ApplicantController@confirmSubmit'
+        )
+        ->name('confirm.store');
 
-        Route::get('resend-email/{email}', 'ApplicantController@resendEmail')->name(
-            'resend-email'
-        );
+        Route::get(
+            'resend-email/{email}',
+            'ApplicantController@resendEmail'
+        )
+        ->name('resend-email');
 
-        Route::post('authenticate', 'ApplicantController@store')->name('store');
+        Route::post(
+            'authenticate',
+            'ApplicantController@store'
+        )
+        ->name('store');
 
-        Route::get('manage', 'ApplicantController@trackApplication')->name(
-            'track'
-        );
+        Route::get(
+            'manage',
+            'ApplicantController@trackApplication'
+        )
+        ->name('track');
 
-        Route::post('manage', 'ApplicantController@authenticateTrack')->name(
-            'authenticate.track'
-        );
+        Route::post(
+            'manage',
+            'ApplicantController@authenticateTrack'
+        )
+        ->name('authenticate.track');
 
-        Route::get('recover-id', 'ApplicantController@recoverID')->name(
-            'recover_id'
-        );
+        Route::get(
+            'recover-id',
+            'ApplicantController@recoverID'
+        )
+        ->name('recover_id');
 
-        Route::post('recover-id', 'ApplicantController@recoverIDRequest')->name(
-            'recover_id'
-        );
+        Route::post(
+            'recover-id',
+            'ApplicantController@recoverIDRequest'
+        )
+        ->name('recover_id');
 
-        Route::get('recover-id/success', 'ApplicantController@viewRecoverIDSuccess')->name(
-            'recover_id_success'
-        );
+        Route::get(
+            'recover-id/success',
+            'ApplicantController@viewRecoverIDSuccess'
+        )
+        ->name('recover_id_success');
 
         Route::get(
             'document/download/{document}/{file}',
             'ApplicantController@downloadDocument'
-        )->name('document.download');
+        )
+        ->name('document.download');
 
         Route::get(
             'loa/download/{document?}',
             'ApplicantController@letterOfAppointmenDownload'
-        )->name('download_contact_loa');
+        )
+        ->name('download_contact_loa');
 
         Route::get(
             'form-doc/download/{document}',
             'ApplicantController@downloadFormDocument'
-        )->name('download_form_doc');
-
+        )
+        ->name('download_form_doc');
     });

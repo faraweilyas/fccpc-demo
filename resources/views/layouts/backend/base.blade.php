@@ -18,16 +18,12 @@
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'custom.css') }}" />
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed page-loading">
-
     @yield('base_content')
-
 	<div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
             <x-icons.arrow-up></x-icons.arrow-up>
-
         </span>
     </div>
-
     <!-- JavaScript -->
     <script type="text/javascript" defer>
         var KTAppSettings = {
@@ -43,7 +39,6 @@
     <script type="text/javascript" src="{{ pc_asset(BE_JS.'toaster.js') }}" defer></script>
     <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'custom.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset(BE_PLUGIN.'custom/select2/js/select2.js') }}"></script>
-
     <script type="text/javascript" defer>
         $(document).ready(function($)
         {
@@ -58,11 +53,7 @@
                 toastr.error("{{ Session::get('error') }}");
             @endif
         });
-
-
     </script>
-
     @yield('custom.javascript')
-
 </body>
 </html>

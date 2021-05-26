@@ -425,14 +425,14 @@ function isRouteActive(array $route) : string
 }
 
 /**
-* Clean string
-*
-* @param string $string
-* @param bool $strip // This determines if the tags in the string would be stripped with the strip_tags function
-*
-* @return string
-*/
-function cleanString($string, $strip = TRUE) {
+ * Clean string
+ *
+ * @param string    $string
+ * @param bool      $strip [This determines if the tags in the string would be stripped with the strip_tags function]
+ * @return string
+ */
+function cleanString($string, $strip=true)
+{
     $string = trim($string);
     $string = stripslashes($string);
      if ($strip)
