@@ -64,15 +64,15 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <a class="nav-link" href="/">
-                M & A
+                Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('applicant.show') }}">Submit Application</a>
+              <a class="nav-link" href="{{ route('applicant.show') }}">File/Submit Notification</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('enquiries.create', ['type' => 'prn']) }}">Pre-Notification</a>
+              <a class="nav-link" href="{{ route('enquiries.create', ['type' => 'prn']) }}">Pre-Notification Consultation</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
@@ -84,7 +84,7 @@
               <a class="nav-link" href="{{ route('home.faqs.category', ['category' => 'GEN']) }}">FAQs</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('applicant.track') }}">Manage Application</a>
+              <a class="nav-link" href="{{ route('applicant.track') }}">Manage Notification</a>
             </li>
             <li class="nav-item dropdown administrator-right">
                 <a class="nav-link" href="{{ route('login') }}">Sign In</a>

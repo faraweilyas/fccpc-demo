@@ -36,7 +36,6 @@
     <div id="kt_scrolltop" class="scrolltop">
         <span class="svg-icon">
             <x-icons.arrow-up></x-icons.arrow-up>
-
         </span>
     </div>
 
