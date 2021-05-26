@@ -37,7 +37,7 @@
                                 <th>Subject</th>
                                 <th class="text-center">Name</th>
                                 <th>Status</th>
-                                <th class="text-center">Action(s)</th>
+                                <th class="text-left">Action(s)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,7 +62,7 @@
                                 <td>{{ $item->subject }}</td>
                                 <td class="text-center"><b>{{ $item->getFullName() }}</b></td>
                                 <td><b>{{ $item->getStatus() }}</b></td>
-                                <td class="text-center" nowrap="nowrap">
+                                <td class="text-left" nowrap="nowrap">
                                     <a href="#" class="btn btn-sm btn-light-warning mr-3" title="View Enquiry Info"
                                         data-toggle="modal" data-target="#viewEnqiryModal">
                                         <i class="flaticon-eye"></i>
