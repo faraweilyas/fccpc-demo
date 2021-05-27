@@ -18,8 +18,8 @@
                                     <div class="col-md-12 text-center">
                                         <p>
                                             <strong>
-                                                Your application <b>{{ $guest->getTrackingID() }}</b> has been submitted
-                                                successfully.
+                                                Your notification <b>{{ $guest->getTrackingID() }}</b> has been submitted
+                                                successfully.<br />An operative will contact you.
                                             </strong>
                                         </p>
                                         <p>
@@ -29,14 +29,14 @@
                                             href="{{ $guest->applicantPath() }}"
                                             class="btn btn-primary font-weight-bold text-uppercase mr-5 px-9 py-4"
                                         >
-                                            Create a New Application
+                                            BEGIN A DIFFERENT NOTIFICATION
                                         </a>
                                         <a
                                             data-turbolinks="false"
-                                            href="/"
+                                            href="https://www.fccpc.gov.ng/"
                                             class="btn btn-secondary font-weight-bold text-uppercase mr-5 px-9 py-4"
                                         >
-                                            Return Home
+                                            Exit
                                         </a>
                                     </div>
                                 </div>

@@ -51,20 +51,20 @@
                                     </div>
                                 </div>
                                 <div class="form-group hide">
-                                    <label>The annual turnover of the acquiring undertaking (including group companies where relevant):</label>
+                                    <label>Annual Turnover of the Acquiring Undertaking(s) (including group companies where relevant):</label>
                                     <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
                                 </div>
                                 <div class="form-group hide">
-                                    <label>The annual turnover of the target undertaking:</label>
+                                    <label>Annual Turnover of the Target Undertaking(s):</label>
                                     <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
                                 </div>
                                 <div class="form-group hide">
-                                    <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
+                                    <label>For Foreign to Foreign Mergers, Annual Turnover of Nigerian Component is required:</label>
                                     <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Total annual turnover:</label>
+                                <label>Total and Combined Annual Turnover:</label>
                                 <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
                             </div>
                         </div>
@@ -73,13 +73,13 @@
                                 <table class="table fee-calc-table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">SERVICE</th>
-                                            <th scope="col">PRICE</th>
+                                            <th scope="col">ITEM</th>
+                                            <th scope="col">FEES</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Application fee</td>
+                                            <td>Notification fee</td>
                                             <td><span class="applicationFee">₦0.00</span></td>
                                         </tr>
                                         <tr>

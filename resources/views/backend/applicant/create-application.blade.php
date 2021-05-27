@@ -420,7 +420,7 @@
                                                                 </p>
                                                                 <div class="col-md-12 my-3">
                                                                     <a href="#" id="kt_fee">
-                                                                        <i class="la la-info-circle"></i>&nbsp;Click here to calculate applicable fees
+                                                                        <i class="la la-info-circle"></i>&nbsp;Calculate applicable fees
                                                                     </a>
                                                                 </div>
                                                                 <div class="row">
@@ -456,7 +456,7 @@
                                                                             />
                                                                         </div>
                                                                         <div class="col-md-12 mb-4">
-                                                                            Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
+                                                                            Total: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
                                                                             <input
                                                                                 type="hidden"
                                                                                 class="form-control"
@@ -466,13 +466,6 @@
                                                                             />
                                                                         </div>
                                                                     @endif
-                                                                </div>
-                                                                <div class="row mt-4">
-                                                                    <div class="col-md-12">
-                                                                        <div class="form-group mb-1">
-                                                                            <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ !empty($document) ? $document->additional_info : '' }}</textarea>
-                                                                        </div>
-                                                                    </div>
                                                                 </div>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12 mt-4 mb-n3">
@@ -502,6 +495,19 @@
                                                                     <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                 </div>
                                                                 <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                <div class="row mt-4">
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group mb-1">
+                                                                            <textarea
+                                                                                class="form-control"
+                                                                                id="additional_info"
+                                                                                rows="6"
+                                                                                name="{{ Str::camel($checklistGroup->label) }}_additional_info"
+                                                                                placeholder="Additional Information..."
+                                                                            >{{ !empty($document) ? $document->additional_info : '' }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                 @if(!empty($document))
                                                                     <div class="row mt-4">
                                                                         @php

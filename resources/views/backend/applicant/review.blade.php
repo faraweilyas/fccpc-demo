@@ -5,17 +5,17 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5 sm-d-flex">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Notification</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="{{ $guest->applicationPath() }}" class="text-muted">Select Case Type</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="{{ route('application.show', ['guest' => $guest->tracking_id, 'case_category' => $guest->case->case_category]) }}"
-                                class="text-muted">Create Application</a>
+                                class="text-muted">Create Notification</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Review Application</a>
+                            <a href="#" class="text-muted">Review Notification</a>
                         </li>
                     </ul>
                 </div>
@@ -40,14 +40,14 @@
                                 </button>
                             </div>
                         </div>
-                        <h3 class="checklist-header">APPLICATION SUMMARY</h3>
+                        <h3 class="checklist-header">NOTIFICATION SUMMARY</h3>
                         <p class="review-description">
-                            Please review your application. You will not be able to make any changes once submitted.
+                            Please review your notification. You will not be able to make any changes once submitted.
                         </p>
-                        <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
+                        <p class="section-header">NOTIFICATION INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title @empty($case->subject) text-danger @endif">Subject:</h4>
+                                <h4 class="info-title @empty($case->subject) text-danger @endif">Subject/Title of Transaction:</h4>
                                 <h4>{{ $case->subject }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
@@ -66,7 +66,7 @@
                         <p class="section-header">CONTACT INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title @empty($case->applicant_firm) text-danger @endif">Applicant/Representing Firm:</h4>
+                                <h4 class="info-title @empty($case->applicant_firm) text-danger @endif">Notifying Party(ies) / Representative(s):</h4>
                                 <h4>{{ $case->applicant_firm }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         @if(strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm')
-                        <p class="section-header">Form 1A</p>
+                        <p class="section-header">PDF of Form 1A</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
                                 <h4 class="info-title @empty($case->isForm1ASet()) text-danger @endif">Form 1A:</h4>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
                         @endif
-                        <p class="section-header mt-10">RELEVANT DOCUMENTS</p>
+                        <p class="section-header mt-10">SUPPORTING DOCUMENTS</p>
                         @foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $case->case_category])->get() as $checklistGroup)
                             @php
                                 $document = \App\Models\Document::where('case_id', $case->id)
