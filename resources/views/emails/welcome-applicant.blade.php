@@ -3,13 +3,13 @@
 <html xmlns:fb="http://www.facebook.com/2008/fbml" xmlns:og="http://opengraph.org/schema/">
 
 <head>
-    <meta property="og:title" content="Notification: Application Tracking ID">
+    <meta property="og:title" content="Notification Tracking ID">
     <meta property="fb:page_id" content="43929265776">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notification: Application Tracking ID</title>
+    <title>Notification Tracking ID</title>
     <style type="text/css">
         p {
             margin: 10px 0;
@@ -514,15 +514,15 @@
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         Dear notifier,&nbsp;&nbsp;</p>
 
-                                                                    <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
+                                                                    {{-- <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
                                                                         paraid="1117038438"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         Your request has been received.
-                                                                    </p>
+                                                                    </p> --}}
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{234}"
                                                                         paraid="1117038438"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your notification ID is <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
+                                                                        Your Notification ID is <a href="{{ route('applicant.confirm', ['email' => $guest->email, 'app_id' => $guest->tracking_id]) }}">
                                                                             <strong>{{ $guest->tracking_id }}</strong>
                                                                         </a>. Use this ID to begin your notification.
                                                                         &nbsp;</p>
@@ -533,8 +533,7 @@
                                                                              If you have any queries, visit the FAQ section <a
                                                                             href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                                        for more information.
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>.
                                                                     </p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{2}"

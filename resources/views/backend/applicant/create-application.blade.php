@@ -303,7 +303,8 @@
                                         </div>
                                         @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                             <div class="pb-5" data-wizard-type="step-content" data-form='Form1AInfo'>
-                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-confidential ex. Sum. For Publication <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">(Section 96 FCCPA; Section 16 MRR)</a></h4>
+                                                <h4 class="mb-10 font-weight-bold text-dark fs__13rem">Form 1A (Page 1 of 2)</h4>
+                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-confidential Executive Summary For Publication <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">(Section 96 FCCPA; Section 16 MRR)</a></h4>
                                                 <p class="fs__12rem">
                                                     Provide a non-confidential executive summary (up to 500 words) of the merger, specifying parties to the merger, the nature of the transaction (i.e., merger, acquisition, or joint venture), nature of the business of parties, relevant markets, and the strategic/economic rationale for the merger.
                                                 </p>
@@ -311,7 +312,14 @@
                                                     This Executive Summary will be published and provided to employees' pursuant to section 96(3) of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
-                                                    <textarea class="form-control form1a_declaration_text" id="kt_maxlength_5" maxlength="500" rows="6" name="form1a_declaration_text" placeholder="Additional Information...">{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
+                                                    <textarea
+                                                        class="form-control form1a_declaration_text"
+                                                        id="kt_maxlength_5"
+                                                        maxlength="500"
+                                                        rows="6"
+                                                        name="form1a_declaration_text"
+                                                        placeholder=""
+                                                    >{{ !empty($case->form_1A_Text) ? $case->form_1A_Text : '' }}</textarea>
                                                 </div>
                                             </div>
                                         @endif
@@ -327,16 +335,16 @@
                                                     <div class="col-md-12">
                                                         <div class="card card-custom gutter-b example example-compact">
                                                             <div class="card-header">
-                                                                <h3 class="card-title">Submit Application</h3>
+                                                                <h3 class="card-title">Submit Notification</h3>
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the {{ ucfirst($checklistGroup->name) }} and all relevant supporting documents in this section.
+                                                                    Upload the <a target='_blank' href="https://www.fccpc.gov.ng/businesses/mergers/">{{ ucfirst($checklistGroup->name) }}</a> and all relevant supporting documents here.
                                                                 </p>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12 mt-4 mb-n3">
                                                                         <p class="text-danger">
-                                                                            Note: supported file formats are (.pdf, .jpg, .jpeg). You cannot upload more than 20 files and total uploaded files should exceed 50mb.
+                                                                            Note: supported file formats (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should exceed 50MB.
                                                                         </p>
                                                                     </div>
                                                                     <div class="col-md-12">
@@ -418,7 +426,7 @@
                                                                 <div class="row">
                                                                     @if ($checklistGroup->isGroupFees())
                                                                         <div class="col-md-12 mb-4">
-                                                                            Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
+                                                                            Notification Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
                                                                             <input
                                                                                 type="hidden"
                                                                                 class="form-control"
@@ -588,7 +596,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="viewForm1AModalLabel">Form 1A Declaration</h5>
+                    <h5 class="modal-title" id="viewForm1AModalLabel">Form 1A (Page 2 of 2) Declaration</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i aria-hidden="true" class="ki ki-close"></i>
                     </button>
@@ -608,7 +616,7 @@
                                 I understand that:
                             </p>
                             <p class="fs__12rem">
-                                It is a criminal offence under section 112 [YO1] of the Federal Competition and Consumer Protection Act, 2018 to knowingly provide information that is false or misleading. Liability under the law and this Declaration includes persons providing this information either directly or indirectly (through another) to any officer of the Commission with the knowledge that such information is intended for communication to; or to be used by the Commission;
+                                It is a criminal offence under <a target='_blank' href="https://www.fccpc.gov.ng/guidelines/documents/">Section 112</a> of the Federal Competition and Consumer Protection Act, 2018 to knowingly provide information that is false or misleading. Liability under the law and this Declaration includes persons providing this information either directly or indirectly (through another) to any officer of the Commission with the knowledge that such information is intended for communication to; or to be used by the Commission;
                             </p>
                             <p class="fs__12rem">
                                 The Commission reserves the right to reject such Notices/Notifications upon discovery that any information therein is false, misleading or inaccurate in any material respect;
@@ -617,7 +625,7 @@
                                 The Commission conducts Phase 1 and Phase 2 investigations. In the event a merger is referred to a Phase 2 investigation, information provided in the course of the Phase 1 investigation will also be applicable in Phase 2; and
                             </p>
                             <p class="fs__12rem">
-                                The Commission will publish information provided in this Notification/ Notice, pursuant to the Act Section 96(2) [YO2]
+                                The Commission will publish information provided in this Notification / Notice, pursuant to the Act <a target='_blank' href="https://www.fccpc.gov.ng/guidelines/documents/">(Section 96(2))</a>
                             </p>
                             <p class="fs__12rem">
                                 I the undersigned recognise and accept that entering my full name and position below constitutes due and sufficient signature for the purpose of satisfying legal requirement for executing documents.

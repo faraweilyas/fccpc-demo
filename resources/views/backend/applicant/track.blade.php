@@ -41,7 +41,7 @@
                                 @enderror
                                 <input
                                     type="text"
-                                    placeholder="Please provide application id:"
+                                    placeholder="Please input Notification ID:"
                                     name="tracking_id"
                                     class="form-control h-auto form-control-solid py-4 px-8"
                                     autocomplete="off"
@@ -67,7 +67,7 @@
                                     id="kt_login_signup2"
                                     class="text-hover-primary font-weight-bold text-black-sm"
                                 >
-                                    Submit Application
+                                    Submit Notification
                                 </a>
                             </p>
                         </div>
