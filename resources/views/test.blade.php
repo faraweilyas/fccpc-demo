@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\User;
+use App\Models\Cases;
+
 dd(\Hash::make('password'));
 
 $search             = $_GET['query']            ?? "";
@@ -27,34 +30,33 @@ dump($search, $case_types, $case_categories, $case_states);
         //     $query->whereIn('case_handler.approval_status', ['approved']);
         // }
         // ])
-$cases = App\Models\Cases::with(['publication', 'active_handlers'])
-        ->where('subject', 'like', '%'.$search.'%')
-        ->orWhereIn('case_type', $case_types)
-        ->orWhereIn('case_category', $case_categories)
-        ->orderBy('id', 'DESC')
-        ->paginate(10)
-        ->reject(function($case) use ($case_states)
-        {
-            $reject = TRUE;
+$cases = Cases::with(['publication', 'active_handlers'])
+            ->where('subject', 'like', '%'.$search.'%')
+            ->orWhereIn('case_type', $case_types)
+            ->orWhereIn('case_category', $case_categories)
+            ->orderBy('id', 'DESC')
+            ->paginate(10)
+            ->reject(function($case) use ($case_states)
+            {
+                $reject = TRUE;
 
-            if (!is_null($case->publication)):
+                if (!is_null($case->publication)):
 
-                $reject = FALSE;
+                    $reject = FALSE;
 
-                // if ($case->isApprovalApproved() AND in_array("closed", $case_states))
-                //     $reject = FALSE;
+                    // if ($case->isApprovalApproved() AND in_array("closed", $case_states))
+                    //     $reject = FALSE;
 
-                // if (!$case->isApprovalApproved() AND in_array("open", $case_states))
-                //     $reject = FALSE;
+                    // if (!$case->isApprovalApproved() AND in_array("open", $case_states))
+                    //     $reject = FALSE;
 
-            endif;
+                endif;
 
-                $reject = FALSE;
-            return $reject;
-        });
+                    $reject = FALSE;
+                return $reject;
+            });
 
 dd($cases->toArray());
-
 
 $case           = Cases::find(1);
 // $oldUser        = User::find(6);
@@ -62,7 +64,7 @@ $case           = Cases::find(1);
 // $supervisor     = User::find(5);
 // return $case->reAssign($oldUser, $newUser, $supervisor);
 
-// foreach (User::all() as $user)
+// foreach(User::all() as $user)
 // {
 //     $user->notify(new NewUser(
 //         "newuser",
