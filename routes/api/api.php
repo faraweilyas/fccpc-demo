@@ -44,7 +44,6 @@ Route::prefix('checklist')
             'all/{group_id}',
             'ApplicationController@getChecklistsByGroup'
         );
-
     });
 
 // Application
@@ -254,9 +253,12 @@ Route::prefix('case')
         Route::get(
             'report/export/{start_date}/{end_date}/{handler_id?}',
             'CaseController@exportGeneratedReportCsv'
-        )->withoutMiddleWare(['jwt.verify']);
+        )
+        ->withoutMiddleWare(['jwt.verify']);
     });
 
-Route::fallback(function(){
+Route::fallback(function()
+{
     return response()->json(['message' => 'Not Found.'], 404);
-})->name('api.fallback.404');
+})
+->name('api.fallback.404');

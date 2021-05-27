@@ -136,21 +136,47 @@ Route::prefix('faq')
     ->middleware(['auth', 'XssSanitizer'])
     ->group(function()
     {
-        Route::get('create', 'FaqController@create')->name('create');
+        Route::get(
+            'create',
+            'FaqController@create'
+        )
+        ->name('create');
 
-        Route::post('create', 'FaqController@store')->name('create');
+        Route::post(
+            'create',
+            'FaqController@store'
+        )
+        ->name('create');
 
-        Route::get('edit/{faq}', 'FaqController@edit')->name('edit');
+        Route::get(
+            'edit/{faq}',
+            'FaqController@edit'
+        )
+        ->name('edit');
 
-        Route::post('edit/{faq}', 'FaqController@update')->name('update');
+        Route::post(
+            'edit/{faq}',
+            'FaqController@update'
+        )
+        ->name('update');
 
-        Route::get('all', 'FaqController@index')->name('faqs');
+        Route::get(
+            'all',
+            'FaqController@index'
+        )
+        ->name('faqs');
 
-        Route::get('detail/{faq}', 'FaqController@viewFaqDetail')->name(
-            'faq_detail'
-        );
+        Route::get(
+            'detail/{faq}',
+            'FaqController@viewFaqDetail'
+        )
+        ->name('faq_detail');
 
-        Route::get('faq/{faq}', 'FaqController@destroy')->name('delete');
+        Route::get(
+            'faq/{faq}',
+            'FaqController@destroy'
+        )
+        ->name('delete');
     });
 
 // User
@@ -160,19 +186,41 @@ Route::prefix('/')
     ->middleware('XssSanitizer')
     ->group(function()
     {
-        Route::get('dashboard', 'DashboardController@index')->name('index');
-        Route::get('update-password', 'DashboardController@updatePassword')->name('update_password');
-        Route::post('update-password', 'DashboardController@storeUpdatePassword')->name('update_password');
+        Route::get(
+            'dashboard',
+            'DashboardController@index'
+        )
+        ->name('index');
 
-        Route::get('user/create', 'DashboardController@createUser')->name(
-            'create_user'
-        );
+        Route::get(
+            'update-password',
+            'DashboardController@updatePassword'
+        )
+        ->name('update_password');
 
-        Route::post('user/create', 'DashboardController@storeUser')->name(
-            'user_store'
-        );
+        Route::post(
+            'update-password',
+            'DashboardController@storeUpdatePassword'
+        )
+        ->name('update_password');
 
-        Route::get('users', 'DashboardController@viewUsers')->name('users');
+        Route::get(
+            'user/create',
+            'DashboardController@createUser'
+        )
+        ->name('create_user');
+
+        Route::post(
+            'user/create',
+            'DashboardController@storeUser'
+        )
+        ->name('user_store');
+
+        Route::get(
+            'users',
+            'DashboardController@viewUsers'
+        )
+        ->name('users');
 
         Route::get(
             'users/status/update/{id}',
@@ -216,25 +264,41 @@ Route::prefix('/')
         )
         ->name('profile');
 
-        Route::get('mark-notifications', 'DashboardController@markNotifications')->name('mark_notifications');
+        Route::get(
+            'mark-notifications',
+            'DashboardController@markNotifications'
+        )
+        ->name('mark_notifications');
 
-        Route::get('clear-notification', 'DashboardController@clearReadNotification')->name('clear_notification');
+        Route::get(
+            'clear-notification',
+            'DashboardController@clearReadNotification'
+        )
+        ->name('clear_notification');
 
-        Route::get('report/{show}', 'DashboardController@generateReportTable')->name(
-            'report.show'
-        );
+        Route::get(
+            'report/{show}',
+            'DashboardController@generateReportTable'
+        )
+        ->name('report.show');
 
-        Route::get('report-amount-paid/{category}', 'DashboardController@getGeneratedAmountPaidReport')->name(
-            'report.amount_paid'
-        );
+        Route::get(
+            'report-amount-paid/{category}',
+            'DashboardController@getGeneratedAmountPaidReport'
+        )
+        ->name('report.amount_paid');
 
-        Route::get('report', 'DashboardController@generateReport')->name(
-            'report'
-        );
+        Route::get(
+            'report',
+            'DashboardController@generateReport'
+        )
+        ->name('report');
 
-        Route::get('report/{start_date_end_date}/{category}/{type}', 'DashboardController@exportReportCSV')->name(
-            'report.export'
-        );
+        Route::get(
+            'report/{start_date_end_date}/{category}/{type}',
+            'DashboardController@exportReportCSV'
+        )
+        ->name('report.export');
     });
 
 // Cases
@@ -244,100 +308,127 @@ Route::prefix('cases')
     ->middleware('XssSanitizer')
     ->group(function()
     {
-        Route::get('search', 'CasesController@searchCases')->name('search');
+        Route::get(
+            'search',
+            'CasesController@searchCases'
+        )
+        ->name('search');
 
-        Route::get('new', 'CasesController@unassignedCases')->name(
-            'unassigned'
-        );
+        Route::get(
+            'new',
+            'CasesController@unassignedCases'
+        )
+        ->name('unassigned');
 
         Route::get(
             'all/{handler?}',
             'CasesController@allCases'
-        )->name('all');
+        )
+        ->name('all');
 
         Route::get(
             'assigned/{handler?}',
             'CasesController@assignedCases'
-        )->name('assigned');
+        )
+        ->name('assigned');
 
-        Route::get('dropped/{handler}', 'CasesController@droppedCases')->name(
-            'dropped'
-        );
+        Route::get(
+            'dropped/{handler}',
+            'CasesController@droppedCases'
+        )
+        ->name('dropped');
 
         Route::get(
             'ongoing/{handler?}',
             'CasesController@workingonCases'
-        )->name('working_on');
+        )
+        ->name('working_on');
 
         Route::get(
             'approved/{handler?}',
             'CasesController@approvedCases'
-        )->name('approved');
+        )
+        ->name('approved');
 
         Route::get(
             'on-hold/{handler?}',
             'CasesController@onholdCases'
-        )->name('on-hold');
+        )
+        ->name('on-hold');
 
         Route::get(
             'archived',
             'CasesController@archivedCases'
-        )->name('archived');
+        )
+        ->name('archived');
 
         Route::get(
             'archive/{case}',
             'CasesController@archiveCase'
-        )->name('archive');
+        )
+        ->name('archive');
 
         Route::get(
             'form-1A/generate-pdf/{case}',
             'CasesController@generateForm1APdf'
-        )->name('generate_form1A_pdf');
+        )
+        ->name('generate_form1A_pdf');
 
         Route::get(
             'analyze/{case}',
             'CasesController@analyzeCase'
-        )->name('analyze');
+        )
+        ->name('analyze');
 
         Route::get(
             'publish/{case}',
             'CasesController@publishCase'
-        )->name('publish')->withoutMiddleware('XssSanitizer');
+        )
+        ->name('publish')
+        ->withoutMiddleware('XssSanitizer');
 
         Route::post(
             'publish/{case}',
             'CasesController@strorePublishCase'
-        )->name('cases.publish')->withoutMiddleware('XssSanitizer');
+        )
+        ->name('cases.publish')
+        ->withoutMiddleware('XssSanitizer');
 
         Route::get(
             'analyze-documents/{case}',
             'CasesController@analyzeCaseDocuments'
-        )->name('analyze-documents');
+        )
+        ->name('analyze-documents');
 
         Route::get(
             'checklist-approval/{case}/{date}',
             'CasesController@checklistApproval'
-        )->name('checklist-approval');
+        )
+        ->name('checklist-approval');
 
         Route::get(
             'review-checklist-approval/{case}/{date}',
             'CasesController@reviewChecklistApproval'
-        )->name('review-checklist-approval');
+        )
+        ->name('review-checklist-approval');
 
         Route::get(
             'checklist-status-count/{case}/{date}',
             'CasesController@getChecklistCount'
-        )->name('checklist-status-count');
+        )
+        ->name('checklist-status-count');
 
         Route::get(
             'checklist-by-status/{case}/{date}',
             'CasesController@getChecklistByStatus'
-        )->name('checklist-by-status');
+        )
+        ->name('checklist-by-status');
 
         Route::post(
             'checklist-approval/{document}',
             'CasesController@saveChecklistApproval'
-        )->name('checklist-approval-submit');
+        )
+        ->name('checklist-approval-submit');
 
         Route::post(
             'checklist-approval-reason/{document}',
@@ -347,91 +438,110 @@ Route::prefix('cases')
         Route::post(
             'issue-deficiency/{case}/{date?}',
             'CasesController@issueDeficiency'
-        )->name('issue-deficiency');
+        )
+        ->name('issue-deficiency');
 
         Route::post(
             'approve-checklists/{case}',
             'CasesController@approveChecklists'
-        )->name('approve-checklists');
+        )
+        ->name('approve-checklists');
 
         Route::post(
             'issue-recommendation/{case}',
             'CasesController@issueRecommendation'
-        )->name('issue-recommendation');
+        )
+        ->name('issue-recommendation');
 
         Route::post(
             'request-approval/{case}',
             'CasesController@requestApproval'
-        )->name('request-approval');
+        )
+        ->name('request-approval');
 
         Route::post(
             'resolve-recommendation/{case}',
             'CasesController@resolveRecommendation'
-        )->name('resolve-recommendation');
+        )
+        ->name('resolve-recommendation');
 
         Route::post(
             'assign/{case}/{user}',
             'CasesController@assignCase'
-        )->name('assign');
+        )
+        ->name('assign');
 
         Route::post(
             'update-working-on/{case}/{user}',
             'CasesController@updateWorkingOn'
-        )->name('update_working_on');
+        )
+        ->name('update_working_on');
 
         Route::get(
             'checklists/{case}',
             'CasesController@caseChecklists'
-        )->name('checklists');
+        )
+        ->name('checklists');
 
-        Route::get('documents/{case}', 'CasesController@caseDocuments')->name(
-            'documents'
-        );
+        Route::get(
+            'documents/{case}',
+            'CasesController@caseDocuments'
+        )
+        ->name('documents');
 
         Route::get(
             'document/icon/{document}',
             'CasesController@getDocumentIconText'
-        )->name('documents');
+        )
+        ->name('documents');
 
         Route::post(
             'unassign/{case}/{user}',
             'CasesController@unassignCase'
-        )->name('unassign');
+        )
+        ->name('unassign');
 
         Route::post(
             'reassign/{case}/{old_user}/{new_user}',
             'CasesController@reassignCase'
-        )->name('assign');
+        )
+        ->name('assign');
 
         Route::post(
             'update/{status}/{id}',
             'CasesController@updateCaseStatus'
-        )->name('update_status');
+        )
+        ->name('update_status');
 
         Route::get(
             'generate-template/{case}',
             'CasesController@generateApprovalLetterTemplatePage'
-        )->name('generate_template');
+        )
+        ->name('generate_template');
 
         Route::post(
             'generate-template/{case}',
             'CasesController@generateApprovalLetterTemplate'
-        )->name('generate_template');
+        )
+        ->name('generate_template');
 
         Route::get(
             'template-mgmt/{case}/{template_id}',
             'CasesController@approvalLetterTemplateManagement'
-        )->name('template_mgmt');
+        )
+        ->name('template_mgmt');
 
         Route::post(
             'send-approval-template/{case}/{template_id}',
             'CasesController@sendApprovalLetter'
-        )->name('send_approval_letter');
+        )
+        ->name('send_approval_letter');
 
         Route::get(
             'download-analysis-document/{document}',
             'CasesController@downloadAnalysisDocument'
-        )->name('download_analysis_document');
+        )
+        ->name('download_analysis_document');
     });
 
 // Case Handler
@@ -441,18 +551,33 @@ Route::prefix('handlers')
     ->middleware('XssSanitizer')
     ->group(function()
     {
-        Route::get('/', 'CaseHandlersController@index')->name('index');
+        Route::get(
+            '/',
+            'CaseHandlersController@index'
+        )
+        ->name('index');
 
-        Route::get('create', 'CaseHandlersController@create')->name('create');
+        Route::get(
+            'create',
+            'CaseHandlersController@create'
+        )
+        ->name('create');
 
-        Route::post('create', 'CaseHandlersController@storeHandler')->name(
-            'store'
-        );
+        Route::post(
+            'create',
+            'CaseHandlersController@storeHandler'
+        )
+        ->name('store');
 
         Route::get(
             'status/update/{handler}',
             'CaseHandlersController@updateHandlerStatus'
-        )->name('update_status');
+        )
+        ->name('update_status');
 
-        Route::get('view/{id}', 'CaseHandlersController@show')->name('view');
+        Route::get(
+            'view/{id}',
+            'CaseHandlersController@show'
+        )
+        ->name('view');
     });

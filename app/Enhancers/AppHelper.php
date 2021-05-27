@@ -94,9 +94,9 @@ class AppHelper
      * These are the valid case categories on the platform
      */
 	protected $case_categories = [
-		"REG" => "Merger (Form 1)",
-		"FFM" => "Simplified Procedure (Form 2)",
-		"FFX" => "Negative Clearance (Form 4)",
+		"REG" => "MRR Form 1 (Regular)",
+		"FFM" => "MRR Form 2 (Simplified Procedure)",
+		"FFX" => "MRR Form 4 (Negative Clearance)",
 	];
 
     /**

@@ -98,16 +98,11 @@ class EnquiriesController extends Controller
      */
     public function logs()
     {
-        $caseHandlers = User::where('status', 'active')->where('account_type', 'CH')->get();
-        if (auth()->user()->account_type == 'CH'):
-            $enquiries = Enquiry::where('handler_id', auth()->user()->id)->orderBy('id', 'DESC')->get();
-        else:
-            $enquiries = Enquiry::orderBy('id', 'DESC')->get();
-        endif;
-
-        $title            = APP_NAME;
-        $description      = "FCCPC Logs Dashboard";
-        $details          = details($title, $description);
+        $caseHandlers   = User::where('status', 'active')->where('account_type', 'CH')->get();
+        $enquiries      = Enquiry::getEnquiries(auth()->user());
+        $title          = APP_NAME;
+        $description    = "FCCPC Logs Dashboard";
+        $details        = details($title, $description);
         return view('backend.enquiries.logs', compact('details', 'enquiries', 'caseHandlers'));
     }
 

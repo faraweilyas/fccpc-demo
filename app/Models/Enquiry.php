@@ -20,6 +20,19 @@ class Enquiry extends Model
     }
 
     /**
+     * Get enquiries
+     *
+     * @param $user
+     * @return array
+     */
+    public static function getEnquiries($user)
+    {
+        return ($user->account_type == 'CH')
+            ? static::where('handler_id', $user->id)->orderBy('id', 'DESC')->get()
+            : static::orderBy('id', 'DESC')->get();
+    }
+
+    /**
      * Get fullname
      *
      * @return String
