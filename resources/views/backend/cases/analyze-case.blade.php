@@ -36,27 +36,33 @@
                 Request For Document
             </button>
         @endif
-        @if ($case->active_handlers->count() > 0)
-            @if((strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm') && in_array(auth()->user()->account_type, ['SP', 'CH']))
+        @if ($case->active_handlers->count() > 0 && !$case->isCaseOnHold() && $case->isCaseChecklistsApproved())
+            @if(
+                (strtolower($case->case_category) == 'reg' ||
+                strtolower($case->case_category) == 'ffm') &&
+                in_array(auth()->user()->account_type, ['SP', 'CH'])
+            )
                 <button
-                        class="btn btn-success-transparent"
-                        onclick="window.location.href='{{ route('cases.publish', ['case' => $case]) }}'"
+                    class="btn btn-success-transparent"
+                    onclick="window.location.href='{{ route('cases.publish', ['case' => $case]) }}'"
                 >
                    Publish Form 1A
                 </button>
             @endif
         @endif
         @php
-            $approvedIcon       = ($case->isCaseChecklistsApproved()) ? 'Position-square-white.svg' : 'Position-square.svg';
-            $recommendationIcon = ($case->isRecommendationIssued())   ? 'Position-square-white.svg' : 'Position-square.svg';
-            $approvalIcon       = ($case->isApprovalApproved())   ? 'Position-square-white.svg' : 'Position-square.svg';
+            $approvedIcon       = ($case->isCaseChecklistsApproved())
+                                ? 'Position-square-white.svg' : 'Position-square.svg';
+            $recommendationIcon = ($case->isRecommendationIssued())
+                                ? 'Position-square-white.svg' : 'Position-square.svg';
+            $approvalIcon       = ($case->isApprovalApproved())
+                                ? 'Position-square-white.svg' : 'Position-square.svg';
         @endphp
         <div class="row px-3">
             <div class="tab-custom">
                 <div class="tab-link @if($case->isCaseOnHold()) bg-warning @else active @endif px-5 py-5">
-                    <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position">
-                    <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif fs__13_rem" href="#">Documentation
-                    </a>
+                    <img src="{{ pc_asset(BE_IMAGE.'svg/Position.svg') }}" alt="position" />
+                    <a class="nav-link @if($case->isCaseOnHold()) text-white @else active @endif fs__13_rem" href="#">Documentation</a>
                 </div>
                 <div class="tab-link @if($case->isCaseChecklistsApproved()) @if($case->isCaseOnHold()) bg-warning @else active @endif @endif px-5 py-5">
                     <img src="{{ pc_asset(BE_IMAGE.'svg/'.$approvedIcon) }}" alt="Position-square">
