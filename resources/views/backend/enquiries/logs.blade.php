@@ -11,7 +11,7 @@
                         <a href="{{ route('dashboard.index') }}" class="text-muted">Home</a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="" class="text-muted">Pre-Notifications</a>
+                        <a href="" class="text-muted">Pre-Notification Consultations</a>
                     </li>
                 </ul>
             </div>

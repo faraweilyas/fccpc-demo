@@ -7,6 +7,12 @@ Route::name('home.')
     ->middleware('XssSanitizer')
     ->group(function()
     {
+        Route::get('/test', function()
+        {
+            return view('test');
+        })
+        ->name("test");
+
         Route::get(
             '/',
             'HomeController@index'
