@@ -37,7 +37,7 @@
                             <div class="transaction-category-section">
                                 <div class="form-group purchase_consideration">
                                     <label>Purchase Consideration:</label>
-                                    <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
+                                    <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="0" />
                                 </div>
                                 <div class="form-group">
                                     <label>Transaction Category:</label>
@@ -52,15 +52,15 @@
                                 </div>
                                 <div class="form-group hide">
                                     <label>Annual Turnover of the Acquiring Undertaking(s) (including group companies where relevant):</label>
-                                    <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
+                                    <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="0" />
                                 </div>
                                 <div class="form-group hide">
                                     <label>Annual Turnover of the Target Undertaking(s):</label>
-                                    <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
+                                    <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="0" />
                                 </div>
                                 <div class="form-group hide">
                                     <label>For Foreign to Foreign Mergers, Annual Turnover of Nigerian Component is required:</label>
-                                    <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
+                                    <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="0" />
                                 </div>
                             </div>
                             <div class="form-group">
@@ -73,7 +73,7 @@
                                 <table class="table fee-calc-table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">ITEM</th>
+                                            <th scope="col">DESCRIPTION</th>
                                             <th scope="col">FEES</th>
                                         </tr>
                                     </thead>
@@ -112,15 +112,19 @@
                 <div class="footer bg-white py-4 d-flex flex-lg-column" id="kt_footer">
                     <div class="container">
                         <div class="row">
-                          <div class="col-md-8">
-                            <span style="font-size: 1rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC)
-                              <br>Copyright © 2020 Federal Competition and Consumer Protection Commission</span>
-                          </div>
-                          <div class="col-md-4">
-                            <br/>
-                            <span class="float-right float-right-inverse" style="font-size: 1rem">  Powered by <a href="https://techbarn.ng/" target="_blank" class="text-dark">techbarn </span>
-
-                          </div>
+                            <div class="col-md-8">
+                                <span style="font-size: 1rem">This is the official website of the Federal Competition and Consumer Protection Commission (FCCPC) <br>Copyright &copy; {{ date('Y') }} Federal Competition and Consumer Protection Commission</span>
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+                                <span
+                                    class="float-right float-right-inverse"
+                                    style="font-size: 1rem"
+                                >
+                                    Powered by <a href="https://techbarn.ng/" target="_blank" class="text-dark">techbarn</a>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

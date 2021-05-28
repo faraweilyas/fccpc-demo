@@ -12,7 +12,7 @@
             <div class="row fee-calc-container">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label>Type of Case:</label>
+                        <label>Transaction Type:</label>
                         <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
                             <option value="" selected="">Select type:</option>
                             <option value="local">Merger</option>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group purchase_consideration">
                         <label>Purchase Consideration:</label>
-                        <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="Enter your purchase consideration:" />
+                        <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="0" />
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -48,35 +48,35 @@
                             </div>
                         </div>
                         <div class="form-group hide">
-                            <label>The annual turnover of the acquiring undertaking (including group companies where relevant):</label>
-                            <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="Enter amount:" />
+                            <label>Annual Turnover of the Acquiring Undertaking(s) (including group companies where relevant):</label>
+                            <input type="text" id="turnover_a" name="turnover_a" class="form-control" placeholder="0" />
                         </div>
                         <div class="form-group hide">
-                            <label>The annual turnover of the target undertaking:</label>
-                            <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="Enter amount:" />
+                            <label>Annual Turnover of the Target Undertaking(s):</label>
+                            <input type="text" id="turnover_b" name="turnover_b" class="form-control" placeholder="0" />
                         </div>
                         <div class="form-group hide">
-                            <label>For foreign to foreign mergers, the annual turnover of Nigerian component is required:</label>
-                            <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="Enter amount:" />
+                            <label>For Foreign to Foreign Mergers, Annual Turnover of Nigerian Component is required:</label>
+                            <input type="text" id="turnover_c" name="turnover_c" class="form-control" placeholder="0" />
                         </div>
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="fee__calculator--table">
                         <div class="form-group">
-                            <label>Total annual turnover:</label>
+                            <label>Total and Combined Annual Turnover:</label>
                             <input type="text" id="annual_turnover" name="annual_turnover" class="form-control" disabled />
                         </div>
                         <table class="table fee-calc-table">
                             <thead class="thead-light">
                                 <tr>
-                                    <th scope="col">SERVICE</th>
-                                    <th scope="col">PRICE</th>
+                                    <th scope="col">DESCRIPTION</th>
+                                    <th scope="col">FEES</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Application fee</td>
+                                    <td>Notification fee</td>
                                     <td><span class="applicationFee">₦0.00</span></td>
                                 </tr>
                                 <tr>
