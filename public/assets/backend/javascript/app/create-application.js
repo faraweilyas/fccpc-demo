@@ -777,7 +777,7 @@ $(document).ready(function()
         $(InputsWrapper).append('<div class="field-item mt-4" id="field_'+ FieldCount +'">'+
                                     '<div class="row">'+
                                         '<div class="col-lg-5">'+
-                                            '<input type="text" class="form-control" placeholder="Enter party name" name="party[]">'+
+                                            '<input type="text" class="form-control" placeholder="" name="party[]">'+
                                             '<div class="d-md-none mb-2"></div>'+
                                         '</div>'+
                                         '<div class="col-lg-2">'+
@@ -1382,7 +1382,7 @@ function submitDeficientCase()
 
             swal.fire(
                 "Submitted!",
-                "Your application has been submitted.",
+                "Your notification has been submitted.",
                 "success"
             ).then(function()
             {
@@ -1392,10 +1392,10 @@ function submitDeficientCase()
         function(xhr, desc, err)
         {
             swal.fire(
-                    "Not Submitted!",
-                    err,
-                    "error"
-                );
+                "Not Submitted!",
+                err,
+                "error"
+            );
 
             $("#goback-btn").removeClass('hide');
             $("#upload-deficient-info").removeClass('hide');

@@ -135,11 +135,11 @@
                                                     type="text"
                                                     id="subject"
                                                     class="form-control"
-                                                    placeholder="Please enter subject here"
+                                                    placeholder=""
                                                     name="subject"
                                                     value="{{ $case->subject }}"
                                                 />
-                                                {{-- <span class="form-text text-muted">Please enter subject here</span> --}}
+                                                <span class="form-text text-muted"></span>
                                                 <div class="fv-plugins-message-container"></div>
                                             </div>
                                             <div class="form-group">
@@ -152,7 +152,7 @@
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        placeholder="Enter party name"
+                                                                        placeholder=""
                                                                         name="party[]"
                                                                         value="{{ $party }}"
                                                                     />
@@ -163,7 +163,7 @@
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        placeholder="Enter party name"
+                                                                        placeholder=""
                                                                         name="party[]"
                                                                     />
                                                                     <div class="d-md-none mb-2"></div>
@@ -172,7 +172,7 @@
                                                                     <input
                                                                         type="text"
                                                                         class="form-control"
-                                                                        placeholder="Enter party name"
+                                                                        placeholder=""
                                                                         name="party[]"
                                                                     />
                                                                     <div class="d-md-none mb-2"></div>

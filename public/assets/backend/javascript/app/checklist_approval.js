@@ -238,8 +238,8 @@ $(document).ready(function ()
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
                 swal.fire(
-                    "Deficiency Success!",
-                    "Applicant has been notified!",
+                    "Deficiency mail sent",
+                    "",
                     "success"
                 ).then(function()
                 {
@@ -250,8 +250,8 @@ $(document).ready(function ()
                 $("#saving-deficiency").addClass('hide');
                 $('#issue-deficiency').removeClass('hide');
                 swal.fire(
-                    "Deficiency Not Successful!",
-                    "Applicant has not been notified!",
+                    "Some error occurred, Try again",
+                    "",
                     "error"
                 );
             }

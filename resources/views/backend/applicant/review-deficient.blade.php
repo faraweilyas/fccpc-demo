@@ -72,7 +72,7 @@
                             </div>
                         </div>
                         <p class="section-header">DOCUMENTS UPLOADED</p>
-                        @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
+                        @foreach(\App\Models\ChecklistGroup::with('checklists')->orderBy('name', 'desc')->get() as $checklistGroup)
                             @if($case->isCaseChecklistsApproved())
                                 @if($case->getCategoryKey() == $checklistGroup->category)
                                     @php

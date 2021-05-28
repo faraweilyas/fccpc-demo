@@ -22,9 +22,9 @@
                                                 successfully.<br />An operative will contact you.
                                             </strong>
                                         </p>
-                                        {{-- <p>
-                                            <strong>Our representative would get back to you.</strong>
-                                        </p> --}}
+                                        <p>
+                                            &nbsp;
+                                        </p>
                                         <a
                                             href="{{ $guest->applicantPath() }}"
                                             class="btn btn-primary font-weight-bold text-uppercase mr-5 px-9 py-4"
