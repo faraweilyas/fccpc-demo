@@ -28,9 +28,9 @@
                     </div>
                     <div class="login-signin">
                         <div class="mb_30">
-                            <h3>Add Supporting Document</h3>
+                            {{-- <h3>Add Supporting Document</h3> --}}
                             <div class="font-weight-bold text-black-sm">
-                                Add supporting document or continue where you left off
+                                Upload supporting document or continue where you left off
                             </div>
                         </div>
                         <form class="form" method="POST" action="{{ route('applicant.authenticate.track') }}">
@@ -41,7 +41,7 @@
                                 @enderror
                                 <input
                                     type="text"
-                                    placeholder="Please input Notification ID:"
+                                    placeholder="Notification ID:"
                                     name="tracking_id"
                                     class="form-control h-auto form-control-solid py-4 px-8"
                                     autocomplete="off"
@@ -61,7 +61,7 @@
                             </button>
                         </form>
                         <div class="mt-10">
-                            <p>
+                            {{-- <p>
                                 <a
                                     href="{{ route('applicant.show') }}"
                                     id="kt_login_signup2"
@@ -69,7 +69,7 @@
                                 >
                                     Submit Notification
                                 </a>
-                            </p>
+                            </p> --}}
                         </div>
                     </div>
                 </div>

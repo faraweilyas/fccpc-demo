@@ -39,8 +39,8 @@
         <div class="col-md-12">
             <div class="card-custom relative">
                 @php
-                $x = 1;
-                $deficient_count = $checklistStatus->count() ?? 0;
+                    $x                  = 1;
+                    $deficient_count    = $checklistStatus->count() ?? 0;
                 @endphp
                 @foreach($submittedDocuments as $document)
                 @if ($document->group_id)
@@ -77,9 +77,9 @@
                         <div class="row">
                             @foreach($document->group->checklists as $checklist)
                             @php
-                                $checklist_document_status = $document->getChecklistDocumentStatus($checklist);
-                                $checklist_reason = $document->getChecklistDocumentReason($checklist);
-                                $checked = $document->getCheckedChecklistDocument($checklist, $checklistIds);
+                                $checklist_document_status  = $document->getChecklistDocumentStatus($checklist);
+                                $checklist_reason           = $document->getChecklistDocumentReason($checklist);
+                                $checked                    = $document->getCheckedChecklistDocument($checklist, $checklistIds);
                             @endphp
                             <div class="col-lg-6">
                                 <div class="consent-card {{ $checked }}">
@@ -87,18 +87,26 @@
                                         <div class="form-check" style="padding: 0px">
                                             <div class="radio-inline">
                                                 <label class="radio">
-                                                    <input class="form-check-input" type="radio"
-                                                        @if($checklist_document_status=='approved' ) checked="checked"
-                                                        @endif>
-                                                    <span></span>
-                                                    Approve
+                                                    <input
+                                                        class="form-check-input"
+                                                        name="old_checklist{{ $checklist->id }}"
+                                                        type="radio"
+                                                        @if ($checklist_document_status == 'approved')
+                                                            checked="checked"
+                                                        @endif
+                                                    />
+                                                    <span></span> Approve
                                                 </label>
                                                 <label class="radio">
-                                                    <input class="form-check-input" type="radio"
-                                                        @if($checklist_document_status=='deficient' ) checked="checked"
-                                                        @endif>
-                                                    <span></span>
-                                                    Deficient
+                                                    <input
+                                                        class="form-check-input"
+                                                        name="old_checklist{{ $checklist->id }}"
+                                                        type="radio"
+                                                        @if ($checklist_document_status == 'deficient')
+                                                            checked="checked"
+                                                        @endif
+                                                    />
+                                                    <span></span> Deficient
                                                 </label>
                                             </div>
                                         </div>
