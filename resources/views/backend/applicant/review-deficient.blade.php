@@ -5,17 +5,17 @@
         <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
             <div class="d-flex align-items-center flex-wrap mr-1">
                 <div class="d-flex align-items-baseline mr-5">
-                    <h5 class="text-dark font-weight-bold my-2 mr-5">Application</h5>
+                    <h5 class="text-dark font-weight-bold my-2 mr-5">Notification</h5>
                     <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
                         <li class="breadcrumb-item">
                             <a href="#" class="text-muted">Home</a>
                         </li>
                         <li class="breadcrumb-item">
                             <a href="{{ route('application.upload', ['guest' => $guest->tracking_id, 'step' => $step]) }}"
-                                class="text-muted">Application</a>
+                                class="text-muted">Notification</a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#" class="text-muted">Review Application</a>
+                            <a href="#" class="text-muted">Review Notification</a>
                         </li>
                     </ul>
                 </div>
@@ -41,11 +41,11 @@
                                 </button>
                             </div>
                         </div>
-                        <h3 class="checklist-header">APPLICATION SUMMARY</h3>
-                        <p class="review-description">
-                            Please review your application. You will not be able to make any changes once submitted.
-                        </p>
-                        <p class="section-header">APPLICATION TRANSACTION INFORMATION</p>
+                        <h3 class="checklist-header">NOTIFICATION SUMMARY</h3>
+                        {{-- <p class="review-description">
+                            Please review your notification. You will not be able to make any changes once submitted.
+                        </p> --}}
+                        <p class="section-header">NOTIFICATION INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
                                 <h4 class="info-title">Subject:</h4>
@@ -71,7 +71,7 @@
                                 <h4>{!! $case->getAmountPaid() !!}</h4>
                             </div>
                         </div>
-                        <p class="section-header">DEFICIENT DOCUMENTS</p>
+                        <p class="section-header">DOCUMENTS UPLOADED</p>
                         @foreach(\App\Models\ChecklistGroup::with('checklists')->get() as $checklistGroup)
                             @if($case->isCaseChecklistsApproved())
                                 @if($case->getCategoryKey() == $checklistGroup->category)
@@ -128,13 +128,7 @@
                                             <h4 class="info-title info-title-margin">
                                                 Additional Information:
                                             </h4>
-                                            <h4 class="info-title-description">
-                                                @if(!empty($document->additional_info))
-                                                    {!! nl2br($document->additional_info) !!}
-                                                @else
-                                                    ...
-                                                @endif
-                                            </h4>
+                                            <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
                                         </div>
                                     </div>
                                 @endif
@@ -193,13 +187,7 @@
                                             <h4 class="info-title info-title-margin">
                                                 Additional Information:
                                             </h4>
-                                            <h4 class="info-title-description">
-                                                @if(!empty($document->additional_info))
-                                                    {!! nl2br($document->additional_info) !!}
-                                                @else
-                                                    ...
-                                                @endif
-                                            </h4>
+                                            <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
                                         </div>
                                     </div>
                                 @endif

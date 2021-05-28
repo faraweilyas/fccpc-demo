@@ -127,8 +127,8 @@ class AppHelper
      * These are the valid case types on the platform
      */
     protected $case_types = [
-        "SM" => "Small",
-        "LG" => "Large",
+        "SM" => "Small Merger",
+        "LG" => "Large Merger",
     ];
 
     /**
@@ -184,9 +184,9 @@ class AppHelper
      * These are the valid enquiry types on the platform
      */
     protected $enquiry_types = [
-        "GEN" => "General",
-        "PRN" => "Pre-Notification",
-        "COP" => "Complaint",
+        "GEN" => "General Consultation",
+        "PRN" => "Pre-Notification Consultation",
+        "COP" => "Complaint Consultation",
     ];
 
     /**

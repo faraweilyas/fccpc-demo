@@ -28,7 +28,7 @@
                                             href="{{ $guest->applicantPath() }}"
                                             class="btn btn-primary font-weight-bold text-uppercase mr-5 px-9 py-4"
                                         >
-                                            Create a New Application
+                                            Create a New Notification
                                         </a>
                                         <a
                                             data-turbolinks="false"
@@ -52,8 +52,9 @@
                                  <button
                                     id="review-deficient"
                                     data-id="{{ $guest->tracking_id }}"
-                                    class="btn btn-primary font-weight-bold text-uppercase px-9 my-3 float-right mr__10">
-                                        Review Application
+                                    class="btn btn-primary font-weight-bold text-uppercase px-9 my-3 float-right mr__10"
+                                >
+                                    Review Notification
                                 </button>
                             </div>
                             <div class="card-body p-0">
@@ -123,11 +124,11 @@
                                                                         <div class="col-md-12">
                                                                             <div class="card card-custom gutter-b example example-compact">
                                                                                 <div class="card-header">
-                                                                                    <h3 class="card-title">Submit Application (Deficiency)</h3>
+                                                                                    <h3 class="card-title">Submit Notification (Deficiency)</h3>
                                                                                 </div>
                                                                                 <div class="card-body">
                                                                                     <p>
-                                                                                        Upload the required information here
+                                                                                        Upload relevant/supporting documents here
                                                                                     </p>
                                                                                     <div class="row mt-4">
                                                                                         @foreach($checklistGroup->checklists as $checklist)
@@ -145,16 +146,9 @@
                                                                                         <p>{{ $case->getDefficientInfo() }}</p>
                                                                                     @endif
                                                                                     <div class="row mt-4">
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group mb-1">
-                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mt-4">
                                                                                         <div class="col-md-12 mt-4 mb-n3">
                                                                                             <p class="text-danger">
-                                                                                                Note: supported file formats are (.pdf, .jpg, .jpeg). You cannot upload more than 20 files and total uploaded files should not exceed 50MB.
+                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should not exceed 50MB.
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="col-md-12">
@@ -174,6 +168,13 @@
                                                                                         <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                                     </div>
                                                                                     <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group mb-1">
+                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     @if(!empty($document))
                                                                                         <div class="row mt-4">
                                                                                             @php
@@ -217,11 +218,11 @@
                                                                         <div class="col-md-12">
                                                                             <div class="card card-custom gutter-b example example-compact">
                                                                                 <div class="card-header">
-                                                                                    <h3 class="card-title">{{ ucfirst($checklistGroup->name) }} (Deficiency)</h3>
+                                                                                    <h3 class="card-title">Deficiency Notice - {{ ucfirst($checklistGroup->name) }}</h3>
                                                                                 </div>
                                                                                 <div class="card-body">
                                                                                     <p>
-                                                                                        Upload the required information here
+                                                                                        Upload relevant/supporting documents here
                                                                                     </p>
                                                                                     <div class="row mt-4">
                                                                                         @foreach($checklistGroup->checklists as $checklist)
@@ -290,16 +291,9 @@
                                                                                         </div>
                                                                                     @endif
                                                                                     <div class="row mt-4">
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="form-group mb-1">
-                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="row mt-4">
                                                                                         <div class="col-md-12 mt-4 mb-n3">
                                                                                             <p class="text-danger">
-                                                                                                Note: supported file formats are (.pdf, .jpg, .jpeg). You cannot upload more than 20 files and total uploaded files should not exceed 50MB.
+                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should not exceed 50MB.
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="col-md-12">
@@ -319,6 +313,13 @@
                                                                                         <input type="hidden" id="group_id" value="{{ $checklistGroup->id }}" />
                                                                                     </div>
                                                                                     <div id="checklist_doc_name_{{ $checklistGroup->id}}"></div>
+                                                                                    <div class="row mt-4">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-group mb-1">
+                                                                                                <textarea class="form-control" id="additional_info" rows="6" name="{{ Str::camel($checklistGroup->label) }}_additional_info" placeholder="Additional Information...">{{ $document->additional_info ?? '' }}</textarea>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
                                                                                     @if(!empty($document))
                                                                                         <div class="row mt-4">
                                                                                             @php

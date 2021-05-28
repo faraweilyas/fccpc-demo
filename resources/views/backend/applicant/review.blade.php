@@ -104,12 +104,20 @@
                         </div>
                         @endif
                         <p class="section-header mt-10">SUPPORTING DOCUMENTS</p>
-                        @foreach(\App\Models\ChecklistGroup::whereIn('category', ['ALL', $case->case_category])->get() as $checklistGroup)
+                        @php
+                            $checklistGroups = \App\Models\ChecklistGroup::whereIn(
+                                'category', [
+                                    'ALL', $case->case_category
+                                ])
+                                ->orderBy('name', 'desc')
+                                ->get();
+                        @endphp
+                        @foreach($checklistGroups as $checklistGroup)
                             @php
                                 $document = \App\Models\Document::where('case_id', $case->id)
-                                                ->where('group_id', $checklistGroup->id)
-                                                ->where('date_case_submitted', null)
-                                                ->first() ?? '';
+                                            ->where('group_id', $checklistGroup->id)
+                                            ->where('date_case_submitted', null)
+                                            ->first() ?? '';
                             @endphp
                             <div class="row">
                                 <div class="col-md-6 my-5" key={item[0]}>
@@ -155,7 +163,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <h4 class="info-title info-title-margin">Additional Information:</h4>
+                                    <h4 class="info-title info-title-margin">
+                                        Additional Information: ({{ $checklistGroup->name }})
+                                    </h4>
                                     @if (!empty($document))
                                         <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
                                     @else

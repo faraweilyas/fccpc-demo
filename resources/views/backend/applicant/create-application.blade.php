@@ -46,7 +46,7 @@
                                 data-id="{{ $guest->tracking_id }}"
                                 class="btn btn-primary font-weight-bold text-uppercase px-9 py-4 float-right mr__10"
                             >
-                                    Review Application
+                                Review Notification
                             </button>
                         </div>
                     </div>
@@ -231,11 +231,11 @@
                                             <div class="row">
                                                 <div class="col-xl-12">
                                                     <div class="form-group fv-plugins-icon-container">
-                                                        <label>Notifying Party(ies) / Representative(s)</label> <span class="text-danger">*</span>
+                                                        <label>Notifying Party(ies)/Representative(s)</label> <span class="text-danger">*</span>
                                                         <input
                                                             type="text"
                                                             class="form-control"
-                                                            placeholder="Enter applicant/representing firm"
+                                                            placeholder=""
                                                             name="applicant_firm"
                                                             value="{{ $case->applicant_firm }}"
                                                         />
@@ -249,7 +249,7 @@
                                                                 <input
                                                                     type="text"
                                                                     class="form-control"
-                                                                    placeholder="Enter full name"
+                                                                    placeholder=""
                                                                     name="applicant_fullname"
                                                                     value="{{ $case->applicant_fullname }}"
                                                                 />
@@ -263,7 +263,7 @@
                                                                 <input
                                                                     type="email"
                                                                     class="form-control"
-                                                                    placeholder="Enter email address"
+                                                                    placeholder=""
                                                                     name="applicant_email"
                                                                     value="{{ $case->applicant_email }}"
                                                                 />
@@ -277,7 +277,7 @@
                                                                 <input
                                                                     type="text"
                                                                     class="form-control"
-                                                                    placeholder="Enter telephone no"
+                                                                    placeholder=""
                                                                     name="applicant_phone_number"
                                                                     value="{{ $case->applicant_phone_number }}"
                                                                 />
@@ -291,7 +291,7 @@
                                                         <input
                                                             type="text"
                                                             class="form-control"
-                                                            placeholder="Enter address"
+                                                            placeholder=""
                                                             name="applicant_address"
                                                             value="{{ $case->applicant_address }}"
                                                         />
@@ -304,12 +304,12 @@
                                         @if(strtolower($case_category_key) == 'reg' || strtolower($case_category_key) == 'ffm')
                                             <div class="pb-5" data-wizard-type="step-content" data-form='Form1AInfo'>
                                                 <h4 class="mb-10 font-weight-bold text-dark fs__13rem">Form 1A (Page 1 of 2)</h4>
-                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-confidential Executive Summary For Publication <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">(Section 96 FCCPA; Section 16 MRR)</a></h4>
+                                                <h4 class="mb-10 font-weight-bold text-dark fs__12rem">Non-Confidential Executive Summary For Publication <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">(Section 96 FCCPA; Section 16 MRR)</a></h4>
                                                 <p class="fs__12rem">
                                                     Provide a non-confidential executive summary (up to 500 words) of the merger, specifying parties to the merger, the nature of the transaction (i.e., merger, acquisition, or joint venture), nature of the business of parties, relevant markets, and the strategic/economic rationale for the merger.
                                                 </p>
                                                 <p class="fs__12rem">
-                                                    This Executive Summary will be published and provided to employees' pursuant to section 96(3) of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
+                                                    This Executive Summary will be published and provided to employees' pursuant to <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">Section 96(3)</a> of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
                                                     <textarea
@@ -470,7 +470,7 @@
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12 mt-4 mb-n3">
                                                                         <p class="text-danger">
-                                                                            Note: supported file formats are (.pdf, .jpg, .jpeg). You cannot upload more than 20 files and total uploaded files should exceed 50mb.
+                                                                            Note: supported file formats (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should exceed 50MB.
                                                                         </p>
                                                                     </div>
                                                                     <div class="col-md-12">
@@ -602,7 +602,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="viewForm1AModalLabel">Form 1A (Page 2 of 2) Declaration</h5>
+                    <h5 class="modal-title" id="viewForm1AModalLabel">Declaration - Form 1A (Page 2 of 2)</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i aria-hidden="true" class="ki ki-close"></i>
                     </button>
@@ -631,7 +631,7 @@
                                 The Commission conducts Phase 1 and Phase 2 investigations. In the event a merger is referred to a Phase 2 investigation, information provided in the course of the Phase 1 investigation will also be applicable in Phase 2; and
                             </p>
                             <p class="fs__12rem">
-                                The Commission will publish information provided in this Notification / Notice, pursuant to the Act <a target='_blank' href="https://www.fccpc.gov.ng/guidelines/documents/">(Section 96(2))</a>
+                                The Commission will publish information provided in this Notification / Notice, pursuant to the Act <a target='_blank' href="https://www.fccpc.gov.ng/guidelines/documents/">(Section 96(2))</a>.
                             </p>
                             <p class="fs__12rem">
                                 I the undersigned recognise and accept that entering my full name and position below constitutes due and sufficient signature for the purpose of satisfying legal requirement for executing documents.
