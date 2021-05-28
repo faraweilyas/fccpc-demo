@@ -4,12 +4,14 @@ $(document).ready(function () {
         $("#kt_quick_cart").toggleClass("offcanvas-on");
     });
 
-    $("#kt_fee").click(function () {
+    $("#kt_fee").click(function()
+    {
         $("#show-generate-fee").show();
         $("#kt_quick_cart").toggleClass("offcanvas-on");
     });
 
-    $("#generate-fee").click(function () {
+    $("#generate-fee").click(function()
+    {
         var application_fee = $(".applicationFee").html().substr(1),
             processing_fee  = $(".processingFee").html().substr(1),
             expedited_fee  = $(".expeditedFee").html().substr(1),
@@ -23,6 +25,9 @@ $(document).ready(function () {
         $("#expedited_fee").val(expedited_fee.slice(0, -3));
         $(".amount_paid").html($(".totalAmount").html());
         $("#amount_paid").val(total_amount.slice(0, -3));
+        // Close modal
+        $("#show-generate-fee").hide();
+        $("#kt_quick_cart").toggleClass("offcanvas-on");
     });
 
     $("#kt_quick_cart_close").click(function () {
