@@ -14,7 +14,12 @@
     <meta property="og:description" content="{{ $details->description }}" />
     <meta property="og:url" content="{{ agencyLink() }}" />
     <meta property="og:site_name" content="Federal Competition and Consumer Protection Commission" />
-    <link rel="shortcut icon" href="{{ BE_IMAGE.'favicon/fccpc_favicon.ico' }}" />
+    {{-- <link rel="shortcut icon" href="{{ BE_IMAGE.'favicon/fccpc_favicon.ico' }}" /> --}}
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.fccpc.gov.ng/uploads/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.fccpc.gov.ng/uploads/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.fccpc.gov.ng/uploads/favicons/favicon-16x16.png">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/fontawesome.min.css" integrity="sha512-shT5e46zNSD6lt4dlJHb+7LoUko9QZXTGlmWWx0qjI9UhQrElRb+Q5DM7SVte9G9ZNmovz2qIaV7IWv0xQkBkw==" crossorigin="anonymous" />
