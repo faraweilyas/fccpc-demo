@@ -504,8 +504,6 @@
     <body
         style="background:#FFFFFF none no-repeat center/cover;height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
 
-        <img src="{{ FE_IMAGE.'png/logo.png' }}" alt="" style="text-align: center;height: 80px;object-fit: contain;"/>
-
         <span
             class="mcnPreviewText"
             style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"
@@ -535,6 +533,11 @@
                                                     <td valign="top" class="mcnTextContent"
                                                         style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
 
+                                                        <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{230}"
+                                                            paraid="1301569454"
+                                                            style="margin: 10px 0;padding: 0;font-size: 16px;text-align: center;">
+                                                            <img src="https://mergers.fccpc.gov.ng/assets/frontend/images/icons/fccpc_logo.jpg" alt="" style="height: 90px !important;"/></p>
+
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}"
                                                             paraid="1620294906"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -543,26 +546,22 @@
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                             paraid="640540932"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Your notification to the Commission on
+                                                            Your notification has been received
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "customdated")) }}
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "time")) }}
-                                                            has been received and the Commission will revert
-                                                            shortly.</p>
-                                                            <p>Your Notification ID is <b>{{ $data['guest']->tracking_id }}</b></p>
+                                                            <br />The commission will revert..</p>
                                                         <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            If you have any queries, please visit the FAQ
-                                                            section <a href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
+                                                            For questions and queries, please refer to the FAQs at <a href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                 rel="noreferrer noopener" target="_blank"
-                                                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                            for more information.
-                                                        </p>
+                                                                style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>.</p>
+                                                            <p>You would require your notification ID: <b>{{ $data['guest']->tracking_id }}</b> to make enquiries.</p>
 
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                             paraid="622938900"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Thank you&nbsp;</p>
+                                                            Thank you&nbsp;<br/><br/><b>M&A</b></p>
 
                                                     </td>
                                                 </tr>

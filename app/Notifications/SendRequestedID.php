@@ -43,9 +43,9 @@ class SendRequestedID extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Application ID Request')
-                    ->line('Your requested application ID is '.$this->application_id)
-                    ->action('Manage Application', route('applicant.track'))
+                    ->subject('Notification ID Request')
+                    ->line('Your requested notification ID is '.$this->application_id)
+                    ->action('Manage Notification', route('applicant.track'))
                     ->line('Thank you for using our application!');
     }
 

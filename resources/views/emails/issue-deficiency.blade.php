@@ -534,6 +534,11 @@
                                                                 <td valign="top" class="mcnTextContent"
                                                                     style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
 
+                                                                <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{230}"
+                                                                    paraid="1301569454"
+                                                                    style="margin: 10px 0;padding: 0;font-size: 16px;text-align: center;">
+                                                                    <img src="https://mergers.fccpc.gov.ng/assets/frontend/images/icons/fccpc_logo.jpg" alt="" style="height: 90px !important;"/></p>
+
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}"
                                                                         paraid="1620294906"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
