@@ -339,7 +339,7 @@
                                                             </div>
                                                             <div class="card-body">
                                                                 <p>
-                                                                    Upload the <a target='_blank' href="https://www.fccpc.gov.ng/businesses/mergers/">{{ ucfirst($checklistGroup->name) }}</a> and all relevant supporting documents here.
+                                                                    Upload <a target='_blank' href="https://www.fccpc.gov.ng/businesses/mergers/">{{ ucfirst($checklistGroup->name) }}</a> and relevant supporting documents here.
                                                                 </p>
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12 mt-4 mb-n3">
