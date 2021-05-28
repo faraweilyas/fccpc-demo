@@ -8,7 +8,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
+    {{-- <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" /> --}}
 
     <link rel="apple-touch-icon" sizes="180x180" href="https://www.fccpc.gov.ng/uploads/favicons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="https://www.fccpc.gov.ng/uploads/favicons/favicon-32x32.png">
