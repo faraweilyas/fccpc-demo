@@ -583,7 +583,7 @@
                                                                                     style="padding: 18px;color: #1B1616;font-family: Helvetica;font-size: 14px;font-weight: normal;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;line-height: 150%;">
                                                                                     Email Security:&nbsp;if you are
                                                                                     concerned about clicking the link
-                                                                                    above,&nbsp;the Mergers portal can
+                                                                                    above,&nbsp;the {{ env('APP_NAME') }} can
                                                                                     be accessed by typing&nbsp;<a
                                                                                         href="{{ config("app.url") }}"
                                                                                         rel="noreferrer noopener"

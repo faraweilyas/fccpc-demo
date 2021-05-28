@@ -597,7 +597,7 @@
                                                             paraid="6160621"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
                                                             Email Security:&nbsp;if you are concerned about
-                                                            clicking the link above, the Mergers portal can
+                                                            clicking the link above, the {{ env('APP_NAME') }} can
                                                             be accessed by typing&nbsp;<a href="{{ config("app.url") }}"
                                                                 rel="noreferrer noopener" target="_blank"
                                                                 style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>&nbsp;in

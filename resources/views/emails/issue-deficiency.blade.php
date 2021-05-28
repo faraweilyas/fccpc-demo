@@ -547,7 +547,7 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your notification <strong>{{ $data['case']->guest->tracking_id }}</strong> does not fulfil the satisfactory notification requirement(s). You are required to provide the following additional information:</p>
+                                                                        Your notification <strong>{{ $data['case']->guest->tracking_id }}</strong> does not fulfil the satisfactory notification requirement(s). You are therefore required to provide the following:</p>
                                                                         @php $count = 1; @endphp
                                                                     @foreach($data['deficent_cases'] as $checklist)
                                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
@@ -559,7 +559,7 @@
                                                                         @php $count++; @endphp
                                                                     @endforeach
                                                                     @isset($data['additional_info'])
-                                                                    <p><b>Additional Information</b></p>
+                                                                    <p><b>Comments</b></p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -570,15 +570,14 @@
                                                                     </p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"
-                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Thank you&nbsp;</p>
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">&nbsp;</p>
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                                         paraid="1344694371"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         If you have any queries, please visit the FAQ
                                                                         section <a href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a> for more information.
                                                                     </p>
                                                                 </td>
                                                             </tr>
@@ -610,7 +609,7 @@
                                                                         paraid="6160621"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 12px;line-height: 150%;text-align: left;">
                                                                         Email Security:&nbsp;if you are concerned about
-                                                                        clicking the link above, the Mergers portal can
+                                                                        clicking the link above, the {{ env('APP_NAME') }} can
                                                                         be accessed by typing&nbsp;<a
                                                                             href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
