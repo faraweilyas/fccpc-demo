@@ -4,14 +4,14 @@
 
 <head>
 
-    <meta property="og:title" content="Notification: Merger Application">
+    <meta property="og:title" content="Notification: Merger Notification">
     <meta property="fb:page_id" content="43929265776">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="referrer" content="origin">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notification: Merger Application</title>
+    <title>Notification: Merger Notification</title>
     <style type="text/css">
         p {
             margin: 10px 0;
@@ -504,8 +504,7 @@
     <body
         style="background:#FFFFFF none no-repeat center/cover;height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
         <span class="mcnPreviewText"
-            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger
-            Application Submission</span>
+            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger Notification Submission</span>
 
         <center>
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
@@ -534,7 +533,10 @@
 
                                                                 <td valign="top" class="mcnTextContent"
                                                                     style="padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-word;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-
+                                                                    <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{230}"
+                                                                        paraid="1301569454"
+                                                                        style="margin: 10px 0;padding: 0;font-size: 16px;text-align: center;">
+                                                                        <img src="https://mergers.fccpc.gov.ng/assets/frontend/images/icons/fccpc_logo.jpg" alt="" style="height: 90px !important;"/></p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}"
                                                                         paraid="1620294906"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -542,7 +544,7 @@
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
-                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Find Approval letter for application #{{ $case->guest->tracking_id }} attached to this mail.</p>
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Find Approval letter for notification #{{ $case->guest->tracking_id }} attached to this mail.</p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"
@@ -554,8 +556,7 @@
                                                                         If you have any queries, please visit the FAQ
                                                                         section <a href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
-                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                                        for more information.
+                                                                            style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>.
                                                                     </p>
                                                                 </td>
                                                             </tr>

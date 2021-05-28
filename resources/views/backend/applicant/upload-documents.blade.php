@@ -48,7 +48,7 @@
                     <div class="col-md-12">
                         <div class="card card-custom gutter-b example example-compact">
                             <div class="card-header">
-                                <h3 class="card-title">Upload Deficient Document</h3>
+                                <h3 class="card-title">Deficient Notification</h3>
                                  <button
                                     id="review-deficient"
                                     data-id="{{ $guest->tracking_id }}"
@@ -124,7 +124,7 @@
                                                                         <div class="col-md-12">
                                                                             <div class="card card-custom gutter-b example example-compact">
                                                                                 <div class="card-header">
-                                                                                    <h3 class="card-title">Submit Notification (Deficiency)</h3>
+                                                                                    <h3 class="card-title">Deficiency Notice - {{ $checklistGroup->name }}</h3>
                                                                                 </div>
                                                                                 <div class="card-body">
                                                                                     <p>
@@ -218,7 +218,7 @@
                                                                         <div class="col-md-12">
                                                                             <div class="card card-custom gutter-b example example-compact">
                                                                                 <div class="card-header">
-                                                                                    <h3 class="card-title">Deficiency Notice - {{ ucfirst($checklistGroup->name) }}</h3>
+                                                                                    <h3 class="card-title">Deficiency Notice - {{ $checklistGroup->name }}</h3>
                                                                                 </div>
                                                                                 <div class="card-body">
                                                                                     <p>

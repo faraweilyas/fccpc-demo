@@ -503,9 +503,15 @@
 
     <body
         style="background:#FFFFFF none no-repeat center/cover;height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
-        <span class="mcnPreviewText"
-            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger
-            Application Submission</span>
+
+        <img src="{{ FE_IMAGE.'png/logo.png' }}" alt="" style="text-align: center;height: 80px;object-fit: contain;"/>
+
+        <span
+            class="mcnPreviewText"
+            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"
+        >
+            Merger Notification
+        </span>
 
         <center>
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
@@ -537,12 +543,12 @@
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                             paraid="640540932"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Your application to the Commission on
+                                                            Your notification to the Commission on
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "customdated")) }}
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "time")) }}
                                                             has been received and the Commission will revert
                                                             shortly.</p>
-                                                            <p>Your Application ID is <b>{{ $data['guest']->tracking_id }}</b></p>
+                                                            <p>Your Notification ID is <b>{{ $data['guest']->tracking_id }}</b></p>
                                                         <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -550,8 +556,7 @@
                                                             section <a href="{{ route('home.faqs.category', ['category' => 'GEN']) }}"
                                                                 rel="noreferrer noopener" target="_blank"
                                                                 style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                            for more information. Please keep your
-                                                            application ID safe.
+                                                            for more information.
                                                         </p>
 
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"

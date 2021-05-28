@@ -95,7 +95,6 @@ class ApplicationController extends Controller
         $title          = "{$case_category} Notification | " . APP_NAME;
         $description    = "{$case_category} Notification | " . APP_NAME;
         $details        = details($title, $description);
-        // dd(get_defined_vars());
         return view(
             'backend.applicant.create-application',
             compact(

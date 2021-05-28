@@ -4,14 +4,14 @@
 
 <head>
 
-    <meta property="og:title" content="Notification: Merger Application">
+    <meta property="og:title" content="Notification: Merger Notification">
     <meta property="fb:page_id" content="43929265776">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="referrer" content="origin">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Notification: Merger Application</title>
+    <title>Notification: Merger Notification</title>
     <style type="text/css">
         p {
             margin: 10px 0;
@@ -504,8 +504,7 @@
     <body
         style="background:#FFFFFF none no-repeat center/cover;height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;background-color: #FFFFFF;background-image: none;background-repeat: no-repeat;background-position: center;background-size: cover;">
         <span class="mcnPreviewText"
-            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger
-            Application Submission</span>
+            style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;">Merger Notification Submission</span>
 
         <center>
             <table align="center" border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" id="bodyTable"
@@ -543,8 +542,7 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your application <strong>{{ $data['case']->guest->tracking_id }}</strong> is now
-                                                                        under review, please provide the following information:</p>
+                                                                        Your notification <strong>{{ $data['case']->guest->tracking_id }}</strong> does not fulfil the satisfactory notification requirement(s). You are required to provide the following additional information:</p>
                                                                         @php $count = 1; @endphp
                                                                     @foreach($data['deficent_cases'] as $checklist)
                                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
@@ -553,12 +551,6 @@
                                                                             <b>{{ $count }}.</b>
                                                                             {{ $checklist->name }}
                                                                         </p>
-                                                                        @if(!empty($checklist->checklist_document->reason))
-                                                                            <p>
-                                                                                <b>Reason For Deficiency</b><br/>
-                                                                                {{ $checklist->checklist_document->reason ?? '...'}}
-                                                                            </p>
-                                                                        @endif
                                                                         @php $count++; @endphp
                                                                     @endforeach
                                                                     @isset($data['additional_info'])
@@ -569,7 +561,7 @@
                                                                         {!! nl2br($data['additional_info']) !!}</p>
                                                                     @endif
                                                                     <p>
-                                                                        <a href="{{ route('applicant.track', ['app_id' => $data['case']->guest->tracking_id]) }}">Click here to update your application</a>
+                                                                        <a href="{{ route('applicant.track', ['app_id' => $data['case']->guest->tracking_id]) }}">Click here to update your notification</a>
                                                                     </p>
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"
@@ -582,8 +574,6 @@
                                                                         section <a href="{{ config("app.url") }}"
                                                                             rel="noreferrer noopener" target="_blank"
                                                                             style="mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: underline;">https://mergers.fccpc.gov.ng</a>
-                                                                        for more information. Please keep your
-                                                                        application reference number safe.
                                                                     </p>
                                                                 </td>
                                                             </tr>

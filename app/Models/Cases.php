@@ -824,7 +824,8 @@ class Cases extends Model
             ->get()
             ->reject(function($document) use (&$case_category)
             {
-                return $document->group->category !== $case_category && $document->group->category !== "ALL";
+                $category = $document->group->category ?? "";
+                return ($category !== $case_category && $category !== "ALL");
             })
             ->groupBy('date_case_submitted')
             ->sortKeysDesc();

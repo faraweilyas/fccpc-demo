@@ -42,13 +42,13 @@
                             </div>
                         </div>
                         <h3 class="checklist-header">NOTIFICATION SUMMARY</h3>
-                        {{-- <p class="review-description">
-                            Please review your notification. You will not be able to make any changes once submitted.
-                        </p> --}}
+                        <p class="review-description">
+                            {{-- Please review your notification. You will not be able to make any changes once submitted. --}}
+                        </p>
                         <p class="section-header">NOTIFICATION INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title">Subject:</h4>
+                                <h4 class="info-title">Subject/Title of Transaction:</h4>
                                 <h4>{{ $case->subject }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
@@ -126,9 +126,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <h4 class="info-title info-title-margin">
-                                                Additional Information:
+                                                Additional Information: ({{ $checklistGroup->name }})
                                             </h4>
-                                            <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                            @if (!empty($document))
+                                                <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                            @else
+                                                <h4 class="info-title-description">...</h4>
+                                            @endif
                                         </div>
                                     </div>
                                 @endif
@@ -185,9 +189,13 @@
                                         </div>
                                         <div class="col-md-6">
                                             <h4 class="info-title info-title-margin">
-                                                Additional Information:
+                                                Additional Information: ({{ $checklistGroup->name }})
                                             </h4>
-                                            <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                            @if (!empty($document))
+                                                <h4 class="info-title-description">{!! $document->getAdditionalInfo() !!}</h4>
+                                            @else
+                                                <h4 class="info-title-description">...</h4>
+                                            @endif
                                         </div>
                                     </div>
                                 @endif

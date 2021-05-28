@@ -21,6 +21,9 @@
                     style="background:#fff;border-bottom-left-radius:6px;border-bottom-right-radius:6px;padding-bottom:40px;margin:0 auto!important;clear:both!important">
                     <div class="m_-2377898351467431040header-title"
                         style="background:#006535;color:#ffffff;padding:0px 60px 40px;text-align:center;margin-bottom:40px">
+                        <p style="margin: 10px 0;padding: 0;font-size: 16px;text-align: center;">
+                            <img src="https://mergers.fccpc.gov.ng/assets/frontend/images/icons/fccpc_logo.jpg" alt="" style="height: 90px !important;"/>
+                        </p>
                         <h1
                             style="font-family:&quot;Helvetica Neue&quot;,Helvetica,Arial,&quot;Lucida Grande&quot;,sans-serif;margin-bottom:15px;color:#212121;margin:0px 0 10px;line-height:1.2;font-weight:200;line-height:45px;font-weight:bold;margin-bottom:30px;font-size:28px;line-height:40px;margin-bottom:10px;font-weight:400;color:#ffffff;padding-left:40px;padding-right:40px;padding-top:40px;padding-top:30px">
                             {{ $enquiry->getEnquiryType() }} Enquiry
