@@ -69,7 +69,11 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         script: |
-          cd /var/www/html/welkomeu
+          cd /var/www/html/fccpc
+          git pull
+          composer install
+          php artisan migrate
+          cd /var/www/html/fccpc-demo
           git pull
           composer install
           php artisan migrate
