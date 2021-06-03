@@ -76,4 +76,4 @@ jobs:
           cd /var/www/html/fccpc-demo
           git pull
           composer install
-          php artisan migrate
+          php artisan migrate --no-interaction
