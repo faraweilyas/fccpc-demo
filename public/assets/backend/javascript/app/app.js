@@ -43,6 +43,7 @@ $(document).ready(function()
             $("#turnover_a").parent().removeClass('hide');
             $("#turnover_b").parent().removeClass('hide');
             $("#turnover_c").parent().addClass('hide');
+            $("#annual_turnover").parent().removeClass('hide');
         }
 
         if (transaction_category == 'ffm')
@@ -50,6 +51,12 @@ $(document).ready(function()
             $("#turnover_a").parent().addClass('hide');
             $("#turnover_b").parent().addClass('hide');
             $("#turnover_c").parent().removeClass('hide');
+            $("#annual_turnover").parent().removeClass('hide');
+        }
+
+        if (transaction_category == 'ffx')
+        {
+            $("#annual_turnover").parent().addClass('hide');
         }
     });
 
@@ -113,9 +120,11 @@ function validateTypeOfTransaction(typeOfTransaction)
     {
         $('.transaction-category-section').addClass('hide');
         $('.purchase_consideration').addClass('hide');
+        $("#annual_turnover").parent().addClass('hide');
     } else {
         $('.transaction-category-section').removeClass('hide');
         $('.purchase_consideration').removeClass('hide');
+        $("#annual_turnover").parent().removeClass('hide');
     }
 }
 
