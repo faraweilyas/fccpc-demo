@@ -9,7 +9,7 @@
                         <p>Section 96(2) of the Federal Competition and Consumer Protection Act, 2018 (FCCPA), and Regulations 16(1)(2) of the Merger Review Regulations, 2020 (MRR), requires publication of merger notifications.</p>
                         <p>In accordance with these enactments a notification received by the Commission is hereunder published.</p>
                         <p>Comments by interested persons must reach the Commission within seven (7) business days of the publication.</p>
-                        <p>Only comments that address competition or relevant/ancillary matters are considered relevant. <br />Comments may be sent to the Commission under subject: by email <a href="mailto:mergernotification@fccpc.gov.ng">(mergernotification@fccpc.gov.ng).</a></p>
+                        <p>Only comments that address competition or relevant/ancillary matters are considered relevant. <br />Comments may be sent to the Commission by email <a href="mailto:mergernotification@fccpc.gov.ng">(mergernotification@fccpc.gov.ng), using the Subject/Title of the Notification as email subject.</a></p>
                     </div>
                     <div class="form-group">
                         <form id="faqSearchForm" method="GET" action="{{ route('home.publications') }}">

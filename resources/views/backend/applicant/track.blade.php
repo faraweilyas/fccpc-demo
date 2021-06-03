@@ -30,7 +30,7 @@
                         <div class="mb_30">
                             {{-- <h3>Add Supporting Document</h3> --}}
                             <div class="font-weight-bold text-black-sm">
-                                Upload supporting document or continue where you left off
+                                Upload supporting document(s) or continue where you left off
                             </div>
                         </div>
                         <form class="form" method="POST" action="{{ route('applicant.authenticate.track') }}">

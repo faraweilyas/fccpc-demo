@@ -243,13 +243,13 @@
                                                                                         <div class="row">
                                                                                             <div class="col-md-12 my-3">
                                                                                                 <a href="#" id="kt_fee">
-                                                                                                    <i class="la la-info-circle"></i>&nbsp;Click here to calculate applicable fees
+                                                                                                    <i class="la la-info-circle"></i>&nbsp;Calculate applicable fees
                                                                                                 </a>
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="row">
                                                                                             <div class="col-md-12 mb-4">
-                                                                                                Application Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
+                                                                                                Notification Fee: <span class="application_fee">{!! $case->getApplicationFee() !!}</span>
                                                                                                 <input
                                                                                                     type="hidden"
                                                                                                     class="form-control"
@@ -279,7 +279,7 @@
                                                                                                 />
                                                                                             </div>
                                                                                             <div class="col-md-12 mb-4">
-                                                                                                Total Amount: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
+                                                                                                Total: <span class="amount_paid">{!! $case->getAmountPaid() !!}</span>
                                                                                                 <input
                                                                                                     type="hidden"
                                                                                                     class="form-control"

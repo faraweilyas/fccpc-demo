@@ -540,7 +540,7 @@
                                                                         paraid="411573197"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
                                                                         <br>
-                                                                        Thank you&nbsp;</p>
+                                                                        Thank you.&nbsp;</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

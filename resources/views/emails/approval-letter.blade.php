@@ -549,7 +549,7 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Thank you&nbsp;</p>
+                                                                        Thank you.&nbsp;</p>
                                                                     <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                                         paraid="1344694371"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">

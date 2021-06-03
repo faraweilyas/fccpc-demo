@@ -541,7 +541,7 @@
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{61}"
                                                             paraid="1620294906"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Dear {{ $data['fullname'] }}</p>
+                                                            Dear {{ $data['fullname'] }},</p>
 
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                             paraid="640540932"
@@ -549,7 +549,7 @@
                                                             Your notification has been received
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "customdated")) }}
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "time")) }}
-                                                            <br />The commission will revert..</p>
+                                                            <br />The commission will revert.</p>
                                                         <p paraeid="{91321d81-9a7a-4045-a280-c85ae145b80c}{240}"
                                                             paraid="1344694371"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
@@ -561,7 +561,7 @@
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                             paraid="622938900"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Thank you&nbsp;<br/><br/><b>M&A</b></p>
+                                                            Thank you.&nbsp;</p>
 
                                                     </td>
                                                 </tr>

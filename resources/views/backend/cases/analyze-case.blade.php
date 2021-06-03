@@ -94,7 +94,7 @@
                     <h5 class="text_dark_blue">Case Information</h5>
                     <div class="row py-5">
                         <div class="col-md-3">
-                            <p><b>SUBJECT:</b></p>
+                            <p><b>SUBJECT/TITLE OF TRANSACTION:</b></p>
                             <span>
                                 {{ $case->subject }}
                             </span>
@@ -122,7 +122,7 @@
                         <div class="col-md-3">
                             <p><b>FEES:</b></p>
                             <p class="info-title">
-                                Application Fee: {!! $case->getApplicationFee() !!}
+                                Notification Fee: {!! $case->getApplicationFee() !!}
                             </p>
                             <p class="info-title">
                                 Processing Fee: {!! $case->getProcessingFee() !!}
@@ -140,7 +140,7 @@
                                 {!! $case->getRefNO() !!}
                             </span>
                             <p class="mt-5">
-                                <b>Application ID:</b>
+                                <b>Notification ID:</b>
                             </p>
                             <p>
                                 <span>
@@ -149,7 +149,7 @@
                             </p>
                         </div>
                         <div class="col-md-3">
-                            <p><b>TRANSACTION REP:</b></p>
+                            <p><b>Notifying Party(ies)/Representative(s):</b></p>
                             <span>
                                 {!! $case->applicant_firm !!}
                             </span>
@@ -163,7 +163,7 @@
                     </div>
                     <div class="row py-5">
                         <div class="col-md-3">
-                            <p class="text_dark_blue"><b>CONTACT REP INFO:</b></p>
+                            <p class="text_dark_blue"><b>CONTACT DETAILS:</b></p>
                             <span>
                                 {!! $case->getApplicantName() !!}<br />
                                 {!! $case->applicant_email !!}<br />

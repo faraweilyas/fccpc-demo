@@ -66,7 +66,7 @@
                         <p class="section-header">CONTACT INFORMATION</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
-                                <h4 class="info-title @empty($case->applicant_firm) text-danger @endif">Notifying Party(ies) / Representative(s):</h4>
+                                <h4 class="info-title @empty($case->applicant_firm) text-danger @endif">Notifying Party(ies)/Representative(s):</h4>
                                 <h4>{{ $case->applicant_firm }}</h4>
                             </div>
                             <div class="grid-row-2 d-flex">
@@ -95,7 +95,7 @@
                             </div>
                         </div>
                         @if(strtolower($case->case_category) == 'reg' || strtolower($case->case_category) == 'ffm')
-                        <p class="section-header">PDF of Form 1A</p>
+                        <p class="section-header">{{-- PDF of  --}}Form 1A</p>
                         <div class="grid-col-2">
                             <div class="grid-row-2 d-flex">
                                 <h4 class="info-title @empty($case->isForm1ASet()) text-danger @endif">Form 1A:</h4>

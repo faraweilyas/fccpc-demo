@@ -39,7 +39,7 @@
                             <div class="form-group mb-5">
                                 <input
                                     type="text"
-                                    placeholder="Application ID:"
+                                    placeholder="Notification ID:"
                                     name="application_id"
                                     class="form-control h-auto form-control-solid py-4 px-8"
                                     value="{{ $_GET['app_id'] ?? '' }}"
