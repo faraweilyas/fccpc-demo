@@ -33,6 +33,7 @@ class ApplicationRequest extends Mailable
     {
         return $this
             ->view('emails.application-request')
-            ->subject('Merger Application Submitted');
+            // ->subject('Merger Notifications - FCCPC');
+            ->subject('Merger Notification Submitted');
     }
 }

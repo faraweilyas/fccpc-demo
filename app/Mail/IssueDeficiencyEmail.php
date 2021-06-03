@@ -33,6 +33,6 @@ class IssueDeficiencyEmail extends Mailable
     {
         return $this
             ->view('emails.issue-deficiency')
-            ->subject('Merger Application Deficiency Notice');
+            ->subject('Merger Notification Deficiency Notice');
     }
 }

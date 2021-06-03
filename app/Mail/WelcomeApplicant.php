@@ -37,6 +37,6 @@ class WelcomeApplicant extends Mailable
     {
         return $this
             ->view('emails.welcome-applicant')
-            ->subject('Merger Notification');
+            ->subject('Merger Notifications - FCCPC');
     }
 }
