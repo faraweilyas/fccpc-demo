@@ -754,10 +754,10 @@ $(document).ready(function()
 
         swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text: "Notification becomes irreversible upon submission",
             type: "warning",
             showCancelButton: true,
-            confirmButtonText: "Yes, submit it!"
+            confirmButtonText: "Submit"
         }).then(function(result)
         {
             if (result.value)
@@ -1382,7 +1382,7 @@ function submitDeficientCase()
 
             swal.fire(
                 "Submitted!",
-                "Your notification has been submitted.",
+                "Your notification has been submitted. if complete and in an acceptable format, it shall be accepted as filed",
                 "success"
             ).then(function()
             {
