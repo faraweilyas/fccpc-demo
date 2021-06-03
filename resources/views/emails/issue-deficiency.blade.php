@@ -556,6 +556,12 @@
                                                                             <b>{{ $count }}.</b>
                                                                             {{ $checklist->name }}
                                                                         </p>
+                                                                        @if(!empty($checklist->checklist_document->reason))
+                                                                            <p>
+                                                                                <b>Reason For Deficiency</b><br/>
+                                                                                {{ $checklist->checklist_document->reason ?? '...'}}
+                                                                            </p>
+                                                                        @endif
                                                                         @php $count++; @endphp
                                                                     @endforeach
                                                                     @isset($data['additional_info'])
