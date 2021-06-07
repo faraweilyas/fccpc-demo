@@ -8,7 +8,10 @@
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'global/plugins.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_PLUGIN.'custom/prismjs/prismjs.bundle.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset(BE_CSS.'style.bundle.css') }}" />
-    <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" />
+    {{-- <link rel="shortcut icon" href="{{ pc_asset(BE_IMAGE.'favicon/fccpc_favicon.ico') }}" /> --}}
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.fccpc.gov.ng/uploads/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.fccpc.gov.ng/uploads/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.fccpc.gov.ng/uploads/favicons/favicon-16x16.png">
 </head>
 <body id="kt_body" class="header-fixed header-mobile-fixed subheader-enabled page-loading">
     @yield('theme')
