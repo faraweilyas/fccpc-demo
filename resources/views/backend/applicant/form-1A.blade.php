@@ -13,7 +13,7 @@
         Position : {{ $case->form_1A_Position ?? '...' }}
     </p>
     <p>
-        Date Submitted : {{ datetimtotext($case->form_1A_Date, "customd") ?? '...' }}
+        Date Submitted : {{ datetimeToText($case->form_1A_Date, "customd") ?? '...' }}
     </p>
     <p>
         <b>Text :</b>
