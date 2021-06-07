@@ -1545,3 +1545,13 @@ th.fees_tab__head {
     width: 40px;
     margin-left: 30px;
 }
+
+.header__logo__1
+{
+    height: 80px;
+    object-fit: contain;
+    float: left;
+    margin-right: 10px;
+    border-left: #ffffff 2px solid;
+    border-right: #ffffff 2px solid;
+}

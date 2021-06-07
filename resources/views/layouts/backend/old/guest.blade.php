@@ -3,7 +3,16 @@
 @section('mobile_navigation')
     <div id="kt_header_mobile" class="header-mobile bg-primary header-mobile-fixed">
         <a data-turbolinks="false" href="/">
-            <h3 class="text-white text-bold font-weight-bolder " style="color: white !important">{!! config("app.name") !!}</h3>
+            <img
+                src="/assets/frontend/images/png/logo.png"
+                alt="{!! config("app.name") !!}"
+                class="header__logo__1"
+            />
+        </a>
+        <a data-turbolinks="false" href="/">
+            <h3 class="text-white text-bold font-weight-bolder " style="color: white !important">
+                {!! config("app.name") !!}
+            </h3>
         </a>
         <div class="d-flex align-items-center">
             <a href="/">
@@ -22,8 +31,17 @@
     <div class="header-top">
         <div class="container">
             <div class="d-none d-lg-flex align-items-center mr-3">
+                <a data-turbolinks="false" href="/">
+                    <img
+                        src="/assets/frontend/images/png/logo.png"
+                        alt="{!! config("app.name") !!}"
+                        class="header__logo__1"
+                    />
+                </a>
                 <a data-turbolinks="false" href="/" class="mr-20">
-                    <h3 class="text-white text-bold font-weight-bolder " style="color: white !important">{!! config("app.name") !!}</h3>
+                    <h3 class="text-white text-bold font-weight-bolder " style="color: white !important">
+                        {!! config("app.name") !!}
+                    </h3>
                 </a>
             </div>
             @isset($guest)
