@@ -48,9 +48,9 @@ $(document).ready(function() {
 		var workingon_link = $(this).attr('data-workingon-link');
 		 swal.fire({
             title: "Are you sure?",
-            text: "You want to start document approval!",
+            text: "",
             showCancelButton: true,
-            confirmButtonText: "Yes, start process!"
+            confirmButtonText: "Proceed"
         }).then(function(result)
         {
             if (result.value) {

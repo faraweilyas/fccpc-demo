@@ -547,7 +547,7 @@
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
                                                                         style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                                        Your notification <strong>{{ $data['case']->guest->tracking_id }}</strong> does not fulfil the satisfactory notification requirement(s). You are therefore required to provide the following:</p>
+                                                                        Your notification <strong>{{ $data['case']->guest->tracking_id }}</strong> does not fulfill the satisfactory notification requirement(s). You are therefore required to provide the following:</p>
                                                                         @php $count = 1; @endphp
                                                                     @foreach($data['deficent_cases'] as $checklist)
                                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
@@ -558,7 +558,7 @@
                                                                         </p>
                                                                         @if(!empty($checklist->checklist_document->reason))
                                                                             <p>
-                                                                                <b>Reason For Deficiency</b><br/>
+                                                                                <b>Reason for deficiency:</b><br/>
                                                                                 {{ $checklist->checklist_document->reason ?? '...'}}
                                                                             </p>
                                                                         @endif
