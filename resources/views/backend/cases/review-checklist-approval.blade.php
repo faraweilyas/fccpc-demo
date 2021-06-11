@@ -58,7 +58,9 @@
                                         class="text-dark text-hover-primary"
                                         target="__blank"
                                     >
-                                        {{ ucfirst($document->group->name).' Doc_'.$file_count }}&nbsp;<i class="la la-download text-primary"></i>
+                                        {{ $document->getDocumentName($file_count) }}
+                                        &nbsp;
+                                        <i class="la la-download text-primary"></i>
                                     </a>
                                 </span>
                             </div>

@@ -156,7 +156,21 @@ class Document extends Model
      */
     public function saveDateCaseSubmitted(\stdClass $document) : bool
     {
-        $this->date_case_submitted        = $document->date_case_submitted;
+        $this->date_case_submitted = $document->date_case_submitted;
         return $this->save();
+    }
+
+    /**
+     * Get document name
+     *
+     * @param int $file_count
+     * @return string
+     */
+    public function getDocumentName(int $file_count) : string
+    {
+        // {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
+        // {{ ucfirst($document->group->name).' Doc_'.$file_count }}
+
+        return ucfirst($this->group->name)." Doc_{$file_count}";
     }
 }
