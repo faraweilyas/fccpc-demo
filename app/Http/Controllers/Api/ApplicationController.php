@@ -76,8 +76,8 @@ class ApplicationController extends Controller
     public function getCaseTypes()
     {
         return $this->sendResponse(200, 'success', 'Types resolved!', [
-        		'types' => \AppHelper::get('case_types'),
-	        ]);
+    		'types' => \AppHelper::get('case_types'),
+        ]);
 	}
 
     /**
