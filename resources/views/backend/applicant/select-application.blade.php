@@ -96,7 +96,7 @@
                         <div class="alert alert-primary alert-warning fade show lightish-yellow lightish-yellow-border" role="alert">
                             <div class="alert-text text-dark">
                                 <i class="la la-info text-dark"></i>
-                               <b style="font-size: 1.1rem;">All electronic copies of relevant notification forms and supporting documents must be provided in a searchable PDF format. Non compliant notification/documents are subject to rejection as being improperly filed or notified.</b>
+                               <b style="font-size: 1.1rem;">All electronic copies of relevant notification forms and supporting documents must be provided in a searchable PDF format. Non compliant notification/documents are subject to rejection as improperly filed or notified.</b>
                             </div>
                         </div>
                     </div>
