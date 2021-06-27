@@ -79,8 +79,20 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('enquiries.create', ['type' => 'prn']) }}">Pre-Notification Consultation</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ route('home.publications') }}">Publications</a>
+            <li class="nav-item dropdown">
+                <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    id="dropdown01"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Publications
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="{{ route('home.publications') }}">Notifications Publications</a>
+                </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ route('home.fee.calculator') }}">Fee Calculator</a>
