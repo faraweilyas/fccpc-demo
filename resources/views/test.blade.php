@@ -3,7 +3,7 @@
 use App\Models\User;
 use App\Models\Cases;
 
-dd(\Hash::make('password'));
+dd(\Hash::make('password'), \Hash::make("17NileStreet"));
 
 $search             = $_GET['query']            ?? "";
 $case_type1         = $_GET['case_type1']       ?? "";
