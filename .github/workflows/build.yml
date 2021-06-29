@@ -74,7 +74,6 @@ jobs:
           composer install
           composer update
           php artisan migrate --force
-          php artisan down
           cd /var/www/html/fccpc-demo
           git pull
           composer install
