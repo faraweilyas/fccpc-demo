@@ -73,8 +73,8 @@
                                 <table class="table fee-calc-table">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">DESCRIPTION</th>
-                                            <th scope="col">FEES</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Fees</th>
                                         </tr>
                                     </thead>
                                     <tbody>
