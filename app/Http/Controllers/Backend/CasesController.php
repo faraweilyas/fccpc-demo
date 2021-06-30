@@ -194,9 +194,8 @@ class CasesController extends Controller
         $cases          = (new Cases())->unassignedCases();
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
-
-        $title          = 'New Cases | ' . APP_NAME;
-        $description    = 'New Cases | ' . APP_NAME;
+        $title          = 'New Cases | '.APP_NAME;
+        $description    = 'New Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.unassigned',
@@ -223,9 +222,8 @@ class CasesController extends Controller
 
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
-
-        $title          = 'All Cases | ' . APP_NAME;
-        $description    = 'All Cases | ' . APP_NAME;
+        $title          = 'All Cases | '.APP_NAME;
+        $description    = 'All Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-all',
@@ -252,9 +250,8 @@ class CasesController extends Controller
 
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
-
-        $title          = 'Assigned Cases | ' . APP_NAME;
-        $description    = 'Assigned Cases | ' . APP_NAME;
+        $title          = 'Assigned Cases | '.APP_NAME;
+        $description    = 'Assigned Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-assigned',
@@ -275,9 +272,8 @@ class CasesController extends Controller
 
         $cases          = $handler->dropped_cases_assigned_to()->get();
         $caseHandlers   = (new User())->caseHandlers();
-
-        $title          = 'Dropped Cases | ' . APP_NAME;
-        $description    = 'Dropped Cases | ' . APP_NAME;
+        $title          = 'Dropped Cases | '.APP_NAME;
+        $description    = 'Dropped Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-dropped',
@@ -304,9 +300,8 @@ class CasesController extends Controller
 
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
-
-        $title          = 'Ongoing Cases | ' . APP_NAME;
-        $description    = 'Ongoing Cases | ' . APP_NAME;
+        $title          = 'Ongoing Cases | '.APP_NAME;
+        $description    = 'Ongoing Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-working-on',
@@ -334,8 +329,8 @@ class CasesController extends Controller
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
 
-        $title          = 'Approved Cases | ' . APP_NAME;
-        $description    = 'Approved Cases | ' . APP_NAME;
+        $title          = 'Approved Cases | '.APP_NAME;
+        $description    = 'Approved Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-approved',
@@ -362,9 +357,8 @@ class CasesController extends Controller
 
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
-
-        $title          = 'Cases On hold| ' . APP_NAME;
-        $description    = 'Cases On hold| ' . APP_NAME;
+        $title          = 'Cases On hold| '.APP_NAME;
+        $description    = 'Cases On hold| '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-on-hold',
@@ -386,8 +380,8 @@ class CasesController extends Controller
         $caseHandlers   = (new User())->caseHandlers();
         $supervisors    = (new User())->supervisors();
 
-        $title          = 'Archived Cases | ' . APP_NAME;
-        $description    = 'Archived Cases | ' . APP_NAME;
+        $title          = 'Archived Cases | '.APP_NAME;
+        $description    = 'Archived Cases | '.APP_NAME;
         $details        = details($title, $description);
         return view(
             'backend.cases.cases-archived',
@@ -409,7 +403,6 @@ class CasesController extends Controller
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-
         $case->archive($case_handler);
 
         // Notify case handler
@@ -425,7 +418,6 @@ class CasesController extends Controller
             "Case has been archived.",
             $case->id
         ));
-
         return redirect()->back()->with('success', 'Case archived!');
     }
 
@@ -439,7 +431,6 @@ class CasesController extends Controller
     {
         $fileName = $case->generateForm1ALink();
         $pdf      = PDF::loadView('backend.applicant.form-1A', compact('case'));
-
         return $pdf->stream($fileName);
     }
 
@@ -753,11 +744,11 @@ class CasesController extends Controller
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-
-        $handler = User::find($case->active_handlers->first()->id);
+        $handler                = User::find($case->active_handlers->first()->id);
         $case->removeDeficiency($handler);
         $case->approveChecklists($handler);
 
+        // Notify case handler
         $case_handler->notify(new IssueCaseDeficiency(
             'approved_doc',
             "Approved for analysis.", $case->id
@@ -767,7 +758,6 @@ class CasesController extends Controller
             'approved_doc',
             "Approved for analysis by <b>{$case_handler->getFullName()}</b>.", $case->id
         ));
-
         return $this->sendResponse('Checklists approved.', 'success');
     }
 
@@ -786,24 +776,21 @@ class CasesController extends Controller
 
         if (!$validator):
             return redirect()
-                ->back()
-                ->withErrors($validator)
-                ->withInput();
+                    ->back()
+                    ->withErrors($validator)
+                    ->withInput();
         endif;
 
-        if (!empty($case->getAnalysisDocument())):
+        if (!empty($case->getAnalysisDocument()))
             unlink(storage_path('app/public/analysis_documents/'.$case->getAnalysisDocument()));
-        endif;
 
         $file           = request('file');
         $recommendation = request('recommendation');
         $extension      = $file->getClientOriginalExtension();
         $newFileName    = \SerialNumber::randomFileName($extension);
         $path           = $file->storeAs('public/analysis_documents', $newFileName);
-
-        $handler = User::find($case->active_handlers->first()->id);
+        $handler        = User::find($case->active_handlers->first()->id);
         $case->issueReccomendation($handler, $newFileName, $recommendation);
-
         return redirect()->back()->with('success', 'Recommendation has been uploaded!');
     }
 
@@ -835,7 +822,6 @@ class CasesController extends Controller
 
         $handler = User::find($case->active_handlers->first()->id);
         $case->issueApprovalRequest($handler);
-
         return redirect()->back()->with('success', 'Approval requested!');
     }
 
@@ -872,7 +858,6 @@ class CasesController extends Controller
 
         $handler = User::find($case->active_handlers->first()->id);
         $case->issueApprovalComment($handler, $comment, $status);
-
         return redirect()->back()->with($status_type, "Request has been {$status}!");
     }
 
@@ -1159,7 +1144,6 @@ class CasesController extends Controller
 
         $case_handler = $case->getHandler();
         $case->approvalLetterSent($case_handler);
-
         return redirect()->route('cases.analyze', ['case' => $case])->with('success', 'Approval Letter sent!');
     }
 
@@ -1188,10 +1172,10 @@ class CasesController extends Controller
         $response = null
     ) {
         echo json_encode([
-            'message' => $message,
-            'responseType' => $responseType,
-            'response' => $response,
+            'message'       => $message,
+            'responseType'  => $responseType,
+            'response'      => $response,
         ]);
-        exit();
+        exit;
     }
 }
