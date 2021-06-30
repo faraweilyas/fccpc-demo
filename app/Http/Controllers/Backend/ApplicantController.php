@@ -244,14 +244,11 @@ class ApplicantController extends Controller
      */
     public function downloadDocument(Document $document, $file)
     {
-        $groupName = \Str::slug($document->group->name);
-        $extension = pathinfo($file)['extension'];
-        $doc      = storage_path("app/public/documents/{$file}");
-
-        if (!is_file($doc) && !file_exists($doc))
+        $document = storage_path("app/public/documents/{$file}");
+        if (!is_file($document) && !file_exists($document))
             return redirect()->back()->with('error', 'File was not found!');
 
-        return response()->file($doc);
+        return response()->file($document);
     }
 
     /**
@@ -269,10 +266,7 @@ class ApplicantController extends Controller
         if (!is_file($file) && !file_exists($file))
             return redirect()->back()->with('error', 'File was not found!');
 
-        return response()->download(
-            $file,
-            "{$groupName}.{$extension}"
-        );
+        return response()->download($file, "{$groupName}.{$extension}");
     }
 
     /**
