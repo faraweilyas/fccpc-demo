@@ -9,23 +9,7 @@
         >
             @csrf
             <div class="card-body approval_body">
-<textarea id="approval_content" name="approval_content" class="form-control" cols="6" rows="30">Your submission to the Federal Competition and Consumer Protection Commission (Commission) dated [insert date] on the above subject matter refers.
-
-Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed [insert description of transaction] raises the following substantial competition concerns:
-1. ……………………………………………………………
-2. ……………………………………………………………
-3. ……………………………………………………………
-
-In view of the aforementioned, the Commission is unable to approve this transaction.
-
-Consequently, parties may make representations to the Commission, proposing remedies that will address the competition concerns; or detailing any technological efficiencies or other pro-competitive advantage which will result from the transaction; and will be greater than, and offset, the competition concerns; and will allow consumers receive a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed transaction.
-
-Parties may make the above representation within [insert time] of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.
-
-
-………………………
-{{ $case->getHandlerFullName() }}, {{ $case->getHandlerAccountType() }}
-<b>For: Executive Vice Chairman / Chief Executive Officer</b></textarea>
+                <textarea id="approval_content" name="approval_content" class="form-control" cols="6" rows="30">Your submission to the Federal Competition and Consumer Protection Commission (Commission) dated [insert date] on the above subject matter refers.&#10;&#10;Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed [insert description of transaction] raises the following substantial competition concerns:&#10;&#10;<ul><ol>1. ……………………………………………………………</ol><ol>2. ……………………………………………………………</ol><ol>3. ……………………………………………………………</ol></ul>&#10;In view of the aforementioned, the Commission is unable to approve this transaction.&#10;&#10;Consequently, parties may make representations to the Commission, proposing remedies that will address the competition concerns; or detailing any technological efficiencies or other pro-competitive advantage which will result from the transaction; and will be greater than, and offset, the competition concerns; and will allow consumers receive a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed transaction.&#10;&#10;Parties may make the above representation within [insert time] of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.&#10;&#10;………………………&#10;{{ $case->getHandlerFullName() }}, {{ $case->getHandlerAccountType() }}&#10;<b>For: Executive Vice Chairman / Chief Executive Officer</b></textarea>
                 <div class="row" style="justify-content: start;">
                     <div class="col-md-4">
                         <button class="btn btn-primary mt-4" name="send"><i class="la la-send"></i>Send Mail</button>
@@ -64,27 +48,7 @@ Parties may make the above representation within [insert time] of receiving this
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 approval_content">
-                    <p>Your submission to the Federal Competition and Consumer Protection Commission (Commission) dated [insert date] on the above subject matter refers.</p>
-
-                    <p>Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed [insert description of transaction] raises the following substantial competition concerns:<br />
-                    1. ……………………………………………………………<br />
-                    2. ……………………………………………………………<br />
-                    3. ……………………………………………………………</p>
-
-                    <p>In view of the aforementioned, the Commission is unable to approve this transaction.</p>
-
-                    <p>Consequently, parties may make representations to the Commission, proposing remedies that will address the competition concerns; or detailing any technological efficiencies or other pro-competitive advantage which will result from the transaction; and will be greater than, and offset, the competition concerns; and will allow consumers receive a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed transaction.</p>
-
-                    <p>Parties may make the above representation within [insert time] of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.</p>
-
-                    <p>
-                        <br />
-                        ………………………<br />
-                        {{ $case->getHandlerFullName() }}, {{ $case->getHandlerAccountType() }}<br />
-                        <b>For: Executive Vice Chairman / Chief Executive Officer</b>
-                    </p>
-                </div>
+                <div class="col-md-12 approval_content"></div>
             </div>
             {{-- <div class="row">
                 <div class="col-md-12">
