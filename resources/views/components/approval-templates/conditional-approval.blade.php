@@ -33,12 +33,12 @@
                     {{-- {{ $case->getSubmittedAt() }} --}}
                     <p>{{ datetimeToText(now(), 'customd') }}<br /></p>
                     <p>{{ $case->getApplicantName() }}</p>
-                    <p>{{ $case->applicant_address }}</p>
+                    <p>{!! nl2br($case->applicant_address) !!}</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <h6 class="text-center text-underline"><b>{{ $case->getApprovalLetterTitle($template) }}</b></h6>
+                    <h6 class="text-center text-underline"><br /><b>{{ $case->getApprovalLetterTitle($template) }}</b></h6>
                     <h6 class="text-left text-underline"><b>RE: {{ $case->subject }}</b></h6>
                     <br />
                     <h6 class="text-left"><b>ACQUIRER(S): {{ $case->getCasePartiesText() }}</b></h6>

@@ -32,7 +32,7 @@
         <p>{!! nl2br($case->applicant_address) !!}</p>
     </div>
     <div class="title">
-        <h3 class='head'><b>{{ $case->getApprovalLetterTitle($template) }}</b></h3>
+        <h3 class='head'><br /><b>{{ $case->getApprovalLetterTitle($template) }}</b></h3>
         <h3 class="text-left text-underline"><b>RE: {{ $case->subject }}</b></h3>
         <br />
         <h3 class="text-left"><b>ACQUIRER(S): {{ $case->getCasePartiesText() }}</b></h3>

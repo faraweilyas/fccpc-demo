@@ -544,7 +544,7 @@
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                                         paraid="640540932"
-                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Find Approval letter for notification #{{ $case->guest->tracking_id }} attached to this mail.</p>
+                                                                        style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">Find Approval letter for notification <b>#{{ $case->guest->tracking_id }}</b> attached to this mail.</p>
 
                                                                     <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{126}"
                                                                         paraid="622938900"
