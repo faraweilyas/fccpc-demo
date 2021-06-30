@@ -445,14 +445,13 @@ function cleanString($string, $strip=true)
 }
 
 /**
-* Clean text area string
-*
-* @param string $string
-*
-* @return string
-*/
-function cleanTextArea($string)
+ * Clean text area string
+ *
+ * @param string $string
+ * @return string
+ */
+function cleanTextArea(string $string)
 {
-    return preg_replace('#(\\\r|\\\r\\\n|\\\n)#','<br/>',$string);
+    return preg_replace('#(\\\r|\\\r\\\n|\\\n)#','<br />', $string);
 }
 
