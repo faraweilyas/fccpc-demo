@@ -39,9 +39,9 @@ class ApplicationController extends Controller
             return redirect($guest->submittedApplicationPath());
         }
 
-        $title = 'Select Notification | ' . APP_NAME;
-        $description = 'Select Notification | ' . APP_NAME;
-        $details = details($title, $description);
+        $title          = 'Select Notification | ' . APP_NAME;
+        $description    = 'Select Notification | ' . APP_NAME;
+        $details        = details($title, $description);
         return view(
             'backend.applicant.select-application',
             compact('details', 'guest')
@@ -266,22 +266,26 @@ class ApplicationController extends Controller
             Document::destroy($previous_document->id);
         endif;
 
+        $file_array = $label_array = [];
         foreach (request('files') as $key => $file):
             if (!empty($file)):
                 $extension    = $file->getClientOriginalExtension();
+                $fileName     = $file->getClientOriginalName();
                 $newFileName  = \SerialNumber::randomFileName($extension);
                 $path         = $file->storeAs('public/documents', $newFileName);
-                $file_array[] = $newFileName;
+                // $file_array[] = "{$newFileName}:{$fileName}";
+                $file_array[]   = $newFileName;
+                $label_array[]  = $fileName;
             endif;
         endforeach;
 
-        $document = Document::create([
+        $document             = Document::create([
             'case_id'         => $guest->case->id,
             'group_id'        => request('group_id'),
             'file'            => implode(',', $file_array),
+            'label'           => implode(':', $label_array),
             'additional_info' => trim(request('additional_info')),
         ]);
-
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
@@ -324,12 +328,14 @@ class ApplicationController extends Controller
             Document::destroy($previous_document->id);
         endif;
 
+        $file_array = $label_array = [];
         foreach (request('files') as $key => $file):
             if (!empty($file)):
-                $extension    = $file->getClientOriginalExtension();
-                $newFileName  = \SerialNumber::randomFileName($extension);
-                $path         = $file->storeAs('public/documents', $newFileName);
-                $file_array[] = $newFileName;
+                $extension      = $file->getClientOriginalExtension();
+                $newFileName    = \SerialNumber::randomFileName($extension);
+                $path           = $file->storeAs('public/documents', $newFileName);
+                $file_array[]   = $newFileName;
+                $label_array[]  = $fileName;
             endif;
         endforeach;
 
@@ -338,10 +344,10 @@ class ApplicationController extends Controller
             'case_id'         => $guest->case->id,
             'group_id'        => request('group_id'),
             'file'            => implode(',', $file_array),
+            'label'           => implode(':', $label_array),
             'additional_info' => trim(request('additional_info')),
             'post_checklist'  => $post_checklist,
         ]);
-
         $this->sendResponse('Document has been saved.', 'success', $document);
     }
 
@@ -377,7 +383,9 @@ class ApplicationController extends Controller
                     'guest' => $guest,
                 ])
             );
-        } catch (\Exception $exception) {
+        }
+        catch (\Exception $exception)
+        {
             $message = $exception->getMessage();
         }
 
@@ -385,12 +393,12 @@ class ApplicationController extends Controller
              // Notify supervisor
             $supervisor->notify(new CaseActionNotifier(
                 'newcase',
-                "{$case->applicant_fullname} has created a new application.",
+                "{$case->applicant_fullname} has submitted a new notification.",
                 $case->id
             ));
         endforeach;
 
-        $this->sendResponse('Application submitted.', 'success', $case);
+        $this->sendResponse('Notification submitted.', 'success', $case);
     }
 
     /**
