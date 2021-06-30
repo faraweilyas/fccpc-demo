@@ -670,7 +670,13 @@ class CasesController extends Controller
         if (request('remove_checklist') == 'yes'):
             $document->checklists()->detach([$checklist]);
         else:
-            $document->checklists()->syncWithoutDetaching([$checklist => ['status' => request('status'), 'reason' => request('reason')]]);
+            $document
+                ->checklists()
+                ->syncWithoutDetaching([
+                    $checklist      => [
+                        'status'    => request('status'),
+                        'reason'    => request('reason')
+                    ]]);
         endif;
         return $this->sendResponse(200, "Checklist document updated", "success", [
             'case_group_documents' => $case->getChecklistGroupDocuments()
@@ -687,7 +693,7 @@ class CasesController extends Controller
     {
         $case       = $document->case;
         $checklist  = request('checklist');
-            $document->checklists()->syncWithoutDetaching([$checklist => ['reason' => request('reason')]]);
+        $document->checklists()->syncWithoutDetaching([$checklist => ['reason' => request('reason')]]);
         return $this->sendResponse(200, "Checklist document updated", "success", []);
     }
 
@@ -703,19 +709,26 @@ class CasesController extends Controller
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-        $emails                 = $case->guest->email;
+        $email                  = $case->guest->email;
         $additional_info        = request('additional_info');
 
         // Issue deficiency
         $case->issueDeficiency($case_handler, $additional_info);
         // Notify case handler
-        Mail::to($emails)
+        Mail::to($email)
             ->send(new IssueDeficiencyEmail([
-                'fullname'        => $case->applicant_fullname,
-                'ref_no'          => $case->guest->tracking_id,
-                'case'            => $case,
-                'deficent_cases'  => !empty($date) ? $case->getSubmittedDocumentChecklistByDateAndStatus($date, 'deficient', $case->case_category) : [],
-                'additional_info' => $additional_info,
+                'fullname'          => $case->applicant_fullname,
+                'ref_no'            => $case->guest->tracking_id,
+                'case'              => $case,
+                'deficent_cases'    => !empty($date)
+                                    ? $case
+                                        ->getSubmittedDocumentChecklistByDateAndStatus(
+                                            $date,
+                                            'deficient',
+                                            $case->case_category
+                                        )
+                                    : [],
+                'additional_info'   => $additional_info,
             ]));
         $case_handler->notify(new IssueCaseDeficiency(
             'onhold',
@@ -1075,9 +1088,9 @@ class CasesController extends Controller
         if (!$case->isApprovalApproved() && $case->isApprovalLetterSent())
             return back();
 
-        $title                      = APP_NAME;
-        $description                = 'FCCPC Case Documents Analysis Dashboard';
-        $details                    = details($title, $description);
+        $title          = APP_NAME;
+        $description    = 'FCCPC Case Documents Analysis Dashboard';
+        $details        = details($title, $description);
         return view(
             'backend.cases.generate-template',
             compact('details', 'case')
@@ -1110,10 +1123,12 @@ class CasesController extends Controller
         if (!$case->isApprovalApproved() && $case->isApprovalLetterSent())
             return back();
 
-        $title                      = APP_NAME;
-        $description                = 'FCCPC Case Documents Analysis Dashboard';
-        $details                    = details($title, $description);
+        if (!in_array($template_id, [1, 2, 3]))
+            return redirect()->route('cases.generate_template', ['case' => $case]);
 
+        $title          = APP_NAME;
+        $description    = 'FCCPC Case Documents Analysis Dashboard';
+        $details        = details($title, $description);
         return view('backend.cases.template-mgmt', compact('details', 'case', 'template_id'));
     }
 
@@ -1124,23 +1139,22 @@ class CasesController extends Controller
      * @param int $template_id
      * @return void
      */
-    public function sendApprovalLetter(Cases $case, $template_id)
+    public function sendApprovalLetter(Cases $case, int $template_id)
     {
-        $data["email"]        = $case->guest->email;
-        $data["case"]         = $case;
-        $data["template_id"]  = $template_id;
-        $data["content"]      = request('approval_content');
-        $data["file_name"]    = "approval_letter_".str_replace(' ', '_', now()).".pdf";
-
-        $pdf                  = PDF::loadView('emails.pdf.approval-letter', $data);
+        $data["case"]       = $case;
+        $data["content"]    = $_POST['approval_content'];
+        $data["template"]   = $template_id;
+        $file_name          = "approval_letter_".str_replace(' ', '_', now()).".pdf";
+        $pdf                = PDF::loadView('emails.pdf.approval-letter', $data);
 
         if (request()->has('preview'))
-            return $pdf->stream($data["file_name"], array("Attachment" => false));
+            return $pdf->stream($file_name, array("Attachment" => false));
 
-        Mail::send('emails.approval-letter', $data, function($message) use ($data, $pdf) {
-            $message->to($data["email"])
+        Mail::send('emails.approval-letter', $data, function($message) use ($case, $pdf, $file_name)
+        {
+            $message->to($case->guest->email)
                     ->subject("Approval Letter")
-                    ->attachData($pdf->output(), $data["file_name"]);
+                    ->attachData($pdf->output(), $file_name);
         });
 
         $case_handler = $case->getHandler();
