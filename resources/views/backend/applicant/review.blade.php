@@ -133,15 +133,14 @@
                                                         src="{{ $document->getFileIconText($file) }}"
                                                         alt="pdf"
                                                         style="height: 40px"
-                                                        onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                        onclick="window.open('{{ $document->getDocumentLink($file) }}', '_blank');"
                                                     />
                                                     <h4
                                                         class="py-5 mx-5 text-hover-primary cr-pointer"
-                                                        onclick="window.open('{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}', '_blank');"
+                                                        onclick="window.open('{{ $document->getDocumentLink($file) }}', '_blank');"
                                                     >
                                                         {{ $document->getDocumentName($file_count) }}
-                                                        &nbsp;
-                                                        <i class="la la-download text-primary"></i>
+                                                        &nbsp; <i class="la la-download text-primary"></i>
                                                     </h4>
                                                 </div>
                                                 @php

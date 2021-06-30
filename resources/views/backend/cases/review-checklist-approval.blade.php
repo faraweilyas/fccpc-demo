@@ -54,7 +54,7 @@
                             <div class="col-md-12 my-1">
                                 <span>
                                     <a
-                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                        href="{{ $document->getDocumentLink($file) }}"
                                         class="text-dark text-hover-primary"
                                         target="__blank"
                                     >

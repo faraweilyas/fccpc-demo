@@ -184,11 +184,11 @@
                                                                                                 <div class="col-md-6 my-1">
                                                                                                     <span>
                                                                                                         <a
-                                                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                                            href="{{ $document->getDocumentLink($file) }}"
                                                                                                             class="text-dark text-hover-primary"
                                                                                                             target="__blank"
                                                                                                         >
-                                                                                                            {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
+                                                                                                            {{ $document->getDocumentName($file_count) }}
                                                                                                         </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                                                     </span>
                                                                                                 </div>
@@ -329,11 +329,11 @@
                                                                                                 <div class="col-md-6 my-1">
                                                                                                     <span>
                                                                                                         <a
-                                                                                                            href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                                                                            href="{{ $document->getDocumentLink($file) }}"
                                                                                                             class="text-dark text-hover-primary"
                                                                                                             target="__blank"
                                                                                                         >
-                                                                                                            {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
+                                                                                                            {{ $document->getDocumentName($file_count) }}
                                                                                                         </a>&nbsp;<i class="la la-download text-primary"></i>
                                                                                                     </span>
                                                                                                 </div>

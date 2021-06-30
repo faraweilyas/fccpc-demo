@@ -309,7 +309,7 @@
                                                     Provide a non-confidential executive summary (up to 500 words) of the merger, specifying parties to the merger, the nature of the transaction (i.e., merger, acquisition, or joint venture), nature of the business of parties, relevant markets, and the strategic/economic rationale for the merger.
                                                 </p>
                                                 <p class="fs__12rem">
-                                                    This Executive Summary will be published and provided to employees' pursuant to <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">Section 96(3)</a> of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
+                                                    This Executive Summary will be published and provided to employees pursuant to <a href="https://www.fccpc.gov.ng/businesses/mergers/" target="_blank">Section 96(3)</a> of the Act. The summary should exclude business secrets, confidential or other commercially sensitive information. This form should be completed jointly by parties to the proposed transaction.
                                                 </p>
                                                 <div class="form-group">
                                                     <textarea
@@ -376,22 +376,21 @@
                                                                         @php
                                                                             $file_count = 1;
                                                                         @endphp
+                                                                        <div class="col-md-12 my-1">
                                                                         @foreach($document->getFileArray() as $key => $file)
-                                                                            <div class="col-md-6 my-1">
-                                                                                <span>
-                                                                                    <a
-                                                                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
-                                                                                        class="text-dark text-hover-primary"
-                                                                                        target="__blank"
-                                                                                    >
-                                                                                        {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
-                                                                                    </a>&nbsp;<i class="la la-download text-primary"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            @php
-                                                                                $file_count++;
-                                                                            @endphp
+                                                                            <span>
+                                                                                <a
+                                                                                    href="{{ $document->getDocumentLink($file) }}"
+                                                                                    class="text-dark text-hover-primary"
+                                                                                    target="__blank"
+                                                                                >
+                                                                                    {{ $document->getDocumentName($file_count) }}
+                                                                                </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                            </span>
+                                                                            <br />
+                                                                            @php $file_count++; @endphp
                                                                         @endforeach
+                                                                        </div>
                                                                     </div>
                                                                 @endif
                                                             </div>
@@ -510,26 +509,22 @@
                                                                 </div>
                                                                 @if(!empty($document))
                                                                     <div class="row mt-4">
-                                                                        @php
-                                                                            $file_count = 1;
-                                                                        @endphp
+                                                                        @php $file_count = 1; @endphp
+                                                                        <div class="col-md-12 my-1">
                                                                         @foreach($document->getFileArray() as $key => $file)
-                                                                            <div class="col-md-6 my-1">
-                                                                                <span>
-                                                                                    <a
-                                                                                        href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
-                                                                                        class="text-dark text-hover-primary"
-                                                                                        target="__blank"
-                                                                                    >
-                                                                                        {{
-                                                                                            ucfirst($checklistGroup->name).' Doc_'.$file_count}}
-                                                                                    </a>&nbsp;<i class="la la-download text-primary"></i>
-                                                                                </span>
-                                                                            </div>
-                                                                            @php
-                                                                                $file_count++;
-                                                                            @endphp
+                                                                            <span>
+                                                                                <a
+                                                                                    href="{{ $document->getDocumentLink($file) }}"
+                                                                                    class="text-dark text-hover-primary"
+                                                                                    target="__blank"
+                                                                                >
+                                                                                    {{ $document->getDocumentName($file_count) }}
+                                                                                </a>&nbsp;<i class="la la-download text-primary"></i>
+                                                                            </span>
+                                                                            <br />
+                                                                            @php $file_count++; @endphp
                                                                         @endforeach
+                                                                        </div>
                                                                     </div>
                                                                 @endif
                                                             </div>
@@ -625,7 +620,7 @@
                                 It is a criminal offence under <a target='_blank' href="https://www.fccpc.gov.ng/guidelines/documents/">Section 112</a> of the Federal Competition and Consumer Protection Act, 2018 to knowingly provide information that is false or misleading. Liability under the law and this Declaration includes persons providing this information either directly or indirectly (through another) to any officer of the Commission with the knowledge that such information is intended for communication to; or to be used by the Commission;
                             </p>
                             <p class="fs__12rem">
-                                The Commission reserves the right to reject such Notices/Notifications upon discovery that any information therein is false, misleading or inaccurate in any material respect;
+                                The Commission reserves the right to reject any Notice/Notification upon discovery that any information therein is false, misleading or inaccurate in any material respect;
                             </p>
                             <p class="fs__12rem">
                                 The Commission conducts Phase 1 and Phase 2 investigations. In the event a merger is referred to a Phase 2 investigation, information provided in the course of the Phase 1 investigation will also be applicable in Phase 2; and

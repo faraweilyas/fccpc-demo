@@ -79,11 +79,12 @@
                                     <div class="col-md-12 my-1">
                                         <span>
                                             <a
-                                                href="{{ route('applicant.document.download', ['document' => $document->id, 'file' => $file]) }}"
+                                                href="{{ $document->getDocumentLink($file) }}"
                                                 class="text-dark text-hover-primary"
                                                 target="__blank"
                                             >
-                                                {{ ucfirst($document->group->name).' Doc_'.$file_count }}&nbsp;<i class="la la-download text-primary"></i>
+                                                {{ $document->getDocumentName($file_count) }}
+                                                &nbsp;<i class="la la-download text-primary"></i>
                                             </a>
                                         </span>
                                     </div>

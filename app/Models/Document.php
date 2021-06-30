@@ -94,9 +94,9 @@ class Document extends Model
     public function getChecklistDocument($checklist)
     {
         $checklist_document = $this
-                                ->checklists
-                                ->where('id', $checklist->id)
-                                ->first();
+                            ->checklists
+                            ->where('id', $checklist->id)
+                            ->first();
 
         return $checklist_document->checklist_document ?? NULL;
     }
@@ -133,6 +133,43 @@ class Document extends Model
     }
 
     /**
+     * Get file label array
+     *
+     * @return Array
+     */
+    public function getFileLabelArray() : array
+    {
+        return explode(':', $this->label);
+    }
+
+    /**
+     * Get document name
+     *
+     * @param int $file_count
+     * @return string
+     */
+    public function getDocumentName(int $file_count) : string
+    {
+        // getFileLabelArray
+        // $case
+        // $key
+        // Example: APP0526896D92 - This Executive Summary.pdf
+        // MRR Form 1 Doc_1
+        return ucfirst($this->group->name)." Doc_{$file_count}";
+    }
+
+    /**
+     * Get document download link
+     *
+     * @param string $file
+     * @return string
+     */
+    public function getDocumentLink(string $file) : string
+    {
+        return route('applicant.document.download', ['document' => $this->id, 'file' => $file]);
+    }
+
+    /**
      * Get checklists
      *
      * @param Object $checklist
@@ -158,19 +195,5 @@ class Document extends Model
     {
         $this->date_case_submitted = $document->date_case_submitted;
         return $this->save();
-    }
-
-    /**
-     * Get document name
-     *
-     * @param int $file_count
-     * @return string
-     */
-    public function getDocumentName(int $file_count) : string
-    {
-        // {{ ucfirst($checklistGroup->name).' Doc_'.$file_count }}
-        // {{ ucfirst($document->group->name).' Doc_'.$file_count }}
-
-        return ucfirst($this->group->name)." Doc_{$file_count}";
     }
 }
