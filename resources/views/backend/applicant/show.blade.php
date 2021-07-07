@@ -28,7 +28,7 @@
                     </div>
                     <div class="login-signin">
                         <div class="mb_30">
-                            <h3>Mergers Notification</h3>
+                            <h3>Merger Notification</h3>
                             <div class="font-weight-bold text-black-sm">Enter your email to begin:</div>
                             <small class="text-danger">
                                 Note: the email provided would be used in all further correspondence on the notification.
