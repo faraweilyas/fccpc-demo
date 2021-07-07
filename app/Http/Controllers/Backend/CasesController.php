@@ -501,64 +501,40 @@ class CasesController extends Controller
             'content' => 'required',
         ]);
 
+        if (request()->has("save")):
+            Publication::updateOrCreate([
+                'case_id'       => $case->id,
+            ], [
+                'slug'          => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
+                'text'          => cleanString(request("content"), FALSE),
+            ]);
+            $message = "Publication has been saved.";
+        endif;
+
+        if (request()->has("publish")):
+            Publication::updateOrCreate([
+                'case_id'       => $case->id,
+            ], [
+                'slug'          => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
+                'text'          => cleanString(request("content"), FALSE),
+                'published_at'  => now()
+            ]);
+            $message = "Publication has been published.";
+        endif;
+
         $active_case_handler    = $case->active_handlers->first()->case_handler;
         $case_handler           = User::find($active_case_handler->handler_id);
         $supervisor             = User::find($active_case_handler->supervisor_id);
-
-        // if ($case->publication->isPublished())
-        //     return redirect()->back()->with("error", "Publication already published!");
-
-        if (!empty($case->publication)):
-            $case->publication->update([
-                'text'    => cleanString(request("content"), FALSE),
-            ]);
-
-            if (empty($case->publication->slug)):
-                $case->publication->update([
-                    'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
-                ]);
-            endif;
-
-            $publication = $case->publication;
-        else:
-            $publication = Publication::create([
-                'case_id' => $case->id,
-                'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
-                'text'    => cleanString(request("content"), FALSE)
-            ]);
-        endif;
-
-        if (request()->has("save"))
-            $message = "Publication has been saved";
-
-        if (request()->has("publish")):
-            $publication->update([
-                'text'         => cleanString(request("content"), FALSE),
-                'published_at' => now()
-            ]);
-
-            if (empty($case->publication->slug)):
-                $case->publication->update([
-                    'slug'    => Str::slug($case->subject).'-'.rand(1, 10).$case->id.rand(11,20),
-                ]);
-            endif;
-
-            $case_handler->notify(new CaseActionNotifier(
-                'new_publication',
-                'Publication has been published.',
-                $case->id
-            ));
-
-            $supervisor->notify(new CaseActionNotifier(
-                'new_publication',
-                'Publication has been published.',
-                $case->id
-            ));
-
-            $message = "Publication has been published";
-            // return redirect()->route("cases.analyze", ['case' => $case])->with('success', $message);
-        endif;
-
+        $case_handler->notify(new CaseActionNotifier(
+            'new_publication',
+            $message,
+            $case->id
+        ));
+        $supervisor->notify(new CaseActionNotifier(
+            'new_publication',
+            $message,
+            $case->id
+        ));
         return redirect()->back()->with('success', $message);
     }
 
