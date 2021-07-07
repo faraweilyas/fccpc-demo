@@ -35,7 +35,7 @@ class ApplicationController extends Controller
      */
     public function index(Guest $guest)
     {
-        if ($guest->case->isSubmitted()) {
+        if ($guest->case && $guest->case->isSubmitted()) {
             return redirect($guest->submittedApplicationPath());
         }
 
@@ -352,7 +352,7 @@ class ApplicationController extends Controller
         $case->validateSubmission();
 
         if ($case->isSubmitted())
-             $this->sendResponse('Application already submitted.', 'error', $case);
+            $this->sendResponse('Application already submitted.', 'error', $case);
 
         $guest->case->submit();
         $case = $guest->case;
