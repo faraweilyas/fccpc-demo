@@ -319,6 +319,7 @@ class ApplicationController extends Controller
         foreach (request('files') as $key => $file):
             if (!empty($file)):
                 $extension      = $file->getClientOriginalExtension();
+                $fileName       = $file->getClientOriginalName();
                 $newFileName    = \SerialNumber::randomFileName($extension);
                 $path           = $file->storeAs('public/documents', $newFileName);
                 $file_array[]   = $newFileName;
