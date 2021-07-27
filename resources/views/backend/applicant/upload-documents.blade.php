@@ -148,7 +148,7 @@
                                                                                     <div class="row mt-4">
                                                                                         <div class="col-md-12 mt-4 mb-n3">
                                                                                             <p class="text-danger">
-                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should not exceed 50MB.
+                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). Not more than 20 files (maximum upload of 50MB).
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="col-md-12">
@@ -293,7 +293,7 @@
                                                                                     <div class="row mt-4">
                                                                                         <div class="col-md-12 mt-4 mb-n3">
                                                                                             <p class="text-danger">
-                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). You will not be able to upload more than 20 files and total uploaded files should not exceed 50MB.
+                                                                                                Note: Supported file formats are (.PDF, .JPG, .JPEG). Not more than 20 files (maximum upload of 50MB).
                                                                                             </p>
                                                                                         </div>
                                                                                         <div class="col-md-12">
