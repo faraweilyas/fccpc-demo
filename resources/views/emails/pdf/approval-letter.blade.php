@@ -23,6 +23,12 @@
         {
             font-weight: bold;
         }
+
+        .approval_address
+        {
+            font-weight: 600;
+            line-height: 1.7;
+        }
     </style>
 </head>
 <body>
@@ -33,11 +39,9 @@
     </div>
     <div class="title">
         <h3 class='head'><br /><b>{{ $case->getApprovalLetterTitle($template) }}</b></h3>
-        <h3 class="text-left text-underline"><b>RE: {{ $case->subject }}</b></h3>
+        <h3 class="text-left text-underline"><b>{{ $header }}</b></h3>
         <br />
-        <h3 class="text-left"><b>ACQUIRER(S): {{ $case->getCasePartiesText() }}</b></h3>
-        <h3 class="text-left"><b>TARGET(S): {{ '...' }}</b></h3>
-        <h3 class="text-left"><b>CASE ID: #{{ $case->guest->tracking_id }}</b></h3>
+        <h3 class="text-left approval_address">{!! nl2br(cleanTextArea($address)) !!}</h3>
         <br />
     </div>
     <div class="content">

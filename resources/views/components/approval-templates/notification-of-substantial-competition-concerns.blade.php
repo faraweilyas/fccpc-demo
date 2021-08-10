@@ -9,6 +9,30 @@
         >
             @csrf
             <div class="card-body approval_body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{-- <label>Email:</label> <span class="text-danger">*</span> --}}
+                            <input
+                                type="text"
+                                id="approval_header"
+                                name="approval_header"
+                                class="form-control"
+                                value="RE: {{ $case->subject }}"
+                            />
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {{-- <label>Email:</label> <span class="text-danger">*</span> --}}
+                            <textarea
+                                id="approval_address"
+                                name="approval_address"
+                                class="form-control"
+                            >ACQUIRER(S): {{ $case->getCasePartiesText() }}&#10;TARGET(S): {{ '...' }}&#10;CASE ID: #{{ $case->guest->tracking_id }}</textarea>
+                        </div>
+                    </div>
+                </div>
                 <textarea id="approval_content" name="approval_content" class="form-control" cols="6" rows="30">Your submission to the Federal Competition and Consumer Protection Commission (Commission) dated [insert date] on the above subject matter refers.&#10;&#10;Based on the information provided, the Commission has reviewed the transaction and has noted that the proposed [insert description of transaction] raises the following substantial competition concerns:&#10;&#10;<ul><ol>1. ……………………………………………………………</ol><ol>2. ……………………………………………………………</ol><ol>3. ……………………………………………………………</ol></ul>&#10;In view of the aforementioned, the Commission is unable to approve this transaction.&#10;&#10;Consequently, parties may make representations to the Commission, proposing remedies that will address the competition concerns; or detailing any technological efficiencies or other pro-competitive advantage which will result from the transaction; and will be greater than, and offset, the competition concerns; and will allow consumers receive a fair share of the resulting benefits; or stating what substantial public interest grounds may justify the proposed transaction.&#10;&#10;Parties may make the above representation within [insert time] of receiving this notification. In the event that the Commission does not receive such representation within the stipulated time frame, it will enter a decision to deny approval of the transaction. Where the Commission receives further representation, it will conduct a second detailed review of the transaction before making its final decision.&#10;&#10;………………………&#10;{{ $case->getHandlerFullName() }}, {{ $case->getHandlerAccountType() }}&#10;<b>For: Executive Vice Chairman / Chief Executive Officer</b></textarea>
                 <div class="row" style="justify-content: start;">
                     <div class="col-md-4">
@@ -39,11 +63,13 @@
             <div class="row">
                 <div class="col-md-12">
                     <h6 class="text-center text-underline"><br /><b>{{ $case->getApprovalLetterTitle($template) }}</b></h6>
-                    <h6 class="text-left text-underline"><b>RE: {{ $case->subject }}</b></h6>
+                    <h6 class="text-left text-underline approval_header" style='font-weight: 600;'>RE: {{ $case->subject }}</h6>
                     <br />
-                    <h6 class="text-left"><b>ACQUIRER(S): {{ $case->getCasePartiesText() }}</b></h6>
-                    <h6 class="text-left"><b>TARGET(S): {{ '...' }}</b></h6>
-                    <h6 class="text-left"><b>CASE ID: #{{ $case->guest->tracking_id }}</b></h6>
+                    <h6 class="text-left approval_address">
+                        ACQUIRER(S): {{ $case->getCasePartiesText() }}<br />
+                        TARGET(S): {{ '...' }}<br />
+                        CASE ID: #{{ $case->guest->tracking_id }}
+                    </h6>
                     <br />
                 </div>
             </div>

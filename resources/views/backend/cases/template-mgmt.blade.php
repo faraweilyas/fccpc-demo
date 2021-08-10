@@ -30,6 +30,13 @@
         <div class="d-flex flex-column-fluid">
             <div class="container">
                 <div class="row">
+                    <style type="text/css" media="screen">
+                        .approval_address
+                        {
+                            font-weight: 600;
+                            line-height: 1.7;
+                        }
+                    </style>
                     @if ($template_id == 1)
                         <x-approval-templates.approval :case="$case" template="1" />
                     @endif
@@ -44,6 +51,7 @@
         </div>
     </div>
 @endsection
+
 @section('custom.javascript')
-<script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'template-mgmt.js') }}"></script>>
+    <script type="text/javascript" src="{{ pc_asset(BE_APP_JS.'template-mgmt.js') }}"></script>>
 @endsection

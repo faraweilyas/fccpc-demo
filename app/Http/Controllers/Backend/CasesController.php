@@ -1103,6 +1103,8 @@ class CasesController extends Controller
     public function sendApprovalLetter(Cases $case, int $template_id)
     {
         $data["case"]       = $case;
+        $data["header"]     = $_POST['approval_header'];
+        $data["address"]    = $_POST['approval_address'];
         $data["content"]    = $_POST['approval_content'];
         $data["template"]   = $template_id;
         $file_name          = "approval_letter_".str_replace(' ', '_', now()).".pdf";
