@@ -344,7 +344,7 @@
                                                                 <div class="row mt-4">
                                                                     <div class="col-md-12 mt-4 mb-n3">
                                                                         <p class="text-danger">
-                                                                            Note: supported file formats (.PDF, .JPG, .JPEG). Not more than 20 files (maximum upload of 50MB).
+                                                                            Note: supported file formats (.PDF). Not more than 20 files (maximum upload of 50MB).
                                                                         </p>
                                                                     </div>
                                                                     <div class="col-md-12">
