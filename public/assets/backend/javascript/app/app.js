@@ -181,7 +181,7 @@ function getProcessingFee()
 
     if (typeOfTransaction == 'ffx')
     {
-        processingFeeAmount     = 2500000;
+        processingFeeAmount = 2500000;
     }
 
     // console.log(annualTurnover);
@@ -198,12 +198,12 @@ function calculatePurchaseConsideration(purchase_consideration)
 {
     let firstAmount, secondAmount, thirdAmount, result = 0;
 
-    if (purchase_consideration >= 500000000)
+    if (purchase_consideration >= 500_000_000)
     {
-        result += firstAmount = (0.3 / 100) * 500000000;
-        result += secondAmount = (0.225 / 100) * 500000000;
-        thirdAmount = purchase_consideration - 1000000000;
-        result += (0.15 / 100) * thirdAmount;
+        result += firstAmount = (0.45 / 100) * 500_000_000;
+        result += secondAmount = (0.40 / 100) * 500_000_000;
+        thirdAmount = purchase_consideration - 1000_000_000;
+        result += (0.35 / 100) * thirdAmount;
     }
 
     return result;
@@ -213,12 +213,12 @@ function calculateAnnualTurnover(annualTurnover)
 {
     let firstAmount, secondAmount, thirdAmount, result = 0;
 
-    if (annualTurnover >= 500000000)
+    if (annualTurnover >= 500_000_000)
     {
-        result += firstAmount = (0.3 / 100) * 500000000;
-        result += secondAmount = (0.225 / 100) * 500000000;
-        thirdAmount = annualTurnover - 1000000000;
-        result += (0.75 / 100) * thirdAmount;
+        result += firstAmount = (0.45 / 100) * 500_000_000;
+        result += secondAmount = (0.40 / 100) * 500_000_000;
+        thirdAmount = annualTurnover - 1_000_000_000;
+        result += (0.35 / 100) * thirdAmount;
     }
 
     return result;

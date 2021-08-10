@@ -106,7 +106,7 @@
                         </ul>
                     </div>
                 </li>
-                @if(in_array(\Auth::user()->account_type,['SP']))
+                @if(in_array(\Auth::user()->account_type, ['SP']))
                 <li class="menu-item {{ isRouteActive(['handlers.index']) }}" aria-haspopup="true">
                     <a href="{{ route('handlers.index') }}" class="menu-link">
                         <span class="svg-icon menu-icon">

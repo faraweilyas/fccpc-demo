@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function()
+{
     toastr.options = {
         "progressBar": true,
         "positionClass": "toast-bottom-right",
@@ -35,71 +36,76 @@ $(document).ready(function() {
         $('.loa_doc_name').html(fileName);
     });
 
-    $(".application_form_doc").on("change", function (event) {
-         var fileName  = event.target.files[0].name,
-             data_form = $(this).attr('data-form');
+    $(".application_form_doc").on("change", function(event)
+    {
+
+        var fileName  = event.target.files[0].name,
+            data_form = $(this).attr('data-form');
 
         $('.'+data_form).html(fileName);
-
     });
 
-	$(".start_doc_approval").on('click', function (e) {
-		var approval_link  = $(this).attr('data-link');
-		var workingon_link = $(this).attr('data-workingon-link');
-		 swal.fire({
+	$(".start_doc_approval").on('click', function(e)
+    {
+		var approval_link  = $(this).attr('data-link'),
+            workingon_link = $(this).attr('data-workingon-link');
+		swal.fire({
             title: "Are you sure?",
             text: "",
             showCancelButton: true,
             confirmButtonText: "Proceed"
-        }).then(function(result)
+        })
+        .then(function(result)
         {
-            if (result.value) {
+            if (result.value)
+            {
             	$.ajax({
 	                url: workingon_link,
 	                type: 'POST',
 	                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
 	                data: {},
-	                success: function(response){
-	                  window.location.replace(approval_link);
+	                success: function(response)
+                    {
+                        window.location.replace(approval_link);
 	                }
 	            });
-
             } else {
             	return false;
             }
         });
 	});
 
-	$('#kt-search').click(function () {
+	$('#kt-search').click(function()
+    {
         $(this).toggleClass('show');
         $('#show_search').toggleClass('show');
-
     });
 
-    let cases = [];
-    let searchInput = document.querySelector('.search-input');
-    let suggestionsPanel = document.querySelector('.autoComplete');
+    let cases               = [],
+        searchInput         = document.querySelector('.search-input'),
+        suggestionsPanel    = document.querySelector('.autoComplete');
 
-    searchInput.addEventListener('keyup', function () {
+    searchInput.addEventListener('keyup', function()
+    {
         let input = searchInput.value;
-        if (input !== '') {
+        if (input !== '')
+        {
             $(".quick-search-close").css("display", "none");
             $(".spin-loader").css("display", "flex");
-
         	$.ajax({
                 url: '/cases/search',
                 type: 'GET',
                 data: {'search': input},
-                success: function(response){
+                success: function(response)
+                {
                 	$('.dropdown-search').show();
                     $('.dropdown-search').addClass('show');
                     $(".spin-loader").css("display", "none");
                     $(".quick-search-close").css("display", "flex");
                     $('.quick-search-result').empty();
                 	$('.quick-search-result').html(response);
-            	  }
+                }
             });
-
         } else {
 			$('.dropdown-search').hide();
             $(".spin-loader").css("display", "none");
@@ -108,20 +114,23 @@ $(document).ready(function() {
         }
     });
 
-    $(".quick-search-close").on('click', function (event) {
+    $(".quick-search-close").on('click', function(event)
+    {
         $("#search").val('');
-       $('.dropdown-search').hide();
+        $('.dropdown-search').hide();
         $(this).css("display", "none");
     })
 
-    $(".delete_faq").on('click', function (e) {
-        var faq_delete_route  = $(this).attr('data-route');
+    $(".delete_faq").on('click', function(e)
+    {
+        var faq_delete_route = $(this).attr('data-route');
          swal.fire({
             title: "Are you sure?",
             text: "You want to delete this FAQ!",
             showCancelButton: true,
             confirmButtonText: "Yes, delete FAQ!"
-        }).then(function(result)
+        })
+        .then(function(result)
         {
             if (result.value) {
                 $.ajax({
@@ -129,40 +138,44 @@ $(document).ready(function() {
                     type: 'GET',
                     headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                     data: {},
-                    success: function(response){
-                      if(response)
-                      {
-                        toastr.success("Faq created successfully!");
-                        location.reload();
-                      } else {
-                        toastr.error("Faq not created successfully!");
-                      }
+                    success: function(response)
+                    {
+                        if (response)
+                        {
+                            toastr.success("Faq created successfully!");
+                            location.reload();
+                        } else {
+                            toastr.error("Faq not created successfully!");
+                        }
                     }
                 });
-
             } else {
                 return false;
             }
         });
     });
 
-    $("#mark-notifications").click(function(){
+    $("#mark-notifications").click(function()
+    {
         $.ajax({
             url: '/mark-notifications',
             type: 'GET',
             data: {},
-            success: function(response){
+            success: function(response)
+            {
                 $(".show-marker").removeClass('hide');
             }
         });
     });
 
-    $("#clear-notification").click(function(){
+    $("#clear-notification").click(function()
+    {
         $.ajax({
             url: '/clear-notification',
             type: 'GET',
             data: {},
-            success: function(response){
+            success: function(response)
+            {
                 $("#read-notifications").empty();
             }
         });
