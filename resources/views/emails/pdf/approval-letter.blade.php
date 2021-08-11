@@ -36,6 +36,13 @@
         <p>{{ datetimeToText(now(), 'customd') }}</p>
         <p>{{ $case->getApplicantName() }}</p>
         <p>{!! nl2br($case->applicant_address) !!}</p>
+        <p>
+            <img
+                src="{{ public_path()."/assets/backend/images/apple-touch-icon.png" }}"
+                alt=""
+                style="float: right;width: 130px;margin-top: -120px;"
+            />
+        </p>
     </div>
     <div class="title">
         <h3 class='head'><br /><b>{{ $case->getApprovalLetterTitle($template) }}</b></h3>

@@ -53,11 +53,20 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     {{-- {{ $case->getSubmittedAt() }} --}}
                     <p>{{ datetimeToText(now(), 'customd') }}<br /></p>
                     <p>{{ $case->getApplicantName() }}</p>
                     <p>{!! nl2br($case->applicant_address) !!}</p>
+                </div>
+                <div class="col-md-4">
+                    <p>
+                        <img
+                            src="https://www.fccpc.gov.ng/uploads/favicons/apple-touch-icon.png"
+                            alt=""
+                            style="width: 130px;margin-top: -28px;"
+                        />
+                    </p>
                 </div>
             </div>
             <div class="row">
