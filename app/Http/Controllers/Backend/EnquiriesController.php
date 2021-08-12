@@ -51,8 +51,6 @@ class EnquiriesController extends Controller
      */
     public function store()
     {
-        $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
-
         $validated = request()->validate([
             'type'          => ['required', 'string'],
             'firm'          => ['required', 'string'],
@@ -79,6 +77,7 @@ class EnquiriesController extends Controller
         $enquiry            = Enquiry::create($validated);
         $enquiry->document  = $file ?? null;
 
+        $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
         foreach($supervisors as $supervisor):
             // Notify supervisor
             $supervisor->notify(new CaseActionNotifier(

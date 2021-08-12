@@ -27,7 +27,7 @@ class Enquiry extends Model
      */
     public static function getEnquiries($user)
     {
-        return ($user->account_type == 'CH')
+        return ($user->isCaseHandler())
             ? static::where('handler_id', $user->id)->orderBy('id', 'DESC')->get()
             : static::orderBy('id', 'DESC')->get();
     }

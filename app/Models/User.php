@@ -147,17 +147,7 @@ class User extends Authenticatable implements JWTSubject
         return ($this->status == "active") ? true : false;
     }
 
-     /**
-     * Check if user is case handler.
-     *
-     * @return string
-     */
-    public function isCaseHandler() : bool
-    {
-        return ($this->account_type == "CH") ? true : false;
-    }
-
-     /**
+    /**
      * Get method for is active user admin.
      *
      * @return string
@@ -175,6 +165,16 @@ class User extends Authenticatable implements JWTSubject
     public function isSupervisor() : bool
     {
         return ($this->account_type == "SP") ? true : false;
+    }
+
+    /**
+     * Check if user is case handler.
+     *
+     * @return string
+     */
+    public function isCaseHandler() : bool
+    {
+        return ($this->account_type == "CH") ? true : false;
     }
 
     /**

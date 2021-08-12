@@ -54,9 +54,11 @@
                 <td class="m_-2377898351467431040header"
                     style="border-top-left-radius:6px;border-top-right-radius:6px;height:80px;background:#fff;background-size:300px;background-position:100%;background-repeat:no-repeat;line-height:55px;padding-top:0;text-align:center;color:#ffffff;display:block!important;margin:-130px auto!important;clear:both!important">
                     <a href="{{ config("app.url") }}">
-                        <img src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}"
+                        <img
+                            src="{{ asset(FE_IMAGE.'icons/fccpc_logo.jpg') }}"
                             style="max-width:100%;border-radius:50%;padding:5px;width: 350px;height: auto;"
-                            class="CToWUd" />
+                            class="CToWUd"
+                        />
                     </a>
                 </td>
             </tr>

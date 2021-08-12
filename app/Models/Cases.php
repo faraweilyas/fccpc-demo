@@ -582,13 +582,13 @@ class Cases extends Model
     }
 
     /**
-     * Get case parties publication
+     * Get case parties for publication
      *
      * @return Array
      */
-    public function getCasePartiesPublication()
+    public function getCasePartiesForPublication()
     {
-        return implode('/', $this->getCaseParties(false));
+        return implode('/', $this->getCaseParties());
     }
 
     /**
