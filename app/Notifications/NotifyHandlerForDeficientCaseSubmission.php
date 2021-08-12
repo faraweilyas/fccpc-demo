@@ -16,9 +16,7 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
 
     public $message;
 
-    public $case_id;
-
-    public $application_no;
+    public $case;
 
     /**
      * Create a new notification instance.
@@ -29,8 +27,7 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
     {
         $this->action           = $action;
         $this->message          = $message;
-        $this->case_id          = $case->id;
-        $this->application_no   = $case->reference_number;
+        $this->case             = $case;
     }
 
     /**
@@ -41,22 +38,9 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
      */
     public function via($notifiable)
     {
-        return ['database', 'mail'];
-    }
-
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
-    {
-        return (new MailMessage)
-                    ->subject(strip_tags($this->message))
-                    ->line('The applicant with this notification reference number '.$this->application_no.', has uploaded and submitted requested deficient documents')
-                    ->action('Login', url('/'))
-                    ->line('Thank you for using our application!');
+        return (in_array($this->action, ["defresponse"]))
+            ? ['database', 'mail']
+            : ['database'];
     }
 
     /**
@@ -70,7 +54,42 @@ class NotifyHandlerForDeficientCaseSubmission extends Notification
         return [
             'action'    => $this->action,
             'message'   => $this->message,
-            'case_id'   => $this->case_id,
+            'case_id'   => $this->case->id,
         ];
+    }
+
+    /**
+     * Get the mail representation of the notification.
+     *
+     * @param  mixed  $notifiable
+     * @return \Illuminate\Notifications\Messages\MailMessage
+     */
+    public function toMail($notifiable)
+    {
+        if ($this->action == "defresponse" && $notifiable->isCaseHandler())
+            return $this->deficiencyResponseToCaseHandler($notifiable);
+
+        if ($this->action == "defresponse" && $notifiable->isSupervisor())
+            return $this->deficiencyResponseToSupervisor($notifiable);
+    }
+
+    public function deficiencyResponseToCaseHandler($notifiable)
+    {
+        return (new MailMessage)
+                    ->subject(strip_tags(($this->message)))
+                    ->greeting("Dear {$notifiable->getFirstName()},")
+                    ->line("Deficient notification #{$this->case->reference_number} has been responded to.")
+                    // ->action('Login', url('/login'))
+                    ->line('Thank you.');
+    }
+
+    public function deficiencyResponseToSupervisor($notifiable)
+    {
+        return (new MailMessage)
+                    ->subject(strip_tags(($this->message)))
+                    ->greeting("Dear {$notifiable->getFirstName()},")
+                    ->line("Deficient notification #{$this->case->reference_number} has been responded to.")
+                    // ->action('Login', url('/login'))
+                    ->line('Thank you.');
     }
 }
