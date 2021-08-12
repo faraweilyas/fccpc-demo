@@ -878,14 +878,17 @@ class CasesController extends Controller
         $user->notify(new CaseActionNotifier(
             'assign',
             'A new case has been assigned to you.',
-            $case->id
+            $case->id,
+            $case
         ));
         // Notify supervisor
         auth()->user()->notify(new CaseActionNotifier(
             'assign',
             "Case has been assigned to <b>{$user->getFullName()}</b>.",
-            $case->id
+            $case->id,
+            $case
         ));
+
         $this->sendResponse('Case assigned.', 'success', [
             'case'      => $case,
             'handler'   => $user,

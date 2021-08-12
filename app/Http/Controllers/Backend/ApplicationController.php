@@ -378,7 +378,8 @@ class ApplicationController extends Controller
             $supervisor->notify(new CaseActionNotifier(
                 'newcase',
                 "{$case->applicant_fullname} has submitted a new notification.",
-                $case->id
+                $case->id,
+                $case
             ));
         endforeach;
         $this->sendResponse('Notification submitted.', 'success', $case);
