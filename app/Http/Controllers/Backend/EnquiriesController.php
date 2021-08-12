@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\User;
 use App\Models\Guest;
 use App\Models\Enquiry;
+use App\Mail\NewEnquiry;
 use App\Mail\EnquiryMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -77,13 +78,23 @@ class EnquiriesController extends Controller
         $enquiry            = Enquiry::create($validated);
         $enquiry->document  = $file ?? null;
 
+        // Notify enquirer
+        try {
+            Mail::to($enquiry->email)->send(new NewEnquiry($enquiry));
+        }
+        catch(\Exception $exception)
+        {
+            $message = $exception->getMessage();
+        }
+
+        // Notify supervisors
         $supervisors = User::where('account_type', 'SP')->where('status', 'active')->get();
         foreach($supervisors as $supervisor):
-            // Notify supervisor
             $supervisor->notify(new CaseActionNotifier(
                 'newenquiry',
                 "{$fullname} has applied for a pre-notification consultation.",
-                $enquiry->id
+                $enquiry->id,
+                $enquiry
             ));
         endforeach;
 
