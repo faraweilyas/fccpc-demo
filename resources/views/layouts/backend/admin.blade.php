@@ -312,7 +312,7 @@
                                 </div>
                                 <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
                             </div>
-                        @elseif ($data->action == "newenquiry")
+                        @elseif (in_array($data->action, ["newenquiry", "assignenquiry"]))
                             @php
                                 $enquiry = \App\Models\Enquiry::find($data->case_id);
                             @endphp
