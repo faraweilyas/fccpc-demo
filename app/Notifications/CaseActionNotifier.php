@@ -99,7 +99,7 @@ class CaseActionNotifier extends Notification
         return (new MailMessage)
                     ->subject(strip_tags(($this->message)))
                     ->greeting("Dear {$notifiable->getFirstName()},")
-                    ->line("A new notification has been filed – {$this->case->subject} & {$this->case->getCasePartiesText()}.")
+                    ->line("A new notification has been submitted – {$this->case->subject} & {$this->case->getCasePartiesText()}.")
                     ->line('Thank you.');
     }
 
