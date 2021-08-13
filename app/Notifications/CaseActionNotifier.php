@@ -128,5 +128,6 @@ class CaseActionNotifier extends Notification
                     ->greeting("Dear {$notifiable->getFirstName()},")
                     ->line("A new pre-notification enquiry has been submitted. {$this->case->subject} & {$this->case->firm}.")
                     ->line('Thank you.');
+
     }
 }
