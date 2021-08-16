@@ -37,8 +37,8 @@
                                     @if (in_array(\Auth::user()->account_type, ['SP']))
                                     <th>Case Handler</th>
                                     @endif
-                                    <th class="text-center">Case Type</th>
-                                    <th class="text-center">Transaction Type</th>
+                                    <th class="">Case Type</th>
+                                    <th class="">Transaction Type</th>
                                     <th class="text-center">Action(s)</th>
                                 </tr>
                             </thead>
@@ -65,10 +65,10 @@
                                         {{ $case->active_handlers->first()->getFullName() }}
                                     </td>
                                     @endif
-                                    <td class="text-center">
+                                    <td class="">
                                         {!! $case->getCategoryHtml() !!}
                                     </td>
-                                    <td class="text-center">
+                                    <td class="">
                                         {!! $case->getTypeHtml() !!}
                                     </td>
                                     <td nowrap="nowrap" class="text-center">

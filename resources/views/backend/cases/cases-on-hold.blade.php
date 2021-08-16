@@ -37,8 +37,8 @@
                                 @endif
                                 <th>Reference NO</th>
                                 <th>Subject</th>
-                                <th class="text-center">Case Type</th>
-                                <th class="text-center">Transaction Type</th>
+                                <th class="">Case Type</th>
+                                <th class="">Transaction Type</th>
                                 <th class="text-center">Action(s)</th>
                             </tr>
                         </thead>
@@ -64,10 +64,10 @@
                                 <td class="case-subject">
                                     {{ $case->getSubject() }}
                                 </td>
-                                <td class="text-center">
+                                <td class="">
                                     {!! $case->getCategoryHtml() !!}
                                 </td>
-                                <td class="text-center">
+                                <td class="">
                                     {!! $case->getTypeHtml() !!}
                                 </td>
                                 <td nowrap="nowrap" class="text-center">
