@@ -546,7 +546,7 @@
                                                         <p paraeid="{78a321ea-5ad1-40bb-af05-a2d4b9a4cfe6}{95}"
                                                             paraid="640540932"
                                                             style="margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #202020;font-family: Helvetica;font-size: 16px;line-height: 150%;text-align: left;">
-                                                            Your notification has been received
+                                                            Your notification has been received on
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "customdated")) }}
                                                             {{ replaceTimeAbbrev(datetimeToText($data['case']->submitted_at, "time")) }}
                                                             <br />The commission will revert.</p>
