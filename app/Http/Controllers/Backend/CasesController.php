@@ -409,14 +409,16 @@ class CasesController extends Controller
         $case_handler->notify(new CaseActionNotifier(
             'archive',
             'Case has been archived.',
-            $case->id
+            $case->id,
+            $case
         ));
 
         // Notify supervisor
         $supervisor->notify(new CaseActionNotifier(
             'archive',
             "Case has been archived.",
-            $case->id
+            $case->id,
+            $case
         ));
         return redirect()->back()->with('success', 'Case archived!');
     }
@@ -528,12 +530,14 @@ class CasesController extends Controller
         $case_handler->notify(new CaseActionNotifier(
             'new_publication',
             $message,
-            $case->id
+            $case->id,
+            $case
         ));
         $supervisor->notify(new CaseActionNotifier(
             'new_publication',
             $message,
-            $case->id
+            $case->id,
+            $case
         ));
         return redirect()->back()->with('success', $message);
     }
@@ -786,14 +790,16 @@ class CasesController extends Controller
         $case_handler->notify(new CaseActionNotifier(
             'request_ch',
             'Your approval request has been sent.',
-            $case->id
+            $case->id,
+            $case
         ));
 
         // Notify supervisor
         $supervisor->notify(new CaseActionNotifier(
             'request',
             "{$case_handler->getFullName()} has requested approval.",
-            $case->id
+            $case->id,
+            $case
         ));
 
         $handler = User::find($case->active_handlers->first()->id);
@@ -822,14 +828,16 @@ class CasesController extends Controller
         $case_handler->notify(new CaseActionNotifier(
             $request_type."_ch",
             "Your approval request has been {$status}.",
-            $case->id
+            $case->id,
+            $case
         ));
 
          // Notify supervisor
         $supervisor->notify(new CaseActionNotifier(
             $request_type,
             "{$case_handler->getFullName()} request has been {$status}.",
-            $case->id
+            $case->id,
+            $case
         ));
 
         $handler = User::find($case->active_handlers->first()->id);
@@ -911,7 +919,8 @@ class CasesController extends Controller
         $user->notify(new CaseActionNotifier(
             'unassign',
             'Your case has been unassigned',
-            $case->id
+            $case->id,
+            $case
         ));
         // Notify supervisor
         auth()
@@ -919,7 +928,8 @@ class CasesController extends Controller
             ->notify(new CaseActionNotifier(
                 'unassign',
                 "Case has been unassigned from <b>{$user->getFullName()}</b>.",
-                $case->id
+                $case->id,
+                $case
             ));
         $this->sendResponse('Case unassigned.', 'error');
     }
@@ -941,13 +951,15 @@ class CasesController extends Controller
         $oldUser->notify(new CaseActionNotifier(
             'reassign',
             'Your case has been reassigned',
-            $case->id
+            $case->id,
+            $case
         ));
         // Notify new case handler
         $newUser->notify(new CaseActionNotifier(
             'assign_ch',
             'A new case has been assigned to you.',
-            $case->id
+            $case->id,
+            $case
         ));
         // Notify supervisor
         auth()
@@ -955,7 +967,8 @@ class CasesController extends Controller
             ->notify(new CaseActionNotifier(
                 'reassign',
                 "Case has been reassigned to <b>{$newUser->getFullName()}</b>.",
-                $case->id
+                $case->id,
+                $case
             ));
         $this->sendResponse('Case reassigned.', 'success');
     }

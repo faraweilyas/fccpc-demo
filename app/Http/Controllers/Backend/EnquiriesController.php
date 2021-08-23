@@ -137,13 +137,15 @@ class EnquiriesController extends Controller
         $supervisor->notify(new CaseActionNotifier(
             'assignenquiry',
             "Pre-notification has been assigned to {$handler->getFullName()}.",
-            $enquiry->id
+            $enquiry->id,
+            $enquiry
         ));
 
         $handler->notify(new CaseActionNotifier(
             'assignenquiry',
             "{$supervisor->getFullName()} has assigned a pre-notification to you.",
-            $enquiry->id
+            $enquiry->id,
+            $enquiry
         ));
 
         return redirect()->back()->with("success", "Enquiry has been assigned to case handler");
