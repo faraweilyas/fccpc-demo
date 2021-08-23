@@ -282,13 +282,17 @@ class AppHelper
         "NEWIDREQUEST"           => "secondary",
         "NEWCASE"                => "primary",
         "ASSIGN"                 => "secondary",
+        "ASSIGN_CH"              => "secondary",
         "REASSIGN"               => "primary",
         "UNASSIGN"               => "danger",
         "ARCHIVE"                => "warning",
         "ONHOLD"                 => "warning",
         "DEFRESPONSE"            => "success",
         "REQUEST"                => "warning",
+        "REQUEST_CH"             => "warning",
+        "REQUEST_APPROVED_CH"    => "success",
         "REQUEST_APPROVED"       => "success",
+        "REQUEST_REJECTED_CH"    => "danger",
         "REQUEST_REJECTED"       => "danger",
     ];
 
