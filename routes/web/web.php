@@ -13,6 +13,20 @@ Route::name('home.')
         })
         ->name("test");
 
+        Route::get('/clearlogfile', function()
+        {
+            $filePath   = storage_path().'/logs/laravel.log';
+            $read_file  = @fopen($filePath, "r+");
+            if ($read_file !== false)
+            {
+                ftruncate($read_file, 0);
+                fclose($read_file);
+                echo "<p style='color:red;'>File: <b>{$filePath}</b> has been cleared!</p>";
+            } else {
+                echo "<p style='color:green;'>File: <b>{$filePath}</b> hasn't been cleared!</p>";
+            }
+        });
+
         Route::get('/notification', function()
         {
             $supervisor     = App\Models\User::find(5);
