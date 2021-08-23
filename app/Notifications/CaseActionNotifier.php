@@ -41,7 +41,7 @@ class CaseActionNotifier extends Notification
      */
     public function via($notifiable)
     {
-        return (in_array($this->action, ["assign", "newcase", "request", "request_approved", "request_rejected", "newenquiry"]))
+        return (in_array($this->action, ["assign_ch", "newcase", "request", "request_approved_ch", "request_rejected_ch", "newenquiry"]))
             ? ['database', 'mail']
             : ['database'];
     }
@@ -69,7 +69,7 @@ class CaseActionNotifier extends Notification
      */
     public function toMail($notifiable)
     {
-        if ($this->action == "assign" && $notifiable->isCaseHandler())
+        if ($this->action == "assign_ch" && $notifiable->isCaseHandler())
             return $this->newNotificationToCaseHandler($notifiable);
 
         if ($this->action == "newcase" && $notifiable->isSupervisor())
@@ -78,7 +78,7 @@ class CaseActionNotifier extends Notification
         if ($this->action == "request" && $notifiable->isSupervisor())
             return $this->approvalRequestToSupervisor($notifiable);
 
-        if (in_array($this->action, ['request_approved', 'request_rejected']) && $notifiable->isCaseHandler())
+        if (in_array($this->action, ['request_approved_ch', 'request_rejected_ch']) && $notifiable->isCaseHandler())
             return $this->recommendationFeedbackToCaseHandler($notifiable);
 
         if ($this->action == "newenquiry" && $notifiable->isSupervisor())

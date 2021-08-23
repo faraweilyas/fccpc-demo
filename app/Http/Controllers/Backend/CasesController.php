@@ -784,7 +784,7 @@ class CasesController extends Controller
 
         // Notify case handler
         $case_handler->notify(new CaseActionNotifier(
-            'request',
+            'request_ch',
             'Your approval request has been sent.',
             $case->id
         ));
@@ -820,7 +820,7 @@ class CasesController extends Controller
 
         // Notify case handler
         $case_handler->notify(new CaseActionNotifier(
-            $request_type,
+            $request_type."_ch",
             "Your approval request has been {$status}.",
             $case->id
         ));
@@ -876,7 +876,7 @@ class CasesController extends Controller
         $case->assign($user);
         // Notify case handler
         $user->notify(new CaseActionNotifier(
-            'assign',
+            'assign_ch',
             'A new case has been assigned to you.',
             $case->id,
             $case
@@ -945,7 +945,7 @@ class CasesController extends Controller
         ));
         // Notify new case handler
         $newUser->notify(new CaseActionNotifier(
-            'assign',
+            'assign_ch',
             'A new case has been assigned to you.',
             $case->id
         ));

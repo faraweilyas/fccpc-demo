@@ -254,13 +254,17 @@ class AppHelper
         "NEWIDREQUEST"           => "New Application ID Request",
         "NEWCASE"                => "New Case",
         "ASSIGN"                 => "New Case Assigned",
+        "ASSIGN_CH"              => "New Case Assigned",
         "REASSIGN"               => "Case Reassigned",
         "UNASSIGN"               => "Case Unassigned",
         "ARCHIVE"                => "Case Archived",
         "ONHOLD"                 => "Case on Hold",
         "DEFRESPONSE"            => "Response to Deficiency",
         "REQUEST"                => "Approval Request",
+        "REQUEST_CH"             => "Approval Request",
+        "REQUEST_APPROVED_CH"    => "Approved Request",
         "REQUEST_APPROVED"       => "Approved Request",
+        "REQUEST_REJECTED_CH"    => "Rejected Request",
         "REQUEST_REJECTED"       => "Rejected Request",
     ];
 
