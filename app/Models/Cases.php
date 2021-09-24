@@ -562,10 +562,10 @@ class Cases extends Model
     /**
      * Get case parties
      *
-     * @param Bool $collect
-     * @return Collection
+     * @param bool $collect
+     * @return collection | array
      */
-    public function getCaseParties(bool $collect=true)
+    public function getCaseParties(bool $collect=TRUE)
     {
         $parties = (empty($this->parties)) ? [] : explode(':', $this->parties);
         return ($collect) ? collect($parties) : $parties;
@@ -588,7 +588,7 @@ class Cases extends Model
      */
     public function getCasePartiesForPublication()
     {
-        return implode('/', $this->getCaseParties());
+        return implode('/', $this->getCaseParties(false));
     }
 
     /**

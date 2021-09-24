@@ -47,7 +47,7 @@
             "database/seeds",
             "database/factories"
         ],
-         "files": [
+        "files": [
             "app/Enhancers/Constants.php",
             "app/Enhancers/Functions.php"
         ]
