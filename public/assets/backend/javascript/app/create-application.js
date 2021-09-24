@@ -815,9 +815,9 @@ $(document).ready(function()
             position    = $("#form1a_declaration_position").val(),
             form_text   = $(".form1a_declaration_text").val();
 
-        if (form_text.length > 500)
+        if (isGreaterThan500Words(".form1a_declaration_text"))
         {
-            notify("error", "Text cannot exceed 500 characters!");
+            notify("error", "Text cannot exceed 500 words.");
             return;
         }
 
@@ -928,21 +928,29 @@ function sendRequest(
     return;
 }
 
+function isGreaterThan500Words(elem)
+{
+    var wordsLength = $(elem).val().split(' ').length;
+    // alert(wordsLength);
+    console.log(wordsLength);
+    return (wordsLength > 500) ? true : false;
+}
 
 function saveForm1AInfo(action, currentForm)
 {
-    if ($(".form1a_declaration_text").val() !== ''){
-        if($(".form1a_declaration_text").val().length > 500)
-        {
-            notify('error', 'Input field cannot be greater than 500 characters!');
-            return;
-        }
-        $('#form1ADeclarationModal').modal('show');
-    } else {
+    if ($(".form1a_declaration_text").val() == '')
+    {
         notify('error', 'Input field cannot be empty!');
+        return;
     }
 
-    return;
+    if (isGreaterThan500Words(".form1a_declaration_text"))
+    {
+        notify('error', 'Text cannot exceed 500 words.');
+        return;
+    }
+
+    $('#form1ADeclarationModal').modal('show');
 }
 
 function saveCaseInfo(action, currentForm)

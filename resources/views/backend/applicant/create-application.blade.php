@@ -314,8 +314,8 @@
                                                 <div class="form-group">
                                                     <textarea
                                                         class="form-control form1a_declaration_text"
-                                                        id="kt_maxlength_5"
-                                                        maxlength="500"
+                                                        {{-- id="kt_maxlength_5" --}}
+                                                        {{-- maxlength="500" --}}
                                                         rows="6"
                                                         name="form1a_declaration_text"
                                                         placeholder=""
