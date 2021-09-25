@@ -52,6 +52,11 @@ Route::name('home.')
             // return (new App\Notifications\NotifyHandlerForDeficientCaseSubmission($action, $message, $case))->toMail($supervisor);
         });
 
+        Route::get('/maintenance', function()
+        {
+            return view("errors.503");
+        });
+
         Route::get(
             '/',
             'HomeController@index'
