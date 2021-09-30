@@ -33,7 +33,7 @@
             </li>
             <li class="layer" data-depth="0.20">
                 <div class="title">
-                    <h2>Some random text... </h2><span class="line"></span>
+                    <h2>Federal Competition and Consumer Protection Commission Merger Notification Portal.</h2><span class="line"></span>
                 </div>
             </li>
             <li class="layer" data-depth="0.25">
@@ -44,7 +44,7 @@
             <li class="layer" data-depth="0.30">
                 <div class="hero">
                     <h1 id="countdown">&nbsp;</h1>
-                    <p class="sub-title">Some random text...</p>
+                    <p class="sub-title">Countdown to portal launch</p>
                 </div>
             </li>
             <!-- Flakes -->
@@ -85,6 +85,6 @@
     </div>
     <script type="text/javascript" src="/maintenance_assets/js/plugins.js"></script>
     <script type="text/javascript" src="/maintenance_assets/js/jquery.countdown.min.js"></script>
-    <script type="text/javascript" src="/maintenance_assets/js/main.js"></script>
+    <script type="text/javascript" src="{{ pc_asset('/maintenance_assets/js/main.js') }}"></script>
 </body>
 </html>
