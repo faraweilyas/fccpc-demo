@@ -139,7 +139,7 @@ h2 {
 
 
 /* Background */
-.background {
+.backgrounds {
   background: url(../images/background.jpg) no-repeat 50% 100%;
   bottom: -20px;
   background-size: cover;
@@ -149,6 +149,13 @@ h2 {
   top: -5%;
 }
 
+.background img
+{
+    margin: auto;
+    margin-bottom: 40px;
+    width: 160px;
+    padding: 10px;
+}
 
 .sphere img{
 	-webkit-transform: scale(0.7);

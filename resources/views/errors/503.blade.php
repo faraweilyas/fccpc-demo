@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/loader.css" />
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset('/maintenance_assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/ie.css" />
     <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script type="text/javascript" src="/maintenance_assets/js/jquery.js"></script>
@@ -26,10 +26,12 @@
         </div>
     </div>
     <div class="wrapper">
-        <ul class="scene unselectable" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25" data-scalar-y="15" id="scene">
+        <ul class="scene unselectable">
             <li class="layer" data-depth="0.00"></li>
             <li class="layer" data-depth="0.10">
-                <div class="background"></div>
+                <div class="background">
+                    <img src="https://www.fccpc.gov.ng/uploads/logo.jpg" />
+                </div>
             </li>
             <li class="layer" data-depth="0.20">
                 <div class="title">
