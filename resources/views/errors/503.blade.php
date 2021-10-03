@@ -88,7 +88,7 @@
         </ul>
     </div>
     <script type="text/javascript" src="/maintenance_assets/js/plugins.js"></script>
-    <script type="text/javascript" src="/maintenance_assets/js/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="{{ pc_asset('/maintenance_assets/js/jquery.countdown.min.js') }}"></script>
     <script type="text/javascript" src="{{ pc_asset('/maintenance_assets/js/main.js') }}"></script>
 </body>
 </html>
