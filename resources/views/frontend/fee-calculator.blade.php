@@ -12,7 +12,7 @@
             <div class="row fee-calc-container">
                 <div class="col-md-3">
                     <div class="form-group">
-                        <label>Transaction Type:</label>
+                        <label>Notification Type:</label>
                         <select class="form-control fee-calc-form" id="typeOfTransaction" name="typeOfTransaction">
                             <option value="" selected="">Select type:</option>
                             <option value="local">Merger</option>
