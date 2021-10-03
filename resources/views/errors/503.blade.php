@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ pc_asset('/maintenance_assets/css/style.css') }}" />
     <link rel="stylesheet" type="text/css" href="/maintenance_assets/css/ie.css" />
+    <link rel="stylesheet" type="text/css" href="{{ pc_asset('/maintenance_assets/css/responsive.css') }}" />
     <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <script type="text/javascript" src="/maintenance_assets/js/jquery.js"></script>
 </head>
