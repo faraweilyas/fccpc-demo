@@ -30,27 +30,29 @@
             <li class="layer" data-depth="0.00"></li>
             <li class="layer" data-depth="0.10">
                 <div class="background">
-                    <img src="https://www.fccpc.gov.ng/uploads/logo.jpg" />
+                    {{-- <img src="https://www.fccpc.gov.ng/uploads/logo.jpg" /> --}}
                 </div>
             </li>
             <li class="layer" data-depth="0.20">
                 <div class="title">
-                    <h2>Federal Competition and Consumer Protection Commission Merger Notification Portal.</h2><span class="line"></span>
+                    <h2>Merger Notification Portal</h2>
+                    {{-- <span class="line"></span> --}}
                 </div>
             </li>
-            <li class="layer" data-depth="0.25">
+            {{-- <li class="layer" data-depth="0.25">
                 <div class="sphere">
                     <img alt="sphere" src="/maintenance_assets/images/sphere.png" />
+                    <img alt="sphere" src="https://www.fccpc.gov.ng/uploads/logo.jpg" />
                 </div>
-            </li>
+            </li> --}}
             <li class="layer" data-depth="0.30">
                 <div class="hero">
                     <h1 id="countdown">&nbsp;</h1>
-                    <p class="sub-title">Countdown to portal launch</p>
+                    {{-- <p class="sub-title">Countdown to portal launch</p> --}}
                 </div>
             </li>
             <!-- Flakes -->
-            <li class="layer" data-depth="0.40">
+            {{-- <li class="layer" data-depth="0.40">
                 <div class="depth-1 flake1"><img alt="flake" src="/maintenance_assets/images/flakes/depth1/flakes1.png"></div>
                 <div class="depth-1 flake2"><img alt="flake" src="/maintenance_assets/images/flakes/depth1/flakes2.png"></div>
                 <div class="depth-1 flake3"><img alt="flake" src="/maintenance_assets/images/flakes/depth1/flakes3.png"></div>
@@ -71,7 +73,7 @@
             </li>
             <li class="layer" data-depth="1.00">
                 <div class="depth-5"><img alt="flake" src="/maintenance_assets/images/flakes/depth5/flakes.png"></div>
-            </li>
+            </li> --}}
             <!-- Contact -->
             {{-- <li class="layer" data-depth="0.20">
                 <div class="contact">
