@@ -75,7 +75,7 @@ jobs:
           composer update
           php -r "copy('.env.prod', '.env');"
           php artisan migrate --force
-          php artisan up
+          php artisan down
           cd /var/www/html/fccpc-demo
           git pull
           composer install
