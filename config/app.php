@@ -294,6 +294,6 @@ return [
     |
     */
 
-    // 'exempt_maintenance_ips' => ['127.0.0.1', '192.168.0.100'],
+     'exempt_maintenance_ips' => ['127.0.0.1', '192.168.0.100'],
 
 ];
