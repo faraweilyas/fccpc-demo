@@ -54,7 +54,7 @@ jobs:
   #         name: assets
   #         path: public
   deploy-phase3:
-    name: Deploy project to phase3 server
+    name: Deploy project to server
     runs-on: ubuntu-latest
     needs: [app-tests]
     if: github.ref == 'refs/heads/master'
@@ -74,4 +74,3 @@ jobs:
           composer install
           composer update
           php -r "copy('.env.prod', '.env');"
-          php artisan migrate --force
