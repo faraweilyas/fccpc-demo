@@ -30,7 +30,7 @@
                         <input type="number" id="parties_number" name="parties_number" class="form-control" min="2" value="2" />
                     </div>
                     <div class="form-group purchase_consideration">
-                        <label>Purchase Consideration:</label>
+                        <label>Consideration:</label>
                         <input type="text" id="purchase_consideration" name="purchase_consideration" class="form-control" placeholder="0" />
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                     </table>
                     <p class="modal_guideline__sub__header">Applicable Fees for Foreign-to-Foreign Merger Notifications: EXPEDITED PROCEDURE</p>
                     <ol>
-                        <li>The Commission, in the interest of transactional efciency, shall adopt an expedited procedure, for foreign to foreign mergers where it will conduct a review under the simplifed procedure.</li>
+                        <li>The Commission, in the interest of transactional efficiency, shall adopt an expedited procedure, for foreign to foreign mergers where it will conduct a review under the simplifed procedure.</li>
                         <li>Under the expedited procedure, the Commission shall conclude its review and issue its decision within 15 (fifteen) business days.</li>
                         <li>The expedited procedure fee is &#8358;5,000,000 (five million Naira) to be paid in addition to the application fee.</li>
                     </ol>

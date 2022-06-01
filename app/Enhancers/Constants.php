@@ -2,7 +2,7 @@
 
 // PROFILING
 defined('AUTHORS')          ? null : define('AUTHORS',          ['iLyas Farawe', 'Kamsi Kodi']);
-defined('APP_NAME')         ? null : define('APP_NAME',         'Mergers Notification Portal');
+defined('APP_NAME')         ? null : define('APP_NAME',         'Merger Notification Portal');
 defined('SHORT_APP_NAME')   ? null : define('SHORT_APP_NAME',   'MNP');
 defined('COMPANY')          ? null : define('COMPANY',          'techbarn');
 defined('COMPANY_LINK')     ? null : define('COMPANY_LINK',     'https://techbarn.ng');

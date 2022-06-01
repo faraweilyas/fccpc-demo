@@ -461,7 +461,7 @@
                                 </div>
                             @else
                                 @php
-                                    $case = \App\Models\Cases::find($data->case_id);
+                                    if ($case = \App\Models\Cases::find($data->case_id)):
                                 @endphp
                                 <div class="notifications-cards cr-pointer" onclick="window.location.href = '{{ route('cases.analyze', ['case' => $case->id]) }}';">
                                     <p class="message my-1">{!! $message !!}</p>
@@ -480,6 +480,9 @@
                                     </div>
                                     <span class="float-right text-gray">{{ $notification->created_at->diffForHumans() }}</span>
                                 </div>
+                                @php
+                                    endif;
+                                @endphp
                             @endif
                         @endforeach
                     </div>

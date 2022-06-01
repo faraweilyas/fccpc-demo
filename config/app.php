@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'MAP - Mergers & Acquisition Platform'),
+    'name' => env('APP_NAME', 'MAP - Merger & Acquisition Platform'),
 
     /*
     |--------------------------------------------------------------------------

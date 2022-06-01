@@ -7,6 +7,12 @@ Route::name('home.')
     ->middleware('XssSanitizer')
     ->group(function()
     {
+	Route::get('/infophp', function()
+        {
+            phpinfo();
+        })
+        ->name("infophp");
+
         Route::get('/test', function()
         {
             return view('test');
