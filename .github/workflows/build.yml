@@ -21,7 +21,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@master
         with:
-          php-version: 7.3
+          php-version: 7.4
           extensions: mbstring, bcmath
       - uses: actions/checkout@v1
       - name: Copy .env
